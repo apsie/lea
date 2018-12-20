@@ -11,6 +11,7 @@
 			<th>Status</th>
 			<th>Motif d'absence</th>
 			<th>Compte rendu</th>
+			<th>Action</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -52,6 +53,13 @@
 					<td>
 						<a href="#" onClick="window.open('{{DIR_PRESTA}}/Compte_rendu1_0/index.php?domain=default&cal_id={{ rdv.calId }}&id_employee={{ rdv.calOwner }}&id_presta={{ idPrestation }}&id_ben={{ calUserId }}','Compte Rendu','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');"><img title="Redaction du compte rendu" src="{{DIR_PRESTA}}/presta/epce/images/icons/page_white_paintbrush.png" border="0"></a>					
 					</td>
+					<td>
+						{% if rdv.idPresta is null or rdv.idPresta == 0 %}
+							<input style="cursor: pointer;" class="presta-link" data-action="link" data-prestation-id="{{ idPrestation }}" data-rdv-id="{{ rdv.calId }}" type="button" value="Lier à la prestation" />
+						{% else %}
+							<input style="cursor: pointer;" class="presta-link" data-action="unlink" data-prestation-id="{{ idPrestation }}" data-rdv-id="{{ rdv.calId }}" type="button" value="Délier de la prestation" />
+						{% endif %}
+					</td>
 				</tr>
 			{% endfor %}
 		</tbody>
@@ -80,6 +88,29 @@ $('form[name="presta_rdvs"]').submit(function(){
 		}
 	});
 	return false;
+});
+
+$('.presta-link').click(function(){
+
+	var rdvId = $(this).attr('data-rdv-id');
+	var prestationId = $(this).attr('data-prestation-id');
+	var action = $(this).attr('data-action');
+
+	$.ajax({
+		url:'./rdv/link',
+		dataType: "json",
+		type : "POST",
+		data : { 'rdvId' : rdvId, 'prestationId' : prestationId, 'action' : action },
+		success: function( data ) {
+			if(action == 'link'){
+				$('#rdv_presta_orphelin').trigger('click');
+			}else{
+				$('#rdv_presta').trigger('click');
+			}
+
+		}
+	});
+
 });
 
 </script>

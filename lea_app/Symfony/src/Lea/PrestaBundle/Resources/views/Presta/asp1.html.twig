@@ -2080,7 +2080,8 @@ $.ajax({
     dataType: "html",
     type: "POST",
     data: {
-        idBen: {{ presta.contact.idBen }}
+        idBen: {{ presta.contact.idBen }},
+        idPrestation: {{presta.idPresta}}
     },
     success: function (html) {
         $('.tableau_liste_presta_orphelin').html(html);

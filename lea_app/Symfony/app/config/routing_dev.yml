@@ -62,6 +62,10 @@ _presta_disponibilite_rdv_check:
     pattern:  /presta/disponibilite/rdvcheck
     defaults: { _controller: LeaPrestaBundle:Rdv:rdvCheck }
 
+_presta_rdv_link:
+    pattern:  /presta/rdv/link
+    defaults: { _controller: LeaPrestaBundle:Rdv:Link }
+
 _presta_confirmation:
     pattern:  /presta/confirmation
     defaults: { _controller: LeaPrestaBundle:Rdv:confirmation }

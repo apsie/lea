@@ -22,8 +22,13 @@ class EgwCalUserType extends AbstractType
 		$builder->add('motifAbsence', 'text',array('required'=>false));
 		$builder->add('calId', 'hidden');
 		$builder->add('calUserId', 'hidden');
-		$builder->add('calStatus', 'choice',array('choices'   => array('U' => 'U','A' => 'A', 'R' => 'R')));
-			
+		$builder->add('calStatus', 'choice',array('choices'   => array(
+            'U' => 'Pas de réponse',
+            'A' => 'Présent',
+            'O' => 'Absent excusé',
+            'N' => 'Absent non excusé'
+        )));
+
 		// $builder->add('checkAddRemove', 'checkbox', array('label' => 'Ajouter/Supprimer le rendez-vous'));
     }
 

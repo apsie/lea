@@ -43,15 +43,20 @@ class EgwCalRepository extends EntityRepository
 
 			
 		$query = $this->getEntityManager()->createNativeQuery($sql);
+
 		//$query->setParameter(1, 'romanb');
 		
 		return $query->getResult();
 		}
-		public function getRdv($account_id =null ,$dateDebut =null , $idPrestation = null ,$calUserType =null , $dateFin = null)
+		public function getRdv($account_id =null ,$dateDebut =null , $idPrestation = null ,$calUserType =null , $dateFin = null, $unlinkToPresta = null)
 		{
 			$dqlPlus = null;
 			if($account_id!=null)
 			$dqlPlus .=" and us.calUserId =".$account_id." ";
+
+			if($unlinkToPresta){
+                $dqlPlus .=" and (c.idPresta is null or c.idPresta = 0)";
+            }
 			
 			if($dateDebut!=null)
 			$dqlPlus .=" and u.calStart>".$dateDebut." ";
@@ -61,7 +66,7 @@ class EgwCalRepository extends EntityRepository
 			//$dqlPlus .=" and u.calStart<=".$dateFin." ";
 			
 			if($idPrestation!=null)
-			$dqlPlus .=" and us.idPrestation=".$idPrestation." ";
+			$dqlPlus .=" and c.idPresta=".$idPrestation." ";
 			
 			if($calUserType!=null)
 			$dqlPlus .=" and us.calUserType='".$calUserType."' ";
@@ -71,8 +76,11 @@ class EgwCalRepository extends EntityRepository
 					inner join c.egwCalIdUser us
 					WHERE c.calId!=0   
 					".$dqlPlus."";
+
+//           die( $this->getEntityManager()
+//                ->createQuery($dql)->getSQL()); die();
 			
-			error_log($dql);
+			//error_log($dql);
 			return $this->getEntityManager()
 					->createQuery($dql)
 					->getResult();

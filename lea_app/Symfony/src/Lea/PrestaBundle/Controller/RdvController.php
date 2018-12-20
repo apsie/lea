@@ -32,6 +32,8 @@ use Lea\PrestaBundle\Entity\SpidTickets;
 use Lea\PrestaBundle\Entity\SpidRDV;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class RdvController extends Controller {
 
@@ -253,9 +255,10 @@ class RdvController extends Controller {
             die();
         } else {
             // SPIREA-YLF - 05/2015 - 'c' => 'b' pour correspondre aux bénéficiaires et pas aux contacts
-            if($idPrestation){
+            if($idPrestation && !$idBen){
                 $rdvs = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwCal')->getRdv(null, null, $idPrestation, 'b');
                 $formCalUser = array();
+                $calUserId = null;
 
                 foreach ($rdvs as $key => $value) {
                     foreach ($value->getEgwCalIdUser() as $key2 => $value2) {
@@ -270,6 +273,8 @@ class RdvController extends Controller {
 
             // SPIREA-YLF - 07/2018 - Prise en compte des rendez-vous sans prestation
             if($idBen){
+                $formCalUser = array();
+                $calUserId = null;
                 $rdvs = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwCal')->getRdv($idBen, null, null, 'b', null, true);
                 foreach ($rdvs as $key => $value) {
                     foreach ($value->getEgwCalIdUser() as $key2 => $value2) {
@@ -895,6 +900,32 @@ class RdvController extends Controller {
         }catch (Exception $e) {
             throw $e;
         }
+    }
+
+    public function linkAction(Request $request)
+    {
+        $prestationId = $request->get('prestationId');
+        $rdvId = $request->get('rdvId');
+        $action = $request->get('action');
+
+        $em = $this->getDoctrine()->getManager();
+      //  $prestation = $em->getRepository('LeaPrestaBundle:EgwPrestation')->find($prestationId);
+        $cal = $em->getRepository('LeaPrestaBundle:EgwCal')->find($rdvId); /** @var \Lea\PrestaBundle\Entity\EgwCal $cal */
+
+        if($action == "link"){
+            $cal->setIdPresta($prestationId);
+        }else{
+            $cal->setIdPresta(0);
+        }
+
+
+        $em->persist($cal);
+        $em->flush();
+
+        $bool = true;
+
+        return new JsonResponse(['success' => $bool]);
+
     }
 
 }
