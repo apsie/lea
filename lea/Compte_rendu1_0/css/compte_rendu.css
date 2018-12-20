@@ -1,0 +1,22 @@
+.global
+{
+	background-color:#FDFDFD;
+	border:1px dotted #666;}
+
+textarea
+{
+	font-size: 12px; 
+	color: #006699; 
+	font-family: Arial, Helvetica, sans-serif;
+	border:1px dotted  #09C;
+	padding:2px;
+}
+.header_cp
+{
+background-color:#FFF;  border:1px solid #666;  color:#006699;
+padding:15px;
+height:60px;
+
+widht:100%;
+top:0;
+}

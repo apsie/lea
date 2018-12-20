@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spifina.admin.general" template="" lang="" group="0" version="1.005">
+		<grid width="100%">
+			<columns>
+				<column width="35%"/>
+				<column width="25%"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="field"/>
+					<description value="Default Value"/>
+					<description value="Comment"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th">
+					<description value="Access rights" readonly="true" span="all" class="bold"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Management group"/>
+					<menulist>
+						<menupopup type="select-account" id="general[management_group]" needed="1" onchange="ajax_request.assignedToGeneral('cat_assignedto','[general][ticket_assigned_to]','personne',this.value);" options=",groups,1"/>
+					</menulist>
+					<description value="Management group for Spid"/>
+				</row>
+				<row class="row">
+					<description value="Add user for facturation lines"/>
+					<checkbox id="general[use_intervenant]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Hide N/S column for facturation lines"/>
+					<checkbox id="general[hide_ns]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Default unit time for stats"/>
+					<menulist>
+						<menupopup id="general[stat_unit_time]"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Default payment delay"/>
+					<menulist>
+						<menupopup id="general[default_delay]" options="Select one"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="th">
+					<description value="Invoicing" span="all" class="bold"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Invoice model"/>
+					<menulist>
+						<menupopup id="general[invoice_model]" options="Select one"/>
+					</menulist>
+					<description value="Model for the generated invoices"/>
+				</row>
+				<row class="row">
+					<description value="Default unit time for tickets"/>
+					<menulist>
+						<menupopup id="general[unit_time]"/>
+					</menulist>
+					<description value="Default unit for the tickets (unit used for invoices)"/>
+				</row>
+				<row class="row">
+					<description value="Initial time minute"/>
+					<textbox id="general[initial_time_minute]"/>
+					<description value="Time for minute invoices"/>
+				</row>
+				<row class="row">
+					<description value="Initial Price minute"/>
+					<textbox id="general[initial_price_minute]"/>
+					<description value="Price for minute invoices"/>
+				</row>
+				<row class="row">
+					<description value="Initial price hour"/>
+					<textbox id="general[initial_price_hour]"/>
+					<description value="Price for hour invoices"/>
+				</row>
+				<row class="row">
+					<description value="Initial price day"/>
+					<textbox id="general[initial_price_day]"/>
+					<description value="Price for day invoices"/>
+				</row>
+				<row class="row">
+					<description value="Deadline rule"/>
+					<textbox type="integer" id="general[deadline_rule]"/>
+					<description value="Default number of days for new tickets deadline"/>
+				</row>
+				<row class="row">
+					<description value="VAT default"/>
+					<menulist>
+						<menupopup id="general[default_vat]" options="Select One"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Isolated invoice by default"/>
+					<checkbox id="general[default_alone_invoice]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Invoice payment clause"/>
+					<htmlarea id="general[invoice_payment]" height="150" width="300" expand_toolbar="false" span="all"/>
+				</row>
+				<row class="row">
+					<description value="Title retention clause"/>
+					<htmlarea id="general[invoice_property]" height="150" width="300" expand_toolbar="false" span="all"/>
+				</row>
+				<row class="row">
+					<description value="Sales book"/>
+					<menulist>
+						<menupopup id="general[sales_book]" options="Select One"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Sales default account"/>
+					<menulist>
+						<menupopup id="general[sales_account]" options="Select One"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Sales collective account"/>
+					<menulist>
+						<menupopup id="general[sales_collective_account]" options="Select One"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Default taxe included account"/>
+					<textbox id="general[default_external_account]" maxlength="13"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Accounting export model"/>
+					<menulist>
+						<menupopup id="general[account_export_model]" options="Select One"/>
+					</menulist>
+					<description/>
+				</row>
+				<row class="th">
+					<description value="Email" span="all" class="bold"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Default mail content"/>
+					<htmlarea id="general[mail_content]" height="200" width="400" expand_toolbar="false"/>
+					<description/>
+				</row>
+				<row>
+					<button label="Apply" id="button[apply]" span="all"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

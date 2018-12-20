@@ -1,0 +1,119 @@
+<?php
+if($this->method=="getParticipants")
+?>
+<div>
+	<h3>Liste des participants</h3>
+	<?php foreach ($this->data['DATA_COMPTES'] as $key => $row):?>
+		<div style="clear:both" >
+		<div style="float:left;"><img src="./images/ico/ico_compte.png"></div>
+		<div style="float:left;width:160px;" ><?php echo  $row['account_firstname']. ' ' .$row['account_lastname'];?></div>
+		<div style="float:left;width:50px;" ><br/></div>
+		<div style="float:left;width:300px;" ><br/></div>
+		<div style="float:left" ><img style="cursor:pointer" onclick="Calendrier.deleteParticipant('<?php echo $this->cal_id; ?>','<?php echo $row['account_id']; ?>','compte')" src="./images/ico/croix.png"></div>
+		</div>
+	<?php endforeach;?>
+	<br/><br/>
+	<?php $motif="none"; foreach ($this->data['DATA_CONTACT'] as $key => $row):
+	
+		
+		if($row['cal_status']=="A")
+		$a ='selected';
+		else 
+		$a ='';
+		
+		if($row['cal_status']=="P")
+		$p ='selected';
+		else
+		$p ='';
+		
+		if($row['cal_status']=="R")
+		{
+		$r ='selected';
+		$motif="block";
+		}
+		else 
+		{
+		$r ='';
+		$motif="none";
+		}
+	
+	?>
+		
+		<div style="clear:both" >
+		<div style="float:left" ><img src="./images/ico/ico_contact.png"></div>
+		<div style="float:left;width:160px;" ><?php echo  $row['prenom']. ' ' .$row['nom'];?></div>
+		<div style="float:left;width:50px;" >
+		<select class="statusParticipant" id="<?php echo $row['id_ben']; ?>" >
+		<option <?php echo $p; ?>>P</option>
+		<option <?php echo $a; ?>>A</option>
+		<option <?php echo $r; ?>>R</option>
+		</select></div>
+		<div style="float:left;width:300px;display:<?php echo $motif;?>" id="div_<?php echo $row['id_ben']?>"  >Motif d'absence <input type="text"  class="motif_absence"  rel="<?php echo $row['id_ben']; ?>" id="motif_<?php echo $row['id_ben']; ?>" value="<?php echo $row['motif_absence']?>" /></div>
+		<div style="float:left" ><img style="cursor:pointer" onclick="Calendrier.deleteParticipant('<?php echo $this->cal_id; ?>','<?php echo $row['id_ben']; ?>','contact')" src="./images/ico/croix.png"></div>
+		</div>
+	<?php endforeach;?>
+</div>
+
+<script>
+$j('#nb_participant').html(<?php echo (count($this->data['DATA_COMPTES']) + count($this->data['DATA_CONTACT'])) ?>)
+$j('.statusParticipant').change(function()
+		{
+	var statusParticipant = $j(this).val();
+	var id_contact = $j(this).attr('id');
+	if(statusParticipant=="R")
+		$j("#div_"+id_contact).show('fade');
+	else
+		$j("#div_"+id_contact).hide('fade');
+	
+	var motif = $j("#motif_"+id_contact).val();
+	
+		$j.ajax({
+		url : "./index.php?page=ajaxCalendrier&noTemplate=1",
+		dataType : "json",
+		type : 'POST',
+		data : {
+			
+			cal_id : <?php echo $this->cal_id ?>,
+			id_contact : id_contact,
+			cal_status :  statusParticipant,
+			motif_absence : motif,
+			method : 'setStatusContact'
+		
+		    
+		},
+		success: function(data){
+		
+			notify('Contact','Données enregistrées pour ce contact');
+		}});
+		}
+);
+$j('.motif_absence').bind('keypress', function(e) 
+		{
+	var id_contact = $j(this).attr('rel');
+	var motif = $j("#motif_"+id_contact).val();
+	if(e.keyCode==13){
+
+
+		$j.ajax({
+		url : "./index.php?page=ajaxCalendrier&noTemplate=1",
+		dataType : "json",
+		type : 'POST',
+		data : {
+			
+			cal_id : <?php echo $this->cal_id ?>,
+			id_contact : id_contact,
+			motif_absence : motif,
+			method : 'setStatusContact'
+		
+		    
+		},
+		success: function(data){
+		
+			notify('Contact','Données enregistrées pour ce contact');
+		}});
+		}
+		 }
+
+);
+
+</script>

@@ -1,0 +1,23 @@
+	<fieldset class="contact">
+	<legend>Situation Professionnelle</legend>
+		<table>
+				<tr>
+					<td>Statut :</td><td>{{ form_widget(formContactParcoursPro.statut) }}</td>
+					<td>Identifiant :</td><td>{{ form_widget(formContactParcoursPro.identifiant) }}</td>
+				</tr>
+				
+                <tr>
+					<td>Numéro SS :</td><td>{{ form_widget(formContact.idSecu) }}</td>
+				</tr>							
+		</table>
+	</fieldset>
+
+		<fieldset class="contact">
+		<table>
+					<tr>
+						<td>Fonction :  </td><td>{{ form_widget(formContact.fonction) }}</td>
+						<td>Service :  </td><td>{{ form_widget(formContact.service) }}</td>
+					</tr>
+
+		</table>
+	</fieldset>

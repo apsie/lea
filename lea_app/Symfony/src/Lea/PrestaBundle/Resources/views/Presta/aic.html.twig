@@ -1,0 +1,1348 @@
+<div id="presta" class="entete">- Prestation
+    {{ presta.dispositif.nomDispositif }}
+    de
+    <b>{{ presta.contact.nomComplet }}</b>
+</div>
+<div class="contenu_presta">
+
+    <form name="presta">
+        <input type="hidden" name="data[suivi]" value="0"/>
+        <div id="tabs">
+            <ul>
+                <li>
+                    <a href="#tabs-1">Contrat d'accompagnement***</a>
+                </li>
+                <li>
+                    <a href="#tabs-2">Contrat d'accompagnement***</a>
+                </li>
+                <li>
+                    <a href="#tabs-3">Adéquation compétences / projet</a>
+                </li>
+                <li>
+                    <a href="#tabs-4">Etude de marché</a>
+                </li>
+                <li>
+                    <a href="#tabs-5">Plan de financement</a>
+                </li>
+                <li>
+                    <a href="#tabs-6">Statut juridique</a>
+                </li>
+                <li>
+                    <a href="#tabs-7">Bilan</a>
+                </li>
+                <li>
+                    <a href="#tabs-8">Edition</a>
+                </li>
+                <li>
+                    <a id="rdv" href="#tabs-9">Rdv</a>
+                </li>
+            </ul>
+
+
+
+            <div id="tabs-1">
+
+                  	<input type="hidden" name="id_presta" value="{{ presta.idPresta }}"/>
+                   	<input type="hidden" name="id_projet" value="{{ presta.idProjet }}"/>
+
+                        <div id="accordion">
+                            <h3><a href="#">Information sur {{ presta.contact.nomComplet }}</a></h3>
+                                <div>{% render "LeaPrestaBundle:Contact:create" with { idContact : presta.contact.idBen } %}</div>
+
+                            <h3><a href="#">Parcours professionnel et formation</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:parcourspro" with { idContact : presta.contact.idBen } %}
+                                    {% render "LeaPrestaBundle:Contact:formation" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+                            <h3><a href="#">Parcours d'accompagnement</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/index.php?menuaction=spid.spid_ui.index">Prestations</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/index.php?menuaction=details.details_ui.index">Orientation</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}">Relance</a><br><br>
+                                </div>
+
+                            <h3><a href="#">Prescripteur</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/spiclient/index.php">Structure Prescriptrice</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/index.php?menuaction=addressbook.addressbook_ui.index">Contact prescripteur</a>
+                                </div>
+
+                            <h3><a href="#">Fiche projet</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/details.php?id_projet={{ presta.idProjet }}&domain=default">Projet</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/bp/public/?id_projet={{ presta.idProjet }}&id_employe=10&domain=default">Business Plan</a><br><br>
+                                </div>
+
+
+                            <h3><a href="#">Etat-civil</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:etatcivil" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+
+                            <h3><a href="#">Coordonn�es compl�mentaires</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:complement" with { idContact : presta.contact.idBen } %}
+                                </div>
+                        </div>
+                </div>
+
+
+
+
+            <div id="tabs-2">
+
+                <input type="hidden" name="id_presta" value="{{ presta.idPresta }}"/>
+                <input type="hidden" name="id_projet" value="{{ presta.idProjet }}"/>
+                <div id="accordion">
+                    <h3>
+                        <a href="#">Information sur
+                            {{ presta.contact.nomComplet }}
+                        </a>
+                    </h3>
+                    <div>
+                        {% render "LeaPrestaBundle:Contact:create" with {
+                            idContact : presta.contact.idBen
+                        } %}
+                    </div>
+
+                    <!-- Le projet du bénéficiaire -->
+                    <h3>
+                        <a href="#">Le projet du bénéficiaire</a>
+                    </h3>
+                    <div>
+                        <div class="sous_titre">Description succincte du projet</div>
+                        <div>
+                            <textarea name="projet[description_projet]" rows="1" cols="100">{{presta.projet.descriptionProjet}}</textarea>
+                        </div>
+
+                        <div class="sous_titre">État d’avancement du projet</div>
+                        <div class="etat_avancement_projet">
+                            <select id="etat_avancement_projet" name="data[etat_avancement_projet]">
+                                <option>
+                                    {% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}
+                                    {% endif %}
+                                </option>
+                                {% if (options[key.KEY_PROJET_ETAT_AVANCEMENT] is defined) %}
+                                    {{options[key.KEY_PROJET_ETAT_AVANCEMENT]|raw}}
+                                {% endif %}
+                            </select>
+                            <input style="display:none" value="{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}" type="text"/>
+                            <img rel="etat_avancement_projet" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                        </div>
+
+                        <div class="sous_titre">Points à évaluer en priorité</div>
+                        <div>
+                            {% for i in 1..3 %}
+                                <div style="clear:both" class="point_evaluer_priorite_{{i}}">
+                                    <select id="point_evaluer_priorite_{{i}}" name="data[point_evaluer_priorite_{{i}}]">
+                                        <option>
+                                            {% if prestaData['point_evaluer_priorite_' ~ i ~ ''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}
+                                            {% endif %}
+                                        </option>
+                                        {% if (options[key.KEY_PROJET_POINT_EVALUER_PRIORITE] is defined) %}
+                                            {{options[key.KEY_PROJET_POINT_EVALUER_PRIORITE]|raw}}
+                                        {% endif %}
+                                    </select>
+                                    <input style="display:none" value="{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}" type="text"/>
+                                    <img rel="point_evaluer_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- Le projet du bénéficiaire -->
+                    <!-- Les attentes du bénéficiaire -->
+                    <h3>
+                        <a href="#">Les attentes du bénéficiaire</a>
+                    </h3>
+                    <div>
+                        <div class="sous_titre">Attente du bénéficiaire</div>
+                        {% for i in 1..3 %}
+                            <div style="clear:both" class="attente_beneficiaire_{{i}}">
+                                <select id="attente_beneficiaire_{{i}}" name="data[attente_beneficiaire_{{i}}]">
+                                    <option>
+                                        {% if prestaData['attente_beneficiaire_' ~ i ~ ''] is defined %}{{prestaData['attente_beneficiaire_'~i~'']}}
+                                        {% endif %}
+                                    </option>
+                                    {% if (options[key.KEY_ATTENTES_BENEFICIAIRE] is defined) %}
+                                        {{options[key.KEY_ATTENTES_BENEFICIAIRE]|raw}}
+                                    {% endif %}
+                                </select>
+                                <input style="display:none" value="{% if prestaData['attente_beneficiaire_'~i~''] is defined %}{{prestaData['attente_beneficiaire_'~i~'']}}{% endif %}" type="text"/>
+                                <img rel="attente_beneficiaire_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                            </div>
+                        {% endfor %}
+
+                        <div class="sous_titre">Commentaire du référent</div>
+                        <div>
+                            <textarea name="data[commentaire_1]" rows="1" cols="100">
+                                {% if prestaData['commentaire_1'] is defined %}{{prestaData['commentaire_1']}}
+                                {% endif %}
+                            </textarea>
+                        </div>
+                    </div>
+                    <!-- Les attentes du bénéficiaire -->
+                    <!-- Engagement -->
+                    <h3>
+                        <a href="#">Engagement</a>
+                    </h3>
+                    <div>
+                        <div class="sous_titre">Je m'engage à :</div>
+                        <div>
+                            <label>
+                                <input name="data[engagement_1]" value="1" {% if prestaData['engagement_1'] is defined %} {{prestaData['engagement_1']|setcheckbox(1)}} {% endif %} type="checkbox"/>
+                                <span>Me consacrer à plein temps et activement aux démarches qui me sont conseillées.</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input name="data[engagement_2]" value="1" {% if prestaData['engagement_2'] is defined %} {{prestaData['engagement_2']|setcheckbox(1)}} {% endif %} type="checkbox"/>
+                                <span>Tenir mon référent informé des résultats des actions engagées.</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input name="data[engagement_3]" value="1" {% if prestaData['engagement_3'] is defined %} {{prestaData['engagement_3']|setcheckbox(1)}} {% endif %} type="checkbox"/>
+                                <span>Accompagner personnellement le demandeur dans ses démarches.</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input name="data[engagement_4]" value="1" {% if prestaData['engagement_4'] is defined %} {{prestaData['engagement_4']|setcheckbox(1)}} {% endif %} type="checkbox"/>
+                                <span>Proposer toutes les actions favorisant la réussite de l’accompagnement figurant dans le cahier des charges de la prestation</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Engagement -->
+
+                </div>
+
+            </div>
+
+            <div id="tabs-3">
+
+                <div id="accordion">
+
+                    <!-- Adéquation -->
+                    <h3>
+                        <a href="#">Adéquation compétences / projet</a>
+                    </h3>
+                    <div>
+                        <div class="bloc">
+                            <div class="sous_titre">Synthèse du projet de création ou de reprise d’entreprise (1ère phase)</div>
+                            <textarea name="data[commentaire_adequation]" rows="1" cols="100">
+                                {% if prestaData['commentaire_adequation'] is defined %}{{prestaData['commentaire_adequation']}}
+                                {% endif %}
+                            </textarea>
+
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Savoirs théoriques, capacités et compétences professionnelles du porteur de projet</div>
+                            <div class="select_bloc_3">
+                                <p>Formations et savoirs théorique</p>
+                                {% for i in 1..4 %}
+                                    <div class="formation_{{i}}">
+                                        <select id="formation_{{i}}" name="data[formation_{{i}}]">
+                                            <option>
+                                                {% if prestaData['formation_' ~ i ~ ''] is defined %}{{prestaData['formation_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_FORMATION] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_FORMATION]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['formation_'~i~''] is defined %}{{prestaData['formation_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="formation_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Competences professionnelles</p>
+                                {% for i in 1..4 %}
+                                    <div class="competence_pro_{{i}}">
+                                        <select id="competence_pro_{{i}}" name="data[competence_pro_{{i}}]">
+                                            <option>
+                                                {% if prestaData['competence_pro_' ~ i ~ ''] is defined %}{{prestaData['competence_pro_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_COMPETENCE] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_COMPETENCE]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['competence_pro_'~i~''] is defined %}{{prestaData['competence_pro_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="competence_pro_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Capacités liées aux emplois exercés</p>
+                                {% for i in 1..4 %}
+                                    <div class="capacite_emploi_{{i}}">
+                                        <select id="capacite_emploi_{{i}}" name="data[capacite_emploi_{{i}}]">
+                                            <option>
+                                                {% if prestaData['capacite_emploi_' ~ i ~ ''] is defined %}{{prestaData['capacite_emploi_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_CAPACITE] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_CAPACITE]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['capacite_emploi_'~i~''] is defined %}{{prestaData['capacite_emploi_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="capacite_emploi_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Éléments porteurs et points de vigilance par rapport au projet</div>
+                            <div class="select_bloc_2">
+                                <p>Elements porteurs</p>
+                                {% for i in 1..4 %}
+                                    <div class="element_porteur_{{i}}">
+                                        <select id="element_porteur_{{i}}" name="data[element_porteur_{{i}}]">
+                                            <option>
+                                                {% if prestaData['element_porteur_' ~ i ~ ''] is defined %}{{prestaData['element_porteur_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_ELEMENTS_PORTEURS] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_ELEMENTS_PORTEURS]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['element_porteur_'~i~''] is defined %}{{prestaData['element_porteur_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="element_porteur_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_2">
+                                <p>Points de vigilance</p>
+                                {% for i in 1..4 %}
+                                    <div class="point_vigilance_{{i}}">
+                                        <select id="point_vigilance_{{i}}" name="data[point_vigilance_{{i}}]">
+                                            <option>
+                                                {% if prestaData['point_vigilance_' ~ i ~ ''] is defined %}{{prestaData['point_vigilance_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_POINTS_VIGILANCES] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_POINTS_VIGILANCES]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['point_vigilance_'~i~''] is defined %}{{prestaData['point_vigilance_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="point_vigilance_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Eventuels besoins de formation identifiés</div>
+                            <div class="select_bloc_3">
+                                <p>Compétences à acquérir ou renforcer</p>
+                                {% for i in 1..4 %}
+                                    <div class="competence_{{i}}">
+                                        <select id="competence_{{i}}" name="data[competence_{{i}}]">
+                                            <option>
+                                                {% if prestaData['competence_' ~ i ~ ''] is defined %}{{prestaData['competence_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_COMPETENCES_A_AQUERIR] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_COMPETENCES_A_AQUERIR]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['competence_'~i~''] is defined %}{{prestaData['point_vigilance_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="competence_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Delais/priorité</p>
+                                {% for i in 1..4 %}
+                                    <div class="delai_priorite_{{i}}">
+                                        <select id="delai_priorite_{{i}}" name="data[delai_priorite_{{i}}]">
+                                            <option>
+                                                {% if prestaData['delai_priorite_' ~ i ~ ''] is defined %}{{prestaData['delai_priorite_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_DELAI] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_DELAI]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['delai_priorite_'~i~''] is defined %}{{prestaData['delai_priorite_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="delai_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Type de formation courte recommandée</p>
+                                {% for i in 1..4 %}
+                                    <div class="formation_courte_{{i}}">
+                                        <select id="formation_courte_{{i}}" name="data[formation_courte_{{i}}]">
+                                            <option>
+                                                {% if prestaData['formation_courte_' ~ i ~ ''] is defined %}{{prestaData['formation_courte_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ADEQUATION_TYPE_FORMATION] is defined) %}
+                                                {{options[key.KEY_ADEQUATION_TYPE_FORMATION]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['formation_courte_'~i~''] is defined %}{{prestaData['formation_courte_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="formation_courte_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /Adéquation -->
+
+                </div>
+
+            </div>
+
+            <div id="tabs-4">
+                <div id="accordion">
+                    <!-- Etude de marché -->
+                    <h3>
+                        <a href="#">Etude de marché</a>
+                    </h3>
+                    <div>
+                        <div class="bloc">
+                            <div class="sous_titre">Points forts et points faibles de l’étude de marché</div>
+
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Analyse des besoins des clients</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p>Points forts</p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_forts_clients_{{i}}">
+                                            <select id="points_forts_clients_{{i}}" name="data[points_forts_clients_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_forts_clients_' ~ i ~ ''] is defined %}{{prestaData['points_forts_clients_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_forts_clients_'~i~''] is defined %}{{prestaData['points_forts_clients_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_forts_clients_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p>Points faibles</p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_faibles_clients_{{i}}">
+                                            <select id="points_faibles_clients_{{i}}" name="data[points_faibles_clients_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_faibles_clients_' ~ i ~ ''] is defined %}{{prestaData['points_faibles_clients_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_faibles_clients_'~i~''] is defined %}{{prestaData['points_faibles_clients_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_faibles_clients_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Analyse de la concurrence</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_forts_concurrence_{{i}}">
+                                            <select id="points_forts_concurrence_{{i}}" name="data[points_forts_concurrence_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_forts_concurrence_' ~ i ~ ''] is defined %}{{prestaData['points_forts_concurrence_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_forts_concurrence_'~i~''] is defined %}{{prestaData['points_forts_concurrence_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_forts_concurrence_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_faibles_concurrence_{{i}}">
+                                            <select id="points_faibles_concurrence_{{i}}" name="data[points_faibles_concurrence_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_faibles_concurrence_' ~ i ~ ''] is defined %}{{prestaData['points_faibles_concurrence_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_faibles_concurrence_'~i~''] is defined %}{{prestaData['points_faibles_concurrence_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_faibles_concurrence_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Stratégie commerciale envisagée</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_forts_strategie_{{i}}">
+                                            <select id="points_forts_strategie_{{i}}" name="data[points_forts_strategie_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_forts_strategie_' ~ i ~ ''] is defined %}{{prestaData['points_forts_strategie_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_forts_strategie_'~i~''] is defined %}{{prestaData['points_forts_strategie_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_forts_strategie_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_faibles_strategie_{{i}}">
+                                            <select id="points_faibles_strategie_{{i}}" name="data[points_faibles_strategie_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_faibles_strategie_' ~ i ~ ''] is defined %}{{prestaData['points_faibles_strategie_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_faibles_strategie_'~i~''] is defined %}{{prestaData['points_faibles_strategie_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_faibles_strategie_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Autres points</p>
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_forts_concurrence_au_{{i}}">
+                                            <select id="points_forts_concurrence_au_{{i}}" name="data[points_forts_concurrence_au_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_forts_concurrence_au_' ~ i ~ ''] is defined %}{{prestaData['points_forts_concurrence_au_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_forts_concurrence_au_'~i~''] is defined %}{{prestaData['points_forts_concurrence_au_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_forts_concurrence_au_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="points_faibles_concurrence_au_{{i}}">
+                                            <select id="points_faibles_concurrence_au_{{i}}" name="data[points_faibles_concurrence_au_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['points_faibles_concurrence_au_' ~ i ~ ''] is defined %}{{prestaData['points_faibles_concurrence_au_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['points_faibles_concurrence_au_'~i~''] is defined %}{{prestaData['points_faibles_concurrence_au_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="points_faibles_concurrence_au_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                            <!-- <div style="clear:both" > <div class="select_bloc_3" > <p class="titre_colonne" >Autres points</p> </div> <div class="select_bloc_3"> <p></p> <div><select></select></div> <div><select></select></div> <div><select></select></div> <div><select></select></div> </div> <div class="select_bloc_3"> <p></p> <div><select></select></div> <div><select></select></div> <div><select></select></div> <div><select></select></div> </div> </div>-->
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires du référent concernant l'étude de marché</div>
+                                <textarea name="data[commentaire_etude_marche]" rows="1" cols="100">
+                                    {% if prestaData['commentaire_etude_marche'] is defined %}{{prestaData['commentaire_etude_marche']}}
+                                    {% endif %}
+                                </textarea>
+
+                            </div>
+
+                        </div>
+
+                        <div class="bloc">
+                            <div class="sous_titre">Plan d’actions à mener concernant l’étude de marché</div>
+                            <div class="select_bloc_3">
+                                <p>Actions à mener</p>
+                                {% for i in 1..4 %}
+                                    <div class="etude_marche_Action_{{i}}">
+                                        <select id="etude_marche_Action_{{i}}" name="data[etude_marche_Action_{{i}}]">
+                                            <option>
+                                                {% if prestaData['etude_marche_Action_' ~ i ~ ''] is defined %}{{prestaData['etude_marche_Action_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ETUDE_MARCHE_ACTIONS] is defined) %}
+                                                {{options[key.KEY_ETUDE_MARCHE_ACTIONS]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['etude_marche_Action_'~i~''] is defined %}{{prestaData['etude_marche_Action_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="etude_marche_Action_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Delais de réalisation</p>
+                                {% for i in 1..4 %}
+                                    <div class="etude_marche_delais_priorite_{{i}}">
+                                        <select id="etude_marche_delais_priorite_{{i}}" name="data[etude_marche_delais_priorite_{{i}}]">
+                                            <option>
+                                                {% if prestaData['etude_marche_delais_priorite_' ~ i ~ ''] is defined %}{{prestaData['etude_marche_delais_priorite_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ETUDE_MARCHE_DELAI] is defined) %}
+                                                {{options[key.KEY_ETUDE_MARCHE_DELAI]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['etude_marche_delais_priorite_'~i~''] is defined %}{{prestaData['etude_marche_delais_priorite_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="etude_marche_delais_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Résultats attendus</p>
+                                {% for i in 1..4 %}
+                                    <div class="etude_marche_resultat_attendu_{{i}}">
+                                        <select id="etude_marche_resultat_attendu_{{i}}" name="data[etude_marche_resultat_attendu_{{i}}]">
+                                            <option>
+                                                {% if prestaData['etude_marche_resultat_attendu_' ~ i ~ ''] is defined %}{{prestaData['etude_marche_resultat_attendu_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_ETUDE_MARCHE_RESULTATS] is defined) %}
+                                                {{options[key.KEY_ETUDE_MARCHE_RESULTATS]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['etude_marche_resultat_attendu_'~i~''] is defined %}{{prestaData['etude_marche_resultat_attendu_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="etude_marche_resultat_attendu_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="tabs-5">
+
+                <div id="accordion">
+                    <h3>
+                        <a href="#">Plan de financement</a>
+                    </h3>
+                    <div>
+                        <div class="bloc">
+                            <div class="sous_titre">Points forts et points faibles du plan de financement</div>
+
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Apport et/ou recherche de financement</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p>Points forts</p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_forts_{{i}}">
+                                            <select id="fi_pt_forts_{{i}}" name="data[fi_pt_forts_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_forts_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_forts_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_forts_'~i~''] is defined %}{{prestaData['fi_pt_forts_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_forts_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p>Points faibles</p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_faibles_{{i}}">
+                                            <select id="fi_pt_faibles_{{i}}" name="data[fi_pt_faibles_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_faibles_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_faibles_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_faibles_'~i~''] is defined %}{{prestaData['fi_pt_faibles_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_faibles_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Calcul du point mort</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_forts_mort_{{i}}">
+                                            <select id="fi_pt_forts_mort_{{i}}" name="data[fi_pt_forts_mort_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_forts_mort_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_forts_mort_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_forts_mort_'~i~''] is defined %}{{prestaData['fi_pt_forts_mort_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_forts_mort_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_faibles_mort_{{i}}">
+                                            <select id="fi_pt_faibles_mort_{{i}}" name="data[fi_pt_faibles_mort_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_faibles_mort_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_faibles_mort_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_faibles_mort_'~i~''] is defined %}{{prestaData['fi_pt_faibles_mort_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_faibles_mort_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Plan de financement initial</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_forts_pfi_{{i}}">
+                                            <select id="fi_pt_forts_pfi_{{i}}" name="data[fi_pt_forts_pfi_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_forts_pfi_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_forts_pfi_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_forts_pfi_'~i~''] is defined %}{{prestaData['fi_pt_forts_pfi_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_forts_pfi_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_faibles_pfi_{{i}}">
+                                            <select id="fi_pt_faibles_pfi_{{i}}" name="data[fi_pt_faibles_pfi_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_faibles_pfi_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_faibles_pfi_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_faibles_pfi_'~i~''] is defined %}{{prestaData['fi_pt_faibles_pfi_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_faibles_pfi_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Plan de financement à trois ans</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_forts_pf3_{{i}}">
+                                            <select id="fi_pt_forts_pf3_{{i}}" name="data[fi_pt_forts_pf3_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_forts_pf3_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_forts_pf3_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_forts_pf3_'~i~''] is defined %}{{prestaData['fi_pt_forts_pf3_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_forts_pf3_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_faibles_pf3_{{i}}">
+                                            <select id="fi_pt_faibles_pf3_{{i}}" name="data[fi_pt_faibles_pf3_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_faibles_pf3_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_faibles_pf3_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_faibles_pf3_'~i~''] is defined %}{{prestaData['fi_pt_faibles_pf3_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_faibles_pf3_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div style="clear:both">
+                                <div class="select_bloc_3">
+                                    <p class="titre_colonne">Autres points</p>
+
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_forts_pfi_au_{{i}}">
+                                            <select id="fi_pt_forts_pfi_au_{{i}}" name="data[fi_pt_forts_pfi_au_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_forts_pfi_au_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_forts_pfi_au_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_forts_pfi_au_'~i~''] is defined %}{{prestaData['fi_pt_forts_pfi_au_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_forts_pfi_au_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="select_bloc_3">
+                                    <p></p>
+                                    {% for i in 1..4 %}
+                                        <div class="fi_pt_faibles_pfi_au_{{i}}">
+                                            <select id="fi_pt_faibles_pfi_au_{{i}}" name="data[fi_pt_faibles_pfi_au_{{i}}]">
+                                                <option>
+                                                    {% if prestaData['fi_pt_faibles_pfi_au_' ~ i ~ ''] is defined %}{{prestaData['fi_pt_faibles_pfi_au_'~i~'']}}
+                                                    {% endif %}
+                                                </option>
+                                                {% if (options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES] is defined) %}
+                                                    {{options[key.KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES]|raw}}
+                                                {% endif %}
+                                            </select>
+                                            <input style="display:none" value="{% if prestaData['fi_pt_faibles_pfi_au_'~i~''] is defined %}{{prestaData['fi_pt_faibles_pfi_au_'~i~'']}}{% endif %}" type="text"/>
+                                            <img rel="fi_pt_faibles_pfi_au_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires du référent concernant le plan de financement</div>
+                                <textarea name="data[commentaire_pt_fi]" rows="1" cols="100">
+                                    {% if prestaData['commentaire_pt_fi'] is defined %}{{prestaData['commentaire_pt_fi']}}
+                                    {% endif %}
+                                </textarea>
+
+                            </div>
+
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Plan d’actions à mener concernant le plan de financement</div>
+                            <div class="select_bloc_3">
+                                <p>Actions à mener</p>
+                                {% for i in 1..4 %}
+                                    <div class="fi_Action_{{i}}">
+                                        <select id="fi_Action_{{i}}" name="data[fi_Action_{{i}}]">
+                                            <option>
+                                                {% if prestaData['fi_Action_' ~ i ~ ''] is defined %}{{prestaData['fi_Action_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_PLAN_FINANCEMENT_ACTION] is defined) %}
+                                                {{options[key.KEY_PLAN_FINANCEMENT_ACTION]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['fi_Action_'~i~''] is defined %}{{prestaData['fi_Action_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="fi_Action_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Delais de réalisation</p>
+                                {% for i in 1..4 %}
+                                    <div class="fi_delais_priorite_{{i}}">
+                                        <select id="fi_delais_priorite_{{i}}" name="data[fi_delais_priorite_{{i}}]">
+                                            <option>
+                                                {% if prestaData['fi_delais_priorite_' ~ i ~ ''] is defined %}{{prestaData['fi_delais_priorite_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_PLAN_FINANCEMENT_DELAI] is defined) %}
+                                                {{options[key.KEY_PLAN_FINANCEMENT_DELAI]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['fi_delais_priorite_'~i~''] is defined %}{{prestaData['fi_delais_priorite_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="fi_delais_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Résultats attendus</p>
+                                {% for i in 1..4 %}
+                                    <div class="fi_resultat_attendu_{{i}}">
+                                        <select id="fi_resultat_attendu_{{i}}" name="data[fi_resultat_attendu_{{i}}]">
+                                            <option>
+                                                {% if prestaData['fi_resultat_attendu_' ~ i ~ ''] is defined %}{{prestaData['fi_resultat_attendu_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_PLAN_FINANCEMENT_RESULTAT] is defined) %}
+                                                {{options[key.KEY_PLAN_FINANCEMENT_RESULTAT]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['fi_resultat_attendu_'~i~''] is defined %}{{prestaData['fi_resultat_attendu_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="fi_resultat_attendu_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="tabs-6">
+
+                <div id="accordion">
+                    <h3>
+                        <a href="#">Statut juridique</a>
+                    </h3>
+                    <div>
+                        <div class="bloc">
+                            <div class="sous_titre">Points forts et points faibles du statut juridique choisi</div>
+
+                            <div class="select_bloc_2">
+                                <p>Points forts</p>
+                                {% for i in 1..4 %}
+                                    <div class="sj_pt_forts_juridique_{{i}}">
+                                        <select id="sj_pt_forts_juridique_{{i}}" name="data[sj_pt_forts_juridique_{{i}}]">
+                                            <option>
+                                                {% if prestaData['sj_pt_forts_juridique_' ~ i ~ ''] is defined %}{{prestaData['sj_pt_forts_juridique_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_STATUT_JURIDIQUE_PT_FORTS] is defined) %}
+                                                {{options[key.KEY_STATUT_JURIDIQUE_PT_FORTS]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['sj_pt_forts_juridique_'~i~''] is defined %}{{prestaData['sj_pt_forts_juridique_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="sj_pt_forts_juridique_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_2">
+                                <p>Points faibles</p>
+                                {% for i in 1..4 %}
+                                    <div class="sj_pt_faibles_juridique_{{i}}">
+                                        <select id="sj_pt_faibles_juridique_{{i}}" name="data[sj_pt_faibles_juridique_{{i}}]">
+                                            <option>
+                                                {% if prestaData['sj_pt_faibles_juridique_' ~ i ~ ''] is defined %}{{prestaData['sj_pt_faibles_juridique_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_STATUT_JURIDIQUE_PT_FAIBLES] is defined) %}
+                                                {{options[key.KEY_STATUT_JURIDIQUE_PT_FAIBLES]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['sj_pt_faibles_juridique_'~i~''] is defined %}{{prestaData['sj_pt_faibles_juridique_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="sj_pt_faibles_juridique_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires du référent concernant le statut juridique</div>
+                                <textarea name="data[commentaire_sj]" rows="1" cols="100">
+                                    {% if prestaData['commentaire_sj'] is defined %}{{prestaData['commentaire_sj']}}
+                                    {% endif %}
+                                </textarea>
+
+                            </div>
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Plan d’actions à mener concernant le statut juridique</div>
+                            <div class="select_bloc_3">
+                                <p>Actions à mener</p>
+                                {% for i in 1..4 %}
+                                    <div class="sj_Action_{{i}}">
+                                        <select id="sj_Action_{{i}}" name="data[sj_Action_{{i}}]">
+                                            <option>
+                                                {% if prestaData['sj_Action_' ~ i ~ ''] is defined %}{{prestaData['sj_Action_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_STATUT_JURIDIQUE_ACTION] is defined) %}
+                                                {{options[key.KEY_STATUT_JURIDIQUE_ACTION]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['sj_Action_'~i~''] is defined %}{{prestaData['sj_Action_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="sj_Action_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Delais de réalisation</p>
+                                {% for i in 1..4 %}
+                                    <div class="sj_delais_priorite_{{i}}">
+                                        <select id="sj_delais_priorite_{{i}}" name="data[sj_delais_priorite_{{i}}]">
+                                            <option>
+                                                {% if prestaData['sj_delais_priorite_' ~ i ~ ''] is defined %}{{prestaData['sj_delais_priorite_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_STATUT_JURIDIQUE_DELAI] is defined) %}
+                                                {{options[key.KEY_STATUT_JURIDIQUE_DELAI]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['sj_delais_priorite_'~i~''] is defined %}{{prestaData['sj_delais_priorite_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="sj_delais_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="select_bloc_3">
+                                <p>Résultats attendus</p>
+                                {% for i in 1..4 %}
+                                    <div class="sj_resultat_attendu_{{i}}">
+                                        <select id="sj_resultat_attendu_{{i}}" name="data[sj_resultat_attendu_{{i}}]">
+                                            <option>
+                                                {% if prestaData['sj_resultat_attendu_' ~ i ~ ''] is defined %}{{prestaData['sj_resultat_attendu_'~i~'']}}
+                                                {% endif %}
+                                            </option>
+                                            {% if (options[key.KEY_STATUT_JURIDIQUE_RESULTAT] is defined) %}
+                                                {{options[key.KEY_STATUT_JURIDIQUE_RESULTAT]|raw}}
+                                            {% endif %}
+                                        </select>
+                                        <input style="display:none" value="{% if prestaData['sj_resultat_attendu_'~i~''] is defined %}{{prestaData['sj_resultat_attendu_'~i~'']}}{% endif %}" type="text"/>
+                                        <img rel="sj_resultat_attendu_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}"/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="tabs-7">
+                <div id="accordion">
+                    <h3>
+                        <a href="#">Faisabilité du projet</a>
+                    </h3>
+                    <div>
+                        <div class="bloc">
+                            <div class="sous_titre">Faisabilite du projet (cocher la case correspondant à l'avis de l'evaluateur)</div>
+
+                            <div>
+                                <label><input {% if prestaData['faisabilite'] is defined %} {{prestaData['faisabilite']|setcheckbox(0)}} {% endif %} style="display:none" name="data[faisabilite]" type="radio" value="0"/>
+                                </label>
+                            </div>
+                            <div>
+                                <label><input {% if prestaData['faisabilite'] is defined %} {{prestaData['faisabilite']|setcheckbox(1)}} {% endif %} name="data[faisabilite]" type="radio" value="1"/>
+                                    <span>Négatif</span></label>
+                            </div>
+                            <div>
+                                <label><input {% if prestaData['faisabilite'] is defined %} {{prestaData['faisabilite']|setcheckbox(2)}} {% endif %} name="data[faisabilite]" type="radio" value="2"/>
+                                    <span>Positif sous reserve de mise en œuvre du plan d'actions</span></label>
+                            </div>
+                            <div>
+                                <label><input {% if prestaData['faisabilite'] is defined %} {{prestaData['faisabilite']|setcheckbox(3)}} {% endif %} name="data[faisabilite]" type="radio" value="3"/>
+                                    <span>Positif</span></label>
+                            </div>
+
+                        </div>
+
+                        <div class="bloc">
+                            <div class="sous_titre">Commentaires de l'evaluateur</div>
+                            <textarea name="data[com_faisabilite]" rows="1" cols="100">
+                                {% if prestaData['com_faisabilite'] is defined %}{{prestaData['com_faisabilite']}}
+                                {% endif %}
+                            </textarea>
+
+                        </div>
+
+                        <div class="bloc">
+                            <div class="sous_titre">Estimation du délai de concrétisation du projet</div>
+
+                            <div>
+                                <label><input {% if prestaData['estimation'] is defined %} {{prestaData['estimation']|setcheckbox(0)}} {% endif %} style="display:none" name="data[estimation]" type="radio" value="0"/>
+                                </label>
+                            </div>
+                            <div>
+                                <label><input {% if prestaData['estimation'] is defined %} {{prestaData['estimation']|setcheckbox(1)}} {% endif %} name="data[estimation]" type="radio" value="1"/>
+                                    <span>
+                                        Entre 6 mois et 1 an (identifier dans ce cas une solution alternative de retour à l’emploi)</span></label>
+                            </div>
+                            <div>
+                                <label><input {% if prestaData['estimation'] is defined %} {{prestaData['estimation']|setcheckbox(2)}} {% endif %} name="data[estimation]" type="radio" value="2"/>
+                                    <span>
+                                        Entre 3 et 6 mois</span></label>
+                            </div>
+                            <div>
+                                <label><input {% if prestaData['estimation'] is defined %} {{prestaData['estimation']|setcheckbox(3)}} {% endif %} name="data[estimation]" type="radio" value="3"/>
+                                    <span>
+                                        Inférieur à 3 mois</span></label>
+                            </div>
+
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Commentaires de l'evaluateur</div>
+                            <textarea name="data[com_estimation]" rows="1" cols="100">
+                                {% if prestaData['com_estimation'] is defined %}{{prestaData['com_estimation']}}
+                                {% endif %}
+                            </textarea>
+
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Plan d'actions à mener pour concrétiser le projet</div>
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Commentaires de l'evaluateur</div>
+                            <textarea name="data[com_estimation_cp]" rows="1" cols="100">
+                                {% if prestaData['com_estimation_cp'] is defined %}{{prestaData['com_estimation_cp']}}
+                                {% endif %}
+                            </textarea>
+
+                        </div>
+
+                        <div class="bloc">
+                            <div class="sous_titre">Solution alternative de retour a l'emploi a court terme</div>
+                            <div class="normal"><input id="code_solution" name="data[code_solution]" value="{% if prestaData['code_solution'] is defined %}{{prestaData['code_solution']}}{% endif %}" type="text"/>
+                                ( Recherche par Métier ; ex : Caissier )
+                            </div>
+                            <div>
+                                <textarea name="data[com_solution]" id="com_solution" rows="1" cols="100">
+                                    {% if prestaData['com_solution'] is defined %}{{prestaData['com_solution']}}
+                                    {% endif %}
+                                </textarea>
+                            </div>
+
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Observations du référent</div>
+                            <textarea name="data[bilan_com_referent]" rows="1" cols="100">
+                                {% if prestaData['bilan_com_referent'] is defined %}{{prestaData['bilan_com_referent']}}
+                                {% endif %}
+                            </textarea>
+
+                        </div>
+                        <div class="bloc">
+                            <div class="sous_titre">Commentaires du bénéficiaire</div>
+                            <textarea name="data[bilan_com_beneficiaire]" rows="1" cols="100">
+                                {% if prestaData['bilan_com_beneficiaire'] is defined %}{{prestaData['bilan_com_beneficiaire']}}
+                                {% endif %}
+                            </textarea>
+
+                        </div>
+                    </div>
+
+                    <h3>
+                        <a href="#">Abandon</a>
+                    </h3>
+                    <table>
+                        <tr >
+                            <td>Le bénéficiaire a t'il abandonné la prestation ?</td>
+                            <td>
+                                <input {% if prestaData['date_abandon'] is defined and prestaData['date_abandon'] !=null  %} checked="checked" {% endif %} name="data[date_abandon]" type="radio" value="1"/>
+                                Oui
+                                <input {% if prestaData['date_abandon'] is defined %} {{prestaData['date_abandon']|setcheckbox("")}} {% endif %} name="data[date_abandon]" type="radio" value=""/>
+                                Non</td>
+                        </tr>
+                        <tr class="normal">
+                            <td>Si oui, quel est le motif de l'abandon ?</td>
+                            <td><input style="" name="data[motif_abandon]" value="{% if prestaData['motif_abandon'] is defined %}{{prestaData['motif_abandon']}}{% endif %}" type="text"/></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+            <div id="tabs-8">
+                <form name="Editer">
+                    <div class="sous_titre">Liste des livrables</div>
+                    <div>
+                        <div>
+                            <label><input id="imp_1" name="Editer['aci']['annexe_1']" checked="checked" value="CCFT OPCRE annexe I contrat d'accompagnement" type="checkbox"/>
+                                <span>CCFT OPCRE annexe I contrat d'accompagnement</span></label>
+                        </div>
+                        <div>
+                            <label><input id="imp_2" name="Editer['aci']['annexe_2']" checked="checked" value="CCFT OPCRE annexe II Fiche de suivi et bilan d'accompagnement" type="checkbox"/>
+                                <span>CCFT OPCRE annexe II Fiche de suivi et bilan d'accompagnement</span></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="tabs-9">
+                <div id="accordion">
+                    <h3>
+                        <a href="#">Pose des Rendez vous</a>
+                    </h3>
+                    <section class="form_dispo"></section>
+                    <h3 id="rdv_presta">
+                        <a href="#">Rendez-vous lié(s) � cette prestation</a>
+                    </h3>
+                    <div class="tableau_liste_presta"></div>
+					
+					<h3 id="rdv_presta_orphelin">
+                        <a href="#">Rendez-vous non lié(s) � cette prestation</a>
+                    </h3>
+					<div class="tableau_liste_presta_orphelin"></div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <div style="padding-top:10px">
+        <center>
+            <button id="savePresta">Enregistrer</button>
+            <button id="EditerPresta">Editer</button>
+        </center>
+    </div>
+    <div class="copyright">© APSIE OPCRE 2015</div>
+</div>
+</div>
+<script>
+$(".change").click(function () {
+    $('.' + $(this).attr('rel')).changeSelectInput();
+});
+$('#code_solution').myAutoCompleteCodeRome('#com_solution');
+
+$('.form_dispo').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$('#tabs #rdv').click(function () {
+    $.ajax({
+        url: './disponibilite',
+        dataType: "html",
+        type: "POST",
+        data: {
+            idPrestation: {{presta.idPresta}}
+        },
+        success: function (html) {
+            $('.form_dispo').html(html);
+        }
+    });
+});
+
+$('#tabs #rdv_presta').click(function () {
+    $('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+    $.ajax({
+        url: './disponibilite/listrdvpresta',
+        dataType: "html",
+        type: "POST",
+        data: {
+            idPrestation: {{presta.idPresta}}
+        },
+        success: function (html) {
+            $('.tableau_liste_presta').html(html);
+        }
+    });
+});
+
+$('#tabs #rdv_presta_orphelin').click(function () {
+    $('.tableau_liste_presta_orphelin').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+    $.ajax({
+        url: './disponibilite/listrdvpresta',
+        dataType: "html",
+        type: "POST",
+        data: {
+            idBen: {{ presta.contact.idBen }}
+        },
+        success: function (html) {
+            $('.tableau_liste_presta_orphelin').html(html);
+        }
+    });
+});
+
+$(".contenu_presta #tabs").tabs();
+var icons = {
+    header: "ui-icon-circle-arrow-e",
+    headerSelected: "ui-icon-circle-arrow-s"
+};
+$(".contenu_presta #accordion").accordion({icons: icons, autoHeight: false});
+
+// SAUVEGARDE
+$(".contenu_presta #savePresta").click(function () {
+    var form = $("form[name='presta']").serializeArray();
+
+    /* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat($("form[name='presta'] input[type=checkbox]:not(:checked)").map(function () {
+        return {"name": this.name, "value": 0}
+    }).get());
+
+    $.pnotify({title: 'Sauvegarde', text: '<span class="load" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></span> Sauvegarde en cours', type: 'info', styling: 'jqueryui'});
+
+    $.ajax({
+        url: "./data",
+        type: "POST",
+        dataType: "json",
+        data: form,
+        success: function (data) {
+            $.pnotify({title: 'Sauvegarde', text: data, type: 'success', styling: 'jqueryui'});
+
+            $('.load').hide('fade');
+        }
+    });
+
+    return false;
+
+});
+
+// EDITION
+$(".contenu_presta #EditerPresta").click(function () {
+
+    $.pnotify({title: 'Edition', text: 'Edition des livrables', type: 'info', styling: 'jqueryui'});
+
+    $('.load').hide('fade');
+
+    if ($('#imp_1').attr('checked') == 'checked') {
+        window.open("./download/aic/" + {{presta.idPresta}} + "/1", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+    }
+    if ($('#imp_2').attr('checked') == 'checked') {
+        setTimeout(function () {
+            window.open("./download/aic/" + {{presta.idPresta}} + "/2", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+        }, 1000);
+    }
+    return false;
+
+});
+</script>

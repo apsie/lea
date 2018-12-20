@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.contrat.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column width="75"/>
+				<column/>
+				<column/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" id="contract_id"/>
+					<nextmatch-sortheader id="contract_supplier" label="Supplier"/>
+					<nextmatch-filterheader label="Client" id="contract_client"/>
+					<nextmatch-filterheader label="Type" align="center" id="type_id"/>
+					<nextmatch-sortheader label="Status" align="center" id="status_id"/>
+					<description value="Title"/>
+					<nextmatch-sortheader label="Signature Date" id="date_signature" align="center"/>
+					<nextmatch-sortheader label="Renewal Date" id="date_renewal" align="center"/>
+					<nextmatch-sortheader label="End Date" id="date_end" align="center"/>
+					<nextmatch-sortheader label="Last Invoice" id="date_last_invoice" align="center"/>
+					<nextmatch-sortheader label="Amount" align="center" id="contract_amount"/>
+					<nextmatch-sortheader label="Period" align="center" id="contract_period"/>
+					<nextmatch-sortheader label="Client reference" id="contract_client_ref"/>
+					<nextmatch-sortheader label="Seller" id="contract_seller_id"/>
+					<nextmatch-header options="2" label="Budget" id="budget"/>
+					<nextmatch-header label="Real" id="real"/>
+					<nextmatch-header label="Delay" id="delay"/>
+					<description align="center" value="Actions"/>
+				</row>
+				<row class="row $row_cont[client_class]">
+					<description align="center" readonly="true" id="${row}[contract_id]"/>
+					<menulist>
+						<menupopup align="center" id="${row}[contract_supplier]" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[contract_client]" align="center" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" readonly="true" no_lang="1" id="${row}[type_id]"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" readonly="true" no_lang="1" id="${row}[status_id]"/>
+					</menulist>
+					<textbox id="${row}[contract_title]" readonly="true"/>
+					<date id="${row}[date_signature]" readonly="true" align="center"/>
+					<date id="${row}[date_renewal]" readonly="true" align="center"/>
+					<date id="${row}[date_end]" readonly="true" align="center"/>
+					<date id="${row}[date_last_invoice]" readonly="true" align="center"/>
+					<description align="center" readonly="true" id="${row}[contract_amount]"/>
+					<description align="center" id="${row}[contract_period]"/>
+					<description id="${row}[contract_client_ref]"/>
+					<menulist>
+						<menupopup type="select-account" id="${row}[contract_seller_id]" readonly="true"/>
+					</menulist>
+					<vbox>
+						<description value="Day:" id="${row}[contract_n_budget_days]"/>
+						<description value="Amount:" id="${row}[contract_n_budget_amount]"/>
+					</vbox>
+					<vbox>
+						<description value="Day:" id="${row}[contract_n_real_days]"/>
+						<description value="Amount:" id="${row}[contract_n_real_amount]"/>
+					</vbox>
+					<vbox>
+						<description value="Appro :" id="${row}[contract_delay_appro]"/>
+						<description value="Sourcing :" id="${row}[contract_delay_sourcing]"/>
+						<description value="Hybrid :" id="${row}[contract_delay_hybrid]"/>
+						<description value="Server :" id="${row}[contract_delay_server]"/>
+						<description value="Normal :" id="${row}[contract_delay_normal]"/>
+					</vbox>
+					<hbox align="center">
+						<button label="Delete" onclick="return confirm('Confirmez-vous la suppression ?');" id="delete[$row_cont[contract_id]]" image="delete" statustext="//return confirmDeleteClient('$row_cont[client_company]');"/>
+						<button label="Edit" onclick="window.open(egw::link('/index.php','menuaction=spiclient.contrat_ui.edit&amp;id=$row_cont[contract_id]'),'_blank','dependent=yes,width=900,height=500,scrollbars=yes,status=yes'); return false;" id="edit[$row_cont[contract_id]]" image="edit"/>
+						<button label="view" onclick="window.open(egw::link('/index.php','menuaction=spiclient.contrat_ui.view&amp;id=$row_cont[contract_id]'),'_blank','dependent=yes,width=900,height=500,scrollbars=yes,status=yes'); return false;" id="view[$row_cont[contract_id]]" image="view"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

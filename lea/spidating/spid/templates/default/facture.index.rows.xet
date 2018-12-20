@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.facture.index.rows" template="" lang="" group="0" version="1.004">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" id="facture_id"/>
+					<nextmatch-sortheader label="Invoice number" align="center" id="facture_number"/>
+					<nextmatch-sortheader label="Operation code" align="center" id="client_operation_code"/>
+					<nextmatch-sortheader label="Creation Date" align="center" id="creation_date"/>
+					<nextmatch-sortheader label="Invoice date" align="center" id="send_date"/>
+					<nextmatch-sortheader label="Client" align="center" id="client_id"/>
+					<nextmatch-sortheader label="Provider" align="center" id="societe_id"/>
+					<nextmatch-sortheader label="Total HT" align="center" id="price_ht"/>
+					<nextmatch-sortheader label="Tickets number" align="center" id="tickets_number"/>
+					<nextmatch-sortheader label="Sent" align="center" id="invoice_send"/>
+					<nextmatch-sortheader label="Payment date" id="payment_date"/>
+					<description align="center" value="Actions"/>
+					<button image="check" label="Check all" id="check_all" statustext="Check all" onclick="toggle_all(this.form,form::name('checked[]')); return false;" needed="1" align="center"/>
+				</row>
+				<row class="row">
+					<description align="center" readonly="true" no_lang="1" id="${row}[facture_id]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[facture_number]" options=",spid.facture_ui.view&amp;id=$row_cont[facture_id],,,,900x720,$row_cont[facture_number]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[client_operation_code]"/>
+					<date readonly="true" align="center" no_lang="1" id="${row}[creation_date]"/>
+					<date readonly="true" align="center" no_lang="1" id="${row}[send_date]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[client_company]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[provider]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[total_ht]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[ticket_number]"/>
+					<checkbox align="center" readonly="true" no_lang="1" id="${row}[invoice_send]" options="1,0"/>
+					<date id="${row}[payment_date]" readonly="true"/>
+					<hbox align="center">
+						<button label="Delete" onclick="return confirm('Confirmez-vous la suppression ?');" align="center" id="delete[$row_cont[facture_id]]" image="delete" statustext="//return confirmDeleteFacture('$row_cont[facture_number]');"/>
+						<button label="Edit" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.edit&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=950,height=750,scrollbars=yes,status=yes'); return false;" align="center" id="edit[$row_cont[facture_id]]" image="edit"/>
+						<button label="View" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.view&amp;id=$row_cont[facture_id]&amp;client=$row_cont[client_id]'),'_blank','dependent=yes,width=900,height=800,scrollbars=yes,status=yes'); return false;" align="center" id="view[$row_cont[facture_id]]" image="view"/>
+						<button label="Print entry" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.tprint&amp;id=$row_cont[client_id]&amp;facture=$row_cont[facture_number]'),'_blank','dependent=yes,width=1024,height=768,scrollbars=yes,status=yes'); return false;" align="center" id="tprint[$row_cont[facture_id]]" image="open" class="noPrint"/>
+						<button label="Save entry" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.tprint&amp;id=$row_cont[client_id]&amp;facture=$row_cont[facture_number]&amp;download=1'),'_blank','dependent=yes,width=600,height=450,scrollbars=yes,status=yes'); return false;" align="center" id="tprint[$row_cont[facture_id]]" image="filesave" class="noPrint"/>
+						<button label="Generate PDF Invoice" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.pdf&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=730,height=350,scrollbars=yes,status=yes'); return false;" align="center" id="pdf[$row_cont[facture_id]]" image="pdf"/>
+						<button label="Simulate PDF Invoice" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.pdfsimul&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=730,height=350,scrollbars=yes,status=yes'); return false;" align="center" id="pdfsimul[$row_cont[facture_id]]" image="pdfsimul"/>
+						<button label="Send Invoice by email" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.mail&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" align="center" id="mail[$row_cont[facture_id]]" image="email" statustext="email[$row_cont[facture_id]],,ajax_request.SendInvoiceByMail('$row_cont[client_id]','$row_cont[facture_number]');return false;"/>
+						<button onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.pay&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" align="center" id="paid[$row_cont[facture_id]]" image="euro"/>
+						<button onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.pay&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" align="center" id="pay[$row_cont[facture_id]]" image="euroviolet"/>
+					</hbox>
+					<checkbox options="$row_cont[facture_id]" id="checked[]" align="center"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

@@ -1,0 +1,92 @@
+.contenu_oe
+{
+width : 1200px;
+text-align :left;
+}
+.contenu_oe input[type=text] 
+{
+float:left;
+display:none;
+}
+.contenu_oe div
+{
+clear:both;
+}
+textarea
+{
+bacground-color : #FFF;
+border:1px solid #CCC;
+}
+.contenu_oe .sous_titre
+{
+	font-weight:bolder;
+	font-style:italic;
+	padding:5px;
+	padding-top : 20px;
+	
+}
+a:link
+{
+	color : #666;
+}
+a:hover
+{
+	/*color : #CCC;*/
+	text-decoration : underline;
+}
+label
+{
+cursor :pointer;
+}
+.contenu_oe select
+{
+float:left;
+cursor :pointer;
+border : 1px solid #EEE;
+
+}
+.contenu_oe .pied
+{
+
+
+float:right;
+}
+.contenu_oe .copyright
+{
+
+bottom: 0;
+padding : 5px;
+text-align: left;
+}
+.contenu_oe #tabs
+{
+height : 550px !important;
+}
+.change
+{
+float:left;
+margin-left : 5px;
+background: url('/images/ico/retour.png') no-repeat;
+width : 16px;
+height : 16px;
+cursor:pointer;
+}
+.contenu_oe .normal input[type="text"] 
+{ 
+display:block !important;
+clear:both !important;
+float :none !important;
+}
+.contenu_oe .normal2 input[type="text"] 
+{ 
+display:block !important;
+clear:both !important;
+margin-right : 2px;
+/*float :none !important;*/
+}
+.classic td,.classic th
+{
+	border : 1px solid #EDEDED;
+	padding : 5px;
+	
+}

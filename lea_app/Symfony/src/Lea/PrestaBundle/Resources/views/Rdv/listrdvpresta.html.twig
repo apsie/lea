@@ -1,0 +1,85 @@
+<form name="presta_rdvs" >
+<input type="hidden" value="{{nbRdv}}" name="nbRdv"  />
+<section>
+	<table class="critere tableau_presta">
+		<thead>
+		<tr>
+			<th>Date </th>
+			<th>Heure Début</th>
+			<th>Heure Fin </th>
+			<th>Libellé</th>
+			<th>Status</th>
+			<th>Motif d'absence</th>
+			<th>Compte rendu</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for key,rdv in rdvs %}
+				{% if(key%2 == 1)%}
+					{% set classe = 'paire' %}
+				{% else %}
+					{% set classe = 'impaire' %}
+				{% endif %}
+				<tr class="{{classe}}">
+					<td>
+						{% if(rdv.egwCalIdDates.calStart>0) %}
+							{{ rdv.egwCalIdDates.calStart|date("d/m/Y")}}
+						{% else %}
+							{{ ''}}
+						{% endif %}
+					</td>
+					<td>
+						{% if(rdv.egwCalIdDates.calStart>0) %}
+							{{ rdv.egwCalIdDates.calStart|date("H:i")}}
+						{% else %}
+							{{ ''}}
+						{% endif %}
+					</td>
+					<td>
+						{% if(rdv.egwCalIdDates.calEnd>0) %}
+							{{ rdv.egwCalIdDates.calEnd|date("H:i")}}
+						{% else %}
+							{{ ''}}
+						{% endif %}
+					</td>
+					<td>{{rdv.calTitle}}</td>
+					<td>
+						{{ form_widget(formCalUser[key].calStatus) }}
+					</td>
+					<td>
+						{{ form_widget(formCalUser[key].motifAbsence) }}{{ form_widget(formCalUser[key].calId) }}{{ form_widget(formCalUser[key].calUserId) }}
+					</td>
+					<td>
+						<a href="#" onClick="window.open('{{DIR_PRESTA}}/Compte_rendu1_0/index.php?domain=default&cal_id={{ rdv.calId }}&id_employee={{ rdv.calOwner }}&id_presta={{ idPrestation }}&id_ben={{ calUserId }}','Compte Rendu','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');"><img title="Redaction du compte rendu" src="{{DIR_PRESTA}}/presta/epce/images/icons/page_white_paintbrush.png" border="0"></a>					
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+<section style="clear:both;text-align:center;" >
+	<input type="submit" value="Enregistrer" />
+</section>
+</form>
+<script>
+$("table.tableau_presta").tablesorter({  widgets: ['zebra'] });  
+$('form[name="presta_rdvs"]').submit(function(){
+	var form = $('form[name="presta_rdvs"]').serializeArray();
+	$.ajax({
+		url:'./disponibilite/listrdvpresta',
+		dataType: "json",
+		type : "POST",
+		data : form,
+		success: function( data ) {
+			$.pnotify({
+				title: 'Rendez de la prestation',
+				text: data,
+				type: 'success',
+				styling: 'jqueryui'
+			});
+		}
+	});
+	return false;
+});
+
+</script>

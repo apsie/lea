@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.mode_reglement.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="30"/>
+				<column width="150"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="30"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" id="type_id"/>
+					<nextmatch-sortheader label="Libelle" align="center" id="type_label"/>
+					<description value="Default" align="center"/>
+					<description value="Date de création" align="center" id="${row}[creation_date]"/>
+					<description value="Actions" align="center"/>
+				</row>
+				<row class="row">
+					<description id="${row}[mode_reglement_id]" align="center"/>
+					<description id="${row}[mode_reglement_label]" align="center"/>
+					<checkbox id="${row}[mode_reglement_defaut]" align="center" readonly="true"/>
+					<date id="${row}[creation_date]" align="center" readonly="true"/>
+					<hbox align="center">
+						<button image="delete" label="Delete" id="delete[$row_cont[mode_reglement_id]]" onclick="return confirm('you want to delete the price parameter. are you sure?');"/>
+						<button image="edit" label="Edit" id="edit[$row_cont[mode_reglement_id]]" onclick="window.open(egw::link('/index.php','menuaction=spiclient.mode_reglement_ui.edit&amp;id=$row_cont[mode_reglement_id]'),'_blank','dependent=yes,width=650,height=300,scrollbars=yes,status=yes'); return false;"/>
+						<button image="view" label="view" id="view[$row_cont[mode_reglement_id]]" onclick="window.open(egw::link('/index.php','menuaction=spiclient.mode_reglement_ui.view&amp;id=$row_cont[mode_reglement_id]'),'_blank','dependent=yes,width=500,height=250,scrollbars=yes,status=yes'); return false;"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

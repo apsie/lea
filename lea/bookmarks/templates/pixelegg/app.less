@@ -1,0 +1,45 @@
+/**
+ * EGroupware: CSS with less preprocessor
+ *
+ * Please do NOT change app.css directly, instead change app.less and compile it!
+ *
+ * BOOKMARKS
+ *
+ * @link http://www.egroupware.org
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @author Hadi Nategh <hn@stylite.de>
+ * @package bookmarks
+ * @version $Id: app.less 51564 2015-02-04 08:35:40Z ralfbecker $
+ */
+
+
+@import (reference) "../../../pixelegg/less/definitions.less";
+@import (reference) "../default/app.css";
+
+#bookmarks-list {
+	div#bookmarks-list_favorite_wrapper {
+		top: -3px;
+	}
+	// Add button
+	#bookmarks-list_bookmarks-list-add {
+
+		button#bookmarks-list_add{
+			.Complete_Button_add_only_plus;
+			.dimension_height_m;
+
+
+			&:hover {.Complete_Button_add_only_plus_hover;}
+			&:active {background-color: @color_positive_action_active !important;}
+
+		}
+	}
+	button[id*="bookmarks-list_favorite"] {
+		img {
+			height: 16px;
+			width: 16px;
+		}
+	}
+	span.header_count {
+		margin: 3px 4px 0 6px;
+	}
+}

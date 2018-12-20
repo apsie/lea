@@ -1,0 +1,49 @@
+<section class="formulaire_presta" >
+
+	<fieldset class="contact">
+		<table>
+					<tr>
+						<td>Nom de jeune fille :  </td><td>{{ form_widget(formContact.nomJeuneFille) }}</td>
+						<td>Deuxième Prénom :  </td><td>{{ form_widget(formContact.deuxiemePrenom) }}</td>
+					</tr>
+
+					<tr>
+						<td>Complément d'adresse :  </td><td colspan="3">{{ form_widget(formContact.adresseLigne3, { 'attr': {'size': '78'} }) }} </td>
+					</tr>
+					<tr>
+						<td>Région: </td><td >{{ form_widget(formContact.region) }}</td>
+						<td>Pays: </td><td >{{ form_widget(formContact.pays) }}</td>
+					</tr>
+
+		</table>
+	</fieldset>
+
+
+	<fieldset class="contact">
+		<table>
+
+					<tr>
+						<td>Tel. Domicile 2 :  </td><td>{{ form_widget(formContact.telDomicile2) }}</td>
+					</tr>
+					<tr>
+						<td>Tel. Pro 1 :  </td><td>{{ form_widget(formContact.telPro1) }}</td>
+						<td>Tel. Pro 2 :  </td><td>{{ form_widget(formContact.telPro2) }}</td>
+					</tr>
+					<tr>
+						<td>Fax Pro :  </td><td>{{ form_widget(formContact.faxPro) }}</td>
+						<td>Fax Perso :  </td><td>{{ form_widget(formContact.faxPerso) }}</td>
+					</tr>
+		</table>
+	</fieldset>
+
+
+	<fieldset class="contact">
+		<table>
+					<tr>
+						<td>Email pro :  </td><td>{{ form_widget(formContact.emailPro) }}</td>
+						<td>Site web :  </td><td>{{ form_widget(formContact.sitePerso) }}</td>
+					</tr>
+
+		</table>
+	</fieldset>
+</section>

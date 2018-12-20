@@ -1,0 +1,16 @@
+.longueur { width: 80px;}
+.group_select select { width: 230px; }
+.cat_select select  { width: 100%; }
+.tabs_select { width: 155%; }
+.bold{font-weight:bold;}
+.popupManual{visibility:hidden;}
+.icone{width:10px;}
+.total{font-weight:bold;background-color: lightblue;}
+.sleep{color:DarkGray;}
+.no_delete{visibility: hidden;}
+/* pour changer la longueur d'un champ ajax */
+#exec\[contract_supplier\]\[search\]{ width:400px;}
+#exec\[contract_client\]\[search\]{ width:400px; }
+#exec\[contract_payer\]\[search\]{ width:400px; }
+#exec\[contract_attorney\]\[search\]{    width:400px;}
+#exec\[clients\]\[client\]\[search\]{ width:300px; }

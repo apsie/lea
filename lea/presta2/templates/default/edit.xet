@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.edit.domains" template="" lang="" group="0" version="">
+		<grid>
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Activity domain" class="bold"/>
+					<listbox id="ref_domaine" rows="10" no_lang="1"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.contracts" template="" lang="" group="0" version="">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<textbox label="Case" id="ref_affaire_2" class="bold"/>
+				</row>
+				<row>
+					<textbox label="Case" id="ref_affaire_3" class="bold"/>
+				</row>
+				<row>
+					<textbox label="Case" id="ref_affaire_4" class="bold"/>
+				</row>
+				<row>
+					<textbox label="Case" id="ref_affaire_5" class="bold"/>
+				</row>
+				<row>
+					<textbox label="Case" id="ref_affaire_6" class="bold"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.short_description" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<textbox multiline="true" rows="10" cols="30,150" id="ref_description_courte" span="all" class="bold" label="Short description" onchange="//testchar();"/>
+				</row>
+				<row>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.comment" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<htmlarea height="200" toolbar="false" id="ref_description_longue" span="all" class="bold" label="Detailled description" onchange="testchar();" no_lang="1"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.pimages.list_image" template="" lang="" group="0" version="">
+		<grid width="100%" id="image">
+			<columns>
+				<column width="60"/>
+				<column/>
+				<column width="50"/>
+				<column width="200"/>
+				<column width="40"/>
+				<column width="50"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="Icon" align="center"/>
+					<vbox align="center">
+						<description value="Title" align="center"/>
+						<description value="Link" align="center"/>
+					</vbox>
+					<description value="Order" align="center"/>
+					<description value="Comment" align="center"/>
+					<description value="Active" align="center"/>
+					<description value="Actions" align="center"/>
+				</row>
+				<row class="row">
+					<vfs-mime id="${row}[image]" align="center"/>
+					<vbox align="center">
+						<textbox id="${row}[doc_titre]" align="center" size="30"/>
+						<vfs id="${row}[file]" align="center"/>
+					</vbox>
+					<textbox id="${row}[doc_ordre]" size="5" align="center"/>
+					<textbox multiline="true" rows="2" cols="20" align="center" id="${row}[doc_commentaire]"/>
+					<checkbox id="${row}[doc_actif]" align="center"/>
+					<button image="delete" id="delete[$row_cont[fs_id]]" align="center" onclick="return confirm('The document will be lost permanently, are you sure ?');"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.pimages" template="" lang="" group="0" version="">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description span="all" class="redItalic" align="center" id="msg_image"/>
+					<description/>
+				</row>
+				<row disabled="@hideupload">
+					<hbox>
+						<file id="upload_image" label="Upload Image"/>
+						<button label="Upload" id="button[upload_image]"/>
+					</hbox>
+					<description/>
+				</row>
+				<row>
+					<template span="all" id="list_image"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.contact" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="210" overflow="auto" id="contact">
+			<columns>
+				<column width="1"/>
+				<column width="400"/>
+				<column width="200"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row" disabled="@no_add">
+					<description/>
+					<link-entry id="compte" options="addressbook"/>
+					<menulist class="selectRole">
+						<menupopup id="role" label="Role"/>
+					</menulist>
+					<button label="Add" id="button[add_contact]" align="center"/>
+				</row>
+				<row class="th">
+					<description/>
+					<description value="Contact name"/>
+					<description value="Role"/>
+					<description value="Actions"/>
+				</row>
+				<row class="row" valign="top" disabled="@hidecontact">
+					<image rows="1" cols="2" align="center" src="group" options="group"/>
+					<html readonly="true" id="${row}[link]"/>
+					<description id="${row}[role]" no_lang="1"/>
+					<hbox rows="1" cols="2" align="center" onchange="1">
+						<button rows="1" cols="2" id="delete[$row_cont[link_id]]" align="center" label="Delete" image="delete"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.selectRole select { width: 100%; }
+		</styles>
+	</template>
+	<template id="spiref.edit.link" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="250" overflow="auto">
+			<columns>
+				<column width="100"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th" disabled="@no_links">
+					<description span="all" value="Create new links"/>
+				</row>
+				<row class="row" disabled="@status_only">
+					<link-to span="all" id="link_to"/>
+				</row>
+				<row class="th">
+					<description span="all" value="Existing links"/>
+				</row>
+				<row class="row_off" valign="top">
+					<link-list span="all" id="link_to"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.history" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="250" overflow="auto">
+			<columns>
+				<column width="10%"/>
+				<column width="60%"/>
+			</columns>
+			<rows>
+				<row>
+					<historylog id="history" span="all"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Creation Date" class="bold"/>
+					<date-time id="creation_date" readonly="true"/>
+				</row>
+				<row class="row">
+					<description value="Created by" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="creator_id" readonly="true"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Change date" class="bold"/>
+					<date-time id="change_date" readonly="true"/>
+				</row>
+				<row class="row">
+					<description value="Changed by" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="modifier_id" readonly="true"/>
+					</menulist>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.mail" template="" lang="" group="0" version="">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="@hidemail">
+					<button label="Send by mail" id="button[mail]" align="right"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit.printpdf" template="" lang="" group="0" version="">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="@hideprint">
+					<hbox align="right" span="2">
+						<menulist>
+							<menupopup id="print_header" no_lang="1" label="Header"/>
+						</menulist>
+						<button label="Print PDF" id="button[pdf]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.edit" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th" disabled="!@ref_id">
+					<hbox span="all">
+						<description id="ref_affaire" value="Reference :" class="bold"/>
+						<description value="-" no_lang="1" class="bold"/>
+						<description class="bold" readonly="true" id="nomcli" value="Client :"/>
+						<description/>
+						<description class="bold"/>
+					</hbox>
+				</row>
+				<row class="row">
+					<description value="Status" class="bold"/>
+					<menulist>
+						<menupopup needed="1" no_lang="1" id="ref_statut" options="Select One"/>
+					</menulist>
+					<description value="Responsible" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="ref_responsable"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Client" class="bold"/>
+					<menulist span="all">
+						<menupopup needed="1" no_lang="1" id="ref_client" options="Select One"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Partner" class="bold"/>
+					<menulist span="all">
+						<menupopup no_lang="1" id="ref_partenaire" options="Select One"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description class="bold" value="Year"/>
+					<menulist>
+						<menupopup id="ref_annee"/>
+					</menulist>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Seller" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" no_lang="1" id="ref_vendeur" options="Select One"/>
+					</menulist>
+					<description class="bold" value="Provider"/>
+					<menulist>
+						<menupopup options="Select one" id="ref_fournisseur"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Reference" class="bold"/>
+					<textbox no_lang="1" needed="1" id="ref_affaire"/>
+					<description value="Expiration date" class="bold"/>
+					<date id="ref_date_expiration"/>
+				</row>
+				<row class="row">
+					<description value="Start date" class="bold"/>
+					<date no_lang="1" id="ref_date_debut"/>
+					<description value="Delivery date" class="bold"/>
+					<date id="ref_date_realisation"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Work amount"/>
+					<textbox type="float" no_lang="1" id="ref_montant_travaux"/>
+					<description value="Study amount" class="bold"/>
+					<textbox type="float" no_lang="1" id="ref_montant_etude"/>
+				</row>
+				<row class="row">
+					<description value="Location" class="bold"/>
+					<menulist>
+						<menupopup id="ref_departement" options="Select one"/>
+					</menulist>
+					<description value="Certificate" class="bold"/>
+					<menulist>
+						<menupopup id="ref_certificat"/>
+					</menulist>
+				</row>
+				<row>
+					<tabbox span="all" id="domains|contracts|short_description|comment|pimages|contact|link|history">
+						<tabs>
+							<tab label="Domains" statustext=""/>
+							<tab label="Contracts" statustext=""/>
+							<tab label="Short Description" statustext=""/>
+							<tab label="Description" statustext=""/>
+							<tab label="Images" statustext=""/>
+							<tab label="Contacts" statustext=""/>
+							<tab label="Links" statustext=""/>
+							<tab label="History" statustext=""/>
+						</tabs>
+						<tabpanels>
+							<template id="spiref.edit.domains"/>
+							<template id="spiref.edit.contracts"/>
+							<template id="spiref.edit.short_description"/>
+							<template id="spiref.edit.comment"/>
+							<template id="spiref.edit.pimages"/>
+							<template id="spiref.edit.contact"/>
+							<template id="spiref.edit.link"/>
+							<template id="spiref.edit.history"/>
+						</tabpanels>
+					</tabbox>
+				</row>
+				<row>
+					<hbox>
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+					<description/>
+					<template id="mail" align="right"/>
+					<template id="printpdf" align="right"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>.bold{font-weight:bold;}</styles>
+	</template>
+</overlay>

@@ -1,0 +1,9 @@
+.longueur { width: 80px;}
+.group_select select { width: 230px; }
+.cat_select select  { width: 100%; }
+.tabs_select { width: 155%; }
+.bold{font-weight:bold;}
+.popupManual{visibility:hidden;}
+.icone{width:10px;}
+.total{font-weight:bold;background-color: lightblue;}
+.sleep{color:DarkGray;}

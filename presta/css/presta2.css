@@ -1,0 +1,32 @@
+body,input,select,textarea
+{
+	font-size:12px;
+	font-family:Arial;
+	border:1px solid #CCC;
+	
+}
+
+select
+{
+	width:300px;
+	background-color: #FFF;
+	color: #000;
+	height:25px;
+	width:500px;
+
+
+	
+	border:1px solid #DBDBDB;
+}
+textarea
+{
+width:500px;
+
+}
+input
+{
+height:25px;
+width:500px;
+
+
+}

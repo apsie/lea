@@ -1,0 +1,66 @@
+Logiciel SpiFina : SpireaFinance
+
+
+Ce logiciel est un programme informatique servant à la facturation dans un environnement egroupware.  L'application est multi-groupes, multi-demandeurs et permet la facturation de tickets issus de SpiD.
+
+
+
+Auteur
+Société SPIREA SARL - 16/20 avenue de l'agent Sarre 92700 Colombes - Tél : 0141192772 - Fax : 0147858449 - contact@spirea.fr
+http://www.spirea.fr
+
+Licence : 
+Reproduction, utilisation ou modification interdite sans autorisation de Spirea
+
+
+Version - Egroupware 1.6 et 1.8
+
+Dernière maj : 13/03/2014
+
+Logiciels inclus ou utilisés
+- Fpdf - bibliothèque FPDF - http://www.fpdf.org/
+- Framework Javascript Prototype 
+- Boîte de dialogue "Prototype Windows"
+- Statistique "Smooth 3D Camembert"
+
+
+Etapes d'installation
+- installer et configurer le module SPICLIENT
+- copier le répertoire SPIFINA dans la racine Egroupware, au même niveau que les autres modules
+- aller dans le setup egroupware, installer l'application SPIFINA (respectivement SPICLIENT)
+- dans egroupware, depuis un compte administrateur : 
+-- Menu Admin/Applications : vérifier que l'application est installée
+-- Menu Admin/Groupes : donner accès à SPIFINA (respectivement SPICLIENT)
+
+Etapes de configuration
+- les administrateurs egroupware ont accès au menu "Admin" de l'application
+- le groupe de gestion aura accès à différents écrans de configuration et aux statistiques
+
+1. Admin > configuration du site
+- Général : déterminez votre configuration
+- Créer au moins une catégorie et choisir le groupe de gestion de la catégorie
+
+2. Admin > Configuration des sites et bâtiments
+- Créer au moins un site
+
+3. Nouveaux clients
+A chaque groupe dans SPIFINA doit correspondre un client dans SPICLIENT ; il faut donc créer au moins deux organisations :
+- le prestataire correspondant à la société de facturation
+- le client correspondant à un groupe de demandeurs
+- créer la realation entre le client et le prestataire (onglet prestataire ou onglet client)
+- ajouter des contacts liés à votre client (il faut un contact sur un ticket)
+
+4. Préférences 
+Sélectionner vos préférences (forcées si possible)
+
+5. Configuration des catégories de factures
+Les catégories de factures sont définies dans SpireAPI.
+
+6. Configuration des droits d'accès
+La gestion des ACL se fait à l'envers de la gestion classique sur Egroupware. Par exemple, pour que votre groupe Admins puisse 
+Ajouter, Modifier, Fermer un ticket, Générer les factures, Voir les factures
+Il faut aller sur Admin > groupe > Groupe Admins 
+puis cocher les différentes options sur tous les groupes souhaités (pour que votre groupe Admins puisse voir/créer/modifier les tickets au nom des autres...)
+
+
+

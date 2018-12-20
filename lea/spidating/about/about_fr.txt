@@ -1,0 +1,34 @@
+Logiciel SpiDating : Spirea-Dating
+
+Ce logiciel est un programme informatique servant à la création en masse d'évènements de calendrier. Il permet aussi de modifier en masse les statuts des évènements et de voir les statistiques de temps par éléments (projets, infolog, ticket spid, etc...)
+
+
+Auteur
+Société SPIREA SARL - 16/20 avenue de l'agent Sarre 92700 Colombes - Tél : 0141192772 - Fax : 0147858449 - contact@spirea.fr
+http://www.spirea.fr
+
+Licence : 
+Reproduction, utilisation ou modification interdite sans autorisation de Spirea
+
+
+Version - Egroupware  1.8
+
+Dernière maj : juillet/2013
+
+Logiciels inclus ou utilisés
+- egroupware
+
+
+Etapes d'installation
+- copier le répertoire spidating dans la racine Egroupware, au même niveau que les autres modules
+- aller dans le setup egroupware, installer l'application spidating
+- dans egroupware, depuis un compte administrateur : 
+-- Menu Admin/Applications : vérifier que l'application est installée
+-- Menu Admin/Groupes : donner accès à spidating
+
+Etapes de configuration
+- les administrateurs egroupware ont accès au menu "Admin" de l'application 
+
+1. Admin > configuration du site
+- Général : déterminez votre configuration
+

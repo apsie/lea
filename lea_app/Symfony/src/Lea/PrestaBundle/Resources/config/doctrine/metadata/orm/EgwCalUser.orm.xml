@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwCalUser" table="egw_cal_user">
+    <id name="calId" type="integer" column="cal_id"/>
+    <id name="calRecurDate" type="bigint" column="cal_recur_date"/>
+    <id name="calUserType" type="string" column="cal_user_type"/>
+    <id name="calUserId" type="string" column="cal_user_id"/>
+    <field name="calStatus" type="string" column="cal_status" length="1" nullable="true"/>
+    <field name="calQuantity" type="integer" column="cal_quantity" nullable="true"/>
+    <field name="calRole" type="string" column="cal_role" length="64" nullable="true"/>
+    <field name="calUserModified" type="datetime" column="cal_user_modified" nullable="false"/>
+  </entity>
+</doctrine-mapping>

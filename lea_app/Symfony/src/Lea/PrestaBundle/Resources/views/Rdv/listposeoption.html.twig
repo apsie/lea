@@ -1,0 +1,66 @@
+<div class="entete" ><b>{{ rdvs.rdv_dispo }}</b> 
+options possibles
+</div>
+<div class="div_bouton_poser" >
+<button class="bouton_poser">Poser</button>
+</div>
+
+
+
+
+<div >
+<h4>1. Choisissez les options à poser</h4>
+</div>
+<ul>
+ {% set NUMEROSEMOLD = 0  %}
+	{% for key,rdv in rdvs.rdv %}
+			{%if(rdv.DISABLED == null)%}
+			
+				{%if(rdv.NUMEROSEM != NUMEROSEMOLD)%}
+				<section>
+				<h4>Semaine {{ rdv.NUMEROSEM }}</h4>
+				 {% endif %}
+	        <li class="{{ rdv.CLASSE }}">
+	       
+	         <label style="background-color:{{rdv.COLORWEEK}}" ><input  {{ rdv.DISABLED }} name="rdv[]" value="{{ rdv.VALUE }}" type="{{ rdv.TYPEINPUT }}" > <span title="{{ rdv.DESCRIPTION }}">{{ rdv.DATE }}</div></label>
+	         
+	        </li>
+		        {%if(rdv.NUMEROSEM != NUMEROSEMOLD )%}
+		        </section>
+		        {% endif %}
+		        {% set NUMEROSEMOLD = rdv.NUMEROSEM  %}
+	         {% endif %}
+	 {% endfor %}
+</ul>
+</div>
+<div class="div_bouton_poser" >
+<button class="bouton_poser">Poser</button>
+</div>
+<script>
+
+
+$('.bouton_poser').click(function()
+{
+var form = $('form[name="option"]').serializeArray();
+//console.debug(form);
+
+
+$.ajax({
+		url:'./optioncheck',
+		dataType: "json",
+		type : "POST",
+		data : form,
+		success: function( data ) {
+		$('.disponibilite').html('');
+		$.pnotify({
+						title: 'Options',
+						text: 'Les options ont été posées',
+						type: 'success',
+						styling: 'jqueryui'
+		});
+		
+		}
+		});
+return false;
+});
+</script>

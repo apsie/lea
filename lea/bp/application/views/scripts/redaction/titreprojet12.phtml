@@ -1,0 +1,37 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_projet.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+<br/>
+
+Quel est votre marché? S’agit-il du marché des entreprises, des particuliers, des loisirs, des biens de grande consommation ? Votre marché est-il local, nationale ou international ?<br/>
+Quelles sont les tendances et les évolutions de votre marché ? Exemple : marché en déclin, en développement, stagnation, marché nouveau<br/>
+Quels sont les acteurs de votre marché ? (Fabricants, fournisseurs, concurrents, grossistes, clients, prescripteurs…)<br/>
+Que représente votre marché en volume de vente et en chiffre d'affaires ?<br/>
+Votre marché est-il réglementé ? (conditions d'accès ; conditions d'exercice)<br/>
+<br/>
+
+
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_projet_1_2; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+</div>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns/>
+			<rows/>
+		</grid>
+	</template>
+</overlay>

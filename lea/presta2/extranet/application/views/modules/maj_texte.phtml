@@ -1,0 +1,56 @@
+<form name="maj_texte" >
+<table>
+
+	<tr>
+		<td>Chapitre</td>
+		<td>
+			<select name="id_texte_key">
+				<?php 
+					foreach ($this->key as $key => $row):
+					
+					//die($row['id_texte_key']);
+					if($this->data[0]['id_texte_key']==$row['id_texte_key'])
+					$selected="selected='selected'";
+					else 
+					$selected="";
+					
+						echo'<option '.$selected.' value="'.$row['id_texte_key'].'" >'.utf8_encode($row['libelle']).'</option>';
+					endforeach;
+					?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Texte</td><td><input id="id_texte" name="id_texte" size="60" type="hidden" value="<?php echo $this->data[0]['id_texte']?>" />
+		<input value="<?php echo utf8_encode($this->data[0]['texte'])?>" id="texte" name="texte" size="60" type="text" /></td>
+	</tr>
+	<tr>
+		<td></td><td><button id="ok" >Ok</button></td>
+	</tr>
+	
+	
+</table>
+</form>
+
+<script>
+$j("form[name='maj_texte'] #ok").click(function()
+		{
+	var form = $j("form[name='maj_texte']").serializeArray();
+
+	//console.debug(form);
+	$j.ajax({
+		url : "./index.php?page=ajaxTexte&action=maj_texte&noTemplate=1",
+		type : "POST",
+		dataType : "json",
+		data : form 
+		,success: function(data){
+
+		$j("form[name='maj_texte'] #texte").val('');
+		$j("form[name='maj_texte'] #id_texte").val('');
+		notify('Texte',data);
+		getTexte();
+
+		}});
+return false;
+		});
+</script>

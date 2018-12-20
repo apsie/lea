@@ -1,0 +1,40 @@
+<div id="listePresta" class="entete" >Liste des textes</div>
+<div class="bloc_listePresta" >
+<table style="margin-top : 5px;" class="tableau_presta" >
+	<thead>
+		<tr>
+			<th width="45%">Chapître</th>
+			<th width="50%">Texte</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+{% for key,texte in textes %}
+
+{% if(key%2 == 1)%}
+{% set classe = 'paire' %}
+{% else %}
+{% set classe = 'impaire' %}
+{% endif %}
+ 
+		<tr class="{{ classe }}" >
+			<td>{{ texte.texteKey.libelle}}</td>
+			<td>{{ texte.texte}}</td>
+			<td><a href="./texte/edit/{{ texte.idTexte}}" rel="#overlay" ><img  style="cursor:pointer" src="{{ asset('bundles/lea/images/divers/edit.png') }}" /></a></td>
+		</tr>
+
+	    
+	 </li>
+{% endfor %}
+	</tbody>
+</table>
+</div>
+<!-- overlayed element -->
+<div class="apple_overlay" id="overlay">
+  <!-- the external content is loaded inside this tag -->
+  <div class="contentWrap"></div>
+</div>
+<script>
+$("table.tableau_presta").tablesorter({  widgets: ['zebra'] });  
+$('a[rel]').loadOverlay(".contentWrap");
+</script>

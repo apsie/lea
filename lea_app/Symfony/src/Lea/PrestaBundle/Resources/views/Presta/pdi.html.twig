@@ -1,0 +1,620 @@
+<div id="presta" class="entete" >- Prestation {{ presta.dispositif.nomDispositif }} de <b>{{ presta.contact.nomComplet }}</b> ({{ presta.idPresta }})</div>
+	<div class="contenu_presta" >
+	
+	<form name="presta">
+	<input type="hidden" name="data[suivi]" value="0" />
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Bénéficiaire / Projet</a></li>
+			<li><a href="#tabs-2">M1 - Diag. du projet</a></li>
+			<li><a href="#tabs-3">M1 - Bilan</a></li>
+			<li><a href="#tabs-4">M2 - Adequation pers./projet</a></li>
+			<li><a href="#tabs-5">M2 - Diag. du projet</a></li>
+			<li><a href="#tabs-6">M2 - Bilan</a></li>
+			<li><a href="#tabs-7">Edition</a></li>
+			<li><a id="rdv" href="#tabs-8">Rdv</a></li>
+		</ul>
+		
+		
+		<div id="tabs-1">
+			<input type="hidden" name="id_presta" value="{{ presta.idPresta }}" />
+			<input type="hidden" name="id_projet" value="{{ presta.idProjet }}" />
+			<div id="accordion">
+				<h3><a href="#">Information sur {{ presta.contact.nomComplet }} </a></h3>
+				<div>
+					{% render "LeaPrestaBundle:Contact:create" with { idContact : presta.contact.idBen }  %}
+				</div>
+				<!-- Le projet du bénéficiaire -->	
+				<h3><a href="#">Le projet du bénéficiaire</a></h3>
+				<div>
+					<div class="sous_titre" >Description succincte du projet</div>
+					<div>
+						<textarea name="projet[description_projet]" rows="1" cols="100">{{presta.projet.descriptionProjet}}</textarea>
+					</div>
+
+					<div class="sous_titre">État d’avancement du projet</div>
+					<div class="etat_avancement_projet">
+						<select id="etat_avancement_projet" name="data[etat_avancement_projet]" >
+							<option>{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}</option>
+							{% if( options[key.KEY_PROJET_ETAT_AVANCEMENT] is defined ) %}
+							{{options[key.KEY_PROJET_ETAT_AVANCEMENT]|raw}}
+							{% endif %}
+						</select>
+						<input style="display:none" value="{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}" type="text" />
+						<img rel="etat_avancement_projet" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</div>
+
+					<div class="sous_titre">Points à évaluer en priorité</div>
+					<div>
+						{% for i in 1..3 %}
+						<div style="clear:both" class="point_evaluer_priorite_{{i}}">
+							<select  id="point_evaluer_priorite_{{i}}"  name="data[point_evaluer_priorite_{{i}}]" >
+								<option>{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_PROJET_POINT_EVALUER_PRIORITE] is defined ) %}
+								{{options[key.KEY_PROJET_POINT_EVALUER_PRIORITE]|raw}}
+								{% endif %}
+							</select>
+							<input style="display:none" value="{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}" type="text" />
+							<img rel="point_evaluer_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<!-- Le projet du bénéficiaire -->	
+				<!-- Les attentes du bénéficiaire -->	
+				<h3><a href="#">Les attentes du bénéficiaire</a></h3>
+				<div>
+					<div class="sous_titre" >Attente du bénéficiaire</div>
+					{% for i in 1..3 %}
+					<div style="clear:both"  class="attente_beneficiaire_{{i}}">
+						<select  id="attente_beneficiaire_{{i}}" name="data[attente_beneficiaire_{{i}}]">
+							<option>{% if prestaData['attente_beneficiaire_'~i~''] is defined %}{{prestaData['attente_beneficiaire_'~i~'']}}{% endif %}</option>
+							{% if( options[key.KEY_ATTENTES_BENEFICIAIRE] is defined ) %}
+							{{options[key.KEY_ATTENTES_BENEFICIAIRE]|raw}}
+							{% endif %}
+						</select>
+						<input style="display:none" value="{% if prestaData['attente_beneficiaire_'~i~''] is defined %}{{prestaData['attente_beneficiaire_'~i~'']}}{% endif %}" type="text" />
+						<img rel="attente_beneficiaire_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</div>
+					{% endfor %}
+
+					<div class="sous_titre" >Commentaire du référent</div>
+					<div>
+						<textarea name="data[commentaire_1]" rows="1" cols="100">{% if prestaData['commentaire_1'] is defined %}{{prestaData['commentaire_1']}}{% endif %}</textarea>
+					</div>
+				</div>
+				<!-- Les attentes du bénéficiaire -->	
+				<!-- Engagement -->	
+				<h3><a href="#">Engagement</a></h3>
+				<div>
+					<div class="sous_titre" >Je m'engage à :</div>
+					<div>
+						<label>
+						<input name="data[engagement_1]" value="1" {% if prestaData['engagement_1'] is defined %}{{prestaData['engagement_1']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>Me consacrer à plein temps et activement aux démarches qui me sont conseillées.</span>
+						</label>
+					</div>
+					<div>
+						<label>
+						<input  name="data[engagement_2]" value="1" {% if prestaData['engagement_2'] is defined %}{{prestaData['engagement_2']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>Tenir mon référent informé des résultats des actions engagées.</span>
+						</label>
+					</div>
+					<div>
+						<label>
+						<input  name="data[engagement_3]" value="1" {% if prestaData['engagement_3'] is defined %}{{prestaData['engagement_3']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>Accompagner personnellement le demandeur dans ses démarches.</span>
+						</label>
+					</div>
+					<div>
+						<label>
+						<input name="data[engagement_4]" value="1" {% if prestaData['engagement_4'] is defined %}{{prestaData['engagement_4']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>Proposer toutes les actions favorisant la réussite de l’accompagnement figurant dans le cahier des charges de la prestation</span>
+						</label>
+					</div>
+				</div>	
+				<!-- Engagement -->	
+			</div>
+		</div>
+		
+		<div id="tabs-2">
+			<div id="accordion">
+				{% for cat_diag, cat_id in diagnostic %}
+					<h3><a href="#">{{ cat_diag }}</a></h3>
+					<div>
+						<table class="diag" width="100%">
+							<tr>
+								<th width="40%">Etapes de réalisation</th>
+								<th width="10%">Fait</th>
+								<th width="10%">En cours</th>
+								<th width="10%">A faire</th>
+								<th width="30%">Observations</th>
+							</tr>
+							{% for key, texte in listes[cat_id] %}
+								{% set radio_name = 'diag_' ~ key %}
+								{% set obs_name = 'diag_obs_' ~ key %}
+								<tr>
+									<td>{{ texte }}</td>
+									<td align="center">
+										<input type="radio" name="data[diag_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+									</td>
+									<td align="center">
+										<input type="radio" name="data[diag_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+									</td>
+									<td align="center">
+										<input type="radio" name="data[diag_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+									</td>
+									<td align="center">
+										<div class="normal"><input type="text" name="data[diag_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value={{ prestaData[obs_name] }}{% endif %}></div>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		
+		<div id="tabs-3">
+			<div id="accordion" > 
+				<h3><a href="#">Synthèse</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">Objet</th>
+							<th width="10%">+</th>
+							<th width="10%">+/-</th>
+							<th width="10%">-</th>
+							<th width="30%">Observation</th>
+						</tr>
+						{% for key, texte in listes[key.KEY_SYNTHESE_M1] %}
+							{% set radio_name = 'synthese_' ~ key %}
+							{% set obs_name = 'synthese_obs_' ~ key %}
+							<tr>
+								<td>{{ texte }}</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<div class="normal"><input type="text" name="data[synthese_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value={{ prestaData[obs_name] }}{% endif %}></div>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+				<h3><a href="#">Préconisations</a></h3>
+				<div>
+					{% for key, texte in listes[key.KEY_PRECONISATIONS_M1] %}
+						<input type="radio" name="data[preconisation]" value="{{ key }}" id="preconisation_{{ key }}"{% if prestaData['preconisation'] is defined %}{% if prestaData['preconisation'] == key %}checked{% endif %}{% endif %}>
+						<label for="preconisation_{{ key }}">{{ texte }}</label>
+						<br/>
+
+						{% if key == 401 %}
+							<div class="preco_add" id="preco_401" style="margin-left: 40px;{% if prestaData['preconisation'] is defined %}{% if prestaData['preconisation'] != 401 %}display: none;{% endif %}{% endif %}">
+								<input type="checkbox" name="data[module1]" value="module1" id="module1" {% if prestaData['module1'] is defined %}{% if prestaData['module1'] == 'module1' %}checked{% endif %}{% endif %}><label for="module1">Module 1: "Montage du projet"</label><br/>
+								<input type="checkbox" name="data[module2]" value="module2" id="module2" {% if prestaData['module2'] is defined %}{% if prestaData['module2'] == 'module2' %}checked{% endif %}{% endif %}><label for="module2">Module 2: "Recherche de financement"</label><br/>
+								<input type="checkbox" name="data[module3]" value="module3" id="module3" {% if prestaData['module3'] is defined %}{% if prestaData['module3'] == 'module3' %}checked{% endif %}{% endif %}><label for="module3">Module 3: "Démarrage de l'activité"</label><br/>
+								<input type="checkbox" name="data[module4]" value="module4" id="module4" {% if prestaData['module4'] is defined %}{% if prestaData['module4'] == 'module4' %}checked{% endif %}{% endif %}><label for="module4">Module 4: "Suivi post-création"</label><br/>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<h3><a href="#">Observations</a></h3>
+				<div>
+					<textarea name="data[comm_m1]" rows="2" cols="100">{% if prestaData['comm_m1'] is defined %}{{prestaData['comm_m1']}}{% endif %}</textarea>
+				</div>
+			</div>
+		</div>
+
+		<div id="tabs-4">
+			<div id="accordion">
+				<h3><a href="#">Parcours / Motivations / Contraintes</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Intitulé du projet</div>
+						<textarea name="data[intitule]" rows="1" cols="100">{% if prestaData['intitule'] is defined %}{{prestaData['intitule']}}{% endif %}</textarea>
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Parcours Antérieur (formation, parcours professionnel)</div>
+						<textarea name="data[parcours]" rows="1" cols="100">{% if prestaData['parcours'] is defined %}{{prestaData['parcours']}}{% endif %}</textarea>
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Motivations exprimées par le bénéficiaire</div>
+						<textarea name="data[motivations]" rows="1" cols="100">{% if prestaData['motivations'] is defined %}{{prestaData['motivations']}}{% endif %}</textarea>
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Contraintes personnelles identifiées</div>
+						<textarea name="data[contraintes]" rows="1" cols="100">{% if prestaData['contraintes'] is defined %}{{prestaData['contraintes']}}{% endif %}</textarea>
+					</div>
+				</div>
+				<h3><a href="#">Compétences</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Compétences acquises</div>
+						<div  class="select_bloc_3" >
+							<p>Compétences techniques</p>
+							{% for i in 1..6 %}
+							<div class="capacite_emploi_{{i}}">
+								<select id="capacite_emploi_{{i}}" name="data[capacite_emploi_{{i}}]" >
+								<option>{% if prestaData['capacite_emploi_'~i~''] is defined %}{{prestaData['capacite_emploi_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_ADEQUATION_CAPACITE] is defined ) %}
+								{{options[key.KEY_ADEQUATION_CAPACITE]|raw}}
+								{% endif %}
+								</select>
+								<input style="display:none" value="{% if prestaData['capacite_emploi_'~i~''] is defined %}{{prestaData['capacite_emploi_'~i~'']}}{% endif %}" type="text" />
+								<img rel="capacite_emploi_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+							</div>
+							{% endfor %}
+							
+						</div>
+						<div class="select_bloc_3">
+							<p>Compétences commerciales</p>
+							{% for i in 1..6 %}
+							<div class="competence_pro_{{i}}">
+								<select id="competence_pro_{{i}}" name="data[competence_pro_{{i}}]" >
+									<option>{% if prestaData['competence_pro_'~i~''] is defined %}{{prestaData['competence_pro_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_ADEQUATION_COMPETENCE] is defined ) %}
+								{{options[key.KEY_ADEQUATION_COMPETENCE]|raw}}
+								{% endif %}
+								</select>
+								<input style="display:none" value="{% if prestaData['competence_pro_'~i~''] is defined %}{{prestaData['competence_pro_'~i~'']}}{% endif %}" type="text" />
+								<img rel="competence_pro_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+							</div>
+							{% endfor %}
+						</div>
+						<div class="select_bloc_3">
+							<p>Compétences en gestion</p>
+							{% for i in 1..6 %}
+							<div class="formation_{{i}}" >
+								<select id="formation_{{i}}" name="data[formation_{{i}}]"  >
+								<option>{% if prestaData['formation_'~i~''] is defined %}{{prestaData['formation_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_ADEQUATION_FORMATION] is defined ) %}
+								{{options[key.KEY_ADEQUATION_FORMATION]|raw}}
+								{% endif %}
+								</select>
+								<input style="display:none" value="{% if prestaData['formation_'~i~''] is defined %}{{prestaData['formation_'~i~'']}}{% endif %}" type="text" />
+								<img rel="formation_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+							</div>
+							{% endfor %}
+						</div>
+
+						<div class="sous_titre">Connaissances utiles</div>
+						<textarea name="data[connaissances]" rows="1" cols="100">{% if prestaData['connaissances'] is defined %}{{prestaData['connaissances']}}{% endif %}</textarea>
+
+						<div class="sous_titre">Capacités développées</div>
+						<textarea name="data[capacites]" rows="1" cols="100">{% if prestaData['capacites'] is defined %}{{prestaData['capacites']}}{% endif %}</textarea>
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre">Compétences à acquérir au regard du projet</div>
+						<div  class="select_bloc_3" >
+							<p>Compétences techniques</p>
+							{% for i in 1..6 %}
+							<div class="capacite_emploi_{{i}}">
+								<select id="capacite_emploi_{{i}}" name="data[capacite_emploi_{{i}}]" >
+								<option>{% if prestaData['capacite_emploi_'~i~''] is defined %}{{prestaData['capacite_emploi_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_ADEQUATION_CAPACITE] is defined ) %}
+								{{options[key.KEY_ADEQUATION_CAPACITE]|raw}}
+								{% endif %}
+								</select>
+								<input style="display:none" value="{% if prestaData['capacite_emploi_'~i~''] is defined %}{{prestaData['capacite_emploi_'~i~'']}}{% endif %}" type="text" />
+								<img rel="capacite_emploi_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+							</div>
+							{% endfor %}
+							
+						</div>
+						<div class="select_bloc_3">
+							<p>Compétences commerciales</p>
+							{% for i in 1..6 %}
+							<div class="competence_pro_{{i}}">
+								<select id="competence_pro_{{i}}" name="data[competence_pro_{{i}}]" >
+									<option>{% if prestaData['competence_pro_'~i~''] is defined %}{{prestaData['competence_pro_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_ADEQUATION_COMPETENCE] is defined ) %}
+								{{options[key.KEY_ADEQUATION_COMPETENCE]|raw}}
+								{% endif %}
+								</select>
+								<input style="display:none" value="{% if prestaData['competence_pro_'~i~''] is defined %}{{prestaData['competence_pro_'~i~'']}}{% endif %}" type="text" />
+								<img rel="competence_pro_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+							</div>
+							{% endfor %}
+						</div>
+						<div class="select_bloc_3">
+							<p>Compétences en gestion</p>
+							{% for i in 1..6 %}
+							<div class="formation_{{i}}" >
+								<select id="formation_{{i}}" name="data[formation_{{i}}]"  >
+								<option>{% if prestaData['formation_'~i~''] is defined %}{{prestaData['formation_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_ADEQUATION_FORMATION] is defined ) %}
+								{{options[key.KEY_ADEQUATION_FORMATION]|raw}}
+								{% endif %}
+								</select>
+								<input style="display:none" value="{% if prestaData['formation_'~i~''] is defined %}{{prestaData['formation_'~i~'']}}{% endif %}" type="text" />
+								<img rel="formation_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+							</div>
+							{% endfor %}
+						</div>
+
+						<div class="sous_titre">Solutions identifiées (formation…) et plan d’actions</div>
+						<textarea name="data[solutions]" rows="1" cols="100">{% if prestaData['solutions'] is defined %}{{prestaData['solutions']}}{% endif %}</textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tabs-5">
+			<div id="accordion">
+				{% for cat_diag, cat_id in diagnostic %}
+					<h3><a href="#">{{ cat_diag }}</a></h3>
+					<div>
+						<table class="diag" width="100%">
+							<tr>
+								<th width="40%">Etapes de réalisation</th>
+								<th width="10%">Fait</th>
+								<th width="10%">En cours</th>
+								<th width="10%">A faire</th>
+								<th width="30%">Observations</th>
+							</tr>
+							{% for key, texte in listes[cat_id] %}
+								{% set radio_name = 'diag_m2_' ~ key %}
+								{% set obs_name = 'diag_m2_obs_' ~ key %}
+								<tr>
+									<td>{{ texte }}</td>
+									<td align="center">
+										<input type="radio" name="data[diag_m2_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+									</td>
+									<td align="center">
+										<input type="radio" name="data[diag_m2_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+									</td>
+									<td align="center">
+										<input type="radio" name="data[diag_m2_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+									</td>
+									<td align="center">
+										<div class="normal"><input type="text" name="data[diag_m2_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value={{ prestaData[obs_name] }}{% endif %}></div>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				{% endfor %}
+	 	 	</div>
+		</div>
+
+		<div id="tabs-6">
+			<div id="accordion">
+				<h3><a href="#">Actions menées durant l’accompagnement afin de permettre au bénéficiaire de mieux connaître le marché et l’environnement professionnel envisagé</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="50%">Description</th>
+							<th width="25%">Objectifs</th>
+							<th width="25%">Résultats</th>
+						</tr>
+						{% for i in 1..4 %}
+							<tr>
+								<td align="center">
+									<div class="normal"><input type="text" size="50" name="data[description_{{ i }}]" value="{% if prestaData['description_'~i~''] is defined %}{{prestaData['description_'~i~'']}}{% endif %}"></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name="data[objectif_{{ i }}]" value="{% if prestaData['objectif_'~i~''] is defined %}{{prestaData['objectif_'~i~'']}}{% endif %}"></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name="data[resultat_{{ i }}]" value="{% if prestaData['resultat_'~i~''] is defined %}{{prestaData['resultat_'~i~'']}}{% endif %}"></div>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+				<h3><a href="#">Points forts et points de vigilance du projet</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="50%">Points forts / Atouts</th>
+							<th width="50%">Points de vigilance</th>
+						</tr>
+						{% for i in 1..4 %}
+							<tr>
+								<td align="center">
+									<div class="normal"><input type="text" size="50" name="data[point_fort_{{ i }}]" value="{% if prestaData['point_fort_'~i~''] is defined %}{{prestaData['point_fort_'~i~'']}}{% endif %}"></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" size="50" name="data[point_vigilance_{{ i }}]" value="{% if prestaData['point_vigilance_'~i~''] is defined %}{{prestaData['point_vigilance_'~i~'']}}{% endif %}"></div>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+				<h3><a href="#">Préconisations</a></h3>
+				<div>
+					{% for key, texte in listes[key.KEY_PRECONISATIONS_M1] %}
+						{% if key != 400 %}
+							<input type="radio" name="data[preconisation_m2]" value="{{ key }}" id="preconisation_m2_{{ key }}"{% if prestaData['preconisation_m2'] is defined %}{% if prestaData['preconisation_m2'] == key %}checked{% endif %}{% endif %}>
+							<label for="preconisation_m2_{{ key }}">{{ texte }}</label>
+							<br/>
+
+							{% if key == 401 %}
+								<div class="preco_add_m2" id="preco_m2_401" style="margin-left: 40px;{% if (prestaData['preconisation_m2'] is not defined or prestaData['preconisation_m2'] != 401) %}display: none;{% endif %}">
+									<input type="checkbox" name="data[module1_m2]" value="module1_m2" id="module1_m2" {% if prestaData['module1_m2'] is defined %}{% if prestaData['module1_m2'] == 'module1_m2' %}checked{% endif %}{% endif %}><label for="module1_m2">Module 1: "Montage du projet"</label><br/>
+									<input type="checkbox" name="data[module2_m2]" value="module2_m2" id="module2_m2" {% if prestaData['module2_m2'] is defined %}{% if prestaData['module2_m2'] == 'module2_m2' %}checked{% endif %}{% endif %}><label for="module2_m2">Module 2: "Recherche de financement"</label><br/>
+									<input type="checkbox" name="data[module3_m2]" value="module3_m2" id="module3_m2" {% if prestaData['module3_m2'] is defined %}{% if prestaData['module3_m2'] == 'module3_m2' %}checked{% endif %}{% endif %}><label for="module3_m2">Module 3: "Démarrage de l'activité"</label><br/>
+									<input type="checkbox" name="data[module4_m2]" value="module4_m2" id="module4_m2" {% if prestaData['module4_m2'] is defined %}{% if prestaData['module4_m2'] == 'module4_m2' %}checked{% endif %}{% endif %}><label for="module4_m2">Module 4: "Suivi post-création"</label><br/>
+								</div>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+				<h3><a href="#">Observations</a></h3>
+				<div>
+					<textarea name="data[comm_m2]" rows="2" cols="100">{% if prestaData['comm_m2'] is defined %}{{prestaData['comm_m2']}}{% endif %}</textarea>
+				</div>
+			</div>
+		</div>
+	
+		<div id="tabs-7">
+			<form name="Editer">
+				<div class="sous_titre" >Liste des livrables</div>
+				<div>
+					<div><label><input id="imp_1" name="Editer['pdi']['emargement']" checked="checked" value="Feuille d'émargement" type="checkbox" /><span>Feuille d'émargement</span></label></div>
+
+					<div><label><input id="imp_2" name="Editer['pdi']['module_1']" checked="checked" value="Bilan Module 1"  type="checkbox" /><span>Bilan Module 1</span></label></div>
+
+					<div><label><input id="imp_3" name="Editer['pdi']['module_2']" checked="checked" value="Bilan Module 2"  type="checkbox" /><span>Bilan Module 2</span></label></div>
+				</div>
+			</form>
+		</div>
+		
+		<div id="tabs-8">
+			<div id="accordion">
+			<h3><a href="#">Pose des Rendez vous</a></h3>
+				<section class="form_dispo">
+				</section>
+			<h3 id="rdv_presta" ><a href="#">Liste des Rendez vous</a></h3>
+				<div class="tableau_liste_presta">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+	<div style="padding-top:10px" >
+	<center>
+		<button id="savePresta" >Enregistrer</button>
+		<button id="EditerPresta">Editer</button>
+
+		<button id="RelancerPresta" onClick="window.open('{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}','Informations bénéficiaire','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');">Relancer</button>
+	</center>
+	</div>
+	<div class="copyright" >© APSIE PDI92</div>
+	</div>
+</div>
+<script>
+$(".change").click(function() {
+	$('.'+$(this).attr('rel')).changeSelectInput();
+});
+$('#code_solution').myAutoCompleteCodeRome('#com_solution');
+
+$('.form_dispo').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$('#tabs #rdv').click(function()
+{
+	$.ajax({
+		url:'./disponibilite',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}},
+		success: function( html ) {
+			$('.form_dispo').html(html);
+		}
+	});
+});
+
+
+$('#tabs #rdv_presta').click(function()
+{$('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+	$.ajax({
+		url:'./disponibilite/listrdvpresta',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}},
+		success: function( html ) {
+			$('.tableau_liste_presta').html(html);
+		}
+	});
+});
+
+
+$(".contenu_presta #tabs" ).tabs();
+var icons = {
+	header: "ui-icon-circle-arrow-e",
+	headerSelected: "ui-icon-circle-arrow-s"
+};
+$( ".contenu_presta #accordion" ).accordion({
+	icons: icons,
+	autoHeight: false,
+});
+
+// SAUVEGARDE		
+$(".contenu_presta #savePresta").click(function() {
+	var form  = $("form[name='presta']").serializeArray();
+
+	/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat(
+		$("form[name='presta'] input[type=checkbox]:not(:checked)").map(
+            function() {
+                return {"name": this.name, "value": 0}
+            }).get()
+    );
+
+   
+	
+	$.pnotify({
+		title: 'Sauvegarde',
+		text: '<span class="load" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></span> Sauvegarde en cours',
+		type: 'info',
+		styling: 'jqueryui'
+	});
+
+	$.ajax({
+		url : "./data",
+		type : "POST",
+		dataType : "json",
+		data : form ,
+		success: function(data){
+			$.pnotify({
+				title: 'Sauvegarde',
+				text: data,
+				type: 'success',
+				styling: 'jqueryui'
+			});
+
+			$('.load').hide('fade');	
+		}
+	});
+
+	return false;
+});
+
+// EDITION
+$(".contenu_presta #EditerPresta").click(function() {
+	
+	$.pnotify({
+		title: 'Edition',
+		text: 'Edition des livrables',
+		type: 'info',
+		styling: 'jqueryui'
+	});
+    				
+	$('.load').hide('fade');	
+	
+	if($('#imp_1').attr('checked') == 'checked'){
+		window.open("./download/pdi/"+{{presta.idPresta}}+"/1",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_2').attr('checked') == 'checked'){
+		window.open("./download/pdi/"+{{presta.idPresta}}+"/2",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_3').attr('checked') == 'checked'){
+		window.open("./download/pdi/"+{{presta.idPresta}}+"/3",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	return false;
+});
+
+// Préconisations
+$("input[name$='data[preconisation]']").click(function(){
+	var test = $(this).val();
+	$("div.preco_add").hide();
+	$("#preco_" + test).show();
+
+	$('div.preco_add').find(':checkbox').each(function(){
+		$(this).prop('checked', false);
+	})
+});
+
+$("input[name$='data[preconisation_m2]']").click(function(){
+	var test = $(this).val();
+
+	$("div.preco_add_m2").hide();
+	$("#preco_m2_" + test).show();
+
+	$('div.preco_add_m2').find(':checkbox').each(function(){
+		$(this).prop('checked', false);
+	})
+});
+</script>

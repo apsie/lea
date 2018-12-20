@@ -1,0 +1,39 @@
+<?php
+// $Id: diff.php 36869 2011-10-10 08:10:15Z leithoff $
+
+// Compute the difference between two sets of text.
+function diff_compute($text1, $text2)
+{
+	global $TempDir, $DiffCmd, $ErrorCreatingTemp, $ErrorWritingTemp;
+
+	$num = trim($GLOBALS['egw_info']['user']['account_id']).'_'.common::randomstring(8); //strncmp(PHP_OS,'WIN',3) ? posix_getpid() : rand();
+	//error_log(__METHOD__.__LINE__.' RandomString:'.$num);
+	$temp1 = $TempDir . '/wiki_' . $num . '_1.txt';
+	$temp2 = $TempDir . '/wiki_' . $num . '_2.txt';
+
+	if(!($h1 = fopen($temp1, 'w')) || !($h2 = fopen($temp2, 'w')))
+		{ die($ErrorCreatingTemp); }
+
+	if(fwrite($h1, $text1) < 0 || fwrite($h2, $text2) < 0)
+		{ die($ErrorWritingTemp); }
+
+	fclose($h1);
+	fclose($h2);
+
+	$diff = `$DiffCmd $temp1 $temp2`;
+
+	unlink($temp1);
+	unlink($temp2);
+
+	return $diff;
+}
+
+// Parse diff output into nice HTML.
+function diff_parse($text)
+{
+	global $DiffEngine;
+
+	return parseText($text, $DiffEngine, '');
+}
+
+?>

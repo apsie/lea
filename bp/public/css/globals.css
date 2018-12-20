@@ -1,0 +1,48 @@
+body,html {
+	font-size:100%;
+	
+	
+	font-family: "Arial";
+	font-size:12px;
+	color: #666;
+	background-color:#FFF;
+	
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+.menu_header
+{
+	background-color: #CCC;
+	color:#000;
+}
+
+
+
+#conteneur {
+width:900px;
+margin:auto; 
+
+}
+body{ 
+margin:auto; 
+text-align:center;
+}
+
+
+
+#menu_gauche {
+width:15%; 
+height:800px; 
+background-color:#309;
+float:left;
+}
+
+
+#menu_droit {
+width:15%; 
+height:800px; 
+background-color:#F90;
+float:left;
+}

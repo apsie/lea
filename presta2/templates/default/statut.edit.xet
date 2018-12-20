@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.statut.edit" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row">
+					<description value="Label" class="bold"/>
+					<textbox id="statut_label"/>
+				</row>
+				<row class="row">
+					<description value="team" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="statut_group" options=",groups,0"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="in charge" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="statut_user"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Possible following status" class="bold"/>
+					<listbox id="statut_enfants" rows="5"/>
+				</row>
+				<row class="row">
+					<description value="Creation Date"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Date modified"/>
+					<description/>
+				</row>
+				<row>
+					<hbox>
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

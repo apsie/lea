@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.stats.group.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="200"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description/>
+					<description/>
+					<description/>
+					<description value="Real" span="4" class="blue" align="center"/>
+				</row>
+				<row class="th">
+					<description value="Client group" align="center"/>
+					<description value="Client" align="center"/>
+					<description value="Contract" align="center" id="contract_id"/>
+					<description value="Temps passé sur les tickets fermés" align="center" id="time" class="blue"/>
+					<description value="Pass time on not factured closed tickets" id="time" class="blue"/>
+					<description value="Total spend time" id="time" class="blue"/>
+					<description value="Factured turnover" align="center" id="time" class="blue"/>
+					<description value="estimated outstanding" align="center"/>
+					<description value="Budget amount" align="center" class="yellow"/>
+					<description value="Budget time" class="yellow"/>
+					<description value="Difference amount" align="center" class="brown"/>
+					<description value="Difference time" class="brown"/>
+				</row>
+				<row class="$row_cont[class_total]">
+					<menulist>
+						<menupopup no_lang="1" align="center" id="${row}[client_group]" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[client_id]" align="center" no_lang="1" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" id="${row}[contract_id]" no_lang="1" readonly="true"/>
+					</menulist>
+					<description align="center" id="${row}[time_closed]" readonly="true" no_lang="1"/>
+					<description id="${row}[time_not_factured]" align="center"/>
+					<description id="${row}[total_time]" align="center"/>
+					<description readonly="true" no_lang="1" id="${row}[turnover]" align="center"/>
+					<description id="${row}[outstanding]" align="center" readonly="true"/>
+					<description align="center" id="${row}[budget_amount]" readonly="true" no_lang="1"/>
+					<description id="${row}[budget_time]" align="center"/>
+					<description align="center" id="${row}[difference_amount]"/>
+					<description id="${row}[difference_time]" align="center"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

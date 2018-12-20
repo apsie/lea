@@ -1,0 +1,123 @@
+<div class="bloc_presta" >
+	
+</div>
+
+<div id="listePesta" class="entete" >- Liste des prestations ({{ nbPresta }})</div>
+<div class="bloc_listePresta" >
+<table style="margin-top : 5px;" class="tableau_presta" >
+	<thead>
+		<tr>
+			<th>Prestataire</th>
+			<th>Dispositif</th>
+			<th>Libelle</th>
+			<th>Lettre de commande</th>
+			<th>Date de début</th>
+			<th>Date de fin</th>
+			<th>Conseiller</th>
+			<th>Statut</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+{% for key,presta in listPresta %}
+		<tr  >
+			<td>{{ presta.prestataire.nomOrganisme }}</td>
+			<td>
+			{% if(presta.dispositif.nomDispositif is defined) %}
+			{{ presta.dispositif.nomDispositif}}
+			{% endif %}
+			</td>
+			<td><a id="{{ presta.idPresta }}" class="intitule" href="javascript:void(0)" >{{ presta.intitule }}</a></td>
+			<td>{{ presta.lettreDeCommande }}</td>
+			<td>{{ presta.dateDebut }}</td>
+			<td>
+			{% if(presta.dateFin>0) %}
+				{{ presta.dateFin }}
+			{% else %}
+				{{ '' }}
+			{% endif %}
+			</td>
+			<td>
+			{% if(presta.account.accountLid is defined) %}
+			{{ presta.account.accountLid }}
+			{% endif %}
+			</td>
+			<td>{{ presta.statut }}</td>
+			<td><a href="./edit/{{ presta.idPresta }}" rel="#overlay" ><img  style="cursor:pointer" src="{{ asset('bundles/lea/images/divers/edit.png') }}" /></a></td>
+		</tr>
+
+	    
+	 </li>
+{% endfor %}
+	</tbody>
+</table>
+</div>
+<!-- overlayed element -->
+<div class="apple_overlay" id="overlay">
+  <!-- the external content is loaded inside this tag -->
+  <div class="contentWrap"></div>
+</div>
+<script>
+$("table.tableau_presta").tablesorter({  widgets: ['zebra'] });  
+$('#listePesta.entete').click(function()
+{
+$('.bloc_listePresta').slideToggle('slow');
+
+if($('.bloc_listePresta').css('height') == '1px')
+	$('#listePesta.entete').html('- Liste des prestations');
+else
+	$('#listePesta.entete').html('+ Liste des prestations');
+});
+
+
+$('a.intitule').click(function()
+{
+var thisBis = this;
+$('.bloc_listePresta').slideToggle('slow');
+$('#listePesta.entete').html('+ Liste des prestations');
+$('.bloc_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$.ajax({
+		url:'./do/typepresta',
+		dataType: "html",
+		type : "POST",
+		data : 
+		{	
+			idPresta : $(thisBis).attr('id')
+		},
+		success: function( html ) {
+		$('.bloc_presta').html(html);
+		
+		$('#presta.entete').click(function()
+			{
+			$('.bloc_presta .contenu_presta').slideToggle('slow');
+			
+			if($('.bloc_presta .contenu_presta').css('height') == '1px')
+			$('#presta.entete').html('- Prestation');
+			else
+			$('#presta.entete').html('+ Prestation');
+			});
+		}
+		});
+
+});
+$(function() {
+ 
+    // if the function argument is given to overlay,
+    // it is assumed to be the onBeforeLoad event listener
+    $("a[rel]").overlay({
+ 
+        mask: 'darkred',
+       
+ 
+        onBeforeLoad: function() {
+ 
+            // grab wrapper element inside content
+            var wrap = this.getOverlay().find(".contentWrap");
+ 
+            // load the page specified in the trigger
+            wrap.load(this.getTrigger().attr("href"));
+        }
+ 
+    });
+});
+</script>

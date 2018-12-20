@@ -1,0 +1,54 @@
+8
+
+dir
+23189
+http://svn.egroupware.org/egroupware/branches/1.2/egroupware/home/templates/default/images
+http://svn.egroupware.org/egroupware
+
+
+
+2005-06-15T10:43:11.000000Z
+18521
+mipmip
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+923e3c2e-ae13-0410-ba18-ced7211e33de
+
+navbar.png
+file
+
+
+
+
+2007-01-01T07:42:49.000000Z
+d57438c01139160415bce081e4b07930
+2005-06-15T10:43:11.000000Z
+18521
+mipmip
+has-props
+
+navbar.gif
+file
+
+
+
+
+2007-01-01T07:42:49.000000Z
+1c04e996434715fca303c0f36e251807
+2005-06-15T10:43:11.000000Z
+18521
+mipmip
+has-props
+

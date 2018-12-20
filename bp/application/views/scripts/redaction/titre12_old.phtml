@@ -1,0 +1,90 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche.phtml'); ?>
+
+
+
+	<div class="contenu_ac">
+	
+	<?php echo $this->title; ?><br/><br/><br/><?php echo $this->title_2; ?><br/><br/><br/>
+	
+	<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<table><tr bgcolor="#F4F4FF">
+      <td width="193">Nom commercial</td>
+      <td width="250" ><?php echo $this->form->nom_commercial; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td>Raison sociale</td>
+      <td width="250" ><?php echo $this->form->raison_sociale; ?> </td><td width="136">
+        Siret</td><td> 
+          <?php echo $this->form->siret; ?></td></tr><tr bgcolor="#F4F4FF">
+      <td >Activit&eacute; principale</td>
+      <td width="250" ><?php echo $this->form->activite_principale; ?></td>
+      <td>Code naf
+	  
+	  <div class="suggestionsBox1" id="suggestionsCodeNaf" style="display: none;"> <img src="<?php echo $this->baseUrl()?>/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+        <div class="suggestionList" id="autoSuggestionsListCodeNaf"> &nbsp; </div>
+		
+		</td><td><?php echo $this->form->code_naf; ?></td></tr><tr bgcolor="#FFF">
+      <td>Date immat</td>
+      <td width="250" ><?php echo $this->form->date_immat; ?><script type="text/javascript">
+
+	document.writeln('<img id="date_immat-trigger" src=" <?php echo $this->baseUrl();?>/calendrier/datepopup.gif" title="Selectionner la date" style="cursor:pointer; cursor:hand;"/>');
+	Calendar.setup(
+	{
+		inputField  : "date_immat",
+		button      : "date_immat-trigger"
+	}
+	);
+</script></td>
+      <td>Date d&eacute;but d'activit&eacute;</td>
+      <td width="200" ><?php echo $this->form->date_debut_activite; ?> <script type="text/javascript">
+
+	document.writeln('<img id="date_debut_activite-trigger" src=" <?php echo $this->baseUrl();?>/calendrier/datepopup.gif" title="Selectionner la date" style="cursor:pointer; cursor:hand;"/>');
+	Calendar.setup(
+	{
+		inputField  : "date_debut_activite",
+		button      : "date_debut_activite-trigger"
+	}
+	);
+</script></td></tr><tr>
+      <td><hr /></td>
+      <td width="250" ><hr /></td> <td ><hr /></td><td ><hr /></td></tr><tr bgcolor="#F4F4FF">
+      <td>Type d'adresse</td>
+      <td width="250"><?php echo $this->form->type_adresse; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td>Rue </td><td><?php echo $this->form->adresse_ligne_1; ?></td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+	      <td>Adresse ligne 2</td><td><?php echo $this->form->adresse_ligne_2; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+	        <td>Adressse ligne 3</td><td><?php echo $this->form->adresse_ligne_3; ?></td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+	        <td>
+      Code postal <div class="suggestionsBox" id="suggestionsCp" style="display: none;"> <img src="<?php echo $this->baseUrl()?>/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+        <div class="suggestionList" id="autoSuggestionsListCp"> &nbsp; </div></td><td><?php echo $this->form->cp; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+	          <td>Ville</td>
+	            <td><?php echo $this->form->ville; ?></td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+                 <td>Region</td><td><?php echo $this->form->region; ?></td><td></td><td></td></tr>
+	        <tr bgcolor="#FFF"><td>Pays</td><td><?php echo $this->form->pays; ?></td><td></td><td></td></tr><tr><td><hr /></td><td><hr /></td> <td  ><hr /></td><td ><hr /></td></tr><tr bgcolor="#F4F4FF">
+      <td>Dirigeant</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->dirigeant; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td>Forme juridique</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->forme_juridique; ?></td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+      <td>Implantation</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->implantation; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td>Secteur d'activit&eacute;</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->secteur_activite; ?></option></select></td><td></td><td></td></tr><tr><td ><hr /></td><td><hr /></td><td><hr /></td> <td  ><hr /></td></tr><tr bgcolor="#F4F4FF">
+      <td>R&eacute;gime d'impostion</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->regime_imposition; ?></td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td>R&eacute;gime de TVA</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->regime_tva; ?></td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+      <td>R&eacute;gime fiscal</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->regime_fiscal; ?></td><td></td><td></td></tr><tr><tr bgcolor="#FFF">
+      <td>R&eacute;gime social du dirigeant</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->regime_social_dirigeant; ?></td><td></td><td></td></tr><td ><hr /></td><td><hr /></td><td><hr /></td> <td  ><hr /></td></tr><tr><tr bgcolor="#F4F4FF">
+      <td>Statut</td>
+      <td width="250" style="font-weight:bolder"><?php echo $this->form->statut; ?></td><td></td><td></td></tr><tr bgcolor="#FFF"><td></td><td height="34" align="right">&nbsp;</td><td></td></td></tr></table>
+	
+		
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div><!--</div>--></div>
+

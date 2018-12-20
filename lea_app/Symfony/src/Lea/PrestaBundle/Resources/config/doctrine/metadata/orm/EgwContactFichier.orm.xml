@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwContactFichier" table="egw_contact_fichier">
+    <id name="idFichier" type="integer" column="id_fichier">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idContact" type="bigint" column="id_contact" nullable="false"/>
+    <field name="dateUpload" type="bigint" column="date_upload" nullable="false"/>
+    <field name="idOwner" type="bigint" column="id_owner" nullable="false"/>
+    <field name="typeDeFichier" type="string" column="type_de_fichier" length="68" nullable="false"/>
+    <field name="nomFichier" type="text" column="nom_fichier" nullable="true"/>
+    <field name="tailleFichier" type="bigint" column="taille_fichier" nullable="false"/>
+    <field name="isPrivate" type="boolean" column="is_private" nullable="false"/>
+  </entity>
+</doctrine-mapping>

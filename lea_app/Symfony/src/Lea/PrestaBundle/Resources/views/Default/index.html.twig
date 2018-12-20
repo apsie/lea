@@ -1,0 +1,245 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="contenu">
+	<div class="div_gauche">
+	<section>
+		<div class="menu">Menu principal</div>
+		<ul>
+			<li style="margin-top : 10px;" >
+				<a id="create_presta" href="./create">
+					<img src="{{ asset('bundles/lea/images/divers/plus.png') }}"  />
+					Créer une nouvelle prestation
+				</a>
+			</li>
+		</ul>
+		
+		<ul style="margin-top : 10px;padding-top : 10px;border-top:1px dotted #CCC" >
+			<li>
+		<form name="recherche" class="presta" >
+			<table>
+				<tr>
+					<td>Conseiller </td><td>: {{ form_widget(formAccount.account_id) }}</td>
+				</tr>
+				<tr>
+					<td>Dispositif </td><td>: {{ form_widget(formPresta.dispositif) }}</td>
+				</tr>
+				<tr>
+					<td>Statut </td><td>: {{ form_widget(formPresta.statut) }}</td>
+				</tr>
+				<tr>
+					<td title="Chercher un libellé ou une lettre de commande" >Libellé </td><td>: {{ form_widget(formPresta.intitule) }}</td>
+				</tr>
+				<tr>
+					<td colspan=2>Recherche par date</td>
+				</tr>
+				<tr>
+					<td>Date </td><td>: {{ form_widget(formPresta.champDate) }}</td>
+				</tr>
+				<tr>
+					<td>entre le </td><td>: {{ form_widget(formPresta.dateDebut) }}</td>
+				</tr>
+				<tr>
+					<td>et le </td><td>: {{ form_widget(formPresta.dateFin) }}</td>
+				</tr>
+			</table>
+			<button id="show_presta" >Chercher</button>
+		</form>
+			
+			</li>
+		</ul>
+	</section>
+
+
+	<section>
+		{% if(account.accountId.accountId == 10 or account.accountId.accountId == 13 or account.accountId.accountId == 3024)%}
+	<div class="menu">Les Options</div>
+		<ul>
+			<li style="margin-top : 10px;" >
+			<a   id="poseoption" href="./poseoption">
+			<img    src="{{ asset('bundles/lea/images/divers/plus.png') }}"  /> Poser des options
+			</a>
+			</li>
+		</ul>
+		
+		<!--<ul  >
+			<li>
+			<a href="javascript:void(0)">
+			<img  src="{{ asset('bundles/lea/images/divers/view.png') }}"  />  Lister les options
+			</a>
+			</li>
+		</ul>-->
+	</section>
+
+
+
+	<section>
+		<div class="menu">Import prestations</div>
+		<ul>
+			<li style="margin-top : 10px;">
+				<a id="import_presta" href="./import">
+					<img src="{{ asset('bundles/lea/images/divers/plus.png') }}"  />
+					Importer des prestations
+				</a>
+			</li>
+		</ul>
+	</section>
+	{% endif %}
+
+	<section>
+		{% if(account.accountId.accountId == 10 or account.accountId.accountId == 3024)%}
+	<div class="menu">Les Activités</div>
+		<ul>
+			<li style="margin-top : 10px;" >
+			<a id="activite_create" href="./activite/create">
+			<img src="{{ asset('bundles/lea/images/divers/plus.png') }}"  /> Créer une activité
+			</a>
+			</li>
+		</ul>
+		
+		<ul>
+			<li>
+			<a id="activite_show" href="./activite/show">
+			<img  src="{{ asset('bundles/lea/images/divers/view.png') }}"  /> Liste des activités
+			</a>
+			</li>
+		</ul>
+	</section>
+	<section>
+		<div class="menu">Les dispositifs</div>
+		<ul>
+			<li style="margin-top : 10px;" >
+			<a id="dispositif_create" href="./dispositif/create">
+			<img src="{{ asset('bundles/lea/images/divers/plus.png') }}"  /> Créer un dispositif
+			</a>
+			</li>
+		</ul>
+		
+		<ul>
+			<li>
+			<a id="dispositif_show" href="./dispositif/show">
+			<img  src="{{ asset('bundles/lea/images/divers/view.png') }}"  /> Liste des dispositifs
+			</a>
+			</li>
+		</ul>
+	</section>
+	<section>
+		<div class="menu">Les types de prestations</div>
+		<ul>
+			<li style="margin-top : 10px;" >
+			<a id="typeprestation_create" href="./typeprestation/create">
+			<img src="{{ asset('bundles/lea/images/divers/plus.png') }}"  /> Créer un type de prestation
+			</a>
+			</li>
+		</ul>
+		
+		<ul>
+			<li>
+			<a id="typeprestation_show" href="./typeprestation/show">
+			<img  src="{{ asset('bundles/lea/images/divers/view.png') }}"  /> Liste des types de prestations
+			</a>
+			</li>
+		</ul>
+	</section>
+	<section>
+		<div class="menu">Banque de texte</div>
+		<ul>
+			<li style="margin-top : 10px;" >
+			<a id="texte_create" href="./texte/create">
+			<img src="{{ asset('bundles/lea/images/divers/plus.png') }}"  /> Créer un texte
+			</a>
+			</li>
+		</ul>
+		
+		<ul>
+			<li>
+			<a id="texte_show" href="./texte/show">
+			<img  src="{{ asset('bundles/lea/images/divers/view.png') }}"  /> Liste des textes
+			</a>
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<div class="menu">Versions</div>
+		<ul>
+			<li style="margin-top : 10px;">
+			<a id="version_show" href="./version/show">
+			<img  src="{{ asset('bundles/lea/images/divers/view.png') }}"  /> Historique des versions
+			</a>
+			</li>
+		</ul>
+	</section>
+	{% endif %}
+	</div>
+	<div class="div_droite">
+	
+	
+	
+	</div>
+</div>
+<footer style="clear:both;text-align:center;padding:20px" >© APSIE | Presta <b>v3.1.2</b> développée par <a target="_blank" href="http://www.apsie.fr">APSIE</a></footer>
+
+
+{% endblock %}
+{% block javascripts %}
+<script>
+$(function() {
+
+$( "#EgwPresta_dateDebut" ).datepicker({ dateFormat: "dd/mm/yy" });
+$( "#EgwPresta_dateFin" ).datepicker({ dateFormat: "dd/mm/yy" });
+
+// Creation d'une activité
+$('a#activite_create').loadHtml('.div_droite');
+// Liste des activités
+$('a#activite_show').loadHtml('.div_droite');
+
+// Creation d'un dispositif
+$('a#dispositif_create').loadHtml('.div_droite');
+// Liste des activités
+$('a#dispositif_show').loadHtml('.div_droite');
+
+// Creation d'un type de prestation
+$('a#typeprestation_create').loadHtml('.div_droite');
+// Liste des types de prestation
+$('a#typeprestation_show').loadHtml('.div_droite');
+
+//Versions
+$('a#version_show').loadHtml('.div_droite');
+
+// Creation d'un texte
+$('a#texte_create').loadHtml('.div_droite');
+// Liste des types de prestation
+$('a#texte_show').loadHtml('.div_droite');
+
+// Creation de prestation
+$('a#create_presta').loadHtml('.div_droite');
+$('a#import_presta').loadHtml('.div_droite');
+
+// Pose d'options
+$('a#poseoption').loadHtml('.div_droite');
+
+
+
+$('button#show_presta').click(function()
+{
+var form = $('form[name="recherche"]').serializeArray();
+$('.div_droite').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$.ajax({
+		url:'./show',
+		dataType: "html",
+		type : "POST",
+		data : form,
+		success: function( html ) {
+		$('.div_droite').html(html);
+		}
+		});
+return false;
+});
+
+$('button#show_presta').trigger('click');
+});
+
+
+</script>
+{% endblock %}

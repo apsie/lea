@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.admin.index.buttons" template="" lang="" group="0" version="1">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+				</row>
+				<row>
+					<description/>
+				</row>
+				<row>
+					<hbox span="all" align="center">
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.admin.index.general" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column width="50%"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="field"/>
+					<description value="Default Value"/>
+				</row>
+				<row class="row">
+					<description value="Initial State"/>
+					<menulist>
+						<menupopup id="general[default_state_id]" options="Select one" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Management group"/>
+					<menulist>
+						<menupopup type="select-account" options=",groups,0" id="general[ticket_management_group]" onchange="ajax_request.assignedToGeneral('cat_assignedto','[general][ticket_assigned_to]','personne',this.value);"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Assigned To"/>
+					<menulist>
+						<menupopup id="general[ticket_assigned_to]" options="None" no_lang="1" onchange="//ajax_request.assignedToGeneral('cat_assignedto','[general][ticket_assigned_to]','personne',this.value);"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<hbox>
+						<description value="Initial Price"/>
+						<description id="label_time" no_lang="1"/>
+					</hbox>
+					<textbox id="general[initial_price]"/>
+				</row>
+				<row class="row">
+					<description value="Initial time"/>
+					<textbox id="general[initial_time]"/>
+				</row>
+				<row class="row">
+					<description value="Default text for the index"/>
+					<textbox multiline="true" id="general[TxtIndexParDefaut]"/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spid.admin.index.buttons"/>
+	</template>
+	<template id="spid.admin.index.cats" template="" lang="" group="0" version="1.002">
+		<grid width="100%" id="cats">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description align="center" value="Name"/>
+					<description value="Parent categorie" align="center"/>
+					<description value="Management group" align="center"/>
+					<description align="center" no_lang="1" options="None" value="Autoassign To"/>
+					<description value="Possible to select" align="center"/>
+					<description align="center" value="Actions"/>
+				</row>
+				<row class="row">
+					<textbox id="${row}[name]"/>
+					<menulist>
+						<menupopup type="select-cat" options="Select one,spid" id="${row}[parent]"/>
+					</menulist>
+					<menulist>
+						<menupopup type="select-account" options="None,groups,0" id="${row}[data][cat_managementgroup]" onchange="ajax_request.assignedTo('cat_assignedto','${row}','account',this.value);"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[data][cat_assignedto]" options="None" no_lang="1"/>
+					</menulist>
+					<menulist>
+						<menupopup options="Select one" id="${row}[data][possible_select]"/>
+					</menulist>
+					<button label="Delete" align="center" onclick="return confirm('you want to delete the category. are you sure?');" id="delete[$row_cont[id]]" image="delete" statustext="Delete the category"/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spid.admin.index.buttons"/>
+	</template>
+	<template id="spid.admin.index.states" template="" lang="" group="0" version="1.000">
+		<grid width="100%" id="states">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description id="state_name" options="states" value="Name"/>
+					<description id="state_description" options="states" value="Description"/>
+					<description id="state_close" options="states" value="State for close"/>
+					<description id="state_initial" options="states" value="Initial State"/>
+					<description id="state_billable" options="states" value="Billable/Not Billable"/>
+					<description id="facturation_label" options="states" value="Invoice Label"/>
+					<description value="Translation label"/>
+					<description options="states" value="Actions"/>
+				</row>
+				<row class="row">
+					<textbox id="${row}[state_name]" no_lang="1"/>
+					<textbox multiline="true" id="${row}[state_description]" no_lang="1"/>
+					<menulist>
+						<menupopup align="center" id="${row}[state_close]"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[state_initial]"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" id="${row}[state_billable]"/>
+					</menulist>
+					<textbox id="${row}[facturation_label]" no_lang="1"/>
+					<textbox align="center" id="${row}[label_traduction]"/>
+					<button label="Delete" align="center" onclick="return confirm('you want to delete the state. are you sure?');" id="delete[$row_cont[state_id]]" image="delete" statustext="Delete the state"/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spid.admin.index.buttons"/>
+	</template>
+	<template id="spid.admin.index.transitions" template="" lang="" group="0" version="1.000">
+		<grid width="100%" id="transitions">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="Name"/>
+					<description value="Description"/>
+					<description value="Source State"/>
+					<description value="Target State"/>
+					<description value="Actions"/>
+				</row>
+				<row class="row">
+					<textbox size="12" id="${row}[name]"/>
+					<textbox multiline="true" id="${row}[description]" rows="2" cols="30"/>
+					<menulist>
+						<menupopup id="${row}[source_id]" options="Select One" no_lang="1"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[target_id]" options="Select One" no_lang="1"/>
+					</menulist>
+					<button label="Delete" align="center" onclick="return confirm('you want to delete the transition. are you sure?');" id="delete[$row_cont[transition_id]]" image="delete" statustext="Delete the transition"/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spid.admin.index.buttons"/>
+	</template>
+	<template id="spid.admin.index.cannedResponse" template="" lang="" group="0" version="1.002">
+		<grid width="100%" overflow="auto">
+			<columns>
+				<column/>
+				<column/>
+				<column width="30%"/>
+			</columns>
+			<rows>
+				<row class="row" valign="top">
+					<grid width="100%" id="responses">
+						<columns>
+							<column width="30"/>
+							<column width="300"/>
+							<column width="30"/>
+							<column width="30"/>
+							<column width="5%"/>
+						</columns>
+						<rows>
+							<row class="th">
+								<description value="Name" align="center"/>
+								<description value="Standard Replies" align="center"/>
+								<description value="Close ticket" align="center"/>
+								<description value="State close" align="center"/>
+								<description value="Actions"/>
+							</row>
+							<row class="row" valign="top">
+								<textbox size="30" id="${row}[canned_name]" align="center"/>
+								<htmlarea mode="advanced" height="200" width="300" toolbar="false" id="${row}[canned_content]" align="center"/>
+								<menulist>
+									<menupopup id="${row}[close_ticket]" options="Select one"/>
+								</menulist>
+								<menulist>
+									<menupopup options="Select one" align="center" id="${row}[state_id]"/>
+								</menulist>
+								<button image="delete" label="Delete" align="center" id="delete[$row_cont[standard_reply_id]]" onclick="return confirm('you want to delete the standard reply. are you sure?');" statustext="Delete the standard reply"/>
+							</row>
+						</rows>
+					</grid>
+				</row>
+				<row>
+					<template id="spid.admin.index.buttons"/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.admin.index.mail" template="" lang="" group="0" version="1.000">
+		<grid width="100%" overflow="auto">
+			<columns>
+				<column/>
+				<column/>
+				<column width="30%"/>
+			</columns>
+			<rows>
+				<row class="row" valign="top">
+					<grid width="100%" id="mail">
+						<columns>
+							<column width="300"/>
+						</columns>
+						<rows>
+							<row class="th">
+								<description value="Mail" align="center"/>
+							</row>
+							<row class="row" valign="top">
+								<htmlarea mode="advanced" height="200" width="400" toolbar="false" id="mail_content" align="center"/>
+							</row>
+						</rows>
+					</grid>
+				</row>
+			</rows>
+		</grid>
+		<template id="spid.admin.index.buttons"/>
+	</template>
+	<template id="spid.admin.index" template="" lang="" group="0" version="1.002">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+				</row>
+				<row>
+					<tabbox span="all">
+						<tabs>
+							<tab label="General" statustext=""/>
+							<tab label="Categories" statustext=""/>
+							<tab label="States" statustext=""/>
+							<tab label="Transitions" statustext=""/>
+							<tab label="Standard Replies" statustext=""/>
+							<tab label="Mail" statustext=""/>
+						</tabs>
+						<tabpanels>
+							<template id="spid.admin.index.general"/>
+							<template id="spid.admin.index.cats"/>
+							<template id="spid.admin.index.states"/>
+							<template id="spid.admin.index.transitions"/>
+							<template id="spid.admin.index.cannedResponse"/>
+							<template id="spid.admin.index.mail"/>
+						</tabpanels>
+					</tabbox>
+				</row>
+				<row>
+					<description/>
+				</row>
+				<row>
+					<hbox span="all" align="center">
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

@@ -1,0 +1,163 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_projet.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_3; ?>
+<br/>
+<br/>
+	<div>
+<div class="save"></div>
+<table style="border:1px solid #CCC">
+<tr class="titre_outils"><td></td><td></td>
+<th class="titre_outils2" colspan="4" align="center">NOMBRE</th></tr>
+<tr class="titre_outils"><td></td><td>Salaire brut moyen actuel (mensuel)</td>
+<td>En début d'activité</td><td>1ere année</td><td>2eme année</td><td>3eme année</td></tr>
+<tr><td>Productifs</td><td align="right"><input type="hidden" id="id_bp_moyen_humainP"  value="<?php echo $this->productif['id_bp_moyen_humain']; ?>" /><input id="productifs" size="5" type="text" value="<?php echo $this->productif['salaire_brut_mensuel']; ?>" /></td><td align="right"><input value="<?php echo $this->productif['nombre_debut_activite']; ?>" id="debut_productifs" size="5" type="text" /></td><td><input value="<?php echo $this->productif['nombre_annee1']; ?>" id="un_productifs" size="5" type="text" /></td><td><input value="<?php echo $this->productif['nombre_annee2']; ?>" id="deux_productifs" size="5" type="text" /></td><td><input value="<?php echo $this->productif['nombre_annee3']; ?>" id="trois_productifs" size="5" type="text" /></td></tr>
+<tr><td>Encadrement</td><td align="right""><input type="hidden" id="id_bp_moyen_humainE" value="<?php echo $this->encadrement['id_bp_moyen_humain']; ?>" /><input id="encadrement"  size="5" type="text" value="<?php echo $this->encadrement['salaire_brut_mensuel']; ?>" /></td><td align="right"><input value="<?php echo $this->encadrement['nombre_debut_activite']; ?>" id="debut_encadrement" size="5" type="text" /></td><td><input value="<?php echo $this->encadrement['nombre_annee1']; ?>" id="un_encadrement" size="5" type="text" /></td><td><input value="<?php echo $this->encadrement['nombre_annee2']; ?>" id="deux_encadrement" size="5" type="text" /></td><td><input value="<?php echo $this->encadrement['nombre_annee3']; ?>" id="trois_encadrement" size="5" type="text" /></td></tr>
+<tr><td>Commercial</td><td align="right""><input type="hidden" id="id_bp_moyen_humainC" value="<?php echo $this->commercial['id_bp_moyen_humain']; ?>" /><input id="commercial"  size="5" type="text" value="<?php echo $this->commercial['salaire_brut_mensuel']; ?>" /></td><td align="right"><input value="<?php echo $this->commercial['nombre_debut_activite']; ?>" id="debut_commercial" size="5" type="text" /></td><td><input value="<?php echo $this->commercial['nombre_annee1']; ?>" id="un_commercial" size="5" type="text" /></td><td><input value="<?php echo $this->commercial['nombre_annee2']; ?>" id="deux_commercial" size="5" type="text" /></td><td><input value="<?php echo $this->commercial['nombre_annee3']; ?>" id="trois_commercial" size="5" type="text" /></td></tr>
+<tr><td>Administration et Direction</td><td align="right""><input type="hidden" id="id_bp_moyen_humainA" value="<?php echo $this->administration['id_bp_moyen_humain']; ?>" /> <input id="administration"  size="5" type="text" value="<?php echo $this->administration['salaire_brut_mensuel']; ?>" /></td><td align="right"><input value="<?php echo $this->administration['nombre_debut_activite']; ?>" id="debut_administration"  size="5" type="text" /></td><td><input  value="<?php echo $this->administration['nombre_annee1']; ?>" id="un_administration"   size="5" type="text" /></td><td><input value="<?php echo $this->administration['nombre_annee2']; ?>" id="deux_administration" size="5" type="text" /></td><td><input value="<?php echo $this->administration['nombre_annee3']; ?>" id="trois_administration" size="5" type="text" /></td></tr>
+<tr><th class="titre_outils2" colspan="3" align="center">Masse salariale annuelle en €(Charges sociales incluses)
+</th><td id="ms_un"></td><td id="ms_deux"></td><td id="ms_trois"></td></tr></table>
+
+<br/><div style="float:left;width : 300px;"><input onclick="saveData()" type="button" value="Enregistrer" class="button" /></div><div style="float:left"><img src="<?php echo $this->baseUrl();?>/dompdf/www/test/images/<?php echo unserialize($_SESSION['session']->bp)->id_bp; ?>_moyen_humain.png" /></div>
+	</div>
+
+</div>
+
+<script>
+calculMs();
+$('#productifs').change(function() {
+	calculMs();
+	});
+$('#encadrement').change(function() {
+	calculMs();
+	});
+$('#commercial').change(function() {
+	calculMs();
+	});
+$('#administration').change(function() {
+	calculMs();
+	});
+
+$('#un_productifs').change(function() {
+	calculMs();
+	});
+$('#un_encadrement').change(function() {
+	calculMs();
+	});
+$('#un_commercial').change(function() {
+	calculMs();
+	});
+$('#un_administration').change(function() {
+	calculMs();
+	});
+
+$('#deux_productifs').change(function() {
+	calculMs();
+	});
+$('#deux_encadrement').change(function() {
+	calculMs();
+	});
+$('#deux_commercial').change(function() {
+	calculMs();
+	});
+$('#deux_administration').change(function() {
+	calculMs();
+	});
+
+$('#trois_productifs').change(function() {
+	calculMs();
+	});
+$('#trois_encadrement').change(function() {
+	calculMs();
+	});
+$('#trois_commercial').change(function() {
+	calculMs();
+	});
+$('#trois_administration').change(function() {
+	calculMs();
+	});
+
+var ms_un;
+var ms_deux;
+var ms_trois;
+function calculMs()
+{
+/*var msProductifsDebut = $('#productifs').val() * 12 * $('#debut_productifs').val();
+var msEncadrementDebut = $('#encadrement').val() * 12 * $('#debut_encadrement').val();
+var msCommercialDebut = $('#commercial').val() * 12 * $('#debut_commercial').val();
+var msAdministrationDebut = $('#administration').val() * 12 * $('#debut_administration').val();*/
+
+var msProductifsun = $('#productifs').val() * 12 * $('#un_productifs').val();
+var msEncadrementun = $('#encadrement').val() * 12 * $('#un_encadrement').val();
+var msCommercialun = $('#commercial').val() * 12 * $('#un_commercial').val();
+var msAdministrationun = $('#administration').val() * 12 * $('#un_administration').val();
+
+var msProductifsdeux = $('#productifs').val() * 12 * $('#deux_productifs').val();
+var msEncadrementdeux = $('#encadrement').val() * 12 * $('#deux_encadrement').val();
+var msCommercialdeux = $('#commercial').val() * 12 * $('#deux_commercial').val();
+var msAdministrationdeux = $('#administration').val() * 12 * $('#deux_administration').val();
+
+var msProductifstrois = $('#productifs').val() * 12 * $('#trois_productifs').val();
+var msEncadrementtrois = $('#encadrement').val() * 12 * $('#trois_encadrement').val();
+var msCommercialtrois = $('#commercial').val() * 12 * $('#trois_commercial').val();
+var msAdministrationtrois = $('#administration').val() * 12 * $('#trois_administration').val();
+
+ms_un = msProductifsun+msCommercialun+msEncadrementun+msAdministrationun;
+ms_deux =msProductifsdeux+msCommercialdeux+msEncadrementdeux+msAdministrationdeux;
+ms_trois = msProductifstrois+msCommercialtrois+msEncadrementtrois+msAdministrationtrois;
+$('#ms_un').html(ms_un+'€');
+$('#ms_deux').html(ms_deux+'€');
+$('#ms_trois').html(ms_trois+'€');
+
+}
+
+function saveData()
+{
+	$.ajax({
+		url : "../../ajax/ajax/?noTemplate=1",
+		dataType : "json",
+		data : {
+		id_bp_moyen_humainP : $('#id_bp_moyen_humainP').val(),
+		id_bp_moyen_humainE : $('#id_bp_moyen_humainE').val(),
+		id_bp_moyen_humainC : $('#id_bp_moyen_humainC').val(),
+		id_bp_moyen_humainA : $('#id_bp_moyen_humainA').val(),
+		salaireProductif : 	$('#productifs').val(),
+		salaireEncadrement : 	$('#encadrement').val(),
+		salaireCommercial : 	$('#commercial').val(),
+		salaireAdministration : 	$('#administration').val(),
+		debutProductif : 	$('#debut_productifs').val(),	
+	debutEncadrement : 	$('#debut_encadrement').val(),
+	debutCommercial : 	$('#debut_commercial').val(),
+	debutAdministration : 	$('#debut_administration').val(),
+	unProductif : 	$('#un_productifs').val(),	
+	unEncadrement : 	$('#un_encadrement').val(),
+	unCommercial : 	$('#un_commercial').val(),
+	unAdministration: 	$('#un_administration').val(),
+	deuxProductif : 	$('#deux_productifs').val(),	
+	deuxEncadrement : 	$('#deux_encadrement').val(),
+	deuxCommercial : 	$('#deux_commercial').val(),
+	deuxAdministration : 	$('#deux_administration').val(),
+	troisProductif : 	$('#trois_productifs').val(),	
+	troisEncadrement : 	$('#trois_encadrement').val(),
+	troisCommercial : 	$('#trois_commercial').val(),
+	troisAdministration : 	$('#trois_administration').val(),
+	ms_un : ms_un,
+	ms_deux : ms_deux,
+	ms_trois : ms_trois,
+	
+		action : "ajouterMoyenHumain"
+		},success: function(data){
+		}
+	});
+	$('.save').html('Données sauvegardées');
+	setTimeout("window.location.reload()",2000);	
+}
+</script>

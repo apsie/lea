@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.admin.buttons" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiclient.admin.general" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column width="35%"/>
+				<column width="25%"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="field" class="bold"/>
+					<description value="Value" class="bold"/>
+					<description value="Comment" class="bold"/>
+				</row>
+				<row class="row">
+					<description value="Default provider"/>
+					<menulist>
+						<menupopup id="DefaultProvider" options="Select One"/>
+					</menulist>
+					<description value="Default provider (used for PDF)"/>
+				</row>
+				<row class="row">
+					<description value="Management group"/>
+					<menulist>
+						<menupopup type="select-account" id="ManagementGroup" onchange="ajax_request.assignedToGeneral('cat_assignedto','[general][ticket_assigned_to]','personne',this.value);" options="Select One,groups,0"/>
+					</menulist>
+					<description value="Management group for Spiclient"/>
+				</row>
+				<row class="row">
+					<description value="Client management group"/>
+					<menulist>
+						<menupopup type="select-account" id="ManageClient" options="Select One,groups,0"/>
+					</menulist>
+					<description value="Group able to manage clients"/>
+				</row>
+				<row class="row">
+					<description value="Contract management group"/>
+					<menulist>
+						<menupopup type="select-account" id="ManageContract" options="Select One,groups,0"/>
+					</menulist>
+					<description value="Group able to manage contracts"/>
+				</row>
+				<row class="row">
+					<description value="Default user"/>
+					<menulist>
+						<menupopup type="select-account" id="DefaultUser"/>
+					</menulist>
+					<description value="Default user for new group"/>
+				</row>
+				<row class="row">
+					<description value="Provider type"/>
+					<menulist>
+						<menupopup id="ProviderType" options="Select One"/>
+					</menulist>
+					<description value="Type for providers"/>
+				</row>
+				<row class="row">
+					<description value="Client type"/>
+					<menulist>
+						<menupopup id="ClientType" options="Select One"/>
+					</menulist>
+					<description value="Type for clients"/>
+				</row>
+				<row class="row">
+					<description value="Seller type"/>
+					<menulist>
+						<menupopup id="SellerType" options="Select One"/>
+					</menulist>
+					<description value="Type for sellers"/>
+				</row>
+				<row class="row">
+					<description value="Prospect type"/>
+					<menulist>
+						<menupopup id="ProspectType" options="Select One"/>
+					</menulist>
+					<description value="Type for prospects"/>
+				</row>
+				<row class="row">
+					<description value="Free field 1"/>
+					<textbox id="Libre1"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Free field 2"/>
+					<textbox id="Libre2"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Free field 3"/>
+					<textbox id="Libre3"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Free field 4"/>
+					<textbox id="Libre4"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Free field 5"/>
+					<textbox id="Libre5"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="PDF Title"/>
+					<textbox id="PDFTitle"/>
+					<description/>
+				</row>
+				<row class="th">
+					<description value="Client configuration" span="all"/>
+				</row>
+				<row class="row">
+					<description value="Allow removal"/>
+					<checkbox id="ClientRemoval"/>
+					<description value="Allow users to delete clients"/>
+				</row>
+				<row class="row">
+					<description value="Client seller"/>
+					<menulist>
+						<menupopup type="select-account" id="ClientSeller" options="Select One,groups,0"/>
+					</menulist>
+					<description value="Group seller for clients"/>
+				</row>
+				<row class="row">
+					<description value="Allow seller to access all clients"/>
+					<checkbox id="SellerAccessClient"/>
+					<description value="Seller can access all clients"/>
+				</row>
+				<row class="row">
+					<description value="... only their own"/>
+					<checkbox id="SellerOwnAccessClient"/>
+					<description value="Seller only access their own clients"/>
+				</row>
+				<row class="row">
+					<description value="Allow sellers to add clients"/>
+					<checkbox id="SellerAddClient"/>
+					<description value="Seller will be able to add clients"/>
+				</row>
+				<row class="th">
+					<description value="Contract configuration" span="all"/>
+				</row>
+				<row class="row">
+					<description value="Allow removal"/>
+					<checkbox id="ContractRemoval"/>
+					<description value="Allow users to delete contracts"/>
+				</row>
+				<row class="row">
+					<description value="Contract seller"/>
+					<menulist>
+						<menupopup type="select-account" id="ContractSeller" options="Select One,groups,0"/>
+					</menulist>
+					<description value="Group seller for contracts"/>
+				</row>
+				<row class="row">
+					<description value="Allow seller to access all contracts"/>
+					<checkbox id="SellerAccessContract"/>
+					<description value="Seller can access all contracts"/>
+				</row>
+				<row class="row">
+					<description value="... only their own"/>
+					<checkbox id="SellerOwnAccessContract"/>
+					<description value="Seller only access their own contracts"/>
+				</row>
+				<row class="row">
+					<description value="Allow sellers to add contracts"/>
+					<checkbox id="SellerAddContract"/>
+					<description value="Seller will be able to add contracts"/>
+				</row>
+				<row class="row">
+					<description value="Default role for contacts"/>
+					<menulist>
+						<menupopup id="default_role_contract" options="None"/>
+					</menulist>
+					<description/>
+				</row>
+				<row>
+					<button label="Save" id="button[save]"/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spiclient.admin.buttons"/>
+	</template>
+</overlay>

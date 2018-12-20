@@ -1,0 +1,32 @@
+body 
+{
+	background-image:url(../images/body-background.png);
+	font-size: 11px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding:0px;
+	margin-top: 5px;
+}
+
+input,button
+{
+	font-size: 12px; 
+	color: #006699; 
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px #bbbbbb solid;
+}
+select 
+{
+	font-size: 11px; 
+	color: #006699; 
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px #bbbbbb solid;
+}
+
+
+textarea
+{
+	font-size: 11px; 
+	color: #006699; 
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px #bbbbbb ;
+}

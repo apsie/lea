@@ -1,0 +1,203 @@
+_presta:
+    pattern:  /presta/{id}
+    defaults: { _controller: LeaPrestaBundle:Default:index }
+
+_presta_create:
+    pattern:  /presta/create
+    defaults: { _controller: LeaPrestaBundle:Presta:create }  
+    
+_presta_show:
+    pattern:  /presta/show
+    defaults: { _controller: LeaPrestaBundle:Presta:show }  
+ 
+_presta_edit:
+    pattern:  /presta/edit/{id}
+    defaults: { _controller: LeaPrestaBundle:Presta:edit }  
+    
+_presta_do_oe:
+    pattern:  /presta/do/oe
+    defaults: { _controller: LeaPrestaBundle:Presta:oe }  
+    
+_presta_do_opcre:
+    pattern:  /presta/do/opcre
+    defaults: { _controller: LeaPrestaBundle:Presta:opcre }  
+    
+_presta_do_epce:
+    pattern:  /presta/do/epce
+    defaults: { _controller: LeaPrestaBundle:Presta:epce }  
+    
+_presta_typepresta:
+    pattern:  /presta/do/typepresta
+    defaults: { _controller: LeaPrestaBundle:Presta:typepresta }  
+             
+_presta_disponibilite:
+    pattern:  /presta/disponibilite
+    defaults: { _controller: LeaPrestaBundle:Rdv:disponibilite }
+
+_presta_disponibilite_rdv:
+    pattern:  /presta/disponibilite/listrdv
+    defaults: { _controller: LeaPrestaBundle:Rdv:listrdv }
+    
+_presta_disponibilite_rdv_presta:
+    pattern:  /presta/disponibilite/listrdvpresta
+    defaults: { _controller: LeaPrestaBundle:Rdv:listrdvpresta }
+
+_presta_disponibilite_rdv_check:
+    pattern:  /presta/disponibilite/rdvcheck
+    defaults: { _controller: LeaPrestaBundle:Rdv:rdvCheck }
+
+_presta_confirmation:
+    pattern:  /presta/confirmation
+    defaults: { _controller: LeaPrestaBundle:Rdv:confirmation }
+
+_presta_confirmation_check:
+    pattern:  /presta/confirmationcheck
+    defaults: { _controller: LeaPrestaBundle:Rdv:confirmationCheck }
+
+_presta_poseoption:
+    pattern:  /presta/poseoption
+    defaults: { _controller: LeaPrestaBundle:Rdv:poseoption }
+    
+_presta_listposeoption:
+    pattern:  /presta/listposeoption
+    defaults: { _controller: LeaPrestaBundle:Rdv:listposeoption }
+    
+_presta_optioncheck:
+    pattern:  /presta/optioncheck
+    defaults: { _controller: LeaPrestaBundle:Rdv:optioncheck }
+    
+_presta_activite_create:
+    pattern:  /presta/activite/create
+    defaults: { _controller: LeaPrestaBundle:Activite:create }
+
+_presta_activite_show:
+    pattern:  /presta/activite/show
+    defaults: { _controller: LeaPrestaBundle:Activite:show }
+
+_presta_activite_edit:
+    pattern:  /presta/activite/edit/{id}
+    defaults: { _controller: LeaPrestaBundle:Activite:edit }
+    
+_presta_texte_create:
+    pattern:  /presta/texte/create
+    defaults: { _controller: LeaPrestaBundle:Texte:create }
+
+_presta_texte_show:
+    pattern:  /presta/texte/show
+    defaults: { _controller: LeaPrestaBundle:Texte:show }
+
+_presta_texte_edit:
+    pattern:  /presta/texte/edit/{id}
+    defaults: { _controller: LeaPrestaBundle:Texte:edit }
+        
+_presta_dispositif_create:
+    pattern:  /presta/dispositif/create
+    defaults: { _controller: LeaPrestaBundle:Dispositif:create }
+
+_presta_dispositif_show:
+    pattern:  /presta/dispositif/show
+    defaults: { _controller: LeaPrestaBundle:Dispositif:show }
+
+_presta_dispositif_edit:
+    pattern:  /presta/dispositif/edit/{id}
+    defaults: { _controller: LeaPrestaBundle:Dispositif:edit }
+
+_presta_typeprestation_create:
+    pattern:  /presta/typeprestation/create
+    defaults: { _controller: LeaPrestaBundle:TypePrestation:create }
+
+_presta_typeprestation_show:
+    pattern:  /presta/typeprestation/show
+    defaults: { _controller: LeaPrestaBundle:TypePrestation:show }
+    
+_presta_typeprestation_edit:
+    pattern:  /presta/typeprestation/edit/{id}
+    defaults: { _controller: LeaPrestaBundle:TypePrestation:edit }
+
+
+_presta_version_show:
+    pattern:  /presta/version/show
+    defaults: { _controller: LeaPrestaBundle:Version:show }
+    
+
+               
+_presta_data:
+    pattern:  /presta/data
+    defaults: { _controller: LeaPrestaBundle:Presta:data}
+        
+_presta_ajax_getcp:
+    pattern:  /presta/a/getcp
+    defaults: { _controller: LeaPrestaBundle:Ajax:getCp }  
+        
+_presta_ajax_getcontact:
+    pattern:  /presta/a/getcontact
+    defaults: { _controller: LeaPrestaBundle:Ajax:getContact }
+
+_presta_ajax_getaddressbook:
+    pattern:  /presta/a/getaddressbook
+    defaults: { _controller: LeaPrestaBundle:Ajax:getAddressbook }
+    
+_presta_ajax_getorganisation:
+    pattern:  /presta/a/getorganisation
+    defaults: { _controller: LeaPrestaBundle:Ajax:getOrganisation }
+
+_presta_ajax_getcoderome:
+    pattern:  /presta/a/getcoderome
+    defaults: { _controller: LeaPrestaBundle:Ajax:getCoderome }
+    
+_presta_download_oe:
+    pattern:  /presta/download/oe/{id_presta}/{annexe}
+    defaults: { _controller: LeaPrestaBundle:Download:oe }
+    
+_presta_download_opcre:
+    pattern:  /presta/download/opcre/{id_presta}/{annexe}
+    defaults: { _controller: LeaPrestaBundle:Download:opcre }
+
+_presta_download_epce:
+    pattern:  /presta/download/epce/{id_presta}/{annexe}
+    defaults: { _controller: LeaPrestaBundle:Download:epce }
+
+_presta_download_rsa1:
+    pattern:  /presta/download/rsa1/{id_presta}/{annexe}
+    defaults: { _controller: LeaPrestaBundle:Download:rsa1 }
+
+presta_download_pdi:
+    pattern:  /presta/download/pdi/{id_presta}/{annexe}
+    defaults: { _controller: LeaPrestaBundle:Download:pdi }
+
+_presta_contact_create:
+    pattern:  /presta/contact/create
+    defaults: { _controller: LeaPrestaBundle:Contact:create }  
+
+_presta_contact_formparcourspro:
+    pattern:  /presta/contact/formparcourspro
+    defaults: { _controller: LeaPrestaBundle:Contact:formparcourspro }  
+      
+                     
+_welcome:
+    pattern:  /
+    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
+_demo_secured:
+    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
+    type:     annotation
+
+_demo:
+    resource: "@AcmeDemoBundle/Controller/DemoController.php"
+    type:     annotation
+    prefix:   /demo
+
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+
+_configurator:
+    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
+    prefix:   /_configurator
+
+_main:
+    resource: routing.yml

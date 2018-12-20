@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.client.edit.contact" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="210" overflow="auto" id="contact">
+			<columns>
+				<column width="95"/>
+				<column/>
+				<column width="70"/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row" disabled="@no_add">
+					<description value="New"/>
+					<link-entry id="compte" options="addressbook"/>
+					<textbox id="role" class="selectRole"/>
+					<button label="Add" id="button[add_contact]" align="center"/>
+					<description/>
+				</row>
+				<row class="th">
+					<description/>
+					<description value="Contact name"/>
+					<description value="Role"/>
+					<description/>
+					<description value="Actions"/>
+				</row>
+				<row valign="top">
+					<image readonly="true" src="pdf.png"/>
+					<link-entry rows="1" cols="2" id="${row}[title]" no_lang="1" readonly="true" options="addressbook"/>
+					<description id="${row}[role]"/>
+					<description/>
+					<button rows="1" cols="2" id="delete[$row_cont[delete_id]]" align="center" label="Delete" onchange="1" image="delete"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.selectRole select { width: 100%; }
+		</styles>
+	</template>
+</overlay>

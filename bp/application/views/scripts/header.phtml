@@ -1,0 +1,22 @@
+ <div class="header"><img src="<?php echo $this->baseUrl();?>/images/logo_apsie_bp_petit.png" /> <font color='orange'>APSIE</font> Business plan<div class="conseiller">Conseiller connecté : <img src="<?php echo $this->baseUrl();?>/images/connect.png" /> <?php echo $this->employe; ?></div></div> 
+ <div  class="menu_header"><ul id="nav">
+    <li><a href="#">Fichier</a>
+	<ul>
+              <li> <a href="<?php echo $this->baseUrl();?>/impression/edition/">Edition</a></li>
+	</ul>	
+    </li>
+   
+			
+  
+      <li><a href="#">Outils</a><ul>
+              <li> <a style="cursor:pointer" onclick="window.open('<?php echo $this->baseUrl();?>/index/gestionfamillesproduits','Gestion des familles de produits','menubar=no, status=no, scrollbars=yes, menubar=no, width=700, height=400');" > <img src="<?php echo $this->baseUrl();?>/images/famille.png" /> Gestion des familles de produits</a></li>
+                <li> <a style="cursor:pointer" onclick="window.open('<?php echo $this->baseUrl();?>/index/gestiongammesproduits','Gestion des gammes de produits','menubar=no, status=no, scrollbars=yes, menubar=no, width=700, height=400');" ><img src="<?php echo $this->baseUrl();?>/images/gamme.png" /> Gestion des gammes de produits</a></li>
+                <li> <a style="cursor:pointer" onclick="window.open('<?php echo $this->baseUrl();?>/index/gestionproduits','Gestion des produits','menubar=no, status=no, scrollbars=yes, menubar=no, width=900, height=400');" ><img src="<?php echo $this->baseUrl();?>/images/produit.png" /> Gestion des produits</a></li>
+		 <!--  <li> <a style="cursor:pointer" onclick="window.open('<?php echo $this->baseUrl();?>/index/gestionstock','Gestion des stocks des produits','menubar=no, status=no, scrollbars=yes, menubar=no, width=700, height=400');" ><img src="<?php echo $this->baseUrl();?>/images/stock.png" /> Gestion des stocks des produits</a></li>
+		--> 
+			
+	</ul>		
+    </li> <li><a href="<?php echo $this->url(array('controller'=>'aide','action'=>'index')); ?>">Aide</a></li>
+     
+</ul>
+</div>

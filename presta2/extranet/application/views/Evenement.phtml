@@ -1,0 +1,125 @@
+<div class="corp">
+
+<div style="text-align:left;width:99%" class="contenu">
+<div class="univers">Evènement</div>
+<div style=""  class="div_menu_droit">
+<div class="boutton_contact"><button onclick="Template_.addEvent()
+"  style="font-size:10px">Créer un évènement</button> <button onclick="Evenement.getListEvenement()"  style="font-size:10px">Actualiser</button></div> 
+<div class="page"></div>
+<div id="liste_evenement" /></div>
+
+</div>
+</div></div>
+<div style="display:none" id="addEvent"  title="">
+
+
+
+
+
+
+<div style=" width:750px; height:650px; padding:10px;"><form name="form"  method="get"><input type="hidden" name="domain" value="default" /><table  style="border:1px solid #CCC; background-color:#FFF; padding:10px;"><tr>
+  <td>Type de contact</td><td><select id="cat_id"><option value=""></option>
+<?php for($i=0;$i<count($this->listCategorie);$i++)
+{
+	echo'<option value="'.$this->listCategorie[$i]['cat_id'].'">'.utf8_encode($this->listCategorie[$i]['cat_name']).'</option>';
+}?>
+</select></td><td width="132">Fonction</td><td width="158"><input  name="fonction" id="fonction" /></td></tr><tr><tr>
+
+    <td>Civilit&eacute;</td>
+    <td><select id="civilite"><option></option><option>Monsieur</option><option>Madame</option><option>Mademoiselle</option></select></td><td><input id="id_contact" type="hidden" /></td><td></td></tr><tr><td>Nom</td><td><input id="nom"  onkeyup="lookup(this.value,'nom');"  autocomplete="off" name="nom" /> <img src="images/ico/loupe.png"  title="Champ de recherche..." /></td><td>Pr&eacute;nom</td><td><input id="prenom"  autocomplete="off" name="prenom" /><div class="suggestionsBox" id="suggestions_" style="display: none;">
+        <div class="suggestionList" id="autoSuggestionsList_"></div>
+      </div></td></tr><tr>
+
+    <td width="199">Tel domicile</td><td width="269"><input name="tel_domicile" id="tel_domicile"/></td>
+    <td>Tel perso</td><td><input id="tel_perso" name="tel_perso" /></td></tr><tr>
+    <td width="199">Tel pro</td><td width="269"><input name="tel_pro" id="tel_pro"/></td>
+    <td>Fax</td><td><input id="fax" name="fax" /></td></tr><tr>
+    <td width="199">Email pro</td>
+    <td width="269"><input name="email_pro" id="email_pro" /></td>
+
+    <td>Email perso</td>
+    <td><input name="email_perso" id="email_perso"/></td></tr>
+    </table><br/><table  style="border:1px solid #CCC;display:none; background-color:#FFF; padding:10px;"><tr>
+  <td width="198">Cat&eacute;gorie de l'organisme</td><td width="272"><select name="cat_id_organisme"><option></option>
+  <?php for($i=0;$i<count($this->listCategorie_org);$i++)
+{
+	
+		echo'<option '.$check.' value="'.$this->listCategorie_org[$i]['cat_id'].'">'.utf8_encode($this->listCategorie_org[$i]['cat_name']).'</option>';
+}?></select></td><td width="132"></td><td width="156"></td></tr><tr>
+
+  <td width="198">Soci&eacute;t&eacute;</td><td><input type="text"  id="societe" onblur="fill();" onkeyup="lookup(this.value,'societe');" autocomplete="off" name="societe" id="societe" value=""/> <img src="images/ico/loupe.png"  title="Champ de recherche..." /> <div class="suggestionsBox" id="suggestions_org" style="display: none;">
+        <div class="suggestionList" id="autoSuggestionsList_org"> &nbsp; </div>
+      </div></td><td></td><td></td></tr><tr>
+  <td width="198">Secteur d'activit&eacute;</td>
+  <th align="left" colspan="3"><select name="secteur_activite" >
+
+  
+   <?php
+	echo $this->listActivite;
+?>
+    
+  </select></th></tr></table><br/><table  style="border:1px solid #CCC; background-color:#FFF; padding:10px;"><tr><td width="203">Type d'évènement</td><td><select id="type_evenement"><option></option>
+      <option >Appel téléphonique</option>
+
+      
+      <option> Courrier postal</option>
+      
+      <option >Email</option>
+      
+      <option >Note</option>
+      
+      <option >Tâche</option>
+      </select></td><td></td><td></td></tr><tr>
+      <td width="023">Objet</td>
+
+      <td width="209"><select id="objet"><option></option><option>Absence / Report de RDV</option><option>Demande d'information</option><option>Demande de rappel</option><option>Demande de rendez-vous</option><option>Tâche en interne</option><option>Autre</option></select></td><td width="201"></td><td width="155"></td></tr><tr>
+ </tr></table><br/><table style="border:1px solid #CCC; background-color:#FFF; padding:10px;" ><tr>
+
+  <td width="201">Observations</td>
+  <td width="565"><textarea id="observations"  style="border:1px solid #CCC; font-size:11px; color: #39F"  cols="60" rows="3"></textarea></td></tr><tr>
+  <td width="201">&nbsp;</td><td width="565"><input checked="checked" name="degre" type="radio" value="Normal" />
+Normal
+  <input name="degre" type="radio" value="Urgent" />
+Urgent</td></tr>
+  <tr>
+    <td>Transmis &agrave; </td>
+
+    <td><select id="id_referent"><option></option><?php for($i=0;$i<count($this->utilisateurs);$i++)
+{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?></select> </td>
+
+  </tr>
+</table>
+<br/><center> <input type="button" onclick="Evenement.addEvent(this.form.degre)" value="Enregistrer" name="enregistrer" /></center>
+</div></form>
+		 							</td>
+								</tr>
+							</table>
+							</div>
+		  	<!-- Applicationbox Column -->
+		  	</td>
+
+			<td width=8 class="calRightShadow"></td>
+		 </tr>
+	</table>
+	<table border=0 width=100% cellpadding=0 cellspacing=0>
+		<tr>
+			<td>
+				<table width=100% cellpadding=0 cellspacing=0>
+					<tr class="calRowBottomShadow">
+						<td width=8 class="calLtLtFoot"></td>
+
+						<td width=8 class="calLtMidFoot"></td>
+						<td>&nbsp;</td>
+						<td width=8 class="calRtMidFoot"></td>
+						<td width=8 class="calRtRtFoot"></td>
+					</tr>	
+				</table>
+			</td>
+		</tr>
+	</table>
+
+</div>
+</div></div>
+<script>
+Evenement.getListEvenement();
+</script>

@@ -1,0 +1,114 @@
+<?php
+/**
+ * eGroupWare
+ *
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @package infolog
+ * @subpackage importexport
+ * @link http://www.egroupware.org
+ * @author Nathan Gray
+ * @copyright Nathan Gray
+ * @version $Id: class.infolog_export_ical.inc.php 40535 2012-10-16 18:45:13Z nathangray $
+ */
+
+/**
+ * export iCal plugin of infolog
+ */
+class infolog_export_ical extends infolog_export_csv {
+
+	/**
+	 * Exports records as defined in $_definition
+	 *
+	 * @param egw_record $_definition
+	 */
+	public function export( $_stream, importexport_definition $_definition) {
+		$options = $_definition->plugin_options;
+		$this->bo = new infolog_bo();
+
+		$limit_exception = bo_merge::is_export_limit_excepted();
+		if (!$limit_exception) $export_limit = bo_merge::getExportLimit('infolog');
+
+		$ids = array();
+		$query = array();
+		switch($options['selection'])
+		{
+			case 'search':
+				$query = array_merge($GLOBALS['egw']->session->appsession('session_data','infolog'), $query);
+				// Fall through
+			case 'all':
+				$query['num_rows'] = $export_limit ? $export_limit : -1;
+				$query['start'] = 0;
+				$this->selection = $this->bo->search($query);
+
+				break;
+			default:
+				$ids = $this->selection = explode(',',$options['selection']);
+				break;
+		}
+
+		$boical = new infolog_ical();
+		fwrite($_stream, $boical->exportvCalendar($this->selection));
+	}
+
+	/**
+	 * returns translated name of plugin
+	 *
+	 * @return string name
+	 */
+	public static function get_name() {
+		return lang('Infolog iCal export');
+	}
+
+	/**
+	 * returns translated (user) description of plugin
+	 *
+	 * @return string descriprion
+	 */
+	public static function get_description() {
+		return lang("Exports in iCal format.");
+	}
+
+	/**
+	 * retruns file suffix for exported file
+	 *
+	 * @return string suffix
+	 */
+	public static function get_filesuffix() {
+		return 'ics';
+	}
+
+	public static function get_mimetype() {
+		return 'text/infolog';
+	}
+
+	/**
+	 * Suggest a file name for the downloaded file
+	 * No suffix
+	 */
+	public function get_filename()
+	{
+		if(is_array($this->selection) && count($this->selection) == 1)
+		{
+			return $this->bo->link_title(current($this->selection));
+		}
+		return false;
+	}
+
+	/**
+	 * return html for options.
+	 *
+	 */
+	public function get_options_etpl() {
+	}
+
+	/**
+	 * returns selectors of this plugin
+	 *
+	 */
+	public function get_selectors_etpl() {
+		return array(
+                        'name'  => 'infolog.export_csv_selectors',
+                        'content'       => 'search'
+                );
+	}
+}

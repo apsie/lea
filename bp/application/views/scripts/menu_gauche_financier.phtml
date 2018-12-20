@@ -1,0 +1,46 @@
+<!--corps-->
+<div class="contenu_redac">
+<br/>
+<?php echo $this->render('navigation_rapide.phtml'); ?>
+ <br/>  		
+<div class="titre_outils">Menu : Dossier financier</div>        
+       
+         <div class="menu_g"><table><tr><td >1. <a onclick="accordeon('div_1')">LES BESOINS DE FINANCEMENT</a></td></tr></table>
+        </div>
+        
+
+            <div id="div_1" class="s_menu_g" style="display:none">
+				<div>1.1.<a href="<?php  echo $this->baseUrl();?>/redaction/titrefinancier11/?div=div_1" >Besoin de financement global</a></div>
+				<div>1.2.<a  href="<?php  echo $this->baseUrl();?>/redaction/titrefinancier12/?div=div_1" >Les demandes de financement</a></div>
+			
+			
+	</div>
+	<div class="menu_g"><table><tr><td >2. <a href="<?php  echo $this->baseUrl();?>/redaction/titrefinancier2/">COMPOSITION DU DOSSIER FINANCIER</a></td></tr></table>
+        </div>	
+ 			
+</div>
+
+<script>
+
+function accordeon(div)
+{
+	if($('#'+div).attr('alt')=="Ouvert")
+	{$('#'+div).hide('highlight');
+	$('#'+div).attr('alt','Fermer');
+	}
+	else
+	{$('#'+div).show('highlight');
+	$('#'+div).attr('alt','Ouvert');
+	}
+
+
+}
+
+</script>
+<?php 
+		if(isset($_GET['div']) or isset($_GET['div']))
+		{
+		echo'<script>accordeon("'.$_GET['div'].'")</script>';
+		
+		}
+		?>

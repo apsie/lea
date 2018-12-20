@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.facture.mail" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Invoice number"/>
+					<textbox id="facture_id" readonly="true"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description class="bold" value="From"/>
+					<textbox id="sendby" size="80" maxlength="80"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description value="To" class="bold"/>
+					<textbox id="sendto" size="80" maxlength="80"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description value="subject" class="bold"/>
+					<textbox id="subject" size="80" maxlength="80"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description value="Attachment" class="bold"/>
+					<textbox id="attachment" size="80" maxlength="80" readonly="true"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold top" value="Message"/>
+					<htmlarea mode="false" height="250" width="500" toolbar="false" id="message" span="all"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<hbox span="all" class="noPrint" align="center">
+						<button label="Send" id="button[send]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.bold
+{
+font-weight:bold;
+}
+
+.italic
+{
+font-style:italic;
+}
+
+.top
+{
+vertical-align:top;
+}
+		</styles>
+	</template>
+</overlay>

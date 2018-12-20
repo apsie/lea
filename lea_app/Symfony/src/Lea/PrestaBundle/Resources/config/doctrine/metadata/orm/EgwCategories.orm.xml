@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwCategories" table="egw_categories">
+    <id name="catId" type="integer" column="cat_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="catMain" type="integer" column="cat_main" nullable="false"/>
+    <field name="catParent" type="integer" column="cat_parent" nullable="false"/>
+    <field name="catLevel" type="smallint" column="cat_level" nullable="false"/>
+    <field name="catOwner" type="string" column="cat_owner" length="255" nullable="false"/>
+    <field name="catAccess" type="string" column="cat_access" length="7" nullable="true"/>
+    <field name="catAppname" type="string" column="cat_appname" length="50" nullable="false"/>
+    <field name="catName" type="string" column="cat_name" length="150" nullable="false"/>
+    <field name="catDescription" type="string" column="cat_description" length="255" nullable="false"/>
+    <field name="catData" type="text" column="cat_data" nullable="true"/>
+    <field name="lastMod" type="bigint" column="last_mod" nullable="false"/>
+  </entity>
+</doctrine-mapping>

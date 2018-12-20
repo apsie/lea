@@ -1,0 +1,153 @@
+/**
+ * EGroupware: CSS with less preprocessor
+ *
+ * Please do NOT change app.css directly, instead change app.less and compile it!
+ *
+ * TIMESHEET
+ *
+ * @link http://www.egroupware.org
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @author Stefan Reinhard <stefan.reinhard@pixelegg.de>
+ * @package timesheet
+ * @version $Id: app.less 52465 2015-04-10 12:56:07Z hnategh $
+ */
+
+
+@import (reference) "../../../pixelegg/less/definitions.less";
+@import (less) "../default/app.css";
+
+// iframe
+
+
+#timesheet-index {
+
+// Favoriten
+div.et2_dropdown {
+                top: 0px;
+                }
+
+    .nextmatch_header{
+
+        div.ui-helper-clearfix,
+        div.ui-helper-reset{
+
+                height: 0px;
+
+                // rechte Box mit add
+
+                div.et2_hbox_right{
+                    padding: 0 0em;
+                    margin-right: 0em;
+
+                    div.et2_box_widget{
+                        .Complete_Button_add;
+                        //													.Complete_Button_text;
+                        .border_radius_button_lefttop;
+                        .box_shadow_standard_light;
+                        height: 35px;
+                        .infolog_headertext{color: #FFF !important;}
+                        &:hover {.box_shadow_standard_light_hover;}
+                    }
+                }
+
+            }
+
+
+        // rechte Box
+        #timesheet-index_timesheet-index-add{
+
+            button#timesheet-index_add{
+            .Complete_Button_add_only_plus;
+            .dimension_height_m;
+
+
+            &:hover {.Complete_Button_add_only_plus_hover;}
+            &:active {background-color: @color_positive_action_active !important;}
+
+            }
+
+        // Filter
+        div.filters{
+            // 1. Filter
+            #timesheet-index_filter{}
+            // 2. Filter
+            #timesheet-index_filter2{}
+            // Suchfeld
+            #timesheet-index_search{}
+            // Suchen Button
+            button{}
+            }	// Ende Filter
+
+        table{}
+
+        button[id*="timesheet-index_favorite"]{
+                                            img {
+                                                height: 16px;
+                                                width: 16px;
+                                            }
+                      }
+    } //nextmatch_header
+
+
+
+
+    // Anzahl / positionieren
+    span.header_count{
+            margin: 3px 4px 0 6px;
+        }
+}
+
+// Filter position
+    div#timesheet-index_favorite_wrapper{top: -5px; right: 6px;}
+
+// Titel: in Bold
+table.egwGridView_outer tbody td .et2_link {font-weight: bold;}
+
+/*Details Bold*/
+span.timesheet_titleDetails {font-weight: bold;}
+
+
+
+// iframe
+}
+
+
+
+
+/*###########################################
+#                                           #
+#       dialogHeader                       #
+#############################################
+#                                           #
+#                                           #
+#                                           #
+#                                           #
+#                                           #
+#                   dialog                  #
+#                                           #
+#                                           #
+#############################################
+#                                           #
+#    buttons                                #
+#                                           #
+#                                           #
+##############################################*/
+// timesheet-edit
+
+#timesheet-edit{
+	#timesheet-edit_tabs{
+		padding: 0 3px;
+		.et2_tabheader{
+			background: none;
+		}
+	}
+	// add # sign behind the ts_id
+	#timesheet-edit_ts_id:before { content:"#"}
+}
+#timesheet-edit_pm_id input{
+	width: 99% !important;
+}
+#timesheet-edit.et2_container
+{
+}
+//

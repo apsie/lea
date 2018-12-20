@@ -1,0 +1,29 @@
+<?php echo $this->render('header.phtml'); ?>
+ 
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+
+	<div class="contenu_index">
+	<div class="bloc_g" >
+				<div class="titre"><img src="<?php echo $this->baseUrl();?>/images/utilisateur.png" /> <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'sommairepresentation')); ?>">Présentation du bénéficiaire</a></div>
+		
+				
+				</div>
+			<div class="bloc_g" >
+				<div class="titre"><img src="<?php echo $this->baseUrl();?>/images/projet.png" /> <a href="<?php echo $this->baseUrl();?>/redaction/sommaireprojet/">Le Projet</a></div>
+				</div>
+		
+			<div class="bloc_g" >
+				<div class="titre"><img src="<?php echo $this->baseUrl();?>/images/business_plan.png" /> <a href="<?php echo $this->baseUrl();?>/redaction/sommairefinancier/">Dossier financier</a></div>
+				</div>
+				
+					<div class="bloc_g" >
+				<div class="titre"><img src="<?php echo $this->baseUrl();?>/images/aspect_g.png" /> <a href="<?php echo $this->baseUrl();?>/redaction/sommaireaspect/"><font size="-1">Les aspects juridiques, fiscaux, sociaux</font></a></div>
+				</div>
+			</div>
+			
+			
+		
+

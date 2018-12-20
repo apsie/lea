@@ -1,0 +1,260 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_impression.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	
+	<div><?php echo $this->title; ?></div><br/><br/>
+	
+	
+	<img src="<?php echo $this->baseUrl();?>/images/editer_pdf.png" /> <a href="../impression/edition?editer=1">Editer le business plan</a>
+	<div id="sommaire" class="page">
+	<div class="gd_titre_apercu"><?php echo $this->titre->titre_sommaire; ?></div>
+	<div class="gd_titre"><a href="#page_intro"><?php echo $this->titre->titre_intro; ?></a></div>
+	<div class="gd_titre">1. <a href="#page_titre_1"><?php echo $this->titre->titre_1; ?></a></div>
+	<div class="sous_titre">1.1. <?php echo $this->titre->titre_1_1; ?></div>
+	<div class="sous_titre">1.2. <?php echo $this->titre->titre_1_2; ?></div>
+	<div class="gd_titre">2. <a href="#page_titre_2"><?php echo $this->titre->titre_2; ?></a></div>
+	<div class="sous_titre">2.1. <?php echo $this->titre->titre_2_1; ?></div>
+	<div class="sous_titre">2.2. <?php echo $this->titre->titre_2_2; ?></div>
+	<div class="sous_titre">2.3. <?php echo $this->titre->titre_2_3; ?></div>
+	<div class="gd_titre">3. <a href="#page_titre_3"><?php echo $this->titre->titre_3; ?></a></div>
+	<div class="sous_titre">3.0. <?php echo $this->titre->titre_3_0; ?></div>
+	<div class="sous_titre">3.1. <?php echo $this->titre->titre_3_1; ?></div>
+	<div class="sous_s_titre">3.1.1. <?php echo $this->titre->titre_3_1_1; ?></div>
+	<div class="sous_s_titre">3.1.2. <?php echo $this->titre->titre_3_1_2; ?></div>
+	<div class="sous_titre">3.2. <?php echo $this->titre->titre_3_2; ?></div>
+	<div class="sous_s_titre">3.2.1. <?php echo $this->titre->titre_3_2_1; ?></div>
+	<div class="sous_s_titre">3.2.2. <?php echo $this->titre->titre_3_2_2; ?></div>
+	<div class="sous_s_titre">3.2.3. <?php echo $this->titre->titre_3_2_3; ?></div>
+	<div class="sous_titre">3.3. <?php echo $this->titre->titre_3_3; ?></div>
+	<div class="sous_s_titre">3.3.1. <?php echo $this->titre->titre_3_3_1; ?></div>
+	<div class="sous_s_titre">3.3.2. <?php echo $this->titre->titre_3_3_2; ?></div>
+	<div class="sous_s_titre">3.3.3. <?php echo $this->titre->titre_3_3_3; ?></div>
+	<div class="sous_titre">3.4. <?php echo $this->titre->titre_3_4; ?></div>
+	<div class="gd_titre">4. <?php echo $this->titre->titre_4; ?></div>
+	<div class="sous_titre">4.1. <?php echo $this->titre->titre_4_1; ?></div>
+	<div class="sous_titre">4.2. <?php echo $this->titre->titre_4_2; ?></div>
+	<div class="sous_s_titre">4.2.1. <?php echo $this->titre->titre_4_2_1; ?></div>
+	<div class="sous_s_titre">4.2.2. <?php echo $this->titre->titre_4_2_2; ?></div>
+	<div class="sous_s_titre">4.2.3. <?php echo $this->titre->titre_4_2_3; ?></div>
+	<div class="sous_s_titre">4.2.4. <?php echo $this->titre->titre_4_2_4; ?></div>
+	<div class="sous_titre">4.3. <?php echo $this->titre->titre_4_3; ?></div>
+	<div class="sous_s_titre">4.3.1. <?php echo $this->titre->titre_4_3_1; ?></div>
+	<div class="sous_s_titre">4.3.2. <?php echo $this->titre->titre_4_3_2; ?></div>
+	<div class="sous_s_titre">4.3.3. <?php echo $this->titre->titre_4_3_3; ?></div>		  
+	<div class="sous_titre">4.4. <?php echo $this->titre->titre_4_4; ?></div>
+	<div class="sous_s_titre">4.4.1. <?php echo $this->titre->titre_4_4_1; ?></div>
+	<div class="sous_s_titre">4.4.2. <?php echo $this->titre->titre_4_4_2; ?></div>
+	<div class="sous_s_titre">4.4.3. <?php echo $this->titre->titre_4_4_3; ?></div>
+	<div class="gd_titre">5. <?php echo $this->titre->titre_5; ?></div>
+	<div class="gd_titre">6. <?php echo $this->titre->titre_6; ?></div>									  
+	<div class="sous_titre">6.1. <?php echo $this->titre->titre_6_1; ?></div>
+	<div class="sous_titre">6.2. <?php echo $this->titre->titre_6_2; ?></div>
+	<div class="sous_titre">6.3. <?php echo $this->titre->titre_6_3; ?></div>
+	<div class="gd_titre">7. <?php echo $this->titre->titre_7; ?></div>
+	<div class="gd_titre">8. <?php echo $this->titre->titre_8; ?></div>
+	<div class="gd_titre">9. <?php echo $this->titre->titre_9; ?></div>
+	
+	</div>
+	
+	<!--INTRODUCTION -->
+		<?php  if(strlen($this->texte->texte_titre_intro)<7100)
+	{
+
+   echo'
+	<div id="page_intro" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_intro.' <div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div>  </div>
+	<br/>
+	'.$this->texte->texte_titre_intro.'
+	</div>';
+	}
+			else
+	{
+
+   echo'
+	<div id="page_intro" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_intro.' <div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div></div>
+	<br/>
+	<div class="error_pagination"><img src="'.$this->baseUrl().'/images/attention.png" />Réduire le nombre de caractères de l\'introduction en vue d\'une meilleur pagination.</div>
+	</div>';
+	}
+	
+	//titre_1_1 
+if(strlen($this->texte->texte_titre_1_1)<5000)
+	{
+	echo'
+	<div id="page_titre_1" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_1.'<div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div></div>
+	<div class="sous_titre">1.1.'.$this->titre->titre_1_1.'</div>
+	<br/>
+	'.$this->texte->texte_titre_1_1.'
+	<div class="sous_titre">1.2.'.$this->titre->titre_1_2.'</div>
+	<br/>
+	'.$this->texte->texte_titre_1_2.'
+	<table ><tr bgcolor="#F4F4FF">
+      <td width="193" style="font-weight:bolder">Nom commercial</td>
+      <td width="180" >'.$this->resacc->nom_commercial.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">Raison sociale</td>
+      <td width="180" >'.$this->resacc->raison_sociale.'</td><td style="font-weight:bolder" width="136">
+        Siret</td><td width="120"> 
+         '.$this->resacc->siret.'</td></tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder" >Activit&eacute; principale</td>
+      <td width="180" >'.$this->resacc->activite_principale.'</td>
+      <td style="font-weight:bolder">Code naf</td><td>'.$this->resacc->code_naf.'</td></tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">Date immat</td>
+      <td width="180" >';
+	  if($this->resacc->date_immat>0)
+	  {
+	  echo date('d/m/Y',$this->resacc->date_immat);
+	  }
+	  echo'</td>
+      <td style="font-weight:bolder">Date d&eacute;but d\'activit&eacute;</td>
+      <td  width="100" >';
+	  if($this->resacc->date_debut_activite>0)
+	  {
+	  echo date('d/m/Y',$this->resacc->date_debut_activite);
+	  }
+	  echo'</td></tr><tr>
+      <td><hr /></td>
+      <td width="180" ><hr /></td> <td ><hr /></td><td ><hr /></td></tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder">Type d\'adresse</td>
+      <td width="180">'.$this->resacc->type_adresse.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">Rue </td><td>'.$this->resacc->adresse_ligne_1.'</td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+	      <td style="font-weight:bolder">Adresse ligne 2</td><td>'.$this->resacc->adresse_ligne_2.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+	        <td style="font-weight:bolder">Adressse ligne 3</td><td>'.$this->resacc->adresse_ligne_3.'</td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+	        <td style="font-weight:bolder">
+      Code postal</td><td>'.$this->resacc->cp.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+	          <td style="font-weight:bolder">Ville</td>
+	            <td >'.$this->resacc->ville.'</td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+                 <td style="font-weight:bolder">Region</td><td>'.$this->resacc->region.'</td><td></td><td></td></tr>
+	        <tr bgcolor="#FFF"><td style="font-weight:bolder">Pays</td><td>'.$this->resacc->pays.'</td><td></td><td></td></tr><tr><td><hr /></td><td><hr /></td> <td  ><hr /></td><td ><hr /></td></tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder">Dirigeant</td>
+      <td width="180">'.$this->resacc->dirigeant.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">Forme juridique</td>
+      <td width="180" >'.$this->resacc->forme_juridique.'</td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder">Implantation</td>
+      <td width="180" >'.$this->resacc->implantation.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">Secteur d\'activit&eacute;</td>
+      <td width="180" >'.$this->resacc->secteur_activite.'</option></select></td><td></td><td></td></tr><tr><td ><hr /></td><td><hr /></td><td><hr /></td> <td  ><hr /></td></tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder">R&eacute;gime d\'impostion</td>
+      <td width="180">'.$this->resacc->regime_imposition.'</td><td></td><td></td></tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">R&eacute;gime de TVA</td>
+      <td width="180" >'.$this->resacc->regime_tva.'</td><td></td><td></td></tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder">R&eacute;gime fiscal</td>
+      <td width="180">'.$this->resacc->regime_fiscal.'</td><td></td><td></td></tr><tr><tr bgcolor="#FFF">
+      <td style="font-weight:bolder">R&eacute;gime social du dirigeant</td>
+      <td width="180" >'.$this->resacc->regime_social_dirigeant.'</td><td></td><td></td></tr><td ><hr /></td><td><hr /></td><td><hr /></td> <td  ><hr /></td></tr><tr><tr bgcolor="#F4F4FF">
+      <td style="font-weight:bolder">Statut</td>
+      <td width="180" >'.$this->resacc->statut.'</td><td></td><td></td></tr><tr bgcolor="#FFF"><td></td><td height="34" align="right">&nbsp;</td><td></td></td></tr></table>
+	 
+	  
+	</div>';
+	}
+			else
+	{
+
+   echo'
+	<div id="page_titre_1" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_1.'</div>
+	<br/>
+	<div class="error_pagination"><img src="'.$this->baseUrl().'/images/attention.png" />Réduire le nombre de caractères du texte 1.1 en vue d\'une meilleur pagination.</div>
+	</div>';
+	}
+	
+	if(strlen($this->texte->texte_titre_2_1)+strlen($this->texte->texte_titre_2_2)+strlen($this->texte->texte_titre_2_3)<7100)
+	{
+	  echo'	<div id="page_titre_2" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_2.' <div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div></div>
+	<div class="sous_titre">2.1.'.$this->titre->titre_2_1.'</div>
+	<br/>
+	'.$this->texte->texte_titre_2_1.'
+	<div class="sous_titre">2.2. '.$this->titre->titre_2_2.'</div>
+	<br/>
+	'.$this->texte->texte_titre_2_2.'
+	<div class="sous_titre">2.3. '.$this->titre->titre_2_3.'</div>
+	<br/>
+	'.$this->texte->texte_titre_2_3.'
+	</div>';
+	  }
+		else
+	{
+
+   echo'
+	<div id="page_titre_2" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_1.'<div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div></div>
+	<br/>
+	<div class="error_pagination"><img src="'.$this->baseUrl().'/images/attention.png" />Réduire le nombre de caractères, en vue d\'une meilleur pagination.</div>
+	</div>';
+	}
+	
+	if((strlen($this->texte->texte_titre_3_0)+strlen($this->texte->texte_titre_3_1_1)+strlen($this->texte->texte_titre_3_1_2)+strlen($this->texte->texte_titre_3_2_2)+strlen($this->texte->texte_titre_3_2_3))<4650)
+	{
+
+   echo'<div id="page_titre_3" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_3.'<div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div></div>
+	<div class="sous_titre">3.0. '.$this->titre->titre_3_0.'</div>
+	<br/>
+	'.$this->texte->texte_titre_3_0.'
+	<div class="sous_titre">3.1. '.$this->titre->titre_3_1.'</div>
+	<br/>
+	<div class="sous_s_titre">3.1.1. '.$this->titre->titre_3_1_1.'</div>
+	'.$this->texte->texte_titre_3_1_1.'
+
+	<div class="sous_s_titre">3.1.2.'.$this->titre->titre_3_1_2.'</div>
+	'.$this->texte->texte_titre_3_1_2.'
+	<div class="sous_titre">3.2.'.$this->titre->titre_3_2.'</div>
+	<br/>
+	<div class="sous_s_titre">3.2.1.'.$this->titre->titre_3_2_1.'</div>
+	'.$this->texte->texte_titre_3_2_1.'
+		
+	<div class="sous_s_titre">3.2.2.'.$this->titre->titre_3_2_2.'</div>
+	'.$this->texte->texte_titre_3_2_2.'
+		
+	<div class="sous_s_titre">3.2.3.'.$this->titre->titre_3_2_3.'</div>
+	'.$this->texte->texte_titre_3_2_3.'
+	</div>';
+	}
+	else
+	{
+
+   echo'<div id="page_titre_3" class="page">
+	<div class="gd_titre_apercu">'.$this->titre->titre_3.'<div class="autre"><table><tr><td width="1000px" align="right"><a href="#sommaire"><span style="font-size:12px"><= Retour sommaire </span></a></td></tr></table></div></div>
+	<div class="sous_titre">3.0. '.$this->titre->titre_3_0.'</div>
+	<br/>
+	'.$this->texte->texte_titre_3_0.'
+	<div class="sous_titre">3.1. '.$this->titre->titre_3_1.'</div>
+	<br/>
+	<div class="sous_s_titre">3.1.1. '.$this->titre->titre_3_1_1.'</div>
+	'.$this->texte->texte_titre_3_1_1.'
+	<br/>
+	<div class="sous_s_titre">3.1.2.'.$this->titre->titre_3_1_2.'</div>
+	'.$this->texte->texte_titre_3_1_2.'
+	</div>
+	<div class="page">
+	<div class="sous_titre">3.2.'.$this->titre->titre_3_2.'</div>
+	<br/>
+	<div class="sous_s_titre">3.2.1.'.$this->titre->titre_3_2_1.'</div>
+	'.$this->texte->texte_titre_3_2_1.'
+	<br/>
+	<div class="sous_s_titre">3.2.2.'.$this->titre->titre_3_2_2.'</div>
+	'.$this->texte->texte_titre_3_2_2.'
+		<br/>
+	<div class="sous_s_titre">3.2.3.'.$this->titre->titre_3_2_3.'</div>
+	'.$this->texte->texte_titre_3_2_3.'
+	</div>';
+    }
+	?>
+
+	
+		
+	</div>
+	
+
+	
+

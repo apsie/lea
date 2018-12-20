@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<!--[if IE]><script type="text/javascript" src="js/excanvas.compiled.js"></script><![endif]-->
+		<?php
+				
+			//Gestion de la balise title -  L'aide de vue HeadTitle a voir http://framework.zend.com/manual/fr/zend.view.helpers.html 
+			echo $this->headTitle()."\n";
+		
+			//Pour les View_Helper - L'aide de vue HeadMeta voir http://framework.zend.com/manual/fr/zend.view.helpers.html 
+			//L'initilisation headMeta ce fait dans dbconnect.php
+			echo $this->headMeta()."\n"; 
+
+			//L'initilisation headLink ce fait dans index.php => css
+			echo $this->headLink()."\n";
+			
+			//L'initilisation HeadScript ce fait dans index.php => include js
+			echo $this->headScript()."\n";
+		
+
+			?>
+		</head>
+	<body >
+	<div class="header_login"><div style="float:left"><img src="./images/logo/apsie_extranet.png" /></div><div class="version" style="float:left"> version 1.0</div></div><center><div class="login">
+	<form action="" method="post" id="form_identification">
+		<input type="hidden" name="action" value="login" />
+		<table><tr><td width="150px">
+			Login
+		</td><td>
+			<input type="text" name="login" id="login_input" value="<?php if(isset($_POST['login'])) { echo $_POST['login']; } ?>" />
+	</td></tr>
+		<tr><td>
+			Mot de passe
+		</td><td>
+			<input type="password"  name="pass" value="<?php if(isset($_POST['pass'])) { echo $_POST['pass']; } ?>" />
+		</td></tr>
+		
+	<tr><td></td><td><button onClick="$('#form_identification').submit();return false;">Se connecter</button>
+
+				
+		</td></tr>
+		<tr><td >
+					</td></tr></table>
+	</form>
+	<div style="color:red"><?php echo isset($this->msg_erreur) && $this->msg_erreur != "" ? '<img src="./images/ico/croix.png" /> '.$this->msg_erreur : "&nbsp;" ?>
+	</div>
+	</div></center>
+	
+	<div class="footer">Pour que tous les chemins mènent à l'<strong>Homme</strong>...<br/><br/><font style="font-size:11px">Tous droits réservés © <strong>APSIE 2011</strong></font></div>
+</body></html>	
+
+<script type="text/javascript">
+
+
+	$().ready(function() {
+	
+		$("#login_input").focus();
+		
+		//pour tout les input, si il y a un enter, on submit le formulaire.
+		$("input").keyup(function(event){
+			if (event.keyCode == 13) {
+			    $('#form_identification').submit();
+			}
+		});
+
+	/*	
+		
+		if(   ( jQuery.browser.name == "firefox" ) 
+				|| (jQuery.browser.name == "chrome") 
+				|| ( jQuery.browser.name == "safari"   ) 
+				|| ( jQuery.browser.name == "opera" )
+					 )
+
+		{
+			//alert(jQuery.browser.name +" v" + jQuery.browser.version);
+		}
+		else{
+			$("form").hide();
+			$("#erreur_navigateur").html(jQuery.browser.name +" v" + jQuery.browser.version + "<br>Ce programme doit être utilisé avec 'Chrome', 'firefox 3.0+',  'Safari 4+' ou 'Opera 9.5+' <br>Cliquer <a href=\"http://www.mozilla-europe.org/fr/firefox\">ici</a> pour télécharger Firefox <br>");				  
+		}		
+*/
+	});
+	$( "button").button();
+
+</script>

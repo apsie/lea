@@ -1,0 +1,15 @@
+<div id="presta" class="entete" >- Prestation {{ presta.dispositif.nomDispositif }} de <b>{{ presta.contact.nomComplet }}</b></div>
+	<div class="contenu_presta" >
+	Ouverture de la prestation NACRE1...
+	</div>
+</div>
+
+{% if (presta.statut == 'Nouvelle') %}
+<script>
+window.open('{{DIR_PRESTA}}/presta/epce/premier_rdv.php?lc={{ presta.lettreDeCommande }}&presta=NACRE1&id_presta={{ presta.idPresta }}&intitule={{ presta.intitule }}&id={{ presta.idRef }}&id_ben={{ presta.idBen }}','PREMIER RENDEZ VOUS EPCE&toolbar=0','location=0, directories=0, status=0, scrollbars=1, resizable=0, copyhistory=0, menuBar=0, width=420, height=330');
+</script>
+{% else %}
+<script>
+window.open('{{DIR_PRESTA}}/presta/epce/control.php?lc={{ presta.lettreDeCommande }}&presta=NACRE1&id_presta={{ presta.idPresta }}&intitule={{ presta.intitule }}&id={{ presta.idRef }}&id_ben={{ presta.idBen }}&continuer=1','control','toolbar=0, location=0, directories=0, status=0, scrollbars=1, resizable=0, copyhistory=0, menuBar=0, width=1024, height=728');
+</script>
+{% endif %}

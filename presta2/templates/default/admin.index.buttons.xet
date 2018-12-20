@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.admin.index.buttons" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<hbox span="all" align="center">
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

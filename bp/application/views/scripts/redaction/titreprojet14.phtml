@@ -1,0 +1,235 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_projet.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+<br/>
+
+Qui sont les principaux concurrents ? Citez-en 3 principaux<br/>
+Où sont-ils localisés (en France, à l'étranger) ?<br/>
+Quels sont leurs modes de vente et de communication ?<br/>
+Quels sont leurs points forts par rapport au projet ? Leurs points faibles ?<br/>
+Quel est votre avantage concurrentiel ? <br/>
+
+
+<br/>
+
+
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_projet_1_4; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+
+
+<div class="outils_produits_concurrents">
+	<h2> Les produits concurrents</h2><img src="<?php echo $this->baseUrl();?>/images/add.png" /> <a  onclick="ProduitsConccurrents('ajouter');"  >Sélectionner un produit</a> | <img src="<?php echo $this->baseUrl();?>/images/voir.png" /> <a onclick="ProduitsConccurrents('voir');getListProduitsConcurrents()"  >Voir la liste des produits</a><br/><br/>
+	<div   id="produits_concurrents" >
+	<div style="display:none" id="produits_concurrents_ajouter"  ><div class='titre_outils'>Sélectionner un produit</div><br/>
+	Produit : <select  id="idProduit" name="libelleProduits">
+	<?php 
+	foreach ($this->listProduit as $data)
+	{
+		echo'<option value='.$data['id_produit'].'>'.$data['libelle_produit'].'</option>';
+	}
+	?>
+	</select>  <input onclick="ajouterProduitsConcurrents();" class="button_little" type="button" value="Ajouter" />
+	</div>
+	<div style="display:none" id="produits_concurrents_details"  ><br/><br/>
+	</div>
+	<div style="display:none" id="produits_concurrents_details_plus"  ><br/><br/>
+	</div>
+	</div>
+	</div>
+	<br/><br/><br/><br/><br/>
+</div>
+
+<script>
+
+function ProduitsConccurrents(action)
+{
+	
+	if(action=='ajouter')
+	{
+	if(document.getElementById('produits_concurrents_ajouter').style.display == 'none')
+	{
+	$( "#produits_concurrents_ajouter" ).show('blind');	
+	
+	
+	}
+	else
+	{
+	$( "#produits_concurrents_ajouter" ).hide('blind');
+	}
+	}
+
+	if(action=='voir')
+	{
+	if(document.getElementById('produits_concurrents_details').style.display == 'none')
+	{
+	$( "#produits_concurrents_details" ).show('blind');	
+	
+	
+	}
+	else
+	{
+	$( "#produits_concurrents_details" ).hide('blind');
+	$( "#produits_concurrents_details_plus" ).hide('blind');
+	}
+	}
+}
+
+function ajouterProduitsConcurrents()
+{
+	var idProduit = $("#idProduit").val();
+	$.ajax({
+		url : "../../ajax/ajax/",
+		dataType : "json",
+		data : {
+			idProduit : idProduit,
+			action : "ajouterProduitsConcurrents"
+		},success: function(data){
+		}
+	});
+$('#idProduit').val('');
+
+
+setTimeout("getListProduitsConcurrents();",1000);	
+setTimeout("$('#produits_concurrents_details').hide('blind')",1000);	
+setTimeout("$('#produits_concurrents_details').show('blind')",1000);	
+	}
+function ajouterProduitsDetails(idProduit)
+{
+	var libelle_details = $('#libelle_details').val();
+
+	var tvaleur  = document.getElementById('valeur');
+	var valeur = tvaleur.options[tvaleur.selectedIndex].value;
+	
+
+
+	$.ajax({
+		url : "../../ajax/ajax/",
+		dataType : "json",
+		data : {
+			libelle_details : libelle_details,
+			id_produits_concurrents : idProduit,
+			valeur : valeur,
+			action : "ajouterProduitsConcurrentsDetails"
+		},success: function(data){
+		}
+	});
+$('#libelle_details').val('Critère...');
+
+	
+			
+	}
+function deleteProduitsConcurrents(id_produits_concurrents)
+{
+	$.ajax({
+		url : "../../ajax/ajax/",
+		dataType : "json",
+		data : {
+			idProduitsConcurrents : id_produits_concurrents,
+			action : "deleteProduitsConcurrents"
+		},success: function(data){
+		}
+	});
+
+
+	setTimeout("getListProduitsConcurrents();",1000);	
+	setTimeout("$('#produits_concurrents_details').hide('blind')",1000);	
+	setTimeout("$('#produits_concurrents_details').show('blind')",1000);	
+	
+
+	}
+function deleteProduitsConcurrentsDetails(outils,idProduit,id_produits_concurrents_details)
+{
+	$.ajax({
+		url : "../../ajax/ajax/",
+		dataType : "json",
+		data : {
+			id_produits_concurrents_details : id_produits_concurrents_details,
+			action : "deleteProduitsConcurrentsDetails"
+		},success: function(data){
+		}
+	});
+
+
+		
+	setTimeout("getListProduitsConcurrentsDetails(\""+outils+"\","+idProduit+");",1000);	
+	setTimeout("$('#produits_concurrents_details_plus').hide('blind')",1000);	
+	setTimeout("$('#produits_concurrents_details_plus').show('blind')",1000);	
+	
+
+	}
+function getListProduitsConcurrents()
+{
+	
+	var test =[1,2];
+	$.ajax({
+		url : "../../ajax/ajax/",
+		dataType : "json",
+		data : {
+			noTemplate : 1,
+			action : "getListProduitsConcurrents"
+		},success: function(data){
+			var html='';
+			$.each(data,function(i,val){
+		 		//console.debug("val=> %o",val);
+	 			html +="<tr><td width='150px'><a onclick='getListProduitsConcurrentsDetails(\""+val.libelle_produit+"\",\""+val.id_produits_concurrents+"\");'>"+val.libelle_produit+"</a></td><td> <img style='cursor:pointer' onclick='deleteProduitsConcurrents("+val.id_produits_concurrents+")' src='../../images/delete.png' /></td></tr>";		
+	 		});
+			
+			
+			document.getElementById('produits_concurrents_details').innerHTML = "<div class='titre_outils'>Liste des produits</div><table>"+html+"</table>";
+		}
+	});
+	
+	}
+function getListProduitsConcurrentsDetails(outils,idProduit)
+{
+	
+	var form ="<div class='form_produits_details'><input  id='libelle_details' type='text' value='Libéllé...' /> <select style='font-size:10px' id='valeur'><option>0</option><option>-1</option><option>1</option></select>";
+	form +=" <input onclick='ajouterProduitsDetails("+idProduit+");getListProduitsConcurrentsDetails(\""+outils+"\","+idProduit+")' type='button' value='Enregister' class='button' /></div>";
+	var html ='<table>';
+	
+	$.ajax({
+		url : "../../ajax/ajax/",
+		dataType : "json",
+		data : {
+			noTemplate : 1,
+			id_produits_concurrents : idProduit,
+			action : "getListProduitsConcurrentsDetails"
+		},success: function(data){
+		
+			$.each(data,function(i,val){
+		 		
+	 			html +="<tr><td width='150px'>"+val.libelle_details+"</td><td  align='right'>"+val.valeur+"</td><td> <img onclick='deleteProduitsConcurrentsDetails(\""+outils+"\","+idProduit+","+val.id_produits_concurrents_details+")' style='cursor:pointer' src='../../images/delete.png' /></td></tr>";		
+	 		});
+	 		
+			html +='</table>';
+			$('#produits_concurrents_details_plus').html("<div class='titre_outils'>Détails du produit : "+outils+"</div><div>"+html+"</div>"+form+"");
+			$('#produits_concurrents_details_plus').show('blind');
+		}
+	});
+
+	
+	
+	}
+</script>
+

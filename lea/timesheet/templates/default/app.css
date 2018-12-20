@@ -1,0 +1,34 @@
+/**
+ * Styles for etemplate2 widgets
+ *
+ * @version: $Id: app.css 52465 2015-04-10 12:56:07Z hnategh $
+ */
+
+/* Header classes*/
+tr.dialogHeader td, tr.dialogHeader2 td, tr.dialogHeader3 td, tr.dialogHeader4 td,
+tr.dialogOperators td,.dialogFooterToolbar {
+	padding: 5px 0 5px 0;
+	vertical-align: middle;
+}
+
+.timesheet_titleSum,.timesheet_titleDetails { font-weight: bold; }
+
+#timesheet-edit.et2_container
+{
+}
+
+/* add # sign behind the ts_id */
+#timesheet-edit_ts_id:before { content:"#"}
+
+/* make the modifier inline*/
+.timesheet_modifier label
+{
+	display: inline-block;
+	float: right;
+}
+
+.timesheet_modifier ul
+{
+	display: inline-block;
+	float: left;
+}

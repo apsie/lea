@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.mode_reglement.edit" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row">
+					<description class="bold" value="Name"/>
+					<textbox id="mode_reglement_label" needed="1" size="30"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Default"/>
+					<checkbox id="mode_reglement_defaut"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Creation Date"/>
+					<date-time id="creation_date" readonly="true"/>
+				</row>
+				<row class="row" disabled="@hideupdate">
+					<description class="bold" value="Update Date"/>
+					<date-time id="change_date" readonly="true"/>
+				</row>
+				<row disabled="@hidebuttons">
+					<hbox>
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<styles>.bold
+{
+font-weight:bold;
+}</styles>
+	</template>
+</overlay>

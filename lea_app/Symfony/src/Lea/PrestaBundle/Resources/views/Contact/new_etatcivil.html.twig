@@ -1,0 +1,25 @@
+<section class="formulaire_presta" >
+	<fieldset class="contact">
+		<table>
+					<tr>
+						<td>Nom de jeune fille :  </td><td>{{ form_widget(formContact.nomJeuneFille) }}</td>
+						<td>Deuxième Prénom :  </td><td>{{ form_widget(formContact.deuxiemePrenom) }}</td>
+					</tr>
+
+					<tr>
+						<td>Date de naissance :  </td><td>{{ form_widget(formContact.dateNaissance) }}</td>
+						<td>Lieu de naissance :  </td><td>{{ form_widget(formContact.lieuNaissance) }}</td>
+					</tr>
+
+					<tr>
+						<td>Nationalité :  </td><td>{{ form_widget(formContact.nationalite) }}</td>
+						<td>Situation maritale :  </td><td>{{ form_widget(formContact.situationMaritale) }}</td>
+					</tr>					
+
+					
+					<tr>
+						<td>Nombre d'enfants à charge :  </td><td>{{ form_widget(formContact.enfantsACharge) }}</td>
+					</tr>					
+		</table>
+	</fieldset>
+</section>

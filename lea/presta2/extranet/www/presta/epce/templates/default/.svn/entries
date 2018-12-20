@@ -1,0 +1,57 @@
+8
+
+dir
+23189
+http://svn.egroupware.org/egroupware/branches/1.2/egroupware/home/templates/default
+http://svn.egroupware.org/egroupware
+
+
+
+2005-06-15T10:43:11.000000Z
+18521
+mipmip
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+923e3c2e-ae13-0410-ba18-ced7211e33de
+
+portal.tpl
+file
+
+
+
+
+2007-01-01T07:42:49.000000Z
+816405b9a60fb5f6120a36cd0ba757dc
+2005-06-15T10:43:11.000000Z
+18521
+mipmip
+has-props
+
+images
+dir
+
+home.tpl
+file
+
+
+
+
+2007-01-01T07:42:49.000000Z
+6b9d520726636550c4d3c7e7a8408b26
+2005-06-15T10:43:11.000000Z
+18521
+mipmip
+has-props
+

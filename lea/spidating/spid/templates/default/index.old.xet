@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.index.rows" template="" lang="" group="0" version="1.003">
+		<grid width="100%">
+			<columns>
+				<column disabled="!@view_general_id"/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column width="3%" disabled="!@action"/>
+				<column disabled="!@view_checked"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" id="ticket_id" align="center"/>
+					<nextmatch-sortheader label="Client ID" id="ticket_num_group" align="center"/>
+					<nextmatch-filterheader label="Client" align="center" id="account_id"/>
+					<nextmatch-sortheader label="Category" id="cat_id" align="center"/>
+					<nextmatch-filterheader label="Open by" align="center" id="ticket_assigned_by" options="Select one"/>
+					<nextmatch-sortheader label="Title " id="ticket_title" align="center"/>
+					<nextmatch-sortheader label="Priority" align="center" id="ticket_priority"/>
+					<nextmatch-filterheader label="Assigned to" align="center" id="ticket_assigned_to" options="Select one"/>
+					<nextmatch-sortheader label="Spend time" id="ticket_spend_time" align="center"/>
+					<nextmatch-sortheader align="center" label="Etat" id="state_id"/>
+					<nextmatch-sortheader label="Date opened" id="creation_date" align="center"/>
+					<nextmatch-sortheader label="Close date" align="center" id="closed_date"/>
+					<nextmatch-sortheader label="Due date" align="center" id="due_date"/>
+					<nextmatch-sortheader label="Created by" align="center" id="creator_id"/>
+					<nextmatch-filterheader label="Site" align="center" id="location_id"/>
+					<nextmatch-sortheader label="Invoice number" align="center" id="facture_id"/>
+					<description class="noPrint" value="Action" align="center"/>
+					<button image="check" label="Check all" id="check_all" statustext="Check all" onclick="toggle_all(this.form,form::name('checked[]')); return false;" needed="1" align="center"/>
+				</row>
+				<row class="row $row_cont[seen_class]">
+					<description align="center" id="${row}[ticket_id]" readonly="true" options="nm" no_lang="1"/>
+					<description id="${row}[ticket_num_group]" no_lang="1" align="center" options="nm"/>
+					<description id="${row}[account_id]" readonly="true" align="center" no_lang="1"/>
+					<menulist>
+						<menupopup type="select-cat" id="${row}[cat_id]" readonly="true" align="center" no_lang="1"/>
+					</menulist>
+					<menulist>
+						<menupopup type="select-account" align="center" id="${row}[ticket_assigned_by]" readonly="true" options=",accounts,0"/>
+					</menulist>
+					<description id="${row}[ticket_title]" options=",spid.spid_ui.edit&amp;id=$row_cont[ticket_id],,,,990x720,$row_cont[ticket_title]" align="center" no_lang="1"/>
+					<description align="center" id="${row}[ticket_priority]" readonly="true" no_lang="1"/>
+					<menulist>
+						<menupopup type="select-account" align="center" id="${row}[ticket_assigned_to]" readonly="true" options=",accounts,0"/>
+					</menulist>
+					<description id="${row}[ticket_spend_time]" align="center" no_lang="1"/>
+					<description id="${row}[state_name]" align="center" no_lang="1" readonly="true"/>
+					<date align="center" id="${row}[creation_date]" readonly="true"/>
+					<date align="center" id="${row}[closed_date]" readonly="true"/>
+					<date align="center" id="${row}[due_date]" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" options=",accounts,0" align="center" id="${row}[creator_id]" readonly="true"/>
+					</menulist>
+					<description align="center" id="${row}[location_name]" no_lang="1" readonly="true"/>
+					<description id="${row}[facture_str]" align="center" options="$row_cont[link_facture]"/>
+					<hbox options="0" align="center" orient="0">
+						<button image="print" class="noPrint" label="Print entry" align="center" id="tprint[$row_cont[ticket_id]]" onclick="window.open(egw::link('/index.php','menuaction=spid.spid_ui.tprint&amp;ticket_id=$row_cont[ticket_id]'),'_blank','dependent=yes,width=700,height=535,scrollbars=yes,status=yes'); return false;"/>
+					</hbox>
+					<checkbox options="$row_cont[ticket_id]" id="checked[]" align="center"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.index" template="" lang="" group="0" version="1.003">
+		<grid width="100%" class="spid-index">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description align="center" id="msg" span="all" class="redItalic" no_lang="1"/>
+					<description/>
+				</row>
+				<row>
+					<nextmatch options="spid.index.rows" id="nm" span="all"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

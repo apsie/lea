@@ -1,0 +1,40 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_aspect.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+<br/>
+Quel est votre statut actuel (RSA, ARE, CRP, ASS, AGEFIPH, jeunes de moins de 26 ans et personnes âgées de plus 50 ans…) ?
+Avez-vous un conjoint collaborateur ?<br/>
+Quel sera votre statut social (Travailleur non salarié, Assimilé salarié, simultanément salarié) ?<br/>
+Avez-vous des ayants droits déclarés à la Sécurité sociale ?<br/>
+Etes-vous déjà couverts par une assurance complémentaire (couverture sociale complémentaire, prévoyance santé, retraite, invalidité, perte de revenus) ?<br/>
+Avez-vous demandé l’ACCRE ?<br/>
+Votre activité sera-t-elle exercée dans une ZUS, ZFU, ZRU (exonérations totales des charges fiscales et exonérations partielles des charges sociales) ?<br/>
+Aurez-vous des salariés (aides à l’embauche dans les TPE et exonérations patronales dans certains cas, contrat unique d’insertion, contrat d’apprentissage, contrat de professionnalisation…)?<br/>
+
+<br/>
+
+
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_aspect_3; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+</div>

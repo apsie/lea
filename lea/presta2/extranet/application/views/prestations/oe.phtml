@@ -1,0 +1,766 @@
+<link type="text/css" rel="stylesheet" media="screen" href="./style/oe.css">
+<link type="text/css" rel="stylesheet" media="screen" href="./style/Presta.css">
+<?php 
+#OPTION  
+
+$content ='<div style="padding-bottom:10px;" >
+<div class="titre_der_presta">Dernière prestation consultée</div>
+Prestation OE
+<br/>
+Bénéficiaire : '.$this->contact['nom_complet'].'
+<br/>
+Référent : '.$this->prestation['account_lastname'].' '.$this->prestation['account_firstname'].'
+<br/>
+<br/>
+<button class="boutton_pose_rdv"  onclick="go_to_rdv()" >Poser les autres rendez-vous</button><br/><br/>
+<button class="boutton_abandon"  onclick="Presta_.form_abandon()" >Abandonner la prestation</button>
+<br/><br/>
+<button class="boutton_abandon"  onclick="Presta_.terminer()" >Terminer la prestation</button></div>';
+
+
+echo $this->partial('option.phtml', array(
+        'contenu' => $content )); 
+?>
+<div  title="OE ( <?php echo  utf8_encode($this->contact['nom_complet']);?> ) " class="contenu_oe" id="contenu_oe_<?php echo $this->id_presta ?>">
+
+<form name="presta"><input type="hidden" name="data[date_abandon]" value="" /><input type="hidden" name="data[motif_abandon]" value="" /><input type="hidden" name="data[suivi]" value="0" />
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Contrat d'accompagnement</a></li>
+		<li><a href="#tabs-2">Périodes travaillées</a></li>
+		<li><a href="#tabs-3">Plan d'action</a></li>
+		<li><a href="#tabs-4">B. retrouve un emploi</a></li>
+		<li><a href="#tabs-5">B. ne retrouve pas un emploi</a></li>
+		<li><a href="#tabs-6">Bilan</a></li>
+		<li><a href="#tabs-7">Edition</a></li>
+		<li><a href="#tabs-8">Rdv</a></li>
+	</ul>
+	
+	
+	<div id="tabs-1">
+	
+	
+	<input type="hidden" name="id_presta" value="<?php echo $this->id_presta;?>" />
+	<input type="hidden" name="id_projet" value="<?php echo $this->projet['id_projet'];?>" />
+	<div id="accordion">
+	<h3><a href="#">Information sur <?php echo utf8_encode($this->contact['nom_complet']);?></a></h3>
+	<div>
+	<p>Modifier le contact <a onclick="Contact.editForm(<?php echo $this->contact['id_ben']?>)" href="javascript:void(0)" ><?php echo utf8_encode($this->contact['nom_complet']);?></a>.</p>
+	</div>
+	
+	</div>
+	
+	</div>
+	
+	
+	<div id="tabs-2">
+	
+	
+	
+	<div id="accordion">
+	<h3><a href="#">Périodes travaillées durant la durée de l’accompagnement</a></h3>
+	<div>
+	<table  class="classic"  cellspacing="0" width="99%">
+		<tr>
+			<th>Date (du/au)</th>
+			<th>Entreprise</th>
+			<th>Poste</th>
+			<th>Type de contrat</th>
+		</tr>
+		<?php for($i=0;$i<=4;$i++):?>
+		<tr>
+			<td  class="normal" style="width:70px;" >
+			<input value="<?php echo $this->presta['date_deb_'.$i.'_periode_t']; ?>" name="data[date_deb_<?php echo $i?>_periode_t]" size="8" id="date_deb_<?php echo $i?>_periode_t"   type="text" />
+			<input value="<?php echo $this->presta['date_fin_'.$i.'_periode_t']; ?>" name="data[date_fin_<?php echo $i?>_periode_t]"  id="date_fin_<?php echo $i?>_periode_t" size="8" type="text" />
+			</td>
+			<td  class="normal">
+			<input value="<?php echo $this->presta['periode_t_id_organisation_'.$i]; ?>" name="data[periode_t_id_organisation_<?php echo $i?>]"  id="periode_t_id_organisation_<?php echo $i?>"  type="hidden" />
+			<input style="float:left !important" value="<?php echo $this->presta['periode_t_entreprise_'.$i]; ?>" name="data[periode_t_entreprise_<?php echo $i?>]"  id="periode_t_entreprise_<?php echo $i?>"  type="text" /> <img style="cursor:pointer;float:left;padding-left : 5px;"  class="plus" src="/images/ico/plus.png" />
+			</td>
+			<td  class="normal">
+			<input size="40" id="periode_t_code_rome_<?php echo $i?>" name="data[periode_t_code_rome_<?php echo $i?>]"   type="text" value="<?php echo $this->presta['periode_t_code_rome_'.$i.'']; ?>" />
+			</td>
+			<td class="type_contrat_<?php echo $i?>">
+				<select name="data[type_contrat_<?php echo $i?>]" ><option class="text_option_blanc"><?php echo $this->presta['type_contrat_'.$i.'']; ?></option><?php echo $this->texteArray[KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['type_contrat_'.$i.'']; ?>" type="text" />
+				<img rel="type_contrat_<?php echo $i?>" class="change" src="./images/ico/retour.png" />
+			</td>
+		</tr>
+		<?php endfor;?>
+	</table>
+	</div>
+	
+	</div>
+	
+	</div>
+	
+	
+	<div id="tabs-3">
+	<div id="accordion" > 
+	<h3><a href="#">Emplois cibles retenus (au moins 2 - préciser l’appellation et le code ROME pour chaque emploi)</a></h3>
+	
+	<div class="normal">
+	<div style="float:left">1. <input size="40" id="code_rome_1" name="data[code_rome_1]"   type="text" value="<?php echo $this->presta['code_rome_1']; ?>" /> </div>
+	<div style="float:left">2. <input size="40" id="code_rome_2" name="data[code_rome_2]" type="text" value="<?php echo $this->presta['code_rome_2']; ?>" /></div>
+	
+	</div>
+	<h3><a href="#">Liste des actions réalisées ou en cours</a></h3>
+	<div >
+	<table class="classic"  cellspacing="0" width="99%">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Actions réalisées ou en cours</th>
+				<th>Objectif</th>
+				<th>Résultats obtenus</th>
+			</tr>
+			<tr>
+				<td class="normal" style="width:70px" >
+				<label style="float:left"><input value="<?php echo $this->presta['date_deb_1']; ?>" name="data[date_deb_1]" size="8" id="date_deb_1"   type="text" /></label>
+				 <label style="float:left"> <input value="<?php echo $this->presta['date_fin_1']; ?>" name="data[date_fin_1]"  id="date_fin_1" size="8" type="text" /></label>
+				</td>
+				<td class="action_1">
+				<select name="data[action_1]" ><option class="text_option_blanc" ><?php echo $this->presta['action_1']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_1']; ?>" type="text" />
+				<img rel="action_1" class="change" src="./images/ico/retour.png" />
+				
+				</td>
+				<td class="objectif_1">
+				<select name="data[objectif_1]" ><option class="text_option_blanc"><?php echo $this->presta['objectif_1']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_1']; ?>" type="text" />
+				<img rel="objectif_1" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="resultat_1">
+				<select name="data[resultat_1]" ><option class="text_option_blanc"><?php echo $this->presta['resultat_1']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_RESULTAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['resultat_1']; ?>" type="text" />
+				<img rel="resultat_1" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td  class="normal" style="width:70px" >
+				<label style="float:left"><input value="<?php echo $this->presta['date_deb_2']; ?>" name="data[date_deb_2]" size="8" id="date_deb_2"   type="text" /></label>
+				 <label style="float:left"> <input value="<?php echo $this->presta['date_fin_2']; ?>" name="data[date_fin_2]"  id="date_fin_2" size="8" type="text" /></label>
+				<td class="action_2">
+				<select name="data[action_2]" ><option class="text_option_blanc" ><?php echo $this->presta['action_2']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_2']; ?>" type="text" />
+				<img rel="action_2" class="change" src="./images/ico/retour.png" />
+				
+				</td>
+				<td class="objectif_2">
+				<select name="data[objectif_2]" ><option class="text_option_blanc"><?php echo $this->presta['objectif_2']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_2']; ?>" type="text" />
+				<img rel="objectif_2" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="resultat_2">
+				<select name="data[resultat_2]" ><option class="text_option_blanc"><?php echo $this->presta['resultat_2']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_RESULTAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['resultat_2']; ?>" type="text" />
+				<img rel="resultat_2" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td  class="normal" style="width:70px" >
+				<label style="float:left"><input value="<?php echo $this->presta['date_deb_3']; ?>" name="data[date_deb_3]" size="8" id="date_deb_3"   type="text" /></label>
+				 <label style="float:left"> <input value="<?php echo $this->presta['date_fin_3']; ?>" name="data[date_fin_3]"  id="date_fin_3" size="8" type="text" /></label>
+				</td>
+				<td class="action_3">
+				<select name="data[action_3]" ><option class="text_option_blanc" ><?php echo $this->presta['action_3']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_3']; ?>" type="text" />
+				<img rel="action_3" class="change" src="./images/ico/retour.png" />
+				
+				</td>
+				<td class="objectif_3">
+				<select name="data[objectif_3]" ><option class="text_option_blanc"><?php echo $this->presta['objectif_3']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_3']; ?>" type="text" />
+				<img rel="objectif_3" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="resultat_3">
+				<select name="data[resultat_3]" ><option class="text_option_blanc"><?php echo $this->presta['resultat_3']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_RESULTAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['resultat_3']; ?>" type="text" />
+				<img rel="resultat_3" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td  class="normal" style="width:70px" >
+				<label style="float:left"><input value="<?php echo $this->presta['date_deb_4']; ?>" name="data[date_deb_4]" size="8" id="date_deb_4"   type="text" /></label>
+				 <label style="float:left"> <input value="<?php echo $this->presta['date_fin_4']; ?>" name="data[date_fin_4]"  id="date_fin_4" size="8" type="text" /></label>
+				</td>
+				<td class="action_4">
+				<select name="data[action_4]" ><option class="text_option_blanc" ><?php echo $this->presta['action_4']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_4']; ?>" type="text" />
+				<img rel="action_4" class="change" src="./images/ico/retour.png" />
+				
+				</td>
+				<td class="objectif_4">
+				<select name="data[objectif_4]" ><option class="text_option_blanc"><?php echo $this->presta['objectif_4']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_4']; ?>" type="text" />
+				<img rel="objectif_4" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="resultat_4">
+				<select name="data[resultat_4]" ><option class="text_option_blanc"><?php echo $this->presta['resultat_4']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_RESULTAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['resultat_4']; ?>" type="text" />
+				<img rel="resultat_4" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td  class="normal" style="width:70px" >
+				<label style="float:left"><input value="<?php echo $this->presta['date_deb_5']; ?>" name="data[date_deb_5]" size="8" id="date_deb_5"   type="text" /></label>
+				 <label style="float:left"> <input value="<?php echo $this->presta['date_fin_5']; ?>" name="data[date_fin_5]"  id="date_fin_5" size="8" type="text" /></label>
+				</td>
+				<td class="action_5">
+				<select name="data[action_5]" ><option class="text_option_blanc" ><?php echo $this->presta['action_5']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_5']; ?>" type="text" />
+				<img rel="action_5" class="change" src="./images/ico/retour.png" />
+				
+				</td>
+				<td class="objectif_5">
+				<select name="data[objectif_5]" ><option class="text_option_blanc"><?php echo $this->presta['objectif_5']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_5']; ?>" type="text" />
+				<img rel="objectif_5" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="resultat_5">
+				<select name="data[resultat_5]" ><option class="text_option_blanc"><?php echo $this->presta['resultat_5']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_RESULTAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['resultat_5']; ?>" type="text" />
+				<img rel="resultat_5" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td  class="normal" style="width:70px" >
+				<label style="float:left"><input value="<?php echo $this->presta['date_deb_6']; ?>" name="data[date_deb_6]" size="8" id="date_deb_6"   type="text" /></label>
+				 <label style="float:left"> <input value="<?php echo $this->presta['date_fin_6']; ?>" name="data[date_fin_6]"  id="date_fin_6" size="8" type="text" /></label>
+				</td>
+				<td class="action_6">
+				<select name="data[action_6]" ><option class="text_option_blanc" ><?php echo $this->presta['action_6']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_6']; ?>" type="text" />
+				<img rel="action_6" class="change" src="./images/ico/retour.png" />
+				
+				</td>
+				<td class="objectif_6">
+				<select name="data[objectif_6]" ><option class="text_option_blanc"><?php echo $this->presta['objectif_6']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_6']; ?>" type="text" />
+				<img rel="objectif_6" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="resultat_6">
+				<select name="data[resultat_6]" ><option class="text_option_blanc"><?php echo $this->presta['resultat_6']; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_RESULTAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['resultat_6']; ?>" type="text" />
+				<img rel="resultat_6" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+		</thead>
+	</table>
+	</div>
+	<h3><a href="#">Fiche à compléter avec le bénéficiaire, pour effectuer le suivi des contacts avec les entreprises et des candidatures.</a></h3>
+	<div>
+	<table class="classic" cellspacing="0" width="99%">
+		<tr>
+			<th>Date</th>
+			<th>Entreprise</th>
+			<th>Objectif du contact</th>
+			<th>Aspects maîtrisés</th>
+			<th>Aspects à retravailler</th>
+		</tr>
+		<?php for($i=0;$i<=7;$i++):?>
+		<tr>
+			<td class="normal"><input value="<?php echo $this->presta['date_suivi_'.$i]; ?>" name="data[date_suivi_<?php echo $i?>]"  id="date_suivi_<?php echo $i?>"  size="8" type="text" /></td>
+			<td  class="normal">
+			<input value="<?php echo $this->presta['item_id_organisation_'.$i]; ?>" name="data[item_id_organisation_<?php echo $i?>]"  id="item_id_organisation_<?php echo $i?>"  type="hidden" />
+			<input style="float:left !important" value="<?php echo $this->presta['entreprise_'.$i]; ?>" name="data[entreprise_<?php echo $i?>]"  id="entreprise_<?php echo $i?>"  size="10" type="text" /> <img style="cursor:pointer;float:left;padding-left : 5px;"  class="plus" src="/images/ico/plus.png" />
+			</td>
+			<td class="objectif_contact_<?php echo $i?>"><select name="data[objectif_contact_<?php echo $i?>]" ><option class="texte_option_blanc" ><?php echo $this->presta['objectif_contact_'.$i]; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_OBJECTIF_CONTRAT]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_contact_'.$i]; ?>" type="text" />
+				<img rel="objectif_contact_<?php echo $i?>" class="change" src="./images/ico/retour.png" />
+			</td>
+			<td class="aspects_maitrises_<?php echo $i?>"><select name="data[aspects_maitrises_<?php echo $i?>]" ><option class="texte_option_blanc" ><?php echo $this->presta['aspects_maitrises_'.$i]; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ASPECTS_MAITRISES]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['aspects_maitrises_'.$i]; ?>" type="text" />
+				<img rel="aspects_maitrises_<?php echo $i?>" class="change" src="./images/ico/retour.png" />
+			</td>
+			<td class="aspects_a_retravailler_<?php echo $i?>"><select name="data[aspects_a_retravailler_<?php echo $i?>]" ><option class="texte_option_blanc" ><?php echo $this->presta['aspects_a_retravailler_'.$i]; ?></option><?php echo $this->texteArray[KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['aspects_a_retravailler_'.$i]; ?>" type="text" />
+				<img rel="aspects_a_retravailler_<?php echo $i?>" class="change" src="./images/ico/retour.png" />
+			</td>
+		</tr>
+		<?php endfor;?>
+	</table>
+	</div>
+	
+	
+	</div>
+	</div>
+	<div id="tabs-4">
+	
+	<div id="accordion">
+		<h3><a href="#">Situation du bénéficiaire</a></h3>
+		<table class="normal2" >
+			<tr>
+				<td>Intitulé du poste et code ROME :</td><td><input size="40" id="sit_ben_code_rome"  name="data[sit_ben_code_rome]"  value="<?php echo $this->presta['sit_ben_code_rome'];?>" type="text" ></td>
+				
+			</tr>
+			<tr>
+				<td>Type de contrat :</td><td>	<table>
+														<tr>
+															<td><input <?php echo outils::setCheckbox($this->presta['type_contrat'],1); ?> name="data[type_contrat]" type="radio" value="1" /> CDI</td><td></td><td></td>
+														</tr>
+														<tr>
+															<td><input <?php echo outils::setCheckbox($this->presta['type_contrat'],2); ?> name="data[type_contrat]" type="radio" value="2" /> CDD </td><td> Durée : </td><td><input name="data[duree_cdd]" value="<?php echo $this->presta['duree_cdd'];?>" size="2" type="text" > mois</td>
+														</tr>
+														<tr>
+															<td><input <?php echo outils::setCheckbox($this->presta['temps_contrat'],1); ?> name="data[temps_contrat]" type="radio" value="1" /> Temps plein</td><td></td><td></td>
+														</tr>
+														<tr>
+															<td><input <?php echo outils::setCheckbox($this->presta['temps_contrat'],2); ?> name="data[temps_contrat]" type="radio" value="2" /> Temps partiel</td><td>Nombre d’heures mensuelles :</td><td> <input name="data[nb_heure_tp_partiel]" value="<?php echo $this->presta['nb_heure_tp_partiel'];?>" size="2" type="text" /> H</td>
+														</tr>
+														<tr>
+															<td><input <?php echo outils::setCheckbox($this->presta['via_formation'],1); ?> name="data[via_formation]" type="checkbox" value="1" /> Via formation préalable à l’embauche </td><td>Intitulé de la formation :</td><td> <input name="data[sit_intitule_formation]" value="<?php echo $this->presta['sit_intitule_formation'];?>" type="text" /></td>
+														</tr>
+												</table>
+											</td>
+																
+			</tr>
+			<tr>
+					<td>Employeur</td>
+					<td><input value="<?php echo $this->presta['entreprise2_id']; ?>" name="data[entreprise2_id]"  id="entreprise2_id"  type="hidden"  /> 
+					<input value="<?php echo $this->presta['entreprise2']; ?>" name="data[entreprise2]"  id="entreprise2"  type="text"  />  <img style="cursor:pointer;float:left;padding-left : 5px;"  class="plus" src="/images/ico/plus.png" />
+					</td>
+			</tr>
+			<tr>
+					<td>Date reprise d'emploi</td><td><input type="text"  name="data[date_reprise_emploi]" value="<?php echo $this->presta['date_reprise_emploi'];?>" id="date_reprise_emploi" /></td>
+			</tr>
+		
+		</table>
+	  	
+ 
+ 	
+		<h3><a href="#">Bilan global de la prestation</a></h3>
+		<div>
+		<div class="sous_titre" >Points forts et axes d’amélioration du bénéficiaire pour sa recherche d’emploi</div>
+		<textarea name="data[pts_forts_axes]" rows="1" cols="100"><?php echo $this->presta['pts_forts_axes'];?></textarea>
+		<div class="sous_titre" >Indicateurs</div>
+			<div class="normal">
+			<table>
+				<tr>
+					<td>Nombre de mises en relation sur des offres Pôle emploi</td><td><input name="data[nb_offre_pe]" value="<?php echo $this->presta['nb_offre_pe']; ?>"  size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_pe]" value="<?php echo $this->presta['nb_ent_pe']; ?>" size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre de candidatures sur des offres autres que Pôle emploi</td><td><input name="data[nb_offre_au]" value="<?php echo $this->presta['nb_offre_au']; ?>" size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_au]" value="<?php echo $this->presta['nb_ent_au']; ?>" size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre de candidatures spontanées adressées</td><td><input  name="data[nb_offre_sp]" value="<?php echo $this->presta['nb_offre_sp']; ?>"  size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_sp]" value="<?php echo $this->presta['nb_ent_sp']; ?>"  size="2" type="text" /></td>
+				</tr>
+			</table>
+			
+			
+			
+			</div>
+		</div>
+	
+ 	 	</div>
+  
+ 	
+	
+	</div>
+	<div id="tabs-5">
+	
+	<div id="accordion">
+		<h3><a href="#">Toujours à la recherche d'un emploi</a></h3>
+		<table class="normal2" >
+			<tr>
+				<td>Intitulé du poste et code ROME :</td><td><input size="40" id="sit_ben_code_rome2"  name="data[sit_ben_code_rome2]"  value="<?php echo $this->presta['sit_ben_code_rome2'];?>" type="text" ></td>
+			</tr>
+			<tr>
+				<td>Marché du travail ciblé (secteurs d’activité, zone géographique) :</td><td><input size="40"   name="data[marche_travail]"  value="<?php echo $this->presta['marche_travail'];?>" type="text" ></td>
+			</tr>
+			
+		</table>
+	  	
+ 
+ 	
+		<h3><a href="#">Bilan global de la prestation</a></h3>
+		<div>
+		<div class="sous_titre" >Points forts et axes d’amélioration du bénéficiaire pour sa recherche d’emploi</div>
+		<textarea name="data[pts_forts_axes2]" rows="1" cols="100"><?php echo $this->presta['pts_forts_axes2'];?></textarea>
+		<div class="sous_titre" >Indicateurs</div>
+			<div class="normal">
+			<table>
+				<tr>
+					<td>Nombre de mises en relation sur des offres Pôle emploi</td><td><input name="data[nb_offre_pe2]" value="<?php echo $this->presta['nb_offre_pe2']; ?>"  size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_pe2]" value="<?php echo $this->presta['nb_ent_pe2']; ?>" size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre de candidatures sur des offres autres que Pôle emploi</td><td><input name="data[nb_offre_au2]" value="<?php echo $this->presta['nb_offre_au2']; ?>" size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_au2]" value="<?php echo $this->presta['nb_ent_au2']; ?>" size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre de candidatures spontanées adressées</td><td><input  name="data[nb_offre_sp2]" value="<?php echo $this->presta['nb_offre_sp2']; ?>"  size="2" type="text" /></td>
+				</tr>
+				<tr>
+					<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_sp2]" value="<?php echo $this->presta['nb_ent_sp2']; ?>"  size="2" type="text" /></td>
+				</tr>
+			</table>
+			
+			
+			</div>	
+		</div>
+		<h3><a href="#">Liste des actions à mettre en oeuvre</a></h3>
+		<div>
+		<table cellspacing='0' class="classic">
+			<tr>
+				<th>Priorités et échéances <br/>(Quand ?)</th><th>Actions à mettre en oeuvre<br/> (Quoi ?)</th><th>Objectifs</th>
+			</tr>
+			<tr>
+				<td><input style="display:block"  size="8" type="text" id="date_action_1" name="data[date_action_1]"  value="<?php echo $this->presta['date_action_1']; ?>"  /></td>
+				<td class="action_a_m1" >
+				<select name="data[action_a_m1]" ><option class="text_option_blanc" ><?php echo $this->presta['action_a_m1']; ?></option><?php echo $this->texteArray[KEY_BILAN_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_a_m1']; ?>" type="text" />
+				<img rel="action_a_m1" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="objectif_a_m1" >
+				<select name="data[objectif_a_m1]" ><option  class="text_option_blanc" ><?php echo $this->presta['objectif_a_m1']; ?></option><?php echo $this->texteArray[KEY_BILAN_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_a_m1']; ?>" type="text" />
+				<img rel="objectif_a_m1" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td><input style="display:block"  size="8" type="text" id="date_action_2" name="data[date_action_2]"  value="<?php echo $this->presta['date_action_2']; ?>"  /></td>
+				<td class="action_a_m2" >
+				<select name="data[action_a_m2]" ><option class="text_option_blanc" ><?php echo $this->presta['action_a_m2']; ?></option><?php echo $this->texteArray[KEY_BILAN_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_a_m2']; ?>" type="text" />
+				<img rel="action_a_m2" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="objectif_a_m2" >
+				<select name="data[objectif_a_m2]" ><option  class="text_option_blanc" ><?php echo $this->presta['objectif_a_m2']; ?></option><?php echo $this->texteArray[KEY_BILAN_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_a_m2']; ?>" type="text" />
+				<img rel="objectif_a_m2" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td><input style="display:block"  size="8" type="text" id="date_action_3" name="data[date_action_3]"  value="<?php echo $this->presta['date_action_3']; ?>"  /></td>
+				<td class="action_a_m3" >
+				<select name="data[action_a_m3]" ><option class="text_option_blanc" ><?php echo $this->presta['action_a_m3']; ?></option><?php echo $this->texteArray[KEY_BILAN_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_a_m3']; ?>" type="text" />
+				<img rel="action_a_m3" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="objectif_a_m3" >
+				<select name="data[objectif_a_m3]" ><option  class="text_option_blanc" ><?php echo $this->presta['objectif_a_m3']; ?></option><?php echo $this->texteArray[KEY_BILAN_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_a_m3']; ?>" type="text" />
+				<img rel="objectif_a_m3" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td><input style="display:block"  size="8" type="text" id="date_action_4" name="data[date_action_4]"  value="<?php echo $this->presta['date_action_4']; ?>"  /></td>
+				<td class="action_a_m4" >
+				<select name="data[action_a_m4]" ><option class="text_option_blanc" ><?php echo $this->presta['action_a_m4']; ?></option><?php echo $this->texteArray[KEY_BILAN_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_a_m4']; ?>" type="text" />
+				<img rel="action_a_m4" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="objectif_a_m4" >
+				<select name="data[objectif_a_m4]" ><option  class="text_option_blanc" ><?php echo $this->presta['objectif_a_m4']; ?></option><?php echo $this->texteArray[KEY_BILAN_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_a_m4']; ?>" type="text" />
+				<img rel="objectif_a_m4" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td><input style="display:block"  size="8" type="text" id="date_action_5" name="data[date_action_5]"  value="<?php echo $this->presta['date_action_5']; ?>"  /></td>
+				<td class="action_a_m5" >
+				<select name="data[action_a_m5]" ><option class="text_option_blanc" ><?php echo $this->presta['action_a_m5']; ?></option><?php echo $this->texteArray[KEY_BILAN_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_a_m5']; ?>" type="text" />
+				<img rel="action_a_m5" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="objectif_a_m5" >
+				<select name="data[objectif_a_m5]" ><option  class="text_option_blanc" ><?php echo $this->presta['objectif_a_m5']; ?></option><?php echo $this->texteArray[KEY_BILAN_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_a_m5']; ?>" type="text" />
+				<img rel="objectif_a_m5" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+			<tr>
+				<td><input style="display:block"  size="8" type="text" id="date_action_6" name="data[date_action_6]"  value="<?php echo $this->presta['date_action_6']; ?>"  /></td>
+				<td class="action_a_m6" >
+				<select name="data[action_a_m6]" ><option class="text_option_blanc" ><?php echo $this->presta['action_a_m6']; ?></option><?php echo $this->texteArray[KEY_BILAN_ACTION]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['action_a_m6']; ?>" type="text" />
+				<img rel="action_a_m6" class="change" src="./images/ico/retour.png" />
+				</td>
+				<td class="objectif_a_m6" >
+				<select name="data[objectif_a_m6]" ><option  class="text_option_blanc" ><?php echo $this->presta['objectif_a_m6']; ?></option><?php echo $this->texteArray[KEY_BILAN_OBJECTIF]?></select> 
+				<input style="display:none" value="<?php echo $this->presta['objectif_a_m6']; ?>" type="text" />
+				<img rel="objectif_a_m6" class="change" src="./images/ico/retour.png" />
+				</td>
+			</tr>
+		</table>
+		</div>
+	
+ 	 	</div>
+  
+ 	
+	
+	</div>
+	<div id="tabs-6">
+	<div class="sous_titre" >Suivi de la prestation</div>
+	<div>
+	
+		<div><label><input <?php echo outils::setCheckbox($this->presta['suivi'],1); ?> class="suivi"  name="data[suivi]" type="radio" value="1"   /><span>Reprise d’emploi CDI ou CDD > 6 mois</span></label></div>
+		<div><label><input <?php echo outils::setCheckbox($this->presta['suivi'],2); ?> class="suivi" name="data[suivi]" type="radio" value="2"  /><span>Reprise d’emploi < à 6 mois</span></label></div>
+		<div><label><input <?php echo outils::setCheckbox($this->presta['suivi'],3); ?> class="suivi" name="data[suivi]" type="radio" value="3"  /><span>Entrée en formation (AFPR / POE / …)</span></label></div>
+		<div><label><input <?php echo outils::setCheckbox($this->presta['suivi'],4); ?> class="suivi" name="data[suivi]" type="radio" value="4" /><span>Au terme de la prestation</span></label></div>
+	</div>
+	</div>
+
+	<div id="tabs-7">
+		<form name="Editer">
+			<div class="sous_titre" >Liste des livrables</div>
+			<div>
+				<div><label><input id="imp_1" name="Editer['oe']['annexe_1]" checked="checked" value="Annexe I contrat d'accompagnement"  type="checkbox" /><span>Annexe I contrat d'accompagnement</span></label></div>
+				<div><label><input id="imp_2" name="Editer['oe']['annexe_2]" checked="checked" value="Annexe II Bilan" type="checkbox" /><span>Annexe II Bilan</span></label></div>
+			</div>
+		</form>
+	</div>
+	<div id="tabs-8">
+		
+		
+			<div class="sous_titre" >Liste des Rendez vous</div>
+			<div><?php if(count($this->rdv)==0)
+			echo 'Aucun rendez-vous pour cette prestation ';
+			else {?>
+				<table class="classic"  cellspacing="0" width="99%">
+					<tr>
+						<th>Date début</th>
+						<th>Date fin</th>
+						<th>Titre du Rdv</th>
+						<th>Type</th>
+						<th>Lieu</th>
+						<th>Statut</th>
+						<th>Motif Absence</th>
+					</tr>
+					<?php foreach ($this->rdv as $key => $row):?>
+					<tr>
+						<td><?php echo date('d/m/Y H:i',$row['StartTime'])?></td>
+						<td><?php echo date('d/m/Y H:i',$row['EndTime'])?></td>
+						<td><?php echo $row['Subject']?></td>
+						<td><?php echo $row['nom_long']?></td>
+						<td><?php echo $row['nom_lieu']?></td>
+						<td><?php echo $row['cal_status']?></td>
+						<td><?php echo $row['motif_absence']?></td>
+					</tr>
+					<?php endforeach;?>
+				</table>
+				<?php }?>
+			</div>
+		
+	</div>
+	
+
+	
+</div>
+</form>
+<div style="padding-top:10px" >
+<center><button id="savePresta" >Enregistrer</button><button id="EditerPresta">Editer</button></center>
+</div>
+<div class="copyright" >© APSIE OE</div>
+</div>
+
+
+<script type="text/javascript">
+$j('button').button();
+//Animation de l'option
+Option.anime();
+var id_presta = <?php echo $this->id_presta;?>;
+$j(function() {
+
+
+	
+	
+	
+		
+		$j('#contenu_oe_'+id_presta).dialog(
+			{ width : 905,
+			  height : 670
+			 }
+			);
+	
+	
+		$j( "#contenu_oe_"+id_presta+" #tabs" ).tabs();
+	
+		var icons = {
+			header: "ui-icon-circle-arrow-e",
+			headerSelected: "ui-icon-circle-arrow-s"
+		};
+		$j( "#contenu_oe_"+id_presta+" #accordion" ).accordion({
+			icons: icons,
+			autoHeight: false,
+		});
+
+		
+		//setSelectBox();	
+	});
+$j("#contenu_oe_"+id_presta+" #savePresta").click(function() {
+	savePresta();
+});
+
+$j(".boutton_pose_rdv").click(function() {
+	
+	savePresta();
+	});
+function go_to_rdv()
+{
+	
+	setTimeout(function(){
+	window.location.href=('/index.php?page=Calendrier&id_contact=<?php echo $this->contact['id'] ?>&id_presta=<?php echo $this->id_presta ?>&retour=1');
+	},1000);
+}
+function savePresta()
+{
+	var form  = $j("#contenu_oe_"+id_presta+" form[name='presta'] ").serializeArray();
+
+	/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat(
+            $j("#contenu_oe_"+id_presta+" form[name='presta'] input[type=checkbox]:not(:checked)").map(
+                    function() {
+                        return {"name": this.name, "value": 0}
+                    }).get()
+    );
+
+   
+	
+	
+
+	
+	
+	  $j.ajax({
+    		url : "./index.php?page=ajaxPrestaData&noTemplate=1&action=set",
+    		type : "POST",
+    		dataType : "json",
+    		data : form ,
+    		success: function(data){
+
+    			
+        		
+    			$j.gritter.add({
+    				// (string | mandatory) the heading of the notification
+    				title: 'OE',
+    				// (string | mandatory) the text inside the notification
+    				text: 'Les données sont sauvegardées...'
+    			});
+        		
+    		}});
+	
+	  return false;
+}
+
+$j("#contenu_oe_"+id_presta+" #EditerPresta").click(function() {
+	
+	//var form  = $j("#contenu_opcrea_"+id_presta+" form[name='Editer'] ").serializeArray();
+	if($j('#imp_1').attr('checked') == 'checked')
+	 {
+	 window.open("./index.php?page=download&noHeader=1&id_presta="+id_presta+"&presta=oe&annexe=1",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	 }
+	 if($j('#imp_2').attr('checked') == 'checked')
+	 {
+	 setTimeout(function(){
+		 window.open("./index.php?page=download&noHeader=1&id_presta="+id_presta+"&presta=oe&annexe=2",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+		 },1000);
+	 }
+	return false;
+	});
+
+$j("#code_rome_1,#code_rome_2,#sit_ben_code_rome,#sit_ben_code_rome2").autocomplete({
+	source: "./index.php?page=ajax&noTemplate=1&action=code_rome",
+	minLength: 2,
+	select: function( event, ui ) {
+		
+	}
+
+
+});
+
+
+
+$j( "#date_deb_1" ).datepicker();
+$j( "#date_fin_1" ).datepicker();
+$j( "#date_deb_2" ).datepicker();
+$j( "#date_fin_2" ).datepicker();
+$j( "#date_deb_3" ).datepicker();
+$j( "#date_fin_3" ).datepicker();
+$j( "#date_deb_4" ).datepicker();
+$j( "#date_fin_4" ).datepicker();
+$j( "#date_deb_5" ).datepicker();
+$j( "#date_fin_5" ).datepicker();
+$j( "#date_deb_6" ).datepicker();
+$j( "#date_fin_6" ).datepicker();
+$j( "#date_reprise_emploi" ).datepicker();
+$j( "#date_action_1,#date_action_2,#date_action_3,#date_action_4,#date_action_5,#date_action_6" ).datepicker();
+
+<?php for($i=0;$i<=7;$i++):?>
+$j( "#date_suivi_<?php echo $i?>" ).datepicker();
+$j( "#date_deb_<?php echo $i?>_periode_t" ).datepicker();
+$j( "#date_fin_<?php echo $i?>_periode_t" ).datepicker();
+
+//Autocomplétion entreprise
+$j("#entreprise_<?php echo $i?>").autocomplete({
+	source: "./index.php?page=ajax&noTemplate=1&action=entreprise",
+	minLength: 2,
+	select: function( event, ui ) {
+
+	
+	$j('#item_id_organisation_<?php echo $i?>').val(ui.item.id);
+		
+	}});
+
+//Autocomplétion entreprise
+$j("#periode_t_entreprise_<?php echo $i?>").autocomplete({
+	source: "./index.php?page=ajax&noTemplate=1&action=entreprise",
+	minLength: 2,
+	select: function( event, ui ) {
+
+	
+	$j('#periode_t_id_organisation_<?php echo $i?>').val(ui.item.id);
+		
+	}});
+
+$j("#periode_t_code_rome_<?php echo $i?>").autocomplete({
+	source: "./index.php?page=ajax&noTemplate=1&action=code_rome",
+	minLength: 2,
+	select: function( event, ui ) {
+		
+	}
+
+
+});
+<?php endfor;?>
+
+//Autocomplétion entreprise
+$j("#entreprise2").autocomplete({
+	source: "./index.php?page=ajax&noTemplate=1&action=entreprise",
+	minLength: 2,
+	select: function( event, ui ) {
+
+	
+	$j('#entreprise2_id').val(ui.item.id);
+		
+	}});
+
+
+$j(".change").click(function() {
+	$j('.'+$j(this).attr('rel')).changeSelectInput();
+	});
+
+$j(".plus").click(function() {
+	Organisation.getForm();
+/*$j.gritter.add({
+	// (string | mandatory) the heading of the notification
+	title: 'Entreprise',
+	// (string | mandatory) the text inside the notification
+	text: 'Le raccourcis d\'ajout d\'une entreprise n\'est pas encore disponible.<br/>Créer l\'entreprise directement via le module organisation'
+});*/
+});
+
+</script>

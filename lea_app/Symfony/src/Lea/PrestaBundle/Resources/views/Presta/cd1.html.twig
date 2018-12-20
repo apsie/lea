@@ -1,0 +1,2944 @@
+<div id="presta" class="entete" >- Prestation {{ presta.dispositif.nomDispositif }} de <b>{{ presta.contact.nomComplet }}</b> ({{ presta.idPresta }})</div>
+	<div class="contenu_presta" >
+	
+	<form name="presta">
+	<input type="hidden" name="data[suivi]" value="0" />
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Contrat/ d'accompagnement </a></li>
+			<li><a href="#tabs-2">Bilan Lot1</a></li>
+			<li><a href="#tabs-3">Analyse commerciale</a></li>
+			<li><a href="#tabs-4">Analyse financière</a></li>
+			<li><a href="#tabs-5">Analyse fiscale</a></li>
+			<li><a href="#tabs-6">Analyse juridique</a></li>
+			<li><a href="#tabs-7">Analyse organisationnelle</a></li>
+			<li><a href="#tabs-8">Analyse sociale</a></li>
+			<li><a href="#tabs-9">Questionnaire FSE</a></li>
+			<li><a href="#tabs-10">Questionnaire de satisfaction</a></li>
+			<li><a href="#tabs-11">Questionnaire de sortie</a></li>			
+			<li><a href="#tabs-12">Edition</a></li>
+			<li><a id="rdv" href="#tabs-13">Rdv</a></li>
+		</ul>
+		
+		
+            <div id="tabs-1">
+
+                  	<input type="hidden" name="id_presta" value="{{ presta.idPresta }}"/>
+                   	<input type="hidden" name="id_projet" value="{{ presta.idProjet }}"/>
+
+                        <div id="accordion">
+                            <h3><a href="#">Information sur {{ presta.contact.nomComplet }}</a></h3>
+                                <div>{% render "LeaPrestaBundle:Contact:create" with { idContact : presta.contact.idBen } %}</div>
+
+                            <h3><a href="#">Parcours professionnel et formation</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:parcourspro" with { idContact : presta.contact.idBen } %}
+                                    {% render "LeaPrestaBundle:Contact:formation" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+                            <h3><a href="#">Parcours d'accompagnement</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/index.php?menuaction=spid.spid_ui.index">Prestations</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/index.php?menuaction=details.details_ui.index">Orientation</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}">Relance</a><br><br>
+                                </div>
+
+                            <h3><a href="#">Prescripteur</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/spiclient/index.php">Structure Prescriptrice</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/index.php?menuaction=addressbook.addressbook_ui.index">Contact prescripteur</a>
+                                </div>
+
+                            <h3><a href="#">Fiche projet</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/details.php?id_projet={{ presta.idProjet }}&domain=default">Projet</a><br><br>
+                                    <a href="http://apsie.net/bp/public/?id_projet={{ presta.idProjet }}&id_employe=10&domain=default">Business Plan</a><br><br>
+                                </div>
+
+
+                            <h3><a href="#">Etat-civil</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:etatcivil" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+
+                            <h3><a href="#">Coordonnées complémentaires</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:complement" with { idContact : presta.contact.idBen } %}
+                                </div>
+                        </div>
+                </div>
+
+			
+	<div id="tabs-2">
+   		<div id="accordion" >
+		<!-- Le projet du bénéficiaire -->	
+			<h3><a href="#">L’entreprise</a></h3>
+			<div>
+			<div class="sous_titre" >Description de l’activité </div>
+			<div>
+			<textarea name="projet[description_projet]" rows="1" cols="100">{{presta.projet.descriptionProjet}}</textarea>
+			</div>
+
+			<div class="sous_titre">Situation globale de l’entreprise </div>
+			<div class="etat_avancement_projet">
+				<select id="etat_avancement_projet" name="data[etat_avancement_projet]" >
+					<option>{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}</option>
+							{% if( options[key.KEY_PROJET_ETAT_AVANCEMENT] is defined ) %}
+							{{options[key.KEY_PROJET_ETAT_AVANCEMENT]|raw}}
+							{% endif %}
+				</select>
+					<input style="display:none" value="{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}" type="text" />
+					<img rel="etat_avancement_projet" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+			</div>
+
+			<div class="sous_titre">Points à évaluer en priorité</div>
+				<div>
+					{% for i in 1..3 %}
+						<div style="clear:both" class="point_evaluer_priorite_{{i}}">
+						<select  id="point_evaluer_priorite_{{i}}"  name="data[point_evaluer_priorite_{{i}}]" >
+						<option>{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_PROJET_POINT_EVALUER_PRIORITE] is defined ) %}
+								{{options[key.KEY_PROJET_POINT_EVALUER_PRIORITE]|raw}}
+								{% endif %}
+						</select>
+						
+					<input style="display:none" value="{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}" type="text" />
+					<img rel="point_evaluer_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</div>
+						{% endfor %}
+					</div>
+				<div class="sous_titre" >Commentaires de l’intervenant </div>
+				<div>
+				<textarea name="data[commentaire_1]" rows="1" cols="100">{% if prestaData['commentaire_1'] is defined %}{{prestaData['commentaire_1']}}{% endif %}</textarea>
+				</div>
+				</div>
+			
+						
+				<h3><a href="#">Synthèse</a></h3>
+				<div>
+				<table class="diag" width="100%">
+						<tr>
+							<th width="20%">Objet</th>
+							<th width="10%">+</th>
+							<th width="10%">+/-</th>
+							<th width="10%">-</th>
+							<th width="40%">Observation</th>
+						</tr>
+						{% for key, texte in listes[key.KEY_EVALUATION] %}
+							{% set radio_name = 'synthese_' ~ key %}
+							{% set obs_name = 'synthese_obs_' ~ key %}
+							<tr>
+								<td>{{ texte }}</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="99" checked="" hidden>
+									<input type="radio" name="data[synthese_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+								</td>
+								 
+								<td>
+									<div class="normal"><input type="text" size= "60" name="data[synthese_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value="{{ prestaData[obs_name] }}"{% endif %}></div>
+								</td>
+							</tr>
+						{% endfor %}
+				</table>
+				</div>
+				<h3><a href="#">Résultat de l’évaluation</a></h3>
+				
+				<div class="bloc" >
+				
+				<div class="sous_titre" > Résultat de l’évaluation </div>
+						
+				<div><label><input  {% if prestaData['estimation'] is defined %}{{prestaData['estimation']|setcheckbox(0)}}{% endif %}  style="display:none" name="data[estimation]" type="radio"  value="0"  /> </label></div>
+							
+				<div><label><input  {% if prestaData['estimation'] is defined %}{{prestaData['estimation']|setcheckbox(1)}}{% endif %}  name="data[estimation]" type="radio"  value="1"  /> <span> Activité viable </span></label></div>
+							
+				<div class="bloc" >
+				<div class="sous_titre" >Recommandations de l’intervenant</div>
+				<textarea name="data[comm_m2]" rows="2" cols="100">{% if prestaData['comm_m2'] is defined %}{{prestaData['comm_m2']}}{% endif %}</textarea>
+				</div>
+							
+				<div><label><input  {% if prestaData['estimation'] is defined %}{{prestaData['estimation']|setcheckbox(2)}}{% endif %}  name="data[estimation]" type="radio"  value="2" /> <span> Activité non viable</span></label></div>
+							 
+				<div class="bloc" >
+				<div class="sous_titre" >Recommandations de l’intervenant</div>
+				<div>
+				<textarea name="data[comm_m1]" rows="2" cols="100">{% if prestaData['comm_m1'] is defined %}{{prestaData['comm_m1']}}{% endif %}</textarea>
+				</div> 
+				</div>
+			 	</div>		 
+		</div>
+		</div>
+
+
+		<div id="tabs-3">
+			<div id="accordion">
+				<!-- La balise h3 correspond a un titre de sous-partie dans l'accordéon -->
+				<h3><a href="#">Connaissance du marché</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Quels sont les produits / services de l’entreprise ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_marche_repben1]" rows="3" cols="30">{% if prestaData['conn_marche_repben1'] is defined %}{{prestaData['conn_marche_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_marche_diag1]" rows="3" cols="30">{% if prestaData['conn_marche_diag1'] is defined %}{{prestaData['conn_marche_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quels sont ses clients (cibles privilégiées, prescripteurs…) ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_marche_repben2]" rows="3" cols="30">{% if prestaData['conn_marche_repben2'] is defined %}{{prestaData['conn_marche_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_marche_diag2]" rows="3" cols="30">{% if prestaData['conn_marche_diag2'] is defined %}{{prestaData['conn_marche_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui sont les concurrents ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_marche_repben3]" rows="3" cols="30">{% if prestaData['conn_marche_repben3'] is defined %}{{prestaData['conn_marche_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_marche_diag3]" rows="3" cols="30">{% if prestaData['conn_marche_diag3'] is defined %}{{prestaData['conn_marche_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui sont Les fournisseurs ? Quelles conditions de paiement ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_marche_repben4]" rows="3" cols="30">{% if prestaData['conn_marche_repben4'] is defined %}{{prestaData['conn_marche_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_marche_diag4]" rows="3" cols="30">{% if prestaData['conn_marche_diag4'] is defined %}{{prestaData['conn_marche_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quelles contraintes réglementaires, évolutions prévisibles ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_marche_repben5]" rows="3" cols="30">{% if prestaData['conn_marche_repben5'] is defined %}{{prestaData['conn_marche_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_marche_diag5]" rows="3" cols="30">{% if prestaData['conn_marche_diag5'] is defined %}{{prestaData['conn_marche_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Pratiques commerciales du marché (prix, publicité, conditions de vente ...) ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_marche_repben6]" rows="3" cols="30">{% if prestaData['conn_marche_repben6'] is defined %}{{prestaData['conn_marche_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_marche_diag6]" rows="3" cols="30">{% if prestaData['conn_marche_diag6'] is defined %}{{prestaData['conn_marche_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de deuxieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Positionnement de l’entreprise</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Emplacement (Zone de chalandise)</td>
+							<td>
+								<textarea name="data[posit_ent_repben1]" rows="3" cols="30">{% if prestaData['posit_ent_repben1'] is defined %}{{prestaData['posit_ent_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[posit_ent_diag1]" rows="3" cols="30">{% if prestaData['posit_ent_diag1'] is defined %}{{prestaData['posit_ent_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Choix de clientèles et cohérence avec l’offre de produits / services</td>
+							<td>
+								<textarea name="data[posit_ent_repben2]" rows="3" cols="30">{% if prestaData['posit_ent_repben2'] is defined %}{{prestaData['posit_ent_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[posit_ent_diag2]" rows="3" cols="30">{% if prestaData['posit_ent_diag2'] is defined %}{{prestaData['posit_ent_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Image que l’entreprise souhaite donner d’elle (positionnement)</td>
+							<td>
+								<textarea name="data[posit_ent_repben3]" rows="3" cols="30">{% if prestaData['posit_ent_repben3'] is defined %}{{prestaData['posit_ent_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[posit_ent_diag3]" rows="3" cols="30">{% if prestaData['posit_ent_diag3'] is defined %}{{prestaData['posit_ent_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Particularités, avantages, handicaps par rapport à la concurrence</td>
+							<td>
+								<textarea name="data[posit_ent_repben4]" rows="3" cols="30">{% if prestaData['posit_ent_repben4'] is defined %}{{prestaData['posit_ent_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[posit_ent_diag4]" rows="3" cols="30">{% if prestaData['posit_ent_diag4'] is defined %}{{prestaData['posit_ent_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Cohérence de l’offre (gamme de produits/prix/qualité) avec l’image</td>
+							<td>
+								<textarea name="data[posit_ent_repben5]" rows="3" cols="30">{% if prestaData['posit_ent_repben5'] is defined %}{{prestaData['posit_ent_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[posit_ent_diag5]" rows="3" cols="30">{% if prestaData['posit_ent_diag5'] is defined %}{{prestaData['posit_ent_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de troisieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Objectifs commerciaux</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Quels sont les objectifs de CA (à traduire en objectifs de volume) ?</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben1]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben1'] is defined %}{{prestaData['objectif_cciaux_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag1]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag1'] is defined %}{{prestaData['objectif_cciaux_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quelle est la ventilation du CA par type de clients (règle des 80/20) ?</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben2]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben2'] is defined %}{{prestaData['objectif_cciaux_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag2]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag2'] is defined %}{{prestaData['objectif_cciaux_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Existe-t-il des tableaux de bord de suivi de l’activité commerciale ? (recette journalière, facturation mensuelle, nb de clients)</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben3]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben3'] is defined %}{{prestaData['objectif_cciaux_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag3]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag3'] is defined %}{{prestaData['objectif_cciaux_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Analyse des écarts observés par rapport aux prévisions ?</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben4]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben4'] is defined %}{{prestaData['objectif_cciaux_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag4]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag4'] is defined %}{{prestaData['objectif_cciaux_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Analyse de la saisonnalité de l’activité ?</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben5]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben5'] is defined %}{{prestaData['objectif_cciaux_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag5]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag5'] is defined %}{{prestaData['objectif_cciaux_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quels sont les objectifs de marge commerciale ou de marge brute (artisans) ?</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben6]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben6'] is defined %}{{prestaData['objectif_cciaux_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag6]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag6'] is defined %}{{prestaData['objectif_cciaux_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Comment est prévue (réalisée) l’analyse de clientèle (évolution, fidélité, risques, ...)</td>
+							<td>
+								<textarea name="data[objectif_cciaux_repben7]" rows="3" cols="30">{% if prestaData['objectif_cciaux_repben7'] is defined %}{{prestaData['objectif_cciaux_repben7']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[objectif_cciaux_diag7]" rows="3" cols="30">{% if prestaData['objectif_cciaux_diag7'] is defined %}{{prestaData['objectif_cciaux_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+				<!-- Exemple de quatrieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Organisation commerciale</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Existence d’un fichier clients ?</td>
+							<td>
+								<textarea name="data[org_cciale_repben1]" rows="3" cols="30">{% if prestaData['org_cciale_repben1'] is defined %}{{prestaData['org_cciale_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_cciale_diag1]" rows="3" cols="30">{% if prestaData['org_cciale_diag1'] is defined %}{{prestaData['org_cciale_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Gestion informatisée du fichier clients (mailing, base de données, traitement statistique, ...)</td>
+							<td>
+								<textarea name="data[org_cciale_repben2]" rows="3" cols="30">{% if prestaData['org_cciale_repben2'] is defined %}{{prestaData['org_cciale_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_cciale_diag2]" rows="3" cols="30">{% if prestaData['org_cciale_diag2'] is defined %}{{prestaData['org_cciale_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui est en charge de la fonction commerciale ?</td>
+							<td>
+								<textarea name="data[org_cciale_repben3]" rows="3" cols="30">{% if prestaData['org_cciale_repben3'] is defined %}{{prestaData['org_cciale_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_cciale_diag3]" rows="3" cols="30">{% if prestaData['org_cciale_diag3'] is defined %}{{prestaData['org_cciale_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Existence de contrats de distribution ? (distribution, représentation, ...)</td>
+							<td>
+								<textarea name="data[org_cciale_repben4]" rows="3" cols="30">{% if prestaData['org_cciale_repben4'] is defined %}{{prestaData['org_cciale_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_cciale_diag4]" rows="3" cols="30">{% if prestaData['org_cciale_diag4'] is defined %}{{prestaData['org_cciale_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Existence de contrats clients ? (abonnement, carte de fidélité, ...)</td>
+							<td>
+								<textarea name="data[org_cciale_repben5]" rows="3" cols="30">{% if prestaData['org_cciale_repben5'] is defined %}{{prestaData['org_cciale_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_cciale_diag5]" rows="3" cols="30">{% if prestaData['org_cciale_diag5'] is defined %}{{prestaData['org_cciale_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Respect des mentions obligatoires (devis, factures, affichage des prix)</td>
+							<td>
+								<textarea name="data[org_cciale_repben6]" rows="3" cols="30">{% if prestaData['org_cciale_repben6'] is defined %}{{prestaData['org_cciale_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_cciale_diag6]" rows="3" cols="30">{% if prestaData['org_cciale_diag6'] is defined %}{{prestaData['org_cciale_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de cinquieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Plan d’action commerciale</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Existence d’un plan d’action commerciale cohérent avec les objectifs de CA (type d’actions prévues, objectifs quantifiés)</td>
+							<td>
+								<textarea name="data[pac_repben1]" rows="3" cols="30">{% if prestaData['pac_repben1'] is defined %}{{prestaData['pac_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[pac_diag1]" rows="3" cols="30">{% if prestaData['pac_diag1'] is defined %}{{prestaData['pac_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Hiérarchisation des priorités et existence d’un calendrier ?</td>
+							<td>
+								<textarea name="data[pac_repben2]" rows="3" cols="30">{% if prestaData['pac_repben2'] is defined %}{{prestaData['pac_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[pac_diag2]" rows="3" cols="30">{% if prestaData['pac_diag2'] is defined %}{{prestaData['pac_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Vérification de la cohérence entre le budget et le plan d’action commerciale</td>
+							<td>
+								<textarea name="data[pac_repben3]" rows="3" cols="30">{% if prestaData['pac_repben3'] is defined %}{{prestaData['pac_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[pac_diag3]" rows="3" cols="30">{% if prestaData['pac_diag3'] is defined %}{{prestaData['pac_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Analyse du coût et de la rentabilité des opérations commerciales réalisées ?</td>
+							<td>
+								<textarea name="data[pac_repben4]" rows="3" cols="30">{% if prestaData['pac_repben4'] is defined %}{{prestaData['pac_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[pac_diag4]" rows="3" cols="30">{% if prestaData['pac_diag4'] is defined %}{{prestaData['pac_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+				<!-- Exemple de sixieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Communication</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Documents de communication externe (tête de lettre, cartes de visites, plaquette, flyers, enseigne, marquage véhicule...) ?</td>
+							<td>
+								<textarea name="data[com_repben1]" rows="3" cols="30">{% if prestaData['com_repben1'] is defined %}{{prestaData['com_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[com_diag1]" rows="3" cols="30">{% if prestaData['com_diag1'] is defined %}{{prestaData['com_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Cohérence des documents de communication entre eux (logo, couleurs, même discours, ...) et l’activité de l’entreprise</td>
+							<td>
+								<textarea name="data[com_repben2]" rows="3" cols="30">{% if prestaData['com_repben2'] is defined %}{{prestaData['com_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[com_diag2]" rows="3" cols="30">{% if prestaData['com_diag2'] is defined %}{{prestaData['com_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Existence d’argumentaires commerciaux (phoning, mailing, entretien de vente, plaquette, ...)</td>
+							<td>
+								<textarea name="data[com_repben3]" rows="3" cols="30">{% if prestaData['com_repben3'] is defined %}{{prestaData['com_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[com_diag3]" rows="3" cols="30">{% if prestaData['com_diag3'] is defined %}{{prestaData['com_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Utilisation des technologies numériques, création d’un site web ?</td>
+							<td>
+								<textarea name="data[com_repben4]" rows="3" cols="30">{% if prestaData['com_repben4'] is defined %}{{prestaData['com_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[com_diag4]" rows="3" cols="30">{% if prestaData['com_diag4'] is defined %}{{prestaData['com_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+
+			</div>
+		</div>
+
+	
+		<div id="tabs-4">
+			<div id="accordion">
+				<!-- La balise h3 correspond a un titre de sous-partie dans l'accordéon -->
+				<h3><a href="#">Plan de financement de démarrage</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">BESOINS</th>
+							<th width="10%">PREVU</th>
+							<th width="10%">REALISE</th>
+							<th width="40%">OBSERVATIONS</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Immobilisations incorporelles (Fonds de commerce...)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben1]" rows="3" cols="30">{% if prestaData['pfp_repben1'] is defined %}{{prestaData['pfp_repben1']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben1]" rows="3" cols="30">{% if prestaData['pfr_repben1'] is defined %}{{prestaData['pfr_repben1']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag1]" rows="3" cols="30">{% if prestaData['pf_diag1'] is defined %}{{prestaData['pf_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Immobilisations corporelles (Matériel, Aménagement, Véhicule)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben2]" rows="3" cols="30">{% if prestaData['pfp_repben2'] is defined %}{{prestaData['pfp_repben2']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben2]" rows="3" cols="30">{% if prestaData['pfr_repben2'] is defined %}{{prestaData['pfr_repben2']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag2]" rows="3" cols="30">{% if prestaData['pf_diag2'] is defined %}{{prestaData['pf_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Immobilisations financières Dépôt de garantie</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben3]" rows="3" cols="30">{% if prestaData['pfp_repben3'] is defined %}{{prestaData['pfp_repben3']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben3]" rows="3" cols="30">{% if prestaData['pfr_repben3'] is defined %}{{prestaData['pfr_repben3']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag3]" rows="3" cols="30">{% if prestaData['pf_diag3'] is defined %}{{prestaData['pf_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Besoin en Fonds de Roulement (Stock, Trésorerie)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben4]" rows="3" cols="30">{% if prestaData['pfp_repben4'] is defined %}{{prestaData['pfp_repben4']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben4]" rows="3" cols="30">{% if prestaData['pfr_repben4'] is defined %}{{prestaData['pfr_repben4']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag4]" rows="3" cols="30">{% if prestaData['pf_diag4'] is defined %}{{prestaData['pf_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Total</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben5]" rows="3" cols="30">{% if prestaData['pfp_repben5'] is defined %}{{prestaData['pfp_repben5']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben5]" rows="3" cols="30">{% if prestaData['pfr_repben5'] is defined %}{{prestaData['pfr_repben5']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag5]" rows="3" cols="30">{% if prestaData['pf_diag5'] is defined %}{{prestaData['pf_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+					</table>
+
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">RESSOURCES</th>
+							<th width="10%">PREVU</th>
+							<th width="10%">REALISE</th>
+							<th width="40%">OBSERVATIONS</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Apports personnel (ou associés)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben6]" rows="3" cols="30">{% if prestaData['pfp_repben6'] is defined %}{{prestaData['pfp_repben6']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben6]" rows="3" cols="30">{% if prestaData['pfr_repben6'] is defined %}{{prestaData['pfr_repben6']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag6]" rows="3" cols="30">{% if prestaData['pf_diag6'] is defined %}{{prestaData['pf_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Compte courant d’associé (Créateur / Associé)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben7]" rows="3" cols="30">{% if prestaData['pfp_repben7'] is defined %}{{prestaData['pfp_repben7']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben7]" rows="3" cols="30">{% if prestaData['pfr_repben7'] is defined %}{{prestaData['pfr_repben7']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag7]" rows="3" cols="30">{% if prestaData['pf_diag7'] is defined %}{{prestaData['pf_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Emprunt bancaire</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben8]" rows="3" cols="30">{% if prestaData['pfp_repben8'] is defined %}{{prestaData['pfp_repben8']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben8]" rows="3" cols="30">{% if prestaData['pfr_repben8'] is defined %}{{prestaData['pfr_repben8']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag8]" rows="3" cols="30">{% if prestaData['pf_diag8'] is defined %}{{prestaData['pf_diag8']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Prêt d’honneur</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben9]" rows="3" cols="30">{% if prestaData['pfp_repben9'] is defined %}{{prestaData['pfp_repben9']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben9]" rows="3" cols="30">{% if prestaData['pfr_repben9'] is defined %}{{prestaData['pfr_repben9']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag9]" rows="3" cols="30">{% if prestaData['pf_diag9'] is defined %}{{prestaData['pf_diag9']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Subventions</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben10]" rows="3" cols="30">{% if prestaData['pfp_repben10'] is defined %}{{prestaData['pfp_repben10']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben10]" rows="3" cols="30">{% if prestaData['pfr_repben10'] is defined %}{{prestaData['pfr_repben10']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag10]" rows="3" cols="30">{% if prestaData['pf_diag10'] is defined %}{{prestaData['pf_diag10']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Autres aides (famille, …)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben11]" rows="3" cols="30">{% if prestaData['pfp_repben11'] is defined %}{{prestaData['pfp_repben11']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben11]" rows="3" cols="30">{% if prestaData['pfr_repben11'] is defined %}{{prestaData['pfr_repben11']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag11]" rows="3" cols="30">{% if prestaData['pf_diag11'] is defined %}{{prestaData['pf_diag11']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+                        <tr>
+							<td>Total</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[pfp_repben12]" rows="3" cols="30">{% if prestaData['pfp_repben12'] is defined %}{{prestaData['pfp_repben12']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pfr_repben12]" rows="3" cols="30">{% if prestaData['pfr_repben12'] is defined %}{{prestaData['pfr_repben12']}}{% endif %}</textarea>
+							</td>
+
+							<td>
+								<textarea name="data[pf_diag12]" rows="3" cols="30">{% if prestaData['pf_diag12'] is defined %}{{prestaData['pf_diag12']}}{% endif %}</textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<!-- Exemple de deuxieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Vérification des connaissances financières</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">THEMES</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Connaissance de la notion de BFR, évaluation du BFR</td>
+							<td>
+								<textarea name="data[conn_fin_repben1]" rows="3" cols="30">{% if prestaData['conn_fin_repben1'] is defined %}{{prestaData['conn_fin_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag1]" rows="3" cols="30">{% if prestaData['conn_fin_diag1'] is defined %}{{prestaData['conn_fin_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Comment est réalisé le suivi de la trésorerie ? (caisse, banque)</td>
+							<td>
+								<textarea name="data[conn_fin_repben2]" rows="3" cols="30">{% if prestaData['conn_fin_repben2'] is defined %}{{prestaData['conn_fin_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag2]" rows="3" cols="30">{% if prestaData['conn_fin_diag2'] is defined %}{{prestaData['conn_fin_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Suivi des échéances de paiement (créances et dettes)</td>
+							<td>
+								<textarea name="data[conn_fin_repben3]" rows="3" cols="30">{% if prestaData['conn_fin_repben3'] is defined %}{{prestaData['conn_fin_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag3]" rows="3" cols="30">{% if prestaData['conn_fin_diag3'] is defined %}{{prestaData['conn_fin_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Compréhension de l’utilisation d’un plan de trésorerie</td>
+							<td>
+								<textarea name="data[conn_fin_repben4]" rows="3" cols="30">{% if prestaData['conn_fin_repben4'] is defined %}{{prestaData['conn_fin_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag4]" rows="3" cols="30">{% if prestaData['conn_fin_diag4'] is defined %}{{prestaData['conn_fin_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Comment est envisagé le suivi du chiffre d’affaires ?</td>
+							<td>
+								<textarea name="data[conn_fin_repben5]" rows="3" cols="30">{% if prestaData['conn_fin_repben5'] is defined %}{{prestaData['conn_fin_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag5]" rows="3" cols="30">{% if prestaData['conn_fin_diag5'] is defined %}{{prestaData['conn_fin_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Comment est envisagé le suivi des principaux postes de charges ?</td>
+							<td>
+								<textarea name="data[conn_fin_repben6]" rows="3" cols="30">{% if prestaData['conn_fin_repben6'] is defined %}{{prestaData['conn_fin_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag6]" rows="3" cols="30">{% if prestaData['conn_fin_diag6'] is defined %}{{prestaData['conn_fin_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance de la notion de marge brute et de son mode de calcul</td>
+							<td>
+								<textarea name="data[conn_fin_repben7]" rows="3" cols="30">{% if prestaData['conn_fin_repben7'] is defined %}{{prestaData['conn_fin_repben7']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag7]" rows="3" cols="30">{% if prestaData['conn_fin_diag7'] is defined %}{{prestaData['conn_fin_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance de la notion de seuil de rentabilité</td>
+							<td>
+								<textarea name="data[conn_fin_repben8]" rows="3" cols="30">{% if prestaData['conn_fin_repben8'] is defined %}{{prestaData['conn_fin_repben8']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag8]" rows="3" cols="30">{% if prestaData['conn_fin_diag8'] is defined %}{{prestaData['conn_fin_diag8']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance du mode de calcul du bénéfice</td>
+							<td>
+								<textarea name="data[conn_fin_repben9]" rows="3" cols="30">{% if prestaData['conn_fin_repben9'] is defined %}{{prestaData['conn_fin_repben9']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag9]" rows="3" cols="30">{% if prestaData['conn_fin_diag9'] is defined %}{{prestaData['conn_fin_diag9']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Comment sont calculés les  prélèvements personnels de l’exploitant ?</td>
+							<td>
+								<textarea name="data[conn_fin_repben10]" rows="3" cols="30">{% if prestaData['conn_fin_repben10'] is defined %}{{prestaData['conn_fin_repben10']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag10]" rows="3" cols="30">{% if prestaData['conn_fin_diag10'] is defined %}{{prestaData['conn_fin_diag10']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>En fin d’année, connaissances des informations contenues dans le bilan ?</td>
+							<td>
+								<textarea name="data[conn_fin_repben11]" rows="3" cols="30">{% if prestaData['conn_fin_repben11'] is defined %}{{prestaData['conn_fin_repben11']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag11]" rows="3" cols="30">{% if prestaData['conn_fin_diag11'] is defined %}{{prestaData['conn_fin_diag11']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>En fin d’année, connaissances des informations contenues dans le compte de résultat ?</td>
+							<td>
+								<textarea name="data[conn_fin_repben12]" rows="3" cols="30">{% if prestaData['conn_fin_repben12'] is defined %}{{prestaData['conn_fin_repben12']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fin_diag12]" rows="3" cols="30">{% if prestaData['conn_fin_diag12'] is defined %}{{prestaData['conn_fin_diag12']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+	
+		<div id="tabs-5">
+			<div id="accordion">
+				<!-- La balise h3 correspond a un titre de sous-partie dans l'accordéon -->
+				<h3><a href="#">Connaissances en fiscalité</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">THEMES</th>
+							<th width="30%">ETAT DES CONNAISSANCES</th>
+							<th width="30%">DIAGNOSTIC / TRAVAIL A REALISER</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Connaissance du mode d'imposition des bénéfices en fonction de son entreprise</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_fisc_repben1]" rows="3" cols="30">{% if prestaData['conn_fisc_repben1'] is defined %}{{prestaData['conn_fisc_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag1]" rows="3" cols="30">{% if prestaData['conn_fisc_diag1'] is defined %}{{prestaData['conn_fisc_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance des différents régimes de TVA et des obligations déclaratives et comptables qui en découlent</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_fisc_repben2]" rows="3" cols="30">{% if prestaData['conn_fisc_repben2'] is defined %}{{prestaData['conn_fisc_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag2]" rows="3" cols="30">{% if prestaData['conn_fisc_diag2'] is defined %}{{prestaData['conn_fisc_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance des exonérations possible. Demande d'exonération auprès des services fiscaux</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_fisc_repben3]" rows="3" cols="30">{% if prestaData['conn_fisc_repben3'] is defined %}{{prestaData['conn_fisc_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag3]" rows="3" cols="30">{% if prestaData['conn_fisc_diag3'] is defined %}{{prestaData['conn_fisc_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance des CGA (ou des AGA)</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_fisc_repben4]" rows="3" cols="30">{% if prestaData['conn_fisc_repben4'] is defined %}{{prestaData['conn_fisc_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag4]" rows="3" cols="30">{% if prestaData['conn_fisc_diag4'] is defined %}{{prestaData['conn_fisc_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance des échéances en matière de déclaration et de paiement</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[conn_fisc_repben5]" rows="3" cols="30">{% if prestaData['conn_fisc_repben5'] is defined %}{{prestaData['conn_fisc_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag5]" rows="3" cols="30">{% if prestaData['conn_fisc_diag5'] is defined %}{{prestaData['conn_fisc_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de deuxieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Check-list fiscale - démarches en début d'activité</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Personne chargée des déclarations fiscales ?</td>
+							<td>
+								<textarea name="data[conn_fisc_repben6]" rows="3" cols="30">{% if prestaData['conn_fisc_repben6'] is defined %}{{prestaData['conn_fisc_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag6]" rows="3" cols="30">{% if prestaData['conn_fisc_diag6'] is defined %}{{prestaData['conn_fisc_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Mode d’imposition des bénéfices (IS / IRPP) ?</td>
+							<td>
+								<textarea name="data[conn_fisc_repben7]" rows="3" cols="30">{% if prestaData['conn_fisc_repben7'] is defined %}{{prestaData['conn_fisc_repben7']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag7]" rows="3" cols="30">{% if prestaData['conn_fisc_diag7'] is defined %}{{prestaData['conn_fisc_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Régime d’imposition (Micro-entreprise / réel simplifié /réel normal) ?</td>
+							<td>
+								<textarea name="data[conn_fisc_repben8]" rows="3" cols="30">{% if prestaData['conn_fisc_repben8'] is defined %}{{prestaData['conn_fisc_repben8']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag8]" rows="3" cols="30">{% if prestaData['conn_fisc_diag8'] is defined %}{{prestaData['conn_fisc_diag8']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Adhésion à un centre de gestion agréé (AGA / CGA) ?</td>
+							<td>
+								<textarea name="data[conn_fisc_repben9]" rows="3" cols="30">{% if prestaData['conn_fisc_repben9'] is defined %}{{prestaData['conn_fisc_repben9']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag9]" rows="3" cols="30">{% if prestaData['conn_fisc_diag9'] is defined %}{{prestaData['conn_fisc_diag9']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Choix du régime de TVA arrêté (micro, réel)</td>
+							<td>
+								<textarea name="data[conn_fisc_repben10]" rows="3" cols="30">{% if prestaData['conn_fisc_repben10'] is defined %}{{prestaData['conn_fisc_repben10']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag10]" rows="3" cols="30">{% if prestaData['conn_fisc_diag10'] is defined %}{{prestaData['conn_fisc_diag10']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Choix de la périodicité des déclarations de TVA</td>
+							<td>
+								<textarea name="data[conn_fisc_repben11]" rows="3" cols="30">{% if prestaData['conn_fisc_repben11'] is defined %}{{prestaData['conn_fisc_repben11']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag11]" rows="3" cols="30">{% if prestaData['conn_fisc_diag11'] is defined %}{{prestaData['conn_fisc_diag11']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Inspecteur des impôts rencontré</td>
+							<td>
+								<textarea name="data[conn_fisc_repben12]" rows="3" cols="30">{% if prestaData['conn_fisc_repben12'] is defined %}{{prestaData['conn_fisc_repben12']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag12]" rows="3" cols="30">{% if prestaData['conn_fisc_diag12'] is defined %}{{prestaData['conn_fisc_diag12']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de troisieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Check-list fiscale - Demandes d'exonération</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Demande d’exonération de Contribution Foncière des Entreprises (CFE) adressée à l’inspecteur des impôts</td>
+							<td>
+								<textarea name="data[conn_fisc_repben13]" rows="3" cols="30">{% if prestaData['conn_fisc_repben13'] is defined %}{{prestaData['conn_fisc_repben13']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag13]" rows="3" cols="30">{% if prestaData['conn_fisc_diag13'] is defined %}{{prestaData['conn_fisc_diag13']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Réception de la réponse du service des impôts</td>
+							<td>
+								<textarea name="data[conn_fisc_repben14]" rows="3" cols="30">{% if prestaData['conn_fisc_repben14'] is defined %}{{prestaData['conn_fisc_repben14']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag14]" rows="3" cols="30">{% if prestaData['conn_fisc_diag14'] is defined %}{{prestaData['conn_fisc_diag14']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Abattement d’impôt si adhésion au centre de gestion agréé</td>
+							<td>
+								<textarea name="data[conn_fisc_repben15]" rows="3" cols="30">{% if prestaData['conn_fisc_repben15'] is defined %}{{prestaData['conn_fisc_repben15']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag15]" rows="3" cols="30">{% if prestaData['conn_fisc_diag15'] is defined %}{{prestaData['conn_fisc_diag15']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Questionnaire de demande d’exonération d’impôt pour création d’entreprise nouvelle établi (avant le 31/12 de l’année de création)</td>
+							<td>
+								<textarea name="data[conn_fisc_repben16]" rows="3" cols="30">{% if prestaData['conn_fisc_repben16'] is defined %}{{prestaData['conn_fisc_repben16']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag16]" rows="3" cols="30">{% if prestaData['conn_fisc_diag16'] is defined %}{{prestaData['conn_fisc_diag16']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Réception de la réponse du service des impôts</td>
+							<td>
+								<textarea name="data[conn_fisc_repben17]" rows="3" cols="30">{% if prestaData['conn_fisc_repben17'] is defined %}{{prestaData['conn_fisc_repben17']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag17]" rows="3" cols="30">{% if prestaData['conn_fisc_diag17'] is defined %}{{prestaData['conn_fisc_diag17']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+
+
+				<!-- Exemple de quatrieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Check-list fiscale - Déclarations de TVA</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Première déclaration TVA établie dans délais</td>
+							<td>
+								<textarea name="data[conn_fisc_repben18]" rows="3" cols="30">{% if prestaData['conn_fisc_repben18'] is defined %}{{prestaData['conn_fisc_repben18']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag18]" rows="3" cols="30">{% if prestaData['conn_fisc_diag18'] is defined %}{{prestaData['conn_fisc_diag18']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Réel simplifié : calcul de l’acompte sur prévisionnel</td>
+							<td>
+								<textarea name="data[conn_fisc_repben19]" rows="3" cols="30">{% if prestaData['conn_fisc_repben19'] is defined %}{{prestaData['conn_fisc_repben19']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag19]" rows="3" cols="30">{% if prestaData['conn_fisc_diag19'] is defined %}{{prestaData['conn_fisc_diag19']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Demande de remboursement du crédit de TVA</td>
+							<td>
+								<textarea name="data[conn_fisc_repben20]" rows="3" cols="30">{% if prestaData['conn_fisc_repben20'] is defined %}{{prestaData['conn_fisc_repben20']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag20]" rows="3" cols="30">{% if prestaData['conn_fisc_diag20'] is defined %}{{prestaData['conn_fisc_diag20']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Obtention du remboursement du crédit de TVA</td>
+							<td>
+								<textarea name="data[conn_fisc_repben21]" rows="3" cols="30">{% if prestaData['conn_fisc_repben21'] is defined %}{{prestaData['conn_fisc_repben21']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag21]" rows="3" cols="30">{% if prestaData['conn_fisc_diag21'] is defined %}{{prestaData['conn_fisc_diag21']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Contrôle déclarations TVA</td>
+							<td>
+								<textarea name="data[conn_fisc_repben22]" rows="3" cols="30">{% if prestaData['conn_fisc_repben22'] is defined %}{{prestaData['conn_fisc_repben22']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag22]" rows="3" cols="30">{% if prestaData['conn_fisc_diag22'] is defined %}{{prestaData['conn_fisc_diag22']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Etablissement de la CA12</td>
+							<td>
+								<textarea name="data[conn_fisc_repben23]" rows="3" cols="30">{% if prestaData['conn_fisc_repben23'] is defined %}{{prestaData['conn_fisc_repben23']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag23]" rows="3" cols="30">{% if prestaData['conn_fisc_diag23'] is defined %}{{prestaData['conn_fisc_diag23']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de cinquieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Check-list fiscale - Déclarations fiscales</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Etablissement de déclaration fiscale dans les délais</td>
+							<td>
+								<textarea name="data[conn_fisc_repben24]" rows="3" cols="30">{% if prestaData['conn_fisc_repben24'] is defined %}{{prestaData['conn_fisc_repben24']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag24]" rows="3" cols="30">{% if prestaData['conn_fisc_diag24'] is defined %}{{prestaData['conn_fisc_diag24']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Double des déclarations conservées</td>
+							<td>
+								<textarea name="data[conn_fisc_repben25]" rows="3" cols="30">{% if prestaData['conn_fisc_repben25'] is defined %}{{prestaData['conn_fisc_repben25']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag25]" rows="3" cols="30">{% if prestaData['conn_fisc_diag25'] is defined %}{{prestaData['conn_fisc_diag25']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Analyse des documents de synthèse réalisée</td>
+							<td>
+								<textarea name="data[conn_fisc_repben26]" rows="3" cols="30">{% if prestaData['conn_fisc_repben26'] is defined %}{{prestaData['conn_fisc_repben26']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag26]" rows="3" cols="30">{% if prestaData['conn_fisc_diag26'] is defined %}{{prestaData['conn_fisc_diag26']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Tenue des registres légaux (annexes)</td>
+							<td>
+								<textarea name="data[conn_fisc_repben27]" rows="3" cols="30">{% if prestaData['conn_fisc_repben27'] is defined %}{{prestaData['conn_fisc_repben27']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[conn_fisc_diag27]" rows="3" cols="30">{% if prestaData['conn_fisc_diag27'] is defined %}{{prestaData['conn_fisc_diag27']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+	
+		<div id="tabs-6">
+			<div id="accordion">
+				<!-- La balise h3 correspond a un titre de sous-partie dans l'accordéon -->
+				<h3><a href="#">L'entreprise</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="30%">QUESTIONS</th>
+							<th width="30%">REPONSES BENEFICIAIRE</th>
+							<th width="30%">COMMENTAIRES</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Raison sociale</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben1]" rows="2" cols="40">{% if prestaData['jur_repben1'] is defined %}{{prestaData['jur_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag1]" rows="2" cols="40">{% if prestaData['jur_diag1'] is defined %}{{prestaData['jur_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Numéro de SIRET</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben2]" rows="2" cols="40">{% if prestaData['jur_repben2'] is defined %}{{prestaData['jur_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag2]" rows="2" cols="40">{% if prestaData['jur_diag2'] is defined %}{{prestaData['jur_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Code APE</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben3]" rows="2" cols="40">{% if prestaData['jur_repben3'] is defined %}{{prestaData['jur_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag3]" rows="2" cols="40">{% if prestaData['jur_diag3'] is defined %}{{prestaData['jur_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Date d'immatriculation</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben4]" rows="2" cols="40">{% if prestaData['jur_repben4'] is defined %}{{prestaData['jur_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag4]" rows="2" cols="40">{% if prestaData['jur_diag4'] is defined %}{{prestaData['jur_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de deuxieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Sociétariat</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">Associé</th>
+							<th width="20%">Identité de l'associé</th>
+							<th width="20%">Montant et % capital détenu</th>
+							<th width="20%">Rôle et statut dans l'entreprise</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Associé(e) numéro 1 </td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben5]" rows="3" cols="30">{% if prestaData['jur_repben5'] is defined %}{{prestaData['jur_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben6]" rows="3" cols="30">{% if prestaData['jur_repben6'] is defined %}{{prestaData['jur_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben7]" rows="3" cols="30">{% if prestaData['jur_repben7'] is defined %}{{prestaData['jur_repben7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Associé(e) numéro 2</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben8]" rows="3" cols="30">{% if prestaData['jur_repben8'] is defined %}{{prestaData['jur_repben8']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben9]" rows="3" cols="30">{% if prestaData['jur_repben9'] is defined %}{{prestaData['jur_repben9']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben10]" rows="3" cols="30">{% if prestaData['jur_repben10'] is defined %}{{prestaData['jur_repben10']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Associé(e) numéro 3</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben11]" rows="3" cols="30">{% if prestaData['jur_repben11'] is defined %}{{prestaData['jur_repben11']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben12]" rows="3" cols="30">{% if prestaData['jur_repben12'] is defined %}{{prestaData['jur_repben12']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben13]" rows="3" cols="30">{% if prestaData['jur_repben13'] is defined %}{{prestaData['jur_repben13']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Associé(e) numéro 4</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[jur_repben14]" rows="3" cols="30">{% if prestaData['jur_repben14'] is defined %}{{prestaData['jur_repben14']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben15]" rows="3" cols="30">{% if prestaData['jur_repben15'] is defined %}{{prestaData['jur_repben15']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_repben16]" rows="3" cols="30">{% if prestaData['jur_repben16'] is defined %}{{prestaData['jur_repben16']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+
+				<!-- Exemple de troisième sous-partie dans l'accordéon -->
+				<h3><a href="#">Gestion des contrats de l'entreprise</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Si local d’activité, Type de bail (commercial, précaire, professionnel)</td>
+							<td>
+								<textarea name="data[jur_repben17]" rows="3" cols="30">{% if prestaData['jur_repben17'] is defined %}{{prestaData['jur_repben17']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag17]" rows="3" cols="30">{% if prestaData['jur_diag17'] is defined %}{{prestaData['jur_diag17']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Durée, date de signature</td>
+							<td>
+								<textarea name="data[jur_repben18]" rows="3" cols="30">{% if prestaData['jur_repben18'] is defined %}{{prestaData['jur_repben18']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag18]" rows="3" cols="30">{% if prestaData['jur_diag18'] is defined %}{{prestaData['jur_diag18']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Clauses spécifiques (types d’activités autorisées ou interdites, conditions de résiliation ?</td>
+							<td>
+								<textarea name="data[jur_repben19]" rows="3" cols="30">{% if prestaData['jur_repben19'] is defined %}{{prestaData['jur_repben19']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag19]" rows="3" cols="30">{% if prestaData['jur_diag19'] is defined %}{{prestaData['jur_diag19']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Engagement à proposition de transformation en bail commercial dans le cas d’un bail précaire,…) ?</td>
+							<td>
+								<textarea name="data[jur_repben20]" rows="3" cols="30">{% if prestaData['jur_repben20'] is defined %}{{prestaData['jur_repben20']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag20]" rows="3" cols="30">{% if prestaData['jur_diag20'] is defined %}{{prestaData['jur_diag20']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Assurances Responsabilité civile et professionnelle contractée ?</td>
+							<td>
+								<textarea name="data[jur_repben21]" rows="3" cols="30">{% if prestaData['jur_repben21'] is defined %}{{prestaData['jur_repben21']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag21]" rows="3" cols="30">{% if prestaData['jur_diag21'] is defined %}{{prestaData['jur_diag21']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Assurance décennale (si indiquée) ?</td>
+							<td>
+								<textarea name="data[jur_repben22]" rows="3" cols="30">{% if prestaData['jur_repben22'] is defined %}{{prestaData['jur_repben22']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag22]" rows="3" cols="30">{% if prestaData['jur_diag22'] is defined %}{{prestaData['jur_diag22']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Assurance véhicule ?</td>
+							<td>
+								<textarea name="data[jur_repben23]" rows="3" cols="30">{% if prestaData['jur_repben23'] is defined %}{{prestaData['jur_repben23']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag23]" rows="3" cols="30">{% if prestaData['jur_diag23'] is defined %}{{prestaData['jur_diag23']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Contrat d’exploitation (date signature, durée, condition de renouvellement) ?</td>
+							<td>
+								<textarea name="data[jur_repben24]" rows="3" cols="30">{% if prestaData['jur_repben24'] is defined %}{{prestaData['jur_repben24']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag24]" rows="3" cols="30">{% if prestaData['jur_diag24'] is defined %}{{prestaData['jur_diag24']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>L'activité de l'entreprise relève-t-elle d'une règlementation spécifique ?</td>
+							<td>
+								<textarea name="data[jur_repben25]" rows="3" cols="30">{% if prestaData['jur_repben25'] is defined %}{{prestaData['jur_repben25']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag25]" rows="3" cols="30">{% if prestaData['jur_diag25'] is defined %}{{prestaData['jur_diag25']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+
+						<tr>
+							<td>L’exploitant possède-t-il les habilitations / diplômes nécessaires à son activité ?</td>
+							<td>
+								<textarea name="data[jur_repben26]" rows="3" cols="30">{% if prestaData['jur_repben26'] is defined %}{{prestaData['jur_repben26']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag26]" rows="3" cols="30">{% if prestaData['jur_diag26'] is defined %}{{prestaData['jur_diag26']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+
+						<tr>
+							<td>Dans le cas contraire, quelles sont les mesures prévues pour se mettre en conformité ?</td>
+							<td>
+								<textarea name="data[jur_repben27]" rows="3" cols="30">{% if prestaData['jur_repben27'] is defined %}{{prestaData['jur_repben27']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag27]" rows="3" cols="30">{% if prestaData['jur_diag27'] is defined %}{{prestaData['jur_diag27']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>S’agit-il d’une habilitation unique ou doit-elle être renouvelée périodiquement ? Dans le second cas, à quelle échéance ?</td>
+							<td>
+								<textarea name="data[jur_repben28]" rows="3" cols="30">{% if prestaData['jur_repben28'] is defined %}{{prestaData['jur_repben28']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag28]" rows="3" cols="30">{% if prestaData['jur_diag28'] is defined %}{{prestaData['jur_diag28']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de quatrième sous-partie dans l'accordéon -->
+				<h3><a href="#">Forme juridique et implications</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Vous êtes-vous porté caution personnelle / solidaire pour votre entreprise ?</td>
+							<td>
+								<textarea name="data[jur_repben29]" rows="3" cols="30">{% if prestaData['jur_repben29'] is defined %}{{prestaData['jur_repben29']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag29]" rows="3" cols="30">{% if prestaData['jur_diag29'] is defined %}{{prestaData['jur_diag29']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Si vous êtes marié sous le régime de la communauté de bien connaissez-vous les conséquences de ce régime sur votre entreprise ?</td>
+							<td>
+								<textarea name="data[jur_repben30]" rows="3" cols="30">{% if prestaData['jur_repben30'] is defined %}{{prestaData['jur_repben30']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag30]" rows="3" cols="30">{% if prestaData['jur_diag30'] is defined %}{{prestaData['jur_diag30']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Pour les entreprises individuelles, connaissez-vous la signification de la notion de responsabilité totale et illimitée</td>
+							<td>
+								<textarea name="data[jur_repben31]" rows="3" cols="30">{% if prestaData['jur_repben31'] is defined %}{{prestaData['jur_repben31']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag31]" rows="3" cols="30">{% if prestaData['jur_diag31'] is defined %}{{prestaData['jur_diag31']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Pour les sociétés, connaissez-vous la signification de la notion de responsabilité limitée aux apports (ou totale, solidaire et illimitée dans le cas des SNC notamment)</td>
+							<td>
+								<textarea name="data[jur_repben32]" rows="3" cols="30">{% if prestaData['jur_repben32'] is defined %}{{prestaData['jur_repben32']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag32]" rows="3" cols="30">{% if prestaData['jur_diag32'] is defined %}{{prestaData['jur_diag32']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Si vous êtes gérant(e), connaissez-vous le rôle et la responsabilité du gérant</td>
+							<td>
+								<textarea name="data[jur_repben33]" rows="3" cols="30">{% if prestaData['jur_repben33'] is defined %}{{prestaData['jur_repben33']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag33]" rows="3" cols="30">{% if prestaData['jur_diag33'] is defined %}{{prestaData['jur_diag33']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Etes-vous en conformité vis à vis des obligations juridiques de votre entreprise (registre des décisions d’assemblées ordinaires et assemblées extraordinaires ; rapport annuel de gestion ; dépôt annuel au greffe du Tribunal de Commerce ; connaissance des différents délais…) ?</td>
+							<td>
+								<textarea name="data[jur_repben34]" rows="3" cols="30">{% if prestaData['jur_repben34'] is defined %}{{prestaData['jur_repben34']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[jur_diag34]" rows="3" cols="30">{% if prestaData['jur_diag34'] is defined %}{{prestaData['jur_diag34']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+	
+		<div id="tabs-7">
+			<div id="accordion">
+				<!-- La balise h3 correspond a un titre de sous-partie dans l'accordéon -->
+				<h3><a href="#">Organisation de la production</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">THEMES</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Comment sont élaborés les devis (visite chez le client, prise d’informations par téléphone ou fax…) ?</td>
+							<td>
+								<textarea name="data[org_tech_repben1]" rows="3" cols="30">{% if prestaData['org_tech_repben1'] is defined %}{{prestaData['org_tech_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag1]" rows="3" cols="30">{% if prestaData['org_tech_diag1'] is defined %}{{prestaData['org_tech_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui rédige les devis et sous quel délai sont-ils transmis au client ?</td>
+							<td>
+								<textarea name="data[org_tech_repben2]" rows="3" cols="30">{% if prestaData['org_tech_repben2'] is defined %}{{prestaData['org_tech_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag2]" rows="3" cols="30">{% if prestaData['org_tech_diag2'] is defined %}{{prestaData['org_tech_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui programme les prestations/chantiers et gère le planning de production ?</td>
+							<td>
+								<textarea name="data[org_tech_repben3]" rows="3" cols="30">{% if prestaData['org_tech_repben3'] is defined %}{{prestaData['org_tech_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag3]" rows="3" cols="30">{% if prestaData['org_tech_diag3'] is defined %}{{prestaData['org_tech_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Pour les artisans, qui assure la fabrication des produits / la réalisation des chantiers ?</td>
+							<td>
+								<textarea name="data[org_tech_repben4]" rows="3" cols="30">{% if prestaData['org_tech_repben4'] is defined %}{{prestaData['org_tech_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag4]" rows="3" cols="30">{% if prestaData['org_tech_diag4'] is defined %}{{prestaData['org_tech_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Pour les forains, combien de sorties par semaine effectuez-vous ?</td>
+							<td>
+								<textarea name="data[org_tech_repben5]" rows="3" cols="30">{% if prestaData['org_tech_repben5'] is defined %}{{prestaData['org_tech_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag5]" rows="3" cols="30">{% if prestaData['org_tech_diag5'] is defined %}{{prestaData['org_tech_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui effectue les achats de marchandises et à quel rythme ?</td>
+							<td>
+								<textarea name="data[org_tech_repben6]" rows="3" cols="30">{% if prestaData['org_tech_repben6'] is defined %}{{prestaData['org_tech_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag6]" rows="3" cols="30">{% if prestaData['org_tech_diag6'] is defined %}{{prestaData['org_tech_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui réceptionne les marchandises et les met en vitrine ?</td>
+							<td>
+								<textarea name="data[org_tech_repben7]" rows="3" cols="30">{% if prestaData['org_tech_repben7'] is defined %}{{prestaData['org_tech_repben7']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag7]" rows="3" cols="30">{% if prestaData['org_tech_diag7'] is defined %}{{prestaData['org_tech_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui assure les livraisons clients (si indiqué) ?</td>
+							<td>
+								<textarea name="data[org_tech_repben8]" rows="3" cols="30">{% if prestaData['org_tech_repben8'] is defined %}{{prestaData['org_tech_repben8']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_tech_diag8]" rows="3" cols="30">{% if prestaData['org_tech_diag8'] is defined %}{{prestaData['org_tech_diag8']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de deuxieme sous-partie dans l'accordéon -->
+
+
+				<h3><a href="#">Gestion administrative</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">THEMES</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Qui rédige, envoi et réceptionne les courriers papier de l’entreprise ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben1]" rows="3" cols="30">{% if prestaData['org_adm_repben1'] is defined %}{{prestaData['org_adm_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag1]" rows="3" cols="30">{% if prestaData['org_adm_diag1'] is defined %}{{prestaData['org_adm_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui rédige, envoi et réceptionne les courriers électroniques de l’entreprise ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben2]" rows="3" cols="30">{% if prestaData['org_adm_repben2'] is defined %}{{prestaData['org_adm_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag2]" rows="3" cols="30">{% if prestaData['org_adm_diag2'] is defined %}{{prestaData['org_adm_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>L'entreprise dispose-t-elle d'une ligne téléphonique fixe / portable propre ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben3]" rows="3" cols="30">{% if prestaData['org_adm_repben3'] is defined %}{{prestaData['org_adm_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag3]" rows="3" cols="30">{% if prestaData['org_adm_diag3'] is defined %}{{prestaData['org_adm_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui gère les appels téléphoniques de l'entreprise ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben4]" rows="3" cols="30">{% if prestaData['org_adm_repben4'] is defined %}{{prestaData['org_adm_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag4]" rows="3" cols="30">{% if prestaData['org_adm_diag4'] is defined %}{{prestaData['org_adm_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>En cas d’absence, comment sont traités les appels ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben5]" rows="3" cols="30">{% if prestaData['org_adm_repben5'] is defined %}{{prestaData['org_adm_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag5]" rows="3" cols="30">{% if prestaData['org_adm_diag5'] is defined %}{{prestaData['org_adm_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>L’entreprise est-elle informatisée ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben6]" rows="3" cols="30">{% if prestaData['org_adm_repben6'] is defined %}{{prestaData['org_adm_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag6]" rows="3" cols="30">{% if prestaData['org_adm_diag6'] is defined %}{{prestaData['org_adm_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quels sont les logiciels utilisés ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[org_adm_repben7]" rows="3" cols="30">{% if prestaData['org_adm_repben7'] is defined %}{{prestaData['org_adm_repben7']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag7]" rows="3" cols="30">{% if prestaData['org_adm_diag7'] is defined %}{{prestaData['org_adm_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<!-- Exemple de troisieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Gestion comptable</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Qui établi les factures de ventes ?</td>
+							<td>
+								<textarea name="data[org_adm_repben8]" rows="3" cols="30">{% if prestaData['org_adm_repben8'] is defined %}{{prestaData['org_adm_repben8']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag8]" rows="3" cols="30">{% if prestaData['org_adm_diag8'] is defined %}{{prestaData['org_adm_diag8']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui effectue les relances clients ?</td>
+							<td>
+								<textarea name="data[org_adm_repben9]" rows="3" cols="30">{% if prestaData['org_adm_repben9'] is defined %}{{prestaData['org_adm_repben9']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag9]" rows="3" cols="30">{% if prestaData['org_adm_diag9'] is defined %}{{prestaData['org_adm_diag9']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui suit les règlements des factures fournisseurs ?</td>
+							<td>
+								<textarea name="data[org_adm_repben10]" rows="3" cols="30">{% if prestaData['org_adm_repben10'] is defined %}{{prestaData['org_adm_repben10']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag10]" rows="3" cols="30">{% if prestaData['org_adm_diag10'] is defined %}{{prestaData['org_adm_diag10']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Les pièces comptables sont-elles rangées dans un classeur ?</td>
+							<td>
+								<textarea name="data[org_adm_repben11]" rows="3" cols="30">{% if prestaData['org_adm_repben11'] is defined %}{{prestaData['org_adm_repben11']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag11]" rows="3" cols="30">{% if prestaData['org_adm_diag11'] is defined %}{{prestaData['org_adm_diag11']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Qui saisit les pièces comptables ?</td>
+							<td>
+								<textarea name="data[org_adm_repben12]" rows="3" cols="30">{% if prestaData['org_adm_repben12'] is defined %}{{prestaData['org_adm_repben12']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag12]" rows="3" cols="30">{% if prestaData['org_adm_diag12'] is defined %}{{prestaData['org_adm_diag12']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+				<!-- Exemple de quatrieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Gestion financière</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Qui suit la trésorerie de l’entreprise ?</td>
+							<td>
+								<textarea name="data[org_adm_repben13]" rows="3" cols="30">{% if prestaData['org_adm_repben13'] is defined %}{{prestaData['org_adm_repben13']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag13]" rows="3" cols="30">{% if prestaData['org_adm_diag13'] is defined %}{{prestaData['org_adm_diag13']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Anticipation et négociation découvert</td>
+							<td>
+								<textarea name="data[org_adm_repben14]" rows="3" cols="30">{% if prestaData['org_adm_repben14'] is defined %}{{prestaData['org_adm_repben14']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag14]" rows="3" cols="30">{% if prestaData['org_adm_diag14'] is defined %}{{prestaData['org_adm_diag14']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Tenue d’un cahier de caisse ou utilisation d’une caisse enregistreuse ?</td>
+							<td>
+								<textarea name="data[org_adm_repben15]" rows="3" cols="30">{% if prestaData['org_adm_repben15'] is defined %}{{prestaData['org_adm_repben15']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag15]" rows="3" cols="30">{% if prestaData['org_adm_diag15'] is defined %}{{prestaData['org_adm_diag15']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Existence d’une caisse physique - Contrôle du solde journalier</td>
+							<td>
+								<textarea name="data[org_adm_repben16]" rows="3" cols="30">{% if prestaData['org_adm_repben16'] is defined %}{{prestaData['org_adm_repben16']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag16]" rows="3" cols="30">{% if prestaData['org_adm_diag16'] is defined %}{{prestaData['org_adm_diag16']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Y’a-t-il un état d’endettement de l’entreprise ?</td>
+							<td>
+								<textarea name="data[org_adm_repben17]" rows="3" cols="30">{% if prestaData['org_adm_repben17'] is defined %}{{prestaData['org_adm_repben17']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[org_adm_diag17]" rows="3" cols="30">{% if prestaData['org_adm_diag17'] is defined %}{{prestaData['org_adm_diag17']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="tabs-8">
+			<div id="accordion">
+				<!-- La balise h3 correspond a un titre de sous-partie dans l'accordéon -->
+				<h3><a href="#">Diagnostic Social</a></h3>
+				<!-- Le contenu de la sous-partie de l'accordéon est dans un div -->
+				<div>
+					<!-- tableau -->
+					<table class="diag" width="100%">
+						<!-- Ligne(s) d'entete -->
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+						<tr>
+							<td>Statut du dirigeant ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben1]" rows="3" cols="30">{% if prestaData['soc_repben1'] is defined %}{{prestaData['soc_repben1']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag1]" rows="3" cols="30">{% if prestaData['soc_diag1'] is defined %}{{prestaData['soc_diag1']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quel est votre régime de sécurité sociale ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben2]" rows="3" cols="30">{% if prestaData['soc_repben2'] is defined %}{{prestaData['soc_repben2']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag2]" rows="3" cols="30">{% if prestaData['soc_diag2'] is defined %}{{prestaData['soc_diag2']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Quel est votre caisse de retraite ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben3]" rows="3" cols="30">{% if prestaData['soc_repben3'] is defined %}{{prestaData['soc_repben3']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag3]" rows="3" cols="30">{% if prestaData['soc_diag3'] is defined %}{{prestaData['soc_diag3']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Avez-vous bénéficié de l’ACCRE ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben4]" rows="3" cols="30">{% if prestaData['soc_repben4'] is defined %}{{prestaData['soc_repben4']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag4]" rows="3" cols="30">{% if prestaData['soc_diag4'] is defined %}{{prestaData['soc_diag4']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Etes-vous à jour des cotisations sociales ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben5]" rows="3" cols="30">{% if prestaData['soc_repben5'] is defined %}{{prestaData['soc_repben5']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag5]" rows="3" cols="30">{% if prestaData['soc_diag5'] is defined %}{{prestaData['soc_diag5']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Sinon, quel est le montant de votre dette sociale ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben6]" rows="3" cols="30">{% if prestaData['soc_repben6'] is defined %}{{prestaData['soc_repben6']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag6]" rows="3" cols="30">{% if prestaData['soc_diag6'] is defined %}{{prestaData['soc_diag6']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Un échéancier a-t-il été mis en place ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben7]" rows="3" cols="30">{% if prestaData['soc_repben7'] is defined %}{{prestaData['soc_repben7']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag7]" rows="3" cols="30">{% if prestaData['soc_diag7'] is defined %}{{prestaData['soc_diag7']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Si oui, quel est le montant des échéances et le montant des remboursements ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben8]" rows="3" cols="30">{% if prestaData['soc_repben8'] is defined %}{{prestaData['soc_repben8']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag8]" rows="3" cols="30">{% if prestaData['soc_diag8'] is defined %}{{prestaData['soc_diag8']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Votre conjoint(e) bénéficie-t-il(elle) du statut de conjoint collaborateur ?</td>
+							<td>
+								<!-- Entrée de type zone de texte -->
+								<textarea name="data[soc_repben9]" rows="3" cols="30">{% if prestaData['soc_repben9'] is defined %}{{prestaData['soc_repben9']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag9]" rows="3" cols="30">{% if prestaData['soc_diag9'] is defined %}{{prestaData['soc_diag9']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de deuxieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Effectifs de l’entreprise</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">EFFECTIFS</th>
+							<th width="20%">DIRIGEANT</th>
+							<th width="20%">SALARIE 1</th>
+							<th width="20%">SALARIE 2</th>
+						</tr>
+
+						<tr>
+							<td>Date d'embauche</td>
+							<td>
+								<textarea name="data[soc_repben10]" rows="3" cols="30">{% if prestaData['soc_repben10'] is defined %}{{prestaData['soc_repben10']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben11]" rows="3" cols="30">{% if prestaData['soc_repben11'] is defined %}{{prestaData['soc_repben11']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben12]" rows="3" cols="30">{% if prestaData['soc_repben12'] is defined %}{{prestaData['soc_repben12']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Type de contrat et durée hebdomadaire</td>
+							<td>
+								<textarea name="data[soc_repben13]" rows="3" cols="30">{% if prestaData['soc_repben13'] is defined %}{{prestaData['soc_repben13']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben14]" rows="3" cols="30">{% if prestaData['soc_repben14'] is defined %}{{prestaData['soc_repben14']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben15]" rows="3" cols="30">{% if prestaData['soc_repben15'] is defined %}{{prestaData['soc_repben15']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Eventuellement date fin de contrat</td>
+							<td>
+								<textarea name="data[soc_repben16]" rows="3" cols="30">{% if prestaData['soc_repben16'] is defined %}{{prestaData['soc_repben16']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben17]" rows="3" cols="30">{% if prestaData['soc_repben17'] is defined %}{{prestaData['soc_repben17']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben18]" rows="3" cols="30">{% if prestaData['soc_repben18'] is defined %}{{prestaData['soc_repben18']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Salaire brut mensuel</td>
+							<td>
+								<textarea name="data[soc_repben19]" rows="3" cols="30">{% if prestaData['soc_repben19'] is defined %}{{prestaData['soc_repben19']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben20]" rows="3" cols="30">{% if prestaData['soc_repben20'] is defined %}{{prestaData['soc_repben20']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben21]" rows="3" cols="30">{% if prestaData['soc_repben21'] is defined %}{{prestaData['soc_repben21']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Exonération charges sociales</td>
+							<td>
+								<textarea name="data[soc_repben22]" rows="3" cols="30">{% if prestaData['soc_repben22'] is defined %}{{prestaData['soc_repben22']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben23]" rows="3" cols="30">{% if prestaData['soc_repben23'] is defined %}{{prestaData['soc_repben23']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben24]" rows="3" cols="30">{% if prestaData['soc_repben24'] is defined %}{{prestaData['soc_repben24']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Primes</td>
+							<td>
+								<textarea name="data[soc_repben25]" rows="3" cols="30">{% if prestaData['soc_repben25'] is defined %}{{prestaData['soc_repben25']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben26]" rows="3" cols="30">{% if prestaData['soc_repben26'] is defined %}{{prestaData['soc_repben26']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben27]" rows="3" cols="30">{% if prestaData['soc_repben27'] is defined %}{{prestaData['soc_repben27']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Poste / missions dans l'entreprise</td>
+							<td>
+								<textarea name="data[soc_repben28]" rows="3" cols="30">{% if prestaData['soc_repben28'] is defined %}{{prestaData['soc_repben28']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben29]" rows="3" cols="30">{% if prestaData['soc_repben29'] is defined %}{{prestaData['soc_repben29']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_repben30]" rows="3" cols="30">{% if prestaData['soc_repben30'] is defined %}{{prestaData['soc_repben30']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de troisieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Cotisations sociales TNS</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Existence d’un compte en ligne sur le site secu-independants.fr ?</td>
+							<td>
+								<textarea name="data[soc_repben31]" rows="3" cols="30">{% if prestaData['soc_repben31'] is defined %}{{prestaData['soc_repben31']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag31]" rows="3" cols="30">{% if prestaData['soc_diag31'] is defined %}{{prestaData['soc_diag31']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Paiement des cotisations en ligne ?</td>
+							<td>
+								<textarea name="data[soc_repben32]" rows="3" cols="30">{% if prestaData['soc_repben32'] is defined %}{{prestaData['soc_repben32']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag32]" rows="3" cols="30">{% if prestaData['soc_diag32'] is defined %}{{prestaData['soc_diag32']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+				<!-- Exemple de quatrieme sous-partie dans l'accordéon -->
+				<h3><a href="#">Formalités d'embauche</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Rédaction des contrat de travail</td>
+							<td>
+								<textarea name="data[soc_repben33]" rows="3" cols="30">{% if prestaData['soc_repben33'] is defined %}{{prestaData['soc_repben33']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag33]" rows="3" cols="30">{% if prestaData['soc_diag33'] is defined %}{{prestaData['soc_diag33']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Déclaration préalable à l’embauche en ligne ?</td>
+							<td>
+								<textarea name="data[soc_repben34]" rows="3" cols="30">{% if prestaData['soc_repben34'] is defined %}{{prestaData['soc_repben34']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag34]" rows="3" cols="30">{% if prestaData['soc_diag34'] is defined %}{{prestaData['soc_diag34']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Exonération pour embauche 1er salarié (Urssaf)</td>
+							<td>
+								<textarea name="data[soc_repben35]" rows="3" cols="30">{% if prestaData['soc_repben35'] is defined %}{{prestaData['soc_repben35']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag35]" rows="3" cols="30">{% if prestaData['soc_diag35'] is defined %}{{prestaData['soc_diag35']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance des aides à l’embauche ?</td>
+							<td>
+								<textarea name="data[soc_repben36]" rows="3" cols="30">{% if prestaData['soc_repben36'] is defined %}{{prestaData['soc_repben36']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag36]" rows="3" cols="30">{% if prestaData['soc_diag36'] is defined %}{{prestaData['soc_diag36']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Connaissance des contrats d’apprentissage ?</td>
+							<td>
+								<textarea name="data[soc_repben37]" rows="3" cols="30">{% if prestaData['soc_repben37'] is defined %}{{prestaData['soc_repben37']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag37]" rows="3" cols="30">{% if prestaData['soc_diag37'] is defined %}{{prestaData['soc_diag37']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- Exemple de cinquième sous-partie dans l'accordéon -->
+				<h3><a href="#">Formalisme social</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Registre unique du personnel</td>
+							<td>
+								<textarea name="data[soc_repben38]" rows="3" cols="30">{% if prestaData['soc_repben38'] is defined %}{{prestaData['soc_repben38']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag38]" rows="3" cols="30">{% if prestaData['soc_diag38'] is defined %}{{prestaData['soc_diag38']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Convention collective appliquée dans l’entreprise</td>
+							<td>
+								<textarea name="data[soc_repben39]" rows="3" cols="30">{% if prestaData['soc_repben39'] is defined %}{{prestaData['soc_repben39']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag39]" rows="3" cols="30">{% if prestaData['soc_diag39'] is defined %}{{prestaData['soc_diag39']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Affichage réglementaire</td>
+							<td>
+								<textarea name="data[soc_repben40]" rows="3" cols="30">{% if prestaData['soc_repben40'] is defined %}{{prestaData['soc_repben40']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag40]" rows="3" cols="30">{% if prestaData['soc_diag40'] is defined %}{{prestaData['soc_diag40']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Adhésion à la médecine du travail - Visite médicale</td>
+							<td>
+								<textarea name="data[soc_repben41]" rows="3" cols="30">{% if prestaData['soc_repben41'] is defined %}{{prestaData['soc_repben41']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag41]" rows="3" cols="30">{% if prestaData['soc_diag41'] is defined %}{{prestaData['soc_diag41']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+				<!-- Exemple de sixième sous-partie dans l'accordéon -->
+				<h3><a href="#">Déclarations sociales</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Qui réalise les bulletins de paie des salariés ?</td>
+							<td>
+								<textarea name="data[soc_repben42]" rows="3" cols="30">{% if prestaData['soc_repben42'] is defined %}{{prestaData['soc_repben42']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag42]" rows="3" cols="30">{% if prestaData['soc_diag42'] is defined %}{{prestaData['soc_diag42']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>A quelle caisse de retraite cotise l’entreprise ?</td>
+							<td>
+								<textarea name="data[soc_repben43]" rows="3" cols="30">{% if prestaData['soc_repben43'] is defined %}{{prestaData['soc_repben43']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag43]" rows="3" cols="30">{% if prestaData['soc_diag43'] is defined %}{{prestaData['soc_diag43']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Existence d’un compte sur net-entreprises.fr ?</td>
+							<td>
+								<textarea name="data[soc_repben44]" rows="3" cols="30">{% if prestaData['soc_repben44'] is defined %}{{prestaData['soc_repben44']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag44]" rows="3" cols="30">{% if prestaData['soc_diag44'] is defined %}{{prestaData['soc_diag44']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Déclaration en ligne des cotisations sociales mensuelles ?</td>
+							<td>
+								<textarea name="data[soc_repben45]" rows="3" cols="30">{% if prestaData['soc_repben45'] is defined %}{{prestaData['soc_repben45']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag45]" rows="3" cols="30">{% if prestaData['soc_diag45'] is defined %}{{prestaData['soc_diag45']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Déclaration en ligne de la DADS ?</td>
+							<td>
+								<textarea name="data[soc_repben46]" rows="3" cols="30">{% if prestaData['soc_repben46'] is defined %}{{prestaData['soc_repben46']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag46]" rows="3" cols="30">{% if prestaData['soc_diag46'] is defined %}{{prestaData['soc_diag46']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+				<!-- Exemple de septième sous-partie dans l'accordéon -->
+				<h3><a href="#">Formation des salariés</a></h3>
+				<div>
+					<table class="diag" width="100%">
+						<tr>
+							<th width="40%">QUESTIONS</th>
+							<th width="30%">REPONSES DU BENEFICIAIRE</th>
+							<th width="30%">DIAGNOSTIC/TRAVAIL A REALISER</th>
+						</tr>
+
+						<tr>
+							<td>Organisme collecteur pour la formation professionnelle du chef d’entreprise ?</td>
+							<td>
+								<textarea name="data[soc_repben47]" rows="3" cols="30">{% if prestaData['soc_repben47'] is defined %}{{prestaData['soc_repben47']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag47]" rows="3" cols="30">{% if prestaData['soc_diag47'] is defined %}{{prestaData['soc_diag47']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Le dirigeant non salarié est-il à jour de sa contribution formation professionnelle ?</td>
+							<td>
+								<textarea name="data[soc_repben48]" rows="3" cols="30">{% if prestaData['soc_repben48'] is defined %}{{prestaData['soc_repben48']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag48]" rows="3" cols="30">{% if prestaData['soc_diag48'] is defined %}{{prestaData['soc_diag48']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+
+						<tr>
+							<td>Organisme collecteur pour la formation professionnelle du chef d’entreprise ?</td>
+							<td>
+								<textarea name="data[soc_repben49]" rows="3" cols="30">{% if prestaData['soc_repben49'] is defined %}{{prestaData['soc_repben49']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag49]" rows="3" cols="30">{% if prestaData['soc_diag49'] is defined %}{{prestaData['soc_diag49']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>L’entreprise est-elle à jour de sa contribution formation professionnelle pour les salariés ?</td>
+							<td>
+								<textarea name="data[soc_repben50]" rows="3" cols="30">{% if prestaData['soc_repben50'] is defined %}{{prestaData['soc_repben50']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag50]" rows="3" cols="30">{% if prestaData['soc_diag50'] is defined %}{{prestaData['soc_diag50']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Y’a-t-il des besoins de formation dans l’entreprise pour le dirigeant ?</td>
+							<td>
+								<textarea name="data[soc_repben51]" rows="3" cols="30">{% if prestaData['soc_repben51'] is defined %}{{prestaData['soc_repben51']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag51]" rows="3" cols="30">{% if prestaData['soc_diag51'] is defined %}{{prestaData['soc_diag51']}}{% endif %}</textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Y’a-t-il des besoins de formation dans l’entreprise pour les salariés ?</td>
+							<td>
+								<textarea name="data[soc_repben52]" rows="3" cols="30">{% if prestaData['soc_repben52'] is defined %}{{prestaData['soc_repben52']}}{% endif %}</textarea>
+							</td>
+							<td>
+								<textarea name="data[soc_diag52]" rows="3" cols="30">{% if prestaData['soc_diag52'] is defined %}{{prestaData['soc_diag52']}}{% endif %}</textarea>
+							</td>
+
+						</tr>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div id="tabs-9">
+			<div id="accordion">
+			    Statut sur le marché du travail à l’entrée dans l’opération
+				<h3><a href="#">Question 1: Occupez-vous actuellement un emploi ?  [Une seule réponse possible] </a></h3>
+				<div>
+					<div class="bloc" >	
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(1)}}{% endif %} name="data[fse_q1]" type="radio"  value="1"  /> <span>1a. Oui, un emploi durable (CDI ou CDD de 6 mois ou +)</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(2)}}{% endif %} name="data[fse_q1]" type="radio"  value="2" /> <span>1b. Oui, un emploi temporaire (intérim, CDD de moins de 6 mois)</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(3)}}{% endif %} name="data[fse_q1]" type="radio"  value="3" /> <span>1c. Oui, un emploi aidé (y compris IAE)</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(4)}}{% endif %} name="data[fse_q1]" type="radio"  value="4" /> <span>1d. Oui, un emploi de travailleur indépendant, chef d’entreprise</span></label></div>
+						
+
+						<div class="sous_titre" >Si vous avez répondu oui au 1a ou au 1b, précisez si vous êtes en activité réduite (c’est-à-dire à temps partiel) et êtes à la recherche d’un autre emploi (si vous êtes en temps partiel subi, par exemple) :</div>
+						<div><label><input {% if prestaData['fse_q1activite'] is defined %}{{prestaData['fse_q1activite']|setcheckbox(1)}}{% endif %} name="data[fse_q1activite]" type="checkbox" value="1" /> <span>Activité réduite</span></label></div>
+						Si oui, depuis combien de temps cherchez-vous ? : <input type="text" maxlength="2" size= "2" name="data[fse_q1mois]" {% if prestaData['fse_q1mois'] is defined %}value="{{ prestaData['fse_q1mois'] }}"{% endif %}> mois.
+
+
+						<div class="sous_titre" >1e. Si vous n’occupez pas d’emploi, êtes-vous en formation, en stage ou en école ? </div>
+						
+						<div><label><input {% if prestaData['fse_q1e'] is defined %}{{prestaData['fse_q1e']|setcheckbox(1)}}{% endif %} name="data[fse_q1e]" type="radio"  value="1" /> <span>OUI</span></label></div>
+						<div><label><input {% if prestaData['fse_q1e'] is defined %}{{prestaData['fse_q1e']|setcheckbox(2)}}{% endif %} name="data[fse_q1e]" type="radio"  value="2" /> <span>NON</span></label></div>
+						 
+						 
+						<div class="sous_titre" >1f. Si vous n’occupez pas d’emploi, recherchez-vous actuellement activement un emploi ?</div>
+						<div><label><input {% if prestaData['fse_q1f'] is defined %}{{prestaData['fse_q1f']|setcheckbox(1)}}{% endif %} name="data[fse_q1f]" type="radio"  value="0" /> <span>OUI</span></label></div>
+
+						1g. Si oui, depuis combien de temps cherchez-vous ? : <input type="text" maxlength="2" size= "2" name="data[fse_q1g_mois]" {% if prestaData['fse_q1g_mois'] is defined %}value="{{ prestaData['fse_q1g_mois'] }}"{% endif %}> mois.
+						
+						<div><label><input {% if prestaData['fse_q1f'] is defined %}{{prestaData['fse_q1f']|setcheckbox(2)}}{% endif %} name="data[fse_q1f]" type="radio"  value="1" /> <span>NON</span></label></div>						
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 2: Quel est le plus haut niveau de diplôme atteint ou l’année d’études la plus élevée à l’entrée dans l’opération? [Une seule réponse possible ]</a></h3>
+				 
+				<div>
+					<div class="bloc" >
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(1)}}{% endif %} name="data[fse_q2]" type="radio"  value="1"  /> <span>2a. Inférieur à l’école primaire, vous n’êtes jamais allé à l’école</span></label></div>
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(2)}}{% endif %} name="data[fse_q2]" type="radio"  value="2" /> <span>2b. Primaire, 6e, 5e, 4e, 3e (secondaire 1er cycle), Diplômé Brevet des collèges, CAP, BEP, seconde professionnelle (technique cycle court)</span></label></div>
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(3)}}{% endif %} name="data[fse_q2]" type="radio"  value="3" /> <span>2c. Baccalauréat général (L, ES, S, A à E), technologique (F, G, H, STG, STI …), bac Pro, brevet professionnel (BP) </span></label></div>
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(4)}}{% endif %} name="data[fse_q2]" type="radio"  value="4" /> <span>2d. DEUG, BTS, DUT, écoles d’infirmières, licence (L3), maîtrise, Grande école, école d’ingénieur, de commerce, master (recherche ou professionnel) (M2), DEA, DESS, doctorat</span></label></div>
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 3: Situation du ménage à l’entrée dans l’opération </a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >3a. Vivez-vous dans un ménage où personne n’est en emploi ? </div>
+						<div><label><input {% if prestaData['fse_q3a'] is defined %}{{prestaData['fse_q3a']|setcheckbox(1)}}{% endif %} name="data[fse_q3a]" type="radio"  value="1" /><span>OUI</span></label></div>
+						<div><label><input {% if prestaData['fse_q3a'] is defined %}{{prestaData['fse_q3a']|setcheckbox(2)}}{% endif %} name="data[fse_q3a]" type="radio"  value="2" /> <span>NON</span></label></div>
+				</div>
+
+					<div class="bloc" >
+						 <div class="sous_titre" >3b. Si oui, y-a-t-il des enfants à charge dans ce ménage ? : </div>
+						<div><label><input {% if prestaData['fse_q3b'] is defined %}{{prestaData['fse_q3b']|setcheckbox(1)}}{% endif %} name="data[fse_q3b]" type="radio"  value="1" /><span>OUI</span></label></div>
+						<div><label><input {% if prestaData['fse_q3b'] is defined %}{{prestaData['fse_q3b']|setcheckbox(2)}}{% endif %} name="data[fse_q3b]" type="radio"  value="2" /> <span>NON</span></label></div>
+				</div>
+
+
+					<div class="bloc" >
+						<div class="sous_titre" >3c. Vivez-vous dans une famille monoparentale avec des enfants à charge ? </div>
+						
+						<div><label><input {% if prestaData['fse_q3c'] is defined %}{{prestaData['fse_q3c']|setcheckbox(1)}}{% endif %} name="data[fse_q3c]" type="radio"  value="1" /> <span>OUI</span></label></div>
+						<div><label><input {% if prestaData['fse_q3c'] is defined %}{{prestaData['fse_q3c']|setcheckbox(2)}}{% endif %} name="data[fse_q3c]" type="radio"  value="2" /> <span>NON</span></label></div>
+					</div>
+	
+				</div>
+				
+				<h3><a href="#">Question 4: Avez-vous une reconnaissance officielle d’un handicap (allocation, pension ou carte d’invalidité…) ? </a></h3>
+				<div>
+					<div class="bloc" >
+					 	<div><label><input {% if prestaData['fse_q4'] is defined %}{{prestaData['fse_q4']|setcheckbox(1)}}{% endif %} name="data[fse_q4]" type="radio"  value="1" /> <span>OUI</span></label></div>	
+						<div><label><input {% if prestaData['fse_q4'] is defined %}{{prestaData['fse_q4']|setcheckbox(2)}}{% endif %} name="data[fse_q4]" type="radio"  value="2" /> <span>NON</span></label></div>		
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 5: Etes-vous allocataire de minima sociaux (RSA, allocation spécifique de solidarité, allocation aux adultes handicapés…)? </a></h3>
+				<div>
+					<div class="bloc" >
+						<div><label><input {% if prestaData['fse_q5'] is defined %}{{prestaData['fse_q5']|setcheckbox(1)}}{% endif %} name="data[fse_q5]" type="radio"  value="1" /> <span>OUI</span></label></div>						
+						<div><label><input {% if prestaData['fse_q5'] is defined %}{{prestaData['fse_q5']|setcheckbox(2)}}{% endif %} name="data[fse_q5]" type="radio"  value="2" /> <span>NON</span></label></div>
+					</div>
+				</div>
+				<h3><a href="#">Question 6: Etes-vous sans domicile fixe ou confronté à l’exclusion de votre logement ?</a></h3>
+				<div>
+					<div class="bloc" >
+						<div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(1)}}{% endif %} name="data[fse_q6]" type="radio"  value="1" /> <span>OUI</span></label></div>					
+						<div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(2)}}{% endif %} name="data[fse_q6]" type="radio"  value="2" /> <span>NON</span></label></div>		
+						<div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(3)}}{% endif %} name="data[fse_q6]" type="radio"  value="3" /> <span>Ne souhaite pas répondre / ne sait pas</span></label></div>	
+					</div>
+				</div>
+				<h3><a href="#">Question 7: Un de vos deux parents est-il né à l’étranger ? </a></h3>
+				<div>
+					<div class="bloc" >
+						<div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(1)}}{% endif %} name="data[fse_q7]" type="radio"  value="1" /> <span>OUI</span></label></div>					
+						<div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(2)}}{% endif %} name="data[fse_q7]" type="radio"  value="2" /> <span>NON</span></label></div>		
+						<div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(3)}}{% endif %} name="data[fse_q7]" type="radio"  value="3" /> <span>Ne souhaite pas répondre / ne sait pas</span></label></div>				
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="tabs-10">
+			<div id="accordion">
+				<h3><a href="#">Imprimer le questionnaire de satisfaction /A REMPLIR PAR LE BENEFICIAIRE
+				</a></h3>
+	 	 	</div>
+		</div>
+
+
+                <div id="tabs-11">
+                    <div id="accordion">
+                        <h3><a href="#">Question 1 : Niveau d'achèvement de l'opération</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre" >Question S1: Le bénéficiaire a-t-il achevé l'opération ? </div>
+                                <div><label><input {% if prestaData['qs_qs1'] is defined %}{{prestaData['qs_qs1']|setcheckbox(1)}}{% endif %} name="data[qs_qs1]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs1'] is defined %}{{prestaData['qs_qs1']|setcheckbox(2)}}{% endif %} name="data[qs_qs1]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 2 : Motif de sortie de l'opération</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre" >Question S2a : Le bénéficiaire a-t-il trouvé un emploi, une formation, un stage ?</div>
+                                <div><label><input {% if prestaData['qs_qs2a'] is defined %}{{prestaData['qs_qs2a']|setcheckbox(1)}}{% endif %} name="data[qs_qs2a]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2a'] is defined %}{{prestaData['qs_qs2a']|setcheckbox(2)}}{% endif %} name="data[qs_qs2a]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S2b : Le bénéficiaire a-t-il des problèmes de sante, maladie ?</div>
+                                <div><label><input {% if prestaData['qs_qs2b'] is defined %}{{prestaData['qs_qs2b']|setcheckbox(1)}}{% endif %} name="data[qs_qs2b]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2b'] is defined %}{{prestaData['qs_qs2b']|setcheckbox(2)}}{% endif %} name="data[qs_qs2b]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S2c : Le bénéficiaire rencontre-t-il des problèmes de garde d'enfant ?</div>
+                                <div><label><input {% if prestaData['qs_qs2c'] is defined %}{{prestaData['qs_qs2c']|setcheckbox(1)}}{% endif %} name="data[qs_qs2c]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2c'] is defined %}{{prestaData['qs_qs2c']|setcheckbox(2)}}{% endif %} name="data[qs_qs2c]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S2d : Le bénéficiaire a-t-il arrêté l'opération pour d'autres raisons (demenagement, deces, etc) ?</div>
+                                <div><label><input {% if prestaData['qs_qs2d'] is defined %}{{prestaData['qs_qs2d']|setcheckbox(1)}}{% endif %} name="data[qs_qs2d]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2d'] is defined %}{{prestaData['qs_qs2d']|setcheckbox(2)}}{% endif %} name="data[qs_qs2d]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 3 : Situation du participant à la sortie de l'opération</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre">Question S3a : Le participant accède à une activité d'indépendant, a créé une entreprise</div>
+                                <div><label><input {% if prestaData['qs_qs3a'] is defined %}{{prestaData['qs_qs3a']|setcheckbox(1)}}{% endif %} name="data[qs_qs3a]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3a'] is defined %}{{prestaData['qs_qs3a']|setcheckbox(2)}}{% endif %} name="data[qs_qs3a]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S3b : Le participant accède à un emploi durable (CDI ou CCD de + 6 mois)</div>
+                                <div><label><input {% if prestaData['qs_qs3b'] is defined %}{{prestaData['qs_qs3b']|setcheckbox(1)}}{% endif %} name="data[qs_qs3b]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3b'] is defined %}{{prestaData['qs_qs3b']|setcheckbox(2)}}{% endif %} name="data[qs_qs3b]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3c : Le participant accède à un emploi temporaire (interim, CDD de - de 6 mois)</div>
+                                <div><label><input {% if prestaData['qs_qs3c'] is defined %}{{prestaData['qs_qs3c']|setcheckbox(1)}}{% endif %} name="data[qs_qs3c]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3c'] is defined %}{{prestaData['qs_qs3c']|setcheckbox(2)}}{% endif %} name="data[qs_qs3c]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3d : Le participant accède à un emploi aidé, y compris IAE</div>
+                                <div><label><input {% if prestaData['qs_qs3d'] is defined %}{{prestaData['qs_qs3d']|setcheckbox(1)}}{% endif %} name="data[qs_qs3d]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3d'] is defined %}{{prestaData['qs_qs3d']|setcheckbox(2)}}{% endif %} name="data[qs_qs3d]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3e : Le participant suit des études ou une formation (Accès à la formation)</div>
+                                <div><label><input {% if prestaData['qs_qs3e'] is defined %}{{prestaData['qs_qs3e']|setcheckbox(1)}}{% endif %} name="data[qs_qs3e]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3e'] is defined %}{{prestaData['qs_qs3e']|setcheckbox(2)}}{% endif %} name="data[qs_qs3e]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3f : Le participant est en recherche d'emploi sans suivre de formation</div>
+                                <div><label><input {% if prestaData['qs_qs3f'] is defined %}{{prestaData['qs_qs3f']|setcheckbox(1)}}{% endif %} name="data[qs_qs3f]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3f'] is defined %}{{prestaData['qs_qs3f']|setcheckbox(2)}}{% endif %} name="data[qs_qs3f]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3g : Le participant est inactif, ni en emploi, ni en formation, ni en recherche d'emploi (dont maladie, deces, demenagement, etc)</div>
+                                <div><label><input {% if prestaData['qs_qs3g'] is defined %}{{prestaData['qs_qs3g']|setcheckbox(1)}}{% endif %} name="data[qs_qs3g]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3g'] is defined %}{{prestaData['qs_qs3g']|setcheckbox(2)}}{% endif %} name="data[qs_qs3g]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 4 : Résultat de l'opération pour le participant</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre">Question S4a : Le participant a obtenu une qualification au terme de sa participation</div>
+                                <div><label><input {% if prestaData['qs_qs4a'] is defined %}{{prestaData['qs_qs4a']|setcheckbox(1)}}{% endif %} name="data[qs_qs4a]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4a'] is defined %}{{prestaData['qs_qs4a']|setcheckbox(2)}}{% endif %} name="data[qs_qs4a]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S4b : Le participant a achevé une formation de développement des compétences</div>
+                                <div><label><input {% if prestaData['qs_qs4b'] is defined %}{{prestaData['qs_qs4b']|setcheckbox(1)}}{% endif %} name="data[qs_qs4b]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4b'] is defined %}{{prestaData['qs_qs4b']|setcheckbox(2)}}{% endif %} name="data[qs_qs4b]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S4c : Le participant a achevé une formation pré-qualifiante</div>
+                                <div><label><input {% if prestaData['qs_qs4c'] is defined %}{{prestaData['qs_qs4c']|setcheckbox(1)}}{% endif %} name="data[qs_qs4c]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4c'] is defined %}{{prestaData['qs_qs4c']|setcheckbox(2)}}{% endif %} name="data[qs_qs4c]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S4d : Le participant a achevé une formation aux savoirs de base</div>
+                                <div><label><input {% if prestaData['qs_qs4d'] is defined %}{{prestaData['qs_qs4d']|setcheckbox(1)}}{% endif %} name="data[qs_qs4d]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4d'] is defined %}{{prestaData['qs_qs4d']|setcheckbox(2)}}{% endif %} name="data[qs_qs4d]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S4e : Le participant entame une nouvelle etape du parcours</div>
+                                <div><label><input {% if prestaData['qs_qs4e'] is defined %}{{prestaData['qs_qs4e']|setcheckbox(1)}}{% endif %} name="data[qs_qs4e]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4e'] is defined %}{{prestaData['qs_qs4e']|setcheckbox(2)}}{% endif %} name="data[qs_qs4e]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+		<div id="tabs-12">
+			<form name="Editer">
+				<div class="sous_titre" >Liste des livrables</div>
+				<div>
+					<div><label><input id="imp_1" name="Editer['cd1']['Contrat']" value="Contrat Lot 1"  type="checkbox" /><span>Contrat Lot 1</span></label></div>
+
+					<div><label><input id="imp_2" name="Editer['cd1']['emargement_lot1']" value="Feuille d'émargement" type="checkbox" /><span>Feuille d'émargement</span></label></div>
+
+					<div><label><input id="imp_3" name="Editer['cd1']['Bilan']" value="Bilan Lot 1"  type="checkbox" /><span>Bilan Lot 1</span></label></div>
+
+					<div><label><input id="imp_4" name="Editer['cd1']['AnaCom']" value="Analyse commerciale"  type="checkbox" /><span>Analyse commerciale</span></label></div>
+
+					<div><label><input id="imp_5" name="Editer['cd1']['AnaFin']" value="Analyse financière"  type="checkbox" /><span>Analyse financière</span></label></div>
+
+					<div><label><input id="imp_6" name="Editer['cd1']['AnaFisc']" value="Analyse fiscale"  type="checkbox" /><span>Analyse fiscale</span></label></div>
+
+					<div><label><input id="imp_7" name="Editer['cd1']['AnaJur']" value="Analyse juridique"  type="checkbox" /><span>Analyse juridique</span></label></div>
+
+					<div><label><input id="imp_8" name="Editer['cd1']['AnaOrg']" value="Analyse organisationnelle"  type="checkbox" /><span>Analyse organisationnelle</span></label></div>
+
+					<div><label><input id="imp_9" name="Editer['cd1']['AnaSoc']" value="Analyse sociale"  type="checkbox" /><span>Analyse sociale</span></label></div>
+
+					<div><label><input id="imp_10" name="Editer['cd1']['QuestFSE']" value="Questionnaire FSE"  type="checkbox" /><span>Questionnaire FSE </span></label></div>
+					
+					<div><label><input id="imp_11" name="Editer['cd1']['QuestSat']" value="Questionnaire de satisfaction"  type="checkbox" /><span>Questionnaire de satisfaction</span></label></div>
+
+					<div><label><input id="imp_12" name="Editer['cd1']['Couv']" value="Courvertures"  type="checkbox" /><span>Courvertures</span></label></div>
+				</div>
+			</form>
+		</div>
+
+		
+		<div id="tabs-13">
+                <div id="accordion">
+                    <h3>
+                        <a href="#">Pose des Rendez vous</a>
+                    </h3>
+                    <section class="form_dispo"></section>
+                    <h3 id="rdv_presta">
+                        <a href="#">Rendez-vous lié(s) à cette prestation</a>
+                    </h3>
+                    <div class="tableau_liste_presta"></div>
+					
+					<h3 id="rdv_presta_orphelin">
+                        <a href="#">Rendez-vous non lié(s) à cette prestation</a>
+                    </h3>
+					<div class="tableau_liste_presta_orphelin"></div>
+                </div>
+            </div>
+
+        </div>
+	</form>
+	<div style="padding-top:10px" >
+	<center>
+		<button id="savePresta" >Enregistrer</button>
+		<button id="EditerPresta">Editer</button>
+
+		<button id="RelancerPresta" onClick="window.open('{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}','Informations bénéficiaire','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');">Relancer</button>
+	</center>
+	</div>
+	<div class="copyright" >2018 © APSIE CD 771</div>
+	</div>
+</div>
+<script>
+$( "#date_reprise_emploi" ).datepicker();
+$( "#date_cessation_emploi" ).datepicker();
+$( "#date_suivi_emploi" ).datepicker();
+$( "#date_entretien_emploi" ).datepicker();
+
+
+$( "#Quand_1,#Quand_2,#Quand_3,#Quand_4,#Quand_5,#Quand_6" ).datepicker();
+
+$(".change").click(function() {
+	$('.'+$(this).attr('rel')).changeSelectInput();
+});
+$('#code_solution').myAutoCompleteCodeRome('#com_solution');
+
+$('.form_dispo').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$('#tabs #rdv').click(function () {
+    $.ajax({
+        url: './disponibilite',
+        dataType: "html",
+        type: "POST",
+        data: {
+            idPrestation: {{presta.idPresta}}
+        },
+        success: function (html) {
+            $('.form_dispo').html(html);
+        }
+    });
+});
+
+$('#tabs #rdv_presta').click(function () {
+    $('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+    $.ajax({
+        url: './disponibilite/listrdvpresta',
+        dataType: "html",
+        type: "POST",
+        data: {
+            idPrestation: {{presta.idPresta}}
+        },
+        success: function (html) {
+            $('.tableau_liste_presta').html(html);
+        }
+    });
+});
+
+$('#tabs #rdv_presta_orphelin').click(function () {
+    $('.tableau_liste_presta_orphelin').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+    $.ajax({
+        url: './disponibilite/listrdvpresta',
+        dataType: "html",
+        type: "POST",
+        data: {
+            idBen: {{ presta.contact.idBen }}
+        },
+        success: function (html) {
+            $('.tableau_liste_presta_orphelin').html(html);
+        }
+    });
+});
+
+
+$('#tabs #rdv_presta').click(function()
+{$('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+	$.ajax({
+		url:'./disponibilite/listrdvpresta',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}, idben: {{ presta.contact.idBen }}},
+		success: function( html ) {
+			$('.tableau_liste_presta').html(html);
+		}
+	});
+});
+
+
+$(".contenu_presta #tabs" ).tabs();
+var icons = {
+	header: "ui-icon-circle-arrow-e",
+	headerSelected: "ui-icon-circle-arrow-s"
+};
+$( ".contenu_presta #accordion" ).accordion({
+	icons: icons,
+	autoHeight: false,
+});
+
+// SAUVEGARDE		
+$(".contenu_presta #savePresta").click(function() {
+	var form  = $("form[name='presta']").serializeArray();
+
+	/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat(
+		$("form[name='presta'] input[type=checkbox]:not(:checked)").map(
+            function() {
+                return {"name": this.name, "value": 0}
+            }).get()
+    );
+
+   
+	
+	$.pnotify({
+		title: 'Sauvegarde',
+		text: '<span class="load" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></span> Sauvegarde en cours',
+		type: 'info',
+		styling: 'jqueryui'
+	});
+
+
+	$.ajax({
+		url : "./data",
+		type : "POST",
+		dataType : "json",
+		data : form ,
+		success: function(data){
+			$.pnotify({
+				title: 'Sauvegarde',
+				text: data,
+				type: 'success',
+				styling: 'jqueryui'
+			});
+
+			$('.load').hide('fade', { direction: "up" }, 4);	
+		}
+	});
+
+	return false;
+});
+
+// EDITION
+$(".contenu_presta #EditerPresta").click(function() {
+	
+	$.pnotify({
+		title: 'Edition',
+		text: 'Edition des livrables',
+		type: 'info',
+		styling: 'jqueryui'
+	});
+    				
+	$('.load').hide('fade');	
+	
+	if($('#imp_1').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/1",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_2').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/2",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_3').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/3",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_4').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/4",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_5').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/5",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_6').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/6",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_7').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/7",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_8').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/8",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_9').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/9",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_10').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/10",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_11').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/11",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_12').attr('checked') == 'checked'){
+		window.open("./download/cd1/"+{{presta.idPresta}}+"/12",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	return false;
+});
+
+// Préconisations
+$("input[name$='data[preconisation]']").click(function(){
+	var test = $(this).val();
+	$("div.preco_add").hide();
+	$("#preco_" + test).show();
+
+	$('div.preco_add').find(':checkbox').each(function(){
+		$(this).prop('checked', false);
+	})
+});
+
+$("input[name$='data[preconisation_m2]']").click(function(){
+	var test = $(this).val();
+
+	$("div.preco_add_m2").hide();
+	$("#preco_m2_" + test).show();
+
+	$('div.preco_add_m2').find(':checkbox').each(function(){
+		$(this).prop('checked', false);
+	})
+});
+</script>

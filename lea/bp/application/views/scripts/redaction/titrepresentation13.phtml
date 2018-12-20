@@ -1,0 +1,214 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_presentation.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2;?>
+
+<br/><div class="save"></div>
+<div  class="tableau_ressource_charge" style="margin :10px;">
+<table  style="border: 1px #000 solid;"><tr><td class="titre_outils" style="width:390px">RESSOURCES</td><td class="titre_outils" style="width: 270px">CHARGES</td></tr>
+<tr><td>
+<table><tr><td  class="titre_outils2">Ressources</td><td  class="titre_outils2">Créateur</td><td  class="titre_outils2">Conjoint</td><td  class="titre_outils2">Total</td></tr>
+<tr><td>Revenu professionnel mensuel en net</td><td><input type="hidden" id="idRessourceCreateur"  value="<?php echo $this->ressourceCreateur['id_bp_ressource']; ?>"/><input onchange="getRevenuTotal('revenuCreateur','revenuConjoint','revenuTotal')" id="revenuCreateur" size="5" value="<?php echo $this->ressourceCreateur['revenu_pro_net']; ?>" type="text" /></td><td><input onchange="getRevenuTotal('revenuCreateur','revenuConjoint','revenuTotal')" id="revenuConjoint" size="5" value="<?php echo $this->ressourceConjoint['revenu_pro_net']; ?>" type="text" /><input id="idRessourceConjoint" type="hidden"  value="<?php echo $this->ressourceConjoint['id_bp_ressource']; ?>"/></td><td align="right" id="revenuTotal"></td></tr>
+<tr><td>Retraite</td><td><input onchange="getRevenuTotal('revenuRetraiteCreateur','revenuRetraiteConjoint','revenuRetraiteTotal')" id="revenuRetraiteCreateur" value="<?php echo $this->ressourceCreateur['retraite']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuRetraiteCreateur','revenuRetraiteConjoint','revenuRetraiteTotal')" id="revenuRetraiteConjoint" value="<?php echo $this->ressourceConjoint['retraite']; ?>" size="5" type="text" /></td><td align="right" id="revenuRetraiteTotal"></td></tr>
+<tr><td>Pôle Emploi</td><td><input onchange="getRevenuTotal('revenuPoleCreateur','revenuPoleConjoint','revenuPoleTotal')" id="revenuPoleCreateur" value="<?php echo $this->ressourceCreateur['pole_emploi']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuPoleCreateur','revenuPoleConjoint','revenuPoleTotal')"  id="revenuPoleConjoint" value="<?php echo $this->ressourceConjoint['pole_emploi']; ?>" size="5" type="text" /></td><td align="right" id="revenuPoleTotal"></td></tr>
+<tr><td>Pensions</td><td><input onchange="getRevenuTotal('revenuPensionCreateur','revenuPensionConjoint','revenuPensionTotal')" id="revenuPensionCreateur"  value="<?php echo $this->ressourceCreateur['pensions']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuPensionCreateur','revenuPensionConjoint','revenuPensionTotal')" id="revenuPensionConjoint"  value="<?php echo $this->ressourceConjoint['pensions']; ?>" size="5" type="text" /></td><td align="right"  id="revenuPensionTotal"></td></tr>
+<tr><td>RSA</td><td><input  onchange="getRevenuTotal('revenuRsaCreateur','revenuRsaConjoint','revenuRsaTotal')" id="revenuRsaCreateur"  size="5" type="text" value="<?php echo $this->ressourceCreateur['rsa']; ?>" /></td><td><input onchange="getRevenuTotal('revenuRsaCreateur','revenuRsaConjoint','revenuRsaTotal')" id="revenuRsaConjoint" value="<?php echo $this->ressourceConjoint['rsa']; ?>" size="5" type="text" /></td><td align="right"  id="revenuRsaTotal"></td></tr>
+<tr><td>Prestations familiales</td><td><input onchange="getRevenuTotal('revenuPfCreateur','revenuPfConjoint','revenuPfTotal')" id="revenuPfCreateur"  value="<?php echo $this->ressourceCreateur['prestations_familiales']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuPfCreateur','revenuPfConjoint','revenuPfTotal')" id="revenuPfConjoint"  value="<?php echo $this->ressourceConjoint['prestations_familiales']; ?>" size="5" type="text" /></td><td align="right"  id="revenuPfTotal"></td></tr>
+<tr><td>Aides au logement</td><td><input onchange="getRevenuTotal('revenuAideCreateur','revenuAideConjoint','revenuAideTotal')" id="revenuAideCreateur"  value="<?php echo $this->ressourceCreateur['aide_logement']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuAideCreateur','revenuAideConjoint','revenuAideTotal')" id="revenuAideConjoint" value="<?php echo $this->ressourceConjoint['aide_logement']; ?>" size="5" type="text" /></td><td align="right"  id="revenuAideTotal"></td></tr>
+<tr><td>Allocations diverses</td><td><input onchange="getRevenuTotal('revenuAlloCreateur','revenuAlloConjoint','revenuAlloTotal')" id="revenuAlloCreateur"  value="<?php echo $this->ressourceCreateur['allocations_diverses']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuAlloCreateur','revenuAlloConjoint','revenuAlloTotal')" id="revenuAlloConjoint"  value="<?php echo $this->ressourceConjoint['allocations_diverses']; ?>" size="5" type="text" /></td><td align="right"  id="revenuAlloTotal"></td></tr>
+<tr><td>Autres</td><td><input onchange="getRevenuTotal('revenuAutreCreateur','revenuAutreConjoint','revenuAutreTotal')" id="revenuAutreCreateur"  value="<?php echo $this->ressourceCreateur['autres']; ?>" size="5" type="text" /></td><td><input onchange="getRevenuTotal('revenuAutreCreateur','revenuAutreConjoint','revenuAutreTotal')" id="revenuAutreConjoint"  value="<?php echo $this->ressourceConjoint['autres']; ?>" size="5" type="text" /></td><td align="right"  id="revenuAutreTotal"></td></tr>
+<tr><td><strong>TOTAL</strong></td><td align="right" id="revenuCreateurTotal"></td><td align="right" id="revenuConjointTotal"></td><td align="right" id="revenuTotalTotal"></td></tr></table></td>
+<td><table><tr><td  class="titre_outils2">Dépenses</td><td  class="titre_outils2">Montant</td><td  class="titre_outils2">Durée</td></tr>
+<tr><td>Loyer</td><td><input type="hidden"  id="idChargeMontant" value="<?php echo $this->chargeMontant['id_bp_charge']; ?>"/><input onchange="getChargeMontantTotal()" id="chargeLoyer" size="5" value="<?php echo $this->chargeMontant['loyer']; ?>" type="text" /></td><td><input id="chargeDureeLoyer" onchange="getChargeDureeTotal()" value="<?php echo $this->chargeDuree['loyer']; ?>" size="5" type="text" /><input type="hidden" id="idChargeDuree" value="<?php echo $this->chargeDuree['id_bp_charge']; ?>"/></td></tr>
+<tr><td>Crédit consommation</td><td><input onchange="getChargeMontantTotal()" id="chargeCreCon" value="<?php echo $this->chargeMontant['credit_conso']; ?>" size="5" type="text" /></td><td><input onchange="getChargeDureeTotal()" id="chargeDureeCreCon" value="<?php echo $this->chargeDuree['credit_conso']; ?>" size="5" type="text" /></td></tr>
+<tr><td>Crédit automobile</td><td><input onchange="getChargeMontantTotal()" id="chargeCreAu" value="<?php echo $this->chargeMontant['credit_auto']; ?>" size="5" type="text" /></td><td><input id="chargeDureeCreAu" onchange="getChargeDureeTotal()" value="<?php echo $this->chargeDuree['credit_auto']; ?>" size="5" type="text" /></td></tr>
+<tr><td>Crédit immobilier</td><td><input onchange="getChargeMontantTotal()" id="chargeCreIm" value="<?php echo $this->chargeMontant['credit_immo']; ?>" size="5" type="text" /></td><td><input id="chargeDureeCreIm" onchange="getChargeDureeTotal()" value="<?php echo $this->chargeDuree['credit_immo']; ?>" size="5" type="text" /></td></tr>
+<tr><td>Pension alimentaire</td><td><input onchange="getChargeMontantTotal()" id="chargePa" value="<?php echo $this->chargeMontant['pension_alimentaire']; ?>" size="5" type="text" /></td><td><input id="chargeDureePa" onchange="getChargeDureeTotal()" value="<?php echo $this->chargeDuree['pension_alimentaire']; ?>" size="5" type="text" /></td></tr>
+<tr><td>Crédit Revolving</td><td><input onchange="getChargeMontantTotal()" id="chargeCr" value="<?php echo $this->chargeMontant['credit_revolving']; ?>" size="5" type="text" /></td><td><input  id="chargeDureeCr" onchange="getChargeDureeTotal()" value="<?php echo $this->chargeDuree['credit_revolving']; ?>" size="5" type="text" /></td></tr>
+<tr><td>Autres</td><td><input size="5" onchange="getChargeMontantTotal()" id="chargeAutre" value="<?php echo $this->chargeMontant['autre']; ?>" type="text" /></td><td><input id="chargeDureeAutre" onchange="getChargeDureeTotal()" value="<?php echo $this->chargeDuree['autre']; ?>" size="5" type="text" /></td></tr>
+<tr style="height:24px"><td></td><td></td><td></td></tr>
+<tr style="height:24px"><td></td><td></td><td></td></tr>
+<tr><td><strong>TOTAL</strong><td align="right" id="chargeMontantTotal"></td><td align="right" id="chargeDureeTotal"></td><td></td></tr>
+
+</table></td></tr></table><br/>
+<center><input onclick="ajouterEnvironnementFinancier()" type="button" class="button" value="Enregistrer" /></center>
+<div style="float:left">
+       <img src="<?php echo $this->baseUrl();?>/dompdf/www/test/images/<?php echo unserialize($_SESSION['session']->bp)->id_bp; ?>_ressource_charge.png" />
+   
+</div>
+<div style="float:left;margin-top :20px;"><table><tr><td style="background-color:#89AFBD;width:15px;height:15px"></td><td>Ressource</td></tr><tr><td  style="background-color:#F44853;width:15px;height:15px"><br/></td><td>Charge</td></tr></table></div>
+</div>
+	<div>
+	
+	</div>
+	
+			
+		
+	</div>
+
+<script>
+
+getRevenuTotal('revenuCreateur','revenuConjoint','revenuTotal');
+getRevenuTotal('revenuRetraiteCreateur','revenuRetraiteConjoint','revenuRetraiteTotal');
+getRevenuTotal('revenuPoleCreateur','revenuPoleConjoint','revenuPoleTotal');
+getRevenuTotal('revenuPensionCreateur','revenuPensionConjoint','revenuPensionTotal');
+getRevenuTotal('revenuRsaCreateur','revenuRsaConjoint','revenuRsaTotal');
+getRevenuTotal('revenuPfCreateur','revenuPfConjoint','revenuPfTotal');
+getRevenuTotal('revenuAideCreateur','revenuAideConjoint','revenuAideTotal');
+getRevenuTotal('revenuAlloCreateur','revenuAlloConjoint','revenuAlloTotal');
+getRevenuTotal('revenuAutreCreateur','revenuAutreConjoint','revenuAutreTotal');
+getChargeMontantTotal();
+getChargeDureeTotal();
+function ajouterEnvironnementFinancier()
+{
+	
+	//revenu
+	var revenuCreateur = $("#revenuCreateur").val();
+	var revenuConjoint = $("#revenuConjoint").val();
+	var revenuRetraiteCreateur = $("#revenuRetraiteCreateur").val();
+	var revenuRetraiteConjoint = $("#revenuRetraiteConjoint").val();
+	var revenuPoleCreateur = $("#revenuPoleCreateur").val();
+	var revenuPoleConjoint = $("#revenuPoleConjoint").val();
+	var revenuPensionCreateur = $("#revenuPensionCreateur").val();
+	var revenuPensionConjoint = $("#revenuPensionConjoint").val();
+	var revenuRsaCreateur = $("#revenuRsaCreateur").val();
+	var revenuRsaConjoint = $("#revenuRsaConjoint").val();
+	var revenuPfCreateur = $("#revenuPfCreateur").val();
+	var revenuPfConjoint = $("#revenuPfConjoint").val();
+	var revenuAideCreateur = $("#revenuAideCreateur").val();
+	var revenuAideConjoint = $("#revenuAideConjoint").val();
+	var revenuAlloCreateur = $("#revenuAlloCreateur").val();
+	var revenuAlloConjoint = $("#revenuAlloConjoint").val();
+	var revenuAutreCreateur = $("#revenuAutreCreateur").val();
+	var revenuAutreConjoint = $("#revenuAutreConjoint").val();
+	var idRessourceConjoint = $("#idRessourceConjoint").val();
+	var idRessourceCreateur = $("#idRessourceCreateur").val();
+
+	//charge
+	var chargeLoyer = $("#chargeLoyer").val();
+	var chargeDureeLoyer = $("#chargeDureeLoyer").val();
+	var chargeCreCon = $("#chargeCreCon").val();
+	var chargeDureeCreCon = $("#chargeDureeCreCon").val();
+	var chargeCreAu = $("#chargeCreAu").val();
+	var chargeDureeCreAu = $("#chargeDureeCreAu").val();
+	var chargeCreIm = $("#chargeCreIm").val();
+	var chargeDureeCreIm = $("#chargeDureeCreIm").val();
+	var chargePa = $("#chargePa").val();
+	var chargeDureePa = $("#chargeDureePa").val();
+	var chargeCr = $("#chargeCr").val();
+	var chargeDureeCr = $("#chargeDureeCr").val();
+	var chargeAutre = $("#chargeAutre").val();
+	var chargeDureeAutre = $("#chargeDureeAutre").val();
+	var idChargeMontant = $("#idChargeMontant").val();
+	var idChargeDuree = $("#idChargeDuree").val();
+	
+	
+	$.ajax({
+		url : "../../ajax/ajax/?noTemplate=1",
+		dataType : "json",
+		data : {
+			idRessourceCreateur:	idRessourceCreateur,
+			idRessourceConjoint:	idRessourceConjoint,
+			revenuCreateur:	revenuCreateur,
+			revenuConjoint: revenuConjoint,
+			revenuRetraiteCreateur: revenuRetraiteCreateur,
+			revenuRetraiteConjoint: revenuRetraiteConjoint,
+			revenuPoleCreateur : revenuPoleCreateur,
+			revenuPoleConjoint: revenuPoleConjoint,
+			revenuPensionCreateur : revenuPensionCreateur ,
+			revenuPensionConjoint: revenuPensionConjoint,
+			revenuRsaCreateur : revenuRsaCreateur ,
+			revenuRsaConjoint: revenuRsaConjoint,
+			revenuPfCreateur: revenuPfCreateur ,
+			revenuPfConjoint: revenuPfConjoint,
+			revenuAideCreateur: revenuAideCreateur ,
+			revenuAideConjoint: revenuAideConjoint ,
+			revenuAlloCreateur: revenuAideCreateur ,
+			revenuAlloConjoint: revenuAlloConjoint ,
+			revenuAutreCreateur: revenuAutreCreateur ,
+			revenuAutreConjoint : revenuAutreConjoint ,
+			revenuTotalTotal: $('#revenuTotalTotal').html(),
+			chargeMontantTotal: $('#chargeMontantTotal').html(),
+			action : "ajouterRessource"
+		},success: function(data){
+		}
+	});
+
+	$.ajax({
+		url : "../../ajax/ajax/?noTemplate=1",
+		dataType : "json",
+		data : {
+			idChargeMontant : idChargeMontant,
+			idChargeDuree : idChargeDuree,
+			chargeLoyer : chargeLoyer,
+			chargeDureeLoyer : chargeDureeLoyer,
+			chargeCreCon : chargeCreCon,
+			chargeDureeCreCon : chargeDureeCreCon,
+			chargeCreAu : chargeCreAu,
+			chargeDureeCreAu : chargeDureeCreAu,
+			chargeCreIm : chargeCreIm,
+			chargeDureeCreIm : chargeDureeCreIm,
+			chargePa : chargePa,
+			chargeDureePa : chargeDureePa,
+			chargeCr : chargeCr,
+			chargeDureeCr : chargeDureeCr,
+			chargeAutre : chargeAutre,
+			chargeDureeAutre : chargeDureeAutre,
+			action : "ajouterCharge"
+		},success: function(data){
+		}
+	});
+
+	$('.save').html('Données sauvegardées');
+	setTimeout("window.location.reload()",2000);	
+}
+function getRevenuTotal(id_1,id_2,id_3)
+{
+ var revenuTotal = parseInt($('#'+id_1).val()) +  parseInt($('#'+id_2).val());
+// alert(revenuTotal);
+ $('#'+id_3).html(revenuTotal+'€');
+ getRevenuCreateurTotal();
+ getRevenuCoinjointTotal();
+ getRevenuTotalTotal();
+}
+
+function getRevenuCreateurTotal()
+{
+	var revenuTotal = parseInt($('#revenuCreateur').val()) +  parseInt($('#revenuRetraiteCreateur').val()) +  parseInt($('#revenuPoleCreateur').val()) + parseInt($('#revenuPensionCreateur').val()) + parseInt($('#revenuRsaCreateur').val()) + parseInt($('#revenuPfCreateur').val()) +parseInt($('#revenuAideCreateur').val()) +parseInt($('#revenuAlloCreateur').val()) +parseInt($('#revenuAutreCreateur').val());
+	// alert(revenuTotal);
+	 $('#revenuCreateurTotal').html(revenuTotal+'€');
+}
+function getRevenuCoinjointTotal()
+{
+	var revenuTotal = parseInt($('#revenuConjoint').val()) +  parseInt($('#revenuRetraiteConjoint').val()) +  parseInt($('#revenuPoleConjoint').val()) + parseInt($('#revenuPensionConjoint').val()) + parseInt($('#revenuRsaConjoint').val()) + parseInt($('#revenuPfConjoint').val()) +parseInt($('#revenuAideConjoint').val()) +parseInt($('#revenuAlloConjoint').val()) +parseInt($('#revenuAutreConjoint').val());
+	// alert(revenuTotal);
+	 $('#revenuConjointTotal').html(revenuTotal+'€');
+}
+function getRevenuTotalTotal()
+{
+	var revenuTotal = parseInt($('#revenuCreateur').val()) +  parseInt($('#revenuRetraiteCreateur').val()) +  parseInt($('#revenuPoleCreateur').val()) + parseInt($('#revenuPensionCreateur').val()) + parseInt($('#revenuRsaCreateur').val()) + parseInt($('#revenuPfCreateur').val()) +parseInt($('#revenuAideCreateur').val()) +parseInt($('#revenuAlloCreateur').val()) +parseInt($('#revenuAutreCreateur').val()) + parseInt($('#revenuConjoint').val()) +  parseInt($('#revenuRetraiteConjoint').val()) +  parseInt($('#revenuPoleConjoint').val()) + parseInt($('#revenuPensionConjoint').val()) + parseInt($('#revenuRsaConjoint').val()) + parseInt($('#revenuPfConjoint').val()) +parseInt($('#revenuAideConjoint').val()) +parseInt($('#revenuAlloConjoint').val()) +parseInt($('#revenuAutreConjoint').val());
+	// alert(revenuTotal);
+	 $('#revenuTotalTotal').html(revenuTotal+'€');
+}
+
+function getChargeMontantTotal()
+{
+	var chargeMontantTotal = parseInt($('#chargeLoyer').val()) +  parseInt($('#chargeCreCon').val()) +  parseInt($('#chargeCreAu').val())  + parseInt($('#chargeCreIm').val()) + parseInt($('#chargePa').val())  +parseInt($('#chargeCr').val()) +parseInt($('#chargeAutre').val());
+	// alert(revenuTotal);
+	 $('#chargeMontantTotal').html(chargeMontantTotal+'€');
+}
+function getChargeDureeTotal()
+{
+	var chargeDureeTotal = parseInt($('#chargeDureeLoyer').val()) +  parseInt($('#chargeDureeCreCon').val()) +  parseInt($('#chargeDureeCreAu').val())  + parseInt($('#chargeDureeCreIm').val()) + parseInt($('#chargeDureePa').val()) +parseInt($('#chargeDureeCr').val()) +parseInt($('#chargeDureeAutre').val());
+	
+	 $('#chargeDureeTotal').html(chargeDureeTotal+' mois');
+}
+</script>

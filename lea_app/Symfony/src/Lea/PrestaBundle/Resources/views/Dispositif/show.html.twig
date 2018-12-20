@@ -1,0 +1,69 @@
+<div id="listePresta" class="entete" >- Liste des dispositifs</div>
+<section class="filtre">
+<form action="./dispositif/show" name="filtre">
+	<table>
+		<tr>
+			<td>Etat :</td><td>{{ form_widget(form.isActive) }}</td>
+		</tr>
+	</table>
+</form>
+</section
+<div class="bloc_listePresta" >
+<table style="margin-top : 5px;" class="tableau_presta" >
+	<thead>
+		<tr>
+			<th>Activité</th>
+			<th>Nom</th>
+			<th>Objet</th>
+			<th>Type de Prestation</th>
+			<th>Numéro de marché</th>
+			<th>Numéro de lot</th>
+			<th>Zone</th>
+			<th>Date de début</th>
+			<th>Date de fin</th>
+			<th>Etat</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+{% for key,dispositif in dispositifs %}
+
+{% if(key%2 == 1)%}
+{% set classe = 'paire' %}
+{% else %}
+{% set classe = 'impaire' %}
+{% endif %}
+ 
+		<tr class="{{ classe }}" >
+			
+			<td>{{ dispositif.activite.libelle}}</td>
+			<td>{{ dispositif.nomDispositif}}</td>
+			<td>{{ dispositif.objet}}</td>
+			<td>{{ dispositif.idTypePrestation.libelle}}</td>
+			<td>{{ dispositif.numeroMarche}}</td>
+			<td>{{ dispositif.numeroLot}}</td>
+			<td>{{ dispositif.zoneGeographique}}</td>
+			<td>{{ dispositif.dateDebut}}</td>
+			<td>{{ dispositif.dateFin}}</td>
+			<td>{% if(dispositif.isActive == 1)%}Actif{% else %}Inactif{% endif %}</td>
+			<td><a href="./dispositif/edit/{{ dispositif.idDispositif }}" rel="#overlay"><img  style="cursor:pointer" src="{{ asset('bundles/lea/images/divers/edit.png') }}" /></a></td>
+		</tr>
+
+	    
+	 </li>
+{% endfor %}
+	</tbody>
+</table>
+</div>
+<!-- overlayed element -->
+<div class="apple_overlay" id="overlay">
+  <!-- the external content is loaded inside this tag -->
+  <div class="contentWrap"></div>
+</div>
+<script>
+$("table.tableau_presta").tablesorter({  widgets: ['zebra'] });  
+$('a[rel]').loadOverlay(".contentWrap");
+
+$('form[name="filtre"]').filtreForm('.div_droite');
+
+</script>

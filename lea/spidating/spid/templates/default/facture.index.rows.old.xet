@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.facture.index.rows" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" id="facture_id" align="center"/>
+					<nextmatch-sortheader label="Invoice number" id="facture_number" align="center"/>
+					<nextmatch-sortheader label="Operation code" id="client_operation_code" align="center"/>
+					<nextmatch-sortheader label="Creation Date" id="creation_date" align="center"/>
+					<nextmatch-sortheader label="Company" id="client_id" align="center"/>
+					<nextmatch-sortheader label="Price HT" id="price_ht" align="center"/>
+					<nextmatch-sortheader label="Tickets number" id="tickets_number" align="center"/>
+					<description value="Actions" align="center"/>
+				</row>
+				<row class="row">
+					<description id="${row}[facture_id]" align="center" readonly="true" no_lang="1"/>
+					<description id="${row}[facture_number]" align="center" readonly="true" no_lang="1"/>
+					<description id="${row}[client_operation_code]" align="center" readonly="true" no_lang="1"/>
+					<date id="${row}[creation_date]" readonly="true" align="center" no_lang="1"/>
+					<description id="${row}[client_company]" align="center" readonly="true" no_lang="1"/>
+					<description id="${row}[total_ht]" align="center" readonly="true" no_lang="1"/>
+					<description id="${row}[ticket_number]" align="center" readonly="true" no_lang="1"/>
+					<hbox align="center" span="all">
+						<button image="delete" label="Delete" id="delete[$row_cont[facture_id]]" onclick="return confirm('you want to delete this invoce. are you sure?');" align="center"/>
+						<button image="edit" label="Edit" id="edit[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.edit&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" align="center"/>
+						<button image="view" label="View" id="view[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.view&amp;id=$row_cont[facture_id]&amp;client=$row_cont[client_id]'),'_blank','dependent=yes,width=900,height=450,scrollbars=yes,status=yes'); return false;" align="center"/>
+						<button image="open" class="noPrint" label="Print entry" id="tprint[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.tprint&amp;id=$row_cont[client_id]&amp;facture=$row_cont[facture_number]'),'_blank','dependent=yes,width=1024,height=768,scrollbars=yes,status=yes'); return false;" align="center"/>
+						<button image="pdf" label="Generate PDF Invoice" id="pdf[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spid.facture_ui.pdf&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=730,height=350,scrollbars=yes,status=yes'); return false;" align="center"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

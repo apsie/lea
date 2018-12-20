@@ -1,0 +1,157 @@
+<!--corps-->
+<div class="contenu_redac">
+
+	
+	
+    	<div class="menu_g"><table><tr><td width="32px"></td><td><?php echo $this->formValidation->bool_titre_sommaire; ?><a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'sommaire')); ?>"><?php echo $this->titre->titre_sommaire; ?> </a> </td></tr></table></div>
+		<div class="menu_g"><table><tr><td width="32px"></td><td><?php echo $this->formValidation->bool_titre_intro; ?><a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'introduction')); ?>"><?php echo $this->titre->titre_intro; ?></a></td></tr></table></a></div>
+		
+        
+<!--Menu PrÃ©sentation gÃ©nÃ©rale du projet-->        
+        <div class="menu_g"><table><tr><td width="32px"><img id="click_h" onclick="cache_div('#click_h','#s_menu_presentation_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png" /><img id="click_b" border="0" onclick="voir_div('#click_b','#s_menu_presentation_g')" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td width="216"><?php echo $this->formValidation->bool_titre_1; ?>1. <?php echo $this->titre->titre_1; ?> </td></tr></table>
+        </div>
+        
+	<!--sous_menu PrÃ©sentation gÃ©nÃ©rale du projet-->
+            <div id="s_menu_presentation_g" class="s_menu_g" style="display:block">
+				<div><?php echo $this->formValidation->bool_titre_1_1; ?>1.1.<a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre11')); ?>"><?php echo $this->titre->titre_1_1; ?></a></div>
+				<div><?php echo $this->formValidation->bool_titre_1_2; ?>1.2.<a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre12')); ?>"><?php echo $this->titre->titre_1_2; ?></a></div>
+			</div>
+            
+            
+<!--Menu L'entreprise au ../../..-->                
+  		<div class="menu_g"><table><tr><td width="32px"><img id="click_h_2" onclick="cache_div('#click_h_2','#s_menu_entreprise_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_2" onclick="voir_div('#click_b_2','#s_menu_entreprise_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_2; ?>2. <?php echo $this->titre->titre_2; ?></td></tr></table>
+        </div>
+        
+	<!--sous_menu L'entreprise au ../../..-->       
+ 			<div id="s_menu_entreprise_g" class="s_menu_g" style="display:block">	
+ 				<div><?php echo $this->formValidation->bool_titre_2_1; ?>2.1.<a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre21')); ?>"><?php echo $this->titre->titre_2_1; ?></a></div>
+				<div><?php echo $this->formValidation->bool_titre_2_2; ?>2.2.<a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre22')); ?>"><?php echo $this->titre->titre_2_2; ?></a></div>
+				<div><?php echo $this->formValidation->bool_titre_2_3; ?>2.3.<a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre23')); ?>"><?php echo $this->titre->titre_2_3; ?></a></div>	
+			</div>     
+        
+<!--Menu Le Marché-->            
+         <div class="menu_g"> <table><tr><td width="32px"><img id="click_h_3" onclick="cache_div('#click_h_3','#s_menu_marche_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_3" onclick="voir_div('#click_b_3','#s_menu_marche_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_3; ?>3. <?php echo $this->titre->titre_3; ?></td></tr></table> 		</div>
+
+	<!--sous_menu Le Marché -->              
+   			<div id="s_menu_marche_g" style="display:block">
+				
+				<div class="s_menu_g"><table><tr><td width="32px"><img id="click_h_6" onclick="cache_div('#click_h_6','#s_s_menu_environnement_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_6" onclick="voir_div('#click_b_6','#s_s_menu_environnement_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_3_1; ?>3.1. <?php echo $this->titre->titre_3_1; ?></td></tr></table>
+                </div>
+          <!--sous_sous_menu Le Marché/L'environnement -->   
+                	<div id="s_s_menu_environnement_g" class="s_s_menu_g" style="display:block">
+ 						<div><?php echo $this->formValidation->bool_titre_3_1_1; ?>3.1.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre311')); ?>"><?php echo $this->titre->titre_3_1_1; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_3_1_2; ?>3.1.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre312')); ?>"><?php echo $this->titre->titre_3_1_2; ?></a></div>
+            		</div>
+          <!--Fin sous_sous_menu Le Marché/L'environnement -->    
+            
+				<div class="s_menu_g"><table><tr><td width="32px"><img id="click_h_7" onclick="cache_div('#click_h_7','#s_s_menu_demande_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_7" onclick="voir_div('#click_b_7','#s_s_menu_demande_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_3_2; ?>3.2. <?php echo $this->titre->titre_3_2; ?></td></tr></table>
+                </div>
+         <!--sous_sous_menu Le Marché/La demande -->   
+                	<div id="s_s_menu_demande_g" class="s_s_menu_g" style="display:block">
+ 						<div><?php echo $this->formValidation->bool_titre_3_2_1; ?>3.2.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre321')); ?>"><?php echo $this->titre->titre_3_2_1; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_3_2_2; ?>3.2.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre322')); ?>"><?php echo $this->titre->titre_3_2_2; ?></a></div>
+            			<div><?php echo $this->formValidation->bool_titre_3_2_3; ?>3.2.3. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre323')); ?>"><?php echo $this->titre->titre_3_2_3; ?></a></div>
+            		</div>
+          <!--Fin sous_sous_menu Le Marché/La demande-->           
+                               
+               <div class="s_menu_g"><table><tr><td width="32px"><img id="click_h_8" onclick="cache_div('#click_h_8','#s_s_menu_concurrence_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_8" onclick="voir_div('#click_b_8','#s_s_menu_concurrence_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_3_3; ?>3.3. <?php echo $this->titre->titre_3_3; ?></td></tr></table>
+                </div>
+                
+         <!--sous_sous_menu Le Marché/La concurrence -->   
+                	<div id="s_s_menu_concurrence_g" class="s_s_menu_g" style="display:block">
+ 						<div><?php echo $this->formValidation->bool_titre_3_3_1; ?>3.3.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre331')); ?>"><?php echo $this->titre->titre_3_3_1; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_3_3_2; ?>3.3.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre332')); ?>"><?php echo $this->titre->titre_3_3_2; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_3_3_3; ?>3.3.3. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre333')); ?>"><?php echo $this->titre->titre_3_3_3; ?></a></div>
+					</div>
+          <!--Fin sous_sous_menu Le Marché/La concurrence-->             
+            
+            	<div class="s_menu_g"><?php echo $this->formValidation->bool_titre_3_4; ?>3.4. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre34')); ?>"><?php echo $this->titre->titre_3_4; ?></a></div>	
+			</div>              
+            
+<!--Menu Stratégies de développement et plans d'action-->                   
+		<div class="menu_g"> <table><tr><td width="32px"><img id="click_h_4" onclick="cache_div('#click_h_4','#s_menu_strategie_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_4" onclick="voir_div('#click_b_4','#s_menu_strategie_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_4; ?>4. <?php echo $this->titre->titre_4; ?></td></tr></table>
+        </div>           
+            
+   <!--Sous_menu Stratégies de développement et plans d'action-->           
+            <div id="s_menu_strategie_g" style="display:block">
+            	<div class="s_menu_g"><?php echo $this->formValidation->bool_titre_4_1; ?>4.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre41')); ?>"><?php echo $this->titre->titre_4_1; ?></a></div>
+            	<div class="s_menu_g"><table><tr><td width="32px"><img id="click_h_9" onclick="cache_div('#click_h_9','#s_s_menu_produit_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_9" onclick="voir_div('#click_b_9','#s_s_menu_produit_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_4_2; ?>4.2. <?php echo $this->titre->titre_4_2; ?></td></tr></table>
+                </div>
+				
+          <!--sous_sous_menu Stratégies de développement et plans d'action/La stratégie produit-->   
+                	<div id="s_s_menu_produit_g" class="s_s_menu_g" style="display:block">
+ 						<div><?php echo $this->formValidation->bool_titre_4_2_1; ?>4.2.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre421')); ?>"><?php echo $this->titre->titre_4_2_1; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_4_2_2; ?>4.2.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre422')); ?>"><?php echo $this->titre->titre_4_2_2; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_4_2_3; ?>4.2.3. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre423')); ?>"><?php echo $this->titre->titre_4_2_3; ?></a></div>
+  						<div><?php echo $this->formValidation->bool_titre_4_2_4; ?>4.2.4. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre424')); ?>"><?php echo $this->titre->titre_4_2_4; ?></a></div>
+					</div>
+          <!--Fin sous_sous_menu Stratégies de développement et plans d'action/La stratégie produit-->             
+                
+               	<div class="s_menu_g"><table><tr><td width="32px"><img id="click_h_10" onclick="cache_div('#click_h_10','#s_s_menu_production_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_10" onclick="voir_div('#click_b_10','#s_s_menu_production_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_4_3; ?>4.3. <?php echo $this->titre->titre_4_3; ?></td></tr></table>
+                </div>
+		<!--sous_sous_menu Stratégies de développement et plans d'action/La stratégie de production-->   
+                	<div id="s_s_menu_production_g" class="s_s_menu_g" style="display:block">
+ 						<div><?php echo $this->formValidation->bool_titre_4_3_1; ?>4.3.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre431')); ?>"><?php echo $this->titre->titre_4_3_1; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_4_3_2; ?>4.3.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre432')); ?>"><?php echo $this->titre->titre_4_3_2; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_4_3_3; ?>4.3.3. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre433')); ?>"><?php echo $this->titre->titre_4_3_3; ?></a></div>
+					</div>
+          <!--Fin sous_sous_menu Stratégies de développement et plans d'action/La stratégie de production-->    		
+                
+                <div class="s_menu_g"><table><tr><td width="32px"><img id="click_h_11" onclick="cache_div('#click_h_11','#s_s_menu_commerciale_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_11" onclick="voir_div('#click_b_11','#s_s_menu_commerciale_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_4_4; ?>4.4. <?php echo $this->titre->titre_4_4; ?></td></tr></table>
+                </div>         
+         <!--sous_sous_menu Stratégies de développement et plans d'action/Stratégie commerciale-->   
+                	<div id="s_s_menu_commerciale_g" class="s_s_menu_g" style="display:block">
+ 						<div><?php echo $this->formValidation->bool_titre_4_4_1; ?>4.4.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre441')); ?>"><?php echo $this->titre->titre_4_4_1; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_4_4_2; ?>4.4.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre442')); ?>"><?php echo $this->titre->titre_4_4_2; ?></a></div>
+						<div><?php echo $this->formValidation->bool_titre_4_4_3; ?>4.4.3. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre443')); ?>"><?php echo $this->titre->titre_4_4_3; ?></a></div>
+					</div>
+          <!--Fin sous_sous_menu Stratégies de développement et plans d'action/Stratégie commerciale-->           
+               
+			</div>
+<!--Menu Le calendrier du projet-->               
+		<div class="menu_g"><table><tr><td width="32px"></td><td><?php echo $this->formValidation->bool_titre_5; ?></td><td>5.  <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre5')); ?>"><?php echo $this->titre->titre_5; ?></a></td></tr></table>
+         </div>
+            
+<!--Menu L'organisation des moyens à mettre en oeuvre-->             
+  		<div class="menu_g"> <table><tr><td width="32px"><img id="click_h_5" onclick="cache_div('#click_h_5','#s_menu_organisation_g');" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-haut-icone-8574-16(2).png"><img id="click_b_5" onclick="voir_div('#click_b_5','#s_menu_organisation_g')" border="0" src="<?php echo $this->baseUrl();?>/images/bullet-fleche-vers-le-bas-icone-5704-16(2).png"></td><td><?php echo $this->formValidation->bool_titre_6; ?>6. <?php echo $this->titre->titre_6; ?></td></tr></table>
+        </div>
+            
+     <!--Sous_menu L'organisation des moyens à mettre en oeuvre-->         
+			<div id="s_menu_organisation_g" class="s_menu_g" style="display:block">
+ 				<div><?php echo $this->formValidation->bool_titre_6_1; ?>6.1. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre61')); ?>"><?php echo $this->titre->titre_6_1; ?></a></div>
+				<div><?php echo $this->formValidation->bool_titre_6_2; ?>6.2. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre62')); ?>"><?php echo $this->titre->titre_6_2; ?></a></div>
+				<div><?php echo $this->formValidation->bool_titre_6_3; ?>6.3. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre63')); ?>"><?php echo $this->titre->titre_6_3; ?></a></div>
+			</div>             
+            
+            
+            <div class="menu_g"><table><tr><td width="32px"><?php echo $this->formValidation->bool_titre_7; ?></td><td>7. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre7')); ?>"><?php echo $this->titre->titre_7; ?></a></td></tr></table></div>
+			<div class="menu_g"><table><tr><td width="32px"><?php echo $this->formValidation->bool_titre_8; ?></td><td>8. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre8')); ?>"><?php echo $this->titre->titre_8; ?></a></td></tr></table></div>
+  			<div class="menu_g"><table><tr><td width="32px"><?php echo $this->formValidation->bool_titre_9; ?></td><td>9. <a href="<?php echo $this->url(array('controller'=>'redaction','action'=>'titre9')); ?>"><?php echo $this->titre->titre_9; ?></a></td></tr></table></div>
+			<br/><br/><div class="menu_g"><table><tr><td width="32px"></td><td><input onclick="window.location.href='<?php echo $this->url(array('controller'=>'redaction','action'=>'titre')); ?>'" class="button" name="Modifier" type="submit" value="Modifier les titres" /></td></tr></table></a></div>
+</div>
+ 
+    
+
+
+<!--fin_corps-->
+
+<script>
+
+function setValidation(val,champ,id_projet)
+{
+	
+	if(val==false)
+	{
+		val=0;
+	}
+	else
+	{
+		val=1;
+	}
+	
+	$.get("../ajax/ajax", {action: "setValidation",val: ""+val+"",champ: ""+champ+"",id_projet: ""+id_projet+""});
+
+			
+}
+
+</script>

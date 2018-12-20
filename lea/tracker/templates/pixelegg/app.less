@@ -1,0 +1,51 @@
+/**
+ * EGroupware: CSS with less preprocessor
+ *
+ * TRACKER
+ *
+ * Please do NOT change app.css directly, instead change app.less and compile it!
+ *
+ * @link http://www.egroupware.org
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @author Stefan Reinhardt <stefan.reinhardt@pixelegg.de>
+ * @package tracker
+ * @version $Id: app.less 52465 2015-04-10 12:56:07Z hnategh $
+ */
+
+
+@import (reference) "../../../pixelegg/less/definitions.less";
+@import (less) "../default/app.css";
+
+//******************************************************************
+// sidebar
+#egw_fw_sidebar #egw_fw_sidemenu .egw_fw_ui_scrollarea_outerdiv .egw_fw_ui_sidemenu_entry_header_active h1 {font-size: 1.15em !important;}
+
+//**********************************
+// main
+
+#tracker-edit.et2_container
+{
+}
+label.tracker_trIdEdit:before { content: "#"; }
+
+.tracker_assign { width:100% !important;}
+// hinzufügen
+        button#tracker-index_add{
+            .Complete_Button_add_only_plus;
+            background-color: @egw_color_2_a;
+
+            &:hover {.Complete_Button_add_only_plus_hover;}
+            &:active {background-color: @color_positive_action_active !important;}
+
+        }
+// main
+
+
+
+
+
+
+
+
+// Dialog Tracker bearbeiten und alle weiteren
+// #####################################################

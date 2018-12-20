@@ -1,0 +1,32 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_presentation.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><?php echo $this->title_2; ?><br/>
+	<div class="gd_titre">I. PRESENTATION DU PORTEUR DE PROJET</div>
+	<div class="gd_titre">1. <?php echo $this->titrePresentation->titre_1; ?></div>
+        <div class="sous_titre">1.1. <?php echo $this->titrePresentation->titre_1_1; ?></div>
+	<div class="sous_titre">1.2. <?php echo $this->titrePresentation->titre_1_2; ?></div>
+	<div class="gd_titre">2. <?php echo $this->titrePresentation->titre_2; ?></div>
+	<div class="sous_titre">2.1. <?php echo $this->titrePresentation->titre_2_1; ?></div>
+	<div class="sous_titre">2.2. <?php echo $this->titrePresentation->titre_2_2; ?></div>
+	<div class="sous_titre">2.3. <?php echo $this->titrePresentation->titre_2_3; ?></div>
+	<div class="sous_titre">2.4. <?php echo $this->titrePresentation->titre_2_4; ?></div>
+	<div class="sous_s_titre">2.4.1. <?php echo $this->titrePresentation->titre_2_4_1; ?></div>
+	<div class="sous_s_titre">2.4.2. <?php echo $this->titrePresentation->titre_2_4_2; ?></div>
+	<div class="sous_s_titre">2.4.3. <?php echo $this->titrePresentation->titre_2_4_3; ?></div>
+	<div>
+	<?php /* <input name="Modifier" onclick="window.location.href='<?php echo $this->url(array('controller'=>'redaction','action'=>'titre')); ?>'"  type="submit" class="button" value="Modifier les titres" /> */?>
+	
+	</div>
+	
+			
+		
+	</div>
+

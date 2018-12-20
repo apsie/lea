@@ -1,0 +1,791 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu">Sous Menu</div>
+<div class="div_menu_gauche"><ul><li><a onclick="getUtilisateur();" href="javascript:void(0);">Comptes utilisateurs</a></li>
+<li><a onclick="getGroupe();" href="javascript:void(0);">Groupes utilisateurs</a></li>
+<li><a onclick="getApplication();" href="javascript:void(0);">Applications</a></li>
+<li><a onclick="getCategorieContact();" href="javascript:void(0);">Catégories des contacts</a></li>
+<li><a onclick="getCategorieOrganisation();" href="javascript:void(0);">Catégories des organisations</a></li></ul>
+</div></div>
+<div class="contenu">
+<div class="univers">Admin</div>
+<div class="div_menu_droit">
+
+<div style="display:none" class="div_application">
+<table id="flex_application" style="display:none"></table>
+</div>
+<div style="display:none" class="div_catContact">
+<div class="flex_catContact" ></div>
+</div>
+<div style="display:none" class="div_groupe">
+<table id="flex_groupe" style="display:none"></table>
+</div>
+<div style="display:none" class="div_utilisateur">
+<div class="page" ></div>
+<div id="flex_utilisateur" ></div>
+</div>
+<div style="display:none" class="div_catOrganisation">
+<div class="flex_catOrganisation" ></div>
+</div>
+</div>
+</div></div>
+<div style="display:none" id="editUser"  title="">
+<h4>Données de l'utilisateurs</h4>
+<table><tr><td><strong>Identifiant</strong></td><td id="identifiant">...</td><td></td><td><input id="idUtilisateur" type="hidden" /></td><tr><td>Nom</td><td><input onchange="writeIdentifiant();" id="nom" type="text" /></td><td>Prénom</td><td><input onchange="writeIdentifiant();" id="prenom" type="text" /></td></tr>
+<tr><td>Mot de passe</td><td><input id="mdp" type="password" /></td><td>Confirmer le mot de passe</td><td><input id="mdp2" type="password" /></td></tr>
+<tr><td>Tel.Pro</td><td><input id="tel_pro" type="text" /></td><td>Tel.Perso</td><td><input id="tel_perso" type="text" /></td></tr>
+<tr><td>Email</td><td><input id="email" type="text" /></td><td></td><td></td></tr>
+<tr><td>Status du compte</td><td><select id="status" ><option></option><option>A</option><option>N</option></select></td><td></td><td></td></tr>
+</table>
+<hr style="border:1px dotted #CCC" />
+<h4>Sélection du prestataire</h4>
+<table><tr><td>Prestataire</td><td><select id="idPrestataire"><option></option>
+<?php 
+for($i=0;$i<count($this->prestataire);$i++)
+{
+	echo'<option value="'.$this->prestataire[$i]['id_prestataire'].'">'.$this->prestataire[$i]['nom'].'</option>';
+}?>
+</select></td></tr></table>
+<hr style="border:1px dotted #CCC" />
+<h4>Sélection des groupes</h4>
+<table><tr><td>Groupe initial</td><td><select id="idGroupSelect"><option></option>
+<?php 
+for($i=0;$i<count($this->group);$i++)
+{
+	echo'<option value="'.$this->group[$i]['account_id'].'">'.$this->group[$i]['account_lid'].'</option>';
+}?></select></td></tr></table>
+<hr style="border:1px dotted #CCC" />
+<h4>Droits de l'utilisateur</h4><table>
+<?php 
+for($i=0;$i<count($this->app);$i++)
+{
+echo '<tr><td>'.$this->app[$i]['app_name'].'</td><td><input id="app_'.$this->app[$i]['app_name'].'"   type="checkbox" value="'.$this->app[$i]['app_id'].'"  /></td></tr>';
+}
+
+?>
+</table><br/><br/>
+<center><button onclick="enregisterUtilisateur();">Enregister</button></center>
+
+
+</div>
+<div style="display:none" id="editGroup"  title="">
+<table><tr><td>Nom du groupe</td><td><input id="idGroup" type="hidden" /><input id="nomGroup" size="40" type="text" /></td></tr>
+<tr><td>Choisir les utilisateurs à inclure</td><td><select id="utilisateurOfGroup" size="20" multiple></select></td></tr>
+<tr><td>Permissions attribuées à ce groupe</td><td><table>
+<?php 
+for($i=0;$i<count($this->app);$i++)
+{
+echo '<tr><td>'.$this->app[$i]['app_name'].'</td><td><input id="appG_'.$this->app[$i]['app_name'].'"   type="checkbox" value="'.$this->app[$i]['app_id'].'"  /></td></tr>';
+}
+
+?>
+</table></td></tr></table>
+<br/><br/><center><button onclick="enregistrerGroup();">Soumettre les changements</button></center></div>
+
+<div style="display:none" id="details_categorie"  title="Modifier la catégorie">
+<table><tr><td>Nom de la catégorie</td><td><input id="id_parent" type="hidden" /><input id="id_categorie" type="hidden" /><input id="nom_categorie" type="text" /></td><td><button onclick="majCategorie();" >Enregistrer</button></td></tr></table></div>
+<script>
+var check=Array();
+var soous_univers="contact";
+
+function navigation(div)
+{
+	if(div=="application")
+	{
+	$j('.div_catContact').hide();
+	$j('.div_catOrganisation').hide();
+	$j('.div_application').show();
+	$j('.div_utilisateur').hide();
+	$j('.div_groupe').hide();
+	}
+	else if(div=="utilisateur")
+	{
+		$j('.div_application').hide();
+		$j('.div_catOrganisation').hide();
+		$j('.div_catContact').hide();
+		$j('.div_utilisateur').show();
+		$j('.div_groupe').hide();
+	}
+	else if(div=="groupe")
+	{
+		$j('.div_application').hide();
+		$j('.div_catOrganisation').hide();
+		$j('.div_utilisateur').hide();
+		$j('.div_catContact').hide();
+		$j('.div_groupe').show();
+	}
+	else if(div=="catContact")
+	{
+		sous_univers ="contact";
+		$j('#id_parent').val(259);
+		$j('.div_application').hide();
+		$j('.div_catOrganisation').hide();
+		$j('.div_utilisateur').hide();
+		$j('.div_catContact').show();
+		$j('.div_groupe').hide();
+	}
+	else if(div=="catOrganisation")
+	{	sous_univers ="organisation";
+	    $j('#id_parent').val(272);
+		$j('.div_application').hide();
+		$j('.div_catOrganisation').show();
+		$j('.div_utilisateur').hide();
+		$j('.div_catContact').hide();
+		$j('.div_groupe').hide();
+	}
+}
+function getApplication()
+{
+	navigation("application");
+$j("#flex_application").flexigrid(
+		{
+			url : "./index.php?page=ajaxAdmin&action=getApplication&noTemplate=1",
+			dataType : "json",
+			preProcess: function(data) { // do your modifications here return data; // return your modified data here
+
+			return data; } ,
+			colModel : [
+	
+					{display: 'Nom de l\'application', name : 'app_name', width : 150, sortable : true, align: 'left'},
+					{display: 'Description', name : 'app_description', width : 300, sortable : true, align: 'left'},
+					{display: 'Version', name : 'app_version', width : 100, sortable : true, align: 'right'},
+					{display: '', name : 'app_enabled', width : 50, sortable : true, align: 'center'},
+				
+					
+					],
+					
+sortname: "app_order",
+sortorder: "asc",
+title: 'Application',
+usepager: false,
+useRp: false,
+rp: 15,
+showTableToggleBtn: true,
+
+
+
+		});
+} 
+function getCategorieContact()
+{
+	navigation("catContact");
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&noTemplate=1",
+		dataType : "json",
+		data : {
+			
+			cat_name : "contact",
+			action : "getCategorie"
+		},success: function(data){
+
+
+		    var html='<div style="padding-left:2px;"><h3>Catégorie des contacts</h3><button style="font-size:10px" onclick="editCategorie();" >Créer une catégorie</button><br/><br/><img src="./images/ico/attention.png" /> Il faut créer la catégorie Usager_yy chaque année pour le module Presta v1 </div><table id="myTableCont" cellspacing="1"  style="width:auto" class="tablesorter"><thead><tr><th>Nom de la catégorie</th>';
+		    html +='<th width="15px;"></th></thead></tr><tbody>';
+
+
+			$j.each(data,function(i, obj){
+				html +="<tr><td nowrap>"+obj.cat_name+"</td><td><a  href='javascript:void(0);'/><img style='cursor:pointer' onclick='editCategorie("+obj.cat_id+")' src='./images/ico/edit.png' /></a></td></tr>";
+			});
+			html +="<tbody></table>";
+			$j('.flex_catContact').html(html);
+	
+			$j("#myTableCont").tablesorter({ widgets: ['zebra'] });
+			
+
+
+			}});
+	setTimeout('$j( "button").button()',1000);
+	
+} 
+function getCategorieOrganisation()
+{
+	navigation("catOrganisation");
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&noTemplate=1",
+		dataType : "json",
+		data : {
+			
+			cat_name : "organisation",
+			action : "getCategorie"
+		},success: function(data){
+
+
+		    var html='<div style="padding-left:2px;"><h3>Catégorie des organisations</h3><button style="font-size:10px" onclick="editCategorie();" >Créer une catégorie</button></div><table id="myTableOrg" cellspacing="1"  style="width:auto" class="tablesorter"><thead><tr><th>Nom de la catégorie</th>';
+		    html +='<th width="15px;"></th></thead></tr><tbody>';
+
+
+			$j.each(data,function(i, obj){
+				html +="<tr><td nowrap>"+obj.cat_name+"</td><td><a  href='javascript:void(0);'/><img style='cursor:pointer' onclick='editCategorie("+obj.cat_id+")' src='./images/ico/edit.png' /></a></td></tr>";
+			});
+			html +="<tbody></table>";
+			$j('.flex_catOrganisation').html(html);
+	
+			$j("#myTableOrg").tablesorter({ widgets: ['zebra'] });
+						
+
+
+			}});
+
+	setTimeout('$j( "button").button()',1000);
+} 
+
+function getUtilisateur()
+{
+	navigation("utilisateur");
+
+	$j('#flex_utilisateur').html("");
+	var pager="<button onclick='editUtilisateur(\"\");'>Créer un compte</button><div class='pager' id='pager'>	<form><table><tr><td>";
+	pager +='<img src="./images/ico/first.png" class="first"/><img src="./images/ico/prev.png" class="prev"/> Page : <input type="text" size="4" class="pagedisplay"/> ';
+	pager +='<img src="./images/ico/next.png" class="next"/>';
+	pager +='<img src="./images/ico/last.png" class="last"/>';
+	pager +=' - <span class="nb_resultats"></span> résultats - Afficher <select class="pagesize"><option selected="selected"  value="30">30</option><option  value="60">60</option></select> lignes</form></td></tr></table></div>';
+	
+	//$j('.load').show();
+	$j('.page').html(pager);
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&action=getUtilisateur&noTemplate=1",
+		dataType : "json",
+		data : {
+		
+		    
+		},	success: function(data){
+
+		
+			
+			var html='<table id="myTable" cellspacing="1" class="tablesorter"><thead><tr> ';
+			
+			html +='<th>Identifiant</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Tel.pro</th><th>Tel.Perso</th><th>Groupe</th><th>Statut</th><th></th></thead></tr><tbody>';
+
+						$j.each(data.DATA,function(i, obj){
+							if(obj.account_email==null)obj.account_email="";
+							if(obj.account_group==null)obj.account_group="";
+							if(obj.account_tel_pro==null)obj.account_tel_pro="";
+							if(obj.account_tel_perso==null)obj.account_tel_perso="";
+							html +='<tr><td>'+obj.account_lid+'</td><td>'+obj.account_lastname+'</td><td>'+obj.account_firstname+'</td><td>'+obj.account_email+'</td><td>'+obj.account_tel_pro+'</td><td>'+obj.account_tel_perso+'</td><td>'+obj.account_group+'</td><td>'+obj.account_status+'</td><td><a onclick="editUtilisateur('+obj.account_id+',\''+obj.account_lid+'\')" href="javascript:void(0);" ><img style="cursor:pointer" src="./images/ico/edit.png" /></a></td></tr>';
+							
+						});	
+						html+='</tbody></table>';
+			$j("#flex_utilisateur").html(html);
+			
+			
+			$j("#myTable").tablesorter({ widgets: ['zebra'] })
+			 .tablesorterPager({container: $j("#pager"),positionFixed: false });
+
+
+
+$j('.nb_resultats').html(data.TOTAL.TOTAL);
+		}});
+	
+setTimeout('$j( "button").button()',1000);
+} 
+function getGroupe()
+{
+	navigation("groupe");
+$j("#flex_groupe").flexigrid(
+		{
+			url : "./index.php?page=ajaxAdmin&action=getGroupe&noTemplate=1",
+			dataType : "json",
+			preProcess: function(data) { // do your modifications here return data; // return your modified data here
+
+			return data; } ,
+			colModel : [
+	
+					
+					{display: 'Nom', name : 'account_firstname', width :150, sortable : true, align: 'left'},
+					
+					{display: '', name : '',width : 20, sortable : true, align: 'left'},
+					
+					
+				
+					
+					],
+					
+sortname: "account_lid",
+sortorder: "asc",
+title: 'Groupes utilisateurs | <button onclick="editGroup(\'\',\'\');">Créer un groupe</button>',
+usepager: false,
+useRp: false,
+rp: 15,
+height : 500,
+showTableToggleBtn: true,
+
+
+
+		});
+setTimeout('$j( "button").button()',1000);
+}
+function editUtilisateur(idUser)
+{
+	
+	$j( "#editUser" ).dialog({height:800,width:600});
+	if(idUser!='')
+	{
+		$j('.ui-dialog-title').html('Modification du compte');
+
+		$j.ajax({
+			url : "./index.php?page=ajaxAdmin&noTemplate=1",
+			dataType : "json",
+			
+			data : {
+			
+			idUtilisateur : idUser,
+			action : "getUtilisateurById"
+			},success: function(data){
+
+				
+				$j('#prenom').val(data.data1.account_firstname);
+				$j('#nom').val(data.data1.account_lastname);
+				$j('#tel_perso').val(data.data1.account_tel_perso);
+				$j('#tel_pro').val(data.data1.account_tel_pro);
+				$j('#email').val(data.data1.account_email);
+				$j('#status').val(data.data1.account_status);
+				$j('#identifiant').html(data.data1.account_lid);
+				$j('#idGroupSelect').val(data.data1.account_primary_group);
+				$j('#idPrestataire').val(data.data1.account_id_prestataire);
+				$j('#idUtilisateur').val(data.data1.account_id);
+				
+				
+
+				$j('#app_Admin').removeAttr("checked");
+				$j('#app_Accueil').removeAttr("checked");
+
+				$j('#app_Contact').removeAttr("checked");
+				$j('#app_Calendrier').removeAttr("checked");
+				$j('#app_Presta').removeAttr("checked");
+				$j('#app_Organisation').removeAttr("checked");
+				$j('#app_Evenement').removeAttr("checked");
+				$j('#app_Projet').removeAttr("checked");
+				$j('#app_Dispositif').removeAttr("checked");
+				$j('#app_Compte_Rendu').removeAttr("checked");
+				$j('#app_Texte').removeAttr("checked");
+		$j.each(data.data2,function(i,row) {
+
+			
+			$j('#app_'+row.app_name).attr('checked','checked');
+			
+				});
+			}});
+		
+	}
+	else
+	{
+		$j('.ui-dialog-title').html('Création d\'un nouveau compte');
+		$j('#prenom').val('');
+		$j('#nom').val('');
+		$j('#tel_perso').val('');
+		$j('#tel_pro').val('');
+		$j('#email').val('');
+		$j('#identifiant').html('');
+		$j('#idGroupSelect').val('');
+		$j('#idPrestataire').val('');
+		$j('#idUtilisateur').val('');
+		$j('#app_Admin').removeAttr("checked");
+		$j('#app_Accueil').removeAttr("checked");
+		$j('#app_Contact').removeAttr("checked");
+		$j('#app_Calendrier').removeAttr("checked");
+		$j('#app_Presta').removeAttr("checked");
+		$j('#app_Organisation').removeAttr("checked");
+		$j('#app_Evenement').removeAttr("checked");
+		$j('#app_Projet').removeAttr("checked");
+		$j('#app_Dispositif').removeAttr("checked");
+		$j('#app_Compte_Rendu').removeAttr("checked");
+		$j('#app_Texte').removeAttr("checked");
+	}
+
+}
+
+
+function editGroup(idGroup,lid)
+{
+	$j( "#editGroup" ).dialog({height:800,width:600});
+	if(idGroup=='')
+	{
+		$j('#nomGroup').val('');
+		$j('#utilisateurOfGroup').html('');
+		$j('.ui-dialog-title').html('Création d\'un nouveau groupe');
+
+		$j.ajax({
+			url : "./index.php?page=ajaxAdmin&noTemplate=1",
+			dataType : "json",
+			
+			data : {
+			
+			idGroup : idGroup,
+			action : "getUtilisateurByIdGroup"
+			},success: function(data){
+	var html ="";
+
+				$j.each(data.data2,function(i,row2) {
+
+					
+
+				
+					html +="<option  value="+row2.account_id+">"+row2.account_firstname+" "+row2.account_lastname+"</option>";
+					
+						});
+
+				$j('#appG_Admin').removeAttr("checked");
+				$j('#appG_Accueil').removeAttr("checked");
+				$j('#appG_Contact').removeAttr("checked");
+				$j('#appG_Calendrier').removeAttr("checked");
+				$j('#appG_Presta').removeAttr("checked");
+				$j('#appG_Organisation').removeAttr("checked");
+				$j('#appG_Evenement').removeAttr("checked");
+				$j('#appG_Projet').removeAttr("checked");
+				$j('#appG_Dispositif').removeAttr("checked");
+				$j('#appG_Compte_Rendu').removeAttr("checked");
+				$j('#appG_Texte').removeAttr("checked");
+
+		
+	$j('#utilisateurOfGroup').html(html);
+	$j('#nomGroup').val(lid);
+			}});
+
+		
+		
+	}
+	else
+	{
+	$j('#idGroup').val(idGroup);
+	$j('#utilisateurOfGroup').html('');
+	$j('.ui-dialog-title').html('Le groupe '+lid);
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&noTemplate=1",
+		dataType : "json",
+		
+		data : {
+		
+		idGroup : idGroup,
+		action : "getUtilisateurByIdGroup"
+		},success: function(data){
+var html ="";
+
+			$j.each(data.data2,function(i,row2) {
+
+				$j.each(data.data1,function(i,row1) {
+
+					if(row1.account_id==row2.account_id)
+					{
+						check[check.length]= row2.account_id;
+					}
+				});
+
+				for(z=0;z<check.length;z++)
+				{
+				if(check[z] == row2.account_id)
+				{
+					var selected ="selected='selected'";
+				}
+				else
+				{
+					var selected="";
+				}
+				}
+				html +="<option "+selected+" value="+row2.account_id+">"+row2.account_firstname+" "+row2.account_lastname+"</option>";
+				
+					});
+
+			$j('#appG_Admin').removeAttr("checked");
+			$j('#appG_Accueil').removeAttr("checked");
+			$j('#appG_Contact').removeAttr("checked");
+			$j('#appG_Calendrier').removeAttr("checked");
+			$j('#appG_Presta').removeAttr("checked");
+			$j('#appG_Organisation').removeAttr("checked");
+			$j('#appG_Evenement').removeAttr("checked");
+			$j('#appG_Projet').removeAttr("checked");
+			$j('#appG_Dispositif').removeAttr("checked");
+			$j('#appG_Compte_Rendu').removeAttr("checked");
+			$j('#appG_Texte').removeAttr("checked");
+	$j.each(data.data3,function(i,row) {
+
+		
+		$j('#appG_'+row.app_name).attr('checked','checked');
+		
+			});
+
+	check=Array();
+$j('#utilisateurOfGroup').html(html);
+$j('#nomGroup').val(lid);
+		}});
+	
+	}
+}
+
+
+function writeIdentifiant()
+{
+	var nom = $j('#nom').val();
+	var prenom = $j('#prenom').val();
+	
+    $j('#identifiant').html(strtolower(prenom.substr(0,1)+nom));
+    $j('#email').val(strtolower(prenom.substr(0,1)+nom)+'@apsie.org');
+}
+
+function enregistrerGroup()
+{
+	var droit="";
+
+	if($j('#appG_Admin').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Admin').val();	
+	}
+	if($j('#appG_Accueil').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Accueil').val();	
+	}
+	if($j('#appG_Contact').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Contact').val();	
+	}
+	if($j('#appG_Calendrier').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Calendrier').val();	
+	}
+	if($j('#appG_Presta').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Presta').val();	
+	}
+	if($j('#appG_Organisation').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Organisation').val();	
+	}
+	if($j('#appG_Evenement').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Evenement').val();	
+	}
+	if($j('#appG_Projet').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Projet').val();	
+	}
+	if($j('#appG_Dispositif').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Dispositif').val();	
+	}
+	if($j('#appG_Compte_Rendu').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Compte_Rendu').val();	
+	}
+	if($j('#appG_Texte').is(':checked')==true)
+	{
+		droit +=','+$j('#appG_Texte').val();	
+	}
+	var idGroup = $j('#idGroup').val();
+
+	if(idGroup!='')
+	{var action = "updateGroup";
+	}
+	else
+	{var action = "addGroup";
+	}
+	var nomGroup = $j('#nomGroup').val();
+	var utilisateurOfGroup = $j('#utilisateurOfGroup').val();
+	
+	
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&noTemplate=1",
+		dataType : "json",
+		
+		data : {
+			utilisateurOfGroup : utilisateurOfGroup,
+			check : check,
+			idGroup : idGroup,
+			nomGroup : nomGroup,
+			identifiantGroup : nomGroup,
+			droit : droit,
+			action : action
+		},success: function(data){
+			window.location.href="index.php?page=Admin&action=getGroupe";
+			
+		}});
+
+	
+}
+function enregisterUtilisateur()
+{
+	var droit="";
+
+	if($j('#app_Admin').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Admin').val();	
+	}
+	if($j('#app_Accueil').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Accueil').val();	
+	}
+	if($j('#app_Contact').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Contact').val();	
+	}
+	if($j('#app_Calendrier').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Calendrier').val();	
+	}
+	if($j('#app_Presta').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Presta').val();	
+	}
+	if($j('#app_Organisation').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Organisation').val();	
+	}
+	if($j('#app_Evenement').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Evenement').val();	
+	}
+	if($j('#app_Projet').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Projet').val();	
+	}
+	if($j('#app_Dispositif').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Dispositif').val();	
+	}
+	if($j('#app_Compte_Rendu').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Compte_Rendu').val();	
+	}
+	if($j('#app_Texte').is(':checked')==true)
+	{
+		droit +=','+$j('#app_Texte').val();	
+	}
+
+	
+
+	var idUtilisateur = $j('#idUtilisateur').val();
+	var nom = $j('#nom').val();
+	var prenom = $j('#prenom').val();
+	var email = $j('#email').val();
+	var tel_pro = $j('#tel_pro').val();
+	var tel_perso = $j('#tel_perso').val();
+	var mdp = $j('#mdp').val();
+	var mdp2 = $j('#mdp2').val();
+	var status = $j('#status').val();
+	var idPrestataire = $j('#idPrestataire').val();
+	var idGroupSelect = $j('#idGroupSelect').val();
+	if(status!="A")
+	{status="N";}
+	if($j('#idUtilisateur').val()!='')
+	{
+		var action = 'updateUtilisateur';
+	}
+	else
+	{var action = 'enregistrerUtilisateur';}
+	if(mdp==mdp2)
+	{
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&noTemplate=1",
+		dataType : "json",
+		
+		data : {
+		idUtilisateur : idUtilisateur,
+		nom : nom,
+		prenom : prenom,
+		email : email,
+		tel_perso : tel_perso,
+		tel_pro : tel_pro,
+		mdp : mdp,
+		status : status,
+		idPrestataire : idPrestataire,
+		idGroupInitial : idGroupSelect,
+		droit : droit,
+		action : action
+		},success: function(data){
+			if(data==true)
+			alert("Login existant, choisissez un autre");	
+			else
+			window.location.href="index.php?page=Admin&action=getUtilisateur";
+			//$j('.verification').html('<font style="color:green">Le compte a été crée</font>');
+		}});
+	}
+	else
+	{
+		alert('Veuillez saisir le même mot de passe');
+	}
+}
+function deleteUtilisateur(idUtilisateur)
+{
+if(confirm('Êtes vous sûr de vouloir supprimer ce compte?'))
+{
+	$j.ajax({
+		url : "./index.php?page=ajaxAdmin&noTemplate=1",
+		dataType : "json",
+		
+		data : {
+		idUtilisateur : idUtilisateur,
+		action : "deleteUtilisateur"
+		},success: function(data){
+			
+		}});
+
+	window.location.href="index.php?page=Admin&action=getUtilisateur";
+}
+
+		
+}
+
+function editCategorie(id)
+{	$j('#id_categorie').val("");
+$j('#nom_categorie').val("");
+	
+	if(id!=undefined)
+	{
+		getCategorieById(id);
+	}
+
+	$j( "#details_categorie" ).dialog({height:100,width:400});
+	
+}
+function getCategorieById(id)
+{
+
+		
+		$j.ajax({
+			url : "./index.php?page=ajaxAdmin&noTemplate=1",
+			dataType : "json",
+			data : {
+				
+				id : id,
+				action : "getCategorieById"
+			},success: function(data){
+
+				$j('#id_categorie').val(id);
+				$j('#nom_categorie').val(data.cat_name);
+			}});
+
+}
+function majCategorie()
+{
+
+		
+		$j.ajax({
+			url : "./index.php?page=ajaxAdmin&noTemplate=1",
+			dataType : "json",
+			data : {
+				
+				id : $j('#id_categorie').val(),
+				cat_name : $j('#nom_categorie').val(),
+				id_parent : $j('#id_parent').val(),
+				action : "majCategorie"
+			},success: function(data){
+
+				if(sous_univers=="contact")
+				{ getCategorieContact();}
+				else if(sous_univers=="organisation")
+				{
+				 getCategorieOrganisation();
+				}
+			}});
+
+}
+
+</script>
+
+<?php if($_GET['action']=="getUtilisateur")
+{
+	echo'<script>getUtilisateur();</script>';
+}
+if($_GET['action']=="getGroupe")
+{
+	echo'<script>getGroupe();</script>';
+}
+?>

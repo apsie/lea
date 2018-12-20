@@ -1,0 +1,432 @@
+% spend time	spid	en	% spend time
+% turnover	spid	en	% turnover
+(d)	spid	en	(d)
+(h)	spid	en	(h)
+(min)	spid	en	(min)
+-	spid	en	-
+//ajax_request.transition(this.value);	spid	en	//ajax_request.transition(this.value);
+a problem happens during the generation of the bill in pdf format	spid	en	A problem happens during the generation of the bill in PDF format
+a propos de spid	spid	en	A propos de SpiD
+access to ticket	spid	en	Access to ticket
+account_id - personalisé groups_users();	spid	en	account_id - personalisé groups_users();
+action that caused the notify: added, canceled, accepted, rejected, ...	spid	en	Action that caused the notify: Added, Canceled, Accepted, Rejected, ...
+actions	spid	en	Actions
+activity ratio	spid	en	Activity ratio
+add client	spid	en	Add client
+add contract	spid	en	Add contract
+add contract type	spid	en	Add contract type
+add location	spid	en	Add location
+add prices	spid	en	Add Prices
+add sector	spid	en	Add sector
+address	spid	en	address
+address one	spid	en	Address one
+address two	spid	en	Address two
+advanced search	spid	en	Advanced search
+after	spid	en	after
+ajouter à la facture	spid	en	Ajouter à la facture
+all invoices	spid	en	All invoices
+all of the words	spid	en	All of the words
+all open tickets	spid	en	All open tickets
+all tickets	spid	en	All tickets
+alone invoice	spid	en	Alone invoice
+amount	spid	en	Amount
+an error has occured	spid	en	An error has occured
+and	spid	en	and
+assigned to	spid	en	Assigned to
+at least one of the words	spid	en	At least one of the words
+attachment	spid	en	Attachment
+autoassign to	spid	en	Autoassign To
+average hourly turnover	spid	en	Average hourly turnover
+bank	spid	en	Bank
+between	spid	en	between
+billable	spid	en	Billable
+billable by	spid	en	Billable by
+billable/not billable	spid	en	Billable/Not Billable
+budget	spid	en	Budget
+by	spid	en	by
+ca par client	spid	en	CA par client
+cancel tickets	spid	en	Cancel tickets
+capital	spid	en	Capital
+categorie for confirmed intervention	spid	en	Categorie for confirmed intervention
+categorie for option intervention	spid	en	Categorie for option intervention
+categorie for realised intervention	spid	en	Categorie for realised intervention
+cats configuration	spid	en	Cats Configuration
+check all	spid	en	Check all
+client	spid	en	Client
+client ca	spid	en	Client CA
+client id	spid	en	Client ID
+client management	spid	en	Client Management
+client name	spid	en	Client name
+client statistics	spid	en	Client statistics
+clients	spid	en	Clients
+clients menu	spid	en	Clients menu
+closable	spid	en	Closable
+closable/not closable	spid	en	Closable/Not Closable
+close	spid	en	CLOSE
+close date	spid	en	Close date
+close ticket	spid	en	Close ticket
+closed	spid	en	Closed
+closed ticket	spid	en	Closed ticket
+closed tickets	spid	en	Closed tickets
+closed tickets during period	spid	en	Closed tickets during period
+closed tickets during the period and counted with this invoice	spid	en	Closed tickets during the period and counted with this invoice
+closed tickets during the period but not counted with this invoice	spid	en	Closed tickets during the period but not counted with this invoice
+closed tickets not invoicing	spid	en	Closed tickets not invoicing
+color	spid	en	Color
+company	spid	en	company
+conditions	spid	en	Conditions
+configuration updated	spid	en	Configuration updated
+configuring responses	spid	en	Configuring responses
+confirmed intervention	spid	en	Confirmed intervention
+contains	spid	en	contains
+contract	spid	en	Contract
+contract management	spid	en	Contract Management
+contract type	spid	en	Contract type
+contract type configuration	spid	en	Contract Type Configuration
+contract type management	spid	en	Contract type Management
+couleur de surbrillance pour les clients ayant un problème de configuration	spid	en	Couleur de surbrillance pour les clients ayant un problème de configuration
+couleur de surbrillance pour les clients en sommeil	spid	en	Couleur de surbrillance pour les clients en sommeil
+couleur de surbrillance pour les tickets non vu	spid	en	Couleur de surbrillance pour les tickets non vu
+couleur de surbrillance pour les tickets urgent	spid	en	Couleur de surbrillance pour les tickets urgent
+create	spid	en	CREATE
+create new links	spid	en	Create new links
+creation date	spid	en	Creation Date
+custom 1	spid	en	custom 1
+custom 2	spid	en	custom 2
+custom 3	spid	en	custom 3
+date de création	spid	en	Date de création
+date opened	spid	en	Date opened
+day	spid	en	Day
+day budget	spid	en	Day Budget
+de quels couleur souhaitez-vous voir les clients ayant un problème de configuration?	spid	en	De quels couleur souhaitez-vous voir les clients ayant un problème de configuration?
+de quels couleur souhaitez-vous voir les clients en sommeil?	spid	en	De quels couleur souhaitez-vous voir les clients en sommeil?
+de quels couleur souhaitez-vous voir les tickets non vu?	spid	en	De quels couleur souhaitez-vous voir les tickets non vu?
+de quels couleur souhaitez-vous voir les tickets urgent?	spid	en	De quels couleur souhaitez-vous voir les tickets urgent?
+default categorie for meetings	spid	en	Default categorie for meetings
+default text for the index	spid	en	Default text for the index
+default value	spid	en	Default Value
+define escalation	spid	en	Define escalation
+delete criteria	spid	en	Delete criteria
+delete the category	spid	en	Delete the category
+delete the standard reply	spid	en	Delete the standard reply
+delete the state	spid	en	Delete the state
+delete the transition	spid	en	Delete the transition
+delete this escalation	spid	en	Delete this escalation
+difference	spid	en	Difference
+displays your default calendar view on the startpage (page you get when you enter egroupware or click on the homepage icon)?	spid	en	Displays your default calendar view on the startpage (page you get when you enter eGroupWare or click on the homepage icon)?
+download invoice	spid	en	Download invoice
+due date	spid	en	Due date
+duplicated tickets	spid	en	Duplicated tickets
+edit client	spid	en	Edit client
+edit contract	spid	en	Edit contract
+edit contract type	spid	en	Edit contract type
+edit invoice	spid	en	Edit Invoice
+edit location	spid	en	Edit location
+edit prices	spid	en	Edit Prices
+edit sector	spid	en	Edit sector
+edit ticket	spid	en	Edit ticket
+end date/time	spid	en	End Date/Time
+end period date	spid	en	End period date
+error : file not found !	spid	en	Error : file not found !
+error on this customer	spid	en	error on this customer
+estimated outstanding	spid	en	estimated outstanding
+etat	spid	en	Etat
+existing links	spid	en	Existing links
+factured turnover	spid	en	Factured turnover
+fax	spid	en	Fax
+find free timeslots where the selected participants are availible for the given timespan	spid	en	Find free timeslots where the selected participants are availible for the given timespan
+firstname of person to notify	spid	en	Firstname of person to notify
+footer field 1	spid	en	Footer field 1
+footer field 2	spid	en	Footer field 2
+for the attention of	spid	en	For the attention of
+freetime search	spid	en	Freetime search
+from	spid	en	From
+fullname of person to notify	spid	en	Fullname of person to notify
+general	spid	en	General
+general configuration	spid	en	General Configuration
+general id	spid	en	General ID
+generate pdf invoice	spid	en	Generate PDF Invoice
+heure(s)	spid	en	Heure(s)
+high level	spid	en	High level
+history	spid	en	History
+icon	spid	en	Icon
+id	spid	en	ID
+initial	spid	en	Initial
+initial price	spid	en	Initial Price
+initial state	spid	en	Initial State
+initial time	spid	en	Initial time
+initial/not initial	spid	en	Initial/Not initial
+intervenant	spid	en	Intervenant
+intervenant ca	spid	en	Intervenant CA
+intervenant configuration	spid	en	Intervenant Configuration
+intervenant statistics	spid	en	Intervenant statistics
+intervenants	spid	en	Intervenants
+invalide ticket	spid	en	Invalide ticket
+invoice folder	spid	en	Invoice Folder
+invoice label	spid	en	Invoice Label
+invoice management	spid	en	Invoice Management
+invoice number	spid	en	Invoice number
+invoice tickets	spid	en	invoice tickets
+invoice updated	spid	en	Invoice updated
+invoices	spid	en	Invoices
+invoicing menu	spid	en	Invoicing menu
+jour(s)	spid	en	Jour(s)
+juridical form	spid	en	Juridical form
+last date	spid	en	Last date
+last invoice	spid	en	Last Invoice
+last note added	spid	en	Last note added
+last update	spid	en	Last update
+lastname of person to notify	spid	en	Lastname of person to notify
+libelle	spid	en	Libelle
+link to view the event	spid	en	Link to view the event
+linked entries	common	en	Linked entries
+links	spid	en	Links
+locality	spid	en	Locality
+location	spid	en	Location
+location configuration	common	en	Location Configuration
+location created	spid	en	Location created
+location deleted	spid	en	Location deleted
+location management	spid	en	Location Management
+location parent	spid	en	Location parent
+location updated	spid	en	Location updated
+locations	spid	en	Locations
+mai	spid	en	Mai
+mail	spid	en	Mail
+mail configuration	spid	en	Mail Configuration
+mail sending failed	spid	en	MAIL SENDING FAILED
+mail sent successfully	spid	en	MAIL SENT SUCCESSFULLY
+maj	spid	en	MAJ
+manage clients	spid	en	Manage clients
+manage contracts	spid	en	Manage contracts
+management group	spid	en	Management group
+manager email	spid	en	Manager Email
+message with invoice when you send them by email	spid	en	Message with invoice when you send them by email
+messages	spid	en	Messages
+montant h.t.	spid	en	Montant H.T.
+montant t.t.c.	spid	en	Montant T.T.C.
+more	spid	en	More
+more notes	spid	en	more notes
+my assigned tickets	spid	en	My assigned tickets
+my open tickets	spid	en	My open tickets
+naf, ex ape	spid	en	NAF, ex APE
+new client	spid	en	New client
+new group	spid	en	New group
+new invoice	spid	en	New invoice
+new ticket	spid	en	New ticket
+new user	spid	en	New user
+next date	spid	en	Next date
+no chosen payment	spid	en	No chosen payment
+no validated invoices	spid	en	No validated invoices
+nobody ticket imported	spid	en	Nobody ticket imported
+non validated invoices	spid	en	Non validated invoices
+none of the words	spid	en	None of the words
+normal level	spid	en	Normal level
+not billable	spid	en	Not Billable
+not closable	spid	en	Not Closable
+not initial	spid	en	Not Initial
+object	spid	en	Object
+objective ratio	spid	en	Objective ratio
+objective turnover	spid	en	Objective turnover
+old startdate	spid	en	Old Startdate
+open	spid	en	Open
+open / close	spid	en	Open / Close
+open by	spid	en	Open by
+opened tickets	spid	en	Opened tickets
+opened tickets at end period	spid	en	Opened tickets at end period
+opened tickets during period	spid	en	Opened tickets during period
+opened tickets in start period	spid	en	Opened tickets in start period
+operation code	spid	en	Operation code
+optional intervention	spid	en	Optional intervention
+original details	spid	en	Original details
+parc	spid	en	Parc
+parent categorie	spid	en	Parent categorie
+participant	spid	en	Participant
+participants	spid	en	Participants
+participants disinvited from an event	spid	en	Participants disinvited from an event
+pass time on not factured closed tickets	spid	en	Pass time on not factured closed tickets
+pass time on the closed tickets	spid	en	Pass time on the closed tickets
+pass time on the opened tickets	spid	en	Pass time on the opened tickets
+payment in 30 days	spid	en	Payment in 30 days
+payment in 60 days	spid	en	Payment in 60 days
+payment in 90 days	spid	en	Payment in 90 days
+payment model	spid	en	Payment model
+payment with reception	spid	en	Payment with reception
+percent	spid	en	Percent
+percent on the closed tickets	spid	en	Percent on the closed tickets
+percent on the opened tickets	spid	en	Percent on the opened tickets
+period	spid	en	Period
+permission denied !!!	spid	en	Permission denied !!!
+permission denied!!!	spid	en	Permission denied!!!
+permission denied, please contact your administrator!!!	spid	en	Permission denied, please contact your administrator!!!
+please contact support	spid	en	Please contact support
+poor level	spid	en	Poor level
+possible to select	spid	en	Possible to select
+postal code	spid	en	Postal Code
+price	spid	en	Price
+price configuration	common	en	Price Configuration
+price ht	spid	en	Price HT
+prices	spid	en	Prices
+prices configuration	admin	en	Prices Configuration
+prices management	spid	en	Prices Management
+print entry	spid	en	Print entry
+proposal tickets	spid	en	Proposal tickets
+provider	spid	en	Provider
+providers	spid	en	Providers
+rate: %s eur / answered call, the edge of half an hour	spid	en	Rate: %s EUR / answered call, the edge of half an hour
+ratio	spid	en	Ratio
+rcs/rm	spid	en	RCS/RM
+real	spid	en	Real
+realised intervention	spid	en	Realised intervention
+receive notifications about assigned tickets	preferences	en	Receive notifications about assigned tickets
+receive notifications about created tickets	preferences	en	Receive notifications about created tickets
+relation	spid	en	Relation
+renewal date	spid	en	Renewal Date
+repetitiondetails (or empty)	spid	en	Repetitiondetails (or empty)
+reply	spid	en	Reply
+resolute tickets	spid	en	Resolute tickets
+responses	spid	en	Responses
+search client '%1'	spid	en	Search client '%1'
+search company '%1'	spid	en	Search company '%1'
+search contract '%1'	spid	en	Search contract '%1'
+search for '%1'	spid	en	Search for '%1'
+search location	spid	en	Search Location
+search location '%1'	spid	en	Search Location '%1'
+search sector '%1'	spid	en	Search sector '%1'
+search state '%1'	spid	en	Search State '%1'
+sector	spid	en	Sector
+sector management	spid	en	Sector Management
+sector name	spid	en	Sector name
+sectors	spid	en	Sectors
+select a category before	spid	en	Select a category before
+select a group before	spid	en	Select a group before
+send date	spid	en	Send date
+send invoice by email	spid	en	Send Invoice by email
+sender	spid	en	Sender
+sendere	spid	en	SenderE
+sent	spid	en	sent
+septembre	spid	en	Septembre
+setting transitions	spid	en	Setting transitions
+show default view on main screen	spid	en	show default view on main screen
+signature date	spid	en	Signature Date
+siren	spid	en	SIREN
+siret	spid	en	SIRET
+site	spid	en	Site
+sites	spid	en	Sites
+sleep	spid	en	Sleep
+source state	spid	en	Source State
+spend time	spid	en	Spend time
+spid	common	en	Spid
+spid configuration	spid	en	SPID configuration
+spid menu	spid	en	Spid Menu
+spid ticket	spid	en	SPID Ticket
+spid tickets	spid	en	SPID Tickets
+standard replies	spid	en	Standard Replies
+start date/time	spid	en	Start Date/Time
+start period date	spid	en	Start period date
+state	spid	en	State
+state close	spid	en	State close
+state for close	spid	en	State for close
+state name	spid	en	State name
+states	spid	en	States
+states configuration	spid	en	States Configuration
+statistic	spid	en	Statistic
+statistic intervenant	spid	en	Statistic intervenant
+statistic menu	spid	en	Statistic menu
+statistic turnover menu	spid	en	Statistic turnover menu
+statistics	spid	en	Statistics
+t.v.a.	spid	en	T.V.A.
+target	spid	en	Target
+target state	spid	en	Target State
+taxe num	spid	en	Taxe num
+tel	spid	en	Tel
+test	spid	en	test
+the bill been successfully generated	spid	en	The bill been successfully generated
+the exact phrase	spid	en	The exact phrase
+this message is join by mail when you send your bills by email.	spid	en	This message is join by mail when you send your bills by email.
+this one can see by all groups and administrator	spid	en	this one can see by all groups and administrator
+this one can see only by creator, applicant and administrator	spid	en	this one can see only by creator, applicant and administrator
+ticket	spid	en	Ticket
+ticket created	spid	en	Ticket created
+ticket deleted from invoice	spid	en	Ticket deleted from invoice
+ticket imported	spid	en	Ticket imported
+ticket number closed during period	spid	en	Ticket number closed during period
+ticket number open at end period	spid	en	Ticket number open at end period
+ticket number open at start period	spid	en	Ticket number open at start period
+ticket number open during period	spid	en	Ticket number open during period
+ticket title making left the ongoing bill	spid	en	Ticket title making left the ongoing bill
+ticket updated	spid	en	Ticket updated
+ticket_forfait	spid	en	ticket_forfait
+tickets end period date	spid	en	Tickets End period date
+tickets number	spid	en	Tickets number
+tickets per intervenant	spid	en	Tickets per intervenant
+tickets solved by assistance on site	spid	en	Tickets solved by assistance on site
+tickets solved by intervention of monitoring	spid	en	Tickets solved by intervention of monitoring
+tickets solved by planned intervention	spid	en	Tickets solved by planned intervention
+tickets solved by remote assistance	spid	en	Tickets solved by remote assistance
+tickets solved by urgent intervention	spid	en	Tickets solved by urgent intervention
+tickets start period date	spid	en	Tickets Start period date
+tickets with resolve	spid	en	Tickets with resolve
+tiers code	spid	en	Tiers code
+time intervention	spid	en	Time intervention
+time meeting	spid	en	Time Meeting
+time spend	spid	en	Time Spend
+times	spid	en	Times
+title of the event	spid	en	Title of the event
+titre	spid	en	Titre
+to add a meeting, please fill up the calendar date, time and the title, then "add"	spid	en	To add a meeting, please fill up the calendar date, time and the title, then "add"
+total heures	spid	en	Total heures
+total ht	spid	en	Total HT
+total intervention	spid	en	Total intervention
+total jours	spid	en	Total jours
+total rendez-vous	spid	en	Total rendez-vous
+total spend time	spid	en	Total spend time
+total time	spid	en	Total time
+total(h)	spid	en	Total(h)
+transitions	spid	en	Transitions
+translation label	spid	en	Translation label
+under tva	spid	en	Under TVA
+unit time for tickets	spid	en	Unit time for tickets
+update date	spid	en	Update Date
+update ticket state	spid	en	Update Ticket State
+url link	spid	en	url link
+use time budget	spid	en	Use time budget
+validate	spid	en	Validate
+validated invoices	spid	en	Validated invoices
+validation date	spid	en	Validation date
+view all clients	spid	en	View all clients
+view all invoices	spid	en	View all invoices
+view all open tickets	spid	en	View all open tickets
+view all tickets	spid	en	View all tickets
+view client	spid	en	View client
+view closed tickets	spid	en	View closed tickets
+view closed tickets not invoicing	spid	en	View closed tickets not invoicing
+view contract	spid	en	View contract
+view invoice	spid	en	View Invoice
+view invoices	spid	en	View invoices
+view location	spid	en	View location
+view locations	spid	en	View locations
+view my assigned tickets	spid	en	View my assigned tickets
+view my open tickets	spid	en	View my open tickets
+view non validated invoices	spid	en	View non validated invoices
+view open tickets	spid	en	View open tickets
+view pdf invoice	spid	en	View PDF invoice
+view prices	spid	en	View Prices
+view sector	spid	en	View sector
+view statistic	spid	en	View statistic
+view statistic ca client	spid	en	TunOver Statistics
+view statistic ca intervenant	spid	en	View statistic TunerOver per user
+view statistic intervenant	spid	en	Statistic per consultant
+view statistic ticket intervenant	spid	en	View statistic ticket per user
+week	spid	en	Week
+words	spid	en	Words
+would you receive notification mails, if tickets you created get updated?	preferences	en	Would you receive notification mails, if tickets you created get updated?
+would you receive you notification mails, if tickets assigned to you get updated?	preferences	en	Would you receive you notification mails, if tickets assigned to you get updated?
+you must enter a time to close ticket	spid	en	You must enter a time to close ticket
+you want to delete the category. are you sure?	spid	en	you want to delete the category. are you sure?
+you want to delete the client. are you sure?	spid	en	you want to delete the client. are you sure?
+you want to delete the standard reply. are you sure?	spid	en	you want to delete the standard reply. are you sure?
+you want to delete the state. are you sure?	spid	en	you want to delete the state. are you sure?
+you want to delete the transition. are you sure?	spid	en	you want to delete the transition. are you sure?
+you want to delete this invoce. are you sure?	spid	en	you want to delete this invoce. are you sure?
+you want to remove the ticket from this invoice. are you sure?	spid	en	you want to remove the ticket from this invoice. are you sure?
+your ask	spid	en	Your ask

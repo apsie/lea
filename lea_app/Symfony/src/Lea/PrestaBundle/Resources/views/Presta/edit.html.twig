@@ -1,0 +1,65 @@
+<form name="presta_edit" class="formulaire" >
+		<fieldset>
+		<legend> Prestation </legend>
+		<table>
+			<tr>
+				<td>Intitulé : </td><td><u>{{ presta.intitule}}</u></td>
+			</tr>
+			<tr>
+				<td>Dispositif : </td><td><u>{{ presta.dispositif.nomDispositif}}</u></td>
+			</tr>
+			<tr>
+				<td>Conseiller : </td><td>{{ form_widget(formPresta.idRef) }}</td>
+			</tr>
+			<tr>
+				<td>Lettre de commande : </td><td>{{ form_widget(formPresta.lettreDeCommande) }}</td>
+			</tr>
+			<tr>
+				<td>Date début : </td><td>{{ form_widget(formPresta.dateDebut) }}</td>
+			</tr>
+			<tr>
+				<td>Date de fin : </td><td>{{ form_widget(formPresta.dateFin) }}</td>
+			</tr>
+			<tr>
+				<td>Date de fin réelle : </td><td>{{ form_widget(formPresta.dateFinReelle) }}</td>
+			</tr>
+			<tr>
+				<td>Date d'envoi du bilan : </td><td>{{ form_widget(formPresta.dateEnvoiBilan) }}</td>
+			</tr>
+			<tr>
+				<td>Statut : </td><td>{{ form_widget(formPresta.statut) }}</td>
+			</tr>
+			<tr style="height : 50px" >
+				<td></td><td><button id="presta_edit" >Enregistrer</button></td>
+			</tr>
+		</table>
+</form>
+<script>
+$( "#EgwPresta_dateDebut" ).datepicker();
+$( "#EgwPresta_dateFin" ).datepicker();
+$( "#EgwPresta_dateFinReelle" ).datepicker();
+$( "#EgwPresta_dateEnvoiBilan" ).datepicker();
+
+$('#presta_edit').click(function()
+{
+var form = $('form').serializeArray();
+
+$.ajax({
+		url:'./edit/'+{{ presta.idPresta}},
+		dataType: "html",
+		type : "POST",
+		data : form,
+		success: function( html ) {
+		$.pnotify({
+						title: 'Sauvegarde',
+						text: html,
+						type: 'success',
+						styling: 'jqueryui'
+					});
+		$('#show_presta').trigger('click');
+		}
+		});
+return false;
+});
+
+</script>

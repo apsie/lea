@@ -1,0 +1,887 @@
+!@invoice_validate	spifina	en	!@invoice_validate
+% spend time	spifina	en	% spend time
+% turnover	spifina	en	% turnover
+%1 meetings merge with tickets	spifina	en	%1 meetings merge with tickets
+(d)	spifina	en	(d)
+(h)	spifina	en	(h)
+(min)	spifina	en	(min)
+(mn)	spifina	en	(mn)
+(unsued if 0)	spifina	en	(unsued if 0)
+-	spifina	en	-
+@	spifina	en	@
+a problem happens during the generation of the bill in pdf format	spifina	en	A problem happens during the generation of the bill in PDF format
+a propos de spifina	spifina	en	A propos de spifina
+access rights	spifina	en	Access rights
+access to ticket	spifina	en	Access to ticket
+account	spifina	en	Account
+accounting	spifina	en	Accounting
+accounting export	spifina	en	Accounting export
+accounting export model	spifina	en	Accounting export model
+action that caused the notify: added, canceled, accepted, rejected, ...	spifina	en	Action that caused the notify: Added, Canceled, Accepted, Rejected, ...
+actions	spifina	en	Actions
+active headers	spifina	en	Active headers
+active status	spifina	en	Active status
+activity	spifina	en	Activity
+activity monitoring	spifina	en	Activity monitoring
+activity ratio	spifina	en	Activity ratio
+add client	spifina	en	Add client
+add contract	spifina	en	Add contract
+add contract type	spifina	en	Add contract type
+add invoice categorie	spifina	en	Add invoice categorie
+add location	spifina	en	Add location
+add new line	spifina	en	Add new line
+add nomenclature	spifina	en	Add nomenclature
+add prices	spifina	en	Add Prices
+add sector	spifina	en	Add sector
+add user for facturation lines	spifina	en	Add user for facturation lines
+address	spifina	en	address
+address one	spifina	en	Address one
+address two	spifina	en	Address two
+advanced search	spifina	en	Advanced search
+after	spifina	en	after
+agency code	spifina	en	Agency code
+ajouter à la facture	spifina	en	Ajouter à la facture
+all clients	spifina	en	All clients
+all contracts	spifina	en	All contracts
+all invoices	spifina	en	All invoices
+all of the words	spifina	en	All of the words
+all open tickets	spifina	en	All open tickets
+all tickets	spifina	en	All tickets
+alone invoice	spifina	en	Alone invoice
+amount	spifina	en	Amount
+amount ht	spifina	en	AMOUNT HT
+amount ttc	spifina	en	AMOUNT TTC
+an error has occured	spifina	en	An error has occured
+and	spifina	en	and
+apply the action on the whole query, not only the shown contacts!!!	spifina	en	Apply the action on the whole query, NOT only the shown contacts!!!
+area	spifina	en	Area
+arrêtée la présente facture à la somme	spifina	en	Arrêtée la présente facture à la somme
+assigned to	spifina	en	Assigned to
+at	spifina	en	at
+at least one of the words	spifina	en	At least one of the words
+at the beginning	spifina	en	at the beginning
+at the end	spifina	en	at the end
+attachment	spifina	en	Attachment
+attorney	spifina	en	Attorney
+auto add ticket status	spifina	en	Auto add ticket status
+autoassign to	spifina	en	Autoassign To
+average hourly turnover	spifina	en	Average hourly turnover
+avoir n° :	spifina	en	Avoir n° :
+avp/action ratio	spifina	en	AVP/Action ratio
+bank	spifina	en	Bank
+bank account	spifina	en	Bank account
+bank informations	spifina	en	Bank informations
+base ht	spifina	en	Base HT
+beneficiary	spifina	en	Beneficiary
+between	spifina	en	between
+bic	spifina	en	BIC
+billable	spifina	en	Billable
+billable by	spifina	en	Billable by
+billable time	spifina	en	Billable time
+billable/not billable	spifina	en	Billable/Not Billable
+blue	spifina	en	Blue
+book	spifina	en	Book
+budget	spifina	en	Budget
+budget amount	spifina	en	Budget amount
+budget is calculated depending on the selected dates	spifina	en	Budget is calculated depending on the selected dates
+budget margin	spifina	en	Budget margin
+budget time	spifina	en	Budget time
+by	spifina	en	by
+ca par client	spifina	en	CA par client
+calendar events	spifina	en	Calendar events
+calls	spifina	en	Calls
+cancel tickets	spifina	en	Cancel tickets
+canned responses allow an automatic message, change of state and closing...	spifina	en	Canned responses allow an automatic message, change of state and closing...
+capital	spifina	en	Capital
+categorie for confirmed intervention	spifina	en	Categorie for confirmed intervention
+categorie for option intervention	spifina	en	Categorie for option intervention
+categorie for realised intervention	spifina	en	Categorie for realised intervention
+category for optionnal meetings	spifina	en	Category for optionnal meetings
+category for planned meetings	spifina	en	Category for planned meetings
+category for realised meetings	spifina	en	Category for realised meetings
+cats configuration	spifina	en	Cats Configuration
+change date	spifina	en	Change date
+changed by	spifina	en	Changed by
+chart parameters	spifina	en	Chart parameters
+check all	spifina	en	Check all
+check to disable mail to final clients	spifina	en	Check to disable mail to final clients
+check to disable mail to intervenant	spifina	en	Check to disable mail to intervenant
+checked	spifina	en	Checked
+checklist	spifina	en	Checklist
+client	spifina	en	Client
+client ca	spifina	en	Client CA
+client group	spifina	en	Client group
+client id	spifina	en	Client ID
+client management	spifina	en	Client Management
+client name	spifina	en	Client name
+client order	spifina	en	Client order
+client order reference	spifina	en	Client order reference
+client prices	spifina	en	Client prices
+client statistic help	spifina	en	Client statistic help
+client statistics	spifina	en	Client statistics
+client type	spifina	en	Client type
+client's order	spifina	en	Client's order
+clients	spifina	en	Clients
+clients menu	spifina	en	Clients menu
+closable	spifina	en	Closable
+closable : can be closed	spifina	en	Closable : can be closed
+closable/not closable	spifina	en	Closable/Not Closable
+close	spifina	en	CLOSE
+close date	spifina	en	Close date
+close ticket	spifina	en	Close ticket
+closed	spifina	en	Closed
+closed on	spifina	en	Closed on
+closed ticket	spifina	en	Closed ticket
+closed tickets	spifina	en	Closed tickets
+closed tickets during period	spifina	en	Closed tickets during period
+closed tickets during the period and counted with this invoice	spifina	en	Closed tickets during the period and counted with this invoice
+closed tickets during the period but not counted with this invoice	spifina	en	Closed tickets during the period but not counted with this invoice
+closed tickets not invoicing	spifina	en	Closed tickets not invoicing
+code tiers	spifina	en	Code tiers
+coefficient	spifina	en	Coefficient
+color	spifina	en	Color
+company	spifina	en	company
+company's phone	spifina	en	Company's phone
+conditions	spifina	en	Conditions
+configuration updated	spifina	en	Configuration updated
+configuring responses	spifina	en	Configuring responses
+confirmed intervention	spifina	en	Confirmed intervention
+contact name	spifina	en	Contact name
+contacts	spifina	en	Contacts
+contains	spifina	en	contains
+contract	spifina	en	Contract
+contract :	spifina	en	Contract :
+contract ca	spifina	en	Turnover / contract
+contract client	spifina	en	Contract client
+contract detail	spifina	en	P&L / contracts
+contract id	spifina	en	Contract ID
+contract management	spifina	en	Contract Management
+contract name	spifina	en	Contract name
+contract price	spifina	en	Contract price
+contract prices	spifina	en	Contract prices
+contract statistics	spifina	en	Contract statistics
+contract summary	spifina	en	Contract summary
+contract type	spifina	en	Contract type
+contract type configuration	spifina	en	Contract Type Configuration
+contract type management	spifina	en	Contract type Management
+cost	spifina	en	Cost
+couleur de surbrillance pour les clients ayant un problème de configuration	spifina	en	Couleur de surbrillance pour les clients ayant un problème de configuration
+couleur de surbrillance pour les clients en sommeil	spifina	en	Couleur de surbrillance pour les clients en sommeil
+couleur de surbrillance pour les tickets non vu	spifina	en	Couleur de surbrillance pour les tickets non vu
+couleur de surbrillance pour les tickets urgent	spifina	en	Couleur de surbrillance pour les tickets urgent
+country	spifina	en	Country
+create	spifina	en	CREATE
+create a new group	spifina	en	Create a new group
+create invoice using contract instead of client/supplier	spifina	en	Create invoice using contract instead of client/supplier
+create new links	spifina	en	Create new links
+creation date	spifina	en	Creation Date
+creation ticket assistant	spifina	en	Creation ticket assistant
+credit / debit	spifina	en	Credit / Debit
+custom 1	spifina	en	custom 1
+custom 2	spifina	en	custom 2
+custom 3	spifina	en	custom 3
+custom lines	spifina	en	Custom lines
+custom lines only	spifina	en	Custom lines only
+custom lines view	spifina	en	Custom lines view
+d	spifina	en	d
+date de création	spifina	en	Date de création
+date modified	spifina	en	Date modified
+date opened	spifina	en	Date opened
+day	spifina	en	Day
+day budget	spifina	en	Day Budget
+days outstanding	spifina	en	Days outstanding
+days to bill	spifina	en	Days to bill
+de quels couleur souhaitez-vous voir les clients ayant un problème de configuration?	spifina	en	De quels couleur souhaitez-vous voir les clients ayant un problème de configuration?
+de quels couleur souhaitez-vous voir les clients en sommeil?	spifina	en	De quels couleur souhaitez-vous voir les clients en sommeil?
+de quels couleur souhaitez-vous voir les tickets non vu?	spifina	en	De quels couleur souhaitez-vous voir les tickets non vu?
+de quels couleur souhaitez-vous voir les tickets urgent?	spifina	en	De quels couleur souhaitez-vous voir les tickets urgent?
+deactivate emailing to client's manager	spifina	en	Deactivate emailing to client's manager
+deadline	spifina	en	Deadline
+deadline rule	spifina	en	Deadline rule
+default categorie for meetings	spifina	en	Default categorie for meetings
+default category for new meetings	spifina	en	Default category for new meetings
+default header	spifina	en	Default header
+default header for pdf	spifina	en	Default header for PDF
+default mail content	spifina	en	Default mail content
+default number of days for new tickets deadline	spifina	en	Default number of days for new tickets deadline
+default payment delay	spifina	en	Default payment delay
+default price	spifina	en	Default price
+default status	spifina	en	Default status
+default status for references	spifina	en	Default status for references
+default taxe included account	spifina	en	Default taxe included account
+default text for the index	spifina	en	Default text for the index
+default text for the invoice emailing	spifina	en	Default text for the invoice emailing
+default unit for the tickets (unit used for invoices)	spifina	en	Default unit for the tickets (unit used for invoices)
+default unit time for stats	spifina	en	Default unit time for stats
+default unit time for tickets	spifina	en	Default unit time for tickets
+default value	spifina	en	Default Value
+default values	spifina	en	Default values
+define escalation	spifina	en	Define escalation
+delay payment updated	spifina	en	Delay payment updated
+delete criteria	spifina	en	Delete criteria
+delete selected events	spifina	en	Delete selected events
+delete the category	spifina	en	Delete the category
+delete the standard reply	spifina	en	Delete the standard reply
+delete the state	spifina	en	Delete the state
+delete the transition	spifina	en	Delete the transition
+delete this escalation	spifina	en	Delete this escalation
+delete this event	spifina	en	Delete this event
+description	spifina	en	Description
+designation	spifina	en	Designation
+difference	spifina	en	Difference
+difference amount	spifina	en	Difference amount
+difference time	spifina	en	Difference time
+disable final client mail	spifina	en	Disable final client mail
+disable intervenant mail	spifina	en	Disable intervenant mail
+displays your default calendar view on the startpage (page you get when you enter egroupware or click on the homepage icon)?	spifina	en	Displays your default calendar view on the startpage (page you get when you enter eGroupWare or click on the homepage icon)?
+dossiers	spifina	en	Dossiers
+down	spifina	en	Down
+download invoice	spifina	en	Download invoice
+due date	spifina	en	Due date
+duplicated tickets	spifina	en	Duplicated tickets
+during period	spifina	en	during period
+ebp (accounts & scripture)	spifina	en	EBP (accounts & scripture)
+edit client	spifina	en	Edit client
+edit contract	spifina	en	Edit contract
+edit contract type	spifina	en	Edit contract type
+edit invoice	spifina	en	Edit Invoice
+edit invoice categorie	spifina	en	Edit invoice categorie
+edit location	spifina	en	Edit location
+edit nomenclature	spifina	en	Edit nomenclature
+edit prices	spifina	en	Edit Prices
+edit sector	spifina	en	Edit sector
+edit this event	spifina	en	Edit this event
+edit ticket	spifina	en	Edit ticket
+email configuration	spifina	en	Email configuration
+emails	spifina	en	Emails
+end	spifina	en	End
+end date/time	spifina	en	End Date/Time
+end period date	spifina	en	End period date
+error : file not found !	spifina	en	Error : file not found !
+error on this customer	spifina	en	error on this customer
+error while deleting invoice	spifina	en	Error while deleting invoice
+estimated outstanding	spifina	en	estimated outstanding
+estimation	spifina	en	Estimation
+etat	spifina	en	Etat
+event type	spifina	en	Event type
+execute	spifina	en	Execute
+existing links	spifina	en	Existing links
+external account	spifina	en	External account
+facture	spifina	en	Facture
+facture n° :	spifina	en	Facture n° :
+factured turnover	spifina	en	Factured turnover
+fax	spifina	en	Fax
+fields for participants limit	spifina	en	Fields for participants limit
+find free timeslots where the selected participants are availible for the given timespan	spifina	en	Find free timeslots where the selected participants are availible for the given timespan
+firstname of person to notify	spifina	en	Firstname of person to notify
+flag invoices	spifina	en	Flag invoices
+footer field 1	spifina	en	Footer field 1
+footer field 2	spifina	en	Footer field 2
+for the attention of	spifina	en	For the attention of
+forbid the creation of private tickets	spifina	en	Forbid the creation of private tickets
+formation	spifina	en	Formation
+freetime search	spifina	en	Freetime search
+fri	spifina	en	Fri
+from	spifina	en	From
+fullname of person to notify	spifina	en	Fullname of person to notify
+gap on costs	spifina	en	Gap on costs
+gap today	spifina	en	Gap today
+general	spifina	en	General
+general configuration	spifina	en	General Configuration
+general id	spifina	en	General ID
+generate calendar	spifina	en	Generate calendar
+generate export	spifina	en	Generate export
+generate pdf invoice	spifina	en	Generate PDF Invoice
+green	spifina	en	Green
+grey	spifina	en	Grey
+group statistics	spifina	en	Group statistics
+h	spifina	en	h
+h.t. amount	spifina	en	H.T. amount
+header	spifina	en	Header
+header accessible for the pdf	spifina	en	Header accessible for the PDF
+help messages	spifina	en	Help messages
+heure(s)	spifina	en	Heure(s)
+hide n/s column for facturation lines	spifina	en	Hide N/S column for facturation lines
+high level	spifina	en	High level
+history	spifina	en	History
+ht amount	spifina	en	HT Amount
+ht facturation	spifina	en	HT Facturation
+iban	spifina	en	IBAN
+icon	spifina	en	Icon
+id	spifina	en	ID
+identifier	spifina	en	Identifier
+import date	spifina	en	Import date
+in charge	spifina	en	in charge
+information about the ticket	spifina	en	Information about the ticket
+initial	spifina	en	Initial
+initial : a ticket can be directly open with this status	spifina	en	Initial : a ticket can be directly open with this status
+initial price	spifina	en	Initial Price
+initial price day	spifina	en	Initial price day
+initial price hour	spifina	en	Initial price hour
+initial price minute	spifina	en	Initial Price minute
+initial state	spifina	en	Initial State
+initial state for a ticket	spifina	en	Initial state for a ticket
+initial time	spifina	en	Initial time
+initial time minute	spifina	en	Initial time minute
+initial/not initial	spifina	en	Initial/Not initial
+intervenant	spifina	en	Intervenant
+intervenant ca	spifina	en	Intervenant CA
+intervenant configuration	spifina	en	Intervenant Configuration
+intervenant statistics	spifina	en	Intervenant statistics
+intervenants	spifina	en	Intervenants
+intervention	spifina	en	Intervention
+intervention by	spifina	en	Intervention by
+interventions and calendar	spifina	en	Interventions and Calendar
+invalide ticket	spifina	en	Invalide ticket
+invoice	spifina	en	Invoice
+invoice categories	spifina	en	Invoice categories
+invoice categories management	spifina	en	Invoice Categories Management
+invoice created	spifina	en	Invoice created
+invoice custom lines	spifina	en	invoice custom lines
+invoice customised lines	spifina	en	Invoice customised lines
+invoice date	spifina	en	Invoice date
+invoice deleted	spifina	en	Invoice deleted
+invoice folder	spifina	en	Invoice Folder
+invoice id	spifina	en	Invoice id
+invoice label	spifina	en	Invoice Label
+invoice label : this text will appear on the pdf invoice	spifina	en	Invoice Label : this text will appear on the pdf invoice
+invoice management	spifina	en	Invoice Management
+invoice model	spifina	en	Invoice model
+invoice num.	spifina	en	Invoice num.
+invoice number	spifina	en	Invoice number
+invoice number already exists in the database	spifina	en	Invoice number already exists in the database
+invoice n°	spifina	en	Invoice n°
+invoice payment clause	spifina	en	Invoice payment clause
+invoice pdf pro forma	spifina	en	Invoice PDF pro forma
+invoice status	spifina	en	Invoice status
+invoice tickets	spifina	en	invoice tickets
+invoice updated	spifina	en	Invoice updated
+invoices	spifina	en	Invoices
+invoicing	spifina	en	Invoicing
+invoicing menu	spifina	en	Invoicing menu
+is	spifina	en	is
+isolated invoice by default	spifina	en	Isolated invoice by default
+jour(s)	spifina	en	Jour(s)
+juridical form	spifina	en	Juridical form
+l	spifina	en	L
+label	spifina	en	Label
+last date	spifina	en	Last date
+last invoice	spifina	en	Last Invoice
+last invoice number for	spifina	en	Last invoice number for
+last note added	spifina	en	Last note added
+last note added on	spifina	en	Last note added on
+last update	spifina	en	Last update
+lastname of person to notify	spifina	en	Lastname of person to notify
+libelle	spifina	en	Libelle
+link meetings	spifina	en	Link meetings
+link to the ticket	spifina	en	Link to the ticket
+link to view the event	spifina	en	Link to view the event
+linked entries	spifina	en	Linked entries
+linked entries:	spifina	en	Linked entries:
+links	spifina	en	Links
+locality	spifina	en	Locality
+location	spifina	en	Location
+location configuration	common	en	Location Configuration
+location created	spifina	en	Location created
+location deleted	spifina	en	Location deleted
+location management	spifina	en	Location Management
+location parent	spifina	en	Location parent
+location updated	spifina	en	Location updated
+locations	spifina	en	Locations
+m	spifina	en	m
+mai	spifina	en	Mai
+mail	spifina	en	Mail
+mail configuration	spifina	en	Mail Configuration
+mail sending failed	spifina	en	MAIL SENDING FAILED
+mail sent successfully	spifina	en	MAIL SENT SUCCESSFULLY
+maj	spifina	en	MAJ
+manage acl	spifina	en	Manage ACL
+manage clients	spifina	en	Manage clients
+manage contracts	spifina	en	Manage contracts
+management group	spifina	en	Management group
+management group for spid	spifina	en	Management group for Spid
+management group for spifina	spifina	en	Management group for spifina
+management user	spifina	en	title
+manager	spifina	en	Manager
+manager email	spifina	en	Manager Email
+mark invoices as mailed	spifina	en	Mark invoices as mailed
+market number	spifina	en	Market number
+meetings	spifina	en	Meetings
+meetings category	spifina	en	Meetings category
+message with invoice when you send them by email	spifina	en	Message with invoice when you send them by email
+messages	spifina	en	Messages
+min	spifina	en	min
+mn	spifina	en	mn
+model for the generated invoices	spifina	en	Model for the generated invoices
+mon	spifina	en	Mon
+montant h.t.	spifina	en	Montant H.T.
+montant t.t.c.	spifina	en	Montant T.T.C.
+month	spifina	en	Month
+month category stat for %1	spifina	en	Month category stat for %1
+monthly category stat	spifina	en	Monthly category stat
+monthly sum stat	spifina	en	Monthly sum stat
+more	spifina	en	More
+more notes	spifina	en	more notes
+my assigned tickets	spifina	en	My assigned tickets
+my open tickets	spifina	en	My open tickets
+n days	spifina	en	n days
+n/ref	spifina	en	N/Ref
+n_days	spifina	en	n_days
+naf, ex ape	spifina	en	NAF, ex APE
+necessary php extentions %1 not loaded and can't be loaded !!!	spifina	en	Necessary PHP extentions %1 not loaded and can't be loaded !!!
+new client	spifina	en	New client
+new contract	spifina	en	New contract
+new group	spifina	en	New group
+new invoice	spifina	en	New invoice
+new ticket	spifina	en	New ticket
+new user	spifina	en	New user
+next date	spifina	en	Next date
+no bank account for current provider	spifina	en	No bank account for current provider
+no chosen payment	spifina	en	No chosen payment
+no validated invoices	spifina	en	No validated invoices
+no vat	spifina	en	No VAT
+nobody ticket imported	spifina	en	Nobody ticket imported
+nok	spifina	en	NOK
+non billable : if non billable, such a ticket will be at 0 in the invoice	spifina	en	Non Billable : if non billable, such a ticket will be at 0 in the invoice
+non validated invoices	spifina	en	Non validated invoices
+none of the words	spifina	en	None of the words
+normal level	spifina	en	Normal level
+not billable	spifina	en	Not Billable
+not closable	spifina	en	Not Closable
+not factured closed tickets	spifina	en	Not factured closed tickets
+not initial	spifina	en	Not Initial
+not payed validated invoices	spifina	en	Not payed validated invoices
+not sent invoices	spifina	en	Not sent invoices
+not validated invoice, you may modify associated tickets	spifina	en	Not validated invoice, you may modify associated tickets
+notification failed	spifina	en	Notification failed
+notification sent successfully	spifina	en	Notification sent successfully
+number of calls from	spifina	en	Number of calls from
+number of calls to	spifina	en	Number of calls to
+number of events to place	spifina	en	Number of events to place
+number of month for the assistant	spifina	en	Number of month for the assistant
+number of month to show in the creation ticket assistant	spifina	en	Number of month to show in the creation ticket assistant
+number of student	spifina	en	Number of student
+number of tickets	spifina	en	Number of tickets
+n°	spifina	en	N°
+n° formation	spifina	en	N° Formation
+n° t.v.a intracommunautaire	spifina	en	N° T.V.A intracommunautaire
+object	spifina	en	Object
+objective ratio	spifina	en	Objective ratio
+objective turnover	spifina	en	Objective turnover
+obsolete status	spifina	en	Obsolete status
+of	spifina	en	on
+of the	spifina	en	of the
+old startdate	spifina	en	Old Startdate
+on	spifina	en	on
+one price is defined per state and per client	spifina	en	One price is defined per state and per client
+open	spifina	en	Open
+open / close	spifina	en	Open / Close
+open by	spifina	en	Open by
+open tickets	spifina	en	Open tickets
+opened ticket outstanding	spifina	en	Opened ticket outstanding
+opened tickets	spifina	en	Opened tickets
+opened tickets at end period	spifina	en	Opened tickets at end period
+opened tickets during period	spifina	en	Opened tickets during period
+opened tickets in start period	spifina	en	Opened tickets in start period
+operation code	spifina	en	Operation code
+optional intervention	spifina	en	Optional intervention
+order	spifina	en	Order
+original details	spifina	en	Original details
+oustanding amount	spifina	en	oustanding amount
+oustanding billable ticket	spifina	en	oustanding billable ticket
+oustanding to bill	spifina	en	oustanding to bill
+outstanding to bill	spifina	en	outstanding to bill
+paid amount	spifina	en	Paid amount
+parc	spifina	en	Parc
+parent categorie	spifina	en	Parent categorie
+participant	spifina	en	Participant
+participants	spifina	en	Participants
+participants disinvited from an event	spifina	en	Participants disinvited from an event
+pass time	spifina	en	Pass time
+pass time on closed tickets	spifina	en	Pass time on closed tickets
+pass time on not factured closed tickets	spifina	en	Pass time on not factured closed tickets
+pass time on the closed tickets	spifina	en	Pass time on the closed tickets
+pass time on the opened tickets	spifina	en	Pass time on the opened tickets
+payed	spifina	en	Payed
+payed & validated invoices	spifina	en	Payed & validated invoices
+payed validated invoices	spifina	en	Payed validated invoices
+payer	spifina	en	Payer
+payment	spifina	en	PAYMENT
+payment amount	spifina	en	Payment amount
+payment bank	spifina	en	Payment bank
+payment by	spifina	en	Payment by
+payment date	spifina	en	Payment date
+payment in 30 days	spifina	en	Payment in 30 days
+payment in 60 days	spifina	en	Payment in 60 days
+payment in 90 days	spifina	en	Payment in 90 days
+payment method	spifina	en	Payment method
+payment model	spifina	en	Payment model
+payment with reception	spifina	en	Payment with reception
+pdf	spifina	en	PDF
+percent	spifina	en	Percent
+percent on the closed tickets	spifina	en	Percent on the closed tickets
+percent on the opened tickets	spifina	en	Percent on the opened tickets
+period	spifina	en	Period
+permission denied !!!	spifina	en	Permission denied !!!
+permission denied!!!	spifina	en	Permission denied!!!
+permission denied, please contact your administrator!!!	spifina	en	Permission denied, please contact your administrator!!!
+phase / title	spifina	en	Phase / Title
+phone time	spifina	en	Phone time
+pjm	spifina	en	PJM
+pjm : prix journalier moyen (montant facturé par jour pour l'intervenant)	spifina	en	PJM : Prix journalier moyen (montant facturé par jour pour l'intervenant)
+please contact support	spifina	en	Please contact support
+please download a recent version from %1 and install it in %2.	spifina	en	Please download a recent version from %1 and install it in %2.
+pnb	spifina	en	PNB
+poor level	spifina	en	Poor level
+possible following states	spifina	en	Possible following states
+possible following status	spifina	en	Possible following status
+possible selection : for users outside the management group	spifina	en	Possible selection : for users outside the management group
+possible to select	spifina	en	Possible to select
+postal code	spifina	en	Postal Code
+prescriber	spifina	en	Prescriber
+presta id	spifina	en	Presta ID
+price	spifina	en	Price
+price : if not void or 0, the price will be fixed this this value	spifina	en	Price : if not void or 0, the price will be fixed this this value
+price configuration	common	en	Price Configuration
+price created	spifina	en	Price created
+price example...	spifina	en	Price example...
+price for day invoices	spifina	en	Price for day invoices
+price for hour invoices	spifina	en	Price for hour invoices
+price for minute invoices	spifina	en	Price for minute invoices
+price for status	spifina	en	Price for status
+price ht	spifina	en	Price HT
+price per student	spifina	en	Price per student
+price updated	spifina	en	Price updated
+prices	spifina	en	Prices
+prices configuration	admin	en	Prices Configuration
+prices management	spifina	en	Prices Management
+print entry	spifina	en	Print entry
+print pdf	spifina	en	Print PDF
+print selected invoices	spifina	en	Print selected invoices
+print template	spifina	en	Print template
+property	spifina	en	PROPERTY
+proposal tickets	spifina	en	Proposal tickets
+prospect type	spifina	en	Prospect type
+provider	spifina	en	Provider
+provider order	spifina	en	Provider order
+provider proposal	spifina	en	Provider proposal
+provider type	spifina	en	Provider type
+providers	spifina	en	Providers
+qty	spifina	en	Qty
+quantity	spifina	en	Quantity
+quarter	spifina	en	Quarter
+rank	spifina	en	Rank
+rate: %s eur / answered call, the edge of half an hour	spifina	en	Rate: %s EUR / answered call, the edge of half an hour
+ratio	spifina	en	Ratio
+rcs	spifina	en	RCS
+rcs/rm	spifina	en	RCS/RM
+real	spifina	en	Real
+real - budget	spifina	en	Real - Budget
+real amount	spifina	en	Real amount
+real end date	spifina	en	Real end date
+real time	spifina	en	Real time
+realised	spifina	en	Realised
+realised intervention	spifina	en	Realised intervention
+receive notifications about assigned tickets	preferences	en	Receive notifications about assigned tickets
+receive notifications about created tickets	preferences	en	Receive notifications about created tickets
+recurrence	spifina	en	Recurrence
+reference	spifina	en	Reference
+relation	spifina	en	Relation
+remaining	spifina	en	Remaining
+remains to be invoiced	spifina	en	Remains to be invoiced
+remark	spifina	en	Remark
+remind client	spifina	en	Remind client
+remind date	spifina	en	Remind date
+remind mail content	spifina	en	Remind mail content
+reminders	spifina	en	Reminders
+renewal date	spifina	en	Renewal Date
+reply	spifina	en	Reply
+representing	spifina	en	Representing
+reset all criterias	spifina	en	Reset all criterias
+resolute tickets	spifina	en	Resolute tickets
+resource	spifina	en	Resource
+responses	spifina	en	Responses
+role	spifina	en	Role
+s	spifina	en	s
+s/n	spifina	en	S/N
+sage pnm file	spifina	en	Sage PNM File
+sales account	spifina	en	Sales account
+sales book	spifina	en	Sales book
+sales collective account	spifina	en	Sales collective account
+sales default account	spifina	en	Sales default account
+sat	spifina	en	Sat
+save entry	spifina	en	Save entry
+search client '%1'	spifina	en	Search client '%1'
+search company '%1'	spifina	en	Search company '%1'
+search contract '%1'	spifina	en	Search contract '%1'
+search for '%1'	spifina	en	Search for '%1'
+search invoice categories '%1'	spifina	en	Search Invoice Categories '%1'
+search location	spifina	en	Search Location
+search location '%1'	spifina	en	Search Location '%1'
+search sector '%1'	spifina	en	Search sector '%1'
+search state '%1'	spifina	en	Search State '%1'
+sector	spifina	en	Sector
+sector management	spifina	en	Sector Management
+sector name	spifina	en	Sector name
+sectors	spifina	en	Sectors
+select a category before	spifina	en	Select a category before
+select a group before	spifina	en	Select a group before
+select an action	spifina	en	Select an action
+select multiple contacts for a further action	spifina	en	Select multiple contacts for a further action
+select nb month	spifina	en	Select nb month
+select one client . . . .	spifina	en	Select one client . . . .
+select one..	spifina	en	Select one..
+select start month	spifina	en	Select start month
+select the template for pdf printing	spifina	en	Select the template for PDF printing
+select users	spifina	en	Select users
+sell	spifina	en	Sell
+selled turnover	spifina	en	Selled turnover
+seller	spifina	en	Seller
+seller type	spifina	en	Seller type
+send by mail	spifina	en	Send by mail
+send date	spifina	en	Send date
+send invoice by email	spifina	en	Send Invoice by email
+sender	spifina	en	Sender
+sendere	spifina	en	SenderE
+sent	spifina	en	sent
+septembre	spifina	en	Septembre
+service	spifina	en	Service
+setting transitions	spifina	en	Setting transitions
+show default view on main screen	spifina	en	show default view on main screen
+signature date	spifina	en	Signature Date
+simulate pdf invoice	spifina	en	Simulate PDF Invoice
+siren	spifina	en	SIREN
+siret	spifina	en	SIRET
+site	spifina	en	Site
+site precision	spifina	en	Site precision
+sites	spifina	en	Sites
+sleep	spifina	en	Sleep
+source state	spifina	en	Source State
+spend time	spifina	en	Spend time
+spid statistics	spifina	en	Spid statistics
+spifina	common	en	Invoices
+spifina configuration	spifina	en	spifina configuration
+spifina menu	spifina	en	spifina Menu
+spifina ticket	spifina	en	spifina Ticket
+spifina tickets	spifina	en	spifina Tickets
+standard replies	spifina	en	Standard Replies
+start	spifina	en	Start
+start date must be prior to end date	spifina	en	Start date must be prior to end date
+start date must not be empty	spifina	en	Start date must not be empty
+start date/time	spifina	en	Start Date/Time
+start period date	spifina	en	Start period date
+state	spifina	en	State
+state close	spifina	en	State close
+state created	spifina	en	State created
+state deleted	spifina	en	State deleted
+state for close	spifina	en	State for close
+state name	spifina	en	State name
+state updated	spifina	en	State updated
+states	spifina	en	States
+states configuration	spifina	en	States Configuration
+states management	spifina	en	States Management
+statistic	spifina	en	Statistic
+statistic intervenant	spifina	en	Statistic intervenant
+statistic menu	spifina	en	Statistic menu
+statistic turnover menu	spifina	en	Statistic turnover menu
+statistics	spifina	en	Statistics
+statistics type	spifina	en	Statistics type
+students	spifina	en	students
+sub total custom lines	spifina	en	Sub Total Custom Lines
+sub total ht	spifina	en	Sub Total HT
+sub total tickets	spifina	en	Sub Total Tickets
+sub-total custom	spifina	en	Sub-total custom
+sub-total ht	spifina	en	Sub-Total HT
+sub-total tickets	spifina	en	Sub-total tickets
+sub-total ttc	spifina	en	Sub-total TTC
+summary	spifina	en	Summary
+sun	spifina	en	Sun
+synchronize with presta	spifina	en	Synchronize with presta
+t.t.c. amount	spifina	en	T.T.C. amount
+t.v.a acquittée sur les encaissements	spifina	en	T.V.A acquittée sur les encaissements
+t.v.a récupérable après paiement	spifina	en	T.V.A récupérable après paiement
+t.v.a.	spifina	en	T.V.A.
+tables	spifina	en	Tables
+target	spifina	en	Target
+target state	spifina	en	Target State
+taxe num	spifina	en	Taxe num
+team	spifina	en	team
+technicians may only access their tickets	spifina	en	Technicians may only access their tickets
+tel	spifina	en	Tel
+test	spifina	en	test
+the bill been successfully generated	spifina	en	The bill been successfully generated
+the duration will allow to bill per bracket	spifina	en	The duration will allow to bill per bracket
+the exact phrase	spifina	en	The exact phrase
+the invoice has been successfully generated	spifina	en	The invoice has been successfully generated
+the managers receive all spifina's tickets	spifina	en	The managers receive all spifina's tickets
+the selected contract is not allowed for this client	spifina	en	The selected contract is not allowed for this client
+this client / price association already exists	spifina	en	This client / price association already exists
+this message is join by mail when you send your bills by email.	spifina	en	This message is join by mail when you send your bills by email.
+this one can see by all groups and administrator	spifina	en	this one can see by all groups and administrator
+this one can see only by creator, applicant and administrator	spifina	en	this one can see only by creator, applicant and administrator
+this ticket is not your business	spifina	en	This ticket is not your business
+thu	spifina	en	Thu
+ticket	spifina	en	Ticket
+ticket created	spifina	en	Ticket created
+ticket deleted from invoice	spifina	en	Ticket deleted from invoice
+ticket frequency in the assistant	spifina	en	Ticket frequency in the assistant
+ticket id	spifina	en	Ticket ID
+ticket imported	spifina	en	Ticket imported
+ticket number closed during period	spifina	en	Ticket number closed during period
+ticket number open at end period	spifina	en	Ticket number open at end period
+ticket number open at start period	spifina	en	Ticket number open at start period
+ticket number open during period	spifina	en	Ticket number open during period
+ticket title making left the ongoing bill	spifina	en	Ticket title making left the ongoing bill
+ticket updated	spifina	en	Ticket updated
+ticket_forfait	spifina	en	ticket_forfait
+tickets	spifina	en	Tickets
+tickets and calls statistics	spifina	en	Tickets and calls statistics
+tickets end period date	spifina	en	Tickets End period date
+tickets number	spifina	en	Tickets number
+tickets only	spifina	en	Tickets only
+tickets per intervenant	spifina	en	Tickets per intervenant
+tickets solved by assistance on site	spifina	en	Tickets solved by assistance on site
+tickets solved by intervention of monitoring	spifina	en	Tickets solved by intervention of monitoring
+tickets solved by planned intervention	spifina	en	Tickets solved by planned intervention
+tickets solved by remote assistance	spifina	en	Tickets solved by remote assistance
+tickets solved by urgent intervention	spifina	en	Tickets solved by urgent intervention
+tickets start period date	spifina	en	Tickets Start period date
+tickets with resolve	spifina	en	Tickets with resolve
+tiers code	spifina	en	Tiers code
+til	spifina	en	til
+time bracket	spifina	en	Time Bracket
+time for minute invoices	spifina	en	Time for minute invoices
+time intervention	spifina	en	Time intervention
+time invoiced	spifina	en	Time invoiced
+time limit for client to see a ticket (in days)	spifina	en	Time limit for client to see a ticket (in days)
+time limit for client view	spifina	en	Time limit for client view
+time meeting	spifina	en	Time Meeting
+time outstanding	spifina	en	Time outstanding
+time spend	spifina	en	Time Spend
+time to bill	spifina	en	Time to bill
+timeframe	spifina	en	Timeframe
+times	spifina	en	Times
+title	spifina	en	Title
+title of the event	spifina	en	Title of the event
+title retention clause	spifina	en	Title retention clause
+titre	spifina	en	Titre
+tjm	spifina	en	TJM
+tjm : taux journalier moyen (montant facturé par jour pour l'intervenant)	spifina	en	TJM : Taux journalier moyen (montant facturé par jour pour l'intervenant)
+to add a meeting, please fill up the calendar date, time and the title, then "add"	spifina	en	To add a meeting, please fill up the calendar date, time and the title, then "add"
+to validate invoice, please select an invoice date	spifina	en	To validate invoice, please select an invoice date
+total amount invoiced for purchases	spifina	en	Total amount invoiced for purchases
+total amount invoiced for tickets	spifina	en	Total amount invoiced for tickets
+total days	spifina	en	Total days
+total heures	spifina	en	Total heures
+total ht	spifina	en	Total HT
+total intervention	spifina	en	Total intervention
+total jours	spifina	en	Total jours
+total rendez-vous	spifina	en	Total rendez-vous
+total sell	spifina	en	Total sell
+total spend time	spifina	en	Total spend time
+total time	spifina	en	Total time
+total time marked on closed tickets	spifina	en	Total time marked on closed tickets
+total time on calls from	spifina	en	Total time on calls from
+total time on calls to	spifina	en	Total time on calls to
+total time oustanding	spifina	en	Total time oustanding
+total ttc	spifina	en	Total TTC
+total tva	spifina	en	Total TVA
+total(h)	spifina	en	Total(h)
+toutes taxes comprises	spifina	en	Toutes Taxes Comprises
+training : to activate the price per student	spifina	en	Training : to activate the price per student
+transition's names are free	spifina	en	Transition's names are free
+transitions	spifina	en	Transitions
+transitions allow a change between a source and a target state	spifina	en	Transitions allow a change between a source and a target state
+translation label	spifina	en	Translation label
+ttc amount	spifina	en	TTC Amount
+ttc facturation	spifina	en	TTC Facturation
+tue	spifina	en	Tue
+tva	spifina	en	TVA
+tva rate	spifina	en	TVA Rate
+type for clients	spifina	en	Type for clients
+type for partner	spifina	en	Type for partner
+type for prospects	spifina	en	Type for prospects
+type for providers	spifina	en	Type for providers
+type for sellers	spifina	en	Type for sellers
+unchecked	spifina	en	Unchecked
+under tva	spifina	en	Under TVA
+unit time	spifina	en	Unit time
+unit time for tickets	spifina	en	Unit time for tickets
+unpayed invoices	spifina	en	Unpayed invoices
+unvalidate selected invoices	spifina	en	Unvalidate selected invoices
+unvalidated invoices	spifina	en	Unvalidated invoices
+up	spifina	en	Up
+update date	spifina	en	Update Date
+update ticket state	spifina	en	Update Ticket State
+updated by	spifina	en	Updated by
+upload file	spifina	en	Upload file
+url link	spifina	en	url link
+use accounting tab	spifina	en	Use accounting tab
+use contracts	spifina	en	Use contracts
+use time budget	spifina	en	Use time budget
+user who manage spifina (will receive copy of mails)	spifina	en	User who manage spifina (will receive copy of mails)
+using the day budget (y/n)	spifina	en	Using the day budget (Y/N)
+v/ref	spifina	en	V/Ref
+validate	spifina	en	Validate
+validated invoices	spifina	en	Validated invoices
+validation date	spifina	en	Validation date
+vat	spifina	en	VAT
+vat / collect	spifina	en	VAT / Collect
+vat amount	spifina	en	VAT amount
+vat default	spifina	en	VAT default
+vat total	spifina	en	VAT Total
+view all clients	spifina	en	View all clients
+view all invoices	spifina	en	View all invoices
+view all open tickets	spifina	en	View all open tickets
+view all tickets	spifina	en	View all tickets
+view client	spifina	en	View client
+view closed tickets	spifina	en	View closed tickets
+view closed tickets not invoicing	spifina	en	View closed tickets not invoicing
+view contract	spifina	en	View contract
+view invoice	spifina	en	View Invoice
+view invoices	spifina	en	View invoices
+view location	spifina	en	View location
+view locations	spifina	en	View locations
+view my assigned tickets	spifina	en	View my assigned tickets
+view my open tickets	spifina	en	View my open tickets
+view non validated invoices	spifina	en	View non validated invoices
+view open tickets	spifina	en	View open tickets
+view open tickets with calendar events	spifina	en	View open tickets with calendar events
+view pdf invoice	spifina	en	View PDF invoice
+view prices	spifina	en	View Prices
+view sector	spifina	en	View sector
+view statistic	spifina	en	View statistic
+view statistic ca client	spifina	en	TunOver Statistics
+view statistic ca intervenant	spifina	en	View statistic TunerOver per user
+view statistic intervenant	spifina	en	Statistic per consultant
+view statistic ticket intervenant	spifina	en	View statistic ticket per user
+view this event	spifina	en	View this event
+website	spifina	en	Website
+wed	spifina	en	Wed
+week	spifina	en	Week
+weekdays	spifina	en	weekdays
+white	spifina	en	White
+who is the client ?	spifina	en	Who is the client ?
+who is the contact ?	spifina	en	Who is the contact ?
+whole query	spifina	en	whole query
+words	spifina	en	Words
+would you receive notification mails, if tickets you created get updated?	preferences	en	Would you receive notification mails, if tickets you created get updated?
+would you receive you notification mails, if tickets assigned to you get updated?	preferences	en	Would you receive you notification mails, if tickets assigned to you get updated?
+you dont have jpgraph version %1 or higher installed! it is needed from spifina for ganttcharts.	spifina	en	You dont have JPGraph version %1 or higher installed! It is needed from spifina for Ganttcharts.
+you must assign this ticket...	spifina	en	You must assign this ticket...
+you must enter a category...	spifina	en	You must enter a category...
+you must enter a time to close ticket	spifina	en	You must enter a time to close ticket
+you need to select some invoices first	spifina	en	You need to select some invoices first
+you want to delete the category. are you sure?	spifina	en	you want to delete the category. are you sure?
+you want to delete the client. are you sure?	spifina	en	you want to delete the client. are you sure?
+you want to delete the standard reply. are you sure?	spifina	en	you want to delete the standard reply. are you sure?
+you want to delete the state. are you sure?	spifina	en	you want to delete the state. are you sure?
+you want to delete the transition. are you sure?	spifina	en	you want to delete the transition. are you sure?
+you want to delete this invoce. are you sure?	spifina	en	you want to delete this invoce. are you sure?
+you want to remove the ticket from this invoice. are you sure?	spifina	en	you want to remove the ticket from this invoice. are you sure?
+your ask	spifina	en	Your ask
+your contact is not linked to this client...	spifina	en	Your contact is not linked to this client...
+your title must be at least 6 character's long.	spifina	en	Your title must be at least 6 character's long.
+your title must be at least 6 characters long.	spifina	en	Your title must be at least 6 characters long.
+zip selected invoices	spifina	en	Zip selected invoices
+zone de chalandise	spifina	en	Zone de chalandise

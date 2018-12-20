@@ -1,0 +1,269 @@
+/**
+ * EGroupware: CSS with less preprocessor
+ *
+ * Please do NOT change app.css directly, instead change app.less and compile it!
+
+ * Projectmanager
+
+ *
+ * @link http://www.egroupware.org
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @author Stefan Reinhard <stefan.reinhard@pixelegg.de>
+ * @package projectmanager
+ * @version $Id: app.less 51044 2014-12-16 16:13:37Z nathangray $
+ */
+
+
+@import (reference) "../../../pixelegg/less/definitions.less";
+@import (less) "../default/app.css";
+
+
+/*default */
+
+.planned { font-style: italic; font-size: 95%; }
+#projectmanager-elements-list_link_to {position:relative;width:auto;}
+#projectmanager-elements-list .nextmatch_header .nm_header {
+	border: 0px solid black;
+}
+.projectmanager_leftPad5 { padding-left: 5px; }
+tr.projectmanager_rowHasSubs > td:first-child {
+	background-image: url(../images/arrow_left.png);
+	background-repeat: no-repeat;
+	background-position: 0px 11px;
+}
+tr.projectmanager_rowHasParent > td:first-child {
+	background-image: url(../images/arrow_up.png);
+	background-repeat: no-repeat;
+	background-position: 0px 11px;
+}
+
+/* Element list hidden eroles */
+table.egwLinkMoreOptions {
+	display: none;
+	position: absolute;
+	right: 0;
+	width: 240px;
+	opacity: 0.9;
+	z-index: 999;
+	background-color: white;
+	border: 2px solid black !important;
+	border-top: none !important;
+}
+
+
+/*#########################################################*/
+/*List View */
+
+.et2_grid td {border: 0px;}
+
+
+/*Button Add Project*/
+button#projectmanager-list_add {
+            .Complete_Button_add_only_plus;
+            .dimension_height_m;
+
+
+            &:hover {.Complete_Button_add_only_plus_hover;}
+            &:active {background-color: @color_positive_action_active !important;}
+}
+
+// Filter
+#projectmanager-list_favorite_wrapper div.et2_dropdown,
+#projectmanager-list_favorite{
+	top: -6px;
+}
+
+// Export
+#projectmanager-list_export{
+    position: relative;
+    top: -2px;
+    .dimension_width_height_s;
+    .Complete_Button_Icon_normal;
+    padding: 0.2em;
+
+        &:hover {.Complete_Button_Icon_hover;}
+
+
+}
+
+// Box width Templates + ADD
+#projectmanager-list_projectmanager-list-right {
+    div.et2_hbox {top: -8px;}
+    button {position: relative; top: 4px;}
+    }
+
+#projectmanager-elements-list .nextmatch_header #projectmanager-elements-list_link_add button.et2_button{
+
+            .Complete_Button_add_only_plus;
+            .dimension_height_m;
+            margin-right: 0px;
+
+            &:hover {.Complete_Button_add_only_plus_hover;}
+            &:active {background-color: @color_positive_action_active !important;}
+
+        }
+
+
+/*Ende iframe*/
+
+
+
+#projectmanager-edit {
+    #projectmanager-edit_tabs {
+        .et2_tabheader {
+            background-color: transparent;
+        }
+        .et2_tabs{
+        	#projectmanager-edit_link_to{
+        		.et2_button_icon{
+        			height: auto;
+        			width: auto;
+        		}
+        	}
+        }
+    }
+	#projectmanager-edit_projectmanager-edit-general {
+		.et2_date_duration.et2_fullWidth {
+			input {
+				width: 10em;
+			}
+			select {
+				width: 60%;
+			}
+		}
+	}
+}
+
+
+
+#link_add.solidBorder {
+    color: @gray_100;
+    text-shadow: none;
+    height: 40px;
+    background-image: none ! important;
+    vertical-align: bottom;
+    button {
+        background-color: green;
+        background-image: none ! important;
+        color: #FFFFFF;
+        height: 35px;
+        text-shadow: none;
+    }
+
+    button:before {
+        content: "+";
+        font-size: 2em;
+    }
+
+    select {
+        .Complete_Button_select;
+        position: relative;
+        top: -10px;
+        margin-left: 10px;
+    }
+}
+
+.redItalic {
+    color: red;
+    font-style: italic;
+}
+
+.planned {
+    font-style: italic;
+    font-size: 95%;
+}
+
+.leftPad5 {
+    padding-left: 5px;
+}
+
+tr.rowHasSubs > td:first-child {
+    background-image: url(../../../phpgwapi/templates/default/images/egw_action/arrow_left.png);
+    background-repeat: no-repeat;
+    background-position: 0px 11px;
+}
+
+tr.rowHasParent > td:first-child {
+    background-image: url(../../../phpgwapi/templates/default/images/egw_action/arrow_up.png);
+    background-repeat: no-repeat;
+    background-position: 0px 11px;
+}
+
+.et2_hbox.et2_box_widget table.et2_grid label.et2_label {
+}
+
+// Element list hidden eroles
+table.egwLinkMoreOptions{
+    position: absolute;
+    right: 0;
+    width: 240px;
+    opacity: 0.9;
+    z-index: 999;
+    background-color: white;
+    border-top: none ! important;
+}
+
+
+// Gantchart ###################################################
+// Button
+#projectmanager-gantt_milestone,
+#projectmanager-gantt_sync_all{
+
+            .Complete_Button_Icon_normal;
+            .dimension_height_m;
+            margin-left: 5px;
+
+            &:hover{.Complete_Button_select_hover;}
+            &:focus{.Complete_Button_select_focus;}
+}
+
+
+// Pricelist ###################################################
+// ADD Button
+
+div#projectmanager-pricelist-list{
+
+        #projectmanager-pricelist-list_add{
+
+                    .Complete_Button_add_only_plus;
+                    .dimension_height_m;
+
+
+                        position: relative;
+                        right: 6px;
+                        top: 0px;
+                        width: 32px;
+                        z-index: 200;
+
+
+                    &:hover {.Complete_Button_add_only_plus_hover;}
+                    &:active {background-color: @color_positive_action_active !important;}
+
+        }
+}
+
+
+// Dialog Elementlist ###################################################
+//
+#projectmanager-elements-list_nm{
+
+    // ADD Button
+    #projectmanager-elements-list_link_add{
+
+        select {}
+
+        button {
+            .Complete_Button_add;
+            .dimension_height_m;
+            margin-right: 0px;
+
+            &:hover {.Complete_Button_add_only_plus_hover;}
+            &:active {background-color: @color_positive_action_active !important;}
+
+        }
+
+    }
+
+
+
+}

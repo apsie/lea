@@ -1,0 +1,195 @@
+#%s	spidating	en	#%s
+%1 events created successfully	spidating	en	%1 events created successfully
+%1 tickets and %2 events created successfully	spidating	en	%1 tickets and %2 events created successfully
+a destination de	spidating	en	A destination de
+actions	spidating	en	Actions
+active headers	spidating	en	Active headers
+active status	spidating	en	Active status
+activity	spidating	en	Activity
+add events	spidating	en	Add events
+add events help	spidating	en	Add events help
+add events selection help	spidating	en	Add events selection help
+add file type	spidating	en	Add file type
+add results	spidating	en	Add results
+address one	spidating	en	Address one
+address two	spidating	en	Address two
+addressbook contact	spidating	en	Addressbook contact
+after current date	spidating	en	After current date
+ajax_request.appel('client_id','contract_id','personne',this.value);ajax_request.appel('client_id','ticket_assigned_by_contact','personne',this.value);	spidating	en	ajax_request.appel('client_id','contract_id','personne',this.value);ajax_request.appel('client_id','ticket_assigned_by_contact','personne',this.value);
+all events	spidating	en	All events
+all interventions	spidating	en	All interventions
+area	spidating	en	Area
+assigned to	spidating	en	Assigned To
+assistant with tickets	spidating	en	Assistant with tickets
+assistant with tickets help	spidating	en	Assistant with tickets help
+autre destination	spidating	en	Autre destination
+axis	spidating	en	Axis
+before current date	spidating	en	Before current date
+budget is calculated depending on the selected dates	spidating	en	Budget is calculated depending on the selected dates
+calendar custom fields	spidating	en	Calendar custom fields
+calendar events	spidating	en	Calendar events
+calendar list	spidating	en	Calendar list
+cancel events	spidating	en	Cancel events
+cancel events help	spidating	en	Cancel events help
+canceled events	spidating	en	Canceled events
+categorie for confirmed intervention	spidating	en	Categorie for confirmed intervention
+categorie for option intervention	spidating	en	Categorie for option intervention
+categorie for realised intervention	spidating	en	Categorie for realised intervention
+category for canceled events	spidating	en	Category for canceled events
+change date	spidating	en	Change date
+changed by	spidating	en	Changed by
+check all	spidating	en	Check all
+client	spidating	en	Client
+client's order	spidating	en	Client's order
+code cr	spidating	en	Code CR
+code destination	spidating	en	Code Destination
+commentaire avant	spidating	en	Commentaire avant
+commentaire retour	spidating	en	Commentaire retour
+company's phone	spidating	en	Company's phone
+conducteur	spidating	en	Conducteur
+configuration updated	spidating	en	Configuration updated
+confirm events	spidating	en	Confirm events
+confirm events help	spidating	en	Confirm events help
+contact name	spidating	en	Contact name
+contacts	spidating	en	Contacts
+contract	spidating	en	Contract
+country	spidating	en	Country
+coupling with spid	spidating	en	Coupling with spid
+covoiturage	spidating	en	Covoiturage
+create a new group	spidating	en	Create a new group
+create new links	spidating	en	Create new links
+creation date	spidating	en	Creation Date
+date de création	spidating	en	Date de création
+date de mise à jour	spidating	en	Date de mise à jour
+date de retour	spidating	en	Date de retour
+date modified	spidating	en	Date modified
+default duration	spidating	en	Default duration
+default event category	spidating	en	Default event category
+default header	spidating	en	Default header
+default pause end	spidating	en	Default pause end
+default pause start	spidating	en	Default pause start
+default status	spidating	en	Default status
+default value	spidating	en	Default Value
+default weekdays	spidating	en	Default weekdays
+delete selected events	spidating	en	Delete selected events
+delete this event	spidating	en	Delete this event
+demandeur	spidating	en	Demandeur
+dossiers	spidating	en	Dossiers
+due date	spidating	en	Due date
+duration must not be empty	spidating	en	Duration must not be empty
+départ de	spidating	en	Départ de
+edit this event	spidating	en	Edit this event
+emails	spidating	en	Emails
+end	spidating	en	End
+event type	spidating	en	Event type
+events without participants	spidating	en	Events without participants
+events without tickets	spidating	en	Events without tickets
+existing links	spidating	en	Existing links
+facture	spidating	en	Facture
+fields for participants limit	spidating	en	Fields for participants limit
+fri	spidating	en	Fri
+general	spidating	en	General
+general help	spidating	en	General help
+generate calendar	spidating	en	Generate calendar
+header	spidating	en	Header
+help_manager_email	spidating	en	help_manager_email
+history	spidating	en	History
+id	spidating	en	ID
+id évènement calendrier	spidating	en	ID évènement calendrier
+in charge	spidating	en	in charge
+information about the ticket	spidating	en	Information about the ticket
+initial state	spidating	en	Initial State
+link selected ticket	spidating	en	Link selected ticket
+locality	spidating	en	Locality
+location	spidating	en	Location
+manager	spidating	en	Manager
+manager email	spidating	en	Manager Email
+meetings category	spidating	en	Meetings category
+mon	spidating	en	Mon
+montant	spidating	en	Montant
+nb meetings	spidating	en	Nb meetings
+nombre de demi journée	spidating	en	Nombre de demi journée
+nombre de personnes	spidating	en	Nombre de personnes
+not enough time in the timeframe to add event of the chosen duration	spidating	en	Not enough time in the timeframe to add event of the chosen duration
+number of events to place	spidating	en	Number of events to place
+numéro	spidating	en	Numéro
+object	spidating	en	Object
+obsolete status	spidating	en	Obsolete status
+open by	spidating	en	Open by
+opened ticket	spidating	en	Opened ticket
+option events	spidating	en	Option events
+order	spidating	en	Order
+ordre	spidating	en	Ordre
+orphan events	spidating	en	Orphan events
+orphan events help	spidating	en	Orphan events help
+par	spidating	en	Par
+parent company	spidating	en	Parent company
+participant	spidating	en	Participant
+participants	spidating	en	Participants
+pause frame	spidating	en	Pause frame
+pause start time must be inferior to pause end time	spidating	en	Pause start time must be inferior to pause end time
+place a participant on collective meeting	spidating	en	Place a participant on collective meeting
+place a participant on collective meeting help	spidating	en	Place a participant on collective meeting help
+place a participant on individual meeting	spidating	en	Place a participant on individual meeting
+place a participant on individual meeting help	spidating	en	Place a participant on individual meeting help
+planned events	spidating	en	Planned events
+possible following status	spidating	en	Possible following status
+postal code	spidating	en	Postal Code
+print pdf	spidating	en	Print PDF
+projects	spidating	en	Projects
+realised events	spidating	en	Realised events
+recurrence	spidating	en	Recurrence
+resource	spidating	en	Resource
+retour prévu	spidating	en	Retour prévu
+retrait prévu	spidating	en	Retrait prévu
+role	spidating	en	Role
+sat	spidating	en	Sat
+search for '%1'	spidating	en	Search for '%1'
+select a category	spidating	en	Select a category
+select a category before	spidating	en	Select a category before
+select a group before	spidating	en	Select a group before
+select a ticket	spidating	en	Select a ticket
+select multiple contacts for a further action	spidating	en	Select multiple contacts for a further action
+select nb month	spidating	en	Select nb month
+select start month	spidating	en	Select start month
+select users	spidating	en	Select users
+selected range	spidating	en	Selected range
+seller	spidating	en	Seller
+send by mail	spidating	en	Send by mail
+site	spidating	en	Site
+site for events	spidating	en	Site for events
+sleep	spidating	en	Sleep
+spid	spidating	en	Spid
+spid events	spidating	en	Spid events
+spidating	common	en	SpiDating
+start	spidating	en	Start
+start / end date	spidating	en	Start / End date
+start time must be inferior to end time	spidating	en	Start time must be inferior to end time
+statistics	spidating	en	Statistics
+statut de la demande	spidating	en	Statut de la demande
+sum accounts	spidating	en	Sum accounts
+sum addressbook	spidating	en	Sum addressbook
+sum resources	spidating	en	Sum resources
+sun	spidating	en	Sun
+team	spidating	en	team
+the managers receive all spid's tickets	spidating	en	The managers receive all spid's tickets
+thu	spidating	en	Thu
+tickets	spidating	en	Tickets
+til	spidating	en	til
+time by linked elements	spidating	en	Time by linked elements
+time spend	spidating	en	Time Spend
+time spent	spidating	en	Time spent
+timeframe	spidating	en	Timeframe
+total cost	spidating	en	Total cost
+tue	spidating	en	Tue
+unit time	spidating	en	Unit time
+updated by	spidating	en	Updated by
+upload file	spidating	en	Upload file
+use ticket name as title (select = override current value / unselect = blank)	spidating	en	Use ticket name as title (select = override current value / unselect = blank)
+user manual	spidating	en	User Manual
+view this event	spidating	en	View this event
+véhicule	spidating	en	Véhicule
+wed	spidating	en	Wed
+weekdays	spidating	en	weekdays
+weekdays must not be empty	spidating	en	Weekdays must not be empty
+zone de chalandise	spidating	en	Zone de chalandise

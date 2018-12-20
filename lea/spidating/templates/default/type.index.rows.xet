@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spidating.type.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader align="center" label="ID" id="type_fichier_id" no_lang="1"/>
+					<nextmatch-header align="center" label="Label" id="type_fichier_label"/>
+					<nextmatch-header align="center" label="Description" id="type_fichier_description"/>
+					<nextmatch-header align="center" label="Active" id="type_fichier_actif"/>
+					<nextmatch-header align="center" label="Order" id="type_fichier_ordre"/>
+					<description align="center" value="Actions"/>
+				</row>
+				<row class="row">
+					<description align="center" id="${row}[type_fichier_id]" no_lang="1" readonly="true"/>
+					<description align="center" id="${row}[type_fichier_label]" no_lang="1" readonly="true"/>
+					<textbox multiline="true" align="center" id="${row}[type_fichier_description]" no_lang="1" readonly="true"/>
+					<checkbox align="center" id="${row}[type_fichier_actif]" no_lang="1" readonly="true"/>
+					<description align="center" id="${row}[type_fichier_ordre]" no_lang="1" readonly="true"/>
+					<hbox align="center">
+						<button label="Edit" onclick="window.open(egw::link('/index.php','menuaction=spidating.type_fichier_ui.edit&amp;id=$row_cont[type_fichier_id]'),'_blank','dependent=yes,width=990,height=600,scrollbars=yes,status=yes'); return false;" image="edit"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

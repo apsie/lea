@@ -1,0 +1,59 @@
+<!--corps-->
+<div class="contenu_redac">
+<br/>
+<?php echo $this->render('navigation_rapide.phtml'); ?>
+ <br/>  		
+<div class="titre_outils">Menu : PRESENTATION DU PORTEUR DE PROJET</div>        
+       
+        <div class="menu_g"><table><tr><td >1. <a onclick="accordeon('div_1')"><?php echo $this->titrePresentation->titre_1; ?> </a></td></tr></table>
+        </div>
+        
+
+            <div id="div_1" class="s_menu_g" style="display:none">
+				<div>1.1.<a href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation11/?div=div_1" ><?php echo $this->titrePresentation->titre_1_1; ?></a></div>
+				<div>1.2.<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation13/?div=div_1" ><?php echo $this->titrePresentation->titre_1_2; ?></a></div>
+	</div>
+            
+            
+           
+  		<div class="menu_g"><table><tr><td>2. <a onclick="accordeon('div_2')"><?php echo $this->titrePresentation->titre_2; ?></a></td></tr></table>
+        </div>
+        
+   
+ 			<div id="div_2" class="s_menu_g" style="display:none">	
+ 				<div>2.1.<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation21/?div=div_2" ><?php echo $this->titrePresentation->titre_2_1; ?></a></div>
+				<div>2.2.<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation22/?div=div_2" ><?php echo $this->titrePresentation->titre_2_2; ?></a></div>
+				<div>2.3.<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation23/?div=div_2" ><?php echo $this->titrePresentation->titre_2_3; ?></a></div>	
+				<div>2.4.<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation24/?div=div_2" ><?php echo $this->titrePresentation->titre_2_4; ?></a></div>	
+					<div id="s_s_menu_entreprise_g" class="s_s_menu_g" style="display:block">
+					<div>2.4.1<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation241/?div=div_2" ><?php echo $this->titrePresentation->titre_2_4_1; ?></a></div>	
+					<div>2.4.2<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation242/?div=div_2" ><?php echo $this->titrePresentation->titre_2_4_2; ?></a></div>	
+					<div>2.4.3<a  href="<?php  echo $this->baseUrl();?>/redaction/titrepresentation243/?div=div_2" ><?php echo $this->titrePresentation->titre_2_4_3; ?></a></div>	
+					</div>
+			</div>     
+</div>
+
+<script>
+
+function accordeon(div)
+{
+	if($('#'+div).attr('alt')=="Ouvert")
+	{$('#'+div).hide('highlight');
+	$('#'+div).attr('alt','Fermer');
+	}
+	else
+	{$('#'+div).show('highlight');
+	$('#'+div).attr('alt','Ouvert');
+	}
+
+
+}
+
+</script>
+<?php 
+		if(isset($_GET['div']) or isset($_GET['div']))
+		{
+		echo'<script>accordeon("'.$_GET['div'].'")</script>';
+		
+		}
+		?>

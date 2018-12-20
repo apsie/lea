@@ -1,0 +1,552 @@
+<div class="corp">
+
+
+<div  class="zoneRecherche">
+
+<div style="width:99%"  class="contenu">
+<?php 
+#OPTION  
+
+$content ='<div style="padding-bottom:10px;" >Date : <input id="dateCal" onchange="Calendrier.getCal()"  size=9" type="text" value="'.date('d/m/Y').'">
+ <br/><br/><button style="font-size:10px" onclick="dialogRechercheDispo()" >Poser des options</button> <br/><br/><button style="font-size:10px" onclick="dialogConfirm()" >Confirmer des options</button></div> <div >Rechercher sur le calendrier <input id="mot_recherche" type="text" value="" /> <button onclick="Calendrier.getRecherche();" >ok</button></div>
+<hr/>';
+
+$content .=$this->temp_id_presta;
+
+ $content .=$this->retour;
+echo $this->partial('option.phtml', array(
+        'contenu' => $content )); 
+?>
+<div class="univers">Calendrier : <select onchange="initialiserReferent(this.value)" id="calendrier_referent">
+    
+<option></option>
+<?php for($i=0;$i<count($this->utilisateurs);$i++)
+{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?></select> 
+[ <select id="id_lieu_dispo"><option value="" >-- Lieu --</option>
+		<?php for($i=0;$i<count($this->lieu);$i++)
+{ echo '<option value="'.$this->lieu[$i]['id_lieu'].'">'.$this->lieu[$i]['nom_lieu'].'</option>';}?>
+		</select> <select id="id_cal_cat_recherche">
+		
+<?php 
+if(isset($_REQUEST['id_presta']))
+	{
+	
+	echo'<option value="'.$this->presta['id_dispositif'].';'.$this->presta['presta'].'">'.$this->presta['presta'].'</option>';
+	}
+	else
+	{
+	echo'<option value="">-- Prestations --</option>';
+	}
+	
+for($i=0;$i<count($this->calCat);$i++)
+{
+	
+		
+	echo'<option value="'.$this->calCat[$i]['id_cal_cat'].';'.$this->calCat[$i]['cal_cat_name'].'">'.$this->calCat[$i]['cal_cat_name'].' ( '.$this->calCat[$i]['objet_dispositif'].' )</option>';
+}
+?>
+</select> <select style="display:none" id="contact_a_rechercher">
+ </select><input id="contact_a_rechercher_texte" onclick="this.value=''"  onKeyPress="if (event.keyCode == 13) Calendrier.rechercheContact(this.value);"  style="font-size:10px;font-style:italic" size="25" type="text" value="Rechercher un contact..." /> <img id="image_retour" style="cursor:pointer;display:none" onclick="Calendrier.retourRechercheContact()"  src="./images/ico/retour.png" /> <button onclick="Calendrier.rechercheDispo();"  style="font-size:10px" >Montrer les disponibilités</button> ]</div>
+
+<div align="left" class="div_menu_droit"> 
+
+<div class="wait" style="display:none;position:absolute;z-index:1"  >
+	<center><img src="./images/ico/load.gif"  /></center>
+</div>
+
+	<div   class="calendar">
+	    
+	</div>
+  </div>
+</div></div>
+
+  
+</div>
+<div style="display:none" id="dialogConfirm"  title="Confirmation d'options">
+<div align="center" style="background-color:#CCC;"><table><tr><td><select id="confirm_conseiller_id">
+<option value="" >Tous les conseillers</option><?php  for($i=0;$i<count($this->utilisateurs);$i++)
+{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?>
+</select></td>
+<td><select id="confirm_id_lieu"><option value="" >Choisir un lieu</option>
+<?php for($i=0;$i<count($this->lieu);$i++)
+{ echo '<option value="'.$this->lieu[$i]['id_lieu'].'-'.$this->lieu[$i]['nom_lieu'].'">'.$this->lieu[$i]['nom_lieu'].'</option>';}?></select></td><td><input value="<?php echo date('d/m/Y',time() + 2*(24 * 60 * 60))?>" size="8" id="confirm_date_start" type="text" /></td><td><button onclick="getConfirm();" style="font-size:10px">Chercher</button></td></tr></table></div>
+<div id="resultat_confirm"></div></div>
+<div style="display:none" id="dialogDisponibilite"  title="Recherche de disponibilité">
+<div style="float:left;padding:10px;" >
+		
+		
+<table><tr><td>Nb Options</td><td><select id="nombre"><?php for($i=3;$i<=10;$i++)
+		{echo "<option  value='$i'>$i</option>";}?></select></td></tr>
+		<tr><td>Pour</td><td> <select id="conseiller_id">
+		<?php  for($i=0;$i<count($this->utilisateurs);$i++)
+{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?>
+		</select></td></tr>
+		<tr><td>à</td><td> <select name="lieu" id="recherche_id_lieu">
+		<?php for($i=0;$i<count($this->lieu);$i++)
+{ echo '<option value="'.$this->lieu[$i]['id_lieu'].'-'.$this->lieu[$i]['nom_lieu'].'">'.$this->lieu[$i]['nom_lieu'].'</option>';}?>
+		</select></td></tr>
+<tr><td>Date/Heure de début</td><td><input value="<?php echo date('d/m/Y');?>" size="8" id="date_start" type="text" /></td></tr>
+<tr><td>Durée</td><td><select id="dispo_duree" ><option value="1"  selected="selected">01:00</option></select></td></tr>
+<tr><td>Plage Horaire</td><td><select id="plage1"  >
+<option value="8" >08</option>
+<option value="9" selected="selected" >09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+
+</select>h jusqu'à <select id="plage2"  >
+<option value="8">08</option>
+<option value="9">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option selected="selected"  value="17">17</option>
+<option value="18">18</option>
+
+</select>h</tr>
+<tr><td>Sur</td><td><select id="selection"><option value="1">Un jour</option><option selected="selected" value="7">Une semaine</option><option value="14">Deux semaines</option><option value="21">Trois semaines</option><option value="28">Quatre semaines</option></select></td></tr>
+    <tr><tr><td>Tous les</td><td><select id="jours"><option value="Monday">Lundi</option><option  value="Tuesday">Mardi</option><option value="Wednesday">Mercredi</option><option value="Thursday">Jeudi</option><option value="Friday">Vendredi</option><option selected="selected"  value="6">Jours ouvrés</option></select></td></tr>
+</table><br/><center>	<button onclick="getDispo()" style="font-size:10px;">Nouvelle recherche</button></center>
+</div><div style="float:left;padding:10px;border-left:1px solid #CCC;" id="resultat_dispo"></div></div>
+
+<div class="tooltip"></div>
+ 
+<script type="text/javascript">
+	
+
+
+//Animation de l'option
+Option.anime();
+  var accountId=<?php echo $_SESSION['UTILISATEUR']['account_id'];?>;
+ initialiserReferent("");
+
+
+ function initialiserReferent(id)
+ {
+ 	if(id!="")
+ 	{$j('#calendrier_referent').val(id);}
+ 	else
+ 	{
+ $j('#calendrier_referent').val(accountId);
+ 	}
+ 	 $j( "#dateCal" ).datepicker($j.datepicker.regional[ "fr" ]);
+ 	 
+ 	Calendrier.getCal(<?php echo $_REQUEST['id_presta']?>); 
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////
+
+
+  function getRecherche()
+  {
+	  $j('.zoneRecherche').show();
+	 $j('.calendar').hide();
+
+	$j('#motRecherche2').val($j('#motRecherche').val());
+	$j('.div_menu_droit').html("");
+	$j.ajax({
+		url : "./index.php?page=ajaxCalendrier&noTemplate=1",
+		dataType : "json",
+		data : {
+			mot : $j('#motRecherche2').val(),
+			method : "recherche"
+		    
+		},
+		success: function(data){
+			//console.debug('%o',data);
+var html='<table id="myTable" cellspacing="1" class="tablesorter"><thead><tr> ';
+
+html +='<th>Début<br/>Fin</th><th>Titre<br/>Description</th><th>Propriétaire</th><th>Emplacement</th><th>Participant</th><th></th>';
+
+html +='</thead></tr><tbody>';
+$j.each(data,function(i, obj){
+;
+	
+	 html += "<tr><td>"+obj.DATEDEB+"<br/>"+obj.DATEFIN+"</td>";
+	 html += "<td><strong>"+obj.Subject+"</strong><br/><textarea cols='60'>"+obj.Description+"</textarea></td>";
+	 html += "<td>"+obj.prenom_proprietaire+" "+obj.nom_proprietaire+"</td>";
+	 html += "<td>"+obj.nom_lieu+"</td>";
+	 html += "<td>"+obj.prenom_referent+" "+obj.nom_referent+"</td>";
+	 html += "<td><img src='./images/ico/edit.png' /></td></tr>";
+});
+html +="</tbody></table>";
+
+$j('.div_menu_droit').html(html);
+$j("#myTable").tablesorter({ widgets: ['zebra'] })
+			 .tablesorterPager({container: $j("#pager"),positionFixed: false });
+             }
+	});
+	
+	}
+  function getRecherche2()
+  {
+	  $j('.zoneRecherche').show();
+	 $j('.calendar').hide();
+
+	$j('#motRecherche').val($j('#motRecherche2').val());
+	$j('.div_menu_droit').html("");
+	$j.ajax({
+		url : "./index.php?page=ajaxCalendrier&noTemplate=1",
+		dataType : "json",
+		data : {
+			mot : $j('#motRecherche2').val(),
+			method : "recherche"
+		    
+		},
+		success: function(data){
+			//console.debug('%o',data);
+var html='<table id="myTable" cellspacing="1" class="tablesorter"><thead><tr> ';
+
+html +='<th>Début<br/>Fin</th><th>Titre<br/>Description</th><th>Propriétaire</th><th>Emplacement</th><th>Participant</th><th></th>';
+
+html +='</thead></tr><tbody>';
+$j.each(data,function(i, obj){
+	 html += "<tr><td>"+obj.DATEDEB+"<br/>"+obj.DATEFIN+"</td>";
+	 html += "<td><strong>"+obj.Subject+"</strong><br/><textarea cols='60'>"+obj.Description+"</textarea></td>";
+	 html += "<td>"+obj.prenom_proprietaire+" "+obj.nom_proprietaire+"</td>";
+	 html += "<td>"+obj.nom_lieu+"</td>";
+	 html += "<td>"+obj.prenom_referent+" "+obj.nom_referent+"</td>";
+	 html += "<td><img src='./images/ico/edit.png' /></td></tr>";
+});
+html +="</tbody></table>";
+
+$j('.div_menu_droit').html(html);
+$j("#myTable").tablesorter({ widgets: ['zebra'] })
+			 .tablesorterPager({container: $j("#pager"),positionFixed: false });
+             }
+	});
+	
+	}
+function getCalendar()
+{
+	  $j('.zoneRecherche').hide();
+		 $j('.calendar').show();
+ $j( "#date1" ).datepicker($j.datepicker.regional[ "fr" ]);
+ $j( "#date2" ).datepicker($j.datepicker.regional[ "fr" ]);
+        $j(document).ready(function() {  
+           var view="week";          
+           
+            var DATA_FEED_URL = "./index.php?page=ajaxCalendrier&noTemplate=1";
+            var op = {
+                view: view,
+                theme:0,
+                showday: new Date(),
+                accountId : accountId,
+                EditCmdhandler:Edit,
+                DeleteCmdhandler:Delete,
+                ViewCmdhandler:View,    
+                onWeekOrMonthToDay:wtd,
+                onBeforeRequestData: cal_beforerequest,
+                onAfterRequestData: cal_afterrequest,
+                onRequestDataError: cal_onerror, 
+                autoload:true,
+                url: DATA_FEED_URL + "&method=list",  
+                quickAddUrl: DATA_FEED_URL + "&method=add", 
+                quickUpdateUrl: DATA_FEED_URL + "&method=update",
+                quickDeleteUrl: DATA_FEED_URL + "&method=remove"  ,
+                enableDrag: false,       
+            };
+            var $dv = $j("#calhead");
+            var _MH = document.documentElement.clientHeight;
+            var dvH = $dv.height() + 2;
+            op.height = _MH - dvH;
+            op.eventItems =[];
+           
+            var p = $j("#gridcontainer").bcalendar(op).BcalGetOp();
+            if (p && p.datestrshow) {
+                $j("#txtdatetimeshow").text(p.datestrshow);
+            }
+            $j("#caltoolbar").noSelect();
+            
+            $j("#hdtxtshow").datepicker({ picker: "#txtdatetimeshow", showtarget: $j("#txtdatetimeshow"),
+            onReturn:function(r){                          
+                            var p = $j("#gridcontainer").gotoDate(r).BcalGetOp();
+                            if (p && p.datestrshow) {
+                                $j("#txtdatetimeshow").text(p.datestrshow);
+                            }
+                     } 
+            });
+         
+        });
+
+        setTimeout("$j('.scolltimeevent').css('height','')",500);
+
+        console.debug($j.fn.bcalendar);
+       // setTimeout("var test =  new $j.fn.bcalendar();console.debug( test);",1000);
+}
+function cal_beforerequest(type)
+{
+    var t="Chargement des données...";
+    switch(type)
+    {
+        case 1:
+            t="Chargement des données...";
+            break;
+        case 2:                      
+        case 3:  
+        case 4:    
+            t="La requête est en cours...";                                   
+            break;
+    }
+    $j("#errorpannel").hide();
+    $j("#loadingpannel").html(t).show();    
+}
+function cal_afterrequest(type)
+{
+    switch(type)
+    {
+        case 1:
+            $j("#loadingpannel").hide();
+            break;
+        case 2:
+        case 3:
+        case 4:
+            $j("#loadingpannel").html("Success!");
+            window.setTimeout(function(){ $j("#loadingpannel").hide();},2000);
+        break;
+    }              
+   
+}
+function cal_onerror(type,data)
+{
+    $j("#errorpannel").show();
+}
+function Edit(data)
+{
+    
+   // console.debug("%o",data);
+/*   var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";   
+    if(data)
+    {
+        var url = StrFormat(eurl,data);
+        OpenModelWindow(url,{ width: 600, height: 400, caption:"Gestion du calendrier",onclose:function(){
+           $j("#gridcontainer").reload();
+        }});
+    }
+    */
+	
+	$j( "#editCalendrier" ).attr("title","Fiche évènement");
+	$j( "#editCalendrier" ).dialog({height:600,width:600});
+	/*$j( "#editCalendrier" ).attr("title","Fiche évènement");
+	$j( "#editCalendrier" ).dialog({height:300,width:600});*/
+}    
+function View(data)
+{
+    var str = "";
+    $j.each(data, function(i, item){
+        str += "[" + i + "]: " + item + "\n";
+    });
+   // alert(str);               
+}    
+function Delete(data,callback)
+{           
+    
+    $j.alerts.okButton="Ok";  
+    $j.alerts.cancelButton="Annuler";  
+    hiConfirm("Etes vous sûr de vouloir supprimer cet évènement", 'Confirm',function(r){ r && callback(0);});           
+}
+function wtd(p)
+{
+   if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+    $j("#caltoolbar div.fcurrent").each(function() {
+        $j(this).removeClass("fcurrent");
+    })
+    $j("#showdaybtn").addClass("fcurrent");
+}
+//to show day view
+$j("#showdaybtn").click(function(e) {
+    //document.location.href="#day";
+    $j("#caltoolbar div.fcurrent").each(function() {
+        $j(this).removeClass("fcurrent");
+    })
+    $j(this).addClass("fcurrent");
+    var p = $j("#gridcontainer").swtichView("day").BcalGetOp();
+    if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+});
+//to show week view
+$j("#showweekbtn").click(function(e) {
+    //document.location.href="#week";
+    $j("#caltoolbar div.fcurrent").each(function() {
+        $j(this).removeClass("fcurrent");
+    })
+    $j(this).addClass("fcurrent");
+    var p = $j("#gridcontainer").swtichView("week").BcalGetOp();
+    if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+
+});
+//to show month view
+$j("#showmonthbtn").click(function(e) {
+    //document.location.href="#month";
+    $j("#caltoolbar div.fcurrent").each(function() {
+        $j(this).removeClass("fcurrent");
+    })
+    $j(this).addClass("fcurrent");
+    var p = $j("#gridcontainer").swtichView("month").BcalGetOp();
+    if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+});
+
+$j("#showreflashbtn").click(function(e){
+    $j("#gridcontainer").reload();
+});
+
+//Add a new event
+$j("#faddbtn").click(function(e) {
+    
+    var url ="edit.php";
+    OpenModelWindow(url,{ width: 500, height: 400, caption: "Créer un nouveau calendrier"});
+});
+//go to today
+$j("#showtodaybtn").click(function(e) {
+    var p = $j("#gridcontainer").gotoDate().BcalGetOp();
+    if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+
+
+});
+//previous date range
+$j("#sfprevbtn").click(function(e) {
+    var p = $j("#gridcontainer").previousRange().BcalGetOp();
+    if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+
+});
+//next date range
+$j("#sfnextbtn").click(function(e) {
+    var p = $j("#gridcontainer").nextRange().BcalGetOp();
+    if (p && p.datestrshow) {
+        $j("#txtdatetimeshow").text(p.datestrshow);
+    }
+});
+
+    
+
+     
+
+
+function dialogRechercheDispo()
+{
+	 $j( "#date_start" ).datepicker($j.datepicker.regional[ "fr" ]);
+	$j('#dialogDisponibilite').dialog({height:400,width:800});
+}
+function dialogConfirm()
+{
+	 $j( "#confirm_date_start" ).datepicker($j.datepicker.regional[ "fr" ]);
+	$j('#dialogConfirm').dialog({height:600,width:600});
+}
+function getDispo()
+{
+	var l = $j('#recherche_id_lieu').val().split('-');
+
+	$j.ajax({
+		url : "./index.php?page=ajaxCalendrier&noTemplate=1",
+		dataType : "json",
+		data : {
+			plage1 : $j('#plage1').val(),
+			date_start : $j('#date_start').val(),
+			selection : $j('#selection').val(),
+			plage2 : $j('#plage2').val(),
+			duree : 3600,
+			conseiller_id : $j('#conseiller_id').val(),
+			lieu : l[0],
+			nom_lieu : l[1],
+			nombre : $j('#nombre').val(),
+			jours : $j('#jours').val(),
+			method : "dispo"
+		    
+		},
+		success: function(data){
+			$j('#resultat_dispo').html(data);
+		}
+		});
+	
+}
+function getConfirm()
+{
+	var l = $j('#confirm_id_lieu').val().split('-');
+
+	$j.ajax({
+		url : "./index.php?page=ajaxCalendrier&noTemplate=1",
+		dataType : "json",
+		data : {
+			
+			conseiller_id : $j('#confirm_conseiller_id').val(),
+			id_lieu : l[0],
+			nom_lieu : l[1],
+			date_start :  $j('#confirm_date_start').val(),
+			
+			method : "confirm"
+		    
+		},
+		success: function(data){
+			$j('#resultat_confirm').html(data);
+		}
+		});
+	
+}
+
+
+
+function Check_all(state)
+{
+  
+  var i;
+  var tabInput=document.getElementsByTagName("input");
+  var n=tabInput.length;
+  
+  for(i=0;i<n;i++)
+  {
+  	if(tabInput[i].type=='checkbox')
+  	{
+  		tabInput[i].checked=state;
+  	}
+  		
+  }
+ }
+
+
+</script>
+<?php
+	
+	if(isset($_REQUEST['id_contact']))
+	{
+	echo'<script>Calendrier.rechercheContact('.$_REQUEST['id_contact'].');</script>';
+	}
+	if(isset($_REQUEST['id_presta']))
+	{
+	echo'<script>alert("Présicez le lieu du rendez vous, puis cliquez sur montrer les disponiblités");</script>';
+	}
+	
+?>

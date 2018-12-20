@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" no_lang="1" id="ref_id"/>
+					<nextmatch-header label="Client" align="center" id="ref_client"/>
+					<nextmatch-header label="Provider" id="ref_fournisseur" align="center"/>
+					<nextmatch-header label="Case" align="center" id="ref_affaire"/>
+					<nextmatch-sortheader label="Short description" id="ref_description_courte" align="center"/>
+					<nextmatch-sortheader label="Responsable" align="center" id="ref_responsable"/>
+					<nextmatch-sortheader label="Study's amount" align="center" id="ref_montant_etude"/>
+					<nextmatch-sortheader label="Start date" id="ref_date_debut" align="center"/>
+					<nextmatch-sortheader label="status" align="center" id="ref_state"/>
+					<description align="center" value="Actions"/>
+					<button label="Check all" image="check" id="check_all" needed="1" statustext="Check all" onclick="toggle_all(this.form,form::name('checked[]')); return false;" align="right"/>
+				</row>
+				<row class="row $row_cont[client_class]">
+					<description align="center" readonly="true" no_lang="1" id="${row}[ref_id]"/>
+					<menulist>
+						<menupopup align="center" no_lang="1" id="${row}[ref_client]" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[ref_fournisseur]" no_lang="1" readonly="true" align="center"/>
+					</menulist>
+					<description align="center" no_lang="1" id="${row}[ref_affaire]"/>
+					<htmlarea align="center" no_lang="1" id="${row}[ref_description_courte]" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" align="center" readonly="true" id="${row}[ref_responsable]"/>
+					</menulist>
+					<description align="center" readonly="true" no_lang="1" id="${row}[ref_montant_etude]"/>
+					<date readonly="true" id="${row}[ref_date_debut]" align="center"/>
+					<menulist>
+						<menupopup align="center" no_lang="1" readonly="true" id="${row}[ref_statut]"/>
+					</menulist>
+					<hbox align="center">
+						<button label="Delete" onclick="return confirm('Confirmez-vous la suppression ?');" disabled="true" id="delete[$row_cont[ref_id]]" image="delete" statustext="TCH /// On rend impossible la supression"/>
+						<button label="Edit" image="edit" onclick="window.open(egw::link('/index.php','menuaction=spiref.spiref_ui.edit&amp;id=$row_cont[ref_id]'),'_blank','dependent=yes,width=990,height=600,scrollbars=yes,status=yes'); return false;"/>
+						<button label="Print PDF" image="pdf" id="pdf[$row_cont[ref_id]]" onclick="window.open(egw::link('/index.php','menuaction=spiref.spiref_ui.pdf&amp;id=$row_cont[ref_id]'),'_blank','dependent=yes,width=500,height=560,scrollbars=yes,status=yes'); return false;"/>
+						<button label="email" image="email" id="mail[$row_cont[ref_id]]" onclick="window.open(egw::link('/index.php','menuaction=spiref.spiref_ui.mail&amp;id=$row_cont[ref_id]'),'_blank','dependent=yes,width=500,height=560,scrollbars=yes,status=yes'); return false;"/>
+					</hbox>
+					<checkbox options="$row_cont[ref_id]" id="checked[]" align="right"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.index" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<nextmatch span="all" id="nm" options="spiref.index.rows"/>
+				</row>
+				<row>
+					<button id="add" label="Add" statustext="Add a new reference" onclick="window.open(egw::link('/index.php','menuaction=spiref.spiref_ui.edit'),'_blank','dependent=yes,width=850,height=440,scrollbars=yes,status=yes'); return false;"/>
+					<description/>
+					<description/>
+					<hbox align="right">
+						<textbox label="Title (for list print)" id="titre"/>
+						<hbox>
+							<checkbox id="use_all" label="whole query" onchange="if (this.checked==true &amp;&amp; !confirm('Apply the action on the whole query, NOT only the shown references!!!')) this.checked=false;" align="right"/>
+						</hbox>
+						<menulist>
+							<menupopup onchange="1" options="Select an action..." no_lang="1" id="action" statustext="Select an action..."/>
+						</menulist>
+						<button image="arrow_ltr" label="Check all" id="check_all" statustext="Check all" onclick="toggle_all(this.form,form::name('nm[rows][checked][]')); return false;" needed="1" class="checkAllArrow"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.row_error{
+ background-color: red;
+}
+		</styles>
+	</template>
+</overlay>

@@ -1,0 +1,565 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu">Recherche avancée</div>
+<div class="div_menu_gauche">
+<div class="lien_recherche"><div align="center" style="font-weight:bolder;font-size:12px" id="tilteParam"><?php echo utf8_encode($this->paramInfo['libelle_parametre']);?></div><div ><img src="./images/ico/load.gif" class="load" /></div><a onclick="navigationRecherche('filtre')" href="javascript:void(0);">Filtre</a></div>
+<div id="filtre"  style="display:block" class="option_recherche">
+<table><tr><td>Catégorie</td><td> <select multiple size="10" id="select_categorie"><option value=""></option>
+<?php for($i=0;$i<count($this->listCategorie);$i++)
+{
+	echo'<option value="'.$this->listCategorie[$i]['cat_id'].'">'.utf8_encode($this->listCategorie[$i]['cat_name']).'</option>';
+}?>
+</select></td></tr>
+<tr><td>Chercher</td><td> <input onKeyPress="if (event.keyCode == 13) getContact();"  id="mot_recherche" type="text" /></td></tr><tr>
+<td>Sur</td><td> <select id="select_champ"><option value="">-- Champs contact --</option></select></td></tr></table>
+</div>
+<div class="lien_recherche"><a onclick="navigationRecherche('table_contact')" href="javascript:void(0);">Champs de la table <strong>Contact</strong></a></div>
+<div id="table_contact" class="option_recherche"><table>
+<tr><td><input id="categorie" <?php echo $this->pref['categorie']; ?> value="categorie" type="checkbox" /></td><td>Catégorie</td><td></td><td></td></tr>
+<tr><td><input id="civilite" <?php echo $this->pref['civilite']; ?> value="civilite" type="checkbox" /></td><td>Civilité</td><td><input id="nom_complet"  <?php echo $this->pref['nom_complet']; ?> value="nom_complet"  type="checkbox" /></td><td>Nom complet</td></tr>
+<tr><td><input id="nom" <?php echo $this->pref['nom']; ?> value="nom"  type="checkbox" /></td><td>Nom</td><td><input id="prenom"  value="prenom" <?php echo $this->pref['prenom']; ?> type="checkbox" /></td><td>Prénom</td></tr>
+<tr><td><input id="deuxieme_prenom" <?php echo $this->pref['deuxieme_prenom']; ?> value="deuxieme_prenom"  type="checkbox" /></td><td>Deuxième prénom</td><td><input id="nom_jeune_fille"  <?php echo $this->pref['nom_jeune_fille']; ?> value="nom_jeune_fille"  type="checkbox" /></td><td>Nom de jeune fille</td></tr>
+<tr><td><input id="ville" value="ville"  <?php echo $this->pref['ville']; ?> type="checkbox" /></td><td>Ville</td><td><input id="region" value="region"  <?php echo $this->pref['region']; ?> type="checkbox" /></td><td>Région</td></tr>
+<tr><td><input id="cp" value="cp"  <?php echo $this->pref['cp']; ?> type="checkbox" /></td><td>Cp</td><td><input id="pays"  value="pays" type="checkbox" <?php echo $this->pref['pays']; ?> /></td><td>Pays</td></tr>
+<tr><td><input id="tel_pro_1" value="tel_pro_1" <?php echo $this->pref['tel_pro_1']; ?> type="checkbox" /></td><td>Tel.Pro 1</td><td><input id="tel_pro_2"  <?php echo $this->pref['tel_pro_2']; ?> value="tel_pro_2"  type="checkbox" /></td><td>Tel.Pro 2</td></tr>
+<tr><td><input id="tel_domicile_1" value="tel_domicile_1"  <?php echo $this->pref['tel_domicile_1']; ?> type="checkbox" /></td><td>Tel.Dom 1</td><td><input id="tel_domicile_2" <?php echo $this->pref['tel_domicile_2']; ?>  value="tel_domicile_2"  type="checkbox" /></td><td>Tel.Dom 2</td></tr>
+<tr><td><input id="fax_pro" value="fax_pro" <?php echo $this->pref['fax_pro']; ?>  type="checkbox" /></td><td>Fax pro</td><td><input id="fax_perso" value="fax_perso" <?php echo $this->pref['fax_perso']; ?> type="checkbox" /></td><td>Fax perso</td></tr>
+<tr><td><input id="portable_pro"  value="port_pro" <?php echo $this->pref['portable_pro']; ?>  type="checkbox" /></td><td>Port.Pro</td><td><input id="portable_perso"  <?php echo $this->pref['portable_perso']; ?> value="port_perso"  type="checkbox" /></td><td>Port.Perso</td></tr>
+<tr><td><input id="email_pro" value="email_pro"  <?php echo $this->pref['email_pro']; ?> type="checkbox" /></td><td>Email.Pro</td><td><input id="email_perso" <?php echo $this->pref['email_perso']; ?> value="email_perso" type="checkbox" /></td><td>Email.Perso</td></tr>
+<tr><td><input id="fonction"  value="fonction" <?php echo $this->pref['fonction']; ?> type="checkbox" /></td><td>Fonction</td><td><input id="site_perso"  <?php echo $this->pref['site_web']; ?> value="site_web"  type="checkbox" /></td><td>Site web</td></tr></table>
+</div>
+<div class="lien_recherche"><a onclick="navigationRecherche('table_etat_civil')" href="javascript:void(0);">Champs de la table <strong>Contact Etat Civil</strong></a></div>
+<div id="table_etat_civil" class="option_recherche"><table>
+<tr><td><input id="date_naissance" value="date_naissance" type="checkbox" /></td><td>Date de naissance</td><td><input id="lieu_naissance" value="lieu_naissance" type="checkbox" /></td><td>Lieu de naissance</td></tr>
+<tr><td><input id="nationalite" value="nationalite" type="checkbox" /></td><td>Nationalite</td><td><input id="situation_maritale" value="situation_maritale" type="checkbox" /></td><td>Situation maritale</td></tr>
+<tr><td><input id="enfants_a_charge" value="enfants_a_charge" type="checkbox" /></td><td>Enfants à charge</td></tr>
+</table>
+</div>
+<div class="lien_recherche"><a onclick="navigationRecherche('table_projet')" href="javascript:void(0);">Champs de la table <strong>Projet</strong></a></div>
+<div id="table_projet" class="option_recherche"><table>
+<tr><td><input id="description_projet" value="desc_projet" type="checkbox" /></td><td>Description du projet</td></tr>
+</table>
+</div>
+<div class="lien_recherche"><a onclick="navigationRecherche('table_prestation')" href="javascript:void(0);">Champs de la table <strong>Prestation</strong></a></div>
+<div id="table_prestation" class="option_recherche"><table>
+<tr><td><input id="presta" value="presta" <?php echo $this->pref['presta']; ?> type="checkbox" /></td><td>Type de prestations</td><td><input <?php echo $this->pref['date_debut']; ?> value="date_debut" id="date_debut" type="checkbox" /></td><td>Date de début de presta</td></tr>
+<tr><td><input id="statut" value="statut"  <?php echo $this->pref['statut']; ?> type="checkbox" /></td><td>Statut</td></tr>
+</table>
+</div>
+<div class="lien_recherche"><a onclick="navigationRecherche('table_bilan')" href="javascript:void(0);">Champs de la table <strong>Bilan</strong></a></div>
+<div id="table_bilan" class="option_recherche">
+<table><tr><td><input id="avis1" value="avis1" <?php echo $this->pref['avis1']; ?> type="checkbox" /></td><td>Faisabilité du projet</td><td><input id="commentaire1" value="commentaire1" <?php echo $this->pref['commentaire1']; ?> type="checkbox" /></td><td>Com. Faisabilité</td></tr>
+<tr><td><input id="avis2" value="avis2" <?php echo $this->pref['avis2']; ?> type="checkbox" /></td><td>Avis de réalisation</td><td><input id="commentaire2" value="commentaire2" <?php echo $this->pref['commentaire2']; ?> type="checkbox" /></td><td>Com. Avis</td></tr>
+<tr><td><input id="code_rome" value="code_rome" <?php echo $this->pref['code_rome']; ?> type="checkbox" /></td><td>Code ROME</td><td><input id="r_emploi" value="r_emploi" <?php echo $this->pref['r_emploi']; ?> type="checkbox" /></td><td>Retour à l'emploi</td></tr>
+<tr><td><input id="com_ref" value="com_ref" <?php echo $this->pref['com_ref']; ?> type="checkbox" /></td><td>Com. Référent</td><td><input id="com_ben" value="com_ben" <?php echo $this->pref['com_ben']; ?> type="checkbox" /></td><td>Com. Bénéficiaire</td></tr>
+</table></div>
+<div class="lien_recherche"><a onclick="navigationRecherche('table_org')" href="javascript:void(0);">Champs de la table <strong>Organisation</strong></a></div>
+<div id="table_org" class="option_recherche">
+<table><tr><td><input id="nom_organisme" value="nom_organisme" <?php echo $this->pref['nom_organisme']; ?> type="checkbox" /></td><td>Nom organisme</td><td><input <?php echo $this->pref['activite_principale']; ?> value="activite_principale" id="activite_principale" type="checkbox" /></td><td>Activité principale</td></tr>
+<tr><td><input id="raison_sociale"  value="raison_sociale" <?php echo $this->pref['raison_sociale']; ?> type="checkbox" /></td><td>Raison sociale</td><td><input <?php echo $this->pref['type_adresse']; ?> value="type_adresse" id="type_adresse" type="checkbox" /></td><td>Type d'adresse</td></tr>
+<tr><td><input id="adresse_ligne_1" value="adresse_ligne_1" <?php echo $this->pref['adresse_ligne_1']; ?> type="checkbox" /></td><td>Adresse</td><td><input <?php echo $this->pref['adresse_ligne_2']; ?> value="adresse_ligne_2" id="adresse_ligne_2" type="checkbox" /></td><td>Compl. d'adresse 2</td></tr>
+<tr><td><input id="cp_org" value="cp_org" type="checkbox" <?php echo $this->pref['cp']; ?> /></td><td>Cp</td><td><input <?php echo $this->pref['ville']; ?> value="ville_org" id="ville_org" type="checkbox" /></td><td>Ville</td></tr>
+<tr><td><input id="region_org" value="region_org" type="checkbox" <?php echo $this->pref['region']; ?> /></td><td>Région</td><td><input <?php echo $this->pref['pays']; ?> value="pays_org" id="pays_org" type="checkbox" /></td><td>Pays</td></tr>
+<tr><td><input value="date_immat"  id="date_immat" type="checkbox" <?php echo $this->pref['date_immat']; ?> /></td><td>Date d'immatriculation</td><td><input <?php echo $this->pref['date_debut_activite']; ?> value="date_debut_activite" id="date_debut_activite" type="checkbox" /></td><td>Début d'activité</td></tr>
+<tr><td><input value="forme_juridique"  id="forme_juridique" type="checkbox" <?php echo $this->pref['forme_juridique']; ?> /></td><td>Forme juridique</td><td><input <?php echo $this->pref['siret']; ?> value="siret" id="siret" type="checkbox" /></td><td>Siret</td></tr>
+<tr><td><input value="code_naf" id="code_naf" type="checkbox" <?php echo $this->pref['code_naf']; ?> /></td><td>Code Naf</td><td><input value="secteur_activite" <?php echo $this->pref['secteur_activite']; ?> id="secteur_activite" type="checkbox" /></td><td>Secteur d'activité</td></tr>
+<tr><td><input value="dirigeant" id="dirigeant" type="checkbox" <?php echo $this->pref['dirigeant']; ?> /></td><td>Dirigeant</td><td><input value="implantation" <?php echo $this->pref['implantation']; ?> id="implantation" type="checkbox" /></td><td>Implantation</td></tr>
+<tr><td><input value="regime_imposition" id="regime_imposition" type="checkbox" <?php echo $this->pref['regime_imposition']; ?> /></td><td>Régime d'imposition</td><td><input <?php echo $this->pref['regime_tva']; ?> value="regime_tva" id="regime_tva" type="checkbox" /></td><td>Régime TVA</td></tr>
+<tr><td><input value="regime_fiscal" id="regime_fiscal" type="checkbox" <?php echo $this->pref['regime_fiscal']; ?> /></td><td>Régime fiscal</td><td><input <?php echo $this->pref['regime_social_dirigeant']; ?> value="regime_social_dirigeant" id="regime_social_dirigeant" type="checkbox" /></td><td>Rég.social dirigeant</td></tr>
+<tr><td><input value="statut_org" id="statut_org" type="checkbox" <?php echo $this->pref['statut_org']; ?> /></td><td>Statut</td></tr>
+</table></div>
+<div style="padding-top:10px;padding-left:3px" ><button id="buttonRelancer"  style="font-size:10px">Lancer la recherche</button> <button onclick="saveParametre()" id="saveParam"  style="font-size:10px">Sauvegarder les paramètres</button> <br/><br/></div>
+<div class="sous_menu">Paramètres sauvegardées</div>
+<div class="div_menu_gauche">
+<?php for($i=0;$i<count($this->param);$i++)
+{
+	echo'<div style="padding-left:5px"><a id="idParam_'.$this->param[$i]['id_parametre'].'" onclick="getPreference('.$this->param[$i]['id_parametre'].')" href="javascript:void(0);"> '.utf8_encode($this->param[$i]['libelle_parametre']).'</a> <img  style="cursor:pointer" onclick="editParametre('.$this->param[$i]['id_parametre'].',\''.utf8_encode($this->param[$i]['libelle_parametre']).'\')" height="15px" width="15px" src="./images/ico/edit.png" /><img height="15px" width="15px" src="./images/ico/delete.png" /></div>';
+}?>
+</div>
+</div>
+</div>
+<div class="contenu">
+<div class="univers">Contact</div>
+<div class="div_menu_droit">
+
+<div class="boutton_contact"><button  onclick="Contact.addContactBox();" style="font-size:10px">Créer un contact</button></div><div class="page"></div><div  class="contenu_flex">
+</div>
+
+</div></div></div>
+
+<div style="display:none" id="editParametre"  title="">
+<table><tr><td>Libellé du paramètre</td><td><input id="idParametre" type="hidden" value=""/><input type="text" id="libelleParametre"  value=""/></td><td></td><td><button onclick="updateParametre()" >Enregistrer</button></td></tr></table>
+</div>
+<div style="display:none" id="saveParametre"  title="Sauvegarde des paramètres">
+<table><tr><td>Sauvegardes existantes</td><td><select id="selectParam"><option></option>
+<?php for($i=0;$i<count($this->param);$i++)
+{
+echo'<option value="'.$this->param[$i]['id_parametre'].'">'.utf8_encode($this->param[$i]['libelle_parametre']).'</option>';
+}?>
+</select></td></tr>
+<tr><td>ou</td><td></td></tr>
+<tr><td>Nouvelle sauvegarde</td><td><input id="inputParam" type="text" /></td></tr>
+<tr><td></td><td><button onclick="saveParametre2()" >Enregistrer</button></td></tr>
+</table>
+<div style="color:green;padding:5px;" class="retour_param"></div>
+</div>
+
+
+
+<script type="text/javascript">
+
+initcat();
+
+
+var arrayContact = new Array();
+var config = new Array();
+var parametre = new Array('contact');
+parametre['contact'] = new Array('id','libelle','largeur','triable');
+parametre['contact']['id'] = new Array('categorie','civilite','nom_complet','nom','prenom','deuxieme_prenom','nom_jeune_fille','ville','region','cp','pays','tel_pro_1','tel_pro_2','tel_domicile_1','tel_domicile_2','fax_pro','fax_perso','portable_pro','portable_perso','email_pro','email_perso','fonction','site_perso',
+		'date_naissance','lieu_naissance','nationalite','situation_maritale','enfants_a_charge','description_projet',
+'nom_organisme','activite_principale','raison_sociale','type_adresse','adresse_ligne_1','adresse_ligne_2','cp','ville','region','pays',
+'date_immat','date_debut_activite','forme_juridique','siret','code_naf','secteur_activite','dirigeant','implantation','regime_imposition','regime_tva','regime_fiscal','regime_social_dirigeant','statut_org','presta','date_debut',
+'avis1','commentaire1','avis2','commentaire2','r_emploi','code_rome','com_ref','com_ben');
+parametre['contact']['libelle'] = new Array('Catégorie','Civilite','Nom complet','Nom','Prenom','Deuxieme prénom','Nom de jeune fille','Ville','Région','Cp','Pays','Tél.pro 1','Tél.pro 2','Tél.Dom 1','Tél.Dom 2','Fax pro','Fax perso','Port.pro','Port.perso','Email pro','Email perso','Fonction','Site web',
+		'Date de naissance','Lieu de naissance','Nationalité','Situation maritale','Enf.','Desc.Projet',
+'Nom organisme','Activité principale','Raison sociale','Type d\'adresse','Adresse','Complément d\'adresse','Cp(Entr.)','Ville(Entr.)','Région(Entr.)','Pays(Entr.)',
+'Date d\'immatriculation','Début d\'activité','Forme juridique','Siret','Code Naf','Secteur d\'activité','Dirigeant','Implantation','Régime d\'imposition','Régime TVA','Régime Fiscal','Rég.social dirigeant','Statut','Type de prestation','Date de début',
+'Faisabilité du projet','commentaire(Fais.)','Délai de réalisation','commentaire(Délai)','Retour à l\'emploi','Code rome','Com. Référent','Com. Bbénéficiaire');
+parametre['contact']['largeur'] = new Array('100','100','200','100','100','100','100','100','60','50','60','60','60','60','60','60','60','60','60','150','150','150','80',
+		'100','150','150','100','50','200',
+'150','150','150','100','100','100','50','150','50','100',
+'100','100','50','100','50','100','100','100','150','150','150','150','100','100','100',
+'100','150','100','150','150','50','150','150');
+/*parametre['contact']['triable'] = new Array(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,
+		true,true,true,true,true,true,true,true,true,true,
+		true,true,true,true,true,true,true,true,true,true,true,true,false,false,false);*/
+
+
+var descriptif =  new Array('id','libelle');
+descriptif['id'] = new Array();
+descriptif['libelle'] = new Array();
+descriptif['largeur'] = new Array();
+//descriptif['triable'] = new Array();
+
+$j('#buttonRelancer').click(function() {
+	  getContact();
+	});
+
+
+function editParametre(idParam,libelle)
+{
+	
+	$j( "#editParametre" ).attr("title","Paramètre : Modification");
+	$j( "#libelleParametre" ).val(libelle);
+	$j( "#idParametre" ).val(idParam);
+	$j( "#editParametre" ).dialog({height:90,width:400});
+}
+function updateParametre()
+{$j.ajax({
+	url : "./index.php?page=ajaxContact&noTemplate=1",
+	dataType : "json",
+	data : {
+		
+		libelleParam : $j( "#libelleParametre" ).val(),
+		idParam : $j( "#idParametre" ).val(),
+		
+		action : "updateParametre"
+	    
+	},
+	success: function(data){
+		$j('#idParam_'+$j( "#idParametre" ).val()+'').html($j( "#libelleParametre" ).val());
+		$j( "#editParametre" ).dialog( "close" );
+		}
+});
+	
+}
+function getPreference(idParam)
+{$j.ajax({
+	url : "./index.php?page=ajaxContact&noTemplate=1",
+	dataType : "json",
+	data : {
+		
+		
+		idParam : idParam,
+		
+		action : "getPreference"
+	    
+	},
+	success: function(data){
+	window.location.href="index.php?page=Contact";
+		}
+});
+	
+}
+function editContactBox(id_ben)
+{
+	$j('#civilite_box').val("");
+	$j('#select_categorie_box').val("");
+	$j('#nom_box').val("");
+	$j('#prenom_box').val("");
+	$j('#nom_jeune_fille_box').val("");
+	$j('#deuxieme_prenom_box').val("");
+	$j('#adresse_box').val("");
+	$j('#complement_adresse_box').val("");
+	$j('#cp_box').val("");
+	$j('#ville_box').val("");
+	$j('#region_box').val("");
+	$j('#pays_box').val("");
+	$j('#tel_pro_1_box').val("");
+	$j('#tel_pro_2_box').val("");
+	$j('#tel_dom_1_box').val("");
+	$j('#tel_dom_2_box').val("");
+	$j('#fax_pro_box').val("");
+	$j('#fax_perso_box').val("");
+	$j('#portable_pro_box').val("");
+	$j('#portable_perso_box').val("");
+	$j('#email_pro_box').val("");
+	$j('#email_perso_box').val("");
+	$j('#fonction_box').val("");
+	$j('#site_web_box').val("");
+
+	//alert(arrayContact[id_ben]['cat_id']);
+	$j('.verif_box').html("");
+	$j( "#editContact_" ).attr("title","Fiche contact : Modification du contact");
+	$j( "#editContact_" ).dialog({height:570,width:600});
+	$j('#idContact_box').val(arrayContact[id_ben]['id_ben']);
+	var cat_id = new Array();
+	cat_id = arrayContact[id_ben]['cat_id'].split(',');
+	//alert(cat_id[0]);
+	$j('#select_categorie_box').val(cat_id[0]);
+	$j('#civilite_box').val(arrayContact[id_ben]['civilite']);
+	$j('#nom_box').val(arrayContact[id_ben]['nom']);
+	$j('#prenom_box').val(arrayContact[id_ben]['prenom']);
+	$j('#nom_jeune_fille_box').val(arrayContact[id_ben]['nom_jeune_fille']);
+	$j('#deuxieme_prenom_box').val(arrayContact[id_ben]['deuxieme_prenom']);
+
+	$j('#adresse_box').val(arrayContact[id_ben]['adresse_ligne_1']);
+	$j('#complement_adresse_box').val(arrayContact[id_ben]['adresse_ligne_2']);
+	$j('#cp_box').val(arrayContact[id_ben]['cp']);
+	$j('#ville_box').val(arrayContact[id_ben]['ville']);
+	$j('#pays_box').val(arrayContact[id_ben]['pays'])
+	$j('#region_box').val(arrayContact[id_ben]['region'])
+	$j('#tel_pro_1_box').val(arrayContact[id_ben]['tel_pro_1']);
+	$j('#tel_pro_2_box').val(arrayContact[id_ben]['tel_pro_2']);
+	$j('#tel_dom_1_box').val(arrayContact[id_ben]['tel_domicile_1']);
+	$j('#tel_dom_2_box').val(arrayContact[id_ben]['tel_domicile_2']);
+	$j('#fax_pro_box').val(arrayContact[id_ben]['fax_pro']);
+	$j('#fax_perso_box').val(arrayContact[id_ben]['fax_perso']);
+	$j('#portable_perso_box').val(arrayContact[id_ben]['portable_perso']);
+	$j('#portable_pro_box').val(arrayContact[id_ben]['portable_pro']);
+	$j('#email_pro_box').val(arrayContact[id_ben]['email_pro']);
+	$j('#email_perso_box').val(arrayContact[id_ben]['email_perso']);
+	$j('#fonction_box').val(arrayContact[id_ben]['fonction']);
+	$j('#site_web_box').val(arrayContact[id_ben]['site_perso']);
+	
+	
+}
+
+
+function verifFiltre()
+{
+	if($j('#select_categorie').val()!='' || $j('#select_champ').val()!='' || $j('#mot_recherche').val()!='')
+	{
+	return true;
+	}
+	else
+	{
+		if(confirm('Il est conseillé d\'affiner votre recherche afin d\'optimiser le temps de réponse, souhaitez vous continuer ?'))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+}
+
+
+
+function navigationRecherche(idTable)
+{
+	
+	if($j('#'+idTable).css('display') == "block" )
+	{
+		$j('#'+idTable).hide('blind');
+		
+	}
+	else
+	{
+		$j('#'+idTable).show('blind');
+	}
+}
+
+
+function getContact()
+{
+	
+	if(verifFiltre()==true)
+		{
+		$j('.contenu_flex').html("");
+	var pager="<div class='pager' id='pager'>	<form><table><tr><td width='100px'><a  href='./index.php?page=xls&noHeader=1&libelle_xls=contact'><img src='./images/ico/excel.png' /> Export Excel</a></td><td> - </td><td>";
+	pager +='<img src="./images/ico/first.png" class="first"/><img src="./images/ico/prev.png" class="prev"/> Page : <input type="text" size="4" class="pagedisplay"/> ';
+	pager +='<img src="./images/ico/next.png" class="next"/>';
+	pager +='<img src="./images/ico/last.png" class="last"/>';
+	pager +=' - <span class="nb_resultats"></span> résultats - Afficher <select class="pagesize"><option selected="selected"  value="30">30</option><option  value="60">60</option></select> lignes</form></td></tr></table></div>';
+	var champ = $j('#select_champ').val();
+	$j('.load').show();
+	$j('.page').html(pager);
+	
+	
+	verifCaseACocher();
+
+	
+$j.ajax({
+		url : "./index.php?page=ajaxContact&noTemplate=1",
+		dataType : "json",
+		data : {
+		cat_id : $j('#select_categorie').val(),
+		mot : $j('#mot_recherche').val(),
+		champ : champ,
+		descriptif_id : descriptif['id'],
+        descriptif_libelle : descriptif['libelle'],
+		action : "getContact"
+		    
+		},
+		success: function(data){
+
+var html='<table id="myTable" cellspacing="1" class="tablesorter"><thead><tr> ';
+for(i=0;i<descriptif['id'].length;i++)
+{
+	html +='<th >'+descriptif['libelle'][i]+'</th>';
+}
+html +='<th></th></thead></tr><tbody>';
+
+			$j.each(data.DATA,function(i, obj){
+				
+				html +='<tr>';
+				for(i=0;i<descriptif['id'].length;i++)
+				{
+					if(obj[''+descriptif['id'][i]+'']==null)
+					{obj[''+descriptif['id'][i]+'']="";}
+					if(descriptif['id'][i]=="nom_complet")
+					{
+					html +='<td><a onclick="editContactBox('+obj['id_ben']+')" href="javascript:void(0);">'+obj[''+descriptif['id'][i]+'']+'</a></td>';
+					}
+					else
+					{
+					html +='<td>'+obj[''+descriptif['id'][i]+'']+'</td>';
+					}
+				}
+
+				arrayContact[obj['id_ben']] = new Array();
+				arrayContact[obj['id_ben']]['id_ben'] = obj['id_ben'];
+				arrayContact[obj['id_ben']]['cat_id'] = obj['cat_id'];
+				arrayContact[obj['id_ben']]['nom'] = obj['nom'];
+				arrayContact[obj['id_ben']]['prenom'] = obj['prenom'];
+				arrayContact[obj['id_ben']]['civilite'] = obj['civilite'];
+				arrayContact[obj['id_ben']]['deuxieme_prenom'] = obj['deuxieme_prenom'];
+				arrayContact[obj['id_ben']]['nom_jeune_fille'] = obj['nom_jeune_fille'];
+				arrayContact[obj['id_ben']]['adresse_ligne_1'] = obj['adresse_ligne_1'];
+				arrayContact[obj['id_ben']]['adresse_ligne_2'] = obj['adresse_ligne_2'];
+				arrayContact[obj['id_ben']]['cp'] = obj['cp'];
+				arrayContact[obj['id_ben']]['ville'] = obj['ville'];
+				arrayContact[obj['id_ben']]['region'] = obj['region'];
+				arrayContact[obj['id_ben']]['pays'] = obj['pays'];
+				arrayContact[obj['id_ben']]['tel_pro_1'] = obj['tel_pro_1'];
+				arrayContact[obj['id_ben']]['tel_pro_2'] = obj['tel_pro_2'];
+				arrayContact[obj['id_ben']]['tel_domicile_1'] = obj['tel_domicile_1'];
+				arrayContact[obj['id_ben']]['tel_domicile_2'] = obj['tel_domicile_2'];
+				arrayContact[obj['id_ben']]['fax_pro'] = obj['fax_pro'];
+				arrayContact[obj['id_ben']]['fax_perso'] = obj['fax_perso'];
+				arrayContact[obj['id_ben']]['portable_pro'] = obj['portable_pro'];
+				arrayContact[obj['id_ben']]['portable_perso'] = obj['portable_perso'];
+				arrayContact[obj['id_ben']]['email_pro'] = obj['email_pro'];
+				arrayContact[obj['id_ben']]['email_perso'] = obj['email_perso'];
+				arrayContact[obj['id_ben']]['site_perso'] = obj['site_perso'];
+				arrayContact[obj['id_ben']]['fonction'] = obj['fonction'];
+				
+				html +='<td><img style="cursor:pointer" onclick="editContactBox('+obj['id_ben']+');" src="./images/ico/edit.png" /></td></tr>';
+			});
+
+			html +="<tbody></table>";
+
+if(data.TOTAL!=0)
+{
+
+			$j('.contenu_flex').html(html);
+			$j("#myTable").tablesorter({ widgets: ['zebra'] })
+						 .tablesorterPager({container: $j("#pager"),positionFixed: false });
+}
+$j('.load').hide();
+			$j('.nb_resultats').html(data.TOTAL);
+
+			if(champ!='')
+			{
+				
+				var option='';
+			}
+			if(champ=='')
+			{
+				var option='<option value="">Champs contact</option>';
+			}
+			$j.each(data.champs,function(i, obj){
+				option +='<option value="'+data.champs[i]+'">'+data.libelle[i]+'</option>';
+			});
+			if(champ!='')
+			{
+				
+				option +='<option value="">Champs contact</option>';
+			}
+			$j('#select_champ').html(option);
+			$j('#select_champ').val(champ);
+			
+			$j('.recherche').show();
+}
+	});	
+
+
+		
+
+
+
+//$j('.pager').show();
+
+
+
+		}
+	
+
+}
+function saveParametre()
+{
+
+
+
+	$j( "#saveParametre" ).dialog({height:200,width:400});
+/*	verifCaseACocher();
+	$j.ajax({
+		url : "./index.php?page=ajaxContact&noTemplate=1",
+		dataType : "json",
+		data : {
+		descriptif_id : descriptif['id'],
+		action : "saveParametre"
+		    
+		},
+		success: function(data){
+		}});
+	
+	*/
+}
+function saveParametre2()
+{
+
+
+
+	
+	verifCaseACocher();
+
+	if($j("#selectParam").val()!="")
+	{
+		var idParam = $j("#selectParam").val();
+		var action = "saveParametre";
+	}
+	else
+	{	var idParam = "";
+		var libelleParametre = $j("#inputParam").val();
+		var action = "createParametre";}
+	$j.ajax({
+		url : "./index.php?page=ajaxContact&noTemplate=1",
+		dataType : "json",
+		data : {
+		descriptif_id : descriptif['id'],
+		idParam : idParam,
+		cat_id : $j('#select_categorie').val(),
+		libelleParametre : libelleParametre,
+		action : action
+		    
+		},
+		success: function(data){
+			$j('.retour_param').html(data);
+		}});
+	
+	setTimeout('$j( "#saveParametre" ).dialog("close")',2000);
+	setTimeout('window.location.href="index.php?page=Contact"',2000);
+}
+function verifCaseACocher()
+{
+	descriptif =  new Array('id','libelle');
+	descriptif['id'] = new Array();
+	descriptif['libelle'] = new Array();
+	descriptif['largeur'] = new Array();
+	descriptif['triable'] = new Array();
+	// GESTION DES CASES A COCHEES
+	
+	for(i=0;i<parametre['contact']['id'].length;i++)
+	{
+	if($j('#'+parametre['contact']['id'][i]+'').is(':checked')==true)
+		{
+		  descriptif['id'][descriptif['id'].length]=parametre['contact']['id'][i];descriptif['libelle'][descriptif['libelle'].length]=parametre['contact']['libelle'][i];descriptif['largeur'][descriptif['largeur'].length]=parametre['contact']['largeur'][i];
+		}
+	}
+
+}
+
+function in_array (needle, haystack, argStrict) {
+    // http://kevin.vanzonneveld.net
+    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: vlado houba
+    // +   input by: Billy
+    // +   bugfixed by: Brett Zamir (http://brett-zamir.me)
+    // *     example 1: in_array('van', ['Kevin', 'van', 'Zonneveld']);
+    // *     returns 1: true
+    // *     example 2: in_array('vlado', {0: 'Kevin', vlado: 'van', 1: 'Zonneveld'});
+    // *     returns 2: false
+    // *     example 3: in_array(1, ['1', '2', '3']);
+    // *     returns 3: true
+    // *     example 3: in_array(1, ['1', '2', '3'], false);
+    // *     returns 3: true
+    // *     example 4: in_array(1, ['1', '2', '3'], true);
+    // *     returns 4: false
+    var key = '',
+        strict = !! argStrict;
+
+    if (strict) {
+        for (key in haystack) {
+            if (haystack[key] === needle) {
+                return true;
+            }
+        }
+    } else {
+        for (key in haystack) {
+            if (haystack[key] == needle) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+function initcat()
+{	
+	var data = eval( <?php echo json_encode($this->listCategorie); ?>);
+	var match = eval( <?php echo json_encode(explode(',',$this->pref['id_categorie'])); ?>);
+	var html="";
+	$j.each(data,function(i, obj){
+		var check="";
+		$j.each(match,function(i, obj2){
+			
+			if(obj2==obj.cat_id)
+			{
+				check="selected='selected'";
+			}
+			
+		});
+ html += "<option  "+check+" value='"+obj.cat_id+"'>"+obj.cat_name+"</option>";
+
+	});
+	//console.debug(match);
+	$j('#select_categorie').html(html);
+
+	
+}
+getContact();
+</script>

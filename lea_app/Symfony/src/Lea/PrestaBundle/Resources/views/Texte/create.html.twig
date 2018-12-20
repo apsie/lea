@@ -1,0 +1,26 @@
+<div class="entete" >Nouveau texte</div>
+<form name="texte_create" action="./texte/create">
+	<section>
+		<fieldset>
+			<table>
+				
+			<tr>
+					<td>Chapître :</td>
+					<td>{{ form_widget(form.texteKey) }}</td>
+			</tr>
+			<tr>
+					<td>Libellé :</td>
+					<td>{{ form_widget(form.texte,{ 'attr': {'size': 72}}) }}</td>
+			</tr>
+				<tr>
+					<td> </td>
+					<td><input type="submit" value="Enregistrer" /></td>
+				</tr>
+			</table>
+		</fieldset>
+	</section>
+</form>
+<script>
+$('form[name="texte_create"]').submitForm('.div_droite','Texte',null,true);
+</script>
+					

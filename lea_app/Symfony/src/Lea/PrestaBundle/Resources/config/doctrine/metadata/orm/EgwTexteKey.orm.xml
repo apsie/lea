@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwTexteKey" table="egw_texte_key">
+    <id name="idTexteKey" type="integer" column="id_texte_key">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="libelle" type="string" column="libelle" length="128" nullable="false"/>
+    <field name="cle" type="string" column="cle" length="128" nullable="false"/>
+  </entity>
+</doctrine-mapping>

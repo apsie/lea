@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="activite"/>
+	<buildpathentry kind="src" path="epce"/>
+	<buildpathentry kind="src" path="inc"/>
+	<buildpathentry kind="src" path="index.php_fichiers"/>
+	<buildpathentry kind="src" path="nacre1"/>
+	<buildpathentry kind="src" path="nacre3"/>
+	<buildpathentry kind="src" path="tests"/>
+	<buildpathentry kind="lib" path="sql_save/egw_contact.sql.zip"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>

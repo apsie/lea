@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.assistant.calendar" template="" lang="" group="0" version="">
+		<grid>
+			<columns>
+				<column width="30%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+				<column width="2%"/>
+			</columns>
+			<rows>
+				<row>
+					<description/>
+					<description span="all" align="center" id="month"/>
+				</row>
+				<row class="th">
+					<description value="User"/>
+					<description value="1"/>
+					<description value="2"/>
+					<description value="3"/>
+					<description value="4"/>
+					<description value="5"/>
+					<description value="6"/>
+					<description value="7"/>
+					<description value="8"/>
+					<description value="9"/>
+					<description value="10"/>
+					<description value="11"/>
+					<description value="12"/>
+					<description value="13"/>
+					<description value="14"/>
+					<description value="15"/>
+					<description value="16"/>
+					<description value="17"/>
+					<description value="18"/>
+					<description value="19"/>
+					<description value="20"/>
+					<description value="21"/>
+					<description value="22"/>
+					<description value="23"/>
+					<description value="24"/>
+					<description value="25"/>
+					<description value="26"/>
+					<description value="27"/>
+					<description value="28"/>
+					<description value="29"/>
+					<description value="30"/>
+					<description value="31"/>
+				</row>
+				<row>
+					<description id="calendar[${row}][user]"/>
+					<description id="calendar[${row}][1]"/>
+					<description id="calendar[${row}][2]"/>
+					<description id="calendar[${row}][3]"/>
+					<description id="calendar[${row}][4]"/>
+					<description id="calendar[${row}][5]"/>
+					<description id="${row}[6]"/>
+					<description id="${row}[7]"/>
+					<description id="${row}[8]"/>
+					<description id="${row}[9]"/>
+					<description id="${row}[10]"/>
+					<description id="${row}[11]"/>
+					<description id="${row}[12]"/>
+					<description id="${row}[13]"/>
+					<description id="${row}[14]"/>
+					<description id="${row}[15]"/>
+					<description id="${row}[16]"/>
+					<description id="${row}[17]"/>
+					<description id="${row}[18]"/>
+					<description id="${row}[19]"/>
+					<description id="${row}[20]"/>
+					<description id="${row}[21]"/>
+					<description id="${row}[22]"/>
+					<description id="${row}[23]"/>
+					<description id="${row}[24]"/>
+					<description id="${row}[25]"/>
+					<description id="${row}[26]"/>
+					<description id="${row}[27]"/>
+					<description id="${row}[28]"/>
+					<description id="${row}[29]"/>
+					<description id="${row}[30]"/>
+					<description id="${row}[31]"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.assistant" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th" disabled="!@ticket_id">
+					<hbox span="all">
+						<description class="bold" id="ticket_lid" no_lang="1"/>
+						<description value="-"/>
+						<description class="bold" id="ticket_title" no_lang="1"/>
+					</hbox>
+				</row>
+				<row class="row">
+					<description class="bold" value="Creation date"/>
+					<date-time id="creation_date" readonly="true"/>
+					<description class="bold" value="Last update"/>
+					<date-time id="change_date" readonly="true"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Category"/>
+					<menulist class="inputRequired">
+						<menupopup type="select-cat" options="Select one,spid" id="cat_id" no_lang="1" onchange="ajax_request.appel('cat_id','ticket_assigned_to','personne',this.value);"/>
+					</menulist>
+					<description class="bold" value="Assigned To"/>
+					<menulist class="inputRequired">
+						<menupopup options="Select a category before" id="ticket_assigned_to" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Group"/>
+					<menulist class="inputRequired">
+						<menupopup onchange="ajax_request.appelMultiple('account_id','contract_id','ticket_assigned_by','personne',this.value);" id="account_id" options="Select one" no_lang="1"/>
+					</menulist>
+					<description class="bold" value="Priority"/>
+					<menulist>
+						<menupopup id="ticket_priority" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Open by"/>
+					<menulist class="inputRequired">
+						<menupopup id="ticket_assigned_by" options="Select a group before" no_lang="1"/>
+					</menulist>
+					<description class="bold" value="Time Spend" id="time_spend_label"/>
+					<textbox id="ticket_spend_time"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Unit time"/>
+					<menulist>
+						<menupopup id="ticket_unit_time"/>
+					</menulist>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="!@budget_add">
+					<description/>
+					<description/>
+					<description value="Day Budget" class="bold"/>
+					<textbox id="ticket_budget"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold top" value="Site"/>
+					<menulist class="top">
+						<menupopup options="None" id="location_id" no_lang="1"/>
+					</menulist>
+					<description value="Precision" class="bold top"/>
+					<textbox id="location_precision"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Due date"/>
+					<date id="due_date"/>
+					<description class="bold" value="Initial State"/>
+					<menulist>
+						<menupopup id="state_id" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Private"/>
+					<checkbox id="ticket_private"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Object"/>
+					<textbox size="130" span="all" class="inputRequired" id="ticket_title"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<template id="calendar" span="all"/>
+				</row>
+				<row>
+					<hbox span="all">
+						<button label="Save" id="button[save]" onclick="return verif_champTickets();"/>
+						<button label="Apply" id="button[apply]" onclick="return verif_champTickets();"/>
+						<button label="Cancel" id="button[cancel]"/>
+						<button label="Print" align="right" onclick="window.open(egw::link('/index.php','menuaction=spid.spid_ui.t_print&amp;id=$cont[ticket_id]'),'700','dependent=yes,width=800,height=450,scrollbars=yes,status=yes'); return false;"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.bold
+{
+font-weight:bold;
+}
+
+.italic
+{
+font-style:italic;
+}
+
+.top
+{
+vertical-align:top;
+}
+		</styles>
+	</template>
+</overlay>

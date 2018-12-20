@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.facture.ticket.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="50"/>
+				<column/>
+				<column width="200"/>
+				<column width="150"/>
+				<column width="50" disabled="@validate_invoice"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="ID" align="center" class="bolditalic"/>
+					<description value="Title" align="center" class="bolditalic"/>
+					<description class="bolditalic" value="State name" align="center"/>
+					<description class="bolditalic" value="Spend time" align="center"/>
+					<description value="Actions" align="center" class="bolditalic"/>
+				</row>
+				<row class="row">
+					<description id="${row}[ticket_id]" align="center" readonly="true" no_lang="1"/>
+					<description id="${row}[ticket_title]" align="center" readonly="true" no_lang="1"/>
+					<description align="center" id="${row}[state_name]" no_lang="1"/>
+					<description align="center" id="${row}[ticket_spend_time]" readonly="true" no_lang="1"/>
+					<button image="delete" label="Delete" align="center" id="delete[$row_cont[ticket_id]]" onclick="return confirm('you want to remove the ticket from this invoice. are you sure?');"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.facture.edit" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Invoice number" class="bold"/>
+					<textbox size="15" id="facture_number" needed="1"/>
+					<description class="bold" value="Client name"/>
+					<menulist>
+						<menupopup id="account_id" needed="1" options=",groups,0" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description class="bold" value="Tickets Start period date"/>
+					<date id="start_period_date" needed="1"/>
+					<description class="bold" value="Tickets End period date"/>
+					<date id="end_period_date" needed="1"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description class="bold" value="Send date"/>
+					<date id="send_date"/>
+					<description class="bold" value="Validation date"/>
+					<date id="validation_date" readonly="true"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description span="all"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description class="bold" value="Payment model"/>
+					<menulist>
+						<menupopup id="client_payment_model" needed="1" options="Select one" readonly="true"/>
+					</menulist>
+					<description class="bold" value="Company"/>
+					<textbox id="client_company" needed="1" readonly="true"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description class="bold" value="Operation code"/>
+					<textbox id="client_operation_code" readonly="true" span="all"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description class="bold" value="Total HT"/>
+					<textbox id="total_ht" readonly="true"/>
+					<description class="bold" value="Tickets number"/>
+					<hbox span="all">
+						<description readonly="true" options="1" id="ticket_number" class="bold nbticket"/>
+						<button image="ticket_forfait" label="ticket_forfait" id="ticket_forfait" span="16" class="right" onclick="window.open(egw::link('/index.php','menuaction=spid.spid_ui.add_forfait&amp;client=$cont[account_id]&amp;date=$cont[end_period_date]'),'_blank','dependent=yes,width=930,height=700,scrollbars=yes,status=yes'); return false;"/>
+						<buttononly options="new" label="Add" id="add_ticket" onclick="window.open(egw::link('/index.php','menuaction=spid.spid_ui.add_invoice&amp;id=$cont[facture_id]&amp;client=$cont[account_id]&amp;start=$cont[start_period_date]&amp;end=$cont[end_period_date]'),'_blank','dependent=yes,width=850,height=500,scrollbars=yes,status=yes'); return false;" class="right" align="right"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description/>
+					<description/>
+					<description class="bold" value="Total time"/>
+					<int id="total_time" readonly="true"/>
+				</row>
+				<row disabled="!@facture_id">
+					<description span="all"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description span="all" class="bold" value="Ticket title making left the ongoing bill"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row disabled="!@facture_id">
+					<template span="all" id="spid.facture.ticket.rows" content="ticket"/>
+				</row>
+				<row disabled="!@facture_id">
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="!@validation_date">
+					<hbox span="all">
+						<description class="bold" value="Ticket number open at start period"/>
+						<description align="right" id="nb_open_start"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="!@validation_date">
+					<hbox span="all">
+						<description class="bold" value="Ticket number open during period"/>
+						<description align="right" id="nb_open_during"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="!@validation_date">
+					<hbox span="all">
+						<description class="bold" value="Ticket number closed during period"/>
+						<description align="right" id="nb_close_during"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="!@validation_date">
+					<hbox span="all">
+						<description value="Ticket number open at end period" class="bold"/>
+						<description align="right" id="nb_open_end"/>
+					</hbox>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Creation Date"/>
+					<date-time id="creation_date" readonly="true" span="all"/>
+				</row>
+				<row class="row" disabled="!@facture_id">
+					<description class="bold" value="Update Date"/>
+					<date-time id="change_date" readonly="true" span="all"/>
+				</row>
+				<row disabled="!@hidebuttons">
+					<button image="pdf" span="all" label="Generate PDF Invoice" align="center" id="pdf"/>
+				</row>
+				<row>
+					<description span="all" class="bold" align="center" options=",$cont[lien_pdf]" value="Download invoice"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row disabled="@hidebuttons">
+					<hbox>
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+					<button span="all" label="Validate" align="right" id="button[validate]"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.bold
+{
+font-weight:bold;
+}
+
+.right
+{
+text-align: right;
+}
+
+.bolditalic
+{
+font-weight:bold;
+font-style:italic;
+}
+
+.nbticket
+{
+width: 60%;
+}
+		</styles>
+	</template>
+</overlay>

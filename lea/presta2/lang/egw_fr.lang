@@ -1,0 +1,162 @@
+a propos de spiref	spiref	fr	A propos de SpiFormation
+actions	spiref	fr	Actions
+active status	spiref	fr	Statuts actifs
+activity domain	spiref	fr	Domaine d'activité
+add a new reference	spiref	fr	Ajouter une nouvelle référence
+add status	spiref	fr	Ajouter un statut
+address	spiref	fr	Adresse
+advanced search	spiref	fr	Recherche avancée
+all domains	spiref	fr	Tous les domaines
+all references	spiref	fr	Toutes les références
+all status	spiref	fr	Tous les statuts
+amount	spiref	fr	Montant
+and	spiref	fr	ET
+apply the action on the whole query, not only the shown contacts!!!	spiref	fr	Appliquer l'action sur toute la requête, PAS uniquement les contacts vus !!!
+archived references	spiref	fr	Références archivées
+areas	spiref	fr	Zones géographiques
+attachment	spiref	fr	Pièce jointe
+authorised providers for references	spiref	fr	Fournisseurs autorisé pour les références
+bief	spiref	fr	BIEF
+caricaie	spiref	fr	Cariçaie
+case	spiref	fr	Affaire
+case reference	spiref	fr	Affaire référence
+certificate	spiref	fr	Certificat
+change date	spiref	fr	Modifié le
+changed by	spiref	fr	Modifié par
+check all	spiref	fr	Tous
+client	spiref	fr	Client
+client :	spiref	fr	Client :
+client type	spiref	fr	Type de client
+configuration updated	spiref	fr	Configuration mise à jour
+contact name	spiref	fr	Nom du contact
+contacts	spiref	fr	Contacts
+contracts	spiref	fr	Contrats
+create new links	spiref	fr	Création de nouveaux liens
+creation date	spiref	fr	Date de création
+date :	spiref	fr	Date :
+date modification	spiref	fr	Date de modification
+date modified	spiref	fr	Date de modification
+default days before delivery	spiref	fr	Nombre de jours par défaut avant livraison
+default status	spiref	fr	Statut par défaut
+default status for references	spiref	fr	Statut par défaut pour les références
+default value	spiref	fr	Valeur par défaut
+delivery address	spiref	fr	Address de livraison
+delivery date	spiref	fr	Date de réalisation
+designation	spiref	fr	Désignation
+detailled description	spiref	fr	Description détaillée
+domain created	spiref	fr	Domaine créé
+domain deleted	spiref	fr	Domaine supprimé
+domain updated	spiref	fr	Domaine mis à jour
+domains	spiref	fr	Domaines d'activité
+domains management	spiref	fr	Gestion des domaines
+edit reference	spiref	fr	Mise à jour de référence
+edit status	spiref	fr	Mise à jour de statut
+emails	spiref	fr	Emails
+error : file not found !	spiref	fr	Erreur: fichier non trouvé !
+error while saving : case id %1 already exists	spiref	fr	Erreur lors de la sauvegarde : ID affaire %1 déjà existant
+error: file already exists (two files cannot have the same name)	spiref	fr	Erreur: Fichier existant (Deux fichiers ne peuvent pas avoir le même nom)
+error: file must be an image	spiref	fr	Erreur: Le fichier doit être une image
+existing links	spiref	fr	Liens existants
+expiration date	spiref	fr	Date d'expiration
+from	spiref	fr	De
+general	spiref	fr	Général
+group used for responsable and sellers	spiref	fr	Groupe utilisé pour les responsables et les vendeurs
+header	spiref	fr	Entête
+help for images	spiref	fr	Aide pour les images
+help for new references	spiref	fr	Aide pour les nouvelles références
+help for readonly references	spiref	fr	Aide pour les références en lecture seule
+history	spiref	fr	Historique
+icon	spiref	fr	Icône
+id	spiref	fr	id
+image list	spiref	fr	Liste d'image
+images	spiref	fr	Images
+in charge	spiref	fr	Responsable
+keyword	spiref	fr	Mot clé
+keyword deleted	spiref	fr	Mot clé supprimé
+keywords management	spiref	fr	Gestion des mots clés
+link, images & contact tabs will appear after saving the reference	spiref	fr	Les onglets lien, images et contacts apparaitront après enregistrement de la référence
+links	spiref	fr	Liens
+location	spiref	fr	Lieu
+mail	spiref	fr	Mail
+mail sending failed	spiref	fr	Echec de l'envoie du mail
+mail sent successfully	spiref	fr	Mail envoyé avec succès
+management group	spiref	fr	Groupe de gestion
+miscellaneous	spiref	fr	Divers
+model	spiref	fr	Modèle
+my references	spiref	fr	Mes références
+new ref_domaine	spiref	fr	Nouveau ref_domaine
+new reference	spiref	fr	Nouvelle référence
+number of cases	spiref	fr	Nombre de références
+obsolete status	spiref	fr	Statut obsolète
+option created	spiref	fr	Option crée
+option updated	spiref	fr	Option mise à jour
+or	spiref	fr	OU
+order	spiref	fr	Ordre
+organisations	spiref	fr	Organisations
+parent	spiref	fr	Parent
+parent company	spiref	fr	Maison mère
+parent domain	spiref	fr	Domaine parent
+partner	spiref	fr	Partenaire
+partner type	spiref	fr	Type partenaire
+pending status	spiref	fr	Statuts temporaires
+possible following status	spiref	fr	Statut suivant possible
+price	spiref	fr	Prix
+print list	spiref	fr	Imprimer liste
+print pdf	spiref	fr	Imprimer PDF
+print pdf with bief header	spiref	fr	Imprimer PDF avec entête Bief
+print pdf with caricaie header	spiref	fr	Imprimer PDF avec entête Cariçaie
+prospect type	spiref	fr	Type prospect
+provider	spiref	fr	Fournisseur
+provider type	spiref	fr	Type fournisseur
+providers	spiref	fr	Fournisseurs
+reference	spiref	fr	Référence
+reference :	spiref	fr	Référence :
+reference created	spiref	fr	Référence crée
+reference updated	spiref	fr	Référence mise à jour
+references	spiref	fr	Références
+references per areas	spiref	fr	References per zones
+references per domains	spiref	fr	Références par domaines
+referentiel	spiref	fr	Référentiel
+removed ref_domaine	spiref	fr	Suppression ref_domaine
+responsable	spiref	fr	Responsable
+responsible	spiref	fr	Responsable
+role	spiref	fr	Rôle
+search for '%1'	spiref	fr	Search for '%1'
+search status '%1'	spiref	fr	Search status '%1'
+select an action	spiref	fr	Choisir une action
+select an action...	spiref	fr	Choisir une action...
+seller	spiref	fr	Vendeur
+seller type	spiref	fr	Type vendeur
+send by mail	spiref	fr	Envoyer par email
+short description	spiref	fr	Descriptions courte
+spiref	spiref	fr	Sessions
+spiref administration	spiref	fr	Admin
+spiref menu	spiref	fr	Menu SpiRef
+statistiques	spiref	fr	Statistiques
+status for obsolete references	spiref	fr	Statut pour les références obsolète
+status management	spiref	fr	Gestion des statuts
+study amount	spiref	fr	Montant de l'étude
+study's amount	spiref	fr	Montant de l'étude
+supplier	spiref	fr	Fournisseur
+team	spiref	fr	Groupe
+tel:	spiref	fr	Tél :
+title (for list print)	spiref	fr	Titre (pour impression liste)
+total hardwork	spiref	fr	Total travaux
+total study	spiref	fr	Total Etudes
+turnover	spiref	fr	Chiffre d'affaire
+type for clients	spiref	fr	Clients
+type for partner	spiref	fr	Partenaire
+type for prospects	spiref	fr	Prospects
+type for providers	spiref	fr	Fournisseurs
+type for sellers	spiref	fr	Vendeurs
+unvalidated references	spiref	fr	Références non validées
+upload image	spiref	fr	Upload d'image
+validated status	spiref	fr	Statut validé
+validated status for references	spiref	fr	Statut des références validée
+whole query	spiref	fr	Requête entière
+with bief header	spiref	fr	Avec entête Bief
+with caricaie header	spiref	fr	Avec entête Cariçaie
+without header	spiref	fr	Sans entête
+work amount	spiref	fr	Montant travaux
+year	spiref	fr	Année
+you need to select some references first	spiref	fr	Vous devez sélectionnez des références

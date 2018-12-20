@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.location.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="30"/>
+				<column width="150"/>
+				<column width="100"/>
+				<column width="100"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" id="location_id"/>
+					<nextmatch-sortheader label="Libelle" align="center" id="location_name"/>
+					<description value="Date de création" align="center" id="${row}[creation_date]"/>
+					<description value="Actions" align="center"/>
+				</row>
+				<row class="row">
+					<description id="${row}[location_id]" align="center"/>
+					<description id="${row}[location_name]" align="center" no_lang="1"/>
+					<date id="${row}[creation_date]" align="center" readonly="true"/>
+					<hbox align="center">
+						<button label="Delete" onclick="return confirm('Confirmez-vous la suppression ?');" id="delete[$row_cont[location_id]]" image="delete" statustext="//return confirmDeleteClient('$row_cont[client_company]');"/>
+						<button label="Edit" onclick="window.open(egw::link('/index.php','menuaction=spiclient.location_ui.edit&amp;id=$row_cont[location_id]'),'_blank','dependent=yes,width=500,height=250,scrollbars=yes,status=yes'); return false;" id="edit[$row_cont[location_id]]" image="edit"/>
+						<button label="view" onclick="window.open(egw::link('/index.php','menuaction=spiclient.location_ui.view&amp;id=$row_cont[location_id]'),'_blank','dependent=yes,width=500,height=250,scrollbars=yes,status=yes'); return false;" id="view[$row_cont[location_id]]" image="view"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

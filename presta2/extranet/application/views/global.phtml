@@ -1,0 +1,983 @@
+<?php
+/**
+ * Ce template sera appelé pour toutes les pages par index.php.
+ * Il a pour but d'afficher un header, $this->page  . '.phtml' et un footer
+ * Pour l'ajax, index.php peut afficher directement $this->page  . '.phtml' ( donc sans header ni footer ) si $_GET['header'] == 0
+ */
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<?php
+
+//Gestion de la balise title -  L'aide de vue HeadTitle a voir http://framework.zend.com/manual/fr/zend.view.helpers.html
+echo $this->headTitle()."\n";
+
+//Pour les View_Helper - L'aide de vue HeadMeta voir http://framework.zend.com/manual/fr/zend.view.helpers.html
+//L'initilisation headMeta ce fait dans dbconnect.php
+echo $this->headMeta()."\n";
+
+//L'initilisation headLink ce fait dans index.php => css
+echo $this->headLink()."\n";
+
+//L'initilisation HeadScript ce fait dans index.php => include js
+
+echo $this->headScript()."\n";
+
+?>
+<script>var $j = jQuery.noConflict();</script>
+</head>
+<body>
+<div class="menu">
+<table>
+	<tr>
+		<!-- <td style="width: 150px"><img src="./images/logo/apsie_gris.png" /><br /> -->
+		<!-- <strong>Extranet</strong> v2.0.5.2</td> -->
+
+		<?php  for($i=0;$i<count($_SESSION['APPAFF']);$i++)
+		{
+			if($_SESSION['APPAFF'][$i]['app_name']!="Compte_Rendu" && !in_array($_SESSION['APPAFF'][$i]['app_name'], $newArray))
+			{
+				$newArray []=$_SESSION['APPAFF'][$i]['app_name'];
+				echo'<td><img title="'.$_SESSION['APPAFF'][$i]['app_name'].'" src="images/ico/'.$_SESSION['APPAFF'][$i]['app_name'].'.png" /> <a href="index.php?page='.$_SESSION['APPAFF'][$i]['app_name'].'" >'.$_SESSION['APPAFF'][$i]['app_name'].'</a> | </td>';
+			}
+		}?>
+		<!-- <td><img title="Déco" src="images/ico/deco.png" /> <a
+			href="index.php?action=logout">Se déconnecter</a></td> -->
+	</tr>
+</table>
+</div>
+
+<div class="utilisateur">
+<table>
+	<tr>
+		<td><img title="Utilisateur connecté" src="images/ico/user.png" /> <strong><?php echo $_SESSION['UTILISATEUR']['account_firstname'].' '.$_SESSION['UTILISATEUR']['account_lastname'];?></strong>
+		( <i><?php echo $_SESSION['UTILISATEUR']['account_group']; ?></i> ) -
+		<?php echo date('d/m/Y H:i');?></td>
+	</tr>
+</table>
+</div>
+<div class="global_contenu" align="center">
+<div class="retourAuFluxNormal"></div>
+
+		<?php
+			
+		//On affiche le template spécifique à la page.
+		echo $this->render($this->page  . '.phtml');
+		?></div>
+
+<div style="display: none" id="contact_org"
+	title="Contact de l'organisation">
+<div id="liste_contacts_org"></div>
+<select onchange="Contact.inserer_id_organisation(this.value);"
+	style="display: none" id="contact_a_rechercher" style="">
+
+</select><input id="contact_a_rechercher_texte" type="text"
+	value="Rechercher un contact à lier..." size="25"
+	style="font-size: 10px; font-style: italic"
+	onkeypress="if (event.keyCode == 13) Contact.rechercheContact(this.value);"
+	onclick="this.value=''"> <img style="display: none" id="image_retour"
+	src="./images/ico/retour.png"
+	onclick="Calendrier.retourRechercheContact()" style="cursor: pointer;">
+ou
+<button onclick="Contact.addContactBox()">Ajouter un nouveau contact</button></div>
+
+<div style="display: none" id="editContactv2" title="">
+</div>
+<div style="display: none" id="editContact_" title="">
+<div class="verif_box"></div>
+<h4><img alt="Fiche contact" src="./images/ico/contact_box.png">
+Coordonnées du contact</h4>
+
+
+<table>
+	<tr>
+		<td>Catégorie</td>
+		<td><select id="select_categorie_box">
+			<option value=""></option>
+			<?php for($i=0;$i<count($this->listCategorie);$i++)
+			{
+				if($this->contact['cat_id']==$this->listCategorie[$i]['cat_id'])
+				$chekCatId='selected="selected"';
+				else
+				$chekCatId='';
+				echo'<option '.$chekCatId.' value="'.$this->listCategorie[$i]['cat_id'].'">'.utf8_encode($this->listCategorie[$i]['cat_name']).'</option>';
+			}?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Civilité</td>
+		<td><select id="civilite_box">
+			<option></option>
+			<option <?php echo $chekMadame?> >Madame</option>
+			<option<?php echo $chekMademoiselle?> >Mademoiselle</option>
+			<option <?php echo $chekMonsieur?> >Monsieur</option>
+		</select></td>
+		<td><input id="idContact_box" type="hidden" value="<?php echo $this->contact['id_ben']?>" /></td>
+	</tr>
+	<tr>
+		<td>Nom</td>
+		<td><input id="nom_box" type="text" value="<?php echo $this->contact['nom']?>" /></td>
+		<td>Prénom</td>
+		<td><input id="prenom_box" type="text" value="<?php echo $this->contact['prenom']?>" /></td>
+	</tr>
+	<tr>
+		<td>Nom de jeune fille</td>
+		<td><input id="nom_jeune_fille_box" type="text" value="<?php echo $this->contact['nom_jeune_fille']?>" /></td>
+		<td>Deuxième prénom</td>
+		<td><input id="deuxieme_prenom_box" type="text" value="<?php echo $this->contact['deuxieme_prenom']?>" /></td>
+	</tr>
+	<tr>
+		<td>Adresse</td>
+		<td><input id="adresse_box" type="text" value="<?php echo utf8_encode($this->contact['adresse_ligne_1'])?>"/></td>
+		<td>Complément d'adresse</td>
+		<td><input id="complement_adresse_box" type="text" value="<?php echo utf8_encode($this->contact['adresse_ligne_2'])?>" /></td>
+	</tr>
+	<tr>
+		<td>Cp</td>
+		<td><input id="cp_box" type="text" value="<?php echo $this->contact['cp']?>" /></td>
+		<td>Ville</td>
+		<td><input  id="ville_box" type="text" value="<?php echo $this->contact['ville']?>" />
+		</td>
+	</tr>
+	<tr>
+		<td>Région</td>
+		<td><input id="region_box" type="text" value="<?php echo $this->contact['region']?>" /></td>
+		<td>Pays</td>
+		<td><input id="pays_box" type="text" value="<?php echo $this->contact['pays']?>" /></td>
+	</tr>
+	<tr>
+		<td>Tel Pro 1</td>
+		<td><input id="tel_pro_1_box" type="text" value="<?php echo $this->contact['tel_pro_1']?>" /></td>
+		<td>Tel Pro 2</td>
+		<td><input id="tel_pro_2_box" type="text" value="<?php echo $this->contact['tel_pro_2']?>" /></td>
+	</tr>
+	<tr>
+		<td>Tel Dom. 1</td>
+		<td><input id="tel_dom_1_box" type="text" value="<?php echo $this->contact['tel_domicile_1']?>" /></td>
+		<td>Tel Dom. 2</td>
+		<td><input id="tel_dom_2_box" type="text" value="<?php echo $this->contact['tel_domicile_2']?>" /></td>
+	</tr>
+	<tr>
+		<td>Fax pro</td>
+		<td><input id="fax_pro_box" type="text" value="<?php echo $this->contact['fax_pro']?>" /></td>
+		<td>Fax perso</td>
+		<td><input id="fax_perso_box" type="text" value="<?php echo $this->contact['fax_perso']?>" /></td>
+	</tr>
+	<tr>
+		<td>Port. Pro</td>
+		<td><input id="portable_pro_box" type="text" value="<?php echo $this->contact['portable_pro']?>" /></td>
+		<td>Port. Perso</td>
+		<td><input id="portable_perso_box" type="text" value="<?php echo $this->contact['portable_perso']?>" /></td>
+	</tr>
+	<tr>
+		<td>Email pro</td>
+		<td><input id="email_pro_box" type="text" value="<?php echo $this->contact['email_pro']?>" /></td>
+		<td>Email perso</td>
+		<td><input id="email_perso_box" type="text" value="<?php echo $this->contact['email_perso']?>" /></td>
+	</tr>
+	<tr>
+		<td>Fonction</td>
+		<td><input id="fonction_box" type="text" value="<?php echo utf8_encode($this->contact['fonction'])?>" /></td>
+		<td>Site web</td>
+		<td><input id="site_web_box" type="text" value="<?php echo $this->contact['site_perso']?>" /></td>
+	</tr>
+</table>
+<br />
+<br />
+<center>
+<button onclick="Contact.saveContact(<?php echo $this->noReload;?>)">Enregistrer</button>
+</center>
+
+<div style="display: none" id="detailsEvenement"
+	title="Détails de l'évènement">
+<div style="float: left; width: 40%">
+<table
+	style="padding: 5px; border: 1px solid #CCC; background-color: #FFF; -moz-border-radius-topright: 10px; -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-topleft: 10px;">
+	<tbody>
+		<tr>
+			<td width="152">Id Evènement</td>
+			<td id="details_id_evenement" width="252"></td>
+		</tr>
+		<tr>
+			<td>Date</td>
+			<td id="details_date"></td>
+		</tr>
+		<tr>
+			<td>Objet</td>
+			<td id="details_objet">Objet</td>
+		</tr>
+		<tr>
+			<td>Transmis à</td>
+			<td id="details_conseiller"></td>
+		</tr>
+		<tr>
+			<td>Par</td>
+			<td id="details_owner"></td>
+		</tr>
+		<tr>
+			<td>Nom du contact</td>
+			<td id="details_nom"></td>
+		</tr>
+		<tr>
+			<td>Fonction</td>
+			<td id="details_fonction"></td>
+		</tr>
+		<tr>
+			<td>Tel</td>
+			<td id="details_tel"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td id="details_email"></td>
+		</tr>
+		<tr>
+			<td><br><br>
+			
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Degré</td>
+			<td id="details_degre"></td>
+		</tr>
+		<tr>
+			<td>Statut</td>
+			<td><select id="details_statut"
+				onchange="Evenement.updateEvenement();">
+				<option>Nouveau</option>
+				<option>En cours</option>
+				<option>Terminé</option>
+			</select><span id="resultat_statut"></span></td>
+		</tr>
+	</tbody>
+</table>
+<br />
+Observations : <br />
+<span id="details_observations"></span> <br />
+<br />
+<table>
+	<tbody>
+		<tr>
+			<td><strong><?php echo $_SESSION['UTILISATEUR']['account_firstname'].' '.$_SESSION['UTILISATEUR']['account_lastname'];?>
+			dit : </strong></td>
+		</tr>
+		<tr>
+			<td><textarea rows="5" cols="40"
+				style="border: 1px solid #CCC; font-size: 11px;" id="message"></textarea></td>
+		</tr>
+		<tr>
+			<td><input onclick="Evenement.addMessage();" style="cursor: pointer"
+				type="button" value="Enregistrer"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div style="float: left; padding-left: 10px">
+<div>
+<h3><img src="./images/ico/conversation.png"> Historique de
+conversations</h3>
+<div id="details_message"></div>
+</div>
+</div>
+</div>
+
+<div style="display: none" id="editProjet" title="">
+<div class="verif_box"></div>
+<div style="display: none" id="div_recherche_contact_projet">
+<h4><img alt="Bénéficiaire" src="./images/ico/contact_box.png" />
+Bénéficiaire du projet</h4>
+<table>
+	<tr>
+		<td><input type="text" value="Rechercher un contact..." size="25"
+			style="font-size: 10px; font-style: italic"
+			onkeypress="if (event.keyCode == 13) Calendrier.rechercheContact(this.value,'_projet');"
+			onclick="this.value=''" id="contact_a_rechercher_texte_projet" /><select
+			id="contact_a_rechercher_projet" style="display: none"></select><img
+			style="display: none; cursor: pointer;" id="image_retour_projet"
+			src="./images/ico/retour.png"
+			onclick="Calendrier.retourRechercheContact('_projet')"
+			style="cursor: pointer;"></td>
+	</tr>
+</table>
+</div>
+<h4><img alt="Fiche projet" src="./images/ico/contact_box.png" />
+Information sur le projet</h4>
+<div>
+<div onclick="Navigation_.navigationDialogProjet('general_projet');"
+	id="projet_menu_general_projet"
+	class="projet_menu_general_projet_active">Général</div>
+<div onclick="Navigation_.navigationDialogProjet('entreprise');"
+	id="projet_menu_entreprise" class="projet_menu_entreprise">L'entreprise</div>
+</div>
+<div class="dialog_general_projet"
+	style="border: 1px solid #CCC; padding: 10px; clear: both">
+<table>
+
+	<tr>
+		<td>Catégorie</td>
+		<td><select id="categorie_projet">
+			<option>CREA</option>
+			<option>DEV</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Date de début</td>
+		<td><input id="id_projet" type="hidden" /><input
+			value="<?php echo date('d/m/Y'); ?>" id="date_deb_projet" type="text" />
+		</td>
+	</tr>
+	<tr>
+		<td>Date de fin prévisionnelle</td>
+		<td><input id="date_fin_pre_projet" type="text" /></td>
+	</tr>
+	<tr id="tr_date_fin_projet" style="display: none">
+		<td>Date de fin réelle</td>
+		<td><input id="date_fin_projet" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Référent</td>
+		<td><select id="referent_projet">
+			<option></option>
+			<?php  for($i=0;$i<count($this->utilisateurs);$i++)
+			{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Description du projet</td>
+		<td><textarea style="border: 1px solid #CCC" id="desc_projet"
+			cols="50" rows="3"></textarea></td>
+	</tr>
+	<tr>
+		<td>Résultat</td>
+		<td><select id="resultat_projet">
+			<option></option>
+			<option>En attente de resultat</option>
+			<option>Entreprise Cree</option>
+			<option>Retour à l'emploi</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Statut</td>
+		<td><select id="statut_projet">
+			<option></option>
+			<option>En cours</option>
+			<option>Abandon</option>
+			<option>Complet</option>
+			<option>Suspendu</option>
+		</select></td>
+	</tr>
+</table>
+<br />
+<br />
+</div>
+<div
+	style="display: none; border: 1px solid #CCC; padding: 10px; clear: both"
+	class="dialog_entreprise">
+
+<table>
+	<tr>
+		<td>Catégorie</td>
+		<td><select id="categorie_">
+			<option value="292">Org_resacc</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Code organisme</td>
+		<td><input id="code_organisme_" type="text" /></td>
+		<td>Code Naf</td>
+		<td><input onblur="fill_naf();" onKeyUp="lookup_naf(this.value);"
+			name="code_naf_" id="code_naf_" type="text" />
+		<div class="suggestionsBox" id="suggestions_naf"
+			style="display: none;">
+		<div class="suggestionList" id="autoSuggestionsList_naf">&nbsp;</div>
+		</div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Nom de l'organisme</td>
+		<td><input id="id_organisation_" type="hidden" /><input
+			id="nom_organisme_" type="text" /></td>
+		<td>Activité principale</td>
+		<td><input type="text" id="activite_principale_" /></td>
+	</tr>
+	<tr>
+		<td>Raison sociale</td>
+		<td><input id="raison_sociale_" type="text" /></td>
+		<td>Type d'adresse</td>
+		<td><select id="type_adresse_">
+		<?php echo $this->option_type_adresse;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Rue</td>
+		<td><input id="rue_" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Adresse ligne 2</td>
+		<th align="left" colspan="3"><input size="72" id="adresse_ligne_2_"
+			type="text" /></th>
+	</tr>
+	<tr>
+		<td>Adresse ligne 3</td>
+		<th align="left" colspan="3"><input size="72" id="adresse_ligne_3_"
+			" type="text" /></th>
+	</tr>
+	<tr>
+		<td>Cp</td>
+		<td><input autocomplete="off" onblur="fill();"
+			onkeyup="lookup(this.value,'cp');" id="cp_box_" type="text" /></td>
+		<td>Ville</td>
+		<td><input autocomplete="off" onblur="fill();"
+			onkeyup="lookup(this.value,'ville');" id="ville_box_" type="text" />
+		<div class="suggestionsBox" id="suggestions" style="display: none;">
+		<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Région</td>
+		<td><input id="region_box_" type="text" /></td>
+		<td>Pays</td>
+		<td><input id="pays_box_" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Tel</td>
+		<td><input id="tel_" type="text" /></td>
+		<td>Fax</td>
+		<td><input id="fax_" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input id="email_" type="text" /></td>
+		<td>Site web</td>
+		<td><input id="site_web_" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Date d'immatriculation</td>
+		<td><input id="date_immat_" type="text" /></td>
+		<td>Début d'activité</td>
+		<td><input id="date_debut_activite_" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Forme juridique</td>
+		<td><select id="forme_juridique_">
+		<?php echo $this->option_forme_juridique;?>
+		</select></td>
+		<td>Siret</td>
+		<td><input id="siret_" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Secteur d'activité</td>
+		<th align="left" colspan="3"><select id="secteur_activite_">
+		<?php echo $this->option_secteur_activite;?>
+		</select></th>
+	</tr>
+	<tr>
+		<td>Dirigeant</td>
+		<td><select id="dirigeant_">
+			<option></option>
+			<option value="Le beneficiaire">Le beneficiaire</option>
+			<option value="L'Associe">L'Associe</option>
+		</select></td>
+		<td>Implantation</td>
+		<td><select id="implantation_">
+		<?php echo $this->option_implantation;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Régime Imposition</td>
+		<td><select id="regime_imposition_">
+		<?php echo $this->option_regime_imposition;?>
+		</select></td>
+		<td>Régime TVA</td>
+		<td><select id="regime_tva_">
+		<?php echo $this->option_regime_tva;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Régime Fiscal</td>
+		<td><select id="regime_fiscal_">
+		<?php echo $this->option_regime_fiscal;?>
+		</select></td>
+		<td>Régime Social Dirigeant</td>
+		<td><select id="regime_social_dirigeant_">
+		<?php echo $this->option_regime_social_dirigeant;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Statut</td>
+		<td><select id="statut_">
+			<option></option>
+			<option>En cours</option>
+			<option>Cree</option>
+			<option>Annulee</option>
+		</select></td>
+	</tr>
+</table>
+
+</div>
+<br />
+<center>
+<button onclick="Projet.addProjet()">Enregistrer</button>
+</center>
+</div>
+<div style="display: none" id="editCalendrier" title=""><input
+	type="hidden" id="idCal" value="" />
+<div>
+<div style="display: none" id="dialogRechercheCal" title="">
+<div class="page_recherche"></div>
+<div class="contenu_recherche"></div>
+</div>
+
+
+<div onclick="Calendrier.navigationDialogCalendrier('general');"
+	id="cal_menu_general" class="cal_menu_general_active">Général</div>
+<div onclick="Calendrier.navigationDialogCalendrier('participant');"
+	id="cal_menu_participant" class="cal_menu_participant">Participants ( <span
+	id="nb_participant">0</span> )</div>
+</div>
+<table class="dialog_participant"
+	style="border: 1px solid #CCC; width: 580px;">
+	<tr>
+		<td>Affiner la sélection des contacts</td>
+		<td><input id="mot_contact" type="text" /></td>
+		<td>
+		<button onclick="Calendrier.rechecherContact();">Ok</button>
+		</td>
+	</tr>
+	<tr>
+		<td>Sélectionner les contacts à ajouter</td>
+		<td><select id="id_contact_a_lier"></select></td>
+		<td>
+		<button onclick="alert('Créer le rdv, puis lier les contacts')"
+			id="lierCalContact">Ajouter</button>
+		</td>
+	</tr>
+	<tr>
+		<td>Sélectionner les référents à ajouter</td>
+		<td><select id="id_referent_a_lier">
+			<option></option>
+			<?php for($i=0;$i<count($this->utilisateurs);$i++)
+			{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'-'.$this->utilisateurs[$i]['account_lid'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?>
+		</select></td>
+		<td>
+		<button onclick="alert('Créer le rdv, puis lier les référents')"
+			id="lierCalReferent">Ajouter</button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<hr style="border: 1px solid #CCC" />
+		</td>
+		<td>
+		<hr style="border: 1px solid #CCC" />
+		</td>
+		<td>
+		<hr style="border: 1px solid #CCC" />
+		</td>
+	</tr>
+
+	<tr>
+		<td id="liste_participants" colspan="3"></td>
+	</tr>
+
+
+</table>
+<table class="dialog_general" style="border: 1px solid #CCC">
+	<tr>
+		<td>Prestataire</td>
+		<td><select id="id_prestataire">
+		<?php
+
+		for($i=0;$i<count($this->prestataire);$i++)
+		{
+			echo'<option value="'.$this->prestataire[$i]['id_prestataire'].'">'.$this->prestataire[$i]['nom'].'</option>';
+		}
+		?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Type d'évènement</td>
+		<td><select id="id_type_evenement">
+		<?php
+		for($i=0;$i<count($this->typeEvent);$i++)
+		{
+			echo'<option value="'.$this->typeEvent[$i]['id_type_evenement'].'">'.$this->typeEvent[$i]['nom_court'].' ( '.$this->typeEvent[$i]['nom_long'].' )</option>';
+		}
+		?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Presta</td>
+		<td><select id="id_cal_cat">
+			<option></option>
+			<?php
+			for($i=0;$i<count($this->calCat);$i++)
+			{
+				echo'<option value="'.$this->calCat[$i]['id_cal_cat'].'">'.$this->calCat[$i]['cal_cat_name'].' ( '.$this->calCat[$i]['objet_dispositif'].' )</option>';
+			}
+			?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Titre</td>
+		<td><input id="CalendarTitle" size="70" type="text" value="" /></td>
+	</tr>
+	<tr>
+		<td>Début</td>
+		<td><input size="8" id="date1" type="text" /> <select id="heure1">
+		<?php
+		for($i=8;$i<=18;$i++)
+		{
+			echo "<option>".$i."</option>";
+		}
+
+		?>
+		</select>h <select id="min1">
+			<option>00</option>
+			<option>30</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Durée</td>
+		<td><select id="duree">
+			<option>00:30</option>
+			<option selected="selected">01:00</option>
+			<option>01:30</option>
+			<option>02:00</option>
+			<option>02:30</option>
+			<option>03:00</option>
+			<option>03:30</option>
+			<option>04:00</option>
+			<option>04:30</option>
+			<option>05:00</option>
+			<option>05:30</option>
+			<option>06:00</option>
+			<option>06:30</option>
+			<option>07:00</option>
+			<option>07:30</option>
+			<option>08:00</option>
+			<option>08:30</option>
+			<option>09:00</option>
+			<option>09:30</option>
+			<option>10:00</option>
+			<option>10:30</option>
+			<option>11:00</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Lieu</td>
+		<td>
+		<div style="float: left"><select id="id_lieu">
+			<option></option>
+			<?php  for($i=0;$i<count($this->lieu);$i++)
+			{ echo '<option value="'.$this->lieu[$i]['id_lieu'].'">'.$this->lieu[$i]['nom_lieu'].'</option>';}
+			?>
+		</select></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Statut</td>
+		<td><select id="statut_cal">
+			<option>P</option>
+			<option>A</option>
+			<option>R</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td><textarea id="Description" cols="70" rows="5"></textarea></td>
+	</tr>
+</table>
+<br />
+<br />
+<center>
+<button onclick="Calendrier.addEvent();">Enregistrer</button>
+<button onclick="Calendrier.delEvent();">Supprimer</button>
+</center>
+</div>
+
+</div>
+
+
+
+
+<!-- RdvControl -->
+<div id="div_rdv_control"></div>
+
+<!-- OPCREA -->
+<div id="div_opcrea"></div>
+<!-- OE -->
+<div id="div_oe"></div>
+
+<!-- COMMON -->
+<div id="div_common" title=""></div>
+
+<script type="text/javascript">
+
+//PRESTA Gestion du change input select
+$j(".change").click(function() {
+	$j('.'+$j(this).attr('rel')).changeSelectInput();
+	});
+
+
+var VARTEMPS = new Array();
+VARTEMPS['COMPTES'] = new Array();
+ VARTEMPS['COMPTES']['ID'] = <?php echo $_SESSION['UTILISATEUR']['account_id']?>;
+VARTEMPS['COMPTES']['NOM'] = "<?php echo $_SESSION['UTILISATEUR']['account_lastname']?>";
+ VARTEMPS['COMPTES']['PRENOM'] = "<?php echo $_SESSION['UTILISATEUR']['account_firstname']?>";
+$j( "button").button();
+
+function strtolower (str) {
+    // Makes a string lowercase  
+    // 
+    // version: 1103.1210
+    // discuss at: http://phpjs.org/functions/strtolower    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: Onno Marsman
+    // *     example 1: strtolower('Kevin van Zonneveld');
+    // *     returns 1: 'kevin van zonneveld'
+    return (str + '').toLowerCase();}
+$j( "#date_deb_projet" ).datepicker($j.datepicker.regional[ "fr" ]);
+$j( "#date_fin_pre_projet" ).datepicker($j.datepicker.regional[ "fr" ]);
+$j( "#date_fin_projet" ).datepicker($j.datepicker.regional[ "fr" ]);
+$j( "#date_immat_" ).datepicker($j.datepicker.regional[ "fr" ]);
+$j( "#date_debut_activite_" ).datepicker($j.datepicker.regional[ "fr" ]);
+
+function notify(titre,message)
+{
+	$j.gritter.add({
+		// (string | mandatory) the heading of the notification
+		title: titre,
+		// (string | mandatory) the text inside the notification
+		text: message
+	});
+}
+
+
+// Autocomplete
+
+
+	  
+		$j('#cp_box').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxContact&action=getVille&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.cp +', '+ item.ville1,
+								value: item.cp,
+								ville: item.ville1,
+								region: item.region,
+								pays : item.pays,
+								
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				
+				$j('#ville_box').val( ui.item.ville);
+				$j('#region_box').val( ui.item.region);
+				$j('#pays_box').val( ui.item.pays);
+			
+			},
+			
+			
+		});
+
+		$j('#ville_box').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxContact&action=getVille&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.cp +', '+ item.ville1,
+								value: item.ville1,
+								ville: item.ville1,
+								region: item.region,
+								pays : item.pays,
+								cp : item.cp,
+								
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				$j('#cp_box').val( ui.item.cp);
+				$j('#ville_box').val( ui.item.ville);
+				$j('#region_box').val( ui.item.region);
+				$j('#pays_box').val( ui.item.pays);
+			
+			},
+			
+			
+		});
+
+		$j('#cp_box_org').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxContact&action=getVille&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.cp +', '+ item.ville1,
+								value: item.cp,
+								ville: item.ville1,
+								region: item.region,
+								pays : item.pays,
+								
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				
+				$j('#ville_box_org').val( ui.item.ville);
+				$j('#region_box_org').val( ui.item.region);
+				$j('#pays_box_org').val( ui.item.pays);
+			
+			},
+			
+			
+		});
+
+		$j('#ville_box_org').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxContact&action=getVille&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.cp +', '+ item.ville1,
+								value: item.ville1,
+								ville: item.ville1,
+								region: item.region,
+								pays : item.pays,
+								cp : item.cp,
+								
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				$j('#cp_box_org').val( ui.item.cp);
+				$j('#ville_box_org').val( ui.item.ville);
+				$j('#region_box_org').val( ui.item.region);
+				$j('#pays_box_org').val( ui.item.pays);
+			
+			},
+			
+			
+		});
+
+
+		$j('#code_naf_2').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxOrganisation&action=getCodeNaf&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					if(data!=null)
+					{
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.intitule_long+' ('+ item.code_naf+')',
+								value: item.code_naf,
+								
+								
+							}
+						}));
+					}
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				/*$j('#cp_box_org').val( ui.item.cp);
+				$j('#ville_box_org').val( ui.item.ville);
+				$j('#region_box_org').val( ui.item.region);
+				$j('#pays_box_org').val( ui.item.pays);
+			*/
+			},
+			
+			
+		});
+	
+		 $j( "#date_immat_org" ).datepicker($j.datepicker.regional[ "fr" ]);
+		  $j( "#date_debut_activite_org" ).datepicker($j.datepicker.regional[ "fr" ]);
+</script>
+
+</body>
+
+
+</html>
+
+
+

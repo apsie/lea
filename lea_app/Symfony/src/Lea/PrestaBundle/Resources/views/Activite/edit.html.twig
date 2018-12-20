@@ -1,0 +1,19 @@
+<form name="activite_edit" action="./activite/edit/{{ activite.id}}" class="formulaire" >
+		<fieldset>
+		<legend> Activité </legend>
+		<table>
+			
+			<tr>
+					<td>Libellé :</td>
+					<td>{{ form_widget(form.libelle) }}</td>
+				</tr>
+			<tr style="height : 50px" >
+				<td></td><td><input type="submit" value="Enregistrer" /></td>
+			</tr>
+		</table>
+</form>
+<script>
+
+$('form[name="activite_edit"]').submitForm('.div_droite','Activité','activite');
+
+</script>

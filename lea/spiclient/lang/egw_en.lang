@@ -1,0 +1,429 @@
+... only their own	spiclient	en	... only their own
+access to adressbook denied, the contacts tab will be empty, please contact your administrator	spiclient	en	Access to adressbook denied, the contacts tab will be empty, please contact your administrator
+accounting	spiclient	en	Accounting
+action that caused the notify: added, canceled, accepted, rejected, ...	spiclient	en	Action that caused the notify: Added, Canceled, Accepted, Rejected, ...
+actions	spiclient	en	Actions
+activate quick add	spiclient	en	Activate quick add
+activate this service	spiclient	en	Activate this service
+active contracts	spiclient	en	Active contracts
+add a new note	spiclient	en	Add a new Note
+add a new phonecall	spiclient	en	Add a new Phonecall
+add a new todo	spiclient	en	Add a new ToDo
+add a ticket	spiclient	en	Add a ticket
+add address	spiclient	en	Add address
+add an address	spiclient	en	Add an address
+add checklist	spiclient	en	Add checklist
+add client	spiclient	en	Add client
+add client type	spiclient	en	Add Client type
+add contract	spiclient	en	Add contract
+add contract type	spiclient	en	Add contract type
+add delay payment	spiclient	en	Add delay payment
+add geographic area	spiclient	en	Add Geographic area
+add location	spiclient	en	Add location
+add payment method	spiclient	en	Add payment method
+add role	spiclient	en	Add role
+add sector	spiclient	en	Add sector
+add technical nature	spiclient	en	Add technical nature
+add...	spiclient	en	Add...
+additional information for the setting	spiclient	en	Additional information for the setting
+address	spiclient	en	Address
+address one	spiclient	en	Address one
+address two	spiclient	en	Address two
+adress type	spiclient	en	Adress type
+adresse	spiclient	en	Adresse
+agency	spiclient	en	Agency
+agency code	spiclient	en	Agency code
+all clients	spiclient	en	Tous les clients
+all contracts	spiclient	en	All contracts
+all organizations	spiclient	en	All organizations
+allow removal	spiclient	en	Allow removal
+allow seller to access all clients	spiclient	en	Allow seller to access all clients
+allow seller to access all contracts	spiclient	en	Allow seller to access all contracts
+allow sellers to add clients	spiclient	en	Allow sellers to add clients
+allow sellers to add contracts	spiclient	en	Allow sellers to add contracts
+allow users to delete clients	spiclient	en	Allow users to delete clients
+allow users to delete contracts	spiclient	en	Allow users to delete contracts
+amount	spiclient	en	Amount
+amount budget	spiclient	en	Amount budget
+amount budget n	spiclient	en	Amount budget N
+amount:	spiclient	en	Amount:
+an organization with the name %1 already exists	spiclient	en	An organization with the name %1 already exists
+appro :	spiclient	en	Appro :
+area	spiclient	en	Area
+areas	spiclient	en	Areas
+asynchronous services	spiclient	en	Asynchronous services
+attorney	spiclient	en	Attorney
+authorise contract conversion to reference	spiclient	en	Authorise contract conversion to reference
+bank	spiclient	en	Bank
+bank account informations	spiclient	en	Bank account informations
+bic (8 or 11 caracters)	spiclient	en	BIC (8 or 11 caracters)
+bill address	spiclient	en	Bill address
+bill address 2	spiclient	en	Bill address 2
+bill address 3	spiclient	en	Bill address 3
+billable by	spiclient	en	Billable by
+budget	spiclient	en	Budget
+budget added successfully	spiclient	en	Budget added successfully
+budget help	spiclient	en	Budget help
+budget removed	spiclient	en	Budget removed
+budget updated successfully	spiclient	en	Budget updated successfully
+business phone	spiclient	en	Business phone
+by	spiclient	en	by
+case	spiclient	en	Case
+catchment	spiclient	en	Catchment
+change date	spiclient	en	Change date
+checklist	spiclient	en	Checklist
+city	spiclient	en	City
+client	spiclient	en	Client
+client bic must be 8 or 11 caracters	spiclient	en	Client BIC must be 8 or 11 caracters
+client configuration	spiclient	en	Client configuration
+client created	spiclient	en	Client created
+client deleted	spiclient	en	Client deleted
+client import parameters	spiclient	en	Client import parameters
+client management	spiclient	en	Client Management
+client management group	spiclient	en	Client management group
+client reference	spiclient	en	Client reference
+client seller	spiclient	en	Client seller
+client type	spiclient	en	Client type
+client type deleted	spiclient	en	Client type deleted
+client type management	spiclient	en	Client type management
+client updated	spiclient	en	Client updated
+clients	spiclient	en	Clients
+clients menu	spiclient	en	Clients menu
+closed contracts status	spiclient	en	Closed contracts status
+code	spiclient	en	Code
+color	spiclient	en	Color
+comment	spiclient	en	Comment
+commercial register number	spiclient	en	Commercial register number
+company's phone	spiclient	en	Company's phone
+conditions	spiclient	en	Conditions
+configuration	spiclient	en	Configuration
+configuration updated	spiclient	en	Configuration updated
+contact active	spiclient	en	Contact active
+contact added successfully	spiclient	en	Contact added successfully
+contact mail	spiclient	en	Contact mail
+contact name	spiclient	en	Contact name
+contact removed	spiclient	en	Contact removed
+contacts	spiclient	en	Contacts
+contract	spiclient	en	Contract
+contract configuration	spiclient	en	Contract configuration
+contract created	spiclient	en	Contract created
+contract help	spiclient	en	Contract help
+contract management	spiclient	en	Contract Management
+contract management group	spiclient	en	Contract management group
+contract reader (readonly access to contracts)	spiclient	en	Contract reader (readonly access to contracts)
+contract seller	spiclient	en	Contract seller
+contract status	spiclient	en	Contract status
+contract status configuration	spiclient	en	Contract Status Configuration
+contract type	spiclient	en	Contract type
+contract type configuration	spiclient	en	Contract Type Configuration
+contract type management	spiclient	en	Contract type Management
+contract updated	spiclient	en	Contract updated
+contracts	spiclient	en	Contracts
+contracts menu	spiclient	en	Contracts menu
+cost	spiclient	en	Cost
+country	spiclient	en	Country
+create a new group	spiclient	en	Create a new group
+create a ticket	spiclient	en	Create a ticket
+create new links	spiclient	en	Create new links
+creation	spiclient	en	Creation
+creation date	spiclient	en	Creation Date
+cron values	spiclient	en	Cron values
+csv files should be ansi, with " as text delimiters ; as separators and return carriage for record separator	spiclient	en	CSV files should be ANSI, with " as text delimiters ; as separators and return carriage for record separator
+csv mapping for imports	spiclient	en	CSV mapping for imports
+d	spiclient	en	d
+date de création	spiclient	en	Date de création
+date_start	spiclient	en	date_start
+day budget	spiclient	en	Day budget
+day budget n	spiclient	en	Day budget N
+day of the week	spiclient	en	Day of the week
+day:	spiclient	en	Day:
+default address name	spiclient	en	Default address name
+default group owner	spiclient	en	Default group owner
+default provider	spiclient	en	Default provider
+default provider (used for pdf)	spiclient	en	Default provider (used for PDF)
+default role for contacts	spiclient	en	Default role for contacts
+default user	spiclient	en	Default user
+default user for new group	spiclient	en	Default user for new group
+default value	spiclient	en	Default Value
+delay	spiclient	en	Delay
+delay appro	spiclient	en	Delay appro
+delay budget	spiclient	en	Delay budget
+delay hybrid	spiclient	en	Delay hybrid
+delay normal	spiclient	en	Delay normal
+delay payment	spiclient	en	Delay payment
+delay payment management	spiclient	en	Delay payment Management
+delay server	spiclient	en	Delay server
+delay sourcing	spiclient	en	Delay sourcing
+delete relations first, (contacts, contracts, etc)	spiclient	en	Delete relations first, (contacts, contracts, etc)
+desactivate this service	spiclient	en	Desactivate this service
+detailled budget	spiclient	en	Detailled budget
+down	spiclient	en	Down
+due date	spiclient	en	Due date
+edit address	spiclient	en	Edit address
+edit budget	spiclient	en	Edit budget
+edit client	spiclient	en	Edit client
+edit client checklist	spiclient	en	Edit client checklist
+edit client relation	spiclient	en	Edit client relation
+edit client type	spiclient	en	Edit Client type
+edit contract	spiclient	en	Edit contract
+edit contract type	spiclient	en	Edit contract type
+edit delay payment	spiclient	en	Edit delay payment
+edit geographic area	spiclient	en	Edit Geographic area
+edit invoice categorie	spiclient	en	Edit invoice categorie
+edit location	spiclient	en	Edit location
+edit payment method	spiclient	en	Edit payment method
+edit role	spiclient	en	Edit role
+edit sector	spiclient	en	Edit sector
+edit technical nature	spiclient	en	Edit technical nature
+email accountant	spiclient	en	Email accountant
+email copy invoice	spiclient	en	Email copy invoice
+empty values count as '*', all empty = every minute	spiclient	en	Empty values count as '*', all empty = every minute
+end date/time	spiclient	en	End Date/Time
+ended contracts	spiclient	en	Ended contracts
+error on this customer	spiclient	en	error on this customer
+error while saving	spiclient	en	Error while saving
+existing links	spiclient	en	Existing links
+fax	spiclient	en	Fax
+firstname of person to notify	spiclient	en	Firstname of person to notify
+footer field 1	spiclient	en	Footer field 1
+footer field 2	spiclient	en	Footer field 2
+free field 1	spiclient	en	Free field 1
+free field 2	spiclient	en	Free field 2
+free field 3	spiclient	en	Free field 3
+free field 4	spiclient	en	Free field 4
+free field 5	spiclient	en	Free field 5
+from the available roles...	spiclient	en	From the available roles...
+ftp client filepath	spiclient	en	FTP Client Filepath
+ftp contact filepath	spiclient	en	FTP Contact Filepath
+ftp filepath	spiclient	en	FTP Filepath
+ftp password	spiclient	en	FTP password
+ftp username	spiclient	en	FTP username
+fullname of person to notify	spiclient	en	Fullname of person to notify
+function	spiclient	en	Function
+general	spiclient	en	General
+general help on imports	spiclient	en	General help on imports
+generate pdf invoice	spiclient	en	Generate PDF Invoice
+geographic area	spiclient	en	Geographic area
+geographic area deleted	spiclient	en	Geographic area deleted
+geographic area management	spiclient	en	Geographic area management
+go to client view	spiclient	en	Go to client view
+group able to manage clients	spiclient	en	Group able to manage clients
+group able to manage contracts	spiclient	en	Group able to manage contracts
+group seller for clients	spiclient	en	Group seller for clients
+group seller for contracts	spiclient	en	Group seller for contracts
+help_manager_email	spiclient	en	help_manager_email
+history	spiclient	en	History
+hybrid :	spiclient	en	Hybrid :
+iban	spiclient	en	IBAN
+icon	spiclient	en	Icon
+id	spiclient	en	ID
+if the client (by the client code) does not exist, the fied "sitename" will be used as the client name and the client will be automatically created	spiclient	en	If the client (by the client code) does not exist, the fied "SiteName" will be used as the client name and the client will be automatically created
+import	spiclient	en	Import
+import fields	spiclient	en	Import fields
+import is allowed to admins only	spiclient	en	Import is allowed to admins only
+impossible to delete this client !	spiclient	en	Impossible to delete this client !
+in case of failure	spiclient	en	In case of failure
+include sleeping organizations	spiclient	en	Include sleeping organizations
+infolog	spiclient	en	Infolog
+information for this setting	spiclient	en	Information for this setting
+invoice access time	spiclient	en	Invoice access time
+invoice date	spiclient	en	Invoice date
+invoice folder	spiclient	en	Invoice Folder
+invoice number	spiclient	en	Invoice number
+invoice n°	spiclient	en	Invoice n°
+invoice pdf pro forma	spiclient	en	Invoice PDF pro forma
+last invoice	spiclient	en	Last Invoice
+lastname of person to notify	spiclient	en	Lastname of person to notify
+legal structure	spiclient	en	Legal structure
+libelle	spiclient	en	Libelle
+libre1	spiclient	en	libre1
+libre2	spiclient	en	libre2
+libre3	spiclient	en	libre3
+libre4	spiclient	en	libre4
+libre5	spiclient	en	libre5
+link to view the event	spiclient	en	Link to view the event
+locality	spiclient	en	Locality
+location	spiclient	en	Location
+location management	spiclient	en	Location Management
+location parent	spiclient	en	Location parent
+locations	spiclient	en	Locations
+logo	spiclient	en	Logo
+main bank account	spiclient	en	Main bank account
+manage clients	spiclient	en	Manage clients
+manage contracts	spiclient	en	Manage contracts
+management group	spiclient	en	Management group
+management group for spiclient	spiclient	en	Management group for Spiclient
+manager	spiclient	en	Manager
+manager email	spiclient	en	Manager Email
+manual budget	spiclient	en	Manual budget
+member help	spiclient	en	Member help
+members	spiclient	en	Members
+message with invoice when you send them by email	spiclient	en	Message with invoice when you send them by email
+miscellaneous	spiclient	en	Miscellaneous
+mobile phone	spiclient	en	Mobile phone
+modification	spiclient	en	Modification
+modifier	spiclient	en	Modifier
+must contain the full path (including file name)	spiclient	en	Must contain the full path (including file name)
+my active contracts	spiclient	en	My active contracts
+my clients	spiclient	en	My clients
+my contracts	spiclient	en	My contracts
+my leads	spiclient	en	My leads
+my organizations	spiclient	en	My organizations
+n_budget_amount	spiclient	en	n_budget_amount
+n_budget_days	spiclient	en	n_budget_days
+n_real_amount	spiclient	en	n_real_amount
+n_real_days	spiclient	en	n_real_days
+nature	spiclient	en	Nature
+new client	spiclient	en	New client
+new contract	spiclient	en	New contract
+new group	spiclient	en	New group
+new organization	spiclient	en	New organization
+new user	spiclient	en	New user
+no bank account for current provider	spiclient	en	No bank account for current provider
+normal :	spiclient	en	Normal :
+number of tickets	spiclient	en	Number of tickets
+old startdate	spiclient	en	Old Startdate
+only csv files are treated	spiclient	en	Only csv files are treated
+operation code	spiclient	en	Operation code
+order	spiclient	en	Order
+parc	spiclient	en	Parc
+parent area	spiclient	en	Parent area
+parent company	spiclient	en	Parent company
+participants	spiclient	en	Participants
+participants disinvited from an event	spiclient	en	Participants disinvited from an event
+payer	spiclient	en	Payer
+payment date	spiclient	en	Payment date
+payment delay	spiclient	en	Payment delay
+payment method	spiclient	en	Payment method
+payment method management	spiclient	en	Payment method Management
+payment model	spiclient	en	Payment model
+pdf	spiclient	en	pdf
+pdf title	spiclient	en	PDF Title
+period	spiclient	en	Period
+permission denied !!!	spiclient	en	Permission denied !!!
+phase	spiclient	en	Phase
+phonecall	spiclient	en	Phonecall
+please enter here the first digits of the customer phone numbers, separated with comas	spiclient	en	Please enter here the first digits of the customer phone numbers, separated with comas
+please entre a phase, category, unit, quantity and date to add budget !	spiclient	en	Please entre a phase, category, unit, quantity and date to add budget !
+please select a user and a role !	spiclient	en	Please select a user and a role !
+possible chalandise	spiclient	en	Possible chalandise
+possible parent	spiclient	en	Possible parent
+postal code	spiclient	en	Postal Code
+preview	spiclient	en	Preview
+print entry	spiclient	en	Print entry
+print pdf	spiclient	en	Print PDF
+prospect type	spiclient	en	Prospect type
+provider	spiclient	en	Provider
+provider type	spiclient	en	Provider type
+providers	spiclient	en	Providers
+quantity	spiclient	en	Quantity
+quick add	spiclient	en	Quick add
+quick client add	spiclient	en	Quick client add
+real	spiclient	en	Real
+real amount	spiclient	en	Real amount
+real amount n-1	spiclient	en	Real amount N-1
+real day	spiclient	en	Real day
+real day n-1	spiclient	en	Real day N-1
+receive notifications about assigned tickets	spiclient	en	Receive notifications about assigned tickets
+receive notifications about created tickets	spiclient	en	Receive notifications about created tickets
+recently modified clients	spiclient	en	Recently modified clients
+references	spiclient	en	References
+region	spiclient	en	Region
+remind client	spiclient	en	Remind client
+remind date	spiclient	en	Remind date
+remove checklist	spiclient	en	Remove checklist
+renewal date	spiclient	en	Renewal Date
+renewed contracts	spiclient	en	Renewed contracts
+responsable	spiclient	en	Responsable
+role	spiclient	en	Role
+role management	spiclient	en	role Management
+save entry	spiclient	en	Save entry
+sda	spiclient	en	SDA
+search '%1'	spiclient	en	Search '%1'
+search area '%1'	spiclient	en	Search area '%1'
+search company '%1'	spiclient	en	Search company '%1'
+search contract	spiclient	en	Search contract
+search contract '%1'	spiclient	en	Search contract '%1'
+search for '%1'	spiclient	en	Search for '%1'
+search location '%1'	spiclient	en	Search Location '%1'
+search role '%1'	spiclient	en	Search role '%1'
+search sector '%1'	spiclient	en	Search sector '%1'
+secondary bank account	spiclient	en	Secondary bank account
+secteur	spiclient	en	Secteur
+sector	spiclient	en	Sector
+sector management	spiclient	en	Sector Management
+sector name	spiclient	en	Sector name
+sectors	spiclient	en	Sectors
+see client	spiclient	en	See Client
+see reference	spiclient	en	See reference
+sell	spiclient	en	Sell
+seller	spiclient	en	Seller
+seller can access all clients	spiclient	en	Seller can access all clients
+seller can access all contracts	spiclient	en	Seller can access all contracts
+seller only access their own clients	spiclient	en	Seller only access their own clients
+seller only access their own contracts	spiclient	en	Seller only access their own contracts
+seller type	spiclient	en	Seller type
+seller will be able to add clients	spiclient	en	Seller will be able to add clients
+seller will be able to add contracts	spiclient	en	Seller will be able to add contracts
+send invoice by email	spiclient	en	Send Invoice by email
+sent	spiclient	en	Sent
+server :	spiclient	en	Server :
+short description	spiclient	en	Short description
+show default view on main screen	spiclient	en	show default view on main screen
+signature date	spiclient	en	Signature Date
+simulate pdf invoice	spiclient	en	Simulate PDF Invoice
+siret number	spiclient	en	SIRET number
+site	spiclient	en	Site
+sleep	spiclient	en	Sleep
+sourcing :	spiclient	en	Sourcing :
+specific file format	spiclient	en	Specific file format
+spiclient	common	en	SpiClient
+start date/time	spiclient	en	Start Date/Time
+study's amount	spiclient	en	Study's amount
+supplier	spiclient	en	Supplier
+tables	spiclient	en	Tables
+tch /// on rend impossible la supression	spiclient	en	TCH /// On rend impossible la supression
+technical	spiclient	en	Technical
+technical nature	spiclient	en	Technical nature
+technical nature management	spiclient	en	Technical nature Management
+tel	spiclient	en	Tel
+test	spiclient	en	test
+the contact with this role is active in the organisation	spiclient	en	The contact with this role is active in the organisation
+the managers receive all spid's tickets	spiclient	en	The managers receive all spid's tickets
+this asynchronous service is currently disabled	spiclient	en	This asynchronous service is currently disabled
+this asynchronous service is currently enabled and will run next on %1	spiclient	en	This asynchronous service is currently enabled and will run next on %1
+this message is join by mail when you send your bills by email.	spiclient	en	This message is join by mail when you send your bills by email.
+tickets number	spiclient	en	Tickets number
+tiers code	spiclient	en	Tiers code
+title of the event	spiclient	en	Title of the event
+todo	spiclient	en	ToDo
+total ht	spiclient	en	Total HT
+training number	spiclient	en	Training number
+tva	spiclient	en	TVA
+tva number	spiclient	en	TVA Number
+type for clients	spiclient	en	Type for clients
+type for prospects	spiclient	en	Type for prospects
+type for providers	spiclient	en	Type for providers
+type for sellers	spiclient	en	Type for sellers
+under tva	spiclient	en	Under TVA
+unit	spiclient	en	Unit
+up	spiclient	en	Up
+update date	spiclient	en	Update Date
+upload logo	spiclient	en	Upload logo
+user group	spiclient	en	User group
+user manual	spiclient	en	User Manual
+view client	spiclient	en	View client
+view client type	spiclient	en	View Client type
+view contract	spiclient	en	View contract
+view geographic area	spiclient	en	View Geographic area
+view location	spiclient	en	View location
+view role	spiclient	en	View role
+view sector	spiclient	en	View sector
+view technical nature	spiclient	en	View technical nature
+warning: requires spiref module	spiclient	en	WARNING: Requires SpiRef module
+website	spiclient	en	Website
+work amount	spiclient	en	Work amount
+your field "sitename" is converted to be the client code (client_code_tiers) by automatically adding a c	spiclient	en	Your field "SiteName" is converted to be the client code (client_code_tiers) by automatically adding a C
+zone de chalandise	spiclient	en	Zone de chalandise
+€	spiclient	en	€
+1	spiclient	en	1

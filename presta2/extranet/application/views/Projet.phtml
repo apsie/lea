@@ -1,0 +1,61 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu">Recherche avancée</div>
+<div class="div_menu_gauche">
+<div class="lien_recherche"><div ></div></div>
+<div id="filtre"  style="display:block" class="option_recherche">
+
+<table><tr><td>Chercher</td><td> <input onKeyPress="if (event.keyCode == 13) Projet.getProjet();"  id="mot_recherche" type="text" /></td><td><button id="buttonRelancer"  style="font-size:10px">Lancer la recherche</button></td></tr></table>
+
+
+ </div>
+
+</div>
+</div>
+<div class="contenu">
+<div class="univers">Projet</div>
+<div class="div_menu_droit">
+
+<div class="boutton_contact"><button onclick="Projet.addProjetBox();"  style="font-size:10px">Créer un projet</button></div><div class="page"></div><div  class="contenu_flex">
+</div>
+
+</div></div></div>
+
+<div style="display:none" id="editParametre"  title="">
+<table><tr><td>Libellé du paramètre</td><td><input id="idParametre" type="hidden" value=""/><input type="text" id="libelleParametre"  value=""/></td><td></td><td><button onclick="updateParametre()" >Enregistrer</button></td></tr></table>
+</div>
+<div style="display:none" id="saveParametre"  title="Sauvegarde des paramètres">
+<table><tr><td>Sauvegardes existantes</td><td><select id="selectParam"><option></option>
+<?php for($i=0;$i<count($this->param);$i++)
+{
+echo'<option value="'.$this->param[$i]['id_parametre'].'">'.utf8_encode($this->param[$i]['libelle_parametre']).'</option>';
+}?>
+</select></td></tr>
+<tr><td>ou</td><td></td></tr>
+<tr><td>Nouvelle sauvegarde</td><td><input id="inputParam" type="text" /></td></tr>
+<tr><td></td><td><button onclick="saveParametre2()" >Enregistrer</button></td></tr>
+</table>
+<div style="color:green;padding:5px;" class="retour_param"></div>
+</div>
+
+
+
+<script type="text/javascript">
+
+var id_projet ="<?php echo $this->id_projet;?>";
+
+//alert(id_projet);
+
+
+$j('#buttonRelancer').click(function() {
+	  Projet.getProjet();
+	});
+
+if(id_projet!="")
+{Projet.getProjet(id_projet);
+//Projet.addProjetBox(id_projet);
+}
+else
+{Projet.getProjet();}
+
+</script>

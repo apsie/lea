@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.edit.history" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="250" overflow="auto">
+			<columns>
+				<column width="10%"/>
+				<column width="60%"/>
+			</columns>
+			<rows>
+				<row>
+					<historylog id="history" span="all"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Creation Date" class="bold"/>
+					<date-time id="creation_date" readonly="true"/>
+				</row>
+				<row class="row">
+					<description value="Created by" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="creator_id" readonly="true"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Change date" class="bold"/>
+					<date-time id="change_date" readonly="true"/>
+				</row>
+				<row class="row">
+					<description value="Changed by" class="bold"/>
+					<menulist>
+						<menupopup type="select-account" id="modifier_id" readonly="true"/>
+					</menulist>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

@@ -1,0 +1,32 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_presentation.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+	
+	</div>
+        <br/><?php $projet = unserialize($_SESSION['session']->projet) ?>;
+		<div style="margin :10px;">
+		<table style="border: 1px #000 solid;padding : 20px;background-color:#F7FAFE">
+		<tr ><td style="width:300px;font-weight:bolder" >Nom :</td><td style="width:200px"><?php echo $projet->nom ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Prenom :</td><td style="width:200px"><?php echo $projet->prenom ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Age :</td><td style="width:200px"><?php echo $this->age_contact ;?> </td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Adresse :</td><td style="width:200px"><?php echo $projet->adresse_ligne_1 ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Ville :</td><td style="width:200px"><?php echo $projet->ville ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Code Postal :</td><td style="width:200px"><?php echo $projet->cp ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Téléphone :</td><td style="width:200px"><?php echo $projet->portable_perso ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Email :</td><td style="width:200px"><?php echo $projet->email_perso ;?></td></tr>
+		<tr ><td style="width:300px;font-weight:bolder" >Situation familiale :</td><td style="width:200px"><?php echo isset($projet->situation_maritale) ? $projet->situation_maritale : '' ;?></td></tr>
+		
+		</table></div>	
+		
+	</div>
+

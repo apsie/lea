@@ -1,0 +1,36 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_projet.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+<br/>
+
+Quel type de produit ou de service voulez-vous vendre (gamme, qualité, caractéristiques techniques, brevets) ?<br/>
+Réalisez une présentation du produit ou du service (photographies, copie d'écrans, dessins, etc.)<br/>
+A quel besoin répond votre produit ou service ?<br/>
+Quelles sont les performances du produit ou du service (économies réalisées, confort d'utilisation, rapidité d'exécution, etc.) ?<br/>
+<br/>
+
+
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_projet_1_1; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+</div>

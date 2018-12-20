@@ -1,0 +1,54 @@
+8
+
+dir
+23189
+http://svn.egroupware.org/egroupware/branches/1.2/egroupware/home/templates/jerryr/images
+http://svn.egroupware.org/egroupware
+
+
+
+2005-11-25T08:50:34.000000Z
+19989
+ralfbecker
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+923e3c2e-ae13-0410-ba18-ced7211e33de
+
+navbar-over.png
+file
+
+
+
+
+2007-01-01T07:42:49.000000Z
+e28ace2aa321f482d1123877a582f065
+2005-11-25T08:50:34.000000Z
+19989
+ralfbecker
+has-props
+
+navbar.png
+file
+
+
+
+
+2007-01-01T07:42:49.000000Z
+313f53c266708914330c10eba92a227d
+2005-11-25T08:50:34.000000Z
+19989
+ralfbecker
+has-props
+

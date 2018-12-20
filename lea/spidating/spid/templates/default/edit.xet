@@ -1,0 +1,720 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.edit.messages" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column width="100"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row">
+					<description class="bold" value="Your ask" statustext="Reply"/>
+					<htmlarea mode="advanced_spellcheck" height="250" width="700" toolbar="true" span="all" align="center" id="reply_content"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit.details" template="" lang="" group="0" version="1.002">
+		<grid width="100%" overflow="auto">
+			<columns>
+				<column width="150"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description span="all" class="bold" value="Details"/>
+					<description/>
+				</row>
+				<row class="row">
+					<vbox span="all">
+						<date-time label="Date" id="reponse[$row][creation_date]" readonly="true" class="bold"/>
+						<menulist class="bold">
+							<menupopup type="select-account" label="User" id="reponse[$row][creator_id]" readonly="true" options=",accounts,0"/>
+						</menulist>
+						<htmlarea id="reponse[$row][reply_content]" readonly="true" mode="simple" toolbar="false"/>
+						<description/>
+					</vbox>
+				</row>
+				<row class="th" disabled="@hidenotes">
+					<description span="all" class="bold" value="more notes"/>
+					<description/>
+				</row>
+				<row class="row" disabled="@hidenotes">
+					<vbox span="all">
+						<date-time label="Date" id="reponse[$row][creation_date]" readonly="true" class="bold"/>
+						<menulist class="bold">
+							<menupopup type="select-account" label="User" id="reponse[$row][creator_id]" readonly="true" options=",accounts,0"/>
+						</menulist>
+						<htmlarea id="reponse[$row][reply_content]" readonly="true" mode="simple" toolbar="false"/>
+						<description/>
+					</vbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>.bold { font-weight: bold; }</styles>
+	</template>
+	<template id="spid.edit.update" template="" lang="" group="0" version="1.006">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row" disabled="@hideline">
+					<description value="Category" class="bold"/>
+					<menulist class="inputRequired">
+						<menupopup type="select-cat" id="cat_id" no_lang="1" options="Select one,spid" onchange="ajax_request.appel('cat_id','ticket_assigned_to','personne',this.value);"/>
+					</menulist>
+					<description value="Assigned To" class="bold"/>
+					<menulist class="inputRequired">
+						<menupopup id="ticket_assigned_to" options="Select one" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description value="Priority" class="bold"/>
+					<menulist>
+						<menupopup id="ticket_priority" options="Select One" no_lang="1"/>
+					</menulist>
+					<description value="Time Spend" class="bold" id="time_spend_label"/>
+					<textbox id="ticket_spend_time"/>
+				</row>
+				<row class="row" disabled="!@budget_mod">
+					<description/>
+					<description/>
+					<description value="Day Budget" class="bold"/>
+					<textbox id="ticket_budget"/>
+				</row>
+				<row class="row" disabled="!@contract_mod">
+					<description class="bold" value="Contract"/>
+					<menulist span="all">
+						<menupopup options="Select a group before" id="contract_id"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description class="bold" value="Unit time"/>
+					<menulist>
+						<menupopup id="ticket_unit_time"/>
+					</menulist>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="@hidestudent">
+					<description class="bold" value="Number of student"/>
+					<textbox id="ticket_nb_student"/>
+					<description class="bold" value="Price per student"/>
+					<hbox>
+						<textbox id="ticket_price_student"/>
+						<description value="(unsued if 0)"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description class="bold top" value="Site"/>
+					<menulist class="top">
+						<menupopup options="None" id="location_id" no_lang="1"/>
+					</menulist>
+					<description value="Precision" class="bold top"/>
+					<textbox id="location_precision"/>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description class="bold" value="Due date"/>
+					<date id="due_date"/>
+					<description class="bold" value="Open / Close"/>
+					<menulist>
+						<menupopup id="ticket_closed" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description value="Standard Replies" class="bold"/>
+					<menulist class="gauchea">
+						<menupopup id="reponse_standard" onchange="ajax_request.reponse(this.value);" options="Select One" no_lang="1"/>
+					</menulist>
+					<description value="Update Ticket State" class="bold"/>
+					<menulist>
+						<menupopup options="Select one" id="transition" no_lang="1" onchange="etats(this.value);" statustext="//ajax_request.transition(this.value);"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Reply" class="bold"/>
+					<htmlarea mode="advanced_spellcheck" height="250" width="700" toolbar="true" span="all" id="reply_content"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.bold
+{
+font-weight:bold;
+}
+.color
+{
+background-color:grey;
+}
+		</styles>
+	</template>
+	<template id="spid.edit.meeting.estimation" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="10"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description/>
+					<description value="Real time" align="center"/>
+					<description value="Budget time" align="center"/>
+					<description value="Difference time" align="center"/>
+					<description value="Real amount"/>
+					<description value="Budget amount"/>
+					<description value="Difference amount"/>
+				</row>
+				<row class="row">
+					<description class="th" value="Realised intervention"/>
+					<description align="right" id="total[realised]"/>
+					<description/>
+					<description/>
+					<description id="amount[real_realised]"/>
+					<description id="amount[budget_realised]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="th" value="Confirmed intervention"/>
+					<description align="right" id="total[confirmed]"/>
+					<description/>
+					<description/>
+					<description class="row_off" id="amount[real_confirmed]"/>
+					<description id="amount[budget_confirmed]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="th" value="Optional intervention"/>
+					<description id="total[option]" align="right"/>
+					<description/>
+					<description/>
+					<description id="amount[real_option]"/>
+					<description id="amount[budget_option]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="th" value="Total intervention"/>
+					<description align="right" id="total[intervention]"/>
+					<description align="right" id="ticket_budget"/>
+					<description align="right" id="difference"/>
+					<description class="row_off" id="amount[total_real]"/>
+					<description id="amount[total_budget]"/>
+					<description/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total rendez-vous" class="th"/>
+					<description id="total[rendez_vous]" align="right"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total heures" class="th"/>
+					<description id="total[heures]" align="right"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total jours" class="th"/>
+					<description id="total[jours]" align="right"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit.meeting" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column width="10"/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description span="all" class="bold" value="Calendar"/>
+					<description/>
+					<description/>
+					<description/>
+					<description onclick="window.open(egw::link('/index.php','menuaction=calendar.calendar_uiforms.edit'),'1000','dependent=yes,width=600,height=450,scrollbars=yes,status=yes'); return false;"/>
+				</row>
+				<row disabled="@hidebuttons">
+					<description span="all" class="grayItalic" value="To add a meeting, please fill up the calendar date, time and the title, then &quot;add&quot;"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th">
+					<description value="Participant"/>
+					<description value="calendar"/>
+					<vbox>
+						<description value="Location"/>
+						<description value="Category"/>
+					</vbox>
+					<vbox label="Title">
+						<description value="Title"/>
+						<description value="Description"/>
+					</vbox>
+					<description/>
+				</row>
+				<row class="row" disabled="@hidebuttons">
+					<vbox>
+						<menulist>
+							<menupopup id="rdvId_statut" disabled="true"/>
+						</menulist>
+						<menulist>
+							<menupopup type="select-account" options=",accounts,0" id="rdvInterviewer"/>
+						</menulist>
+					</vbox>
+					<vbox>
+						<date-time id="rdvstart"/>
+						<date-duration id="rdvduration" onclick="set_style_by_class('table','end_hide','visibility',this.value == '' ? 'visible' : 'hidden'); if (this.value == '') document.getElementById(form::name('end[str]')).value = document.getElementById(form::name('start[str]')).value;"/>
+						<buttononly label="Freetime search" onclick="window.open(egw::link('/index.php','menuaction=calendar.calendar_uiforms.freetimesearch')+values2url(this.form,'start,end,duration,participants,recur_type,whole_day'),'ft_search','dependent=yes,width=700,height=500,scrollbars=yes,status=yes'); return false;" width="0" id="freetime" statustext="Find free timeslots where the selected participants are availible for the given timespan" disabled="true"/>
+					</vbox>
+					<vbox>
+						<textbox id="rdvlocation"/>
+						<menulist>
+							<menupopup id="rdvcategory" no_lang="1"/>
+						</menulist>
+					</vbox>
+					<vbox>
+						<textbox id="rdvtitle" size="37"/>
+						<textbox id="rdvdescription" size="37"/>
+					</vbox>
+					<button label="Add" id="button[applycontact]"/>
+				</row>
+				<row class="th">
+					<description span="all" class="bold" value="Calendar"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<grid width="100%">
+						<columns>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+						</columns>
+						<rows>
+							<row class="th">
+								<description value="Id"/>
+								<description value="Intervenant"/>
+								<description value="Participant"/>
+								<vbox>
+									<description value="Start date"/>
+									<description value="End date"/>
+								</vbox>
+								<vbox>
+									<description value="Title"/>
+									<description value="Description"/>
+								</vbox>
+								<description value="Category"/>
+								<description value="Location"/>
+								<description value="Heure(s)"/>
+								<description value="Jour(s)"/>
+								<description value="Actions"/>
+							</row>
+							<row class="row">
+								<html id="rdv[$row][lien]" no_lang="1"/>
+								<menulist class="bold">
+									<menupopup type="select-account" id="rdv[$row][account_id]" readonly="true"/>
+								</menulist>
+								<description id="rdv[$row][participants]" readonly="true"/>
+								<vbox>
+									<date-time id="rdv[$row][start]" readonly="true"/>
+									<date-time id="rdv[$row][end]" readonly="true"/>
+								</vbox>
+								<vbox>
+									<description id="rdv[$row][title]" no_lang="1" class="bold"/>
+									<description id="rdv[$row][description]" no_lang="1"/>
+								</vbox>
+								<description id="rdv[$row][category]"/>
+								<description id="rdv[$row][location]"/>
+								<description id="rdv[$row][heures]"/>
+								<description id="rdv[$row][jours]"/>
+								<button image="delete" label="Delete" id="delete[$row]" onclick="return confirm('You are removing this event. Are you sure?');"/>
+							</row>
+						</rows>
+					</grid>
+				</row>
+				<row>
+					<template span="all" id="spid.edit.meeting.estimation"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit.links" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="250" overflow="auto">
+			<columns>
+				<column width="100"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th" disabled="@no_links">
+					<description span="all" value="Create new links"/>
+				</row>
+				<row class="row" disabled="@status_only">
+					<link-to span="all" id="link_to"/>
+				</row>
+				<row class="th">
+					<description span="all" value="Existing links"/>
+				</row>
+				<row class="row_off" valign="top">
+					<link-list span="all" id="link_to"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit.url" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description span="all" value="Create new links"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="url link"/>
+					<textbox id="url_links" size="140" maxlength="500"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Comment"/>
+					<textbox size="130" maxlength="255" id="url_commentaires"/>
+				</row>
+				<row>
+					<button span="all" label="Attach" id="button[attach]"/>
+				</row>
+				<row class="th">
+					<description span="all" value="Existing links"/>
+				</row>
+				<row class="row">
+					<hbox span="all">
+						<description span="all" value=" - " id="url[$row][num]"/>
+						<button image="delete" label="Delete" id="delete[url[$row][url_id]]" onclick="return confirm('Are you sur to delete this url link ?');"/>
+						<vbox span="all">
+							<url span="all" id="url[$row][url_links]" readonly="true"/>
+							<textbox span="all" id="url[$row][url_commentaires]" readonly="true"/>
+						</vbox>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit.history" template="" lang="" group="0" version="1.000">
+		<grid width="100%" height="250" overflow="auto">
+			<columns>
+				<column width="6%"/>
+				<column width="6%"/>
+				<column width="6%"/>
+				<column width="20%"/>
+				<column width="20%"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="Date"/>
+					<description value="User"/>
+					<description value="Actions"/>
+					<description value="Old Value"/>
+					<description value="New Value"/>
+				</row>
+				<row class="row">
+					<date-time id="historique[$row][creation_date]" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" id="historique[$row][creator_id]" readonly="true"/>
+					</menulist>
+					<description id="historique[$row][actions]" no_lang="1"/>
+					<description id="historique[$row][old_value]" no_lang="1"/>
+					<description id="historique[$row][new_value]" no_lang="1"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit" template="" lang="" group="0" version="1.115">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th" disabled="!@ticket_id">
+					<hbox span="all">
+						<description class="bold" id="ticket_lid" no_lang="1"/>
+						<description value="-"/>
+						<menulist class="bold">
+							<menupopup type="select-account" id="account_id" readonly="true" no_lang="1" statustext="account_id - personalisé groups_users();" options=",accounts,0"/>
+						</menulist>
+						<description value="-"/>
+						<description class="bold" id="ticket_title" no_lang="1"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Category"/>
+					<menulist class="inputRequired">
+						<menupopup type="select-cat" options="Select one,spid" id="cat_id" no_lang="1" onchange="ajax_request.appel('cat_id','ticket_assigned_to','personne',this.value);"/>
+					</menulist>
+					<description class="bold" value="Assigned To"/>
+					<menulist class="inputRequired">
+						<menupopup options="Select a category before" id="ticket_assigned_to" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Group"/>
+					<menulist class="inputRequired">
+						<menupopup onchange="ajax_request.appelMultiple('account_id','contract_id','ticket_assigned_by','personne',this.value);" id="account_id" options="Select one" no_lang="1"/>
+					</menulist>
+					<description class="bold" value="Priority"/>
+					<menulist>
+						<menupopup id="ticket_priority" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Open by"/>
+					<menulist class="inputRequired">
+						<menupopup id="ticket_assigned_by" options="Select a group before" no_lang="1"/>
+					</menulist>
+					<description class="bold" value="Time Spend" id="time_spend_label"/>
+					<textbox id="ticket_spend_time"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Unit time"/>
+					<menulist>
+						<menupopup id="ticket_unit_time"/>
+					</menulist>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="!@budget_add">
+					<description/>
+					<description/>
+					<description value="Day Budget" class="bold"/>
+					<textbox id="ticket_budget"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold top" value="Site"/>
+					<menulist class="top">
+						<menupopup options="None" id="location_id" no_lang="1"/>
+					</menulist>
+					<description value="Precision" class="bold top"/>
+					<textbox id="location_precision"/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Due date"/>
+					<date id="due_date"/>
+					<description class="bold" value="Initial State"/>
+					<menulist>
+						<menupopup id="state_id" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Private"/>
+					<checkbox id="ticket_private"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="@ticket_id">
+					<description class="bold" value="Object"/>
+					<textbox size="130" span="all" class="inputRequired" id="ticket_title"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="!@ticket_id">
+					<description class="bold" value="Creation date"/>
+					<date-time id="creation_date" readonly="true"/>
+					<description class="bold" value="Time Spend" id="time_spend_label"/>
+					<textbox id="ticket_spend_time" readonly="true"/>
+				</row>
+				<row class="row" disabled="!@ticket_id">
+					<description class="bold" value="Last update" readonly="true"/>
+					<date-time id="change_date" readonly="true"/>
+					<description value="Time intervention" class="bold"/>
+					<description id="total[intervention]" no_lang="1"/>
+				</row>
+				<row class="row" disabled="!@ticket_id">
+					<description class="bold top" value="Due date" readonly="true"/>
+					<date id="due_date" readonly="true" class="top"/>
+					<description value="Time Meeting" class="bold"/>
+					<description id="time_meeting" no_lang="1"/>
+				</row>
+				<row class="row" disabled="@hidephone">
+					<description/>
+					<description/>
+					<description value="Phone time" class="bold"/>
+					<description no_lang="1" id="phone_time"/>
+				</row>
+				<row class="row" disabled="@hidebudget">
+					<description class="bold" value="Day budget"/>
+					<textbox id="ticket_budget" readonly="true"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="@hidesiteprecision">
+					<description class="bold top" value="Site"/>
+					<menulist class="top">
+						<menupopup options="None" id="location_id" readonly="true"/>
+					</menulist>
+					<description class="bold top" value="Precision"/>
+					<textbox id="location_precision" readonly="true"/>
+				</row>
+				<row class="row" disabled="@hidecontrat">
+					<description class="bold" value="Contract" readonly="true"/>
+					<menulist>
+						<menupopup id="contract_id" no_lang="1" readonly="true"/>
+					</menulist>
+					<description/>
+					<description id="time_meeting"/>
+				</row>
+				<row class="row" disabled="@hideprivate">
+					<description class="bold" value="Private"/>
+					<description id="ticket_private_lbl" readonly="true" span="all"/>
+				</row>
+				<row class="row" disabled="!@ticket_id">
+					<description class="bold" value="Open by"/>
+					<hbox span="all">
+						<hbox>
+							<hbox/>
+						</hbox>
+						<description id="n_family" no_lang="1"/>
+						<description id="n_given" no_lang="1"/>
+						<description value=" - " no_lang="1"/>
+						<url-phone id="tel_work" no_lang="1" readonly="true"/>
+						<description value=" - " no_lang="1"/>
+						<url-email id="email" no_lang="1" readonly="true"/>
+					</hbox>
+				</row>
+				<row class="row" disabled="!@ticket_id">
+					<description class="bold" value="Assigned To" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" id="ticket_assigned_to" readonly="true" no_lang="1" options=",accounts,0"/>
+					</menulist>
+					<description/>
+					<description/>
+				</row>
+				<row class="row" disabled="!@ticket_id">
+					<vbox>
+						<description class="bold" value="Category"/>
+						<description class="bold" value="Priority"/>
+					</vbox>
+					<vbox>
+						<menulist>
+							<menupopup type="select-cat" options=",spid" id="cat_id" readonly="true" no_lang="1"/>
+						</menulist>
+						<menulist>
+							<menupopup id="ticket_priority" readonly="true" no_lang="1"/>
+						</menulist>
+					</vbox>
+					<description readonly="true" class="bold top" value="State"/>
+					<vbox>
+						<description id="state_name" no_lang="1"/>
+						<description class="italic" id="state_description" no_lang="1"/>
+					</vbox>
+				</row>
+				<row class="row" disabled="!@dateclosed">
+					<description class="bold" value="Close date"/>
+					<date id="closed_date" readonly="true"/>
+					<description class="bold" value="Invoice number"/>
+					<description id="facture_str" readonly="true"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<tabbox id="messages|details|update|meeting|links|url|history" span="all">
+						<tabs>
+							<tab label="Messages" statustext=""/>
+							<tab label="Details" statustext=""/>
+							<tab label="Update" statustext=""/>
+							<tab label="Calendar" statustext=""/>
+							<tab label="Links" statustext=""/>
+							<tab label="Url" statustext=""/>
+							<tab label="History" statustext=""/>
+						</tabs>
+						<tabpanels>
+							<template id="spid.edit.messages"/>
+							<template id="spid.edit.details"/>
+							<template id="spid.edit.update"/>
+							<template id="spid.edit.meeting"/>
+							<template id="spid.edit.links"/>
+							<template id="spid.edit.url"/>
+							<template id="spid.edit.history"/>
+						</tabpanels>
+					</tabbox>
+				</row>
+				<row>
+					<hbox span="all">
+						<button label="Save" id="button[save]" onclick="return verif_champTickets();"/>
+						<button label="Apply" id="button[apply]" onclick="return verif_champTickets();"/>
+						<button label="Cancel" id="button[cancel]"/>
+						<button label="Print" align="right" onclick="window.open(egw::link('/index.php','menuaction=spid.spid_ui.t_print&amp;id=$cont[ticket_id]'),'700','dependent=yes,width=800,height=450,scrollbars=yes,status=yes'); return false;"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.bold
+{
+font-weight:bold;
+}
+
+.italic
+{
+font-style:italic;
+}
+
+.top
+{
+vertical-align:top;
+}
+		</styles>
+	</template>
+</overlay>

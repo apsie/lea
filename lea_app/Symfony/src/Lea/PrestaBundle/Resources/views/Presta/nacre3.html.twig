@@ -1,0 +1,577 @@
+<div id="presta" class="entete" >- Prestation {{ presta.dispositif.nomDispositif }} de <b>{{ presta.contact.nomComplet }}</b></div>
+	<div class="contenu_presta" >
+	
+	<form name="presta">
+	<input type="hidden" name="data[suivi]" value="0" />
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Contrat d'accompagnement</a></li>
+			<li><a href="#tabs-2">Périodes travaillées</a></li>
+			<li><a href="#tabs-3">Plan d'action</a></li>
+			<li><a href="#tabs-4">B. retrouve un emploi</a></li>
+			<li><a href="#tabs-5">B. ne retrouve pas un emploi</a></li>
+			<li><a href="#tabs-6">Bilan</a></li>
+			<li><a href="#tabs-7">Edition</a></li>
+			<li><a id="rdv" href="#tabs-8">Rdv</a></li>
+		</ul>
+		
+		
+		<div id="tabs-1">
+		
+		
+		<input type="hidden" name="id_presta" value="{{ presta.idPresta }}" />
+		<input type="hidden" name="id_projet" value="{{ presta.idProjet }}" />
+		<div id="accordion">
+		<h3><a href="#">Information sur {{ presta.contact.nomComplet }} </a></h3>
+		<div>
+		{% render "LeaPrestaBundle:Contact:create" with { idContact : presta.contact.idBen }  %}
+		</div>
+		
+		</div>
+		
+		</div>
+		
+		
+		<div id="tabs-2">
+		
+		
+		
+		<div id="accordion">
+		<h3><a href="#">Périodes travaillées durant la durée de l’accompagnement</a></h3>
+		<div>
+		<table  class="classic"  cellspacing="0" width="99%">
+			<tr>
+				<th>Date (du/au)</th>
+				<th>Entreprise</th>
+				<th>Poste</th>
+				<th>Type de contrat</th>
+			</tr>
+			{% for i in 0..4 %}
+				
+			<tr>
+				<td  class="normal" style="width:70px;" >
+				<input value="{% if prestaData['date_deb_'~i~'_periode_t'] is defined %}{{prestaData['date_deb_'~i~'_periode_t']}}{% endif %}" name="data[date_deb_{{i}}_periode_t]" size="8" id="date_deb_{{i}}_periode_t"   type="text" />
+				<input value="{% if prestaData['date_fin_'~i~'_periode_t'] is defined %}{{prestaData['date_fin_'~i~'_periode_t']}}{% endif %}" name="data[date_fin_{{i}}_periode_t]"  id="date_fin_{{i}}_periode_t" size="8" type="text" />
+				</td>
+				<td id="246"  class="normal">
+				<input value="{% if prestaData['periode_t_id_organisation_'~i~''] is defined %}{{prestaData['periode_t_id_organisation_'~i~'']}}{% endif %}" name="data[periode_t_id_organisation_{{i}}]"  id="periode_t_id_organisation_{{i}}"  type="hidden" />
+				<input style="float:left !important" value="{% if prestaData['periode_t_entreprise_'~i~''] is defined %}{{prestaData['periode_t_entreprise_'~i~'']}}{% endif %}" name="data[periode_t_entreprise_{{i}}]"  id="periode_t_entreprise_{{i}}"  type="text" /> 
+				<!--<img style="cursor:pointer;float:left;padding-left : 5px;"  class="plus" src="{{ asset('bundles/lea/images/divers/plus.png') }}"  />-->
+				</td>
+				<td  class="normal">
+				<input size="40" id="periode_t_code_rome_{{i}}" name="data[periode_t_code_rome_{{i}}]"   type="text" value="{% if prestaData['periode_t_code_rome_'~i~''] is defined %}{{prestaData['periode_t_code_rome_'~i~'']}}{% endif %}" />
+				</td>
+				<td class="type_contrat_{{i}}">
+					<select name="data[type_contrat_{{i}}]" >
+					<option class="text_option_blanc">{% if prestaData['type_contrat_'~i~''] is defined %}{{prestaData['type_contrat_'~i~'']}}{% endif %}</option>
+					{% if( options[key.KEY_PLAN_ACTION_ACTION] is defined ) %}
+					{{options[key.KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT]|raw}}
+					{% endif %}
+					
+					</select> 
+					<input style="display:none" value="{% if prestaData['type_contrat_'~i~''] is defined %}{{prestaData['type_contrat_'~i~'']}}{% endif %}" type="text" />
+					<img rel="type_contrat_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		</div>
+		
+		</div>
+		
+		</div>
+		
+		
+		<div id="tabs-3">
+		<div id="accordion" > 
+		<h3><a href="#">Emplois cibles retenus (au moins 2 - préciser l’appellation et le code ROME pour chaque emploi)</a></h3>
+		
+		<div class="normal">
+		<div>1. <input size="40" id="code_rome_1" name="data[code_rome_1]"   type="text" value="{% if prestaData['code_rome_1'] is defined %}{{prestaData['code_rome_1']}}{% endif %}" /> </div>
+		<div>2. <input size="40" id="code_rome_2" name="data[code_rome_2]" type="text" value="{% if prestaData['code_rome_2'] is defined %}{{prestaData['code_rome_2']}}{% endif %}" /></div>
+		
+		</div>
+		<h3><a href="#">Liste des actions réalisées ou en cours</a></h3>
+		<div >
+		<table class="classic"  cellspacing="0" width="99%">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Actions réalisées ou en cours</th>
+					<th>Objectif</th>
+					<th>Résultats obtenus</th>
+				</tr>
+				{% for i in 1..6 %}
+				<tr>
+					<td class="normal" style="width:70px" >
+					<label style="float:left"><input value="{% if prestaData['date_deb_'~i~''] is defined %}{{prestaData['date_deb_'~i~'']}}{% endif %}" name="data[date_deb_{{i}}]" size="8" id="date_deb_{{i}}"   type="text" /></label>
+					 <label style="float:left"> <input value="{% if prestaData['date_fin_'~i~''] is defined %}{{prestaData['date_fin_'~i~'']}}{% endif %}" name="data[date_fin_{{i}}]"  id="date_fin_{{i}}" size="8" type="text" /></label>
+					</td>
+					<td class="action_{{i}}">
+					<select name="data[action_{{i}}]" >
+						<option class="text_option_blanc" >{% if prestaData['action_'~i~''] is defined %}{{prestaData['action_'~i~'']}}{% endif %}</option>
+						
+					{% if( options[key.KEY_PLAN_ACTION_ACTION] is defined ) %}
+					{{options[key.KEY_PLAN_ACTION_ACTION]|raw}}
+					{% endif %}
+					</select> 
+					<input style="display:none" value="" type="text" />
+					<img rel="action_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					
+					</td>
+					<td class="objectif_{{i}}">
+					<select name="data[objectif_{{i}}]" >
+						<option class="text_option_blanc">{% if prestaData['objectif_'~i~''] is defined %}{{prestaData['objectif_'~i~'']}}{% endif %}</option>
+					{% if( options[key.KEY_PLAN_ACTION_OBJECTIF] is defined ) %}
+					{{options[key.KEY_PLAN_ACTION_OBJECTIF]|raw}}
+					{% endif %}
+						
+					</select> 
+					<input style="display:none" value="" type="text" />
+					<img rel="objectif_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</td>
+					<td class="resultat_{{i}}">
+					<select name="data[resultat_{{i}}]" >
+					<option class="text_option_blanc">{% if prestaData['resultat_'~i~''] is defined %}{{prestaData['resultat_'~i~'']}}{% endif %}</option>
+					{% if( options[key.KEY_PLAN_ACTION_RESULTAT] is defined ) %}
+					{{options[key.KEY_PLAN_ACTION_RESULTAT]|raw}}
+					{% endif %}
+					
+					
+					</select> 
+					<input style="display:none" value="" type="text" />
+					<img rel="resultat_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</td>
+				</tr>
+				{% endfor %}
+			
+			</thead>
+		</table>
+		</div>
+		<h3><a href="#">Fiche à compléter avec le bénéficiaire, pour effectuer le suivi des contacts avec les entreprises et des candidatures.</a></h3>
+		<div>
+		<table class="classic" cellspacing="0" width="99%">
+			<tr>
+				<th>Date</th>
+				<th>Entreprise</th>
+				<th>Objectif du contact</th>
+				<th>Aspects maîtrisés</th>
+				<th>Aspects à retravailler</th>
+			</tr>
+				{% for i in 0..7 %}
+			<tr>
+				<td class="normal"><input value="{% if prestaData['date_suivi_'~i~''] is defined %}{{prestaData['date_suivi_'~i~'']}}{% endif %}" name="data[date_suivi_{{i}}]"  id="date_suivi_{{i}}"  size="8" type="text" /></td>
+				<td  id="246" class="normal">
+				<input value="{% if prestaData['item_id_organisation_'~i~''] is defined %}{{prestaData['item_id_organisation_'~i~'']}}{% endif %}" name="data[item_id_organisation_{{i}}]"  id="item_id_organisation_"  type="hidden" />
+				<input style="float:left !important" value="{% if prestaData['entreprise_'~i~''] is defined %}{{prestaData['entreprise_'~i~'']}}{% endif %}" name="data[entreprise_{{i}}]"  id="entreprise_{{i}}"  size="10" type="text" /> 
+				<!--<img style="cursor:pointer;float:left;padding-left : 5px;"  class="plus" src="{{ asset('bundles/lea/images/divers/plus.png') }}" />-->
+				</td>
+				<td class="objectif_contact_{{i}}">
+				<select name="data[objectif_contact_{{i}}]" >
+					<option class="texte_option_blanc" >{% if prestaData['objectif_contact_'~i~''] is defined %}{{prestaData['objectif_contact_'~i~'']}}{% endif %}</option>
+					{% if( options[key.KEY_PLAN_ACTION_OBJECTIF_CONTRAT] is defined ) %}
+					{{options[key.KEY_PLAN_ACTION_OBJECTIF_CONTRAT]|raw}}
+					{% endif %}
+				</select> 
+					<input style="display:none" value="{% if prestaData['objectif_contact_'~i~''] is defined %}{{prestaData['objectif_contact_'~i~'']}}{% endif %}" type="text" />
+					<img rel="objectif_contact_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+				</td>
+				<td class="aspects_maitrises_{{i}}">
+				<select name="data[aspects_maitrises_{{i}}]" >
+					<option class="texte_option_blanc" >{% if prestaData['aspects_maitrises_'~i~''] is defined %}{{prestaData['aspects_maitrises_'~i~'']}}{% endif %}</option>
+					{% if( options[key.KEY_PLAN_ACTION_ASPECTS_MAITRISES] is defined ) %}
+					{{options[key.KEY_PLAN_ACTION_ASPECTS_MAITRISES]|raw}}
+					{% endif %}
+				</select> 
+					<input style="display:none" value="{% if prestaData['aspects_maitrises_'~i~''] is defined %}{{prestaData['aspects_maitrises_'~i~'']}}{% endif %}" type="text" />
+					<img rel="aspects_maitrises_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+				</td>
+				<td class="aspects_a_retravailler_{{i}}">
+				<select name="data[aspects_a_retravailler_{{i}}]" >
+					<option class="texte_option_blanc" >{% if prestaData['aspects_a_retravailler_'~i~''] is defined %}{{prestaData['aspects_a_retravailler_'~i~'']}}{% endif %}</option>
+					{% if( options[key.KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER] is defined ) %}
+					{{options[key.KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER]|raw}}
+					{% endif %}
+					
+				</select> 
+					<input style="display:none" value="{% if prestaData['aspects_a_retravailler_'~i~''] is defined %}{{prestaData['aspects_a_retravailler_'~i~'']}}{% endif %}" type="text" />
+					<img rel="aspects_a_retravailler_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		</div>
+		
+		
+		</div>
+		</div>
+		<div id="tabs-4">
+		
+		<div id="accordion">
+			<h3><a href="#">Situation du bénéficiaire</a></h3>
+			<table class="normal2" >
+				<tr>
+					<td>Intitulé du poste et code ROME :</td><td>
+					<input size="40" id="sit_ben_code_rome"  name="data[sit_ben_code_rome]"  value="{% if prestaData['sit_ben_code_rome'] is defined %}{{prestaData['sit_ben_code_rome']}}{% endif %}" type="text" ></td>
+					
+				</tr>
+				<tr>
+					<td>Type de contrat :</td><td>	<table>
+															<tr>
+																<td><input  {% if prestaData['type_contrat'] is defined %}{{prestaData['type_contrat']|setcheckbox(1)}}{% endif %} name="data[type_contrat]" type="radio" value="1" /> CDI</td><td></td><td></td>
+															</tr>
+															<tr>
+																<td><input  {% if prestaData['type_contrat'] is defined %}{{prestaData['type_contrat']|setcheckbox(2)}}{% endif %} name="data[type_contrat]" type="radio" value="2" /> CDD </td><td> Durée : </td><td><input name="data[duree_cdd]" value="{% if prestaData['duree_cdd'] is defined %}{{prestaData['duree_cdd']}}{% endif %}" size="2" type="text" > mois</td>
+															</tr>
+															<tr>
+																<td><input {% if prestaData['temps_contrat'] is defined %}{{prestaData['temps_contrat']|setcheckbox(1)}}{% endif %}  name="data[temps_contrat]" type="radio" value="1" /> Temps plein</td><td></td><td></td>
+															</tr>
+															<tr>
+																<td><input  {% if prestaData['temps_contrat'] is defined %}{{prestaData['temps_contrat']|setcheckbox(2)}}{% endif %} name="data[temps_contrat]" type="radio" value="2" /> Temps partiel</td><td>Nombre d’heures mensuelles :</td><td> <input name="data[nb_heure_tp_partiel]" value="{% if prestaData['nb_heure_tp_partiel'] is defined %}{{prestaData['nb_heure_tp_partiel']}}{% endif %}" size="2" type="text" /> H</td>
+															</tr>
+															<tr>
+																<td><input  {% if prestaData['via_formation'] is defined %}{{prestaData['via_formation']|setcheckbox(1)}}{% endif %} name="data[via_formation]" type="checkbox" value="1" /> Via formation préalable à l’embauche </td><td>Intitulé de la formation :</td><td> <input name="data[sit_intitule_formation]" value="{% if prestaData['sit_intitule_formation'] is defined %}{{prestaData['sit_intitule_formation']}}{% endif %}" type="text" /></td>
+															</tr>
+													</table>
+												</td>
+																	
+				</tr>
+				<tr>
+						<td>Employeur</td>
+						<td id="246" ><input value="{% if prestaData['entreprise2_id'] is defined %}{{prestaData['entreprise2_id']}}{% endif %}" name="data[entreprise2_id]"  id="entreprise2_id"  type="hidden"  /> 
+						<input value="{% if prestaData['entreprise2'] is defined %}{{prestaData['entreprise2']}}{% endif %}" name="data[entreprise2]"  id="entreprise2"  type="text"  />  
+						<!--<img style="cursor:pointer;float:left;padding-left : 5px;"  class="plus" src="{{ asset('bundles/lea/images/divers/plus.png') }}" />-->
+						</td>
+				</tr>
+				<tr>
+						<td>Date reprise d'emploi</td><td><input type="text"  name="data[date_reprise_emploi]" value="{% if prestaData['date_reprise_emploi'] is defined %}{{prestaData['date_reprise_emploi']}}{% endif %}" id="date_reprise_emploi" /></td>
+				</tr>
+			
+			</table>
+		  	
+	 
+	 	
+			<h3><a href="#">Bilan global de la prestation</a></h3>
+			<div>
+			<div class="sous_titre" >Points forts et axes d’amélioration du bénéficiaire pour sa recherche d’emploi</div>
+			<textarea name="data[pts_forts_axes]" rows="1" cols="100">{% if prestaData['pts_forts_axes'] is defined %}{{prestaData['pts_forts_axes']}}{% endif %}</textarea>
+			<div class="sous_titre" >Indicateurs</div>
+				<div class="normal">
+				<table>
+					<tr>
+						<td>Nombre de mises en relation sur des offres Pôle emploi</td><td><input name="data[nb_offre_pe]" value="{% if prestaData['nb_offre_pe'] is defined %}{{prestaData['nb_offre_pe']}}{% endif %}"  size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_pe]" value="{% if prestaData['nb_ent_pe'] is defined %}{{prestaData['nb_ent_pe']}}{% endif %}" size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre de candidatures sur des offres autres que Pôle emploi</td><td><input name="data[nb_offre_au]" value="{% if prestaData['nb_offre_au'] is defined %}{{prestaData['nb_offre_au']}}{% endif %}" size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_au]" value="{% if prestaData['nb_ent_au'] is defined %}{{prestaData['nb_ent_au']}}{% endif %}" size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre de candidatures spontanées adressées</td><td><input  name="data[nb_offre_sp]" value="{% if prestaData['nb_offre_sp'] is defined %}{{prestaData['nb_offre_sp']}}{% endif %}"  size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_sp]" value="{% if prestaData['nb_ent_sp'] is defined %}{{prestaData['nb_ent_sp']}}{% endif %}"  size="2" type="text" /></td>
+					</tr>
+				</table>
+				
+				
+				
+				</div>
+			</div>
+		
+	 	 	</div>
+	  
+	 	
+		
+		</div>
+		<div id="tabs-5">
+		
+		<div id="accordion">
+			<h3><a href="#">Toujours à la recherche d'un emploi</a></h3>
+			<table class="normal2" >
+				<tr>
+					<td>Intitulé du poste et code ROME :</td><td><input size="40" id="sit_ben_code_rome2"  name="data[sit_ben_code_rome2]"  value="{% if prestaData['sit_ben_code_rome2'] is defined %}{{prestaData['sit_ben_code_rome2']}}{% endif %}" type="text" ></td>
+				</tr>
+				<tr>
+					<td>Marché du travail ciblé (secteurs d’activité, zone géographique) :</td><td><input size="40"   name="data[marche_travail]"  value="{% if prestaData['marche_travail'] is defined %}{{prestaData['marche_travail']}}{% endif %}" type="text" ></td>
+				</tr>
+				
+			</table>
+		  	
+	 
+	 	
+			<h3><a href="#">Bilan global de la prestation</a></h3>
+			<div>
+			<div class="sous_titre" >Points forts et axes d’amélioration du bénéficiaire pour sa recherche d’emploi</div>
+			<textarea name="data[pts_forts_axes2]" rows="1" cols="100">{% if prestaData['pts_forts_axes2'] is defined %}{{prestaData['pts_forts_axes2']}}{% endif %}</textarea>
+			<div class="sous_titre" >Indicateurs</div>
+				<div class="normal">
+				<table>
+					<tr>
+						<td>Nombre de mises en relation sur des offres Pôle emploi</td><td><input name="data[nb_offre_pe2]" value="{% if prestaData['nb_offre_pe2'] is defined %}{{prestaData['nb_offre_pe2']}}{% endif %}"  size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_pe2]" value="{% if prestaData['nb_ent_pe2'] is defined %}{{prestaData['nb_ent_pe2']}}{% endif %}" size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre de candidatures sur des offres autres que Pôle emploi</td><td><input name="data[nb_offre_au2]" value="{% if prestaData['nb_offre_au2'] is defined %}{{prestaData['nb_offre_au2']}}{% endif %}" size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_au2]" value="{% if prestaData['nb_ent_au2'] is defined %}{{prestaData['nb_ent_au2']}}{% endif %}" size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre de candidatures spontanées adressées</td><td><input  name="data[nb_offre_sp2]" value="{% if prestaData['nb_offre_sp2'] is defined %}{{prestaData['nb_offre_sp2']}}{% endif %}"  size="2" type="text" /></td>
+					</tr>
+					<tr>
+						<td>Nombre d’entretiens d’embauche réalisés</td><td><input name="data[nb_ent_sp2]" value="{% if prestaData['nb_ent_sp2'] is defined %}{{prestaData['nb_ent_sp2']}}{% endif %}"  size="2" type="text" /></td>
+					</tr>
+				</table>
+				
+				
+				</div>	
+			</div>
+			<h3><a href="#">Liste des actions à mettre en oeuvre</a></h3>
+			<div>
+			<table cellspacing='0' class="classic">
+				<tr>
+					<th>Priorités et échéances <br/>(Quand ?)</th><th>Actions à mettre en oeuvre<br/> (Quoi ?)</th><th>Objectifs</th>
+				</tr>
+				{% for i in 1..6 %}
+				<tr>
+					<td><input style="display:block"  size="8" type="text" id="date_action_{{i}}" name="data[date_action_{{i}}]"  value="{% if prestaData['date_action_'~i~''] is defined %}{{prestaData['date_action_'~i~'']}}{% endif %}"  /></td>
+					<td class="action_a_m{{i}}" >
+					<select name="data[action_a_m{{i}}]" >
+						<option class="text_option_blanc" >{% if prestaData['action_a_m'~i~''] is defined %}{{prestaData['action_a_m'~i~'']}}{% endif %}</option>
+						{% if( options[key.KEY_BILAN_ACTION] is defined ) %}
+						{{options[key.KEY_BILAN_ACTION]|raw}}
+						{% endif %}
+					
+					</select> 
+					<input style="display:none" value="{% if prestaData['action_a_m'~i~''] is defined %}{{prestaData['action_a_m'~i~'']}}{% endif %}" type="text" />
+					<img rel="action_a_m{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</td>
+					<td class="objectif_a_m{{i}}" >
+					<select name="data[objectif_a_m{{i}}]" >
+						<option  class="text_option_blanc" >{% if prestaData['objectif_a_m'~i~''] is defined %}{{prestaData['objectif_a_m'~i~'']}}{% endif %}</option>
+						{% if( options[key.KEY_BILAN_OBJECTIF] is defined ) %}
+						{{options[key.KEY_BILAN_OBJECTIF]|raw}}
+						{% endif %}
+					</select> 
+					<input style="display:none" value="{% if prestaData['objectif_a_m'~i~''] is defined %}{{prestaData['objectif_a_m'~i~'']}}{% endif %}" type="text" />
+					<img rel="objectif_a_m{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+			</div>
+		
+	 	 	</div>
+	  
+	 	
+		
+		</div>
+		<div id="tabs-6">
+		<div id="accordion">
+		<h3><a href="#">Suivi de la prestation</a></h3>
+				<div>
+				
+					<div><label><input  {% if prestaData['suivi'] is defined %}{{prestaData['suivi']|setcheckbox(1)}}{% endif %} class="suivi"  name="data[suivi]" type="radio" value="1"   /><span>Reprise d’emploi CDI ou CDD > 6 mois</span></label></div>
+					<div><label><input  {% if prestaData['suivi'] is defined %}{{prestaData['suivi']|setcheckbox(2)}}{% endif %} class="suivi" name="data[suivi]" type="radio" value="2"  /><span>Reprise d’emploi < à 6 mois</span></label></div>
+					<div><label><input  {% if prestaData['suivi'] is defined %}{{prestaData['suivi']|setcheckbox(3)}}{% endif %} class="suivi" name="data[suivi]" type="radio" value="3"  /><span>Entrée en formation (AFPR / POE / …)</span></label></div>
+					<div><label><input  {% if prestaData['suivi'] is defined %}{{prestaData['suivi']|setcheckbox(4)}}{% endif %} class="suivi" name="data[suivi]" type="radio" value="4" /><span>Au terme de la prestation</span></label></div>
+				</div>
+		<h3><a href="#">Abandon</a></h3>
+				<table>
+					<tr >
+						<td>Le bénéficiaire a t'il abandonné la prestation ?</td>
+						<td>
+						<input  {% if prestaData['date_abandon'] is defined and prestaData['date_abandon'] !=null  %} checked="checked" {% endif %}   name="data[date_abandon]" type="radio" value="1"   /> Oui 
+						<input  {% if prestaData['date_abandon'] is defined %}{{prestaData['date_abandon']|setcheckbox("")}}{% endif %}   name="data[date_abandon]" type="radio" value=""   /> Non</td>
+					</tr>
+					<tr class="normal">
+						<td>Si oui, quel est le motif de l'abandon ?</td><td><input style="" name="data[motif_abandon]" value="{% if prestaData['motif_abandon'] is defined %}{{prestaData['motif_abandon']}}{% endif %}" type="text" /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	
+		<div id="tabs-7">
+			<form name="Editer">
+				<div class="sous_titre" >Liste des livrables</div>
+				<div>
+					<div><label><input id="imp_1" name="Editer['oe']['annexe_1]" checked="checked" value="Annexe I contrat d'accompagnement"  type="checkbox" /><span>Annexe I contrat d'accompagnement</span></label></div>
+					<div><label><input id="imp_2" name="Editer['oe']['annexe_2]" checked="checked" value="Annexe II Bilan" type="checkbox" /><span>Annexe II Bilan</span></label></div>
+				</div>
+			</form>
+		</div>
+		<div id="tabs-8">
+			<div id="accordion">
+			<h3><a href="#">Pose des Rendez vous</a></h3>
+				<section class="form_dispo">
+					
+				</section>
+			<h3 id="rdv_presta" ><a href="#">Liste des Rendez vous</a></h3>
+			
+				
+				<div class="tableau_liste_presta">
+				
+				</div>
+			
+			</div>
+		</div>
+		
+	
+		
+	</div>
+	</form>
+	<div style="padding-top:10px" >
+	<center><button id="savePresta" >Enregistrer</button><button id="EditerPresta">Editer</button></center>
+	</div>
+	<div class="copyright" >© APSIE OE</div>
+	</div>
+</div>
+<script>
+$(".change").click(function() {
+	$('.'+$(this).attr('rel')).changeSelectInput();
+	});
+	
+$('.form_dispo').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$('#tabs #rdv').click(function()
+{
+	$.ajax({
+		url:'./disponibilite',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}},
+		success: function( html ) {
+		$('.form_dispo').html(html);
+		}
+		});
+});
+
+
+$('#tabs #rdv_presta').click(function()
+{$('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+	$.ajax({
+		url:'./disponibilite/listrdvpresta',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}},
+		success: function( html ) {
+		$('.tableau_liste_presta').html(html);
+		}
+		});
+});
+
+$( "#date_deb_1" ).datepicker();
+$( "#date_fin_1" ).datepicker();
+$( "#date_deb_2" ).datepicker();
+$( "#date_fin_2" ).datepicker();
+$( "#date_deb_3" ).datepicker();
+$( "#date_fin_3" ).datepicker();
+$( "#date_deb_4" ).datepicker();
+$( "#date_fin_4" ).datepicker();
+$( "#date_deb_5" ).datepicker();
+$( "#date_fin_5" ).datepicker();
+$( "#date_deb_6" ).datepicker();
+$( "#date_fin_6" ).datepicker();
+$( "#date_reprise_emploi" ).datepicker();
+$( "#date_action_1,#date_action_2,#date_action_3,#date_action_4,#date_action_5,#date_action_6" ).datepicker();
+
+
+$('#sit_ben_code_rome').myAutoCompleteCodeRome();
+$('#sit_ben_code_rome2').myAutoCompleteCodeRome();
+$('#code_rome_1').myAutoCompleteCodeRome();
+$('#code_rome_2').myAutoCompleteCodeRome();
+$('#entreprise2').myAutoCompleteOrganisation();
+{% for i in 0..7 %}
+//Organisation
+$('#periode_t_entreprise_{{i}}').myAutoCompleteOrganisation('periode_t_entreprise_');
+$('#entreprise_{{i}}').myAutoCompleteOrganisation();
+$('#periode_t_code_rome_{{i}}').myAutoCompleteCodeRome('periode_t_code_rome_');
+$( "#date_suivi_{{i}}" ).datepicker();
+$( "#date_deb_{{i}}_periode_t" ).datepicker();
+$( "#date_fin_{{i}}_periode_t" ).datepicker();
+{% endfor %}
+
+$(".contenu_presta #tabs" ).tabs();
+var icons = {
+			header: "ui-icon-circle-arrow-e",
+			headerSelected: "ui-icon-circle-arrow-s"
+		};
+		$( ".contenu_presta #accordion" ).accordion({
+			icons: icons,
+			autoHeight: false,
+		});
+
+// SAUVEGARDE		
+$(".contenu_presta #savePresta").click(function() {
+	var form  = $("form[name='presta']").serializeArray();
+
+	/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat(
+            $("form[name='presta'] input[type=checkbox]:not(:checked)").map(
+                    function() {
+                        return {"name": this.name, "value": 0}
+                    }).get()
+    );
+
+   
+	
+	$.pnotify({
+						title: 'Sauvegarde',
+						text: '<span class="load" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></span> Sauvegarde en cours',
+						type: 'info',
+						styling: 'jqueryui'
+					});
+
+	  $.ajax({
+    		url : "./data",
+    		type : "POST",
+    		dataType : "json",
+    		data : form ,
+    		success: function(data){
+			$.pnotify({
+						title: 'Sauvegarde',
+						text: data,
+						type: 'success',
+						styling: 'jqueryui'
+					});
+    				
+        	$('.load').hide('fade');	
+    		}});
+	
+	  return false;
+
+});
+
+// EDITION
+$(".contenu_presta #EditerPresta").click(function() {
+	
+	$.pnotify({
+						title: 'Edition',
+						text: 'Edition des livrables',
+						type: 'info',
+						styling: 'jqueryui'
+					});
+    				
+        	$('.load').hide('fade');	
+	
+	if($('#imp_1').attr('checked') == 'checked')
+	 {
+	 window.open("./download/oe/"+{{presta.idPresta}}+"/1",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	 }
+	 if($('#imp_2').attr('checked') == 'checked')
+	 {
+	 setTimeout(function(){
+		 window.open("./download/oe/"+{{presta.idPresta}}+"/2",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+		 },1000);
+	 }
+	return false;
+	
+	});
+</script>

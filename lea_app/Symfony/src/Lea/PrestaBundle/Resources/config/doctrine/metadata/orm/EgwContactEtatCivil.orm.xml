@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwContactEtatCivil" table="egw_contact_etat_civil">
+    <id name="idEtatCivil" type="integer" column="id_etat_civil">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idBen" type="bigint" column="id_ben" nullable="false"/>
+    <field name="idOwner" type="bigint" column="id_owner" nullable="false"/>
+    <field name="dateCreation" type="bigint" column="date_creation" nullable="false"/>
+    <field name="idModifier" type="bigint" column="id_modifier" nullable="false"/>
+    <field name="dateLastModified" type="bigint" column="date_last_modified" nullable="false"/>
+    <field name="idSecu" type="string" column="numero_ss" length="64" nullable="false"/>
+    <field name="dateNaissance" type="string" column="date_naissance" length="64" nullable="false"/>
+    <field name="lieuNaissance" type="string" column="lieu_naissance" length="64" nullable="false"/>
+    <field name="paysNaissance" type="string" column="pays_naissance" length="64" nullable="false"/>
+    <field name="nationalite" type="string" column="nationalite" length="64" nullable="false"/>
+    <field name="situationMaritale" type="string" column="situation_maritale" length="64" nullable="false"/>
+    <field name="enfantsACharge" type="integer" column="enfants_a_charge" nullable="false"/>
+  </entity>
+</doctrine-mapping>

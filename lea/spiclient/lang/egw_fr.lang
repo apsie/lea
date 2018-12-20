@@ -1,0 +1,412 @@
+... only their own	spiclient	fr	... uniquement les siens
+access to adressbook denied, the contacts tab will be empty, please contact your administrator	spiclient	fr	Accès au carnet d'adresse refusés, l'onglet contact va être vide... Veuillez contacter votre administrateur
+accounting	spiclient	fr	Comptabilité
+action that caused the notify: added, canceled, accepted, rejected, ...	spiclient	fr	Action à la source la notification : ajouté, annulé, accepté, rejeté...
+actions	spiclient	fr	Actions
+activate quick add	spiclient	fr	Activer l'ajout rapide
+activate this service	spiclient	fr	Activer ce service
+active contracts	spiclient	fr	Contrats Actifs
+add a new note	spiclient	fr	Ajouter une note
+add a new phonecall	spiclient	fr	Ajouter un appel
+add a new todo	spiclient	fr	Ajouter une tâche
+add a ticket	spiclient	fr	Ajouter un ticket
+add address	spiclient	fr	Ajouter une adresse
+add an address	spiclient	fr	Ajouter une adresse
+add checklist	spiclient	fr	Ajouter une check-list
+add client	spiclient	fr	Nouveau client
+add client type	spiclient	fr	Nouveau type de client
+add contract	spiclient	fr	Nouveau contrat
+add contract type	spiclient	fr	Nouveau type de contrat
+add delay payment	spiclient	fr	Nouveau délai de paiement
+add geographic area	spiclient	fr	Nouvelle zone géographique
+add location	spiclient	fr	Nouveau secteur d'intervention
+add payment method	spiclient	fr	Nouveau mode de règlement
+add role	spiclient	fr	Nouveau rôle
+add sector	spiclient	fr	Nouveau secteur
+add technical nature	spiclient	fr	Nouvel nature technique
+add...	spiclient	fr	Ajouter...
+additional information for the setting	spiclient	fr	Information complémentaire du paramètre
+address	spiclient	fr	Adresse
+address one	spiclient	fr	Adresse 1
+address two	spiclient	fr	Adresse 2
+adress type	spiclient	fr	Type d'adresse
+adresse	spiclient	fr	Adresse
+agency	spiclient	fr	Agence
+agency code	spiclient	fr	Code agence
+all clients	spiclient	fr	Tous les clients
+all contracts	spiclient	fr	Tous les contrats
+all organizations	spiclient	fr	Toutes les organisations
+allow removal	spiclient	fr	Autoriser la suppression
+allow seller to access all clients	spiclient	fr	Autoriser les vendeurs à accéder à tous les clients
+allow seller to access all contracts	spiclient	fr	Autoriser les vendeurs à accéder à tous les contrats
+allow sellers to add clients	spiclient	fr	Autoriser les vendeurs à ajouter des clients
+allow sellers to add contracts	spiclient	fr	Autoriser les vendeurs à ajouter des contrats
+allow users to delete clients	spiclient	fr	Autoriser les utilisateurs à supprimer des clients
+allow users to delete contracts	spiclient	fr	Autoriser les utilisateurs à supprimer des contrats
+amount	spiclient	fr	Montant
+amount budget	spiclient	fr	Montant Budget
+amount budget n	spiclient	fr	Montant Budget N
+amount:	spiclient	fr	Montant :
+an organization with the name %1 already exists	spiclient	fr	Une organisation avec le nom %1 existe déjà
+appro :	spiclient	fr	Appro :
+area	spiclient	fr	Zone
+areas	spiclient	fr	Zones
+asynchronous services	spiclient	fr	Services asynchrones
+attorney	spiclient	fr	Mandataire
+authorise contract conversion to reference	spiclient	fr	Autoriser la conversion des contrats en référence
+bank	spiclient	fr	Banque
+bank account informations	spiclient	fr	Information de compte banquaire
+bic (8 or 11 caracters)	spiclient	fr	BIC (8 ou 11 caractères)
+bill address	spiclient	fr	Adresse de facturation
+bill address 2	spiclient	fr	Adresse de facturation 2
+bill address 3	spiclient	fr	Adresse de facturation 3
+billable by	spiclient	fr	Facturable par
+budget	spiclient	fr	Budget
+budget added successfully	spiclient	fr	Ligne de budget ajouté avec succès
+budget help	spiclient	fr	Aide budget
+budget removed	spiclient	fr	Ligne de budget supprimée
+budget updated successfully	spiclient	fr	Budget mis à jour avec succès
+business phone	spiclient	fr	Tél pro
+by	spiclient	fr	par
+case	spiclient	fr	Cas
+catchment	spiclient	fr	Chalandise
+change date	spiclient	fr	Date de modification
+checklist	spiclient	fr	Check-list
+city	spiclient	fr	Ville
+client	spiclient	fr	Client
+client bic must be 8 or 11 caracters	spiclient	fr	Le BIC du client doit faire 8 ou 11 caractères
+client configuration	spiclient	fr	Configuration client
+client created	spiclient	fr	Client créé
+client deleted	spiclient	fr	Client supprimé
+client import parameters	spiclient	fr	Paramètres des imports clients
+client management	spiclient	fr	Gestion des clients
+client management group	spiclient	fr	Groupe gestionnaire des clients
+client reference	spiclient	fr	Référence client
+client seller	spiclient	fr	Vendeur
+client type	spiclient	fr	Type de client
+client type deleted	spiclient	fr	Type de client supprimé
+client type management	spiclient	fr	Gestion des types de client
+client updated	spiclient	fr	Client mis à jour
+clients	spiclient	fr	Clients
+clients menu	spiclient	fr	Menu clients
+closed contracts status	spiclient	fr	Statut des contrats cloturés
+code	spiclient	fr	Code
+color	spiclient	fr	Couleur
+comment	spiclient	fr	Commentaire
+commercial register number	spiclient	fr	Code registre commercial
+company's phone	spiclient	fr	Tél standard
+conditions	spiclient	fr	Conditions
+configuration	spiclient	fr	Configuration
+configuration updated	spiclient	fr	Configuration mise à jour
+contact active	spiclient	fr	Contact actif
+contact added successfully	spiclient	fr	Contacté ajouté avec succès
+contact mail	spiclient	fr	Mail du contact
+contact name	spiclient	fr	Nom du contact
+contact removed	spiclient	fr	Contact supprimé
+contacts	spiclient	fr	Contacts
+contract	spiclient	fr	Contrat
+contract configuration	spiclient	fr	Configuration des contrats
+contract created	spiclient	fr	Contrat ajouté
+contract help	spiclient	fr	Aide contrat
+contract management	spiclient	fr	Gestion des contrats
+contract management group	spiclient	fr	Groupe gestionnaire des contrats
+contract reader (readonly access to contracts)	spiclient	fr	Lecteurs contrat (Accès en lecture seule)
+contract seller	spiclient	fr	Vendeur de contrats
+contract status	spiclient	fr	Statut du contrat
+contract status configuration	spiclient	fr	Statuts de contrats
+contract type	spiclient	fr	Type de contrat
+contract type configuration	spiclient	fr	Types de contrats
+contract type management	spiclient	fr	Gestion des types de contrats
+contract updated	spiclient	fr	Contrat mis à jour
+contracts	spiclient	fr	Contrats
+contracts menu	spiclient	fr	Menu contrats
+cost	spiclient	fr	Coût
+country	spiclient	fr	Pays
+create a new group	spiclient	fr	Créer un nouveau groupe
+create a ticket	spiclient	fr	Créer un ticket
+create new links	spiclient	fr	Ajouter de nouveaux liens
+creation	spiclient	fr	Création
+creation date	spiclient	fr	Date de création
+cron values	spiclient	fr	Valeur du crontab
+csv files should be ansi, with " as text delimiters ; as separators and return carriage for record separator	spiclient	fr	Les fichiers CSV doivent être en ANSI, avec " comme délimiteur de texte ; comme séparateur de champ et un reotour chariot comme séparateur d'enregistrement
+csv mapping for imports	spiclient	fr	Mappage CSV pour les imports
+d	spiclient	fr	j
+date de création	spiclient	fr	Date de création
+date_start	spiclient	fr	Date de début
+day budget	spiclient	fr	Budget jours
+day budget n	spiclient	fr	Budget jours N
+day of the week	spiclient	fr	Jour de la semaine
+day:	spiclient	fr	Jours :
+default address name	spiclient	fr	Label adresse par défaut
+default group owner	spiclient	fr	Groupe propriétaire par défaut
+default provider	spiclient	fr	Fournisseur par défaut
+default provider (used for pdf)	spiclient	fr	Fournisseur par défaut (PDF)
+default role for contacts	spiclient	fr	Role par défaut pour les contacts
+default user	spiclient	fr	Utilisateur par défaut
+default user for new group	spiclient	fr	Utilisateur par défaut pour les nouveaux groupes
+default value	spiclient	fr	Valeur par défaut
+delay	spiclient	fr	Delais
+delay appro	spiclient	fr	Délai d'appro
+delay budget	spiclient	fr	Délai de budget
+delay hybrid	spiclient	fr	Délai hybride
+delay normal	spiclient	fr	Délai normal
+delay payment	spiclient	fr	Délai de paiement
+delay payment management	spiclient	fr	Gestion des délais de paiement
+delay server	spiclient	fr	Délai panne serveur
+delay sourcing	spiclient	fr	Délai de sourcing
+delete relations first, (contacts, contracts, etc)	spiclient	fr	Supprimer d'abord les relations (contacts, contrats...)
+desactivate this service	spiclient	fr	Désactiver ce service
+detailled budget	spiclient	fr	Budget détaillé
+down	spiclient	fr	Bas
+due date	spiclient	fr	Echéance
+edit address	spiclient	fr	Modifier l'adresse
+edit budget	spiclient	fr	Modifier budget
+edit client	spiclient	fr	Modifier un client
+edit client checklist	spiclient	fr	Modifier la checklist client
+edit client relation	spiclient	fr	Modifier la relation client
+edit client type	spiclient	fr	Modifier un type de client
+edit contract	spiclient	fr	Modifier un contrat
+edit contract type	spiclient	fr	Modifier un type de contrat
+edit delay payment	spiclient	fr	Modifier un délai de paiement
+edit geographic area	spiclient	fr	Modifier une zone géographique
+edit invoice categorie	spiclient	fr	Modifier une catégorie de facture
+edit location	spiclient	fr	Modifier un emplacement
+edit payment method	spiclient	fr	Modifier un mode de règlement
+edit role	spiclient	fr	Modifier rôle
+edit sector	spiclient	fr	Modifier un secteur
+edit technical nature	spiclient	fr	Modifier une nature technique
+email accountant	spiclient	fr	Email du destinataire des factures
+email copy invoice	spiclient	fr	Email du co-destinataire des factures
+end date/time	spiclient	fr	Date de fin
+ended contracts	spiclient	fr	Contrats terminés
+error on this customer	spiclient	fr	Erreur sur ce client
+error while saving	spiclient	fr	Erreur lors de l'enregistrement
+existing links	spiclient	fr	Liens existants
+fax	spiclient	fr	Fax
+firstname of person to notify	spiclient	fr	Prénom
+footer field 1	spiclient	fr	Pied de page 1
+footer field 2	spiclient	fr	Pied de page 2
+free field 1	spiclient	fr	Champs libre 1
+free field 2	spiclient	fr	Champs libre 2
+free field 3	spiclient	fr	Champs libre 3
+free field 4	spiclient	fr	Champs libre 4
+free field 5	spiclient	fr	Champs libre 5
+from the available roles...	spiclient	fr	Dans les rôles disponibles...
+ftp client filepath	spiclient	fr	Chemin du FTP du fichier Clients
+ftp contact filepath	spiclient	fr	Chemin du FTP du fichier Contacts
+ftp filepath	spiclient	fr	Chemin FTP
+ftp password	spiclient	fr	Mot de passe FTP
+ftp username	spiclient	fr	Utilisateur FTP
+fullname of person to notify	spiclient	fr	Nom complet
+function	spiclient	fr	Fonction
+general	spiclient	fr	Général
+general help on imports	spiclient	fr	Aide général sur l'import
+generate pdf invoice	spiclient	fr	Générer la facture PDF
+geographic area	spiclient	fr	Zone géographique
+geographic area deleted	spiclient	fr	Zone géographique supprimée
+geographic area management	spiclient	fr	Gestion des zones géographique
+go to client view	spiclient	fr	Aller sur la vue client
+group able to manage clients	spiclient	fr	Groupe autorisé à gérer les clients
+group able to manage contracts	spiclient	fr	Groupe autorisé à gérer les contrats
+group seller for clients	spiclient	fr	Groupe des vendeurs (clients)
+group seller for contracts	spiclient	fr	Groupe des vendeurs (contrats)
+help_manager_email	spiclient	fr	Le manager est susceptible de recevoir tous les tickets de Spid en CC.
+history	spiclient	fr	Historique
+hybrid :	spiclient	fr	Hybride
+iban	spiclient	fr	IBAN
+icon	spiclient	fr	Icône
+id	spiclient	fr	ID
+if the client (by the client code) does not exist, the fied "sitename" will be used as the client name and the client will be automatically created	spiclient	fr	Si le client (par son code client) n'exie pas, le champ "SiteName" sera utilisé comme nom du client et le client sera automatiquement créé.
+import	spiclient	fr	Import
+import fields	spiclient	fr	Champs importés
+import is allowed to admins only	spiclient	fr	L'import est réservé aux administrateurs
+impossible to delete this client !	spiclient	fr	Impossible de supprimer cette organisation !
+in case of failure	spiclient	fr	En cas de panne
+include sleeping organizations	spiclient	fr	Inclure les organisations en sommeil
+infolog	spiclient	fr	Infolog
+information for this setting	spiclient	fr	Information sur ce paramètre
+invoice access time	spiclient	fr	Temps d'accès aux factures
+invoice date	spiclient	fr	Date de facture
+invoice folder	spiclient	fr	Répertoire de facture
+invoice number	spiclient	fr	Numéro de facture
+invoice n°	spiclient	fr	Facture n°
+last invoice	spiclient	fr	Dernière facture
+lastname of person to notify	spiclient	fr	Nom
+legal structure	spiclient	fr	Forme juridique
+libelle	spiclient	fr	Libellé
+link to view the event	spiclient	fr	Lien pour voir l'événement
+locality	spiclient	fr	Ville
+location	spiclient	fr	Emplacement
+location management	spiclient	fr	Gestion des emplacements
+location parent	spiclient	fr	Emplacement parent
+locations	spiclient	fr	Emplacements
+logo	spiclient	fr	Logo
+main bank account	spiclient	fr	Compte banquaire principale
+manage clients	spiclient	fr	Gérer les clients
+manage contracts	spiclient	fr	Gérer les contrats
+management group	spiclient	fr	Groupe gestionnaire
+management group for spiclient	spiclient	fr	Groupe gestionnaire pour Spiclient
+manager	spiclient	fr	Manager
+manager email	spiclient	fr	Email du manager
+manual budget	spiclient	fr	Budget Manuel
+member help	spiclient	fr	Aider pour les membres
+members	spiclient	fr	Membres
+message with invoice when you send them by email	spiclient	fr	Message envoyé par email avec la facture
+miscellaneous	spiclient	fr	Divers
+mobile phone	spiclient	fr	Tél mobile
+modification	spiclient	fr	Modification
+modifier	spiclient	fr	Modificateur
+must contain the full path (including file name)	spiclient	fr	Doit contenir le chemin complet (y compris le nom du fichier)
+my active contracts	spiclient	fr	Mes contrats actifs
+my clients	spiclient	fr	Mes clients
+my contracts	spiclient	fr	Mes contrats
+my leads	spiclient	fr	Mes prospects
+my organizations	spiclient	fr	Mes organisations
+nature	spiclient	fr	Nature
+new client	spiclient	fr	Nouveau client
+new contract	spiclient	fr	Nouveau contrat
+new group	spiclient	fr	Nouveau groupe
+new organization	spiclient	fr	Nouvelle organisation
+new user	spiclient	fr	Nouvel utilisateur
+no bank account for current provider	spiclient	fr	Pas de compte bancaire pour le prestataire sélectioné
+normal :	spiclient	fr	Normal :
+number of tickets	spiclient	fr	Nombre de tickets
+old startdate	spiclient	fr	Ancienne date de début
+only csv files are treated	spiclient	fr	Seuls les fichiers csv sont traités
+operation code	spiclient	fr	Code Operation
+order	spiclient	fr	Ordre
+parc	spiclient	fr	Parc
+parent area	spiclient	fr	Zone parente
+parent company	spiclient	fr	Maison mère
+participants	spiclient	fr	Participants
+participants disinvited from an event	spiclient	fr	Participants retirés d'un événement
+payer	spiclient	fr	Payeur
+payment date	spiclient	fr	Date de paiement
+payment delay	spiclient	fr	Délai de paiement
+payment method	spiclient	fr	Mode de règlement
+payment method management	spiclient	fr	Gestion des modes de règlement
+payment model	spiclient	fr	Modèle de règlement
+pdf	spiclient	fr	PDF
+pdf title	spiclient	fr	Titre PDF
+period	spiclient	fr	Périodicité
+permission denied !!!	spiclient	fr	Accès refusé !!
+phase	spiclient	fr	Phase
+phonecall	spiclient	fr	Appel
+please enter here the first digits of the customer phone numbers, separated with comas	spiclient	fr	Entrez ici les racines des téléphones du client séparés par des virgules
+please entre a phase, category, unit, quantity and date to add budget !	spiclient	fr	Veuillez entrer une phase, une catégorie, une unité, une quantité et une date pour ajouter une ligne au budget !
+please select a user and a role !	spiclient	fr	Veuillez sélectionner un utilisateur et un rôle !
+possible chalandise	spiclient	fr	Possible chalandise
+possible parent	spiclient	fr	Possible parent
+postal code	spiclient	fr	Code postal
+preview	spiclient	fr	Prévisualisation
+print entry	spiclient	fr	Imprimer
+print pdf	spiclient	fr	Imprimer en pdf
+prospect type	spiclient	fr	Type prospects
+provider	spiclient	fr	Prestataire
+provider type	spiclient	fr	Type prestataires
+providers	spiclient	fr	Prestataires
+quantity	spiclient	fr	Quantité
+quick add	spiclient	fr	Ajout rapide
+quick client add	spiclient	fr	Ajout de client rapide
+real	spiclient	fr	Réel
+real amount	spiclient	fr	Montant réel
+real amount n-1	spiclient	fr	Montant réel N-1
+real day	spiclient	fr	Jours réels
+real day n-1	spiclient	fr	Jours réels N-1
+receive notifications about assigned tickets	spiclient	fr	Recevoir des notifications sur les tickets assignés
+receive notifications about created tickets	spiclient	fr	Recevoir des notifications sur les tickets créés
+recently modified clients	spiclient	fr	Client modifiés récemment
+references	spiclient	fr	Références
+region	spiclient	fr	Région
+remind client	spiclient	fr	Relance client
+remind date	spiclient	fr	Date de relance
+remove checklist	spiclient	fr	Supprimer une checklist
+renewal date	spiclient	fr	Date de renouvellement
+renewed contracts	spiclient	fr	Contrats à renouveler
+responsable	spiclient	fr	Responsable
+role	spiclient	fr	Rôle
+role management	spiclient	fr	Gestion des rôles
+save entry	spiclient	fr	Enregistrer
+sda	spiclient	fr	SDA
+search '%1'	spiclient	fr	Recherche '%1'
+search area '%1'	spiclient	fr	Recherche zone '%1'
+search company '%1'	spiclient	fr	Recherche client '%1'
+search contract	spiclient	fr	Recherche contrat
+search contract '%1'	spiclient	fr	Recherche contrat '%1'
+search for '%1'	spiclient	fr	Recherche de '%1'
+search location '%1'	spiclient	fr	Recherche d'emplacement '%1'
+search role '%1'	spiclient	fr	Recherche de rôle '%1'
+search sector '%1'	spiclient	fr	Recherche de secteur '%1'
+secondary bank account	spiclient	fr	Compte banquaire secondaire
+secteur	spiclient	fr	Secteur
+sector	spiclient	fr	Secteur
+sector management	spiclient	fr	Gestion des secteurs
+sector name	spiclient	fr	Nom du secteur
+sectors	spiclient	fr	Secteurs
+see client	spiclient	fr	Voir client
+see reference	spiclient	fr	Voir référence
+sell	spiclient	fr	Vente
+seller	spiclient	fr	Vendeur
+seller can access all clients	spiclient	fr	Les vendeurs peuvent accéder à tous les clients
+seller can access all contracts	spiclient	fr	Les vendeurs peuvent accéder à tous les contrats
+seller only access their own clients	spiclient	fr	Les vendeurs peuvent accéder uniquement à leurs clients
+seller only access their own contracts	spiclient	fr	Les vendeurs peuvent accéder uniquement à leurs contrats
+seller type	spiclient	fr	Type fournisseurs
+seller will be able to add clients	spiclient	fr	Les vendeurs peuvent ajouter des clients
+seller will be able to add contracts	spiclient	fr	Les vendeurs peuvent ajouter des contrats
+send invoice by email	spiclient	fr	Envoyer la facture par email
+sent	spiclient	fr	Envoyé
+server :	spiclient	fr	Serveur :
+short description	spiclient	fr	Description courte
+show default view on main screen	spiclient	fr	Montrer la vue par défaut sur la page d'accueil
+signature date	spiclient	fr	Date de signature
+siret number	spiclient	fr	Numéro SIRET
+site	spiclient	fr	Emplacement
+sleep	spiclient	fr	En sommeil
+sourcing :	spiclient	fr	Sourcing :
+specific file format	spiclient	fr	Format de fichier spécifique
+spiclient	common	fr	Clients & Prospects
+start date/time	spiclient	fr	Date/Heure de début
+supplier	spiclient	fr	Fournisseur
+tables	spiclient	fr	Tableaux
+technical	spiclient	fr	Technique
+technical nature	spiclient	fr	Nature technique
+technical nature management	spiclient	fr	Gestion des natures technique
+tel	spiclient	fr	Tél
+test	spiclient	fr	test
+the contact with this role is active in the organisation	spiclient	fr	Le contact avec ce rôle est actif dans l'organisation
+the managers receive all spid's tickets	spiclient	fr	Les managers reçoivent tous les tickets de Spid
+this asynchronous service is currently disabled	spiclient	fr	Ce service asynchrone est actuellement désactivé
+this asynchronous service is currently enabled and will run next on %1	spiclient	fr	Ce service asynchrone est actuellement activé et la prochaine exécution est prévue pour %1
+this message is join by mail when you send your bills by email.	spiclient	fr	Ce message est valorisé par défaut lors de l'envoi de la facture par email.
+tiers code	spiclient	fr	Code tiers
+title of the event	spiclient	fr	Titre de l'événement
+todo	spiclient	fr	Tâche
+training number	spiclient	fr	Numéro de formation
+tva	spiclient	fr	TVA
+tva number	spiclient	fr	Numéro de TVA
+type for clients	spiclient	fr	Type pour les clients
+type for prospects	spiclient	fr	Type pour les prospects
+type for providers	spiclient	fr	Type pour les prestataires
+type for sellers	spiclient	fr	Type pour les fournisseurs
+under tva	spiclient	fr	Soumis à TVA
+unit	spiclient	fr	Unité
+up	spiclient	fr	Haut
+update date	spiclient	fr	Date de mise à jour
+upload logo	spiclient	fr	Uploader le logo
+user group	spiclient	fr	Groupe de l'utilisateur
+user manual	spiclient	fr	Manuel utilisateur
+view client	spiclient	fr	Voir un client
+view client type	spiclient	fr	Voir un type de client
+view contract	spiclient	fr	Voir le contrat
+view geographic area	spiclient	fr	Voir la zone géographique
+view location	spiclient	fr	Voir le site
+view role	spiclient	fr	Voir le rôle
+view sector	spiclient	fr	Voir le secteur
+view technical nature	spiclient	fr	Voir une nature technique
+warning: requires spiref module	spiclient	fr	ATTENTION: Requiert le module SpiRef
+website	spiclient	fr	Site web
+your field "sitename" is converted to be the client code (client_code_tiers) by automatically adding a c	spiclient	fr	Votre champ "SiteName" sera converti en code client (client_code_tiers) avec l'ajout automatique de C devant le cod
+zone de chalandise	spiclient	fr	Zone de chalandise
+€	spiclient	fr	€
+1	spiclient	fr	1

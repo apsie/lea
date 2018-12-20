@@ -1,0 +1,42 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_presentation.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+
+
+<h4>Formations, diplôme(s)</h4>
+<ul>
+<li>Décrivez votre formation et ou vos diplômes</li>
+<li>Vos formations ou vos diplômes sont-ils utiles à votre projet ? </li>
+<li>Si votre activité nécessite un diplôme spécifique reportez vous à la partie (4.1. : aspects juridiques)
+</li>
+</ul>
+<h4>Expériences professionnelles</h4>
+A l'aide de votre CV décrivez vos expériences professionnelles et ou extraprofessionnelles/<br/>
+Vous devez mettre en avant les compétences, connaissances ou capacités professionnelles susceptibles de vous servir dans votre projet. Exemple : capacités de gestion, capacité commerciale, connaissance du secteur d'activité)
+<br/>
+<br/>
+
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_presentation_2_1; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+</div>

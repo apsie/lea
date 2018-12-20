@@ -1,0 +1,21 @@
+<div class="entete" >Nouvelle type de prestation</div>
+<form name="typeprestation_create" action="./typeprestation/create">
+	<section>
+		<fieldset>
+			<table>
+				<tr>
+					<td>Libellé :</td>
+					<td>{{ form_widget(formTypePrestation.libelle) }}</td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td><input type="submit" value="Enregistrer" /></td>
+				</tr>
+			</table>
+		</fieldset>
+	</section>
+</form>
+<script>
+$('form[name="typeprestation_create"]').submitForm('.div_droite','Type de prestation','typeprestation');
+</script>
+					

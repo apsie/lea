@@ -1,0 +1,28 @@
+<section class="formulaire_presta" >
+	<fieldset class="contact">
+		<table>
+					<tr>
+						<td>Numéro SS:  </td><td>{{ form_widget(formContactEtatCivil.idSecu) }}</td>
+					</tr>
+
+					<tr>
+						<td>Date de naissance :  </td><td>{{ form_widget(formContactEtatCivil.dateNaissance) }}</td>
+						<td>Lieu de naissance :  </td><td>{{ form_widget(formContactEtatCivil.lieuNaissance) }}</td>					</tr>					
+
+					<tr>
+						<td>Pays de naissance :  </td><td>{{ form_widget(formContactEtatCivil.paysNaissance) }}</td>
+						<td>Nationalité :  </td><td>{{ form_widget(formContactEtatCivil.nationalite) }}</td>					</tr>
+
+					<tr>
+						<td>Situation maritale :  </td><td>{{ form_widget(formContactEtatCivil.situationMaritale) }}</td>
+						<td>Nombre d'enfants à charge :  </td><td>{{ form_widget(formContactEtatCivil.enfantsACharge) }}</td>
+					</tr>
+		</table>
+	</fieldset>
+</section>
+
+<script>
+    //cp
+    $('#EgwContact_cp,#EgwContact_ville').myAutoCompleteCp('EgwContact_');
+    $('#EgwContact_dateNaissance').datepicker();
+</script>

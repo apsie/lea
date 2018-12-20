@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwDispositif" table="egw_dispositif">
+    <id name="idDispositif" type="integer" column="id_dispositif">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomDispositif" type="string" column="nom_dispositif" length="64" nullable="true"/>
+    <field name="numeroMarche" type="string" column="numero_marche" length="64" nullable="false"/>
+    <field name="numeroLot" type="string" column="numero_lot" length="128" nullable="true"/>
+    <field name="objet" type="string" column="objet" length="64" nullable="true"/>
+    <field name="dateDebut" type="bigint" column="date_debut" nullable="true"/>
+    <field name="dateFin" type="bigint" column="date_fin" nullable="true"/>
+    <field name="zoneGeographique" type="string" column="zone_geographique" length="32" nullable="true"/>
+    <field name="isActive" type="boolean" column="is_active" nullable="false"/>
+  </entity>
+</doctrine-mapping>

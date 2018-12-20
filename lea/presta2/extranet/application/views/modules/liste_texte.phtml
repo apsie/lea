@@ -1,0 +1,66 @@
+<table  id="myTable" class="tablesorter" cellspacing="1">
+	<thead>
+		<tr>
+			<th width="500px" >Chapître</th>
+			<th width="500px" >Texte</th>
+			<th width="10px"></th>
+			<th width=10px"></th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php 
+		foreach ($this->data as $key =>$row):
+			echo'<tr>	
+				<td>'.utf8_encode($row['libelle']).'</td>
+				<td>'.utf8_encode($row['texte']).'</td>
+				<td><img class="edit" id="'.$row['id_texte'].'" style="cursor:pointer"  src="/images/ico/edit.png" /></td>
+				<td><img class="delete" id="'.$row['id_texte'].'" style="cursor:pointer"  src="/images/ico/delete.png" /></td>
+				</tr>';
+		endforeach;
+	?>
+		
+	</tbody>
+</table>
+<script>
+$j('img.delete').click(function(){
+
+	var thisBis = this;
+	$j.ajax({
+		url : "./index.php?page=ajax&noTemplate=1",
+		dataType : "html",
+		
+		data : {
+		action : 'del_texte',
+		id_texte : $j(thisBis).attr('id')
+		
+		},success: function(html){
+			
+			notify('Texte','Le texte a été supprimé');
+			getTexte();
+
+		}});
+
+});
+$j('img.edit').click(function(){
+
+	var thisBis = this;
+	
+	formTexte($j(thisBis).attr('id'));
+	/*
+	$j.ajax({
+		url : "./index.php?page=ajax&noTemplate=1",
+		dataType : "html",
+		
+		data : {
+		action : 'edit_texte',
+		id_texte : $j(thisBis).attr('id')
+		
+		},success: function(html){
+			
+			notify('Texte','Le texte a été modifié');
+			getTexte();
+
+		}});
+*/
+});
+</script>

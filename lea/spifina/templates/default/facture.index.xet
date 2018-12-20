@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spifina.facture.index.hleft" template="" lang="" group="0" version="1.000">
+		<grid width="100%" id="nm">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<vbox span="all">
+						<menulist>
+							<menupopup type="select-year" label="Year" id="year" onchange="1"/>
+						</menulist>
+						<menulist>
+							<menupopup id="client" onchange="1" options="All clients,,,,,,,1"/>
+						</menulist>
+						<menulist>
+							<menupopup id="contract" onchange="1" options="All contracts,,,,,,,1"/>
+						</menulist>
+					</vbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spifina.facture.index.rows" template="" lang="" group="0" version="1.004">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column disabled="@hide_spid"/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader align="center" label="ID" id="facture_id"/>
+					<nextmatch-sortheader align="center" label="Invoice n°" id="facture_number"/>
+					<nextmatch-header align="center" label="Operation code" id="client_operation_code"/>
+					<nextmatch-sortheader align="center" label="Creation Date" id="creation_date"/>
+					<nextmatch-sortheader align="center" label="Invoice date" id="send_date"/>
+					<nextmatch-sortheader align="center" label="Client" id="client_id"/>
+					<nextmatch-sortheader align="center" label="Provider" id="societe_id"/>
+					<nextmatch-header align="center" label="Contract" id="contract_id"/>
+					<description align="center" value="Main category"/>
+					<nextmatch-sortheader align="center" label="Total HT" id="total_ht"/>
+					<nextmatch-header align="center" label="Number of tickets" id="tickets_number"/>
+					<nextmatch-sortheader align="center" label="Sent" id="invoice_send"/>
+					<nextmatch-sortheader align="center" label="Due date" id="invoice_due_date"/>
+					<nextmatch-sortheader align="center" label="Payment date" id="payment_date"/>
+					<nextmatch-sortheader align="center" label="Remind date" id="invoice_remind_date"/>
+					<description align="center" value="Actions"/>
+					<button align="center" statustext="Check all" label="Check all" id="check_all" needed="1" onclick="toggle_all(this.form,form::name('checked[]')); return false;" image="check"/>
+				</row>
+				<row class="row">
+					<description align="center" id="${row}[facture_id]" no_lang="1" readonly="true"/>
+					<description align="center" extra_link_popup="900x720" extra_link_title="$row_cont[facture_number]" href="spifina.spifina_ui.view&amp;id=$row_cont[facture_id]" id="${row}[facture_number]" no_lang="1" readonly="true"/>
+					<description align="center" id="${row}[client_operation_code]" no_lang="1" readonly="true"/>
+					<date align="center" id="${row}[creation_date]" no_lang="1" readonly="true"/>
+					<date align="center" id="${row}[send_date]" no_lang="1" readonly="true"/>
+					<description align="center" id="${row}[client_company]" no_lang="1" readonly="true"/>
+					<description align="center" id="${row}[provider]" no_lang="1" readonly="true"/>
+					<menulist>
+						<menupopup align="center" id="${row}[contract_id]" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" id="${row}[invoice_cat]" readonly="true"/>
+					</menulist>
+					<description align="center" id="${row}[total_ht]" no_lang="1" readonly="true"/>
+					<description align="center" id="${row}[ticket_number]" no_lang="1" readonly="true"/>
+					<menulist>
+						<menupopup align="center" id="${row}[invoice_send]" no_lang="1" readonly="true"/>
+					</menulist>
+					<date id="${row}[invoice_due_date]" readonly="true"/>
+					<date id="${row}[payment_date]" readonly="true"/>
+					<date id="${row}[invoice_remind_date]" readonly="true"/>
+					<hbox align="center">
+						<button align="center" statustext="//return confirmDeleteFacture('$row_cont[facture_number]');" label="Delete" id="delete[$row_cont[facture_id]]" onclick="return confirm('Confirmez-vous la suppression ?');" image="delete"/>
+						<button align="center" label="Edit" id="edit[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.edit&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=950,height=880,scrollbars=yes,status=yes'); return false;" image="edit"/>
+						<button align="center" label="View" id="view[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.view&amp;id=$row_cont[facture_id]&amp;client=$row_cont[client_id]'),'_blank','dependent=yes,width=950,height=880,scrollbars=yes,status=yes'); return false;" image="view"/>
+						<button align="center" label="Print entry" id="tprint[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.tprint&amp;id=$row_cont[client_id]&amp;facture=$row_cont[facture_number]'),'_blank','dependent=yes,width=1024,height=768,scrollbars=yes,status=yes'); return false;" image="open" class="noPrint"/>
+						<button align="center" label="Save entry" id="tprint[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.tprint&amp;id=$row_cont[client_id]&amp;facture=$row_cont[facture_number]&amp;download=1'),'_blank','dependent=yes,width=600,height=450,scrollbars=yes,status=yes'); return false;" image="filesave" class="noPrint"/>
+						<button align="center" label="Generate PDF Invoice" id="pdf[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.pdf&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=730,height=350,scrollbars=yes,status=yes'); return false;" image="pdf"/>
+						<button align="center" label="Simulate PDF Invoice" id="pdfsimul[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.pdfsimul&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=730,height=350,scrollbars=yes,status=yes'); return false;" image="pdfsimul"/>
+						<button align="center" label="Invoice PDF pro forma" id="pdfproforma[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.pdfsimul&amp;id=$row_cont[facture_id]&amp;proforma=1'),'_blank','dependent=yes,width=730,height=350,scrollbars=yes,status=yes'); return false;" image="pdfproforma"/>
+						<button align="center" statustext="email[$row_cont[facture_id]],,ajax_request.SendInvoiceByMail('$row_cont[client_id]','$row_cont[facture_number]');return false;" label="Send Invoice by email" id="mail[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.mail&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" image="email"/>
+						<button align="center" label="Remind client" id="remind[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.mail&amp;id=$row_cont[facture_id]&amp;remind=1'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" image="relance"/>
+						<button align="center" id="paid[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.pay&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" image="euro"/>
+						<button align="center" id="pay[$row_cont[facture_id]]" onclick="window.open(egw::link('/index.php','menuaction=spifina.spifina_ui.pay&amp;id=$row_cont[facture_id]'),'_blank','dependent=yes,width=900,height=550,scrollbars=yes,status=yes'); return false;" image="euroviolet"/>
+					</hbox>
+					<checkbox align="center" id="checked[]" options="$row_cont[facture_id]"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spifina.facture.index" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description align="center" id="msg" span="all" class="redItalic"/>
+				</row>
+				<row>
+					<template id="hleft" span="all"/>
+				</row>
+				<row>
+					<nextmatch id="nm" template="spifina.facture.index.rows" span="all"/>
+				</row>
+				<row>
+					<hbox align="right">
+						<checkbox statustext="Apply the action on the whole query, NOT only the shown contacts!!!" label="whole query" id="use_all" onchange="if (this.checked==true &amp;&amp; !confirm('Apply the action on the whole query, NOT only the shown contacts!!!')) this.checked=false;"/>
+						<menulist>
+							<menupopup statustext="Select an action " id="action" no_lang="1" onchange="1" options="Select an action,"/>
+						</menulist>
+						<button statustext="Check all" label="Check all" id="check_all" needed="1" onclick="toggle_all(this.form,form::name('nm[rows][checked][]')); return false;" image="arrow_ltr" class="checkAllArrow"/>
+						<description value=" "/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

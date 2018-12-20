@@ -1,0 +1,213 @@
+... only their own	spiclient	fr	... uniquement les siens
+accounting	spiclient	fr	Comptabilité
+action that caused the notify: added, canceled, accepted, rejected, ...	spiclient	fr	Action à la source la notification : ajouté, annulé, accepté, rejeté...
+actions	spiclient	fr	Actions
+active contracts	spiclient	fr	Contrats Actifs
+add client	spiclient	fr	Nouveau client
+add contract	spiclient	fr	Nouveau contrat
+add contract type	spiclient	fr	Nouveau type de contrat
+add delay payment	spiclient	fr	Nouveau délai de paiement
+add geographic area	spiclient	fr	Nouvelle zone géographique
+add location	spiclient	fr	Nouveau site
+add payment method	spiclient	fr	Nouveau mode de règlement
+add role	spiclient	fr	Nouveau rôle
+add sector	spiclient	fr	Nouveau secteur
+address	spiclient	fr	Adresse
+address one	spiclient	fr	Adresse 1
+address two	spiclient	fr	Adresse 2
+all clients	spiclient	fr	Tous les clients
+all contracts	spiclient	fr	Tous les contrats
+allow removal	spiclient	fr	Autoriser la suppression
+allow seller to access all clients	spiclient	fr	Autoriser les vendeurs à accéder à tous les clients
+allow seller to access all contracts	spiclient	fr	Autoriser les vendeurs à accéder à tous les contrats
+allow sellers to add clients	spiclient	fr	Autoriser les vendeurs à ajouter des clients
+allow sellers to add contracts	spiclient	fr	Autoriser les vendeurs à ajouter des contrats
+allow users to delete clients	spiclient	fr	Autoriser les utilisateurs à supprimer des clients
+allow users to delete contracts	spiclient	fr	Autoriser les utilisateurs à supprimer des contrats
+amount	spiclient	fr	Montant
+amount budget	spiclient	fr	Montant Budget
+amount:	spiclient	fr	Montant :
+appro :	spiclient	fr	Appro :
+area	spiclient	fr	Zone
+bill address	spiclient	fr	Adresse de facturation
+bill address 2	spiclient	fr	Adresse de facturation 2
+billable by	spiclient	fr	Facturable par
+budget	spiclient	fr	Budget :
+by	spiclient	fr	par
+catchment	spiclient	fr	Chalandise
+city	spiclient	fr	Ville
+client	spiclient	fr	Client
+client configuration	spiclient	fr	Configuration client
+client management	spiclient	fr	Gestion des clients
+client management group	spiclient	fr	Groupe gestionnaire des clients
+client reference	spiclient	fr	Référence client
+client seller	spiclient	fr	Vendeur
+clients	spiclient	fr	Client
+clients menu	spiclient	fr	Menu clients
+color	spiclient	fr	Couleur
+conditions	spiclient	fr	Conditions
+configuration	spiclient	fr	Configuration
+contact name	spiclient	fr	Nom du contact
+contacts	spiclient	fr	Contacts
+contract	spiclient	fr	Contrat
+contract configuration	spiclient	fr	Configuration des contrats
+contract management	spiclient	fr	Gestion des contrats
+contract management group	spiclient	fr	Groupe gestionnaire des contrats
+contract seller	spiclient	fr	Vendeur de contrats
+contract status	spiclient	fr	Statut du contrat
+contract status configuration	spiclient	fr	Statuts de contrats
+contract type	spiclient	fr	Type de contrat
+contract type configuration	spiclient	fr	Types de contrats
+contract type management	spiclient	fr	Gestion des types de contrats
+contract updated	spiclient	fr	Contrat mis à jour
+contracts	spiclient	fr	Contrats
+contracts menu	spiclient	fr	Menu contrats
+country	spiclient	fr	Pays
+create a new group	spiclient	fr	Créer un nouveau groupe
+create new links	spiclient	fr	Ajouter de nouveaux liens
+creation date	spiclient	fr	Date de création
+date de création	spiclient	fr	Date de création
+date_start	spiclient	fr	Date de début
+day budget	spiclient	fr	Budget jours
+day:	spiclient	fr	Jours :
+default user	spiclient	fr	Utilisateur par défaut
+default user for new group	spiclient	fr	Utilisateur par défaut pour les nouveau groupe
+default value	spiclient	fr	Valeur par défaut
+delay	spiclient	fr	Delais
+delay appro	spiclient	fr	Délai d'appro
+delay budget	spiclient	fr	Délai de budget
+delay hybrid	spiclient	fr	Délai hybride
+delay normal	spiclient	fr	Délai normal
+delay payment	spiclient	fr	Délai de paiement
+delay payment management	spiclient	fr	Gestion des délais de paiement
+delay server	spiclient	fr	Délai panne serveur
+delay sourcing	spiclient	fr	Délai de sourcing
+edit client	spiclient	fr	Modifier un client
+edit contract	spiclient	fr	Modifier un contrat
+edit contract type	spiclient	fr	Modifier un type de contrat
+edit delay payment	spiclient	fr	Modifier un délai de paiement
+edit geographic area	spiclient	fr	Modifier une zone géographique
+edit location	spiclient	fr	Modifier un site
+edit payment method	spiclient	fr	Modifier un mode de règlement
+edit role	spiclient	fr	Modifier rôle
+edit sector	spiclient	fr	Modifier un secteur
+end date/time	spiclient	fr	Date de fin
+ended contracts	spiclient	fr	Contrats terminés
+error on this customer	spiclient	fr	Erreur sur ce client
+existing links	spiclient	fr	Liens existants
+firstname of person to notify	spiclient	fr	Prénom
+footer field 1	spiclient	fr	Pied de page 1
+footer field 2	spiclient	fr	Pied de page 2
+free field 1	spiclient	fr	Champs libre 1
+free field 2	spiclient	fr	Champs libre 2
+free field 3	spiclient	fr	Champs libre 3
+free field 4	spiclient	fr	Champs libre 4
+free field 5	spiclient	fr	Champs libre 5
+fullname of person to notify	spiclient	fr	Nom complet
+general	spiclient	fr	Général
+geographic area	spiclient	fr	Zone géographique
+geographic area deleted	spiclient	fr	Zone géographique supprimée
+geographic area management	spiclient	fr	Gestion des zones géographique
+group able to manage clients	spiclient	fr	Group autorisé à gérer les clients
+group able to manage contracts	spiclient	fr	Group autorisé à gérer les contrats
+group seller for clients	spiclient	fr	Groupe des vendeurs (clients)
+group seller for contracts	spiclient	fr	Groupe des vendeurs (contrats)
+history	spiclient	fr	Historique
+hybrid :	spiclient	fr	Hybride
+icon	spiclient	fr	Icône
+id	spiclient	fr	ID
+invoice folder	spiclient	fr	Répertoire de facture
+last invoice	spiclient	fr	Dernière facture
+lastname of person to notify	spiclient	fr	Nom
+libelle	spiclient	fr	Libellé
+link to view the event	spiclient	fr	Lien pour voir l'événement
+locality	spiclient	fr	Ville
+location	spiclient	fr	Site
+location management	spiclient	fr	Gestion des sites
+location parent	spiclient	fr	Site parent
+locations	spiclient	fr	Sites
+manage clients	spiclient	fr	Gérer les clients
+manage contracts	spiclient	fr	Gérer les contrats
+management group	spiclient	fr	Groupe gestionnaire
+management group for spiclient	spiclient	fr	Groupe gestionnaire pour Spiclient
+manager email	spiclient	fr	Email du manager
+message with invoice when you send them by email	spiclient	fr	Message envoyé par email avec la facture
+my active contracts	spiclient	fr	Mes contrats actifs
+my clients	spiclient	fr	Mes clients
+my contracts	spiclient	fr	Mes contrats
+new client	spiclient	fr	Nouveau client
+new contract	spiclient	fr	Nouveau contrat
+new group	spiclient	fr	Nouveau groupe
+new user	spiclient	fr	Nouvel utilisateur
+normal :	spiclient	fr	Normal :
+old startdate	spiclient	fr	Ancienne date de début
+parc	spiclient	fr	Parc
+parent area	spiclient	fr	Zone parente
+parent company	spiclient	fr	Maison mère
+participants	spiclient	fr	Participants
+participants disinvited from an event	spiclient	fr	Participants retirés d'un événement
+payment delay	spiclient	fr	Délai de paiement
+payment method	spiclient	fr	Mode de règlement
+payment method management	spiclient	fr	Gestion des modes de règlement
+payment model	spiclient	fr	Modèle de règlement
+period	spiclient	fr	Périodicité
+permission denied !!!	spiclient	fr	Permission refusée !!
+postal code	spiclient	fr	Code postal
+providers	spiclient	fr	Prestataires
+real	spiclient	fr	Réel
+real amount	spiclient	fr	Montant réel
+real day	spiclient	fr	Jours réels
+receive notifications about assigned tickets	spiclient	fr	Recevoir des notifications sur les tickets assignés
+receive notifications about created tickets	spiclient	fr	Recevoir des notifications sur les tickets créés
+region	spiclient	fr	Région
+renewal date	spiclient	fr	Date de renouvellement
+renewed contracts	spiclient	fr	Contrats à renouveler
+role	spiclient	fr	Rôle
+role management	spiclient	fr	Gestion des rôles
+search area '%1'	spiclient	fr	Recherche zone '%1'
+search company '%1'	spiclient	fr	Recherche client '%1'
+search contract	spiclient	fr	Recherche contrat
+search contract '%1'	spiclient	fr	Recherche contrat '%1'
+search for '%1'	spiclient	fr	Recherche de '%1'
+search location '%1'	spiclient	fr	Recherche de site '%1'
+search role '%1'	spiclient	fr	Recherche de rôle '%1'
+search sector '%1'	spiclient	fr	Recherche de secteur '%1'
+secteur	spiclient	fr	Secteur
+sector	spiclient	fr	Secteur
+sector management	spiclient	fr	Gestion des secteurs
+sector name	spiclient	fr	Nom du secteur
+sectors	spiclient	fr	Secteurs
+see client	spiclient	fr	Voir client
+seller	spiclient	fr	Vendeur
+seller can access all clients	spiclient	fr	Les vendeurs peuvent accéder à tous les clients
+seller can access all contracts	spiclient	fr	Les vendeurs peuvent accéder à tous les contrats
+seller only access their own clients	spiclient	fr	Les vendeurs peuvent accéder uniquement à leurs clients
+seller only access their own contracts	spiclient	fr	Les vendeurs peuvent accéder uniquement à leurs contrats
+seller will be able to add clients	spiclient	fr	Les vendeurs peuvent ajouter des clients
+seller will be able to add contracts	spiclient	fr	Les vendeurs peuvent ajouter des contrats
+server :	spiclient	fr	Serveur :
+show default view on main screen	spiclient	fr	Montrer la vue par défaut sur la page d'accueil
+signature date	spiclient	fr	Date de signature
+site	spiclient	fr	Site
+sleep	spiclient	fr	En sommeil
+sourcing :	spiclient	fr	Sourcing :
+spiclient	spiclient	fr	SpiClients
+start date/time	spiclient	fr	Date/Heure de début
+supplier	spiclient	fr	Fournisseur
+tel	spiclient	fr	Tél
+test	spiclient	fr	test
+this message is join by mail when you send your bills by email.	spiclient	fr	Ce message est valorisé par défaut lors de l'envoi de la facture par email.
+tiers code	spiclient	fr	Code tiers
+title of the event	spiclient	fr	Titre de l'événement
+tva number	spiclient	fr	Numéro de TVA
+under tva	spiclient	fr	Soumis à TVA
+update date	spiclient	fr	Date de mise à jour
+user group	spiclient	fr	Groupe de l'utilisateur
+view client	spiclient	fr	Voir un cient
+view contract	spiclient	fr	Voir un contrat
+view geographic area	spiclient	fr	Voir zone géographique
+view location	spiclient	fr	Voir un site
+view role	spiclient	fr	Voir rôle
+view sector	spiclient	fr	Voir un secteur
+zone de chalandise	spiclient	fr	Zone de chalandise
+1	spiclient	fr	1

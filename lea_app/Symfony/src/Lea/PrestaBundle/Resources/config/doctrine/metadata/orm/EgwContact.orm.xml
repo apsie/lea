@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwContact" table="egw_contact">
+    <id name="idBen" type="integer" column="id_ben">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idOrganisation" type="string" column="id_organisation" length="64" nullable="false"/>
+    <field name="idOwner" type="bigint" column="id_owner" nullable="false"/>
+    <field name="dateCreation" type="bigint" column="date_creation" nullable="false"/>
+    <field name="idModifier" type="bigint" column="id_modifier" nullable="false"/>
+    <field name="dateLastModified" type="bigint" column="date_last_modified" nullable="false"/>
+    <field name="catId" type="string" column="cat_id" length="32" nullable="false"/>
+    <field name="nomComplet" type="string" column="nom_complet" length="64" nullable="false"/>
+    <field name="nom" type="string" column="nom" length="64" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="64" nullable="false"/>
+    <field name="deuxiemePrenom" type="string" column="deuxieme_prenom" length="64" nullable="false"/>
+    <field name="nomJeuneFille" type="string" column="nom_jeune_fille" length="64" nullable="false"/>
+    <field name="civilite" type="string" column="civilite" length="64" nullable="false"/>
+    <field name="organisation" type="string" column="organisation" length="64" nullable="false"/>
+    <field name="fonction" type="string" column="fonction" length="64" nullable="false"/>
+    <field name="service" type="string" column="Service" length="64" nullable="false"/>
+    <field name="adresseLigne1" type="string" column="adresse_ligne_1" length="64" nullable="false"/>
+    <field name="adresseLigne2" type="string" column="adresse_ligne_2" length="64" nullable="false"/>
+    <field name="adresseLigne3" type="string" column="adresse_ligne_3" length="64" nullable="false"/>
+    <field name="ville" type="string" column="ville" length="64" nullable="false"/>
+    <field name="region" type="string" column="region" length="64" nullable="false"/>
+    <field name="cp" type="string" column="cp" length="64" nullable="false"/>
+    <field name="pays" type="string" column="pays" length="64" nullable="false"/>
+    <field name="telPro1" type="string" column="tel_pro_1" length="40" nullable="false"/>
+    <field name="telPro2" type="string" column="tel_pro_2" length="64" nullable="false"/>
+    <field name="telDomicile1" type="string" column="tel_domicile_1" length="14" nullable="false"/>
+    <field name="telDomicile2" type="string" column="tel_domicile_2" length="64" nullable="false"/>
+    <field name="faxPro" type="string" column="fax_pro" length="40" nullable="false"/>
+    <field name="faxPerso" type="string" column="fax_perso" length="64" nullable="false"/>
+    <field name="portablePro" type="string" column="portable_pro" length="64" nullable="false"/>
+    <field name="portablePerso" type="string" column="portable_perso" length="40" nullable="false"/>
+    <field name="emailPro" type="string" column="email_pro" length="64" nullable="false"/>
+    <field name="emailPerso" type="string" column="email_perso" length="64" nullable="false"/>
+    <field name="sitePerso" type="string" column="site_perso" length="64" nullable="false"/>
+  </entity>
+</doctrine-mapping>

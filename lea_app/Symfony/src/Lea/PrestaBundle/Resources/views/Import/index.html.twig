@@ -1,0 +1,154 @@
+<div class="entete">Nouvelle prestation</div>
+<form name="presta_create" class="formulaire" method="POST" action="./import/data" {{ form_enctype(formFile) }}>
+    <fieldset>
+        <legend>
+            Prestation
+        </legend>
+        <table>
+            <tr>
+                <td>Prestataire :
+                </td>
+                <td>{{ form_widget(formPrestataire.id_prestataire) }}</td>
+            </tr>
+            <tr>
+                <td>Référent :
+                </td>
+                <td>{{ form_widget(formAccount.account_id) }}</td>
+            </tr>
+            <tr>
+                <td>Dispositif :
+                </td>
+                <td>{{ form_widget(formPresta.dispositif) }}</td>
+            </tr>
+            <tr>
+                <td>Catégorie :
+                </td>
+                <td>{{ form_widget(formCategories.spid_categories) }}</td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>
+            Projet
+        </legend>
+        <table>
+            <tr>
+                <td>Description du projet :
+                </td>
+                <td>{{ form_widget(formProjet.description_projet) }}</td>
+            </tr>
+
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>
+            Contact Prescripteur
+        </legend>
+        <table>
+            <tr>
+                <td >Organisation :
+                </td>
+                <td id="235">{{ form_widget(formOrganisation.nomOrganisme) }}
+                    {{ form_widget(formOrganisation.idOrganisation) }}</td>
+
+            </tr>
+            <tr>
+                <td>Civilité :
+                </td>
+                <td>{{ form_widget(formContactPr.civilite) }}
+                    {{ form_widget(formContactPr.contactId) }}</td>
+
+            </tr>
+            <tr>
+                <td>Nom :
+                </td>
+                <td id="256">{{ form_widget(formContactPr.nom) }}</td>
+
+                <td>Prénom :
+                </td>
+                <td id="256">{{ form_widget(formContactPr.prenom) }}</td>
+
+            </tr>
+            <tr>
+
+                <td>Portable pro :
+                </td>
+                <td>{{ form_widget(formContactPr.portablePro) }}</td>
+
+                <td>Email pro :
+                </td>
+                <td>{{ form_widget(formContactPr.emailPro) }}</td>
+            </tr>
+            <tr>
+
+                <td>Fonction :
+                </td>
+                <td>{{ form_widget(formContactPr.fonction) }}</td>
+
+            </tr>
+
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>
+            Bénéficiaire
+        </legend>
+        <table>
+            <p>Fichier à importer</p>
+            {{ form_widget(formFile.importFile) }}
+        </table>
+
+    </fieldset>
+    
+    <fieldset>
+		<legend>
+			Informations pour les rendez-vous
+		</legend>
+		<table>
+			<tr>
+				<td>Date de début de pose:
+				</td>
+				<td>{{ form_widget(formFile.dateDebut) }}</td>
+			</tr>
+            <tr>
+                <td>Durée de la prestation (en jours calendaire):</td>
+                <td>{{ form_widget(formFile.dureePresta) }}</td>
+            </tr>
+            <tr>
+			    <td>Jours :</td><td> {{ form_widget(formFile.jours) }}</td>
+		    </tr>
+			<tr>
+				<td>Plage horaire:
+				</td>
+				<td>Debut: {{ form_widget(formFile.startTime) }}</td>
+				<td>Fin: {{ form_widget(formFile.endTime) }}</td>
+			</tr>
+			<tr>
+				<td>Catégorie:
+				</td>
+				<td>{{ form_widget(formFile.categories) }}</td>
+			</tr>
+			<tr>
+				<td>Durée des rendez-vous:
+				</td>
+				<td>{{ form_widget(formFile.duration) }}</td>
+			</tr>
+		</table>
+</fieldset>
+<input type="submit" id="bouton_prestation" value="Enregistrer"/>
+
+</form>
+
+<script>
+$( "#ImportBen_dateDebut" ).datepicker({ dateFormat: "dd/mm/yy" });
+
+//Organisation
+$('#Spiclient_nomOrganisme').myAutoCompleteOrganisation('Spiclient_');
+
+//Prescripteur
+$('#EgwAddressbook_nom,#EgwAddressbook_prenom').myAutoCompleteAddressbook('EgwAddressbook_');
+$('#EgwAddressbook_nom,#EgwAddressbook_prenom').change(function () {
+    $('#EgwAddressbook_contactId').val('');
+});
+
+</script>

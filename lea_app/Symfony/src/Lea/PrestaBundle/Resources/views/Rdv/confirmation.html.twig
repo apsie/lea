@@ -1,0 +1,42 @@
+{% if( choix == 1 ) %}
+<ul>
+{% for rdv in listOpt.opts %}
+        <li class="{{ rdv.CLASSE }}">
+            <label><input required {{ rdv.DISABLED }} name="options[]" value="{{ rdv.VALUE }}" type="{{ rdv.TYPEINPUT }}" > <span title="{{ rdv.DESCRIPTION }}">{{ rdv.DATE }}</span></label>      
+        </li>
+{% endfor %}
+    </ul>
+{% elseif( choix == 0 and params.dispositif.nomDispositif is defined and params.account.accountId.nFn is defined) %}
+    <h4>Premier rendez-vous</h4>
+    <article class="note">
+        <p>Cette solution permet de créer des prestations antérieures sans confirmation d'option.<br/>
+        Vous pouvez également créer des futures prestations sans passer par le mode de confirmation d'option.</p>
+    </article>
+    <table>
+        <tr>
+            <td>Dispositif :</td><td><b>{{params.dispositif.nomDispositif}}</b></td>
+        </tr>
+        <tr>
+            <td>Référent :</td><td><b>{{params.account.accountId.nFn}}</b></td>
+        </tr>
+        <tr>
+            <td>Catégorie :</td><td>{{ form_widget(formCat.categories) }}</td>
+        </tr>
+        <tr>
+            <td>Date de début :</td><td>{{ form_widget(formDispo.dateDebut,{ 'attr': {'size': 10}}) }} à {{ form_widget(formDispo.plageDebut) }} H {{ form_widget(formDispo.minDebut) }} </td>
+        </tr>
+        <tr>
+            <td>Durée :</td><td> {{ form_widget(formDispo.duree) }}</td>
+        </tr>
+
+    </table>
+{% else %}
+    <h4>Premier rendez-vous</h4>
+    <p class="error">Choisissez un dispositif et un référent pour cette prestation !</p>
+{% endif %}
+
+    <script>
+    $( "#disponibilite_dateDebut" ).datepicker();
+        </script>
+
+

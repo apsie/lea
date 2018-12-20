@@ -1,0 +1,226 @@
+... only their own	spiclient	en	... only their own
+accounting	spiclient	en	Accounting
+action that caused the notify: added, canceled, accepted, rejected, ...	spiclient	en	Action that caused the notify: Added, Canceled, Accepted, Rejected, ...
+actions	spiclient	en	Actions
+active contracts	spiclient	en	Active contracts
+add client	spiclient	en	Add client
+add contract	spiclient	en	Add contract
+add contract type	spiclient	en	Add contract type
+add delay payment	spiclient	en	Add delay payment
+add geographic area	spiclient	en	Add Geographic area
+add location	spiclient	en	Add location
+add payment method	spiclient	en	Add payment method
+add role	spiclient	en	Add role
+add sector	spiclient	en	Add sector
+address	spiclient	en	Address
+address one	spiclient	en	Address one
+address two	spiclient	en	Address two
+all clients	spiclient	en	Tous les clients
+all contracts	spiclient	en	All contracts
+allow removal	spiclient	en	Allow removal
+allow seller to access all clients	spiclient	en	Allow seller to access all clients
+allow seller to access all contracts	spiclient	en	Allow seller to access all contracts
+allow sellers to add clients	spiclient	en	Allow sellers to add clients
+allow sellers to add contracts	spiclient	en	Allow sellers to add contracts
+allow users to delete clients	spiclient	en	Allow users to delete clients
+allow users to delete contracts	spiclient	en	Allow users to delete contracts
+amount	spiclient	en	Amount
+amount budget	spiclient	en	Amount budget
+amount:	spiclient	en	Amount:
+appro :	spiclient	en	Appro :
+area	spiclient	en	Area
+bill address	spiclient	en	Bill address
+bill address 2	spiclient	en	Bill address 2
+billable by	spiclient	en	Billable by
+budget	spiclient	en	Budget
+by	spiclient	en	by
+catchment	spiclient	en	Catchment
+city	spiclient	en	City
+client	spiclient	en	Client
+client configuration	spiclient	en	Client configuration
+client management	spiclient	en	Client Management
+client management group	spiclient	en	Client management group
+client reference	spiclient	en	Client reference
+client seller	spiclient	en	Client seller
+clients	spiclient	en	Clients
+clients menu	spiclient	en	Clients menu
+color	spiclient	en	Color
+conditions	spiclient	en	Conditions
+configuration	spiclient	en	Configuration
+configuration updated	spiclient	en	Configuration updated
+contact name	spiclient	en	Contact name
+contacts	spiclient	en	Contacts
+contract	spiclient	en	Contract
+contract configuration	spiclient	en	Contract configuration
+contract management	spiclient	en	Contract Management
+contract management group	spiclient	en	Contract management group
+contract seller	spiclient	en	Contract seller
+contract status	spiclient	en	Contract status
+contract status configuration	spiclient	en	Contract Status Configuration
+contract type	spiclient	en	Contract type
+contract type configuration	spiclient	en	Contract Type Configuration
+contract type management	spiclient	en	Contract type Management
+contract updated	spiclient	en	Contract updated
+contracts	spiclient	en	Contracts
+contracts menu	spiclient	en	Contracts menu
+couleur de surbrillance pour les clients ayant un problème de configuration	spiclient	en	Couleur de surbrillance pour les clients ayant un problème de configuration
+couleur de surbrillance pour les clients en sommeil	spiclient	en	Couleur de surbrillance pour les clients en sommeil
+couleur de surbrillance pour les tickets non vu	spiclient	en	Couleur de surbrillance pour les tickets non vu
+couleur de surbrillance pour les tickets urgent	spiclient	en	Couleur de surbrillance pour les tickets urgent
+country	spiclient	en	Country
+create a new group	spiclient	en	Create a new group
+create new links	spiclient	en	Create new links
+creation date	spiclient	en	Creation Date
+date de création	spiclient	en	Date de création
+date_start	spiclient	en	date_start
+day budget	spiclient	en	Day budget
+day:	spiclient	en	Day:
+de quels couleur souhaitez-vous voir les clients ayant un problème de configuration?	spiclient	en	De quels couleur souhaitez-vous voir les clients ayant un problème de configuration?
+de quels couleur souhaitez-vous voir les clients en sommeil?	spiclient	en	De quels couleur souhaitez-vous voir les clients en sommeil?
+de quels couleur souhaitez-vous voir les tickets non vu?	spiclient	en	De quels couleur souhaitez-vous voir les tickets non vu?
+de quels couleur souhaitez-vous voir les tickets urgent?	spiclient	en	De quels couleur souhaitez-vous voir les tickets urgent?
+default user	spiclient	en	Default user
+default user for new group	spiclient	en	Default user for new group
+default value	spiclient	en	Default Value
+delay	spiclient	en	Delay
+delay appro	spiclient	en	Delay appro
+delay budget	spiclient	en	Delay budget
+delay hybrid	spiclient	en	Delay hybrid
+delay normal	spiclient	en	Delay normal
+delay payment	spiclient	en	Delay payment
+delay payment management	spiclient	en	Delay payment Management
+delay server	spiclient	en	Delay server
+delay sourcing	spiclient	en	Delay sourcing
+displays your default calendar view on the startpage (page you get when you enter egroupware or click on the homepage icon)?	spiclient	en	Displays your default calendar view on the startpage (page you get when you enter eGroupWare or click on the homepage icon)?
+edit client	spiclient	en	Edit client
+edit contract	spiclient	en	Edit contract
+edit contract type	spiclient	en	Edit contract type
+edit delay payment	spiclient	en	Edit delay payment
+edit geographic area	spiclient	en	Edit Geographic area
+edit location	spiclient	en	Edit location
+edit payment method	spiclient	en	Edit payment method
+edit role	spiclient	en	Edit role
+edit sector	spiclient	en	Edit sector
+end date/time	spiclient	en	End Date/Time
+ended contracts	spiclient	en	Ended contracts
+error on this customer	spiclient	en	error on this customer
+existing links	spiclient	en	Existing links
+firstname of person to notify	spiclient	en	Firstname of person to notify
+footer field 1	spiclient	en	Footer field 1
+footer field 2	spiclient	en	Footer field 2
+free field 1	spiclient	en	Free field 1
+free field 2	spiclient	en	Free field 2
+free field 3	spiclient	en	Free field 3
+free field 4	spiclient	en	Free field 4
+free field 5	spiclient	en	Free field 5
+fullname of person to notify	spiclient	en	Fullname of person to notify
+general	spiclient	en	General
+geographic area	spiclient	en	Geographic area
+geographic area deleted	spiclient	en	Geographic area deleted
+geographic area management	spiclient	en	Geographic area management
+group able to manage clients	spiclient	en	Group able to manage clients
+group able to manage contracts	spiclient	en	Group able to manage contracts
+group seller for clients	spiclient	en	Group seller for clients
+group seller for contracts	spiclient	en	Group seller for contracts
+history	spiclient	en	History
+hybrid :	spiclient	en	Hybrid :
+icon	spiclient	en	Icon
+id	spiclient	en	ID
+invoice folder	spiclient	en	Invoice Folder
+last invoice	spiclient	en	Last Invoice
+lastname of person to notify	spiclient	en	Lastname of person to notify
+libelle	spiclient	en	Libelle
+link to view the event	spiclient	en	Link to view the event
+locality	spiclient	en	Locality
+location	spiclient	en	Location
+location management	spiclient	en	Location Management
+location parent	spiclient	en	Location parent
+locations	spiclient	en	Locations
+manage clients	spiclient	en	Manage clients
+manage contracts	spiclient	en	Manage contracts
+management group	spiclient	en	Management group
+management group for spiclient	spiclient	en	Management group for Spiclient
+manager email	spiclient	en	Manager Email
+message with invoice when you send them by email	spiclient	en	Message with invoice when you send them by email
+my active contracts	spiclient	en	My active contracts
+my clients	spiclient	en	My clients
+my contracts	spiclient	en	My contracts
+new client	spiclient	en	New client
+new contract	spiclient	en	New contract
+new group	spiclient	en	New group
+new user	spiclient	en	New user
+normal :	spiclient	en	Normal :
+old startdate	spiclient	en	Old Startdate
+parc	spiclient	en	Parc
+parent area	spiclient	en	Parent area
+parent company	spiclient	en	Parent company
+participants	spiclient	en	Participants
+participants disinvited from an event	spiclient	en	Participants disinvited from an event
+payment delay	spiclient	en	Payment delay
+payment method	spiclient	en	Payment method
+payment method management	spiclient	en	Payment method Management
+payment model	spiclient	en	Payment model
+period	spiclient	en	Period
+permission denied !!!	spiclient	en	Permission denied !!!
+postal code	spiclient	en	Postal Code
+providers	spiclient	en	Providers
+real	spiclient	en	Real
+real amount	spiclient	en	Real amount
+real day	spiclient	en	Real day
+receive notifications about assigned tickets	spiclient	en	Receive notifications about assigned tickets
+receive notifications about created tickets	spiclient	en	Receive notifications about created tickets
+region	spiclient	en	Region
+renewal date	spiclient	en	Renewal Date
+renewed contracts	spiclient	en	Renewed contracts
+repetitiondetails (or empty)	spiclient	en	Repetitiondetails (or empty)
+role	spiclient	en	Role
+role management	spiclient	en	role Management
+search area '%1'	spiclient	en	Search area '%1'
+search company '%1'	spiclient	en	Search company '%1'
+search contract	spiclient	en	Search contract
+search contract '%1'	spiclient	en	Search contract '%1'
+search for '%1'	spiclient	en	Search for '%1'
+search location '%1'	spiclient	en	Search Location '%1'
+search role '%1'	spiclient	en	Search role '%1'
+search sector '%1'	spiclient	en	Search sector '%1'
+secteur	spiclient	en	Secteur
+sector	spiclient	en	Sector
+sector management	spiclient	en	Sector Management
+sector name	spiclient	en	Sector name
+sectors	spiclient	en	Sectors
+see client	spiclient	en	See Client
+seller	spiclient	en	Seller
+seller can access all clients	spiclient	en	Seller can access all clients
+seller can access all contracts	spiclient	en	Seller can access all contracts
+seller only access their own clients	spiclient	en	Seller only access their own clients
+seller only access their own contracts	spiclient	en	Seller only access their own contracts
+seller will be able to add clients	spiclient	en	Seller will be able to add clients
+seller will be able to add contracts	spiclient	en	Seller will be able to add contracts
+server :	spiclient	en	Server :
+show default view on main screen	spiclient	en	show default view on main screen
+signature date	spiclient	en	Signature Date
+site	spiclient	en	Site
+sleep	spiclient	en	Sleep
+sourcing :	spiclient	en	Sourcing :
+spiclient	spiclient	en	SpiClients
+start date/time	spiclient	en	Start Date/Time
+supplier	spiclient	en	Supplier
+tel	spiclient	en	Tel
+test	spiclient	en	test
+this message is join by mail when you send your bills by email.	spiclient	en	This message is join by mail when you send your bills by email.
+tiers code	spiclient	en	Tiers code
+title of the event	spiclient	en	Title of the event
+tva number	spiclient	en	TVA Number
+under tva	spiclient	en	Under TVA
+update date	spiclient	en	Update Date
+user group	spiclient	en	User group
+view client	spiclient	en	View client
+view contract	spiclient	en	View contract
+view geographic area	spiclient	en	View Geographic area
+view location	spiclient	en	View location
+view role	spiclient	en	View role
+view sector	spiclient	en	View sector
+would you receive notification mails, if tickets you created get updated?	spiclient	en	Would you receive notification mails, if tickets you created get updated?
+would you receive you notification mails, if tickets assigned to you get updated?	spiclient	en	Would you receive you notification mails, if tickets assigned to you get updated?
+zone de chalandise	spiclient	en	Zone de chalandise
+1	spiclient	en	1

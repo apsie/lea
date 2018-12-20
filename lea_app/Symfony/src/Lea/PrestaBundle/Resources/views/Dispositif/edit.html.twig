@@ -1,0 +1,50 @@
+<form name="dispositif_edit" action="./dispositif/edit/{{ dispositif.idDispositif}}" class="formulaire" >
+		<fieldset>
+		<legend> Dispositif </legend>
+		<table>
+			
+			<tr>
+				<td>Nom du dispositif : </td><td><u>{{ dispositif.nomDispositif}}</u></td>
+			</tr>
+			<tr>
+				<td>Activité : </td><td>{{ form_widget(formDispositif.activite) }}</td>
+			</tr>
+			<tr>
+				<td>Type de prestation : </td><td>{{ form_widget(formDispositif.idTypePrestation) }}</td>
+			</tr>
+			<tr>
+				<td>Objet : </td><td>{{ form_widget(formDispositif.objet) }}</td>
+			</tr>
+			<tr>
+				<td>Numéro de marché : </td><td>{{ form_widget(formDispositif.numeroMarche) }}</td>
+			</tr>
+			<tr>
+				<td>Numéro de lot : </td><td>{{ form_widget(formDispositif.numeroLot) }}</td>
+			</tr>
+			
+			<tr>
+				<td>Zone géographique : </td><td>{{ form_widget(formDispositif.zoneGeographique) }}</td>
+			</tr>
+			<tr>
+				<td>Date de début : </td><td>{{ form_widget(formDispositif.dateDebut) }}</td>
+			</tr>
+			<tr>
+				<td>Date de fin : </td><td>{{ form_widget(formDispositif.dateFin) }}</td>
+			</tr>
+			<tr>
+				<td>Etat: </td><td>{{ form_widget(formDispositif.isActive) }}</td>
+			</tr>
+			<tr>
+				<td>Contrat: </td><td>{{ form_widget(formDispositif.idContract) }}</td>
+			</tr>
+			<tr style="height : 50px" >
+				<td></td><td><input type="submit" value="Enregistrer" /></td>
+			</tr>
+		</table>
+</form>
+<script>
+$( "#EgwDispositif_dateDebut" ).datepicker();
+$( "#EgwDispositif_dateFin" ).datepicker();
+$('form[name="dispositif_edit"]').submitForm('.div_droite','Dispositif','dispositif');
+
+</script>

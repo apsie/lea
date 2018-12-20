@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwPrestation" table="egw_prestation">
+    <id name="idPresta" type="integer" column="id_presta">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idProjet" type="bigint" column="id_projet" nullable="false"/>
+    <field name="idBen" type="bigint" column="id_ben" nullable="false"/>
+    <field name="idRef" type="bigint" column="id_ref" nullable="false"/>
+    <field name="idContactPrescripteur" type="bigint" column="id_contact_prescripteur" nullable="false"/>
+    <field name="idPrestataire" type="integer" column="id_prestataire" nullable="false"/>
+    <field name="idTypePrestation" type="integer" column="id_type_prestation" nullable="false"/>
+    <field name="intitule" type="string" column="intitule" length="60" nullable="false"/>
+    <field name="lettreDeCommande" type="string" column="lettre_de_commande" length="60" nullable="false"/>
+    <field name="dateDebut" type="bigint" column="date_debut" nullable="false"/>
+    <field name="dateFin" type="bigint" column="date_fin" nullable="false"/>
+    <field name="dateFinReelle" type="bigint" column="date_fin_reelle" nullable="false"/>
+    <field name="dateEnvoiBilan" type="bigint" column="date_envoi_bilan" nullable="false"/>
+    <field name="numeroFacturation" type="string" column="numero_facturation" length="64" nullable="false"/>
+    <field name="dateFacturation" type="bigint" column="date_facturation" nullable="false"/>
+    <field name="statut" type="string" column="statut" length="60" nullable="false"/>
+  </entity>
+</doctrine-mapping>

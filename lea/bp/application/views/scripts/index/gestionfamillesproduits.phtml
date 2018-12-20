@@ -1,0 +1,114 @@
+
+<div class="titre_outils"><img
+	src="<?php echo $this->baseUrl();?>/images/famille.png" /> Gestion des
+familles de produits</div>
+<div style="float: left; width: 41%">
+<div class="outils_sous_titre">Liste des familles</div>
+<div id="liste_familles"></div>
+</div>
+
+<div style="float: left; width: 49%">
+<div class="outils_sous_titre">Ajouter une famille</div>
+<table>
+	<tr>
+		<td>Famille de produit</td>
+		<td><input id="idFamille" type="hidden" /><input id="libelleFamille" type="text" /></td>
+
+
+		<td><input onclick="ajouterFamilleProduits()" type="button"
+			class="button_little" value="Enregistrer" /></td>
+	</tr>
+</table>
+</div>
+<script>
+getListFamilleProduits();
+function ajouterFamilleProduits()
+{
+var libelleFamille = $("#libelleFamille").val();
+var idFamille = $("#idFamille").val();
+if(idFamille=='')
+{
+	var action ="ajouterFamilleProduits";
+ }
+else
+{
+	var action ="modifierFamilleProduits";
+}
+$.ajax({
+	url : "../ajax/ajax/",
+	dataType : "json",
+	data : {
+		libelleFamille : libelleFamille,
+		action : action,
+		idFamille : idFamille
+	},success: function(data){
+	}
+});
+$('#libelleFamille').val('');
+
+
+getListFamilleProduits();
+$('.button_little').val('Enregistrer');
+$("#idFamille").val('');
+}
+function deleteFamilleProduits(idFamilleProduits)
+{
+
+$.ajax({
+	url : "../ajax/ajax/?noTemplate=1",
+	dataType : "json",
+	data : {
+		idFamilleProduits : idFamilleProduits,
+		action : "deleteFamilleProduits"
+	},success: function(data){
+	}
+});
+
+getListFamilleProduits();
+
+
+
+}
+
+function getListFamilleProduits()
+{
+
+	var html="<table><tr class='titre_outils_general'><td><a style='cursor:pointer'>Libellé</a></td><td></td></tr>";
+	
+	$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			noTemplate : 1,
+			action : "getListFamilleProduits"
+		},success: function(data){
+			
+			$.each(data,function(i,val){
+			
+				if(i%2 ==0)
+				{
+					var classe = "ligne2";
+				}
+				else
+				 {
+				 var classe = "ligne";
+				}
+			html +="<tr class='"+classe+"'><td><a onclick='setLibelle("+val.id_famille_produit+",\""+val.libelle_famille+"\");' style='cursor:pointer'>"+val.libelle_famille+"</a></td><td><img  onclick='setLibelle("+val.id_famille_produit+",\""+val.libelle_famille+"\");'  style='cursor:pointer' src='../images/edit.png' /><img  onclick='deleteFamilleProduits("+val.id_famille_produit+")' style='cursor:pointer' src='../images/delete.png' /></td></tr>";	
+			
+		});
+			html +="</table>"; 
+			$('#liste_familles').html(html);
+	}	
+		});
+		
+			
+			 
+}
+function setLibelle(id,libelle)
+{
+	
+$('#libelleFamille').val(libelle);
+$('#idFamille').val(id);
+$('.button_little').val('Modifier');
+}
+</script>

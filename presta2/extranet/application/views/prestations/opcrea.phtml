@@ -1,0 +1,734 @@
+<link type="text/css" rel="stylesheet" media="screen" href="./style/opcrea.css">
+<link type="text/css" rel="stylesheet" media="screen" href="./style/Presta.css">
+<?php 
+#OPTION  
+
+$content ='<div style="padding-bottom:10px;" >
+<div class="titre_der_presta">Dernière prestation consultée</div>
+Prestation OPCREA
+<br/>
+Bénéficiaire : '.$this->contact['nom_complet'].'
+<br/>
+Référent : '.$this->prestation['account_lastname'].' '.$this->prestation['account_firstname'].'
+<br/>
+<br/>
+<button class="boutton_pose_rdv"  onclick="go_to_rdv()" >Poser les autres rendez-vous</button><br/><br/>
+<button class="boutton_abandon"  onclick="Presta_.form_abandon()" >Abandonner la prestation</button>
+<br/><br/>
+<button class="boutton_abandon"  onclick="Presta_.terminer()" >Terminer la prestation</button></div>';
+
+
+echo $this->partial('option.phtml', array(
+        'contenu' => $content )); 
+?>
+<div  title="OPCREA ( <?php echo  utf8_encode($this->contact['nom_complet']);?> ) " class="contenu_opcrea" id="contenu_opcrea_<?php echo $this->id_presta ?>">
+
+<form name="presta"><input type="hidden" name="data[date_abandon]" value="" /><input type="hidden" name="data[motif_abandon]" value="" />
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Contrat d'accompagnement</a></li>
+		<li><a href="#tabs-2">Adéquation compétences / projet</a></li>
+		<li><a href="#tabs-3">Etude de marché</a></li>
+		<li><a href="#tabs-4">Plan de financement</a></li>
+		<li><a href="#tabs-5">Statut juridique</a></li>
+		<li><a href="#tabs-6">Bilan</a></li>
+		<li><a href="#tabs-7">Edition</a></li>
+		<li><a href="#tabs-8">Rendez-Vous</a></li>
+	</ul>
+	
+	
+	<div id="tabs-1">
+	
+	
+	<input type="hidden" name="id_presta" value="<?php echo $this->id_presta;?>" />
+	<input type="hidden" name="id_projet" value="<?php echo $this->projet['id_projet'];?>" />
+	<div id="accordion">
+	<h3><a href="#">Information sur <?php echo utf8_encode($this->contact['nom_complet']);?></a></h3>
+	<div>
+	<p>Le formulaire d'insertion sera mis ici.</p>
+	<p>En attendant rendez vous dans le module <a target="_blank" href="./index.php?page=Contact" >Contact</a>.</p>
+	</div>
+	<h3><a href="#">Le projet du bénéficiaire</a></h3>
+	<div>
+	
+	<div class="sous_titre" >Description succincte du projet</div>
+	<div>
+	<textarea name="projet[description_projet]" rows="1" cols="100"><?php echo utf8_encode($this->projet['description_projet']);?></textarea>
+	</div>
+	<div class="sous_titre">État d’avancement du projet</div>
+	<div>
+	<select id="etat_avancement_projet" name="data[etat_avancement_projet]" >
+	<option><?php echo $this->presta['etat_avancement_projet'];?></option>
+	<?php echo $this->texte['Stade_projet']?>
+	</select>
+	
+	</div>
+	<div class="sous_titre">Points à évaluer en priorité</div>
+	<div>
+	<div>
+	<select id="point_evaluer_priorite_1"  name="data[point_evaluer_priorite_1]" >
+	<option><?php echo $this->presta['point_evaluer_priorite_1'];?></option>
+	<?php echo $this->texte['pt']?>
+	</select>
+	</div>
+	<div>
+	<select id="point_evaluer_priorite_2" name="data[point_evaluer_priorite_2]">
+	<option><?php echo $this->presta['point_evaluer_priorite_2'];?></option>
+	<?php echo $this->texte['pt']?>
+	</select>
+	</div>
+	<div>
+	<select id="point_evaluer_priorite_3" name="data[point_evaluer_priorite_3]">
+	<option><?php echo $this->presta['point_evaluer_priorite_3'];?></option>
+	<?php echo $this->texte['pt']?>
+	</select>
+	</div>
+	</div>
+	
+	</div>
+	<h3><a href="#">Les attentes du bénéficiaire</a></h3>
+	<div>
+	<div class="sous_titre" >Attente du bénéficiaire</div>
+	<div>
+	<select id="attente_beneficiaire_1" name="data[attente_beneficiaire_1]">
+	<option><?php echo $this->presta['attente_beneficiaire_1'];?></option>
+	<?php echo $this->texte['Attentes du beneficiaire']?>
+	</select>
+	</div>
+	<div>
+	<select id="attente_beneficiaire_2" name="data[attente_beneficiaire_2]">
+	<option><?php echo $this->presta['attente_beneficiaire_2'];?></option>
+	<?php echo $this->texte['Attentes du beneficiaire']?>
+	</select>
+	</div>
+	<div>
+	<select id="attente_beneficiaire_3" name="data[attente_beneficiaire_3]">
+	<option><?php echo $this->presta['attente_beneficiaire_3'];?></option>
+	<?php echo $this->texte['Attentes du beneficiaire']?>
+	</select>
+	</div>
+	<div class="sous_titre" >Commentaire du référent</div>
+	<div>
+	<textarea name="data[commentaire_1]" rows="1" cols="100"><?php echo $this->presta['commentaire_1'];?></textarea>
+	</div>
+	</div>
+	<h3><a href="#">Engagement</a></h3>
+	<div>
+	<div class="sous_titre" >Je m'engage à :</div>
+		<div>
+		<label>
+		<input <?php echo outils::setCheckbox($this->presta['engagement_1']); ?> name="data[engagement_1]" value="1" type="checkbox" /><span>Me consacrer à plein temps et activement aux démarches qui me sont conseillées.</span>
+		</label>
+		</div>
+		<div>
+		<label>
+		<input <?php echo outils::setCheckbox($this->presta['engagement_2']); ?> name="data[engagement_2]" value="1" type="checkbox" /><span>Tenir mon référent informé des résultats des actions engagées.</span>
+		</label>
+		</div>
+		<div>
+		<label>
+		<input <?php echo outils::setCheckbox($this->presta['engagement_3']); ?> name="data[engagement_3]" value="1" type="checkbox" /><span>Accompagner personnellement le demandeur dans ses démarches.</span>
+		</label>
+		</div>
+		<div>
+		<label>
+		<input <?php echo outils::setCheckbox($this->presta['engagement_4']); ?> name="data[engagement_4]" value="1" type="checkbox" /><span>Proposer toutes les actions favorisant la réussite de l’accompagnement figurant dans le cahier des charges de la prestation</span>
+		</label>
+		</div>
+	</div>
+	
+	</div>
+	
+	</div>
+	
+	
+	<div id="tabs-2">
+		<div id="accordion">
+		<!-- Adéquation  -->
+			<h3><a href="#">Adéquation compétences / projet</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Description succincte du projet</div>
+						<div  class="select_bloc_3" >
+							<p>Capacités liées aux emplois exercés</p>
+							<div><select id="capacite_emploi_1" name="data[capacite_emploi_1]" ><option><?php echo $this->presta['capacite_emploi_1'];?></option><?php echo $this->texte['Capacites liees aux emplois exerces']?></select></div>
+							<div><select id="capacite_emploi_2"  name="data[capacite_emploi_2]"><option><?php echo $this->presta['capacite_emploi_2'];?></option><?php echo $this->texte['Capacites liees aux emplois exerces']?></select></div>
+							<div><select id="capacite_emploi_3"  name="data[capacite_emploi_3]"><option><?php echo $this->presta['capacite_emploi_3'];?></option><?php echo $this->texte['Capacites liees aux emplois exerces']?></select></div>
+							<div><select id="capacite_emploi_4"  name="data[capacite_emploi_4]"><option><?php echo $this->presta['capacite_emploi_4'];?></option><?php echo $this->texte['Capacites liees aux emplois exerces']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Competences professionnelles</p>
+							<div><select id="competence_pro_1" name="data[competence_pro_1]" ><option><?php echo $this->presta['competence_pro_1'];?></option><?php echo $this->texte['Competences professionnelles']?></select></div>
+							<div><select id="competence_pro_2" name="data[competence_pro_2]" ><option><?php echo $this->presta['competence_pro_2'];?></option><?php echo $this->texte['Competences professionnelles']?></select></div>
+							<div><select id="competence_pro_3" name="data[competence_pro_3]" ><option><?php echo $this->presta['competence_pro_3'];?></option><?php echo $this->texte['Competences professionnelles']?></select></div>
+							<div><select id="competence_pro_4" name="data[competence_pro_4]" ><option><?php echo $this->presta['competence_pro_4'];?></option><?php echo $this->texte['Competences professionnelles']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Formation et savoirs theorique</p>
+							<div><select id="formation_1" name="data[formation_1]"  ><option><?php echo $this->presta['formation_1'];?></option><?php echo $this->texte['Formation et savoirs theoriques']?></select></div>
+							<div><select id="formation_2" name="data[formation_2]" ><option><?php echo $this->presta['formation_2'];?></option><?php echo $this->texte['Formation et savoirs theoriques']?></select></div>
+							<div><select id="formation_3" name="data[formation_3]" ><option><?php echo $this->presta['formation_3'];?></option><?php echo $this->texte['Formation et savoirs theoriques']?></select></div>
+							<div><select id="formation_4" name="data[formation_4]" ><option><?php echo $this->presta['formation_4'];?></option><?php echo $this->texte['Formation et savoirs theoriques']?></select></div>
+						</div>
+					</div>
+					<div class="bloc">
+						<div class="sous_titre" >Éléments porteurs et points de vigilance par rapport au projet</div>
+						<div class="select_bloc_2" >
+							<p>Elements porteurs</p>
+							<div><select id="element_porteur_1" name="data[element_porteur_1]" ><option><?php echo $this->presta['element_porteur_1'];?></option><?php echo $this->texte['Elements porteurs']?></select></div>
+							<div><select id="element_porteur_2" name="data[element_porteur_2]"><option><?php echo $this->presta['element_porteur_2'];?></option><?php echo $this->texte['Elements porteurs']?></select></div>
+							<div><select id="element_porteur_3" name="data[element_porteur_3]"><option><?php echo $this->presta['element_porteur_3'];?></option><?php echo $this->texte['Elements porteurs']?></select></div>
+							<div><select id="element_porteur_4" name="data[element_porteur_4]"><option><?php echo $this->presta['element_porteur_4'];?></option><?php echo $this->texte['Elements porteurs']?></select></div>
+						</div>
+						<div class="select_bloc_2">
+							<p>Points de vigilance</p>
+							<div><select id="point_vigilance_1"  name="data[point_vigilance_1]" ><option><?php echo $this->presta['point_vigilance_1'];?></option><?php echo $this->texte['Points de vigilance']?></select></div>
+							<div><select id="point_vigilance_2"  name="data[point_vigilance_2]"><option><?php echo $this->presta['point_vigilance_2'];?></option><?php echo $this->texte['Points de vigilance']?></select></div>
+							<div><select id="point_vigilance_3"  name="data[point_vigilance_3]"><option><?php echo $this->presta['point_vigilance_3'];?></option><?php echo $this->texte['Points de vigilance']?></select></div>
+							<div><select id="point_vigilance_4"  name="data[point_vigilance_4]"><option><?php echo $this->presta['point_vigilance_4'];?></option><?php echo $this->texte['Points de vigilance']?></select></div>
+						</div>
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Besoins de formation courte identifiée</div>
+						<div class="select_bloc_3" >
+							<p>Compétences à acquérir ou renforcer</p>
+							<div><select id="competence_1" name="data[competence_1]"><option><?php echo $this->presta['competence_1'];?></option><?php echo $this->texte['Competence']?></select></div>
+							<div><select id="competence_2" name="data[competence_2]"><option><?php echo $this->presta['competence_2'];?></option><?php echo $this->texte['Competence']?></select></div>
+
+							<div><select id="competence_3" name="data[competence_3]"><option><?php echo $this->presta['competence_3'];?></option><?php echo $this->texte['Competence']?></select></div>
+							<div><select id="competence_4" name="data[competence_4]"><option><?php echo $this->presta['competence_4'];?></option><?php echo $this->texte['Competence']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Delais/priorité</p>
+							<div><select id="delai_priorite_1" name="data[delai_priorite_1]"><option><?php echo $this->presta['delai_priorite_1'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="delai_priorite_2" name="data[delai_priorite_2]"><option><?php echo $this->presta['delai_priorite_2'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="delai_priorite_3" name="data[delai_priorite_3]"><option><?php echo $this->presta['delai_priorite_3'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="delai_priorite_4" name="data[delai_priorite_4]"><option><?php echo $this->presta['delai_priorite_4'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Type de formation courte recommandée</p>
+							<div><select id="formation_courte_1" name="data[formation_courte_1]"><option><?php echo $this->presta['formation_courte_1'];?></option><?php echo $this->texte['Type de formation courte recommandee']?></select></div>
+							<div><select id="formation_courte_2" name="data[formation_courte_2]"><option><?php echo $this->presta['formation_courte_2'];?></option><?php echo $this->texte['Type de formation courte recommandee']?></select></div>
+							<div><select id="formation_courte_3" name="data[formation_courte_3]"><option><?php echo $this->presta['formation_courte_3'];?></option><?php echo $this->texte['Type de formation courte recommandee']?></select></div>
+							<div><select id="formation_courte_4" name="data[formation_courte_4]"><option><?php echo $this->presta['formation_courte_4'];?></option><?php echo $this->texte['Type de formation courte recommandee']?></select></div>
+						</div>
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Diagnostic et commentaires du referent</div>
+						<textarea name="data[commentaire_adequation]" rows="1" cols="100"><?php echo $this->presta['commentaire_adequation'];?></textarea>
+						
+					</div>
+				</div>
+			<!-- /Adéquation -->
+		</div>
+	</div>
+	<div id="tabs-3">
+		<div id="accordion">
+			<!-- Etude de marché -->
+			<h3><a href="#">Etude de marché</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Points forts et points faibles de l’étude de marché</div>
+						
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Analyse des besoins des clients</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p>Points forts</p>
+							<div><select id="points_forts_clients_1" name="data[points_forts_clients_1]"><option><?php echo $this->presta['points_forts_clients_1'];?></option><?php echo $this->texte['Points forts clients']?></select></div>
+							<div><select id="points_forts_clients_2" name="data[points_forts_clients_2]"><option><?php echo $this->presta['points_forts_clients_2'];?></option><?php echo $this->texte['Points forts clients']?></select></div>
+							<div><select id="points_forts_clients_3" name="data[points_forts_clients_3]"><option><?php echo $this->presta['points_forts_clients_3'];?></option><?php echo $this->texte['Points forts clients']?></select></div>
+							<div><select id="points_forts_clients_4" name="data[points_forts_clients_4]"><option><?php echo $this->presta['points_forts_clients_4'];?></option><?php echo $this->texte['Points forts clients']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Points faibles</p>
+							<div><select id="points_faibles_clients_1" name="data[points_faibles_clients_1]"><option><?php echo $this->presta['points_faibles_clients_1'];?></option><?php echo $this->texte['Points faibles clients']?></select></div>
+							<div><select id="points_faibles_clients_2" name="data[points_faibles_clients_2]"><option><?php echo $this->presta['points_faibles_clients_2'];?></option><?php echo $this->texte['Points faibles clients']?></select></div>
+							<div><select id="points_faibles_clients_3" name="data[points_faibles_clients_3]"><option><?php echo $this->presta['points_faibles_clients_3'];?></option><?php echo $this->texte['Points faibles clients']?></select></div>
+							<div><select id="points_faibles_clients_4" name="data[points_faibles_clients_4]"><option><?php echo $this->presta['points_faibles_clients_4'];?></option><?php echo $this->texte['Points faibles clients']?></select></div>
+					
+						</div>
+						</div>
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Analyse de la concurrence</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="points_forts_concurrence_1" name="data[points_forts_concurrence_1]" ><option><?php echo $this->presta['points_forts_concurrence_1'];?></option><?php echo $this->texte['Points forts concurrence']?></select></div>
+							<div><select id="points_forts_concurrence_2" name="data[points_forts_concurrence_2]"><option><?php echo $this->presta['points_forts_concurrence_2'];?></option><?php echo $this->texte['Points forts concurrence']?></select></div>
+							<div><select id="points_forts_concurrence_3" name="data[points_forts_concurrence_3]"><option><?php echo $this->presta['points_forts_concurrence_3'];?></option><?php echo $this->texte['Points forts concurrence']?></select></div>
+							<div><select id="points_forts_concurrence_4" name="data[points_forts_concurrence_4]"><option><?php echo $this->presta['points_forts_concurrence_4'];?></option><?php echo $this->texte['Points forts concurrence']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="points_faibles_concurrence_1" name="data[points_faibles_concurrence_1]" ><option><?php echo $this->presta['points_faibles_concurrence_1'];?></option><?php echo $this->texte['Points faibles concurrence']?></select></div>
+							<div><select id="points_faibles_concurrence_2" name="data[points_faibles_concurrence_2]"><option><?php echo $this->presta['points_faibles_concurrence_2'];?></option><?php echo $this->texte['Points faibles concurrence']?></select></div>
+							<div><select id="points_faibles_concurrence_3" name="data[points_faibles_concurrence_3]"><option><?php echo $this->presta['points_faibles_concurrence_3'];?></option><?php echo $this->texte['Points faibles concurrence']?></select></div>
+							<div><select id="points_faibles_concurrence_4" name="data[points_faibles_concurrence_4]"><option><?php echo $this->presta['points_faibles_concurrence_4'];?></option><?php echo $this->texte['Points faibles concurrence']?></select></div>
+						</div>
+						</div>
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Stratégie commerciale envisagée</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="points_forts_strategie_1" name="data[points_forts_strategie_1]" ><option><?php echo $this->presta['points_forts_strategie_1'];?></option><?php echo $this->texte['Points forts strategie']?></select></div>
+							<div><select id="points_forts_strategie_2" name="data[points_forts_strategie_2]"><option><?php echo $this->presta['points_forts_strategie_2'];?></option><?php echo $this->texte['Points forts strategie']?></select></div>
+							<div><select id="points_forts_strategie_3" name="data[points_forts_strategie_3]"><option><?php echo $this->presta['points_forts_strategie_3'];?></option><?php echo $this->texte['Points forts strategie']?></select></div>
+							<div><select id="points_forts_strategie_4" name="data[points_forts_strategie_4]"><option><?php echo $this->presta['points_forts_strategie_4'];?></option><?php echo $this->texte['Points forts strategie']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="points_faibles_strategie_1" name="data[points_faibles_strategie_1]" ><option><?php echo $this->presta['points_faibles_strategie_1'];?></option><?php echo $this->texte['Points faibles strategie']?></select></div>
+							<div><select id="points_faibles_strategie_2" name="data[points_faibles_strategie_2]"><option><?php echo $this->presta['points_faibles_strategie_2'];?></option><?php echo $this->texte['Points faibles strategie']?></select></div>
+							<div><select id="points_faibles_strategie_3" name="data[points_faibles_strategie_3]"><option><?php echo $this->presta['points_faibles_strategie_3'];?></option><?php echo $this->texte['Points faibles strategie']?></select></div>
+							<div><select id="points_faibles_strategie_4" name="data[points_faibles_strategie_4]"><option><?php echo $this->presta['points_faibles_strategie_4'];?></option><?php echo $this->texte['Points faibles strategie']?></select></div>
+						</div>
+						</div>
+						<!--  <div style="clear:both" >
+							<div class="select_bloc_3" >
+							<p class="titre_colonne" >Autres points</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select></select></div>
+							<div><select></select></div>
+							<div><select></select></div>
+							<div><select></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select></select></div>
+							<div><select></select></div>
+							<div><select></select></div>
+							<div><select></select></div>
+						</div>
+						</div>--> 
+					</div>
+					
+					<div class="bloc">
+						<div class="sous_titre" >Plan d'actions</div>
+						<div class="select_bloc_3" >
+							<p>Actions à mener</p>
+							<div><select id="etude_marche_Action_1" name="data[etude_marche_Action_1]" ><option><?php echo $this->presta['etude_marche_Action_1'];?></option><?php echo $this->texte['Action']?></select></div>
+							<div><select id="etude_marche_Action_2" name="data[etude_marche_Action_2]" ><option><?php echo $this->presta['etude_marche_Action_2'];?></option><?php echo $this->texte['Action']?></select></div>
+							<div><select id="etude_marche_Action_3" name="data[etude_marche_Action_3]" ><option><?php echo $this->presta['etude_marche_Action_3'];?></option><?php echo $this->texte['Action']?></select></div>
+							<div><select id="etude_marche_Action_4" name="data[etude_marche_Action_4]" ><option><?php echo $this->presta['etude_marche_Action_4'];?></option><?php echo $this->texte['Action']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Delais de réalisation</p>
+							<div><select id="etude_marche_delais_priorite_1" name="data[etude_marche_delais_priorite_1]" ><option><?php echo $this->presta['etude_marche_delais_priorite_1'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="etude_marche_delais_priorite_2" name="data[etude_marche_delais_priorite_2]" ><option><?php echo $this->presta['etude_marche_delais_priorite_2'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="etude_marche_delais_priorite_3" name="data[etude_marche_delais_priorite_3]" ><option><?php echo $this->presta['etude_marche_delais_priorite_3'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="etude_marche_delais_priorite_4" name="data[etude_marche_delais_priorite_4]" ><option><?php echo $this->presta['etude_marche_delais_priorite_4'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Résultat attendu</p>
+							<div><select id="etude_marche_resultat_attendu_1" name="data[etude_marche_resultat_attendu_1]" ><option><?php echo $this->presta['etude_marche_resultat_attendu_1'];?></option><?php echo $this->texte['Resultats attendus 1']?></select></div>
+							<div><select id="etude_marche_resultat_attendu_2" name="data[etude_marche_resultat_attendu_2]" ><option><?php echo $this->presta['etude_marche_resultat_attendu_2'];?></option><?php echo $this->texte['Resultats attendus 1']?></select></div>
+							<div><select id="etude_marche_resultat_attendu_3" name="data[etude_marche_resultat_attendu_3]" ><option><?php echo $this->presta['etude_marche_resultat_attendu_3'];?></option><?php echo $this->texte['Resultats attendus 1']?></select></div>
+							<div><select id="etude_marche_resultat_attendu_4" name="data[etude_marche_resultat_attendu_4]" ><option><?php echo $this->presta['etude_marche_resultat_attendu_4'];?></option><?php echo $this->texte['Resultats attendus 1']?></select></div>
+						</div>
+					</div>
+					
+					<div class="bloc" >
+						<div class="sous_titre" >Diagnostic et commentaires du referent</div>
+						<textarea name="data[commentaire_etude_marche]" rows="1" cols="100"><?php echo $this->presta['commentaire_etude_marche'];?></textarea>
+						
+					</div>
+				</div>
+		</div>
+	</div>
+			<!-- /Etude de marché -->
+			<!-- Plan de financement -->
+	<div id="tabs-4">
+		<div id="accordion">
+			
+			<h3><a href="#">Plan de financement</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Points forts et points faibles du plan de financement</div>
+						
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Apport et/ou recherche de financement</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p>Points forts</p>
+							<div><select id="fi_pt_forts_1" name="data[fi_pt_forts_1]" ><option><?php echo $this->presta['fi_pt_forts_1'];?></option><?php echo $this->texte['Points forts financements']?></select></div>
+							<div><select id="fi_pt_forts_2" name="data[fi_pt_forts_2]" ><option><?php echo $this->presta['fi_pt_forts_2'];?></option><?php echo $this->texte['Points forts financements']?></select></div>
+							<div><select id="fi_pt_forts_3" name="data[fi_pt_forts_3]" ><option><?php echo $this->presta['fi_pt_forts_3'];?></option><?php echo $this->texte['Points forts financements']?></select></div>
+							<div><select id="fi_pt_forts_4" name="data[fi_pt_forts_4]" ><option><?php echo $this->presta['fi_pt_forts_4'];?></option><?php echo $this->texte['Points forts financements']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Points faibles</p>
+							<div><select id="fi_pt_faibles_1" name="data[fi_pt_faibles_1]" ><option><?php echo $this->presta['fi_pt_faibles_1'];?></option><?php echo $this->texte['Points faibles financements']?></select></div>
+							<div><select id="fi_pt_faibles_2" name="data[fi_pt_faibles_2]" ><option><?php echo $this->presta['fi_pt_faibles_2'];?></option><?php echo $this->texte['Points faibles financements']?></select></div>
+							<div><select id="fi_pt_faibles_3" name="data[fi_pt_faibles_3]" ><option><?php echo $this->presta['fi_pt_faibles_3'];?></option><?php echo $this->texte['Points faibles financements']?></select></div>
+							<div><select id="fi_pt_faibles_4" name="data[fi_pt_faibles_4]" ><option><?php echo $this->presta['fi_pt_faibles_4'];?></option><?php echo $this->texte['Points faibles financements']?></select></div>
+						</div>
+						</div>
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Calcul du point mort</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="fi_pt_forts_mort_1" name="data[fi_pt_forts_mort_1]" ><option><?php echo $this->presta['fi_pt_forts_mort_1'];?></option><?php echo $this->texte['Points forts point mort']?></select></div>
+							<div><select id="fi_pt_forts_mort_2" name="data[fi_pt_forts_mort_2]" ><option><?php echo $this->presta['fi_pt_forts_mort_2'];?></option><?php echo $this->texte['Points forts point mort']?></select></div>
+							<div><select id="fi_pt_forts_mort_3" name="data[fi_pt_forts_mort_3]" ><option><?php echo $this->presta['fi_pt_forts_mort_3'];?></option><?php echo $this->texte['Points forts point mort']?></select></div>
+							<div><select id="fi_pt_forts_mort_4" name="data[fi_pt_forts_mort_4]" ><option><?php echo $this->presta['fi_pt_forts_mort_4'];?></option><?php echo $this->texte['Points forts point mort']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="fi_pt_faibles_mort_1" name="data[fi_pt_faibles_mort_1]" ><option><?php echo $this->presta['fi_pt_faibles_mort_1'];?></option><?php echo $this->texte['Points faibles point mort']?></select></div>
+							<div><select id="fi_pt_faibles_mort_2" name="data[fi_pt_faibles_mort_2]" ><option><?php echo $this->presta['fi_pt_faibles_mort_2'];?></option><?php echo $this->texte['Points faibles point mort']?></select></div>
+							<div><select id="fi_pt_faibles_mort_3" name="data[fi_pt_faibles_mort_3]" ><option><?php echo $this->presta['fi_pt_faibles_mort_3'];?></option><?php echo $this->texte['Points faibles point mort']?></select></div>
+							<div><select id="fi_pt_faibles_mort_4" name="data[fi_pt_faibles_mort_4]" ><option><?php echo $this->presta['fi_pt_faibles_mort_4'];?></option><?php echo $this->texte['Points faibles point mort']?></select></div>
+						</div>
+						</div>
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Plan de financement initial</p>
+						
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="fi_pt_forts_pfi_1" name="data[fi_pt_forts_pfi_1]" ><option><?php echo $this->presta['fi_pt_forts_pfi_1'];?></option><?php echo $this->texte['Points forts pfi']?></select></div>
+							<div><select id="fi_pt_forts_pfi_2" name="data[fi_pt_forts_pfi_2]" ><option><?php echo $this->presta['fi_pt_forts_pfi_2'];?></option><?php echo $this->texte['Points forts pfi']?></select></div>
+							<div><select id="fi_pt_forts_pfi_3" name="data[fi_pt_forts_pfi_3]" ><option><?php echo $this->presta['fi_pt_forts_pfi_3'];?></option><?php echo $this->texte['Points forts pfi']?></select></div>
+							<div><select id="fi_pt_forts_pfi_4" name="data[fi_pt_forts_pfi_4]" ><option><?php echo $this->presta['fi_pt_forts_pfi_4'];?></option><?php echo $this->texte['Points forts pfi']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="fi_pt_faibles_pfi_1" name="data[fi_pt_faibles_pfi_1]" ><option><?php echo $this->presta['fi_pt_faibles_pfi_1'];?></option><?php echo $this->texte['Points faibles pfi']?></select></div>
+							<div><select id="fi_pt_faibles_pfi_2" name="data[fi_pt_faibles_pfi_2]" ><option><?php echo $this->presta['fi_pt_faibles_pfi_2'];?></option><?php echo $this->texte['Points faibles pfi']?></select></div>
+							<div><select id="fi_pt_faibles_pfi_3" name="data[fi_pt_faibles_pfi_3]" ><option><?php echo $this->presta['fi_pt_faibles_pfi_3'];?></option><?php echo $this->texte['Points faibles pfi']?></select></div>
+							<div><select id="fi_pt_faibles_pfi_4" name="data[fi_pt_faibles_pfi_4]" ><option><?php echo $this->presta['fi_pt_faibles_pfi_4'];?></option><?php echo $this->texte['Points faibles pfi']?></select></div>
+						</div>
+						</div>
+						<div style="clear:both" >
+						<div class="select_bloc_3" >
+							<p class="titre_colonne" >Plan de financement a trois ans</p>
+							
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="fi_pt_forts_pf3_1" name="data[fi_pt_forts_pf3_1]" ><option><?php echo $this->presta['fi_pt_forts_pf3_1'];?></option><?php echo $this->texte['Points forts pf3']?></select></div>
+							<div><select id="fi_pt_forts_pf3_2" name="data[fi_pt_forts_pf3_2]" ><option><?php echo $this->presta['fi_pt_forts_pf3_2'];?></option><?php echo $this->texte['Points forts pf3']?></select></div>
+							<div><select id="fi_pt_forts_pf3_3" name="data[fi_pt_forts_pf3_3]" ><option><?php echo $this->presta['fi_pt_forts_pf3_3'];?></option><?php echo $this->texte['Points forts pf3']?></select></div>
+							<div><select id="fi_pt_forts_pf3_4" name="data[fi_pt_forts_pf3_4]" ><option><?php echo $this->presta['fi_pt_forts_pf3_4'];?></option><?php echo $this->texte['Points forts pf3']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p></p>
+							<div><select id="fi_pt_faibles_pf3_1" name="data[fi_pt_faibles_pf3_1]" ><option><?php echo $this->presta['fi_pt_faibles_pf3_1'];?></option><?php echo $this->texte['Points faibles pf3']?></select></div>
+							<div><select id="fi_pt_faibles_pf3_2" name="data[fi_pt_faibles_pf3_2]" ><option><?php echo $this->presta['fi_pt_faibles_pf3_2'];?></option><?php echo $this->texte['Points faibles pf3']?></select></div>
+							<div><select id="fi_pt_faibles_pf3_3" name="data[fi_pt_faibles_pf3_3]" ><option><?php echo $this->presta['fi_pt_faibles_pf3_3'];?></option><?php echo $this->texte['Points faibles pf3']?></select></div>
+							<div><select id="fi_pt_faibles_pf3_4" name="data[fi_pt_faibles_pf3_4]" ><option><?php echo $this->presta['fi_pt_faibles_pf3_4'];?></option><?php echo $this->texte['Points faibles pf3']?></select></div>
+						</div>
+						</div>
+					</div>
+					<div class="bloc">
+						<div class="sous_titre" >Plan d'actions</div>
+						<div class="select_bloc_3" >
+							<p>Actions à mener</p>
+							<div><select id="fi_Action_1" name="data[fi_Action_1]" ><option><?php echo $this->presta['fi_Action_1'];?></option><?php echo $this->texte['Action']?></select></div>
+							<div><select id="fi_Action_2" name="data[fi_Action_2]" ><option><?php echo $this->presta['fi_Action_2'];?></option><?php echo $this->texte['Action']?></select></div>
+							<div><select id="fi_Action_3" name="data[fi_Action_3]" ><option><?php echo $this->presta['fi_Action_3'];?></option><?php echo $this->texte['Action']?></select></div>
+							<div><select id="fi_Action_4" name="data[fi_Action_4]" ><option><?php echo $this->presta['fi_Action_4'];?></option><?php echo $this->texte['Action']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Delais de réalisation</p>
+							<div><select id="fi_delais_priorite_1" name="data[fi_delais_priorite_1]" ><option><?php echo $this->presta['fi_delais_priorite_1'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="fi_delais_priorite_2" name="data[fi_delais_priorite_2]" ><option><?php echo $this->presta['fi_delais_priorite_2'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="fi_delais_priorite_3" name="data[fi_delais_priorite_3]" ><option><?php echo $this->presta['fi_delais_priorite_3'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="fi_delais_priorite_4" name="data[fi_delais_priorite_4]" ><option><?php echo $this->presta['fi_delais_priorite_4'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Résultat attendu</p>
+							<div><select id="fi_resultat_attendu_1" name="data[fi_resultat_attendu_1]" ><option><?php echo $this->presta['fi_resultat_attendu_1'];?></option><?php echo $this->texte['Resultat attendu 2']?></select></div>
+							<div><select id="fi_resultat_attendu_2" name="data[fi_resultat_attendu_2]" ><option><?php echo $this->presta['fi_resultat_attendu_2'];?></option><?php echo $this->texte['Resultat attendu 2']?></select></div>
+							<div><select id="fi_resultat_attendu_3" name="data[fi_resultat_attendu_3]" ><option><?php echo $this->presta['fi_resultat_attendu_3'];?></option><?php echo $this->texte['Resultat attendu 2']?></select></div>
+							<div><select id="fi_resultat_attendu_4" name="data[fi_resultat_attendu_4]" ><option><?php echo $this->presta['fi_resultat_attendu_4'];?></option><?php echo $this->texte['Resultat attendu 2']?></select></div>
+						</div>
+					</div>
+					
+					<div class="bloc" >
+						<div class="sous_titre" >Diagnostic et commentaires du referent</div>
+						<textarea name="data[commentaire_pt_fi]" rows="1" cols="100"><?php echo $this->presta['commentaire_pt_fi'];?></textarea>
+						
+					</div>
+				</div>
+		
+		</div>
+	</div>
+	<!-- /Plan de financement -->
+	<!-- Statut juridique -->
+	<div id="tabs-5">
+		<div id="accordion">
+			
+			<h3><a href="#">Statut juridique</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Points forts et points faibles du statut juridique choisi</div>
+						
+						<div class="select_bloc_2">
+							<p>Points forts</p>
+							<div><select id="sj_pt_forts_juridique_1" name="data[sj_pt_forts_juridique_1]" ><option><?php echo $this->presta['sj_pt_forts_juridique_1'];?></option><?php echo $this->texte['Points forts statut juridique']?></select></div>
+							<div><select id="sj_pt_forts_juridique_2" name="data[sj_pt_forts_juridique_2]" ><option><?php echo $this->presta['sj_pt_forts_juridique_2'];?></option><?php echo $this->texte['Points forts statut juridique']?></select></div>
+							<div><select id="sj_pt_forts_juridique_3" name="data[sj_pt_forts_juridique_3]" ><option><?php echo $this->presta['sj_pt_forts_juridique_3'];?></option><?php echo $this->texte['Points forts statut juridique']?></select></div>
+							<div><select id="sj_pt_forts_juridique_4" name="data[sj_pt_forts_juridique_4]" ><option><?php echo $this->presta['sj_pt_forts_juridique_4'];?></option><?php echo $this->texte['Points forts statut juridique']?></select></div>
+						</div>
+						<div class="select_bloc_2">
+							<p>Points faibles</p>
+							<div><select id="sj_pt_faibles_juridique_1" name="data[sj_pt_faibles_juridique_1]" ><option><?php echo $this->presta['sj_pt_faibles_juridique_1'];?></option><?php echo $this->texte['Points faibles statut juridique']?></select></div>
+							<div><select id="sj_pt_faibles_juridique_2" name="data[sj_pt_faibles_juridique_2]" ><option><?php echo $this->presta['sj_pt_faibles_juridique_2'];?></option><?php echo $this->texte['Points faibles statut juridique']?></select></div>
+							<div><select id="sj_pt_faibles_juridique_3" name="data[sj_pt_faibles_juridique_3]" ><option><?php echo $this->presta['sj_pt_faibles_juridique_3'];?></option><?php echo $this->texte['Points faibles statut juridique']?></select></div>
+							<div><select id="sj_pt_faibles_juridique_4" name="data[sj_pt_faibles_juridique_4]" ><option><?php echo $this->presta['sj_pt_faibles_juridique_4'];?></option><?php echo $this->texte['Points faibles statut juridique']?></select></div>
+						</div>
+
+						
+					</div>
+					<div class="bloc">
+						<div class="sous_titre" >Plan d'actions</div>
+						<div class="select_bloc_3" >
+							<p>Actions à mener</p>
+							<div><select id="sj_Action_1" name="data[sj_Action_1]" ><option><?php echo $this->presta['sj_Action_1'];?></option><?php echo $this->texte['Action_ju']?></select></div>
+							<div><select id="sj_Action_2" name="data[sj_Action_2]" ><option><?php echo $this->presta['sj_Action_2'];?></option><?php echo $this->texte['Action_ju']?></select></div>
+							<div><select id="sj_Action_3" name="data[sj_Action_3]" ><option><?php echo $this->presta['sj_Action_3'];?></option><?php echo $this->texte['Action_ju']?></select></div>
+							<div><select id="sj_Action_4" name="data[sj_Action_4]" ><option><?php echo $this->presta['sj_Action_4'];?></option><?php echo $this->texte['Action_ju']?></select></div>
+							</div>
+						<div class="select_bloc_3">
+							<p>Delais de réalisation</p>
+							<div><select id="sj_delais_priorite_1" name="data[sj_delais_priorite_1]" ><option><?php echo $this->presta['sj_delais_priorite_1'];?></option><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="sj_delais_priorite_2" name="data[sj_delais_priorite_2]" ><option><?php echo $this->presta['sj_delais_priorite_2'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="sj_delais_priorite_3" name="data[sj_delais_priorite_3]" ><option><?php echo $this->presta['sj_delais_priorite_3'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+							<div><select id="sj_delais_priorite_4" name="data[sj_delais_priorite_4]" ><option><?php echo $this->presta['sj_delais_priorite_4'];?></option>><?php echo $this->texte['Delais / Priorite']?></select></div>
+						</div>
+						<div class="select_bloc_3">
+							<p>Résultat attendu</p>
+							<div><select id="sj_resultat_attendu_1" name="data[sj_resultat_attendu_1]" ><option><?php echo $this->presta['sj_resultat_attendu_1'];?></option><?php echo $this->texte['Resultat attendu 3']?></select></div>
+							<div><select id="sj_resultat_attendu_2" name="data[sj_resultat_attendu_2]" ><option><?php echo $this->presta['sj_resultat_attendu_2'];?></option><?php echo $this->texte['Resultat attendu 3']?></select></div>
+							<div><select id="sj_resultat_attendu_3" name="data[sj_resultat_attendu_3]" ><option><?php echo $this->presta['sj_resultat_attendu_3'];?></option><?php echo $this->texte['Resultat attendu 3']?></select></div>
+							<div><select id="sj_resultat_attendu_4" name="data[sj_resultat_attendu_4]" ><option><?php echo $this->presta['sj_resultat_attendu_4'];?></option><?php echo $this->texte['Resultat attendu 3']?></select></div>
+						</div>
+					</div>
+					
+					<div class="bloc" >
+						<div class="sous_titre" >Diagnostic et commentaires du referent</div>
+						<textarea name="data[commentaire_sj]" rows="1" cols="100"><?php echo $this->presta['commentaire_sj'];?></textarea>
+						
+					</div>
+				</div>
+			
+		</div>
+	</div>
+	<!-- /Statut juridique -->
+	<!-- Bilan -->
+	<div id="tabs-6">
+		<div id="accordion">
+			
+			<h3><a href="#">Faisabilité du projet</a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >Faisabilite du projet (cocher la case correspondant à l'avis de l'evaluateur)</div>
+						
+							<div><label><input <?php echo outils::setCheckbox($this->presta['faisabilite'],0); ?> style="display:none" name="data[faisabilite]" type="radio"  value="0"  /> </label></div>
+							<div><label><input <?php echo outils::setCheckbox($this->presta['faisabilite'],1); ?> name="data[faisabilite]" type="radio"  value="1"  /> <span>Négatif</span></label></div>
+							<div><label><input <?php echo outils::setCheckbox($this->presta['faisabilite'],2); ?> name="data[faisabilite]" type="radio"  value="2" /> <span>Positif sous reserve de mise en œuvre du plan d'actions</span></label></div>
+							<div><label><input <?php echo outils::setCheckbox($this->presta['faisabilite'],3); ?> name="data[faisabilite]" type="radio"  value="3" /> <span>Positif</span></label></div>
+							
+						
+					</div>
+					
+					
+					<div class="bloc" >
+						<div class="sous_titre" >Faisabilité : Commentaires de l'evaluateur</div>
+						<textarea name="data[com_faisabilite]" rows="1" cols="100"><?php echo $this->presta['com_faisabilite'];?></textarea>
+						
+					</div>
+					
+					<div class="bloc" >
+						<div class="sous_titre" >Estimation du délai de concrétisation du projet</div>
+						
+							<div><label><input <?php echo outils::setCheckbox($this->presta['estimation'],0); ?> style="display:none" name="data[estimation]" type="radio"  value="0"  /> </label></div>
+							<div><label><input <?php echo outils::setCheckbox($this->presta['estimation'],1); ?> name="data[estimation]" type="radio"  value="1"  /> <span> Entre 6 mois et 1 an (identifier dans ce cas une solution alternative de retour à l’emploi)</span></label></div>
+							<div><label><input <?php echo outils::setCheckbox($this->presta['estimation'],2); ?> name="data[estimation]" type="radio"  value="2" /> <span> Entre 3 et 6 mois</span></label></div>
+							<div><label><input <?php echo outils::setCheckbox($this->presta['estimation'],3); ?> name="data[estimation]" type="radio"  value="3" /> <span> Inférieur à 3 mois</span></label></div>
+							
+						
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Estimation : Commentaires de l'evaluateur</div>
+						<textarea name="data[com_estimation]" rows="1" cols="100"><?php echo $this->presta['com_estimation'];?></textarea>
+						
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Solution alternative de retour a l'emploi a court terme</div>
+						<div><input name="data[code_solution]" value="<?php echo $this->presta['code_solution'];?>" type="text" /> ( Recherche par Métier ; ex : Caissier ) </div>
+						<div><textarea name="data[com_solution]" rows="1" cols="100"><?php echo $this->presta['com_solution'];?></textarea></div>
+						
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Commentaire référent</div>
+						<textarea name="data[bilan_com_referent]" rows="1" cols="100"><?php echo $this->presta['bilan_com_referent'];?></textarea>
+						
+					</div>
+					<div class="bloc" >
+						<div class="sous_titre" >Commentaire bénéficiaire</div>
+						<textarea name="data[bilan_com_beneficiaire]" rows="1" cols="100"><?php echo $this->presta['bilan_com_beneficiaire'];?></textarea>
+						
+					</div>
+				</div>
+			
+		</div>
+	</div>
+	<!-- /Statut juridique -->
+	<div id="tabs-7">
+		<form name="Editer">
+			<div class="sous_titre" >Liste des livrables</div>
+			<div>
+				<div><label><input id="imp_1" name="Editer['opcrea']['annexe_1]" checked="checked" value="CCFT OPCRE annexe I contrat d'accompagnement"  type="checkbox" /><span>CCFT OPCRE annexe I contrat d'accompagnement</span></label></div>
+				<div><label><input id="imp_2" name="Editer['opcrea']['annexe_2]" checked="checked" value="CCFT OPCRE annexe II Fiche de suivi et bilan d'accompagnement" type="checkbox" /><span>CCFT OPCRE annexe II Fiche de suivi et bilan d'accompagnement</span></label></div>
+				<div><label><input id="imp_3" name="Editer['opcrea']['annexe_3]"  checked="checked" value="CCFT OPCRE annexe III  Tableau suivi activité résultats" type="checkbox" /><span>CCFT OPCRE annexe III  Tableau suivi activité résultats</span></label></div>
+			</div>
+		</form>
+	</div>
+	<div id="tabs-8">
+		
+		
+			<div class="sous_titre" >Liste des Rendez vous</div>
+			<div>
+				Listes des rendez vous<br/>
+				Possibilité de modifier leurs statuts
+			</div>
+		
+	</div>
+	
+
+	
+</div>
+</form>
+<div style="padding-top:10px" >
+<center><button id="savePresta" >Enregistrer</button><button id="EditerPresta">Editer</button></center>
+</div>
+<div class="pied"  ></div>
+<div class="copyright" >© APSIE OPCREA</div>
+</div>
+
+
+<script type="text/javascript">
+$j('button').button();
+//Animation de l'option
+Option.anime();
+var id_presta = <?php echo $this->id_presta;?>;
+$j(function() {
+
+
+	
+	
+	
+		
+		$j('#contenu_opcrea_'+id_presta).dialog(
+			{ width : 1250,
+			  height : 965
+			 }
+			);
+	
+	
+		$j( "#contenu_opcrea_"+id_presta+" #tabs" ).tabs();
+	
+		var icons = {
+			header: "ui-icon-circle-arrow-e",
+			headerSelected: "ui-icon-circle-arrow-s"
+		};
+		$j( "#contenu_opcrea_"+id_presta+" #accordion" ).accordion({
+			icons: icons,
+			autoHeight: false,
+		});
+
+		
+		//setSelectBox();	
+	});
+$j("#contenu_opcrea_"+id_presta+" #savePresta").click(function() {
+	savePresta();
+});
+
+$j(".boutton_pose_rdv").click(function() {
+	
+	savePresta();
+	});
+function go_to_rdv()
+{
+	
+	setTimeout(function(){
+	window.location.href=('/index.php?page=Calendrier&id_contact=<?php echo $this->contact['id'] ?>&id_presta=<?php echo $this->id_presta ?>&retour=1');
+	},1000);
+}
+function savePresta()
+{
+	var form  = $j("#contenu_opcrea_"+id_presta+" form[name='presta'] ").serializeArray();
+
+	/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat(
+            $j("#contenu_opcrea_"+id_presta+" form[name='presta'] input[type=checkbox]:not(:checked)").map(
+                    function() {
+                        return {"name": this.name, "value": 0}
+                    }).get()
+    );
+	
+
+	  $j.ajax({
+    		url : "./index.php?page=ajaxPrestaData&noTemplate=1&action=set",
+    		type : "POST",
+    		dataType : "json",
+    		data : form ,
+    		success: function(data){
+
+    			
+        		
+    			$j.gritter.add({
+    				// (string | mandatory) the heading of the notification
+    				title: 'OPCREA',
+    				// (string | mandatory) the text inside the notification
+    				text: 'Les données sont sauvegardées...'
+    			});
+        		
+    		}});
+	
+	  return false;
+}
+
+$j("#contenu_opcrea_"+id_presta+" #EditerPresta").click(function() {
+	
+	//var form  = $j("#contenu_opcrea_"+id_presta+" form[name='Editer'] ").serializeArray();
+	if($j('#imp_1').attr('checked') == 'checked')
+	 {
+	 window.open("./index.php?page=download&noHeader=1&presta=opcrea&id_presta="+id_presta+"&annexe=1",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	 }
+	 if($j('#imp_2').attr('checked') == 'checked')
+	 {
+	 setTimeout(function(){
+		 window.open("./index.php?page=download&noHeader=1&presta=opcrea&id_presta="+id_presta+"&annexe=2",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+		 },1000);
+	 }
+	 if($j('#imp_3').attr('checked') == 'checked')
+	 {
+		setTimeout(function(){
+		 window.open("./index.php?page=download&noHeader=1&presta=opcrea&id_presta="+id_presta+"&annexe=3",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+		 },1000);
+	 }
+	return false;
+	});
+
+
+</script>

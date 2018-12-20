@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spifina.admin.buttons" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<hbox span="all" align="center">
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spifina.admin.general" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="35%"/>
+				<column width="25%"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="field"/>
+					<description value="Default Value"/>
+					<description value="Comment"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th">
+					<description span="all" class="bold" value="Access rights" readonly="true"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Management group"/>
+					<menulist>
+						<menupopup type="select-account" options=",groups,1" id="general[ticket_management_group]" onchange="ajax_request.assignedToGeneral('cat_assignedto','[general][ticket_assigned_to]','personne',this.value);" needed="1"/>
+					</menulist>
+					<description value="Management group for Spid"/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spifina.admin.buttons"/>
+	</template>
+</overlay>

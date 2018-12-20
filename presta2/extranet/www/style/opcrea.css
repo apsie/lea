@@ -1,0 +1,55 @@
+.contenu_opcrea
+{
+width : 1200px;
+text-align :left;
+}
+textarea
+{
+bacground-color : #FFF;
+border:1px solid #CCC;
+}
+.contenu_opcrea .sous_titre
+{
+	font-weight:bolder;
+	font-style:italic;
+	padding:5px;
+	padding-top : 20px;
+}
+a:link
+{
+	color : #666;
+}
+a:hover
+{
+	/*color : #CCC;*/
+	text-decoration : underline;
+}
+label
+{
+cursor :pointer;
+}
+select
+{
+cursor :pointer;
+border : 1px solid #EEE;
+}
+.contenu_opcrea .pied
+{
+position: absolute;
+bottom: 0;
+padding : 5px;
+width : 1180px;
+text-align: right;
+}
+.contenu_opcrea .copyright
+{
+
+bottom: 0;
+padding : 5px;
+width : 1180px;
+text-align: left;
+}
+.contenu_opcrea #tabs
+{
+height : 870px !important;
+}

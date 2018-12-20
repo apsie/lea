@@ -1,0 +1,144 @@
+<section class="formulaire_presta">
+    <fieldset class="contact">
+        <table>
+            <tr>
+                <td>
+                    <a href="#null" onclick="window.open('{{DIR_PRESTA}}/presta/epce/control.php?id_ben={{ idContact }}&id=1001','Informations bénéficiaire','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');">Fiche du bénéficiaire</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Civilité :
+                </td>
+                <td>{{ form_widget(formContact.civilite) }}
+                    {{ form_widget(formContact.idBen) }}</td>
+            </tr>
+            <tr>
+                <td>Nom :
+                </td>
+                <td>{{ form_widget(formContact.nom) }}</td>
+                <td>Nom de jeune fille:
+                </td>
+                <td>{{ form_widget(formContact.nomJeuneFille) }}</td>
+            </tr>
+            <tr>
+                <td>Prénom :
+                </td>
+                <td>{{ form_widget(formContact.prenom) }}</td>
+                <td>Deuxième Prénom : </td><td>{{ form_widget(formContact.deuxiemePrenom) }}</td>
+            </tr>
+            <tr>
+                <td>Portable perso :
+                </td>
+                <td>{{ form_widget(formContact.portablePerso) }}</td>
+                <td>Portable Pro :
+                </td>
+                <td>{{ form_widget(formContact.portablePro) }}</td>
+            </tr>
+            <tr>
+                <td>Email perso :
+                </td>
+                <td>{{ form_widget(formContact.emailPerso) }}</td>
+                <td>Email pro :
+                </td>
+                <td>{{ form_widget(formContact.emailPro) }}</td>
+            </tr>
+            <tr>
+                <td>Tel. Domicile :
+                </td>
+                <td>{{ form_widget(formContact.telDomicile1) }}</td>
+                <!--<td>Tel. Domicile 2 : </td><td>{{ form_widget(formContact.telDomicile2) }}</td>-->
+            </tr>
+            <tr>
+                <td>Tel. Pro :
+                </td>
+                <td>{{ form_widget(formContact.telPro1) }}</td>
+                <!--<td>Tel. Pro 2 : </td><td>{{ form_widget(formContact.telPro2) }}</td>-->
+            </tr>
+            <tr>
+                <td>Fax Pro :
+                </td>
+                <td>{{ form_widget(formContact.faxPro) }}</td>
+                <!--<td>Fax Perso : </td><td>{{ form_widget(formContact.faxPerso) }}</td>-->
+            </tr>
+
+        </table>
+    </fieldset>
+    <fieldset class="contact">
+        <table>
+            <tr>
+                <td>Adresse :
+                </td>
+                <td colspan="3">{{ form_widget(formContact.adresseLigne1, { 'attr': {'size': '78'} }) }}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3">{{ form_widget(formContact.adresseLigne2, { 'attr': {'size': '78'} }) }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3">{{ form_widget(formContact.adresseLigne3, { 'attr': {'size': '78'} }) }}
+                </td>
+            </tr>
+            <tr>
+                <td>Code postal:
+                </td>
+                <td >{{ form_widget(formContact.cp) }}</td>
+                <td>Ville:
+                </td>
+                <td >{{ form_widget(formContact.ville) }}</td>
+            </tr>
+            <tr>
+                <td>Région:
+                </td>
+                <td >{{ form_widget(formContact.region) }}</td>
+                <td>Pays:
+                </td>
+                <td >{{ form_widget(formContact.pays) }}</td>
+            </tr>
+
+        </table>
+    </fieldset>
+    <fieldset class="contact">
+        <table>
+            <tr>
+                <td>Fonction :
+                </td>
+                <td>{{ form_widget(formContact.fonction) }}</td>
+                <td>Service :
+                </td>
+                <td>{{ form_widget(formContact.service) }}</td>
+            </tr>
+
+            <tr>
+                <td>Numéro SS :
+                </td>
+                <td>{{ form_widget(formContact.idSecu) }}</td>
+            </tr>
+
+        </table>
+    </fieldset>
+    <fieldset class="contact">
+        <table>
+            <tr>
+                <td>Site web :
+                </td>
+                <td>{{ form_widget(formContact.sitePerso) }}</td>
+            </tr>
+
+        </table>
+    </fieldset>
+
+    {% render "LeaPrestaBundle:Contact:parcourspro" with {
+        idContact : idContact
+    } %}
+    {% render "LeaPrestaBundle:Contact:formation" with {
+        idContact : idContact
+    } %}
+
+</section>
+
+<script>
+    //cp
+    $('#EgwContact_cp,#EgwContact_ville').myAutoCompleteCp('EgwContact_');
+</script>

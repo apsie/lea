@@ -1,0 +1,55 @@
+Logiciel SpiClients : SpireaClients
+
+Ce logiciel est un programme informatique servant à la gestion d'un référentiels client-fournisseurs et de contrats dans un environnement egroupware.  L'application est multi-clients, multi-fournisseurs et multi-contrats.
+
+Auteur
+Société SPIREA SARL - 16/20 avenue de l'agent Sarre 92700 Colombes - Tél : 0141192772 - Fax : 0147858449 - contact@spirea.fr
+http://www.spirea.fr
+
+Licence : 
+Reproduction, utilisation ou modification interdite sans autorisation de Spirea
+
+
+Version - Egroupware 1.6 et 1.8
+
+Dernière maj : 26/07/2012
+
+Logiciels inclus ou utilisés
+- eGroupware / phpgwapi - etemplates
+- Fpdf - bibliothèque FPDF - http://www.fpdf.org/
+
+Etapes d'installation
+- copier le répertoire SPICLIENT dans la racine Egroupware, au même niveau que les autres modules
+- aller dans le setup egroupware, installer l'application SPICLIENT
+- dans egroupware, depuis un compte administrateur : 
+-- Menu Admin/Applications : vérifier que l'application est installée
+-- Menu Admin/Groupes : donner accès à SPICLIENT
+
+Etapes de configuration
+- les administrateurs egroupware ont accès au menu "Admin" de l'application
+- les utilisateurs Spiclients ont accès aux autres fonctions selon leurs habilitation : 
+-- groupe de gestion : tous les accès
+-- gestionnaire de client : tous les accès sur les organisations
+-- gestionnaire de contrat : tous les accès sur les contrats
+
+Configuration
+- Configuration des types de contrats
+- Configuration des statuts de contrats
+- Sites
+- Secteurs
+- Rôles
+- Zones géographique
+- Natures technique
+- Délais de paiement
+- Mode de réglement
+
+Création d'un nouveau client et d'un groupe associé
+
+1. Le groupe egroupware n'existe pas : il faut créer le groupe, d'abord en créant (éventuellement) un utilisateur puis un nouveau groupe (par le module admin egroupware ou par le raccouci dans le menu admin)
+
+2. Le groupe egroupware existe
+Cliquer sur nouveau client, sélectionner le groupe lié, remplir la fiche et "appliquer"
+
+3. Etablir une relation client-fournisseur
+Il faut ajouter une relation soit dans l'onglet client, soit dans l'onglet prestataires
+

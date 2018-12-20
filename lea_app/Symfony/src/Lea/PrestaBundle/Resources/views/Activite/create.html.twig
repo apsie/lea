@@ -1,0 +1,21 @@
+<div class="entete" >Nouvelle Activité</div>
+<form name="activite_create" action="./activite/create">
+	<section>
+		<fieldset>
+			<table>
+				<tr>
+					<td>Libellé :</td>
+					<td>{{ form_widget(formActivite.libelle) }}</td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td><input type="submit" value="Enregistrer" /></td>
+				</tr>
+			</table>
+		</fieldset>
+	</section>
+</form>
+<script>
+$('form[name="activite_create"]').submitForm('.div_droite','Activité','activite');
+</script>
+					

@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.edit.meeting.estimation" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="10"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+				<column width="90"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description/>
+					<description align="center" value="Real time"/>
+					<description align="center" value="Budget time"/>
+					<description align="center" value="Difference time"/>
+					<description value="Real amount"/>
+					<description value="Budget amount"/>
+					<description value="Difference amount"/>
+				</row>
+				<row class="row">
+					<description value="Realised intervention" class="th"/>
+					<description align="right" id="total[realised]"/>
+					<description/>
+					<description/>
+					<description id="amount[real_realised]"/>
+					<description id="amount[budget_realised]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Confirmed intervention" class="th"/>
+					<description align="right" id="total[confirmed]"/>
+					<description/>
+					<description/>
+					<description id="amount[real_confirmed]" class="row_off"/>
+					<description id="amount[budget_confirmed]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Optional intervention" class="th"/>
+					<description align="right" id="total[option]"/>
+					<description/>
+					<description/>
+					<description id="amount[real_option]"/>
+					<description id="amount[budget_option]"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total intervention" class="th"/>
+					<description align="right" id="total[intervention]"/>
+					<description align="right" id="ticket_budget"/>
+					<description align="right" id="difference"/>
+					<description id="amount[total_real]" class="row_off"/>
+					<description id="amount[total_budget]"/>
+					<description/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total rendez-vous" class="th"/>
+					<description align="right" id="total[rendez_vous]"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total heures" class="th"/>
+					<description align="right" id="total[heures]"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Total jours" class="th"/>
+					<description align="right" id="total[jours]"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.edit.meeting" template="" lang="" group="0" version="1.001">
+		<grid width="100%" height="350">
+			<columns>
+				<column width="10"/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="Calendar" span="all" class="bold"/>
+					<description/>
+					<description/>
+					<description/>
+					<description onclick="window.open(egw::link('/index.php','menuaction=calendar.calendar_uiforms.edit'),'1000','dependent=yes,width=600,height=450,scrollbars=yes,status=yes'); return false;"/>
+				</row>
+				<row disabled="@hidebuttons">
+					<description value="To add a meeting, please fill up the calendar date, time and the title, then &quot;add&quot;" span="all" class="grayItalic"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th">
+					<description value="Participant"/>
+					<description value="calendar"/>
+					<vbox>
+						<description value="Location"/>
+						<description value="Category"/>
+					</vbox>
+					<vbox label="Title">
+						<description value="Title"/>
+						<description value="Description"/>
+					</vbox>
+					<description/>
+				</row>
+				<row class="row" disabled="@hidebuttons">
+					<vbox>
+						<menulist>
+							<menupopup disabled="true" id="rdvId_statut"/>
+						</menulist>
+						<menulist>
+							<menupopup type="select-account" id="rdvInterviewer" options=",all,0"/>
+						</menulist>
+					</vbox>
+					<vbox>
+						<date-time id="rdvstart"/>
+						<date-duration id="rdvduration" onclick="set_style_by_class('table','end_hide','visibility',this.value == '' ? 'visible' : 'hidden'); if (this.value == '') document.getElementById(form::name('end[str]')).value = document.getElementById(form::name('start[str]')).value;"/>
+						<buttononly disabled="true" statustext="Find free timeslots where the selected participants are availible for the given timespan" label="Freetime search" id="freetime" onclick="window.open(egw::link('/index.php','menuaction=calendar.calendar_uiforms.freetimesearch')+values2url(this.form,'start,end,duration,participants,recur_type,whole_day'),'ft_search','dependent=yes,width=700,height=500,scrollbars=yes,status=yes'); return false;" width="0"/>
+					</vbox>
+					<vbox>
+						<textbox id="rdvlocation"/>
+						<menulist>
+							<menupopup id="rdvcategory" no_lang="1"/>
+						</menulist>
+					</vbox>
+					<vbox>
+						<textbox id="rdvtitle" size="37"/>
+						<textbox id="rdvdescription" size="37"/>
+					</vbox>
+					<button label="Add" id="button[applycontact]"/>
+				</row>
+				<row class="th">
+					<description value="Calendar" span="all" class="bold"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<grid width="100%">
+						<columns>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+						</columns>
+						<rows>
+							<row class="th">
+								<description value="Id"/>
+								<description value="Intervenant"/>
+								<description value="Participant"/>
+								<vbox>
+									<description value="Start date"/>
+									<description value="End date"/>
+								</vbox>
+								<vbox>
+									<description value="Title"/>
+									<description value="Description"/>
+								</vbox>
+								<description value="Category"/>
+								<description value="Location"/>
+								<description value="Heure(s)"/>
+								<description value="Jour(s)"/>
+								<description value="Actions"/>
+							</row>
+							<row class="row">
+								<html id="rdv[$row][lien]" no_lang="1"/>
+								<menulist>
+									<menupopup type="select-account" id="rdv[$row][account_id]" readonly="true" class="bold"/>
+								</menulist>
+								<description id="rdv[$row][participants]" readonly="true"/>
+								<vbox>
+									<date-time id="rdv[$row][start]" readonly="true"/>
+									<date-time id="rdv[$row][end]" readonly="true"/>
+								</vbox>
+								<vbox>
+									<description id="rdv[$row][title]" no_lang="1" class="bold"/>
+									<description id="rdv[$row][description]" no_lang="1"/>
+								</vbox>
+								<description id="rdv[$row][category]"/>
+								<description id="rdv[$row][location]"/>
+								<description id="rdv[$row][heures]"/>
+								<description id="rdv[$row][jours]"/>
+								<hbox>
+									<button label="Unlink" id="unlink[$row]" onclick="return confirm('You are unlinking this event. Are you sure?');" image="unlink"/>
+									<button label="Delete" id="delete[$row]" onclick="return confirm('You are removing this event. Are you sure?');" image="delete"/>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</row>
+				<row>
+					<template id="spid.edit.meeting.estimation" span="all"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

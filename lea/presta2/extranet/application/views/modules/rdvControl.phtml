@@ -1,0 +1,121 @@
+<?php 
+#Debug
+/*if($this->presta=="oem")
+$this->presta = "oe";
+
+if($this->presta=="opcre")
+$this->presta = "opcrea";
+*/
+?>
+<link type="text/css" rel="stylesheet" media="screen" href="./style/rdvControl.css">
+<div id="contenu_rdvControl" title="Prestation" class="contenu_rdvControl">
+<?php if($this->statut_presta=="En cours" || $this->statut_presta=="Nouvelle"){?>
+
+<div class="question"><?php  echo $this->nom_complet;?> est il présent ?</div>
+<div class="info"><?php  echo $this->tel;?></div>
+<div>
+<form name="rdvControl" id="rdvControl"  method="get" >
+<input name="idPresta"   type="hidden" value="<?php  echo $this->id_presta;?>">
+<input name="presta"   type="hidden" value="<?php  echo $this->presta;?>">
+<input name="url_presta"   type="hidden" value="<?php  echo $this->url_presta;?>">
+
+<div>
+<label>
+<input name="control"   type="radio" value="1"><span>Oui</span>
+</label>
+</div>
+<div>
+<label>
+<input name="control" type="radio" value="0"><span>Non</span>
+</label>
+</div>
+<div>
+<label>
+<input name="control"  checked="checked" type="radio" value="2"><span>Me rappelez plus tard</span>
+</label>
+</div>
+</form>
+<div >
+
+<?php }else{ ?>
+
+<div class="question">Archive de <?php  echo $this->nom_complet;?></div>
+<div class="info"><?php  echo $this->tel;?></div>
+<div>
+<form name="rdvControl" id="rdvControl"  method="get" >
+<input name="idPresta"   type="hidden" value="<?php  echo $this->id_presta;?>">
+<input name="presta"   type="hidden" value="<?php  echo $this->presta;?>">
+<input name="url_presta"   type="hidden" value="<?php  echo $this->url_presta;?>">
+
+<div>
+<label>
+<input name="control"  checked="checked" type="radio" value="3"><span>Accéder à l'archive de cette prestation</span>
+</label>
+</div>
+</form>
+<div >
+
+<?php }?>
+<center><button id="okControl" >Ok</button></center>
+
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+$j('button').button();
+
+//Spirea : taille de la boite de dialogue "prestation / confirmation de présence"
+$j('#contenu_rdvControl').dialog({
+	width  :	270,
+	height :	250});
+
+//Spirea : appel fonction okControl
+$j('#okControl').click(function() {
+	var form  = $j("form[name='rdvControl'] ").serialize();
+	var presta = $j("form[name='rdvControl'] input[name='url_presta'] ").val();
+	var idPresta = $j("form[name='rdvControl'] input[name='idPresta'] ").val();
+	var control = $j("form[name='rdvControl'] input[name='control'] ").val();
+	if(control!='2')
+	{
+	 	$j.ajax({
+    		url : "./index.php?page=ajaxPresta&noTemplate=1&action=updatePresta",
+    		type : "GET",
+    		dataType : "json",
+    		data : form ,
+    		success: function(data){
+	    		$j('#contenu_rdvControl').dialog('close');
+	    		$j('.contenu_rdvControl').html('');
+	    		$j('.ui-dialog').html('');
+	    		
+				if(data==1)
+				{
+					$j(".contenu_opcrea").html('');
+		    		//On ouvre la presta
+		    		Presta_.getPresta(presta,idPresta);
+		    		//On relance
+					Template_.setTemplateDispositif($j('#id_conseiller').val(),''+$j('#mot').val()+'');
+					//On efface
+					$j('#presta_tableau').html('');
+				}
+				else if(data==0)
+				{
+					alert("La prestation est annulée");
+					//On relance
+					Template_.setTemplateDispositif($j('#id_conseiller').val(),''+$j('#mot').val()+'');
+					//On efface
+					$j('#presta_tableau').html('');
+				}	
+    		}
+    	});
+	}
+	else
+	{
+		$j('#contenu_rdvControl').dialog('close');
+		$j('.contenu_rdvControl').html('');
+		$j('.ui-dialog').html('');
+	}
+	  return false;
+	});
+</script>

@@ -1,0 +1,882 @@
+% spend time	spifina	fr	% temps passé
+% turnover	spifina	fr	% CA
+%1 meetings merge with tickets	spifina	fr	%1 rendez-vous ajoutés sur des interventions
+(d)	spifina	fr	(j)
+(h)	spifina	fr	(h)
+(min)	spifina	fr	(min)
+(mn)	spifina	fr	(mn)
+(unsued if 0)	spifina	fr	(non utilisée si 0)
+-	spifina	fr	-
+@	spifina	fr	@
+a problem happens during the generation of the bill in pdf format	spifina	fr	Un problème est survenue lors de la génération de la facture au format PDF
+a propos de spifina	spifina	fr	A propos de Finances
+access rights	spifina	fr	Droits d'accès
+access to ticket	spifina	fr	Accéder à l'intervention
+account	spifina	fr	Compte Client
+accounting	spifina	fr	Comptabilité
+accounting export	spifina	fr	Export comptable
+accounting export model	spifina	fr	Mode d'export de comptabilité
+action that caused the notify: added, canceled, accepted, rejected, ...	spifina	fr	Action qui ont causé la notification : Ajouté, Annulé, Accepté, Rejeté, ...
+actions	spifina	fr	Actions
+active headers	spifina	fr	Entêtes actifs
+active status	spifina	fr	Statuts actifs
+activity	spifina	fr	Activité
+activity monitoring	spifina	fr	Suivi d'activité
+activity ratio	spifina	fr	Ratio d'activité
+add client	spifina	fr	Ajouter un client
+add contract	spifina	fr	Ajouter un contrat
+add contract type	spifina	fr	Ajouter un type de contrat
+add invoice categorie	spifina	fr	Ajouter une catégorie de facture
+add location	spifina	fr	Ajouter un lieu
+add new line	spifina	fr	Ajouter une nouvelle ligne
+add nomenclature	spifina	fr	Ajouter une nomenclature
+add prices	spifina	fr	Ajouter des prix
+add sector	spifina	fr	Ajouter un secteur
+add user for facturation lines	spifina	fr	Ajouter un utilisateur sur les lignes personnalisées
+address	spifina	fr	Adresse
+address one	spifina	fr	Adresse 1
+address two	spifina	fr	Adresse 2
+advanced search	spifina	fr	Recherche avancée
+after	spifina	fr	après
+agency code	spifina	fr	Code agence
+ajouter à la facture	spifina	fr	Ajouter à la facture
+all clients	spifina	fr	Tous les clients
+all contracts	spifina	fr	Tous les contrats
+all invoices	spifina	fr	Toutes les factures
+all of the words	spifina	fr	Mot Complet
+all open tickets	spifina	fr	Interventions ouvertes
+all tickets	spifina	fr	Toutes les interventions
+alone invoice	spifina	fr	Facture isolée
+amount	spifina	fr	Montant
+amount ht	spifina	fr	MONTANT HT
+amount ttc	spifina	fr	MONTANT TTC
+an error has occured	spifina	fr	Un erreur est survenue
+and	spifina	fr	et le
+area	spifina	fr	Zone
+arrêtée la présente facture à la somme	spifina	fr	Arrêtée la présente facture à la somme
+assigned to	spifina	fr	Assigné à
+at	spifina	fr	à
+at least one of the words	spifina	fr	Au moins un des mots
+at the beginning	spifina	fr	au début
+at the end	spifina	fr	à la fin
+attachment	spifina	fr	Pièce jointe
+attorney	spifina	fr	Mandataire
+auto add ticket status	spifina	fr	Statut des tickets ajouter automatiquement
+autoassign to	spifina	fr	Assigné automatiquement à
+average hourly turnover	spifina	fr	CA horaire moyen
+avoir n° :	spifina	fr	Avoir n°
+bank	spifina	fr	Banque
+bank account	spifina	fr	Compte bancaire
+bank informations	spifina	fr	Informations banquaire
+base ht	spifina	fr	Base HT
+beneficiary	spifina	fr	Bénéficiaire
+between	spifina	fr	entre le
+bic	spifina	fr	BIC
+billable	spifina	fr	Facturable
+billable by	spifina	fr	Facturable par
+billable time	spifina	fr	Temps Facturable
+billable/not billable	spifina	fr	Facturable / Non Facturable
+blue	spifina	fr	Bleu
+book	spifina	fr	Journal
+budget	spifina	fr	Budget
+budget amount	spifina	fr	Montant budgeté
+budget is calculated depending on the selected dates	spifina	fr	Le budget est calculé en des dates choisies
+budget margin	spifina	fr	Marge budgetée
+budget time	spifina	fr	Temps budgeté
+by	spifina	fr	par
+ca par client	spifina	fr	CA / client
+calendar events	spifina	fr	Rendez-vous
+calls	spifina	fr	Appels
+cancel tickets	spifina	fr	Interventions annulées
+canned responses allow an automatic message, change of state and closing...	spifina	fr	Réponses enregistrées pour appliquer un message automatique, un changement d'état, etc.
+capital	spifina	fr	Capital
+categorie for confirmed intervention	spifina	fr	Catégorie pour les interventions planifiées
+categorie for option intervention	spifina	fr	Catégorie pour les interventions en option
+categorie for realised intervention	spifina	fr	Catégorie pour les interventions réalisées
+category for optionnal meetings	spifina	fr	Catégorie pour les interventions en option
+category for planned meetings	spifina	fr	Catégorie pour les interventions planifiées
+category for realised meetings	spifina	fr	Catégorie pour les interventions réalisées
+cats configuration	spifina	fr	Configurations des catégories
+change date	spifina	fr	Date de modification
+changed by	spifina	fr	Modification par
+chart parameters	spifina	fr	Paramètres de graphique
+check all	spifina	fr	Cocher tout
+check to disable mail to final clients	spifina	fr	Cocher pour désactiver l'envoi au client final
+check to disable mail to intervenant	spifina	fr	Cocher pour désactiver l'envoi aux intervenants
+checked	spifina	fr	Coché
+checklist	spifina	fr	Checklist
+client	spifina	fr	Client
+client ca	spifina	fr	CA Client
+client group	spifina	fr	Maison-mère
+client id	spifina	fr	ID Client
+client management	spifina	fr	Gestion des clients
+client name	spifina	fr	Nom du client
+client order	spifina	fr	Numéro de commande client
+client order reference	spifina	fr	Référence commande client
+client prices	spifina	fr	Prix client
+client statistic help	spifina	fr	Aide statisque client
+client statistics	spifina	fr	Statistiques client
+client type	spifina	fr	Type ce client
+client's order	spifina	fr	N° de commande client
+clients	spifina	fr	Clients
+clients menu	spifina	fr	Gestion des clients
+closable	spifina	fr	Fermable
+closable : can be closed	spifina	fr	Fermable : peut être fermé
+closable/not closable	spifina	fr	Fermable / Non Fermable
+close	spifina	fr	FERMETURE
+close date	spifina	fr	Date de fermeture
+close ticket	spifina	fr	Fermeture de l'intervention
+closed	spifina	fr	Fermé
+closed on	spifina	fr	Fermé le
+closed ticket	spifina	fr	Intervention fermée
+closed tickets	spifina	fr	Interventions fermées
+closed tickets during period	spifina	fr	Interventions fermées pendant la période
+closed tickets during the period and counted with this invoice	spifina	fr	Interventions fermées pendant la période et rattachées à cette facture
+closed tickets during the period but not counted with this invoice	spifina	fr	Interventions fermées pendant la période mais non comptées avec cette facture
+closed tickets not invoicing	spifina	fr	Interventions fermées non facturées
+code tiers	spifina	fr	Code tiers
+coefficient	spifina	fr	Coefficient
+color	spifina	fr	Couleur
+company	spifina	fr	Société
+company's phone	spifina	fr	Téléphone de la société
+conditions	spifina	fr	Conditions
+configuration updated	spifina	fr	Configuration mise à jour
+configuring responses	spifina	fr	Configurations réponses types
+confirmed intervention	spifina	fr	Intervention confirmée
+contact name	spifina	fr	Nom du contact
+contacts	spifina	fr	Contacts
+contains	spifina	fr	contient
+contract	spifina	fr	Contrat
+contract :	spifina	fr	Contrat :
+contract ca	spifina	fr	CA / Contrat
+contract client	spifina	fr	Client du contrat
+contract detail	spifina	fr	Résultat / contrat
+contract id	spifina	fr	ID contrat
+contract management	spifina	fr	Gestion des contrats
+contract name	spifina	fr	Nom du contrat
+contract price	spifina	fr	Prix total HT
+contract prices	spifina	fr	Prix contrat
+contract statistics	spifina	fr	Statistiques par contrats
+contract summary	spifina	fr	Synthèse/Contrat
+contract type	spifina	fr	Type de contrat
+contract type configuration	spifina	fr	Configuration des types de contrat
+contract type management	spifina	fr	Gestion des types de contrats
+cost	spifina	fr	Coût
+couleur de surbrillance pour les clients ayant un problème de configuration	spifina	fr	Couleur de surbrillance pour les clients ayant un problème de configuration
+couleur de surbrillance pour les clients en sommeil	spifina	fr	Couleur de surbrillance pour les clients en sommeil
+couleur de surbrillance pour les tickets non vu	spifina	fr	Couleur de surbrillance pour les interventions non vues
+couleur de surbrillance pour les tickets urgent	spifina	fr	Couleur de surbrillance pour les interventions urgentes
+country	spifina	fr	Pays
+create	spifina	fr	CREATION
+create a new group	spifina	fr	Créer un nouveau groupe
+create invoice using contract instead of client/supplier	spifina	fr	Créer les factures en utilisant les contrats au lieu des clients/fournisseurs
+create new links	spifina	fr	Créer de nouveaux liens
+creation date	spifina	fr	Date de création
+creation ticket assistant	spifina	fr	Assistant de création d'interventions
+credit / debit	spifina	fr	Crédit / Débit
+custom 1	spifina	fr	Fermer une intervention
+custom 2	spifina	fr	Générer les factures
+custom 3	spifina	fr	Voir les factures
+custom lines	spifina	fr	Lignes spéciales
+custom lines only	spifina	fr	Lignes spéciales uniquement
+custom lines view	spifina	fr	Vue des lignes spéciales
+d	spifina	fr	j
+date de création	spifina	fr	Date de création
+date modified	spifina	fr	Date de modification
+date opened	spifina	fr	Date d'ouverture
+day	spifina	fr	Jour
+day budget	spifina	fr	Budget jour
+days outstanding	spifina	fr	Encours jours
+days to bill	spifina	fr	Jours à facturer
+de quels couleur souhaitez-vous voir les clients ayant un problème de configuration?	spifina	fr	Dans quelles couleurs souhaitez-vous voir les clients ayant un problème de configuration ?
+de quels couleur souhaitez-vous voir les clients en sommeil?	spifina	fr	Dans quelles couleurs souhaitez-vous voir les clients en sommeil ?
+de quels couleur souhaitez-vous voir les tickets non vu?	spifina	fr	Dans quelles couleurs souhaitez-vous voir les tickets non vus ?
+de quels couleur souhaitez-vous voir les tickets urgent?	spifina	fr	De quelles couleurs souhaitez-vous voir les tickets urgents ?
+deactivate emailing to client's manager	spifina	fr	Désactiver le mailing du manager client
+deadline	spifina	fr	Echéance
+deadline rule	spifina	fr	Règle de date d'écheance
+default categorie for meetings	spifina	fr	Catégorie par défaut pour les rendez-vous
+default category for new meetings	spifina	fr	Catégorie par défaut pour les nouveaux rendez-vous
+default header	spifina	fr	Entête par défaut
+default header for pdf	spifina	fr	Entête par défaut pour le PDF
+default mail content	spifina	fr	Contenu du mail par défaut
+default number of days for new tickets deadline	spifina	fr	Nombre de jour d'écheance par défaut sur les interventions
+default payment delay	spifina	fr	Delai de paiement par défaut
+default price	spifina	fr	Prix par défaut
+default status	spifina	fr	Statut par défaut
+default status for references	spifina	fr	Statut par défaut pour les références
+default taxe included account	spifina	fr	Compte TTC par défaut
+default text for the index	spifina	fr	Texte par défaut pour la page index
+default text for the invoice emailing	spifina	fr	Texte par défaut
+default unit for the tickets (unit used for invoices)	spifina	fr	Unité par défaut pour les interventions (unité utilisée pour les factures)
+default unit time for stats	spifina	fr	Unité de temps par défaut pour les stats
+default unit time for tickets	spifina	fr	Unité de temps par défaut pour les interventions
+default value	spifina	fr	Valeur par défaut
+default values	spifina	fr	Valeurs par défaut
+define escalation	spifina	fr	Définir les escalades
+delay payment updated	spifina	fr	Délai de paiement mis à jour
+delete criteria	spifina	fr	Effacer les critères
+delete selected events	spifina	fr	Supprimer les événements sélectionnés
+delete the category	spifina	fr	Supprimer la catégorie
+delete the standard reply	spifina	fr	Supprimer la réponse standard
+delete the state	spifina	fr	Supprimer l'état
+delete the transition	spifina	fr	Supprimer la transition
+delete this escalation	spifina	fr	Supprimer cette escalade
+delete this event	spifina	fr	Supprimer cet événement
+description	spifina	fr	Description
+designation	spifina	fr	Designation
+difference	spifina	fr	Différence
+difference amount	spifina	fr	Différence montant
+difference time	spifina	fr	Différence temps
+disable final client mail	spifina	fr	Désactiver l'envoi de mail au client final
+disable intervenant mail	spifina	fr	Désactiver l'envoi de mail aux intervenants
+displays your default calendar view on the startpage (page you get when you enter egroupware or click on the homepage icon)?	spifina	fr	Montrer votre calendrier par défaut sur la page d'acceuil (page obtenu lorsque vous arrivez sur eGroupware ou cliquez sur le bouton Acceuil) ?
+dossiers	spifina	fr	Dossiers
+down	spifina	fr	Descendre
+download invoice	spifina	fr	Télécharger la facture
+due date	spifina	fr	Date d'échéance
+duplicated tickets	spifina	fr	Interventions dupliquées
+during period	spifina	fr	durant la période
+ebp (accounts & scripture)	spifina	fr	EBP (Comptes & écritures)
+edit client	spifina	fr	Éditer un client
+edit contract	spifina	fr	Éditer un contrat
+edit contract type	spifina	fr	Éditer un type de contrat
+edit invoice	spifina	fr	Éditer une facture
+edit invoice categorie	spifina	fr	Éditer une catégorie de facture
+edit location	spifina	fr	Editer un lieu
+edit nomenclature	spifina	fr	Editer une nomenclature
+edit prices	spifina	fr	Editer les prix
+edit sector	spifina	fr	Editer un secteur
+edit this event	spifina	fr	Editer cet évènement
+edit ticket	spifina	fr	Éditer une intervention
+email configuration	spifina	fr	Configuration des emails
+emails	spifina	fr	Emails
+end	spifina	fr	Fin
+end date/time	spifina	fr	Date de fin
+end period date	spifina	fr	Date de fin de période
+error : file not found !	spifina	fr	Erreur: fichier non trouvé !
+error on this customer	spifina	fr	Erreur sur ce client
+error while deleting invoice	spifina	fr	Erreur à la suppression de la facture
+estimated outstanding	spifina	fr	Encours estimé
+estimation	spifina	fr	Estimation
+etat	spifina	fr	État
+event type	spifina	fr	Type évènement
+execute	spifina	fr	Exécuter
+existing links	spifina	fr	Liens existants
+external account	spifina	fr	Compte externe
+facture	spifina	fr	Facture
+facture n° :	spifina	fr	Facture n° :
+factured turnover	spifina	fr	CA facturé
+fax	spifina	fr	Fax
+fields for participants limit	spifina	fr	Champ pour la limite de participant
+find free timeslots where the selected participants are availible for the given timespan	spifina	fr	Trouver des créneaux disponibles pour les participants sélectionnés
+firstname of person to notify	spifina	fr	Prénom de la personne à prevenir
+flag invoices	spifina	fr	Marquer les factures comme comptabilisées
+footer field 1	spifina	fr	Champ pied de page 1
+footer field 2	spifina	fr	Champ pied de page 2
+for the attention of	spifina	fr	A l'attention de
+forbid the creation of private tickets	spifina	fr	Interdire la création d'interventions privées
+formation	spifina	fr	Formation
+freetime search	spifina	fr	Recherche de disponibilité
+fri	spifina	fr	Ven
+from	spifina	fr	De
+fullname of person to notify	spifina	fr	Nom complet de la personne à prévenir
+gap on costs	spifina	fr	Ecart sur les coûts
+gap today	spifina	fr	Ecart aujourd'hui
+general	spifina	fr	Général
+general configuration	spifina	fr	Configuration générale
+general id	spifina	fr	ID Général
+generate calendar	spifina	fr	Générer le calendrier
+generate export	spifina	fr	Générer l'export
+generate pdf invoice	spifina	fr	Générer la facture au format PDF
+green	spifina	fr	Vert
+grey	spifina	fr	Gris
+group statistics	spifina	fr	Statistiques par groupe
+h	spifina	fr	h
+h.t. amount	spifina	fr	Montant H.T.
+header	spifina	fr	Entête
+header accessible for the pdf	spifina	fr	Entête disponible pour le PDF
+help messages	spifina	fr	Messages d'aid
+heure(s)	spifina	fr	Heure(s)
+hide n/s column for facturation lines	spifina	fr	Masquer la colonne N/S dans les lignes personnalisés
+high level	spifina	fr	Niveau Urgent
+history	spifina	fr	Historique
+ht amount	spifina	fr	Montant HT
+ht facturation	spifina	fr	Facturation HT
+iban	spifina	fr	IBAN
+icon	spifina	fr	Icône
+id	spifina	fr	ID
+identifier	spifina	fr	Identifiant
+import date	spifina	fr	Date d'import
+in charge	spifina	fr	en charge
+information about the ticket	spifina	fr	Informations sur l'intervention
+initial	spifina	fr	Initial
+initial : a ticket can be directly open with this status	spifina	fr	Initial : une intervention peut être ouvert avec cet état
+initial price	spifina	fr	Prix initial
+initial price day	spifina	fr	Prix initial par jour
+initial price hour	spifina	fr	Prix initial par heure
+initial price minute	spifina	fr	Prix initial par minute
+initial state	spifina	fr	État Initial
+initial state for a ticket	spifina	fr	État Initial d'une intervention
+initial time	spifina	fr	Temps initial
+initial time minute	spifina	fr	Temps initial (minutes)
+initial/not initial	spifina	fr	Initial/Non initial
+intervenant	spifina	fr	Intervenant
+intervenant ca	spifina	fr	CA / Intervenant
+intervenant configuration	spifina	fr	Configuration intervenant
+intervenant statistics	spifina	fr	Statistiques intervenant
+intervenants	spifina	fr	Intervenants
+intervention	spifina	fr	Intervention
+intervention by	spifina	fr	Intervention par
+interventions and calendar	spifina	fr	Interventions & calendriers
+invalide ticket	spifina	fr	Interventions invalides
+invoice	spifina	fr	Facture
+invoice categories	spifina	fr	Catégories de facture
+invoice categories management	spifina	fr	Gestion des catégories de facture
+invoice created	spifina	fr	Facture crée
+invoice custom lines	spifina	fr	Lignes de facture personnalisées
+invoice customised lines	spifina	fr	Lignes spéciales
+invoice date	spifina	fr	Date facture
+invoice deleted	spifina	fr	Facture supprimée
+invoice folder	spifina	fr	Répertoire de facture
+invoice id	spifina	fr	Numéro de facture
+invoice label	spifina	fr	Libellé de Facturation
+invoice label : this text will appear on the pdf invoice	spifina	fr	Libellé de Facturation : ce texte va apparaître sur la facture en pdf
+invoice management	spifina	fr	Gestion des factures
+invoice model	spifina	fr	Modèle de facture
+invoice num.	spifina	fr	Numéro de facture
+invoice number	spifina	fr	Numéro de facture
+invoice number already exists in the database	spifina	fr	Numéro de facture déjà existant dans la base
+invoice n°	spifina	fr	Facture n°
+invoice payment clause	spifina	fr	Clause de réglement
+invoice pdf pro forma	spifina	fr	PDF pro forma de la facture
+invoice status	spifina	fr	Statut de facture
+invoice tickets	spifina	fr	Interventions de la facture
+invoice updated	spifina	fr	Facture mise à jour
+invoices	spifina	fr	Factures
+invoicing	spifina	fr	Facturation
+invoicing menu	spifina	fr	Gestion des factures
+is	spifina	fr	est
+isolated invoice by default	spifina	fr	Facture isolée par défaut
+jour(s)	spifina	fr	Jour(s)
+juridical form	spifina	fr	Forme juridique
+l	spifina	fr	C
+label	spifina	fr	Libellé
+last date	spifina	fr	Dernière date
+last invoice	spifina	fr	Dernière facture
+last invoice number for	spifina	fr	Le dernier numéro de facture pour
+last note added	spifina	fr	Dernière note ajoutée
+last note added on	spifina	fr	Dernière note ajoutée le
+last update	spifina	fr	Dernière mise à jour
+lastname of person to notify	spifina	fr	Nom de la personne à prévenir
+libelle	spifina	fr	Libellé
+link meetings	spifina	fr	Lier les rendez-vous
+link to the ticket	spifina	fr	Lien vers l'intervention
+link to view the event	spifina	fr	Lien pour voir l'évènement
+linked entries	spifina	fr	Linked entries
+linked entries:	spifina	fr	Linked entries:
+links	spifina	fr	Liens
+locality	spifina	fr	Ville
+location	spifina	fr	Lieu
+location configuration	common	fr	Configuration des sites et bâtiments
+location created	spifina	fr	Site crée
+location deleted	spifina	fr	Site supprimé
+location management	spifina	fr	Gestion des sites et bâtiments
+location parent	spifina	fr	Site père
+location updated	spifina	fr	Site mis à jour
+locations	spifina	fr	Sites
+m	spifina	fr	m
+mai	spifina	fr	Mai
+mail	spifina	fr	Email
+mail configuration	spifina	fr	Configuration Mail
+mail sending failed	spifina	fr	L' ENVOI DU MAIL A ECHOUE
+mail sent successfully	spifina	fr	MAIL ENVOYE AVEC SUCCES
+maj	spifina	fr	MAJ
+manage acl	spifina	fr	Gestion ACL
+manage clients	spifina	fr	Gérer les clients
+manage contracts	spifina	fr	Gérer les contrats
+management group	spifina	fr	Groupe de gestion
+management group for spid	spifina	fr	Groupe de gestion pour Spid
+management group for spifina	spifina	fr	Groupe de gestion pour Spifina
+management user	spifina	fr	Titre
+manager	spifina	fr	Manager
+manager email	spifina	fr	Email Gestionnaire
+mark invoices as mailed	spifina	fr	Marquer les factures comme envoyées par courrier
+market number	spifina	fr	N° de marché
+meetings	spifina	fr	Rendez-vous
+meetings category	spifina	fr	Catégorie des rendez-vous
+message with invoice when you send them by email	spifina	fr	Message avec la facture lorsque vous envoyez par mail
+messages	spifina	fr	Messages
+min	spifina	fr	min
+mn	spifina	fr	mn
+model for the generated invoices	spifina	fr	Modèle pour les factures générées
+mon	spifina	fr	Lun
+montant h.t.	spifina	fr	Montant H.T.
+montant t.t.c.	spifina	fr	Montant T.T.C.
+month	spifina	fr	Mois
+month category stat for %1	spifina	fr	Stat mensuel par catégorie pour %1
+monthly category stat	spifina	fr	Stat mensuel par catégorie
+monthly sum stat	spifina	fr	Stat somme mensuel
+more	spifina	fr	Plus
+more notes	spifina	fr	Notes additionnelles
+my assigned tickets	spifina	fr	Mes interventions assignées
+my open tickets	spifina	fr	Mes interventions ouvertes
+n days	spifina	fr	Nombre de jours
+n/ref	spifina	fr	N/Réf
+n_days	spifina	fr	Nombre de jours
+naf, ex ape	spifina	fr	NAF, ex APE
+new client	spifina	fr	Nouveau client
+new contract	spifina	fr	Nouveau contrat
+new group	spifina	fr	Nouveau groupe
+new invoice	spifina	fr	Nouvelle facture
+new ticket	spifina	fr	Nouvelle intervention
+new user	spifina	fr	Nouvel utilisateur
+next date	spifina	fr	Prochaine date
+no bank account for current provider	spifina	fr	Pas de compte bancaire pour ce fournisseur
+no chosen payment	spifina	fr	Aucun paiement sélectionné
+no validated invoices	spifina	fr	Factures non validées
+no vat	spifina	fr	Sans TVA
+nobody ticket imported	spifina	fr	Aucun intervention importée
+nok	spifina	fr	NOK
+non billable : if non billable, such a ticket will be at 0 in the invoice	spifina	fr	Non facturable : si non facturable, une telle intervention apparaîtra avec une valeur 0 sur la facture
+non validated invoices	spifina	fr	Factures non validées
+none of the words	spifina	fr	Aucun des mots
+normal level	spifina	fr	Niveau normal
+not billable	spifina	fr	Non Facturable
+not closable	spifina	fr	Non Fermable
+not factured closed tickets	spifina	fr	Interventions fermées non facturées
+not initial	spifina	fr	Non Initial
+not payed validated invoices	spifina	fr	Factures validées non payées
+not sent invoices	spifina	fr	Facture non envoyée
+not validated invoice, you may modify associated tickets	spifina	fr	Facture non validée, vous pouvez modifier les interventions associées
+notification failed	spifina	fr	Notification échouée
+notification sent successfully	spifina	fr	Notification envoyée avec succès
+number of calls from	spifina	fr	Nombre d'appels de
+number of calls to	spifina	fr	Nombre d'appels vers
+number of events to place	spifina	fr	Nombre d'évènement a placer
+number of month for the assistant	spifina	fr	Nombre de mois pour l'assistant
+number of month to show in the creation ticket assistant	spifina	fr	Nombre de mois à montrer dans l'assistant de création d'intervention
+number of student	spifina	fr	Nombre d'élèves
+number of tickets	spifina	fr	Nombre de tickets
+n°	spifina	fr	N°
+n° formation	spifina	fr	N° Formation
+n° t.v.a intracommunautaire	spifina	fr	N° T.V.A intracommunautaire
+object	spifina	fr	Objet
+objective ratio	spifina	fr	Objectif ratio
+objective turnover	spifina	fr	Objectif CA
+obsolete status	spifina	fr	Statut obsolète
+of	spifina	fr	le
+of the	spifina	fr	du
+old startdate	spifina	fr	Ancienne date de départ
+on	spifina	fr	le
+one price is defined per state and per client	spifina	fr	Un prix est défni par état et par client
+open	spifina	fr	Ouvert
+open / close	spifina	fr	Ouvert / Fermé
+open by	spifina	fr	Demandeur
+open tickets	spifina	fr	Interventions ouvertes
+opened ticket outstanding	spifina	fr	Encours intervention ouverte
+opened tickets	spifina	fr	Interventions ouvertes
+opened tickets at end period	spifina	fr	Interventions ouvertes en fin de période
+opened tickets during period	spifina	fr	Interventions ouvertes pendant la période
+opened tickets in start period	spifina	fr	Interventions ouvertes en début de période
+operation code	spifina	fr	Code d'opération
+optional intervention	spifina	fr	Intervention option
+order	spifina	fr	Commande
+original details	spifina	fr	Détails de l'intervention originelle
+oustanding amount	spifina	fr	Montant en encours
+oustanding billable ticket	spifina	fr	Encours intervention facturable
+oustanding to bill	spifina	fr	Encours à facturer
+outstanding to bill	spifina	fr	Encours à facturer
+paid amount	spifina	fr	Montant payé
+parc	spifina	fr	Parc
+parent categorie	spifina	fr	Catégorie parente
+participant	spifina	fr	Participant
+participants	spifina	fr	Participants
+participants disinvited from an event	spifina	fr	Participants désinvités de l'évènement
+pass time	spifina	fr	Temps passée
+pass time on closed tickets	spifina	fr	Temps passé sur les interventions fermées
+pass time on not factured closed tickets	spifina	fr	Temps passé sur les interventions fermées non facturées
+pass time on the closed tickets	spifina	fr	Temps passé sur les interventions fermées
+pass time on the opened tickets	spifina	fr	Temps passé sur les interventions ouvertes
+payed	spifina	fr	Payé
+payed & validated invoices	spifina	fr	Factures payées et validées
+payed validated invoices	spifina	fr	Factures payées et validées
+payer	spifina	fr	Payeur
+payment	spifina	fr	Reglement
+payment amount	spifina	fr	Montant paiement
+payment bank	spifina	fr	Banque
+payment by	spifina	fr	Paiement par
+payment date	spifina	fr	Date de réglement
+payment in 30 days	spifina	fr	Paiement à 30 jours
+payment in 60 days	spifina	fr	Paiement à 60 jours
+payment in 90 days	spifina	fr	Paiement à 90 jours
+payment method	spifina	fr	Mode de réglement
+payment model	spifina	fr	Modèle de paiement
+payment with reception	spifina	fr	Paiement à réception
+pdf	spifina	fr	PDF
+percent	spifina	fr	Pourcentage
+percent on the closed tickets	spifina	fr	Pourcentage sur les interventions fermées
+percent on the opened tickets	spifina	fr	Pourcentage sur les interventions ouvertes
+period	spifina	fr	Période
+permission denied !!!	spifina	fr	Accès refusé !!!
+permission denied!!!	spifina	fr	Accès refusé !!!
+permission denied, please contact your administrator!!!	spifina	fr	Accès refusé, Veuillez contacter votre administrateur !!!
+phase / title	spifina	fr	Phase / Titre
+phone time	spifina	fr	Temps téléphone
+pjm	spifina	fr	PJM
+pjm : prix journalier moyen (montant facturé par jour pour l'intervenant)	spifina	fr	PJM : Prix journalier moyen (montant facturé par jour pour l'intervenant)
+please contact support	spifina	fr	Veuillez contacter le support
+pnb	spifina	fr	PNB
+poor level	spifina	fr	Niveau faible
+possible following states	spifina	fr	Etat suivant possible
+possible following status	spifina	fr	Etat suivant possible
+possible selection : for users outside the management group	spifina	fr	Sélection possible : pour les utilisateurs autres que ceux du groupe de gestion de la catégorie
+possible to select	spifina	fr	Sélection possible
+postal code	spifina	fr	Code postal
+prescriber	spifina	fr	Prescripteur
+presta id	spifina	fr	N° de prestation
+price	spifina	fr	Prix
+price : if not void or 0, the price will be fixed this this value	spifina	fr	PJM : Prix journalier moyen (montant facturé par jour pour l'intervenant)
+price configuration	common	fr	Configuration des prix
+price created	spifina	fr	Prix ajouté
+price example...	spifina	fr	Un prix pour une durée à 0 est appliquée au forfait, quelque soit le temps renseigné.  Un prix pour une tranche 1 va être appliqué pour chaque tranche (exemple : prix d'un jour, mettre le prix pour une 1 tranche)
+price for day invoices	spifina	fr	Prix par jour
+price for hour invoices	spifina	fr	Prix par heure
+price for minute invoices	spifina	fr	Prix par tranches (minutes)
+price for status	spifina	fr	Prix pour ce statut
+price ht	spifina	fr	Prix HT
+price per student	spifina	fr	Prix par élève
+price updated	spifina	fr	Pris mis à jour
+prices	spifina	fr	Prix
+prices configuration	admin	fr	Configuration des prix
+prices management	spifina	fr	Gestions des prix
+print entry	spifina	fr	Imprimer la facture
+print pdf	spifina	fr	Imprimer en pdf
+print selected invoices	spifina	fr	Imprimer les factures sélectionnés
+print template	spifina	fr	Modèle d'impression
+property	spifina	fr	PROPRIETE
+proposal tickets	spifina	fr	Interventions proposition
+prospect type	spifina	fr	Type Prospect
+provider	spifina	fr	Fournisseur
+provider order	spifina	fr	Numéro de commande fournisseur
+provider proposal	spifina	fr	Numéro de devis fournisseur
+provider type	spifina	fr	Type Prestataire
+providers	spifina	fr	Prestataires
+qty	spifina	fr	Qté
+quantity	spifina	fr	Quantité
+quarter	spifina	fr	Trimestre
+rank	spifina	fr	Rang
+rate: %s eur / answered call, the edge of half an hour	spifina	fr	Tarif : %s EUR / appel répondu, la tranche d'une demi-heure
+ratio	spifina	fr	Ratio
+rcs	spifina	fr	RCS
+rcs/rm	spifina	fr	RCS/RM
+real	spifina	fr	Réel
+real - budget	spifina	fr	Réel - Budget
+real amount	spifina	fr	Montant réel
+real end date	spifina	fr	Date de fin réelle
+real time	spifina	fr	Temps réels
+realised	spifina	fr	Réalisé
+realised intervention	spifina	fr	Intervention réalisée
+receive notifications about assigned tickets	preferences	fr	Recevoir une notification si une intervention vous est assigné ?
+receive notifications about created tickets	preferences	fr	Recevoir une notification lorsque vous créez une intervention ?
+recurrence	spifina	fr	Récurrence
+reference	spifina	fr	Référence
+relation	spifina	fr	Relation
+remaining	spifina	fr	Restant
+remains to be invoiced	spifina	fr	Reste à facturer
+remark	spifina	fr	Remarque
+remind client	spifina	fr	Relance client
+remind date	spifina	fr	Date de relance
+remind mail content	spifina	fr	Contenu du mail de relance
+reminders	spifina	fr	Relances
+renewal date	spifina	fr	Date de renouvellement
+reply	spifina	fr	Réponse
+representing	spifina	fr	soit
+reset all criterias	spifina	fr	Remettre les critères à 0
+resolute tickets	spifina	fr	Interventions résolues
+resource	spifina	fr	Ressource
+responses	spifina	fr	Réponses
+role	spifina	fr	Rôle
+s	spifina	fr	s
+s/n	spifina	fr	N/S
+sage pnm file	spifina	fr	Ficher PNM Sage
+sales account	spifina	fr	Compte vente
+sales book	spifina	fr	Journal vente
+sales collective account	spifina	fr	Compte de vente collectif
+sales default account	spifina	fr	Compte de vente par défaut
+sat	spifina	fr	Sam
+save entry	spifina	fr	Sauvegarder
+search client '%1'	spifina	fr	Recherche du client '%1'
+search company '%1'	spifina	fr	Recherche de l'entreprise '%1'
+search contract '%1'	spifina	fr	Recherche du contrat '%1'
+search for '%1'	spifina	fr	Recherche de '%1'
+search invoice categories '%1'	spifina	fr	Recherche de la catégorie de facture '%1'
+search location	spifina	fr	Recherche du site
+search location '%1'	spifina	fr	Recherche du lieu '%1'
+search sector '%1'	spifina	fr	Recherche du secteur '%1'
+search state '%1'	spifina	fr	Recherche de l'état '%1'
+sector	spifina	fr	Secteur
+sector management	spifina	fr	Gestion des secteurs
+sector name	spifina	fr	Nom secteur
+sectors	spifina	fr	Secteurs
+select a category before	spifina	fr	Sélectionnez une catégorie au préalable
+select a group before	spifina	fr	Sélectionnez un groupe au préalable
+select an action	spifina	fr	Sélectionnez une action
+select multiple contacts for a further action	spifina	fr	Sélectionner plusieurs contact pour une action
+select nb month	spifina	fr	Sélectionner le nombre de mois
+select one client . . . .	spifina	fr	Sélectionner un client...
+select one..	spifina	fr	Sélectionner...
+select start month	spifina	fr	Sélectionner le premier mois
+select the template for pdf printing	spifina	fr	Sélectionner le modèle pdf
+select users	spifina	fr	Sélectionner l'utilisateur
+sell	spifina	fr	Vente
+selled turnover	spifina	fr	CA vendu
+seller	spifina	fr	Vendeur
+seller type	spifina	fr	Type vendeur
+send by mail	spifina	fr	Envoyer par email
+send date	spifina	fr	Date d'envoi
+send invoice by email	spifina	fr	Envoyer la facture par email
+sender	spifina	fr	Emetteur
+sendere	spifina	fr	Émetteur
+sent	spifina	fr	Envoyé
+septembre	spifina	fr	Septembre
+service	spifina	fr	Service
+setting transitions	spifina	fr	Configuration transitions
+show default view on main screen	spifina	fr	montrer la vue par defaut sur l'écran principale
+signature date	spifina	fr	Date de signature
+simulate pdf invoice	spifina	fr	Simuler la facture PDF
+siren	spifina	fr	SIREN
+siret	spifina	fr	SIRET
+site	spifina	fr	Site
+site precision	spifina	fr	Précision site
+sites	spifina	fr	Sites
+sleep	spifina	fr	En sommeil
+source state	spifina	fr	Etat Source
+spend time	spifina	fr	Temps passé
+spid statistics	spifina	fr	Statistiques Spid
+spifina	common	fr	Factures
+spifina configuration	spifina	fr	Configuration spifina
+spifina menu	spifina	fr	Menu spifina
+spifina ticket	spifina	fr	Intervention spifina
+spifina tickets	spifina	fr	Interventions spifina
+standard replies	spifina	fr	Réponses Standards
+start	spifina	fr	Début
+start date must be prior to end date	spifina	fr	la date de début doit être antérieur à la date de fin
+start date must not be empty	spifina	fr	la date de début ne doit pas être vide
+start date/time	spifina	fr	Date/Heure de début
+start period date	spifina	fr	Date de début de période
+state	spifina	fr	État
+state close	spifina	fr	État de fermeture
+state created	spifina	fr	État créé
+state deleted	spifina	fr	État supprimé
+state for close	spifina	fr	État fermable
+state name	spifina	fr	Nom de l'état
+state updated	spifina	fr	État mis à jour
+states	spifina	fr	États
+states configuration	spifina	fr	Configuration Etats
+states management	spifina	fr	Gestion des états
+statistic	spifina	fr	Statistiques
+statistic intervenant	spifina	fr	Statistiques par intervenant
+statistic menu	spifina	fr	Menu des statistiques
+statistic turnover menu	spifina	fr	Menu des Statistiques de CA
+statistics	spifina	fr	Statistiques
+statistics type	spifina	fr	Type de statistique
+students	spifina	fr	Stagiaires
+sub total custom lines	spifina	fr	Sous-total des lignes personnalisées
+sub total ht	spifina	fr	Sous-total HT
+sub total tickets	spifina	fr	Sous-total des interventions
+sub-total custom	spifina	fr	Sous-total hors interventions
+sub-total ht	spifina	fr	Sous-total HT
+sub-total tickets	spifina	fr	Sous-total des interventions
+sub-total ttc	spifina	fr	Sous-total TTC
+summary	spifina	fr	Résumé
+sun	spifina	fr	Dim
+synchronize with presta	spifina	fr	Activer le support de "presta"
+t.t.c. amount	spifina	fr	Montant T.T.C.
+t.v.a acquittée sur les encaissements	spifina	fr	T.V.A acquittée sur les encaissements
+t.v.a récupérable après paiement	spifina	fr	T.V.A récupérable après paiement
+t.v.a.	spifina	fr	T.V.A.
+tables	spifina	fr	Tables
+target	spifina	fr	Objectif
+target state	spifina	fr	État Cible
+taxe num	spifina	fr	Numéro de TVA
+team	spifina	fr	Equipe
+technicians may only access their tickets	spifina	fr	Les techniciens n'accèdent qu'à leur intervention
+tel	spifina	fr	Téléphone
+test	spifina	fr	test
+the bill been successfully generated	spifina	fr	La facture a été générée avec succès
+the duration will allow to bill per bracket	spifina	fr	La durée définie va permettre une facturation par tranche
+the exact phrase	spifina	fr	La phrase exacte
+the invoice has been successfully generated	spifina	fr	La facture a été générée avec succès
+the managers receive all spifina's tickets	spifina	fr	Les managers reçoivent tous les tickets par email
+the selected contract is not allowed for this client	spifina	fr	Le contrat choisi n'est pas autorisé pour ce client
+this client / price association already exists	spifina	fr	Cette association client / prix existe déjà
+this message is join by mail when you send your bills by email.	spifina	fr	Ce message est joint lorsque vous envoyez vos factures par mail.
+this one can see by all groups and administrator	spifina	fr	l'intervention peut être vu par tout le groupe demandeur et par les gestionnaires
+this one can see only by creator, applicant and administrator	spifina	fr	l'intervention ne peut être vu que par le créateur, le demandeur ou par les gestionnaires
+this ticket is not your business	spifina	fr	Ce ticket ne vous concerne pas
+thu	spifina	fr	Jeu
+ticket	spifina	fr	Intervention
+ticket created	spifina	fr	Intervention créée
+ticket deleted from invoice	spifina	fr	Intervention supprimée de la facture
+ticket frequency in the assistant	spifina	fr	Groupement des tickets dans l'assistant
+ticket id	spifina	fr	ID Intervention
+ticket imported	spifina	fr	Intervention importée
+ticket number closed during period	spifina	fr	Nombre d'interventions fermées pendant la période
+ticket number open at end period	spifina	fr	Nombre d'interventions ouvertes en fin de la période
+ticket number open at start period	spifina	fr	Nombre d'interventions ouvertes en début de période
+ticket number open during period	spifina	fr	Nombre d'interventions ouvertes pendant la période
+ticket title making left the ongoing bill	spifina	fr	Intervention faisant partie de la facture en cours
+ticket updated	spifina	fr	Intervention mis à jour
+ticket_forfait	spifina	fr	Intervention forfait
+tickets	spifina	fr	Interventions
+tickets and calls statistics	spifina	fr	Statistiques de tickets et d'appels
+tickets end period date	spifina	fr	Date de fin de période des interventions
+tickets number	spifina	fr	Nombre d'interventions
+tickets only	spifina	fr	Tickets uniquement
+tickets per intervenant	spifina	fr	Interventions par intervenant
+tickets solved by assistance on site	spifina	fr	Interventions résolues par assistance sur site
+tickets solved by intervention of monitoring	spifina	fr	Interventions résolues par intervention de suivi
+tickets solved by planned intervention	spifina	fr	Interventions résolues par intervention planifiée
+tickets solved by remote assistance	spifina	fr	Interventions résolues par assistance à distance
+tickets solved by urgent intervention	spifina	fr	Interventions résolues par intervention urgente
+tickets start period date	spifina	fr	Date de début de période des interventions
+tickets with resolve	spifina	fr	Interventions avec résolution
+tiers code	spifina	fr	Code tiers
+til	spifina	fr	jusqu'à
+time bracket	spifina	fr	Tranche horaire
+time for minute invoices	spifina	fr	Temps pour factures (minutes)
+time intervention	spifina	fr	Temps intervention
+time invoiced	spifina	fr	Temps Facturé
+time limit for client to see a ticket (in days)	spifina	fr	Limite de temps pour l'accès a l'intervention par le client (en jour)
+time limit for client view	spifina	fr	Limite de temps pour l'accès client
+time meeting	spifina	fr	Temps rendez-vous
+time outstanding	spifina	fr	Encours temps
+time spend	spifina	fr	Temps passé
+time to bill	spifina	fr	Temps à facturer
+timeframe	spifina	fr	Plage horaire
+times	spifina	fr	Temps
+title	spifina	fr	Titre
+title of the event	spifina	fr	Titre de l'évènement
+title retention clause	spifina	fr	Clause de réserve de propriété
+titre	spifina	fr	Titre
+tjm	spifina	fr	TJM
+tjm : taux journalier moyen (montant facturé par jour pour l'intervenant)	spifina	fr	TJM : Taux journalier moyen (montant facturé par jour pour l'intervenant)
+to add a meeting, please fill up the calendar date, time and the title, then "add"	spifina	fr	Pour ajouter un rendez-vous, merci de remplir la date, la durée et le titre. "Ajouter" ensuite
+to validate invoice, please select an invoice date	spifina	fr	Pour valider la facture, sélectionnez une date de facturation
+total amount invoiced for purchases	spifina	fr	Total des montants facturés pour les achats
+total amount invoiced for tickets	spifina	fr	Total des montants facturés pour les interventions
+total days	spifina	fr	Total Jours
+total heures	spifina	fr	Total heures
+total ht	spifina	fr	Total HT
+total intervention	spifina	fr	Total intervention
+total jours	spifina	fr	Total jours
+total rendez-vous	spifina	fr	Nombre total de rendez-vous
+total sell	spifina	fr	Total vente
+total spend time	spifina	fr	Temps passé total
+total time	spifina	fr	Temps total
+total time marked on closed tickets	spifina	fr	Total des temps marqués sur les interventions fermées
+total time on calls from	spifina	fr	Temps total sur les appels depuis
+total time on calls to	spifina	fr	Temps total de vos appels vers
+total time oustanding	spifina	fr	Encours total de temps
+total ttc	spifina	fr	Total TTC
+total tva	spifina	fr	Total TVA
+total(h)	spifina	fr	Total (h)
+toutes taxes comprises	spifina	fr	Toutes Taxes Comprises
+training : to activate the price per student	spifina	fr	Formation : pour activer le prix par élève
+transition's names are free	spifina	fr	Les noms des transitions sont libres
+transitions	spifina	fr	Transitions
+transitions allow a change between a source and a target state	spifina	fr	Les transitions permettent le passage d'un état à l'autre
+translation label	spifina	fr	Libellé de traduction
+ttc amount	spifina	fr	Montant TTC
+ttc facturation	spifina	fr	Facturation TTC
+tue	spifina	fr	Mar
+tva	spifina	fr	TVA
+tva rate	spifina	fr	Taux de TVA
+type for clients	spifina	fr	Type Client
+type for partner	spifina	fr	Type Partenaire
+type for prospects	spifina	fr	Type Prospect
+type for providers	spifina	fr	Type Prestataire
+type for sellers	spifina	fr	Type vendeur
+unchecked	spifina	fr	Décoché
+under tva	spifina	fr	Soumis à TVA
+unit time	spifina	fr	Unité de temps
+unit time for tickets	spifina	fr	Unité de temps pour les interventions
+unpayed invoices	spifina	fr	Factures non réglées
+unvalidate selected invoices	spifina	fr	Invalider les factures sélectionnées
+unvalidated invoices	spifina	fr	Facture non validée
+up	spifina	fr	Monter
+update date	spifina	fr	Date de mise à jour
+update ticket state	spifina	fr	Mettre à jour l'état de l'intervention
+updated by	spifina	fr	Mis à jour par
+upload file	spifina	fr	Uploader un fichier
+url link	spifina	fr	Liens URL
+use accounting tab	spifina	fr	Utiliser l'onglet comptabilité
+use contracts	spifina	fr	Utiliser les contrats
+use time budget	spifina	fr	Utiliser le budget jours
+user who manage spifina (will receive copy of mails)	spifina	fr	Utilisateur gestionnaire (reçoit la copie de tous les mails)
+using the day budget (y/n)	spifina	fr	Utiliser le budget jour (O/N)
+v/ref	spifina	fr	V/Réf
+validate	spifina	fr	Valider
+validated invoices	spifina	fr	Factures validées
+validation date	spifina	fr	Date de validation
+vat	spifina	fr	TVA
+vat / collect	spifina	fr	TVA / encaissements
+vat amount	spifina	fr	Montant TVA
+vat default	spifina	fr	Taux de TVA par défaut
+vat total	spifina	fr	Total TVA
+view all clients	spifina	fr	Voir tous les clients
+view all invoices	spifina	fr	Voir toutes les factures
+view all open tickets	spifina	fr	Voir les interventions ouvertes
+view all tickets	spifina	fr	Voir tous les interventions
+view client	spifina	fr	Voir client
+view closed tickets	spifina	fr	Voir les interventions fermées
+view closed tickets not invoicing	spifina	fr	Voir les interventions fermées non facturées
+view contract	spifina	fr	Voir les contrats
+view invoice	spifina	fr	Voir facture
+view invoices	spifina	fr	Voir les factures
+view location	spifina	fr	Voir lieu
+view locations	spifina	fr	Voir les sites
+view my assigned tickets	spifina	fr	Voir mes interventions assignées
+view my open tickets	spifina	fr	Voir mes interventions ouvertes
+view non validated invoices	spifina	fr	Voir les factures non validées
+view open tickets	spifina	fr	Voir les interventions ouvertes
+view open tickets with calendar events	spifina	fr	Voir les interventions ouvertes avec des évènements de calendrier
+view pdf invoice	spifina	fr	Voir la facture en PDF
+view prices	spifina	fr	Voir prix
+view sector	spifina	fr	Voir le secteur
+view statistic	spifina	fr	Voir les statistiques
+view statistic ca client	spifina	fr	Statistiques de CA
+view statistic ca intervenant	spifina	fr	Statistiques CA par intervenant
+view statistic intervenant	spifina	fr	Statistiques par intervenant
+view statistic ticket intervenant	spifina	fr	Statistiques par intervenant
+view this event	spifina	fr	Voir cet événement
+website	spifina	fr	Site web
+wed	spifina	fr	Mer
+week	spifina	fr	Semaine
+weekdays	spifina	fr	Jours de la semaine
+white	spifina	fr	Blanc
+who is the client ?	spifina	fr	Qui est le client ?
+who is the contact ?	spifina	fr	Qui est le contact ?
+whole query	spifina	fr	Requête entiere
+words	spifina	fr	Mots
+would you receive notification mails, if tickets you created get updated?	preferences	fr	Voulez-vous recevoir une notification par mail si vous créez une intervention ou s'il est mis à jour.
+would you receive you notification mails, if tickets assigned to you get updated?	preferences	fr	Voulez-vous recevoir une notification par mail si une intervention qui vous est assigné est crée ou mis à jour.
+you dont have jpgraph version %1 or higher installed! it is needed from spifina for ganttcharts.	spifina	fr	Vous n'avez pas de version Jpgraph %1 ou plus ! Cela est nécessaire pour les graphiques dans  Spfina.
+you must assign this ticket...	spifina	fr	Vous devez assigner cette intervention
+you must enter a category...	spifina	fr	Vous devez sélectionner une catégorie
+you must enter a time to close ticket	spifina	fr	Vous devez entrer une date pour fermer l'intervention
+you need to select some invoices first	spifina	fr	Vous devez sélectionner une facture
+you want to delete the category. are you sure?	spifina	fr	Vous souhaitez supprimer cette catégorie. Ête-vous sûr ?
+you want to delete the client. are you sure?	spifina	fr	Vous souhaitez supprimer ce client. Êtes-vous sûr ?
+you want to delete the standard reply. are you sure?	spifina	fr	Vous souhaitez supprimer cette réponse standard. Êtes vous sûr?
+you want to delete the state. are you sure?	spifina	fr	Vous souhaitez supprimer cet état. Êtes-vous sûr ?
+you want to delete the transition. are you sure?	spifina	fr	Vous souhaitez supprimer cette transition. Êtes-vous sûr ?
+you want to delete this invoce. are you sure?	spifina	fr	Vous souhaitez supprimer cette facture. Êtes-vous sûr ?
+you want to remove the ticket from this invoice. are you sure?	spifina	fr	Êtes-vous sur de vouloir cette intervention de cette facture ?
+your ask	spifina	fr	Votre demande
+your contact is not linked to this client...	spifina	fr	Votre contact n'est pas lié à ce client
+your title must be at least 6 character's long.	spifina	fr	Votre titre doit faire ou moins 6 caractères
+your title must be at least 6 characters long.	spifina	fr	Votre titre doit faire ou moins 6 caractères
+zip selected invoices	spifina	fr	Zipper les factures sélectionnées
+zone de chalandise	spifina	fr	Zone de chalandise

@@ -1,0 +1,53 @@
+1-mysql-egw_apsie143
+presta_saloua
+stats
+logs/symfony.log
+*/config/config_ajax.php
+*/config/config.php
+*.zip
+*old
+*old1
+*.tar.gz
+*/cacheDir/*
+2018*
+
+# Cache and logs (Symfony2)
+/lea_app/Symfony/app/cache/*
+/lea_app/Symfony/app/logs/*
+!lea_app/Symfony/app/cache/.gitkeep
+!lea_app/Symfony/app/logs/.gitkeep
+
+# Email spool folder
+/lea_app/Symfony/app/spool/*
+
+# Parameters
+/lea_app/Symfony/app/config/parameters.yml
+/lea_app/Symfony/app/config/parameters.ini
+
+# Managed by Composer
+/lea_app/Symfony/app/bootstrap.php.cache
+/lea_app/Symfony/var/bootstrap.php.cache
+/lea_app/Symfony/bin/*
+!lea_app/Symfonybin/console
+!lea_app/Symfony/bin/symfony_requirements
+/lea_app/Symfony/vendor/
+
+# Assets and user uploads
+/lea_app/Symfony/web/bundles/
+/lea_app/Symfony/web/uploads/
+
+# PHPUnit
+/lea_app/Symfony/app/phpunit.xml
+/lea_app/Symfony/phpunit.xml
+
+# Build data
+/lea_app/Symfony/build/
+
+# Composer PHAR
+/lea_app/Symfony/composer.phar
+
+# Backup entities generated with doctrine:generate:entities command
+**/Entity/*~
+
+# Embedded web-server pid file
+/lea_app/Symfony/.web-server-pid

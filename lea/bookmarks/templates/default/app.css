@@ -1,0 +1,8 @@
+.favicon, .favicon img {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+#bookmarks-tree_add {
+	float: right;
+}

@@ -1,0 +1,50 @@
+<section class="formulaire_presta" >
+	<fieldset class="contact">
+		<table>
+					<tr>
+						<td><a href="#null" onClick="window.open('{{DIR_PRESTA}}/presta/epce/control.php?id_ben={{ idContact }}&id=1001','Informations bénéficiaire','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');">Fiche du bénéficiaire</a></td>
+					</tr>
+					<tr>
+						<td>Civilité :  </td><td>{{ form_widget(formContact.civilite) }} {{ form_widget(formContact.idBen) }}</td>
+					</tr>
+					<tr>
+						<td>Nom :  </td><td>{{ form_widget(formContact.nom) }}</td>
+						<td>Prénom :  </td><td>{{ form_widget(formContact.prenom) }}</td>
+					</tr>
+
+					<tr>
+						<td>Portable perso :  </td><td>{{ form_widget(formContact.portablePerso) }}</td>
+						<td>Portable Pro :  </td><td>{{ form_widget(formContact.portablePro) }}</td>
+					</tr>
+					<tr>
+						<td>Tel. Domicile 1 :  </td><td>{{ form_widget(formContact.telDomicile1) }}</td>
+						<td>Email perso :  </td><td>{{ form_widget(formContact.emailPerso) }}</td>
+					</tr>
+							
+		</table>
+	</fieldset>
+
+	<fieldset class="contact">
+		<table>
+					<tr>
+						<td>Adresse : </td><td colspan="3">{{ form_widget(formContact.adresseLigne1, { 'attr': {'size': '78'} }) }} </td>
+					</tr>
+					<tr>
+						<td></td><td colspan="3">{{ form_widget(formContact.adresseLigne2, { 'attr': {'size': '78'} }) }}</td>
+					</tr>
+					<tr>
+						<td>Code postal: </td><td >{{ form_widget(formContact.cp,  { 'attr': {'size': '20'} }) }}</td>
+						<td>Ville: </td><td >{{ form_widget(formContact.ville, { 'attr': {'size': '60'} }) }}</td>
+					</tr>
+					
+		</table>
+	</fieldset>
+	
+	
+<!--		{% render "LeaPrestaBundle:Contact:parcourspro"  with { idContact : idContact }   %}	-->
+</section>
+
+<script>
+//cp
+$('#EgwContact_cp,#EgwContact_ville').myAutoCompleteCp('EgwContact_');
+</script>

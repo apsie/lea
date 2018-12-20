@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay PUBLIC "-//Stylite AG//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
+<!-- $Id$ -->
+<overlay>
+	<template id="phpbrain.maintain_questions.rows" template="" lang="" group="0" version="1.9.002">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column width="1%"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" id="question_id"/>
+					<nextmatch-accountfilter id="user_id" options="author"/>
+					<nextmatch-sortheader label="Question" id="summary"/>
+					<nextmatch-sortheader label="Details" id="details"/>
+					<nextmatch-sortheader label="Category" id="cat_id"/>
+					<nextmatch-sortheader label="Creation" id="creation"/>
+					<hbox>
+						<nextmatch-header align="center" label="Actions" id="legacy_actions"/>
+						<button align="right" statustext="Check all" label="Check all" id="check_all" needed="1" onclick="egw_globalObjectManager.getObjectById('phpbrain.maintain_questions.rows').toggleAllSelected(); return false;" image="check"/>
+					</hbox>
+				</row>
+				<row class="row $row_cont[class]">
+					<description id="${row}[question_id]" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" id="${row}[user_id]" readonly="true"/>
+					</menulist>
+					<description id="${row}[summary]"/>
+					<description id="${row}[details]"/>
+					<menulist>
+						<menupopup type="select-cat" id="${row}[cat_id]" readonly="true"/>
+					</menulist>
+					<description id="${row}[creation]"/>
+					<hbox align="center" options="0,0">
+						<button label="answer" id="answer[$row_cont[question_id]]" image="answer"/>
+						<button label="publish" id="publish[$row_cont[question_id]]" onclick="return confirm('publish this article?');" image="new"/>
+						<button statustext="Delete this article" label="Delete" id="delete[$row_cont[question_id]]" onclick="return confirm('Delete this article');" image="delete"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="phpbrain.maintain_questions" template="" lang="" group="0" version="1.9.002">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description align="center" id="msg" span="all" class="redItalic"/>
+					<description/>
+				</row>
+				<row>
+					<nextmatch id="nm" options="phpbrain.maintain_questions.rows" span="all"/>
+				</row>
+				<row>
+					<hbox options="0,0">
+						<description/>
+					</hbox>
+					<hbox align="right">
+						<buttononly label="Select action" id="legacy_actions" onclick="if (!egw_globalObjectManager.getObjectById('phpbrain.maintain_questions.rows').executeActionImplementation(this, 'popup')) alert(egw::lang('You need to select some entries first!')); return false;;"/>
+						<image label="Toggle all" src="arrow_ltr" onclick="egw_globalObjectManager.getObjectById('phpbrain.maintain_questions.rows').toggleAllSelected(); return false;" href="#"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.selectAllArrow { padding-right: 12px; }
+		</styles>
+	</template>
+</overlay>

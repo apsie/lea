@@ -1,0 +1,49 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_aspect.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+
+<h4>Réglementation</h4>
+Votre activité est-elle soumise à des réglementations particulières (licences, agréments, autorisations préfectorales, stages d’installation, permis d’exploitation, capacité de transport, cartes professionnelles, normes d’hygiène et sécurité, HCCP, ERP, NF, garanties financières obligatoires…) ?
+
+<h4>Volonté de s'associer</h4>
+Votre activité nécessite-t-elle une certaine crédibilité (taille de l’activité, usage de la profession)?
+Serez-vous dirigeant ou simple associé de l'entreprise ?
+Si oui, quelle sera la répartition du capital ?
+
+<h4>Responsabilité</h4>
+L'activité envisagée présente-t-elle des risques importants (utilisation de produits dangereux ou nocifs, risques pour l’entrepreneur, risques financiers pour l’entreprise…)?
+Avez-vous prévu de souscrire des assurances (assurance responsabilité civile professionnelle, assurance pour le local ou les stocks, garantie décennale, assurance dommage ouvrage…) ?
+Avez-vous des biens immobiliers à protéger (clause d’insaisissabilité, SCI) ?
+
+<h4>Engagement financier</h4>
+Quel est le montant de votre engagement financier (apport personnel, apport en nature) ?
+
+
+
+<h4>Propriété intellectuelle</h4>
+Avez-vous accompli les démarches auprès de l’INPI (recherche d’antériorité, dépôt de marque, protection du nom commercial, brevet…) ?
+
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_aspect_1; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+</div>

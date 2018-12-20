@@ -1,0 +1,49 @@
+<div class="entete" >Nouveaux dispositif</div>
+<form name="dispositif_create" action="./dispositif/create">
+	<section>
+		<fieldset>
+			<table>
+			<tr>
+				<td>Activité : </td><td>{{ form_widget(form.activite) }}</td>
+			</tr>
+			<tr>
+				<td>Type de prestation : </td><td>{{ form_widget(form.idTypePrestation) }}</td>
+			</tr>
+			<tr>
+				<td>Objet : </td><td>{{ form_widget(form.objet) }}</td>
+			</tr>
+			<tr>
+				<td>Numéro de marché : </td><td>{{ form_widget(form.numeroMarche) }}</td>
+			</tr>
+			<tr>
+				<td>Numéro de lot : </td><td>{{ form_widget(form.numeroLot) }}</td>
+			</tr>
+			<tr>
+				<td>Zone géographique : </td><td>{{ form_widget(form.zoneGeographique) }}</td>
+			</tr>
+			<tr>
+				<td>Date de début : </td><td>{{ form_widget(form.dateDebut) }}</td>
+			</tr>
+			<tr>
+				<td>Date de fin : </td><td>{{ form_widget(form.dateFin) }}</td>
+			</tr>
+			<tr>
+				<td>Etat: </td><td>{{ form_widget(form.isActive) }}</td>
+			</tr>
+			<tr>
+				<td>Contrat: </td><td>{{ form_widget(form.idContract) }}</td>
+			</tr>
+				<tr>
+					<td> </td>
+					<td><input type="submit" value="Enregistrer" /></td>
+				</tr>
+			</table>
+		</fieldset>
+	</section>
+</form>
+<script>
+$( "#EgwDispositif_dateDebut" ).datepicker();
+$( "#EgwDispositif_dateFin" ).datepicker();
+$('form[name="dispositif_create"]').submitForm('.div_droite','Dispositif','dispositif');
+</script>
+					

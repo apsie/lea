@@ -1,0 +1,22 @@
+<form name="texte_edit" action="./texte/edit/{{ texte.idTexte}}" class="formulaire" >
+		<fieldset>
+		<legend> Texte </legend>
+		<table>
+			<tr>
+					<td>Chapître :</td>
+					<td>{{ form_widget(form.texteKey) }}</td>
+			</tr>
+			<tr>
+					<td>Libellé :</td>
+					<td>{{ form_widget(form.texte,{ 'attr': {'size': 72}}) }}</td>
+			</tr>
+			<tr style="height : 50px" >
+				<td></td><td><input type="submit" value="Enregistrer" /></td>
+			</tr>
+		</table>
+</form>
+<script>
+
+$('form[name="texte_edit"]').submitForm('.div_droite','Texte','texte');
+
+</script>

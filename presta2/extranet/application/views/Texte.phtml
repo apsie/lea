@@ -1,0 +1,58 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu"><br/></div>
+<div class="div_menu_gauche">
+<table>
+	<tr>
+	<td><strong>Chapître</strong></td>
+	</tr>
+	<tr>
+	<td>
+	<select id="chapitre" ><option value="" >-- Tous les chapîtres --</option>
+				<?php 
+					foreach ($this->key as $key => $row):
+						echo'<option value="'.$row['id_texte_key'].'" >'.utf8_encode($row['libelle']).'</option>';
+					endforeach;
+					?>
+	</select>
+	</td>
+	</tr>
+</table>
+
+</div></div>
+<div style="text-align:left" class="contenu">
+<div class="univers">Texte</div>
+<div   class="div_menu_droit">
+
+<div class="boutton_contact">
+<button id="boutton_texte" style="font-size:10px">Créer un texte</button>
+</div>
+	<div class="page">
+	</div>
+	<div  class="contenu_flex">
+		
+	</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+$j(document).ready(function(){
+	getTexte();
+});
+
+$j('#boutton_texte').click(function()
+		{
+	formTexte();
+	
+		});
+
+$j('#chapitre').change(function()
+		{
+	getTexte();
+	
+		});
+</script>
+
+

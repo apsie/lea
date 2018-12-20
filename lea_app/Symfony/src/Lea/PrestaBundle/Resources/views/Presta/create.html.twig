@@ -1,0 +1,219 @@
+<div class="entete" >Nouvelle prestation</div>
+	<form name="presta_create" class="formulaire" >
+		<fieldset>
+		<legend> Prestation </legend>
+			<table>
+				<tr>
+					<td>Prestataire : </td><td>{{ form_widget(formPrestataire.id_prestataire) }}</td>
+				</tr>
+				<tr>
+					<td>Référent : </td><td>{{ form_widget(formAccount.account_id) }}</td>
+				</tr>
+				<tr>
+					<td>Dispositif : </td><td>{{ form_widget(formPresta.dispositif) }}</td>
+				</tr>
+				<tr>
+					<td>Lettre de commande : </td><td>{{ form_widget(formPresta.lettreDeCommande) }}</td>
+				</tr>
+				<tr>
+					<td>Catégorie : </td><td>{{ form_widget(formCategories.spid_categories) }}</td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+		<legend> Projet </legend>
+			<table>
+				<tr>
+					<td>Description du projet : </td><td>{{ form_widget(formProjet.description_projet) }}</td>
+				</tr>
+				
+			</table>
+		</fieldset>
+		<fieldset>
+		<legend> Contact Prescripteur </legend>
+			<table>
+				<tr>
+					<td >Organisation :  </td><td id="235">{{ form_widget(formOrganisation.nomOrganisme) }} {{ form_widget(formOrganisation.idOrganisation) }}</td>
+					
+				</tr>
+				<tr>
+					<td>Civilité :  </td><td>{{ form_widget(formContactPr.civilite) }} {{ form_widget(formContactPr.contactId) }}</td>
+					
+				</tr>
+				<tr>
+					<td>Nom :  </td><td id="256" >{{ form_widget(formContactPr.nom) }}</td>
+					
+					<td>Prénom :  </td><td id="256">{{ form_widget(formContactPr.prenom) }}</td>
+	
+				</tr>
+				<tr>
+					
+					<td>Portable pro :  </td><td>{{ form_widget(formContactPr.portablePro) }}</td>
+					
+					
+					<td>Email pro :  </td><td>{{ form_widget(formContactPr.emailPro) }}</td>
+				</tr>
+				<tr>
+					
+					<td>Fonction :  </td><td>{{ form_widget(formContactPr.fonction) }}</td>
+					
+					
+				</tr>
+				
+			</table>
+		</fieldset>
+		<fieldset>
+		<legend> Bénéficiaire </legend>
+			<table>
+				<tr>
+					<td>Civilité :  </td><td>{{ form_widget(formContact.civilite) }} {{ form_widget(formContact.idBen) }}</td>
+					
+				</tr>
+				<tr>
+					<td>Nom :  </td><td>{{ form_widget(formContact.nom) }}</td>
+					<td>Nom de jeune fille :  </td><td>{{ form_widget(formContact.nomJeuneFille) }}</td>
+	
+				</tr>
+				<tr>
+					
+					<td>Prénom :  </td><td>{{ form_widget(formContact.prenom) }}</td>
+					<td>Deuxième Prénom :  </td><td>{{ form_widget(formContact.deuxiemePrenom) }}</td>
+				</tr>
+				<tr>
+					
+					<td>Portable perso :  </td><td>{{ form_widget(formContact.portablePerso) }}</td>
+					<td>Tel Domicile :  </td><td>{{ form_widget(formContact.telDomicile1) }}</td>
+				</tr>
+				<tr>
+					
+					<td>Email perso :  </td><td>{{ form_widget(formContact.emailPerso) }}</td>
+					<td>Email pro :  </td><td>{{ form_widget(formContact.emailPro) }}</td>
+				</tr>
+				
+				
+				
+			</table>
+
+
+			
+		</fieldset>
+		{% render "LeaPrestaBundle:Contact:parcourspro" %}
+		<fieldset>
+                    <legend id="choix">
+                        <label  ><input class="./confirmation" type="radio" name="choix" checked="checked" value="1"/> <span>Confirmer une option pour cette prestation</span></label> 
+                       
+                        <label  ><input class="./confirmation" type="radio" name="choix"   value="0"/> <span>Créer cette prestation sans confirmer d'option</span></label>
+                    </legend>
+		<div class="options">
+			
+		</div>
+		</fieldset>
+		<fieldset>
+		
+		        <tr>
+				<td>Date de fin : </td><td>{{ form_widget(formPresta.dateFin) }}</td> </br> 
+				
+				<div>
+					<div class="sous_titre" >Durée de la prestation:</div>
+					<div>
+						<label>
+						<input name="data[engagement_1]" value="1" {% if prestaData['engagement_1'] is defined %}{{prestaData['engagement_1']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>De 0 à 6 mois</span>
+						</label>
+					</div>
+					<div>
+						<label>
+						<input  name="data[engagement_2]" value="1" {% if prestaData['engagement_2'] is defined %}{{prestaData['engagement_2']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>De 6 mois à 12 mois.</span>
+						</label>
+					</div>
+					<div>
+						<label>
+						<input  name="data[engagement_3]" value="1" {% if prestaData['engagement_3'] is defined %}{{prestaData['engagement_3']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>De 12 mois à 24 mois.</span>
+						</label>
+					</div>
+					<div>
+						<label>
+						<input name="data[engagement_4]" value="1" {% if prestaData['engagement_4'] is defined %}{{prestaData['engagement_4']|setcheckbox(1)}}{% endif %}  type="checkbox" /><span>De 24 mois à 36 mois</span>
+						</label>
+					</div>
+				</div>			
+			    </tr>
+		</fieldset>
+		<input type="submit" id="bouton_prestation" value="Enregistrer" />
+		
+	</form>
+	
+
+
+<script>
+
+$( "#EgwPresta_dateFin" ).datepicker();
+//Choix 
+$('#choix input').submitFormAndReturnHtml('.options');
+
+// Click auto par défault
+$('#choix input').eq(0).trigger('click');
+
+
+//contact
+$('#EgwContact_nom,#EgwContact_prenom').myAutoCompleteContact('EgwContact_');
+$('#EgwContact_nom,#EgwContact_prenom').change(function()
+{
+$('#EgwContact_idBen').val('');
+});
+//Organisation
+$('#Spiclient_nomOrganisme').myAutoCompleteOrganisation('Spiclient_');
+/*$('#ESpiclient_nomOrganisme').change(function()
+{
+//$('#Spiclient_idOrganisation').val('');
+});*/
+
+//Prescripteur
+$('#EgwAddressbook_nom,#EgwAddressbook_prenom').myAutoCompleteAddressbook('EgwAddressbook_');
+$('#EgwAddressbook_nom,#EgwAddressbook_prenom').change(function()
+{
+$('#EgwAddressbook_contactId').val('');
+});
+
+
+
+$('#EgwPresta_dispositif, #EgwAccounts_account_id').change(function()
+{
+var form = $('form').serializeArray();
+$('.options').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$.ajax({
+		url:'./confirmation',
+		dataType: "html",
+		type : "POST",
+		data : form,
+		success: function( html ) {
+		$('.options').html(html);
+		}
+		});
+return false;
+});
+$('form[name="presta_create"]').submit(function()
+{
+
+var form = $('form[name="presta_create"]').serializeArray();
+$('.div_droite').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$.ajax({
+		url:'./confirmationcheck',
+		dataType: "json",
+		type : "POST",
+		data : form,
+		success: function( data ) {
+		//$('.div_droite').html('');
+                $('a#create_presta').trigger('click');
+		$.pnotify({
+						title: 'Prestation',
+						text: data,
+						type: 'success',
+						styling: 'jqueryui'
+					});
+		}
+		});
+return false;
+
+});
+
+</script>

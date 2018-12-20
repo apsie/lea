@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiref.statut.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" id="sector_id"/>
+					<nextmatch-sortheader label="Name" align="center" id="sector_name"/>
+					<nextmatch-header label="Possible following status" align="center" id="statut_enfant"/>
+					<nextmatch-sortheader label="Creation Date" align="center" id="creation_date"/>
+					<description align="center" value="Actions"/>
+				</row>
+				<row class="row $row_cont[client_class]">
+					<description align="center" readonly="true" id="${row}[statut_id]"/>
+					<description align="center" readonly="true" no_lang="1" id="${row}[statut_label]"/>
+					<listbox readonly="true" align="center" id="${row}[statut_enfants]" rows="5" no_lang="1"/>
+					<date align="center" readonly="true" id="${row}[creation_date]"/>
+					<hbox align="center">
+						<button label="Delete" onclick="return confirm('Confirmez-vous la suppression ?');" id="delete[$row_cont[statut_id]]" image="delete" statustext="//return confirmDeleteClient('$row_cont[client_company]');"/>
+						<button label="Edit" onclick="window.open(egw::link('/index.php','menuaction=spiref.statut_ui.edit&amp;id=$row_cont[statut_id]'),'_blank','dependent=yes,width=500,height=300,scrollbars=yes,status=yes'); return false;" image="edit"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.statut.index" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" align="center" id="msg"/>
+				</row>
+				<row>
+					<nextmatch span="all" id="nm" options="spiref.statut.index.rows"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.row_error{
+ background-color: red;
+}
+		</styles>
+	</template>
+</overlay>

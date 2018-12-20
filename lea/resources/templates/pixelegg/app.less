@@ -1,0 +1,67 @@
+/**
+ * EGroupware: CSS with less preprocessor
+ *
+ * Ressources
+ *
+ * Please do NOT change app.css directly, instead change app.less and compile it!
+ *
+ * @link http://www.egroupware.org
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @author Stefan Reinhardt <stefan.reinhardt@pixelegg.de>
+ * @package tracker
+ * @version $Id: app.less 51767 2015-02-14 08:37:02Z ralfbecker $
+ */
+
+@import (reference) "../../../pixelegg/less/def_buttons.less";
+@import (reference) "../../../pixelegg/less/def_design_pattern_color_font_shadow.less";
+
+
+//******************************************************************
+// sidebar
+#egw_fw_sidebar #egw_fw_sidemenu .egw_fw_ui_scrollarea_outerdiv .egw_fw_ui_sidemenu_entry_header_active h1 {font-size: 1.15em !important;}
+
+
+
+
+
+//**********************************
+// main
+
+#resources-show_favorite_wrapper {
+	top: -4px;
+	margin-right: 10px;
+}
+
+// hinzufügen
+        button#resources-show_add{
+            .Complete_Button_add_only_plus;
+            background-color: @egw_color_2_a;
+
+            &:hover {.Complete_Button_add_only_plus_hover;}
+            &:active {background-color: @color_positive_action_active !important;}
+
+        }
+// main
+
+
+
+
+
+
+
+
+// Dialog Resources bearbeiten und alle weiteren
+//
+#resources-edit_res_id:before {content:"#"}
+
+div.resources_pictureFile div.progress{
+	position: absolute;
+	width:226px;
+}
+
+#resources-edit{
+	.et2_container {
+		width:848px;
+	}
+    margin: 0.5em;
+}

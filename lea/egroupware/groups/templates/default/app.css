@@ -1,0 +1,26 @@
+/**
+ * Stylite: CSS for groupadministration
+ *
+ * @link http://www.stylite.de
+ * @package stylite
+ * @subpackage admin
+ * @author Ralf Becker <rb@stylite.de>
+ * @copyright (c) 2014 by Ralf Becker <rb@stylite.de>
+ * @version $Id: app.css 4021 2015-10-29 13:38:01Z ralfbecker $
+ */
+
+/**
+ * Stylite group-admin
+ */
+img.stylite_groupadmin_appicon {
+	height: 16px;
+	width: 20px;
+}
+table#groups-group-edit_apps tr:hover {
+	background-color: #f0f0ff;
+}
+
+#groups_group_edit_account_members_chzn ul.chzn-choices {
+	max-height: 400px;
+	overflow-y: auto;
+}

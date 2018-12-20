@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.stats.contrat.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="200"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+				<column width="100"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="Contract" align="center" id="contract_id"/>
+					<description value="Contract client" align="center"/>
+					<description value="Client" align="center"/>
+					<description value="Temps passé sur les tickets fermés" align="center" id="time"/>
+					<description value="Pass time on not factured closed tickets" id="time"/>
+					<description value="Total spend time" id="time"/>
+					<description value="Factured turnover" align="center" id="time"/>
+					<description value="estimated outstanding" align="center"/>
+					<description value="Budget amount" align="center"/>
+					<description value="Budget time"/>
+					<description value="Difference amount" align="center"/>
+					<description value="Difference time"/>
+				</row>
+				<row class="$row_cont[total_class]">
+					<menulist>
+						<menupopup align="center" id="${row}[contract_id]" no_lang="1" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[contract_client]" align="center" no_lang="1" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup no_lang="1" align="center" id="${row}[client]" readonly="true"/>
+					</menulist>
+					<description align="center" id="${row}[time_closed]"/>
+					<description align="center" id="${row}[time_not_factured]"/>
+					<description align="center" id="${row}[total_time]"/>
+					<description id="${row}[turnover]" align="center"/>
+					<description id="${row}[outstanding]" align="center"/>
+					<description align="center" id="${row}[budget_amount]"/>
+					<description align="center" id="${row}[budget_time]"/>
+					<description align="center" id="${row}[difference_amount]"/>
+					<description align="center" id="${row}[difference_time]"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

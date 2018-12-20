@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.admin.index.buttons" template="" lang="" group="0" version="1">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description/>
+				</row>
+				<row>
+					<hbox span="all" align="center">
+						<button label="Save" id="button[save]"/>
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spid.admin.index.cats" template="" lang="" group="0" version="1.002">
+		<grid width="100%" id="cats">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Possible selection : for users outside the management group" span="all"/>
+				</row>
+				<row>
+					<description value="Training : to activate the price per student" span="all"/>
+				</row>
+				<row>
+					<description span="all" class="redItalic" align="center" id="msg"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th">
+					<description align="center" value="Name"/>
+					<description value="Parent categorie" align="center"/>
+					<description value="Management group" align="center"/>
+					<description align="center" no_lang="1" options="None" value="Autoassign To"/>
+					<description value="Possible to select" align="center"/>
+					<description value="Formation"/>
+					<description align="center" value="Actions"/>
+				</row>
+				<row class="row">
+					<textbox id="${row}[name]"/>
+					<menulist>
+						<menupopup type="select-cat" options="Select one,spid" id="${row}[parent]"/>
+					</menulist>
+					<menulist>
+						<menupopup type="select-account" options="None,groups,0" id="${row}[data][cat_managementgroup]" onchange="ajax_request.assignedTo('cat_assignedto','${row}','account',this.value);"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[data][cat_assignedto]" options="None" no_lang="1"/>
+					</menulist>
+					<menulist>
+						<menupopup options="Select one" id="${row}[data][possible_select]"/>
+					</menulist>
+					<checkbox id="${row}[data][cat_formation]" align="center"/>
+					<button label="Delete" align="center" onclick="return confirm('you want to delete the category. are you sure?');" id="delete[$row_cont[id]]" image="delete" statustext="Delete the category"/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spid.admin.index.buttons"/>
+	</template>
+</overlay>

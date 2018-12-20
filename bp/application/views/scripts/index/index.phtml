@@ -1,0 +1,40 @@
+<html>
+<head>
+<title><?php echo $this->title;?></title>
+<link rel="stylesheet" type="text/css"  href="<?php echo $this->baseUrl();?>/css/home.css" />
+
+</head>
+<body>
+<?php echo $this->render('header_dossier.phtml'); ?>
+<center><div class="cadre">
+<div class="header_cadre" ><?php echo $this->title;?></div>
+<div class="contenu">
+<form method="post"><table style="font-size: 12px;width:400px;"><tr><td>Description du projet</td><td style="font-style:italic">  <strong><?php echo unserialize($_SESSION['session']->projet)->description_projet;?></strong></td></tr>
+        <tr><td>Bénéficiaire</td><td  style="font-style: italic"> <?php echo unserialize($_SESSION['session']->projet)->nom_complet; ?></td></tr>
+<tr><td>Référent du dossier</td><td >
+
+<?php
+$bp = isset($_SESSION['session']->bp) ? unserialize($_SESSION['session']->bp) : null;
+if($bp->id_bp==null) {?> <select name="id_referent">
+<?php 
+
+for($i=0;$i<count($this->listeReferent);$i++)
+{
+
+echo'<option value="'.$this->listeReferent[$i]['account_id'].'">'.$this->listeReferent[$i]['account_lid'].'</option>';
+}?>
+</select>
+<?php echo '</td></tr><tr><td></td><td height="50px"><input onclick="submit();" type="button" class="button_little" value="Créer le dossier" /></td></tr></table>
+</form>';}
+else
+{
+
+	echo $bp->account_lid.'
+</td></tr><tr><td>Date de création</td><td>'.$this->date_creation.'</td></tr><tr><td>Dernière consultation</td><td>'.$this->date_last_consultant.'</td></tr>
+<tr><td></td><td height="50px"><input onclick="submit();" type="button" class="button_little" value="Ouvrir le dossier" /></td></tr></table>
+</form>	';
+}?></div>
+</div>
+</center>
+</body>
+</html>

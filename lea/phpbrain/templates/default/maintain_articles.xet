@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay PUBLIC "-//Stylite AG//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
+<!-- $Id$ -->
+<overlay>
+	<template id="phpbrain.maintain_articles.rows" template="" lang="" group="0" version="1.9.003">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column width="1%"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" id="art_id"/>
+					<nextmatch-accountfilter id="user_id" options="author"/>
+					<nextmatch-sortheader label="Title" id="title"/>
+					<nextmatch-sortheader label="Topic" id="topic"/>
+					<nextmatch-sortheader label="Category" id="cat_id"/>
+					<nextmatch-sortheader label="Date" id="modified"/>
+					<hbox>
+						<nextmatch-header align="center" label="Actions" id="legacy_actions"/>
+						<buttononly label="Select all" onclick="toggle_all(this.form,form::name('selected[]')); return false;" options="check"/>
+					</hbox>
+				</row>
+				<row class="row $row_cont[class]">
+					<description id="${row}[art_id]" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" id="${row}[user_id]" readonly="true"/>
+					</menulist>
+					<description id="${row}[title]"/>
+					<description id="${row}[topic]"/>
+					<menulist>
+						<menupopup type="select-cat" id="${row}[cat_id]" readonly="true"/>
+					</menulist>
+					<description id="${row}[modified]"/>
+					<hbox align="center" options="0,0">
+						<button label="View" id="view[$row_cont[art_id]]" image="view"/>
+						<button label="publish" id="publish[$row_cont[art_id]]" onclick="return confirm('publish this article?');" image="new"/>
+						<button statustext="Delete this article" label="Delete" id="delete[$row_cont[art_id]]" onclick="return confirm('Delete this article');" image="delete"/>
+						<checkbox align="right" id="selected[]" options="$row_cont[art_id]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="phpbrain.maintain_articles" template="" lang="" group="0" version="1.9.002">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description align="center" id="msg" span="all" class="redItalic"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<nextmatch id="nm" options="phpbrain.maintain_articles.rows" span="all"/>
+				</row>
+				<row disabled="!@nm[selectcols]=/legacy_actions/">
+					<hbox options="0,0">
+						<description/>
+					</hbox>
+					<hbox align="right" span="all">
+						<buttononly label="Select action" id="legacy_actions" onclick="if (!egw_globalObjectManager.getObjectById('phpbrain.maintain_articles.rows').executeActionImplementation(this, 'popup')) alert(egw::lang('You need to select some entries first!')); return false;;"/>
+						<image href="#" label="Toggle all" src="arrow_ltr" onclick="javascript:toggleAllCheckboxes();"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.selectAllArrow { padding-right: 12px; }
+		</styles>
+	</template>
+</overlay>

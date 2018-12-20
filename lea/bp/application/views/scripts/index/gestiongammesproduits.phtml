@@ -1,0 +1,131 @@
+
+<div class="titre_outils"><img
+	src="<?php echo $this->baseUrl();?>/images/gamme.png" /> Gestion des
+gammes de produits</div>
+<div style="float: left; width: 41%">
+<div class="outils_sous_titre">Liste des gammes</div>
+<div id="liste_Gammes"></div>
+</div>
+
+<div style="float: left; width: 49%">
+<div class="outils_sous_titre">Ajouter une gamme</div>
+<table>
+<tr>
+		<td>Famille du produit</td>
+		<td><select id="idFamille">
+		<?php foreach ($this->listFamille as $data)
+		{
+			echo'<option value='.$data['id_famille_produit'].'>'.$data['libelle_famille'].'</option>';
+		}
+		
+		?></select></td>
+
+
+	</tr>
+	<tr>
+		<td>Gamme du produit</td>
+		<td><input id="idGamme" type="hidden" /><input id="libelleGamme" type="text" /></td>
+</tr><tr><td></td>
+
+		<td><input onclick="ajouterGammeProduits()" type="button"
+			class="button_little" value="Enregistrer" /></td>
+	</tr>
+</table>
+</div>
+<script>
+getListGammeProduits();
+function ajouterGammeProduits()
+{
+var libelleGamme = $("#libelleGamme").val();
+var idGamme = $("#idGamme").val();
+
+if(idGamme=='')
+{
+	var action ="ajouterGammeProduits";
+	var tIdFamille  = document.getElementById('idFamille');
+	var idFamille = tIdFamille.options[tIdFamille.selectedIndex].value;
+ }
+else
+{
+	
+	var action ="modifierGammeProduits";
+}
+$.ajax({
+	url : "../ajax/ajax/",
+	dataType : "json",
+	data : {
+		libelleGamme : libelleGamme,
+		action : action,
+		idGamme : idGamme,
+		idFamille : idFamille
+	},success: function(data){
+	}
+});
+$('#libelleGamme').val('');
+
+
+getListGammeProduits();
+$('.button_little').val('Enregistrer');
+$("#idGamme").val('');
+}
+function deleteGammeProduits(idGammeProduits)
+{
+
+$.ajax({
+	url : "../ajax/ajax/?noTemplate=1",
+	dataType : "json",
+	data : {
+		idGammeProduits : idGammeProduits,
+		action : "deleteGammeProduits"
+	},success: function(data){
+	}
+});
+
+getListGammeProduits();
+
+
+
+}
+
+function getListGammeProduits()
+{
+
+	var html="<table><tr class='titre_outils_general'><td><a style='cursor:pointer'>Famille</a></td><td><a style='cursor:pointer'>Gamme</a></td><td></td></tr>";
+	
+	$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			noTemplate : 1,
+			action : "getListGammeProduits"
+		},success: function(data){
+			
+			$.each(data,function(i,val){
+			
+				if(i%2 ==0)
+				{
+					var classe = "ligne2";
+				}
+				else
+				 {
+				 var classe = "ligne";
+				}
+			html +="<tr class='"+classe+"'><td>"+val.libelle_famille+"</td><td><a onclick='setLibelle("+val.id_gamme_produit+",\""+val.libelle_gamme+"\");' style='cursor:pointer'>"+val.libelle_gamme+"</a></td><td><img  onclick='setLibelle("+val.id_gamme_produit+",\""+val.libelle_gamme+"\");'  style='cursor:pointer' src='../images/edit.png' /><img  onclick='deleteGammeProduits("+val.id_gamme_produit+")' style='cursor:pointer' src='../images/delete.png' /></td></tr>";	
+			
+		});
+			html +="</table>"; 
+			$('#liste_Gammes').html(html);
+	}	
+		});
+		
+			
+			 
+}
+function setLibelle(id,libelle)
+{
+	
+$('#libelleGamme').val(libelle);
+$('#idGamme').val(id);
+$('.button_little').val('Modifier');
+}
+</script>

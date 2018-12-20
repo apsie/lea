@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.client.index.rows" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column disabled="true"/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column disabled="true"/>
+				<column disabled="true"/>
+				<column disabled="true"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<nextmatch-sortheader label="ID" align="center" id="client_id"/>
+					<nextmatch-sortheader label="User group" align="center" id="account_id"/>
+					<nextmatch-sortheader label="company" align="center" id="client_company"/>
+					<nextmatch-filterheader id="client_seller_id" label="Seller"/>
+					<nextmatch-filterheader label="Parent company" align="center" id="client_parent"/>
+					<nextmatch-filterheader label="Catchment" align="center" id="client_chalandise"/>
+					<nextmatch-sortheader label="Parc" align="center" id="client_operation_code"/>
+					<nextmatch-filterheader label="Secteur" align="center" id="client_sector"/>
+					<nextmatch-filterheader label="Region" align="center" id="client_region"/>
+					<hbox align="center">
+						<nextmatch-sortheader label="last name" id="client_last_name"/>
+						<nextmatch-sortheader label="first name" id="client_first_name"/>
+					</hbox>
+					<nextmatch-header label="address" align="center"/>
+					<vbox align="center">
+						<nextmatch-sortheader label="email" align="center" id="client_email"/>
+						<nextmatch-sortheader label="Manager Email" id="client_manager_email" align="center"/>
+						<nextmatch-sortheader label="tel" id="client_tel" align="center"/>
+					</vbox>
+					<nextmatch-sortheader label="Billable by" align="center" id="client_billable_id"/>
+					<nextmatch-sortheader label="payment model" align="center" id="client_payment_model"/>
+					<description value="Created by" align="center" id="creator_id"/>
+					<description value="Actions" align="center"/>
+				</row>
+				<row class="row $row_cont[client_class]">
+					<hbox align="center" readonly="true">
+						<description align="center" readonly="true" id="${row}[client_id]"/>
+						<htmlarea id="${row}[error]" readonly="true"/>
+					</hbox>
+					<menulist>
+						<menupopup type="select-account" options=",accounts,0" id="${row}[account_id]" readonly="true" align="center"/>
+					</menulist>
+					<description align="center" id="${row}[client_company]" readonly="true" no_lang="1"/>
+					<menulist>
+						<menupopup type="select-account" id="${row}[client_seller_id]" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" id="${row}[client_parent]" no_lang="1" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup align="center" id="${row}[client_chalandise]" no_lang="1" readonly="true"/>
+					</menulist>
+					<description id="${row}[client_operation_code]" readonly="true" align="center" no_lang="1"/>
+					<menulist>
+						<menupopup id="${row}[client_sector]" readonly="true" align="center" no_lang="1"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[client_region]" readonly="true" align="center" no_lang="1"/>
+					</menulist>
+					<hbox readonly="true" no_lang="1">
+						<description id="${row}[client_last_name]" readonly="true" no_lang="1"/>
+						<description id="${row}[client_first_name]" readonly="true" no_lang="1"/>
+					</hbox>
+					<vbox>
+						<description id="${row}[client_adr_one_street]" no_lang="1"/>
+						<description id="${row}[client_adr_two_street]" no_lang="1"/>
+						<hbox>
+							<description id="${row}[client_postalcode]" no_lang="1"/>
+							<description id="${row}[client_locality]" no_lang="1"/>
+						</hbox>
+						<description id="${row}[client_country]" no_lang="1"/>
+						<description id="${row}[client_region]" no_lang="1"/>
+					</vbox>
+					<vbox align="center">
+						<url-email align="center" id="${row}[client_email]" readonly="true"/>
+						<url-email id="${row}[client_manager_email]" readonly="true" align="center"/>
+						<url-phone id="${row}[client_tel]" readonly="true" align="center"/>
+					</vbox>
+					<menulist>
+						<menupopup id="${row}[client_billable_id]" readonly="true" align="center" no_lang="1"/>
+					</menulist>
+					<menulist>
+						<menupopup id="${row}[client_payment_model]" align="center" readonly="true"/>
+					</menulist>
+					<menulist>
+						<menupopup type="select-account" align="center" id="${row}[creator_id]" options=",accounts,0" readonly="true" no_lang="1"/>
+					</menulist>
+					<hbox align="center">
+						<button image="delete" label="Delete" id="delete[$row_cont[client_id]]" onclick="return confirm('Confirmez-vous la suppression ?');" statustext="//return confirmDeleteClient('$row_cont[client_company]');"/>
+						<button image="edit" label="Edit" id="edit[$row_cont[client_id]]" onclick="window.open(egw::link('/index.php','menuaction=spiclient.client_ui.edit&amp;id=$row_cont[client_id]'),'_blank','dependent=yes,width=900,height=500,scrollbars=yes,status=yes'); return false;"/>
+						<button image="view" label="view" id="view[$row_cont[client_id]]" onclick="window.open(egw::link('/index.php','menuaction=spiclient.client_ui.view&amp;id=$row_cont[client_id]'),'_blank','dependent=yes,width=900,height=500,scrollbars=yes,status=yes'); return false;"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiclient.client.index" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row disabled="!@msg">
+					<description span="all" class="redItalic" id="msg" align="center"/>
+				</row>
+				<row>
+					<nextmatch options="spiclient.client.index.rows" span="all" id="nm"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.row_error{
+ background-color: red;
+}
+		</styles>
+	</template>
+</overlay>

@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+.suggestionsBox {
+		position:absolute;
+		
+		left: 0px;
+		margin: 10px 0px 0px 0px;
+		width: 180px;
+		
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border: 2px solid #000;	
+		color: #fff;
+		background-color: #000;
+		z-index:10;
+		font-size:9px;
+		
+	}
+	
+	.suggestionList {
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.suggestionList li {
+		
+		margin: 0px 0px 3px 0px;
+		padding: 3px;
+		cursor: pointer;
+	}
+	
+	.suggestionList li:hover {
+		background-color: #036;   
+	}
+.suggestionsBox1 {
+		position:absolute;
+		
+		left: 450px;
+		margin: 10px 0px 0px 0px;
+		width: 400px;
+		background-color: #E0DB0C;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border: 2px solid #000;	
+		color: #fff;
+		background-color: #000;
+		z-index:10;
+		font-size:10px;
+		
+	}

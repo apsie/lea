@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.assistant.calendar" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="20%"/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+				<column disabled="@hide29"/>
+				<column disabled="@hide30"/>
+				<column disabled="@hide31"/>
+			</columns>
+			<rows>
+				<row>
+					<description span="all" id="${row}[month]"/>
+				</row>
+				<row class="th">
+					<description value="User"/>
+					<description id="${row}[1]" no_lang="1"/>
+					<description id="${row}[2]" no_lang="1"/>
+					<description id="${row}[3]" no_lang="1"/>
+					<description id="${row}[4]" no_lang="1"/>
+					<description id="${row}[5]" no_lang="1"/>
+					<description id="${row}[6]" no_lang="1"/>
+					<description id="${row}[7]" no_lang="1"/>
+					<description id="${row}[8]" no_lang="1"/>
+					<description id="${row}[9]" no_lang="1"/>
+					<description id="${row}[10]" no_lang="1"/>
+					<description id="${row}[11]" no_lang="1"/>
+					<description id="${row}[12]" no_lang="1"/>
+					<description id="${row}[13]" no_lang="1"/>
+					<description id="${row}[14]" no_lang="1"/>
+					<description id="${row}[15]" no_lang="1"/>
+					<description id="${row}[16]" no_lang="1"/>
+					<description id="${row}[17]" no_lang="1"/>
+					<description id="${row}[18]" no_lang="1"/>
+					<description id="${row}[19]" no_lang="1"/>
+					<description id="${row}[20]" no_lang="1"/>
+					<description id="${row}[21]" no_lang="1"/>
+					<description id="${row}[22]" no_lang="1"/>
+					<description id="${row}[23]" no_lang="1"/>
+					<description id="${row}[24]" no_lang="1"/>
+					<description id="${row}[25]" no_lang="1"/>
+					<description id="${row}[26]" no_lang="1"/>
+					<description id="${row}[27]" no_lang="1"/>
+					<description id="${row}[28]" no_lang="1"/>
+					<description id="${row}[29]" no_lang="1"/>
+					<description id="${row}[30]" no_lang="1"/>
+					<description id="${row}[31]" no_lang="1"/>
+				</row>
+				<row class="row">
+					<description id="${row}[user]" no_lang="1"/>
+					<html readonly="true" id="${row}[1]"/>
+					<html readonly="true" id="${row}[2]"/>
+					<html readonly="true" id="${row}[3]"/>
+					<html readonly="true" id="${row}[4]"/>
+					<html readonly="true" id="${row}[5]"/>
+					<html readonly="true" id="${row}[6]"/>
+					<html readonly="true" id="${row}[7]"/>
+					<html readonly="true" id="${row}[8]"/>
+					<html readonly="true" id="${row}[9]"/>
+					<html readonly="true" id="${row}[10]"/>
+					<html readonly="true" id="${row}[11]"/>
+					<html readonly="true" id="${row}[12]"/>
+					<html readonly="true" id="${row}[13]"/>
+					<html readonly="true" id="${row}[14]"/>
+					<html readonly="true" id="${row}[15]"/>
+					<html readonly="true" id="${row}[16]"/>
+					<html readonly="true" id="${row}[17]"/>
+					<html readonly="true" id="${row}[18]"/>
+					<html readonly="true" id="${row}[19]"/>
+					<html readonly="true" id="${row}[20]"/>
+					<html readonly="true" id="${row}[21]"/>
+					<html readonly="true" id="${row}[22]"/>
+					<html readonly="true" id="${row}[23]"/>
+					<html readonly="true" id="${row}[24]"/>
+					<html readonly="true" id="${row}[25]"/>
+					<html readonly="true" id="${row}[26]"/>
+					<html readonly="true" id="${row}[27]"/>
+					<html readonly="true" id="${row}[28]"/>
+					<html readonly="true" id="${row}[29]"/>
+					<html readonly="true" id="${row}[30]"/>
+					<html readonly="true" id="${row}[31]"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

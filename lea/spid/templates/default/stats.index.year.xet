@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.stats.index.year" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<hbox span="all">
+						<menulist>
+							<menupopup type="select-year" label="Year" id="year"/>
+						</menulist>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

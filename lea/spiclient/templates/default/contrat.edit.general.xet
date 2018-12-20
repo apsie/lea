@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.contrat.edit.general" template="" lang="" group="0" version="1.001">
+		<grid width="100%">
+			<columns>
+				<column width="140"/>
+				<column width="140"/>
+				<column width="140"/>
+				<column width="140"/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description class="bold" value="Title"/>
+					<textbox id="contract_title" size="70" span="all" needed="1"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Contract status"/>
+					<menulist>
+						<menupopup options="Select one" id="status_id" needed="1"/>
+					</menulist>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Contract type"/>
+					<menulist>
+						<menupopup options="Select one" id="type_id" needed="1"/>
+					</menulist>
+					<description class="bold" value="Period"/>
+					<menulist span="all">
+						<menupopup id="contract_period" options="Select one,"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Provider" class="bold"/>
+					<menulist>
+						<menupopup options="Select one" id="contract_supplier" needed="1"/>
+					</menulist>
+					<description class="bold" value="Client"/>
+					<menulist span="3">
+						<menupopup options="Select One" id="contract_client" needed="1"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description class="bold" value="Payer"/>
+					<menulist>
+						<menupopup options="Select one" id="contract_payer"/>
+					</menulist>
+					<description class="bold" value="Attorney"/>
+					<menulist span="3">
+						<menupopup options="Select one" id="contract_attorney"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description class="bold" value="Client reference"/>
+					<textbox size="40" id="contract_client_ref" span="2"/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Manager"/>
+					<menulist span="all">
+						<menupopup type="select-account" id="contract_manager_id" options="Select One"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description class="bold" value="Seller"/>
+					<menulist span="all">
+						<menupopup type="select-account" id="contract_seller_id" options="Select One"/>
+					</menulist>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Signature Date"/>
+					<date id="date_signature" needed="1"/>
+					<description class="bold" value="End Date"/>
+					<date id="date_end"/>
+					<description class="bold" value="Renewal Date"/>
+					<date id="date_renewal"/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Start date"/>
+					<date id="date_start" needed="1"/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description class="bold" value="Amount"/>
+					<textbox id="contract_amount"/>
+					<description class="bold" value="Day budget N"/>
+					<textbox id="contract_n_budget_days"/>
+					<description value="Amount budget N" class="bold"/>
+					<textbox id="contract_n_budget_amount"/>
+				</row>
+				<row class="row">
+					<description/>
+					<description/>
+					<description class="bold" value="Real day N-1"/>
+					<textbox id="contract_n_real_days"/>
+					<description class="bold" value="Real amount N-1"/>
+					<textbox id="contract_n_real_amount"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<textbox class="bold" id="config[Libre1]" readonly="true"/>
+					<textbox size="Select one" id="contract_libre1"/>
+					<textbox class="bold" id="config[Libre2]" readonly="true"/>
+					<textbox size="Select one" id="contract_libre2"/>
+					<description class="bold" id="config[Libre3]"/>
+					<textbox size="Select one" id="contract_libre3"/>
+				</row>
+				<row>
+					<description class="bold" id="config[Libre4]"/>
+					<textbox size="Select one" id="contract_libre4"/>
+					<description class="bold" id="config[Libre5]"/>
+					<textbox size="Select one" id="contract_libre5"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<styles>.bold
+{
+font-weight:bold;
+}</styles>
+	</template>
+</overlay>

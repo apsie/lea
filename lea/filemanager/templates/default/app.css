@@ -1,0 +1,148 @@
+/**
+ * EGroupware - CSS Styles used by filemanager app
+ *
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ * @package etemplate
+ * @link http://www.egroupware.org
+ * @author Ralf Becker <RalfBecker@outdoor-training.de>
+ * @version $Id$
+ */
+
+/**
+ * CSS for new eTemplate filemanager UI
+ */
+.mimeHuge img { width: 64px; height: 64px; }
+.fileName input { font-weight: bold; width: 100%; }
+.previewImage img { max-width: 430px; max-height: 275px; border: 1px solid black; }
+.previewText div { }
+.pathSelection { font-weight: bold; }
+.pathSelection a { font-weight: bold; font-size: 120%; }
+.pathSelectionContainer { width: 640px; overflow: auto; }
+/**
+ * Get path input to take all remaining width
+ */
+#filemanager-index_filemanager-index-header_left {
+	width: 100%;
+}
+div.filemanager_navigation {
+	position: relative;
+	width: 100%;
+	white-space: normal;
+	margin: 5px 0 0 5px;
+}
+div.filemanager_navigation > * {
+	vertical-align: middle;
+}
+div.filemanager_navigation > img {
+	margin-top: 3px;
+}
+#filemanager-index_buttons {
+	float: right;
+}
+#filemanager-index_buttons > * {
+	vertical-align: middle;
+	padding-left: 5px;
+	margin:0;
+}
+div.filemanager_navigation > label {
+	position: absolute;
+	left: 50px;
+	right: 422px;
+	padding-top: 3px;
+	font-size: 140%;
+	white-space: nowrap;
+}
+div.filemanager_navigation > label > input {
+	width: 100%;
+}
+#filemanager-index_buttons div.et2_file {
+	width: 130px;
+	margin-top: 2px;
+}
+#filemanager-index_buttons div.et2_file .progress {
+  width:auto;
+  margin:0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: none;
+}
+
+/**
+ * Tile view
+table.egwGridView_grid .tile .file_tile {
+	height: 150px;
+}
+ */
+.egwGridView_grid .tile span.iconOverlayContainer {
+	display: block;
+	max-width: 140px;
+}
+.tile .file_tile img.vfsMimeIcon {
+	height: auto;
+	width: auto;
+	max-height: 48px;
+	display:block;
+	margin: 0 auto;
+}
+.tile .file_tile .et2_label {
+	word-wrap: break-word;
+}
+.tile .file_tile {
+	position: relative;
+}
+.tile .file_tile[data-mime^="image"] .et2_label {
+	display: none;
+}
+.tile .file_tile[data-mime^="image"]:hover .et2_label {
+	display: block;
+	position: absolute;
+	top: 10px;
+	color: white;
+	text-shadow: 2px 2px 8px black;
+	width: 100%;
+}
+.tile .file_tile[data-mime^="image"]:hover .et2_label[id*=comment] {
+	top: 30px;
+}
+#filemanager-index_nm .file_tile[data-mime^="image"] img.vfsMimeIcon {
+  height: auto;
+  max-height: 100px;
+}
+
+/**
+ * Select file dialog
+ */
+.selectPath { font-weight: bold; width: 98% }
+.selectPathContainer { width: 470px; overflow: auto; }
+.selectName input { width: 100%; }
+.selectMime select { width: 100%; }
+.displayNone input, input.displayNone { display: none; }
+.selectFiles div { overflow-y: auto;}
+#filemanager-select_dir {
+	height:400px;
+	overflow-y: scroll;
+	display:inline-block;
+}
+/**
+ * VFS mounts and versioning
+ */
+.filemanager_smallButton {
+	font-size: 90%;
+	margin: 0;
+}
+.filemanager_header {
+	font-size: 120%;
+	font-weight: bold;
+}
+.filemanager_config > * {
+	margin-top: 20px;
+}
+.error{color:red; font-style:italic;}
+.createDir img {padding-right:30px;}
+#filemanager-select_apps {
+	width: 61px;
+	height: 400px;
+	margin-top: 44px;
+	display: inline-block;
+	overflow-y: scroll;
+}

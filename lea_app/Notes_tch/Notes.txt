@@ -1,0 +1,53 @@
+L'application synfony est accessible par 
+
+https://lea.apsie.org/app/app_dev.php/presta/10-463acff2fbc81768ced97932140a0712
+
+et par extension : 
+http://apsie18.test.spirea.fr/app/app_dev.php/presta/10-463acff2fbc81768ced97932140a0712
+http://apsie18.test.spirea.fr/app/app_dev.php/presta/3024-463acff2fbc81768ced97932140a0712
+
+où 
+- 10 correspond au user-id de M. Timsit
+- et 463acff2fbc81768ced97932140a0712 correspond à une clé codée en dur
+
+
+
+
+Code en dur à modifier pour fair fonctionner l'appli... : 
+\egw_apsie_1.8\lea_app\Symfony\src\Lea\PrestaBundle\Controller
+\egw_apsie_1.8\lea_app\Symfony\src\Lea\PrestaBundle\Entity\EgwAccountsRepository.php
+\egw_apsie_1.8\lea_app\Symfony\src\Lea\PrestaBundle\Resources\views\Default\index.html.twig
+
+
+Lien pour télécharger une dossier (Pas de sécurité sur le téléchargement de dossiers)
+http://apsie18.test.spirea.fr/app/app_dev.php/presta/download/oe/8570/1
+https://lea.apsie.org/app/app_dev.php/presta/download/oe/8570/1
+
+
+Phase 1 : 
+- modifier l'écran de création des prestations pour attaquer les tables de Spiclient / Spid et créer un ticket en plus de la prestation
+ - ajouter le champ categorie (comme dans spid.edit) 
+ - modifier le bloc prescripteur : les données viennent de Spiclient (autocompletion sur le nom et code agence) / le contact prescripteur dépend du client sélectionné (liste de choix ou autocompletion) / ajout à la volée d'un contact lié au client sélectionné
+ - ajouter le champ id_contract (repris de spiclient) sur la table dispositif + ajout du champ dans la vue edit d'un dispositif
+
+Fin phase 1 -> création d'un ticket couplée à une prestation ok
+
+Phase 2 : 
+- tester tous pour les données issues de SpiClient/Spid/Addressbook (champs relatifs au prescripteur).
+-- downloads
+-- edition
+\egw_apsie_1.8\lea_app\Symfony\src\Lea\PrestaBundle\Controller\DownloadController.php
+R:\egw_apsie_1.8\lea_app\Symfony\src\Lea\PrestaBundle\Models\Download.php
+
+
+Phase 2 : 
+On prépare la mise en production avec une fonction de transformation des données...
+
+- fonctions de transformation de tous les contacts NON BENEFIACIAIRE vers l'addressbook
+- fonction de transformation des PRESCRIPTEURS de la table egw_organisation en CLIENT (type CLIENTS) de Spiclient
+- ajouter la relation CLIENT/CONTACT à partir du champ  id_organisation
+- ajouter la relation client/prestataire pour les clients APSIE
+
+- les contacts 
+- ajouter une colonne client_id dans la table presta
+- update de la table egw_presta.id_contact_prescripteur pour mettre le nouveau n° issu de l'adressbook + 

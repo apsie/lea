@@ -1,0 +1,1011 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu">Recherche avancée</div>
+<div class="div_menu_gauche">
+<div class="lien_recherche">
+<div><img src="./images/ico/load.gif" class="load" /></div>
+</div>
+<div id="filtre" style="display: block" class="option_recherche">
+<table>
+	<tr>
+		<td>Catégorie</td>
+		<td><select multiple size="10" id="select_categorie">
+			<option value=""></option>
+			<?php for($i=0;$i<count($this->listCategorie_org);$i++)
+			{
+				if($this->listCategorie_org[$i]['cat_id']==235)
+				{
+					$check = "selected='selected'";
+
+				}
+				else {$check="";}
+				echo'<option '.$check.' value="'.$this->listCategorie_org[$i]['cat_id'].'">'.utf8_encode($this->listCategorie_org[$i]['cat_name']).'</option>';
+			}?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Chercher</td>
+		<td><input onKeyPress="if (event.keyCode == 13) getOrganisation();"
+			id="mot_recherche" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Sur</td>
+		<td><select id="select_champ">
+			<option value="">-- Champs organisation --</option>
+		</select></td>
+	</tr>
+</table>
+</div>
+
+<div class="lien_recherche"><a
+	onclick="navigationRecherche('table_org')" href="javascript:void(0);">Champs
+de la table <strong>Organisation</strong></a></div>
+<div id="table_org" class="option_recherche">
+<table>
+	<tr>
+		<td><input id="nom_organisme" value="nom_organisme" checked="checked"
+			type="checkbox" /></td>
+		<td>Nom organisme</td>
+		<td><input checked="checked" value="activite_principale"
+			id="activite_principale" type="checkbox" /></td>
+		<td>Activité principale</td>
+	</tr>
+	<tr>
+		<td><input id="raison_sociale" checked="checked"
+			value="raison_sociale" type="checkbox" /></td>
+		<td>Raison sociale</td>
+		<td><input value="type_adresse" id="type_adresse" type="checkbox" /></td>
+		<td>Type d'adresse</td>
+	</tr>
+	<tr>
+		<td><input id="adresse_ligne_1" value="adresse_ligne_1"
+			type="checkbox" /></td>
+		<td>Adresse</td>
+		<td><input value="adresse_ligne_2" id="adresse_ligne_2"
+			type="checkbox" /></td>
+		<td>Compl. d'adresse 2</td>
+	</tr>
+	<tr>
+		<td><input checked="checked" id="cp_org" value="cp_org"
+			type="checkbox" /></td>
+		<td>Cp</td>
+		<td><input checked="checked" value="ville_org" id="ville_org"
+			type="checkbox" /></td>
+		<td>Ville</td>
+	</tr>
+	<tr>
+		<td><input id="region_org" value="region_org" type="checkbox" /></td>
+		<td>Région</td>
+		<td><input value="pays_org" id="pays_org" type="checkbox" /></td>
+		<td>Pays</td>
+	</tr>
+	<tr>
+		<td><input id="tel" value="tel" type="checkbox" /></td>
+		<td>Tel</td>
+		<td><input value="fax" id="fax" type="checkbox" /></td>
+		<td>Fax</td>
+	</tr>
+	<tr>
+		<td><input id="email" value="email" type="checkbox" /></td>
+		<td>Email</td>
+		<td><input value="site_web" id="site_web" type="checkbox" /></td>
+		<td>Site web</td>
+	</tr>
+	<tr>
+		<td><input value="date_immat" id="date_immat" type="checkbox" /></td>
+		<td>Date d'immatriculation</td>
+		<td><input value="date_debut_activite" id="date_debut_activite"
+			type="checkbox" /></td>
+		<td>Début d'activité</td>
+	</tr>
+	<tr>
+		<td><input value="forme_juridique" id="forme_juridique"
+			type="checkbox" checked="checked" /></td>
+		<td>Forme juridique</td>
+		<td><input value="siret" id="siret" type="checkbox" /></td>
+		<td>Siret</td>
+	</tr>
+	<tr>
+		<td><input value="code_naf" id="code_naf" type="checkbox" /></td>
+		<td>Code Naf</td>
+		<td><input checked="checked" value="secteur_activite"
+			id="secteur_activite" type="checkbox" /></td>
+		<td>Secteur d'activité</td>
+	</tr>
+	<tr>
+		<td><input value="dirigeant" id="dirigeant" type="checkbox" /></td>
+		<td>Dirigeant</td>
+		<td><input value="implantation" id="implantation" type="checkbox" /></td>
+		<td>Implantation</td>
+	</tr>
+	<tr>
+		<td><input value="regime_imposition" id="regime_imposition"
+			type="checkbox" /></td>
+		<td>Régime d'imposition</td>
+		<td><input value="regime_tva" id="regime_tva" type="checkbox" /></td>
+		<td>Régime TVA</td>
+	</tr>
+	<tr>
+		<td><input value="regime_fiscal" id="regime_fiscal" type="checkbox" /></td>
+		<td>Régime fiscal</td>
+		<td><input value="regime_social_dirigeant"
+			id="regime_social_dirigeant" type="checkbox" /></td>
+		<td>Rég.social dirigeant</td>
+	</tr>
+	<tr>
+		<td><input value="statut_org" id="statut_org" type="checkbox"
+			checked="checked" /></td>
+		<td>Statut</td>
+		<td><input value="categorie_org" id="categorie_org" type="checkbox"
+			checked="checked" /></td>
+		<td>Catégorie</td>
+	</tr>
+</table>
+</div>
+<div style="padding-top: 10px; padding-left: 3px">
+<button id="buttonRelancer" style="font-size: 10px">Lancer la recherche</button>
+</div>
+
+</div>
+</div>
+<div class="contenu">
+<div class="univers">Organisation</div>
+<div class="div_menu_droit">
+
+<div class="boutton_contact">
+<button onclick="addContactBox();" style="font-size: 10px">Créer une
+organisation</button>
+</div>
+<div class="page"></div>
+<div class="contenu_flex"></div>
+
+</div>
+</div>
+</div>
+<div style="display: none" id="editContact" title="">
+<div class="verif_box"></div>
+<h4><img alt="Fiche contact" src="./images/ico/contact_box.png">
+Coordonnées de l'organisation</h4>
+<table>
+	<tr>
+		<td>Catégorie</td>
+		<td><select id="categorie_org_form">
+			<option value=""></option>
+			<?php for($i=0;$i<count($this->listCategorie_org);$i++)
+			{
+				echo'<option value="'.$this->listCategorie_org[$i]['cat_id'].'">'.utf8_encode($this->listCategorie_org[$i]['cat_name']).'</option>';
+			}?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Code organisme</td>
+		<td><input id="code_organisme_org" type="text" /></td>
+		<td>Code Naf</td>
+		<td><input name="code_naf_2" id="code_naf_2" type="text" />
+		
+		</td>
+	</tr>
+
+	<tr>
+		<td>Nom de l'organisme</td>
+		<td><input id="id_organisation_org" type="hidden" /><input
+			id="nom_organisme_org" type="text" /></td>
+		<td>Activité principale</td>
+		<td><input type="text" id="activite_principale_org" /></td>
+	</tr>
+	<tr>
+		<td>Raison sociale</td>
+		<td><input id="raison_sociale_org" type="text" /></td>
+		<td>Type d'adresse</td>
+		<td><select id="type_adresse_org">
+		<?php echo $this->option_type_adresse;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Rue</td>
+		<td><input id="rue_org" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Adresse ligne 2</td>
+		<th align="left" colspan="3"><input size="72" id="adresse_ligne_2_org"
+			type="text" /></th>
+	</tr>
+	<tr>
+		<td>Adresse ligne 3</td>
+		<th align="left" colspan="3"><input size="72" id="adresse_ligne_3_org"
+			" type="text" /></th>
+	</tr>
+	<tr>
+		<td>Cp</td>
+		<td><input id="cp_box_org" type="text" /></td>
+		<td>Ville</td>
+		<td><input  id="ville_box_org" type="text" />
+		<div class="suggestionsBox" id="suggestions" style="display: none;">
+		<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Région</td>
+		<td><input id="region_box_org" type="text" /></td>
+		<td>Pays</td>
+		<td><input id="pays_box_org" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Tel</td>
+		<td><input id="tel_org" type="text" /></td>
+		<td>Fax</td>
+		<td><input id="fax_org" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input id="email_org" type="text" /></td>
+		<td>Site web</td>
+		<td><input id="site_web_org" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Date d'immatriculation</td>
+		<td><input id="date_immat_org" type="text" /></td>
+		<td>Début d'activité</td>
+		<td><input id="date_debut_activite_org" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Forme juridique</td>
+		<td><select id="forme_juridique_org">
+		<?php echo $this->option_forme_juridique;?>
+		</select></td>
+		<td>Siret</td>
+		<td><input id="siret_org" type="text" /></td>
+	</tr>
+	<tr>
+		<td>Secteur d'activité</td>
+		<th align="left" colspan="3"><select id="secteur_activite_org">
+		<?php echo $this->option_secteur_activite;?>
+		</select></th>
+	</tr>
+	<tr>
+		<td>Dirigeant</td>
+		<td><select id="dirigeant_org">
+			<option></option>
+			<option value="Le beneficiaire">Le beneficiaire</option>
+			<option value="L'Associe">L'Associe</option>
+		</select></td>
+		<td>Implantation</td>
+		<td><select id="implantation_org">
+		<?php echo $this->option_implantation;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Régime Imposition</td>
+		<td><select id="regime_imposition_org">
+		<?php echo $this->option_regime_imposition;?>
+		</select></td>
+		<td>Régime TVA</td>
+		<td><select id="regime_tva_org">
+		<?php echo $this->option_regime_tva;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Régime Fiscal</td>
+		<td><select id="regime_fiscal_org">
+		<?php echo $this->option_regime_fiscal;?>
+		</select></td>
+		<td>Régime Social Dirigeant</td>
+		<td><select id="regime_social_dirigeant_org">
+		<?php echo $this->option_regime_social_dirigeant;?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Statut</td>
+		<td><select id="statut_org_2">
+			<option></option>
+			<option value="En cours" >En cours</option>
+			<option value="Cree" >Cree</option>
+			<option value="Annulee" >Annulee</option>
+		</select></td>
+	</tr>
+</table>
+<br />
+<br />
+<center>
+<button onclick="saveContact()">Enregistrer</button>
+</center>
+</div>
+<div style="display: none" id="editParametre" title="">
+<table>
+	<tr>
+		<td>Libellé du paramètre</td>
+		<td><input id="idParametre" type="hidden" value="" /><input
+			type="text" id="libelleParametre" value="" /></td>
+		<td></td>
+		<td>
+		<button onclick="updateParametre()">Enregistrer</button>
+		</td>
+	</tr>
+</table>
+</div>
+<div style="display: none" id="saveParametre"
+	title="Sauvegarde des paramètres">
+<table>
+	<tr>
+		<td>Sauvegardes existantes</td>
+		<td><select id="selectParam">
+			<option></option>
+			<?php for($i=0;$i<count($this->param);$i++)
+			{
+				echo'<option value="'.$this->param[$i]['id_parametre'].'">'.utf8_encode($this->param[$i]['libelle_parametre']).'</option>';
+			}?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>ou</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Nouvelle sauvegarde</td>
+		<td><input id="inputParam" type="text" /></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+		<button onclick="saveParametre2()">Enregistrer</button>
+		</td>
+	</tr>
+</table>
+<div style="color: green; padding: 5px;" class="retour_param"></div>
+</div>
+
+
+
+<script type="text/javascript">
+
+//initcat();
+
+
+var arrayOrganisation = new Array();
+var config = new Array();
+var parametre = new Array('contact');
+parametre['contact'] = new Array('id','libelle','largeur','triable');
+parametre['contact']['id'] = new Array(
+'categorie_org','nom_organisme','activite_principale','raison_sociale','type_adresse','adresse_ligne_1','adresse_ligne_2','cp','ville','region','pays','tel','fax','email','site_web',
+'date_immat','date_debut_activite','forme_juridique','siret','code_naf','secteur_activite','dirigeant','implantation','regime_imposition','regime_tva','regime_fiscal','regime_social_dirigeant','statut_org');
+parametre['contact']['libelle'] = new Array(
+'Catégorie','Nom organisme','Activité principale','Raison sociale','Type d\'adresse','Adresse','Complément d\'adresse','Cp','Ville','Région','Pays','Tel','Fax','Email','Site Web',
+'Date d\'immatriculation','Début d\'activité','Forme juridique','Siret','Code Naf','Secteur d\'activité','Dirigeant','Implantation','Régime d\'imposition','Régime TVA','Régime Fiscal','Rég.social dirigeant','Statut');
+parametre['contact']['largeur'] = new Array(
+'100','150','150','150','100','100','100','50','150','50','100',
+'100','100','50','100','50','100','100','100','150','150','150','150','100','100');
+/*parametre['contact']['triable'] = new Array(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,
+		true,true,true,true,true,true,true,true,true,true,
+		true,true,true,true,true,true,true,true,true,true,true,true,false,false,false);*/
+
+
+var descriptif =  new Array('id','libelle');
+descriptif['id'] = new Array();
+descriptif['libelle'] = new Array();
+descriptif['largeur'] = new Array();
+//descriptif['triable'] = new Array();
+ 
+$j('#buttonRelancer').click(function() {
+	  getOrganisation();
+	});
+
+function addContactBox()
+{
+	$j('.verif_box').html("");
+	$j( "#editContact" ).attr("title","Fiche contact : Créer un contact");
+	$j( "#editContact" ).dialog({height:700,width:700});
+
+	
+	
+}
+function editParametre(idParam,libelle)
+{
+	
+	$j( "#editParametre" ).attr("title","Paramètre : Modification");
+	$j( "#libelleParametre" ).val(libelle);
+	$j( "#idParametre" ).val(idParam);
+	$j( "#editParametre" ).dialog({height:90,width:400});
+}
+function updateParametre()
+{$j.ajax({
+	url : "./index.php?page=ajaxContact&noTemplate=1",
+	dataType : "json",
+	data : {
+		
+		libelleParam : $j( "#libelleParametre" ).val(),
+		idParam : $j( "#idParametre" ).val(),
+		
+		action : "updateParametre"
+	    
+	},
+	success: function(data){
+		$j('#idParam_'+$j( "#idParametre" ).val()+'').html($j( "#libelleParametre" ).val());
+		$j( "#editParametre" ).dialog( "close" );
+		}
+});
+	
+}
+function getPreference(idParam)
+{$j.ajax({
+	url : "./index.php?page=ajaxOrganisation&noTemplate=1",
+	dataType : "json",
+	data : {
+		
+		
+		idParam : idParam,
+		
+		action : "getPreference"
+	    
+	},
+	success: function(data){
+	window.location.href="index.php?page=Organisation";
+		}
+});
+	
+}
+function editOrganisationBox(id_org)
+{
+	$j('#id_organisation_org').val("");
+	$j('#categorie_org_form').val("");
+	$j('#code_organisme_org').val("");
+	$j('#nom_organisme_org').val("");
+	$j('#activite_principale_org').val("");
+	$j('#code_naf_2').val("");
+	$j('#raison_sociale_org').val("");
+	$j('#type_adresse_org').val("");
+	$j('#rue_org').val("");
+	$j('#adresse_ligne_2_org').val("");
+	$j('#adresse_ligne_3_org').val("");
+	$j('#cp_box_org').val("");
+	$j('#ville_box_org').val("");
+	$j('#region_box_org').val("");
+	$j('#pays_box_org').val("");
+	$j('#code_organisme_org').val("");
+	$j('#tel_org').val("");
+	$j('#fax_org').val("");
+	$j('#email_org').val("");
+	$j('#site_web_org').val("");
+	$j('#date_immat_org').val("");
+	$j('#date_debut_activite_org').val("");
+	$j('#forme_juridique_org').val("");
+	$j('#siret_org').val("");
+	$j('#secteur_activite_org').val("");
+	$j('#dirigeant_org').val("");
+	$j('#implantation_org').val("");
+	$j('#regime_imposition_org').val("");
+	$j('#regime_tva_org').val("");
+	$j('#regime_fiscal_org').val("");
+	$j('#regime_social_dirigeant_org').val("");
+	$j('#statut_org_2').val("");
+
+
+	//alert(arrayOrganisation[id_ben]['cat_id']);
+	$j('.verif_box').html("");
+	$j( "#editContact" ).attr("title","Fiche organisation : Modification de l'organisation");
+	$j( "#editContact" ).dialog({height:700,width:700});
+	$j('#id_organisation_org').val(id_org);
+	
+	var cat_id = new Array();
+	//cat_id = arrayOrganisation[id_ben]['cat_id'].split(',');
+	//alert(cat_id[0]);
+	
+	console.debug(arrayOrganisation[id_org]);
+	
+	$j('#id_organisation').val(id_org);
+	$j('#categorie_org_form').val(arrayOrganisation[id_org]['cat_id']);
+	$j('#nom_organisme_org').val(arrayOrganisation[id_org]['nom_organisme']);
+	$j('#code_organisme_org').val(arrayOrganisation[id_org]['code_org']);
+	$j('#activite_principale_org').val(arrayOrganisation[id_org]['activite_principale']);
+	$j('#code_naf_2').val(arrayOrganisation[id_org]['code_naf']);
+	$j('#raison_sociale_org').val(arrayOrganisation[id_org]['raison_sociale']);
+	$j('#type_adresse_org').val(arrayOrganisation[id_org]['type_adresse']);
+	$j('#rue_org').val(arrayOrganisation[id_org]['adresse_ligne_1']);
+	$j('#adresse_ligne_2_org').val(arrayOrganisation[id_org]['adresse_ligne_2']);
+	$j('#adresse_ligne_3_org').val(arrayOrganisation[id_org]['adresse_ligne_3']);
+	$j('#cp_box_org').val(arrayOrganisation[id_org]['cp']);
+	$j('#ville_box_org').val(arrayOrganisation[id_org]['ville']);
+	$j('#region_box_org').val(arrayOrganisation[id_org]['region']);
+	$j('#pays_box_org').val(arrayOrganisation[id_org]['pays']);
+	$j('#code_organisme_org').val(arrayOrganisation[id_org]['code_org']);
+	$j('#tel_org').val(arrayOrganisation[id_org]['tel']);
+	$j('#fax_org').val(arrayOrganisation[id_org]['fax']);
+	$j('#email_org').val(arrayOrganisation[id_org]['email']);
+	$j('#site_web_org').val(arrayOrganisation[id_org]['site_web']);
+	$j('#date_immat_org').val(arrayOrganisation[id_org]['date_immat']);
+	$j('#date_debut_activite_org').val(arrayOrganisation[id_org]['date_debut_activite']);
+	$j('#forme_juridique_org').val(arrayOrganisation[id_org]['forme_juridique']);
+	$j('#siret_org').val(arrayOrganisation[id_org]['siret']);
+	$j('#secteur_activite_org').val(arrayOrganisation[id_org]['secteur_activite']);
+	$j('#dirigeant_org').val(arrayOrganisation[id_org]['dirigeant']);
+	$j('#implantation_org').val(arrayOrganisation[id_org]['implantation']);
+	$j('#regime_imposition_org').val(arrayOrganisation[id_org]['regime_imposition']);
+	$j('#regime_tva_org').val(arrayOrganisation[id_org]['regime_tva']);
+	$j('#regime_fiscal_org').val(arrayOrganisation[id_org]['regime_fiscal']);
+	$j('#regime_social_dirigeant_org').val(arrayOrganisation[id_org]['regime_social_dirigeant']);
+	$j('#statut_org_2').val(arrayOrganisation[id_org]['statut_org_2']);
+	
+	
+}
+function saveContact()
+{	var id_organisation = $j('#id_organisation_org').val();
+	var categorie = $j('#categorie_org_form').val();
+	var nom_organisme = $j('#nom_organisme_org').val();
+	var activite_principale = $j('#activite_principale_org').val();
+	var code_naf = $j('#code_naf_2').val();
+	var raison_sociale = $j('#raison_sociale_org').val();
+	var type_adresse = $j('#type_adresse_org').val();
+	var rue = $j('#rue_org').val();
+	var adresse_ligne_2 = $j('#adresse_ligne_2_org').val();
+	var adresse_ligne_3 = $j('#adresse_ligne_3_org').val();
+	var cp = $j('#cp_box_org').val();
+	var ville = $j('#ville_box_org').val();
+	var region = $j('#region_box_org').val();
+	var pays = $j('#pays_box_org').val();
+	var tel = $j('#tel_org').val();
+	var fax = $j('#fax_org').val();
+	var email = $j('#email_org').val();
+	var site_web = $j('#site_web_org').val();
+	var date_immat = $j('#date_immat_org').val();
+	var date_debut_activite = $j('#date_debut_activite_org').val();
+	var forme_juridique = $j('#forme_juridique_org').val();
+	var siret = $j('#siret_org').val();
+	var secteur_activite = $j('#secteur_activite_org').val();
+	var dirigeant = $j('#dirigeant_org').val();
+	var implantation = $j('#implantation_org').val();
+	var regime_imposition = $j('#regime_imposition_org').val();
+	var regime_tva = $j('#regime_tva_org').val();
+	var regime_fiscal = $j('#regime_fiscal_org').val();
+	var regime_social_dirigeant = $j('#regime_social_dirigeant_org').val();
+	var statut = $j('#statut_org_2').val();
+	var code_organisme_org = $j('#code_organisme_org').val();
+
+	if(id_organisation!="")
+	{
+		$j.ajax({
+			url : "./index.php?page=ajaxOrganisation&noTemplate=1",
+			dataType : "json",
+			data : {
+				id_organisation : id_organisation,
+				categorie :categorie,
+				nom_organisme :nom_organisme,
+				activite_principale :activite_principale,
+				code_naf :code_naf,
+				raison_sociale:raison_sociale,
+				type_adresse:type_adresse,
+				rue :rue,
+				adresse_ligne_2 :adresse_ligne_2,
+				adresse_ligne_3 :adresse_ligne_3,
+				cp:cp,
+				ville:ville,
+				region :region,
+				pays:pays,
+				tel :tel,
+				fax:fax,
+				email:email,
+				site_web :site_web,
+				date_immat :date_immat,
+				date_debut_activite :date_debut_activite,
+				forme_juridique:forme_juridique,
+				siret :siret,
+				secteur_activite :secteur_activite ,
+				dirigeant :dirigeant,
+				implantation:implantation,
+				regime_imposition :regime_imposition,
+			    regime_tva :regime_tva,
+				regime_fiscal :regime_fiscal,
+				regime_social_dirigeant:regime_social_dirigeant,
+				statut :statut,
+				code_organisme : code_organisme_org,
+				action : "updateOrganisation"
+			    
+			},
+			success: function(data){
+
+				
+
+
+				$j('.verif_box').html("<img src='./images/ico/ok.png' /> L'organisation a été modifié avec succès.");
+				getOrganisation();
+				}
+		});
+		}
+	else
+	{
+	$j.ajax({
+		url : "./index.php?page=ajaxOrganisation&noTemplate=1",
+		dataType : "json",
+		data : {
+		
+			categorie :categorie,
+			nom_organisme :nom_organisme,
+			activite_principale :activite_principale,
+			code_naf :code_naf,
+			raison_sociale:raison_sociale,
+			type_adresse:type_adresse,
+			rue :rue,
+			adresse_ligne_2 :adresse_ligne_2,
+			adresse_ligne_3 :adresse_ligne_3,
+			cp:cp,
+			ville:ville,
+			region :region,
+			pays:pays,
+			tel :tel,
+			fax:fax,
+			email:email,
+			site_web :site_web,
+			date_immat :date_immat,
+			date_debut_activite :date_debut_activite,
+			forme_juridique:forme_juridique,
+			siret :siret,
+			secteur_activite :secteur_activite ,
+			dirigeant :dirigeant,
+			implantation:implantation,
+			regime_imposition :regime_imposition,
+		    regime_tva :regime_tva,
+			regime_fiscal :regime_fiscal,
+			regime_social_dirigeant:regime_social_dirigeant,
+			statut :statut,
+			code_organisme : code_organisme_org,
+
+			action : "saveOrganisation"
+		    
+		},
+		success: function(data){
+			$j('#id_organisation_org').val("");
+			$j('#categorie_org_form').val("");
+			$j('#code_organisme_org').val("");
+			$j('#nom_organisme_org').val("");
+			$j('#activite_principale_org').val("");
+			$j('#code_naf_2').val("");
+			$j('#raison_sociale_org').val("");
+			$j('#type_adresse_org').val("");
+			$j('#rue_org').val("");
+			$j('#adresse_ligne_2_org').val("");
+			$j('#adresse_ligne_3_org').val("");
+			$j('#cp_box_org').val("");
+			$j('#ville_box_org').val("");
+			$j('#region_box_org').val("");
+			$j('#pays_box_org').val("");
+			$j('#code_organisme_org').val("");
+			$j('#tel_org').val("");
+			$j('#fax_org').val("");
+			$j('#email_org').val("");
+			$j('#site_web_org').val("");
+			$j('#date_immat_org').val("");
+			$j('#date_debut_activite_org').val("");
+			$j('#forme_juridique_org').val("");
+			$j('#siret_org').val("");
+			$j('#secteur_activite_org').val("");
+			$j('#dirigeant_org').val("");
+			$j('#implantation_org').val("");
+			$j('#regime_imposition_org').val("");
+			$j('#regime_tva_org').val("");
+			$j('#regime_fiscal_org').val("");
+			$j('#regime_social_dirigeant_org').val("");
+			$j('#statut_org_2').val("");
+
+
+			$j('.verif_box').html("<img src='./images/ico/ok.png' /> L'organisation a été ajouté avec succès.");
+			
+			}
+	});
+	}
+}
+
+function verifFiltre()
+{
+	if($j('#select_categorie').val()!='' || $j('#select_champ').val()!='' || $j('#mot_recherche').val()!='')
+	{
+	return true;
+	}
+	else
+	{
+		if(confirm('Il est conseillé d\'affiner votre recherche afin d\'optimiser le temps de réponse, souhaitez vous continuer ?'))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+}
+
+
+
+function navigationRecherche(idTable)
+{
+	
+	if($j('#'+idTable).css('display') == "block" )
+	{
+		$j('#'+idTable).hide('blind');
+		
+	}
+	else
+	{
+		$j('#'+idTable).show('blind');
+	}
+}
+
+
+function getOrganisation()
+{
+	
+	if(verifFiltre()==true)
+		{
+		$j('.contenu_flex').html("");
+	var pager="<div class='pager' id='pager'>	<form><table><tr><td width='100px'><a  href='./index.php?page=xls&noHeader=1&libelle_xls=organisation'><img src='./images/ico/excel.png' /> Export Excel</a></td><td> - </td><td>";
+	pager +='<img src="./images/ico/first.png" class="first"/><img src="./images/ico/prev.png" class="prev"/> Page : <input type="text" size="4" class="pagedisplay"/> ';
+	pager +='<img src="./images/ico/next.png" class="next"/>';
+	pager +='<img src="./images/ico/last.png" class="last"/>';
+	pager +=' - <span class="nb_resultats"></span> résultats - Afficher <select class="pagesize"><option selected="selected"  value="30">30</option><option  value="60">60</option></select> lignes</form></td></tr></table></div>';
+	var champ = $j('#select_champ').val();
+	$j('.load').show();
+	$j('.page').html(pager);
+	
+	
+	verifCaseACocher();
+
+	
+$j.ajax({
+		url : "./index.php?page=ajaxOrganisation&noTemplate=1",
+		dataType : "json",
+		data : {
+		cat_id : $j('#select_categorie').val(),
+		mot : $j('#mot_recherche').val(),
+		champ : champ,
+		descriptif_id : descriptif['id'],
+        descriptif_libelle : descriptif['libelle'],
+		action : "getOrganisation"
+		    
+		},
+		success: function(data){
+
+var html='<table id="myTable" cellspacing="1" class="tablesorter"><thead><tr> ';
+for(i=0;i<descriptif['id'].length;i++)
+{
+	html +='<th >'+descriptif['libelle'][i]+'</th>';
+}
+html +='<th><img src="./images/ico/ico_contact.png" /></th><th></th></thead></tr><tbody>';
+
+			$j.each(data.DATA,function(i, obj){
+				
+				html +='<tr>';
+				for(i=0;i<descriptif['id'].length;i++)
+				{
+					if(obj[''+descriptif['id'][i]+'']==null)
+					{obj[''+descriptif['id'][i]+'']="";}
+					if(descriptif['id'][i]=="nom_complet")
+					{
+					html +='<td><a href="javascript:void(0);">'+obj[''+descriptif['id'][i]+'']+'</a></td>';
+					}
+					else
+					{
+					html +='<td>'+obj[''+descriptif['id'][i]+'']+'</td>';
+					}
+				}
+
+				arrayOrganisation[obj['id_organisation']] = new Array();
+				arrayOrganisation[obj['id_organisation']]['id_organisation'] = obj['id_organisation'];
+			    arrayOrganisation[obj['id_organisation']]['cat_id'] = obj['cat_id'];
+			    arrayOrganisation[obj['id_organisation']]['code_org'] = obj['code_org'];
+				arrayOrganisation[obj['id_organisation']]['nom_organisme'] = obj['nom_organisme'];
+				arrayOrganisation[obj['id_organisation']]['activite_principale'] = obj['activite_principale'];
+				arrayOrganisation[obj['id_organisation']]['code_naf'] = obj['code_naf'];
+				arrayOrganisation[obj['id_organisation']]['raison_sociale'] = obj['raison_sociale'];
+				arrayOrganisation[obj['id_organisation']]['type_adresse'] = obj['type_adresse'];
+				arrayOrganisation[obj['id_organisation']]['adresse_ligne_1'] = obj['adresse_ligne_1'];
+				arrayOrganisation[obj['id_organisation']]['adresse_ligne_2'] = obj['adresse_ligne_2'];
+				arrayOrganisation[obj['id_organisation']]['adresse_ligne_3'] = obj['adresse_ligne_3'];
+				arrayOrganisation[obj['id_organisation']]['cp'] = obj['cp'];
+				arrayOrganisation[obj['id_organisation']]['ville'] = obj['ville'];
+				arrayOrganisation[obj['id_organisation']]['region'] = obj['region'];
+				arrayOrganisation[obj['id_organisation']]['pays'] = obj['pays'];
+				arrayOrganisation[obj['id_organisation']]['tel'] = obj['tel'];
+				arrayOrganisation[obj['id_organisation']]['email'] = obj['email'];
+				arrayOrganisation[obj['id_organisation']]['fax'] = obj['fax'];
+				arrayOrganisation[obj['id_organisation']]['site_web'] = obj['site_web'];
+				arrayOrganisation[obj['id_organisation']]['date_immat'] = obj['date_immat'];
+				arrayOrganisation[obj['id_organisation']]['date_debut_activite'] = obj['date_debut_activite'];
+				arrayOrganisation[obj['id_organisation']]['forme_juridique'] = obj['forme_juridique'];
+				arrayOrganisation[obj['id_organisation']]['siret'] = obj['siret'];
+				arrayOrganisation[obj['id_organisation']]['secteur_activite'] = obj['secteur_activite'];
+				arrayOrganisation[obj['id_organisation']]['dirigeant'] = obj['dirigeant'];
+				arrayOrganisation[obj['id_organisation']]['implantation'] = obj['implantation'];
+				arrayOrganisation[obj['id_organisation']]['regime_imposition'] = obj['regime_imposition'];
+				arrayOrganisation[obj['id_organisation']]['regime_tva'] = obj['regime_tva'];
+				arrayOrganisation[obj['id_organisation']]['regime_fiscal'] = obj['regime_fiscal'];
+				arrayOrganisation[obj['id_organisation']]['regime_social_dirigeant'] = obj['regime_social_dirigeant'];
+				arrayOrganisation[obj['id_organisation']]['statut_org_2'] = obj['statut_org'];
+				
+
+				
+				html +='<td align="center"><a onclick="Organisation.getContactOrganisation('+obj.id_organisation+');"  href="javascript:void(0);" >'+obj.NBCONTACT+'</a></td>';
+				html +='<td><img style="cursor:pointer" onclick="editOrganisationBox('+obj['id_organisation']+');"  src="./images/ico/edit.png" /></td></tr>';
+			});
+
+			html +="<tbody></table>";
+
+if(data.TOTAL!=0)
+{
+
+			$j('.contenu_flex').html(html);
+			$j("#myTable").tablesorter({ widgets: ['zebra'] })
+						 .tablesorterPager({container: $j("#pager"),positionFixed: false });
+}
+$j('.load').hide();
+			$j('.nb_resultats').html(data.TOTAL);
+
+			if(champ!='')
+			{
+				
+				var option='';
+			}
+			if(champ=='')
+			{
+				var option='<option value="">Champs organisation</option>';
+			}
+			$j.each(data.champs,function(i, obj){
+				option +='<option value="'+data.champs[i]+'">'+data.libelle[i]+'</option>';
+			});
+			if(champ!='')
+			{
+				
+				option +='<option value="">Champs organisation</option>';
+			}
+			$j('#select_champ').html(option);
+			$j('#select_champ').val(champ);
+			
+			$j('.recherche').show();
+}
+	});	
+
+
+		
+
+
+
+//$j('.pager').show();
+
+
+
+		}
+	
+
+}
+function saveParametre()
+{
+
+
+
+	$j( "#saveParametre" ).dialog({height:200,width:400});
+/*	verifCaseACocher();
+	$j.ajax({
+		url : "./index.php?page=ajaxContact&noTemplate=1",
+		dataType : "json",
+		data : {
+		descriptif_id : descriptif['id'],
+		action : "saveParametre"
+		    
+		},
+		success: function(data){
+		}});
+	
+	*/
+}
+function saveParametre2()
+{
+
+
+
+	
+	verifCaseACocher();
+
+	if($j("#selectParam").val()!="")
+	{
+		var idParam = $j("#selectParam").val();
+		var action = "saveParametre";
+	}
+	else
+	{	var idParam = "";
+		var libelleParametre = $j("#inputParam").val();
+		var action = "createParametre";}
+	$j.ajax({
+		url : "./index.php?page=ajaxContact&noTemplate=1",
+		dataType : "json",
+		data : {
+		descriptif_id : descriptif['id'],
+		idParam : idParam,
+		cat_id : $j('#select_categorie').val(),
+		libelleParametre : libelleParametre,
+		action : action
+		    
+		},
+		success: function(data){
+			$j('.retour_param').html(data);
+		}});
+	
+	setTimeout('$j( "#saveParametre" ).dialog("close")',2000);
+	setTimeout('window.location.href="index.php?page=Contact"',2000);
+}
+function verifCaseACocher()
+{
+	descriptif =  new Array('id','libelle');
+	descriptif['id'] = new Array();
+	descriptif['libelle'] = new Array();
+	descriptif['largeur'] = new Array();
+	descriptif['triable'] = new Array();
+	// GESTION DES CASES A COCHEES
+	
+	for(i=0;i<parametre['contact']['id'].length;i++)
+	{
+	if($j('#'+parametre['contact']['id'][i]+'').is(':checked')==true)
+		{
+		  descriptif['id'][descriptif['id'].length]=parametre['contact']['id'][i];descriptif['libelle'][descriptif['libelle'].length]=parametre['contact']['libelle'][i];descriptif['largeur'][descriptif['largeur'].length]=parametre['contact']['largeur'][i];
+		}
+	}
+
+}
+
+function in_array (needle, haystack, argStrict) {
+    // http://kevin.vanzonneveld.net
+    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: vlado houba
+    // +   input by: Billy
+    // +   bugfixed by: Brett Zamir (http://brett-zamir.me)
+    // *     example 1: in_array('van', ['Kevin', 'van', 'Zonneveld']);
+    // *     returns 1: true
+    // *     example 2: in_array('vlado', {0: 'Kevin', vlado: 'van', 1: 'Zonneveld'});
+    // *     returns 2: false
+    // *     example 3: in_array(1, ['1', '2', '3']);
+    // *     returns 3: true
+    // *     example 3: in_array(1, ['1', '2', '3'], false);
+    // *     returns 3: true
+    // *     example 4: in_array(1, ['1', '2', '3'], true);
+    // *     returns 4: false
+    var key = '',
+        strict = !! argStrict;
+
+    if (strict) {
+        for (key in haystack) {
+            if (haystack[key] === needle) {
+                return true;
+            }
+        }
+    } else {
+        for (key in haystack) {
+            if (haystack[key] == needle) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+function initcat()
+{	
+	var data = eval( <?php echo json_encode($this->listCategorie); ?>);
+	var match = eval( <?php echo json_encode(explode(',',$this->pref['id_categorie'])); ?>);
+	var html="";
+	$j.each(data,function(i, obj){
+		var check="";
+		$j.each(match,function(i, obj2){
+			
+			if(obj2==obj.cat_id)
+			{
+				check="selected='selected'";
+			}
+			
+		});
+ html += "<option  "+check+" value='"+obj.cat_id+"'>"+obj.cat_name+"</option>";
+
+	});
+	//console.debug(match);
+	$j('#select_categorie').html(html);
+
+	
+}
+getOrganisation();
+</script>

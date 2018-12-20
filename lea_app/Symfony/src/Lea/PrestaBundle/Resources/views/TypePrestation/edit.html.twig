@@ -1,0 +1,19 @@
+<form name="typeprestation_edit" action="./typeprestation/edit/{{ typePrestation.id}}" class="formulaire" >
+		<fieldset>
+		<legend> Type de prestation </legend>
+		<table>
+			
+			<tr>
+				<td>Type de prestation :</td><td>{{ form_widget(formTypePrestation.libelle) }}</td>
+			</tr>
+			
+			<tr style="height : 50px" >
+				<td></td><td><input type="submit" value="Enregistrer" /></td>
+			</tr>
+		</table>
+</form>
+<script>
+
+$('form[name="typeprestation_edit"]').submitForm('.div_droite','Type de prestation','typeprestation');
+
+</script>

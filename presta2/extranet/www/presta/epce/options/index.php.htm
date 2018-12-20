@@ -1,0 +1,605 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"><head>
+
+
+	
+		<title>eGroupWare [Calendrier - Recherche de disponibilité]</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="eGroupWare">
+		<meta name="description" content="eGroupware">
+		<meta name="keywords" content="eGroupWare">
+		<meta name="copyright" content="eGroupWare http://www.egroupware.org (c) 2006">
+		<meta name="language" content="fr">
+		<meta name="author" content="eGroupWare http://www.egroupware.org">
+		<meta name="robots" content="none">
+		<link rel="icon" href="http://127.0.0.1/lea2/phpgwapi/templates/idots/images/favicon.ico" type="image/x-ico">
+		<link rel="shortcut icon" href="http://127.0.0.1/lea2/phpgwapi/templates/idots/images/favicon.ico">
+		<link href="index.php_fichiers/idots.css" type="text/css" rel="StyleSheet">
+		<link href="index.php_fichiers/print.css" type="text/css" media="print" rel="StyleSheet">
+		<script src="index.php_fichiers/slidereffects.js" type="text/javascript">
+		</script>
+		
+		<!-- This solves the Internet Explorer PNG-transparency bug, but only for IE 5.5 and higher --> 
+		<!--[if gte IE 5.5000]>
+		<script src="/lea2/phpgwapi/templates/idots/js/pngfix.js" type="text/javascript">
+		</script>
+		<![endif]-->
+		<style type="text/css">
+
+	.row_on { color: #000000; background-color: #F1F1F1; }
+	.row_off { color: #000000; background-color: #ffffff; }
+	.th { color: #000000; background-color: #D3DCE3; }
+	.narrow_column { width: 1%; white-space: nowrap; }
+	@media screen {	.onlyPrint { display: none; } }
+	@media print {	.noPrint { display: none; } }
+	
+
+#dhtmltooltip
+{
+	position: absolute;
+	width: 150px;
+	border: 1px solid #ff7a0a;
+	padding: 2px;
+    background-color:#f9f400;
+	visibility: hidden;
+	z-index: 100;
+}
+
+</style>
+<link href="index.php_fichiers/app.css" type="text/css" rel="StyleSheet">
+
+		<!--JS Imports from phpGW javascript class -->
+<script type="text/javascript" src="index.php_fichiers/jsapi.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="index.php_fichiers/calendar-blue.css" title="blue">
+<script type="text/javascript" src="index.php_fichiers/calendar.js"></script>
+<script type="text/javascript" src="index.php_fichiers/jscalendar-setup.php"></script>
+<script>
+window.focus();
+</script>
+<script type="text/javascript" src="index.php_fichiers/etemplate.js"></script>
+
+
+	<!-- we don't need body tags anymore, do we?) we do!!! onload!! LK -->
+	</head><body onload="set_style_by_class('table','end_hide','visibility','hidden');" vlink="blue" alink="red" bgcolor="#ffffff" link="blue"><div id="divMain">
+
+
+<!-- BEGIN eTemplate etemplate.popup.manual -->
+
+<style type="text/css">
+<!--
+.popupManual { position: absolute; right: 27px; top: 24px; }
+-->
+</style>
+
+<div class="popupManual">
+<a href="" onclick="window.open('/lea2/index.php?menuaction=manual.uimanual.view&amp;referer=http%3A%2F%2F127.0.0.1%2Flea2%2Findex.php%3Fmenuaction%3Dcalendar.uiforms.freetimesearch%26exec%5Bstart%5D%5Bstr%5D%3D2010%2F02%2F22%26exec%5Bstart%5D%5BH%5D%3D12%26exec%5Bstart%5D%5Bi%5D%3D0%26exec%5Bend%5D%5Bstr%5D%3D%26exec%5Bend%5D%5BH%5D%3D0%26exec%5Bend%5D%5Bi%5D%3D0%26exec%5Bduration%5D%3D3600%26exec%5Bparticipants%5D%5Baccounts%5D%5B%5D%3D9%26exec%5Brecur_type%5D%3D0%26etemplate_exec_id%3Dcalendar%3A126656660029','manual','width=800,height=600,scrollbars=yes,resizable=yes'); return false;return submitit(eTemplate,'');; return false;" onmouseover="self.status='Open the online help.*'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Open the online help.*'; return true;" onblur="self.status=''; return true;"><img src="index.php_fichiers/manual-small.png" title="Manuel / Aide" border="0"></a></div>
+<!-- END eTemplate etemplate.popup.manual -->
+
+<form method="POST" name="eTemplate" action="/lea2/etemplate/process_exec.php?menuaction=calendar.uiforms.freetimesearch">
+<input name="etemplate_exec_id" value="calendar:126656660597" type="hidden">
+<script language="javascript">
+document.write('<input type="hidden" name="java_script" value="1" />');
+if (document.getElementById) {
+	document.write('<input type="hidden" name="dom_enabled" value="1" />');
+}
+</script><input name="java_script" value="1" type="hidden"><input name="dom_enabled" value="1" type="hidden">
+<input name="submit_button" value="" type="hidden">
+<input name="innerWidth" value="" type="hidden">
+
+
+<!-- BEGIN eTemplate calendar.freetimesearch -->
+
+<style type="text/css">
+<!--
+.size120b { text-size: 120%; font-weight: bold; }
+.redItalic { color: red; font-style: italic; }
+.end_hide { visibility: hidden; }
+-->
+</style>
+
+
+
+<!-- BEGIN grid  -->
+<table>
+	<tbody><tr>
+		<td class="size120b" align="left">Recherche de disponibilité </td>
+		<td class="redItalic" align="left">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="left">Date/heure de début </td>
+		<td align="left">
+
+<!-- BEGIN eTemplate *** generated fields for date -->
+
+
+
+
+
+<!-- BEGIN grid  -->
+<table cellspacing="0">
+	<tbody><tr>
+		<td align="left"><input id="exec[start][str]" name="exec[start][str]" size="10" value="2010/02/22" onfocus="self.status='Date/heure de début de recherche'; return true;" onblur="self.status=''; return true;" type="text">
+<script type="text/javascript">
+	document.writeln('<img id="exec[start][str]-trigger" src="/lea2/phpgwapi/templates/default/images/datepopup.gif" title="Sélectionner la date" style="cursor:pointer; cursor:hand;"/>');
+	Calendar.setup(
+	{
+		inputField  : "exec[start][str]",
+		button      : "exec[start][str]-trigger"
+	}
+	);
+</script><img id="exec[start][str]-trigger" src="index.php_fichiers/datepopup.gif" title="Sélectionner la date" style="cursor: pointer;">
+
+</td>
+		<td align="left"> &nbsp; &nbsp; </td>
+		<td align="left"><select name="exec[start][H]" id="exec[start][H]" onfocus="self.status='Heure: Date/heure de début de recherche*'; return true;" onblur="self.status=''; return true;">
+<option value="0">00</option>
+<option value="1">01</option>
+<option value="2">02</option>
+<option value="3">03</option>
+<option value="4">04</option>
+<option value="5">05</option>
+<option value="6">06</option>
+<option value="7">07</option>
+<option value="8">08</option>
+<option value="9">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12" selected="selected">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+</select>
+</td>
+		<td align="left"><label for="exec[start][i]">:</label> <select name="exec[start][i]" id="exec[start][i]" onfocus="self.status='Minute: Date/heure de début de recherche*'; return true;" onblur="self.status=''; return true;">
+<option selected="selected" value="0">00</option>
+<option value="5">05</option>
+<option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="35">35</option>
+<option value="40">40</option>
+<option value="45">45</option>
+<option value="50">50</option>
+<option value="55">55</option>
+</select>
+</td>
+	</tr>
+</tbody></table>
+<!-- END grid  -->
+
+<!-- END eTemplate *** generated fields for date -->
+
+</td>
+	</tr>
+	<tr>
+		<td align="left">Duration* </td>
+		<td align="left">
+
+<!-- BEGIN hbox -->
+
+<table>
+	<tbody><tr>
+		<td><select name="exec[duration]" id="exec[duration]" onfocus="self.status='Durée de la réunion'; return true;" onblur="self.status=''; return true;" onchange="set_style_by_class('table','end_hide','visibility',this.value == '' ? 'visible' : 'hidden');">
+<option value="">Utiliser la date de fin</option>
+<option value="900">0:15</option>
+<option value="1800">0:30</option>
+<option value="2700">0:45</option>
+<option value="3600" selected="selected">1:00</option>
+<option value="5400">1:30</option>
+<option value="7200">2:00</option>
+<option value="9000">2:30</option>
+<option value="10800">3:00</option>
+<option value="12600">3:30</option>
+<option value="14400">4:00</option>
+<option value="18000">5:00</option>
+<option value="21600">6:00</option>
+<option value="25200">7:00</option>
+<option value="28800">8:00</option>
+</select>
+</td>
+		<td class="end_hide">
+
+<!-- BEGIN eTemplate *** generated fields for date -->
+
+
+
+<!-- BEGIN grid  -->
+<table style="visibility: hidden;" class="end_hide" cellspacing="0">
+	<tbody><tr>
+		<td align="left"><input id="exec[end][str]" name="exec[end][str]" size="10" onfocus="self.status='Date et fin de la réunion, eg. pour plus d\'une journée'; return true;" onblur="self.status=''; return true;" type="text">
+<script type="text/javascript">
+	document.writeln('<img id="exec[end][str]-trigger" src="/lea2/phpgwapi/templates/default/images/datepopup.gif" title="Sélectionner la date" style="cursor:pointer; cursor:hand;"/>');
+	Calendar.setup(
+	{
+		inputField  : "exec[end][str]",
+		button      : "exec[end][str]-trigger"
+	}
+	);
+</script><img id="exec[end][str]-trigger" src="index.php_fichiers/datepopup.gif" title="Sélectionner la date" style="cursor: pointer;">
+
+</td>
+		<td align="left"> &nbsp; &nbsp; </td>
+		<td align="left"><select name="exec[end][H]" id="exec[end][H]" onfocus="self.status='Heure: Date et fin de la réunion, eg. pour plus d\'une journée*'; return true;" onblur="self.status=''; return true;">
+<option selected="selected" value="0">00</option>
+<option value="1">01</option>
+<option value="2">02</option>
+<option value="3">03</option>
+<option value="4">04</option>
+<option value="5">05</option>
+<option value="6">06</option>
+<option value="7">07</option>
+<option value="8">08</option>
+<option value="9">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+</select>
+</td>
+		<td align="left"><label for="exec[end][i]">:</label> <select name="exec[end][i]" id="exec[end][i]" onfocus="self.status='Minute: Date et fin de la réunion, eg. pour plus d\'une journée*'; return true;" onblur="self.status=''; return true;">
+<option selected="selected" value="0">00</option>
+<option value="5">05</option>
+<option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="35">35</option>
+<option value="40">40</option>
+<option value="45">45</option>
+<option value="50">50</option>
+<option value="55">55</option>
+</select>
+</td>
+	</tr>
+</tbody></table>
+<!-- END grid  -->
+
+<!-- END eTemplate *** generated fields for date -->
+
+</td>
+	</tr>
+</tbody></table>
+
+
+<!-- END hbox -->
+
+</td>
+	</tr>
+	<tr>
+		<td align="left">Plage horaire </td>
+		<td align="left">
+
+<!-- BEGIN hbox -->
+
+<table>
+	<tbody><tr>
+		<td>
+
+<!-- BEGIN eTemplate *** generated fields for date -->
+
+
+
+<!-- BEGIN grid  -->
+<table cellspacing="0">
+	<tbody><tr>
+		<td align="left"><select name="exec[start_time][H]" id="exec[start_time][H]" onfocus="self.status='Heure: Plage horaire de recherche*'; return true;" onblur="self.status=''; return true;">
+<option value="0">00</option>
+<option value="1">01</option>
+<option value="2">02</option>
+<option value="3">03</option>
+<option value="4">04</option>
+<option value="5">05</option>
+<option value="6">06</option>
+<option value="7">07</option>
+<option value="8">08</option>
+<option value="9" selected="selected">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+</select>
+</td>
+	</tr>
+</tbody></table>
+<!-- END grid  -->
+
+<!-- END eTemplate *** generated fields for date -->
+
+</td>
+		<td>jusqu'à </td>
+		<td>
+
+<!-- BEGIN eTemplate *** generated fields for date -->
+
+
+
+<!-- BEGIN grid  -->
+<table cellspacing="0">
+	<tbody><tr>
+		<td align="left"><select name="exec[end_time][H]" id="exec[end_time][H]" onfocus="self.status='Heure: Plage horaire de recherche*'; return true;" onblur="self.status=''; return true;">
+<option value="0">00</option>
+<option value="1">01</option>
+<option value="2">02</option>
+<option value="3">03</option>
+<option value="4">04</option>
+<option value="5">05</option>
+<option value="6">06</option>
+<option value="7">07</option>
+<option value="8">08</option>
+<option value="9">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17" selected="selected">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+</select>
+</td>
+	</tr>
+</tbody></table>
+<!-- END grid  -->
+
+<!-- END eTemplate *** generated fields for date -->
+
+</td>
+		<td>Jours de la semaine </td>
+		<td><div id="exec[weekdays]" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" style="border: 2px inset lightgray; overflow: auto; height: 5.1em; width: 12.45em; background-color: white;">
+<label for="exec[weekdays][62]"><input name="exec[weekdays][]" value="62" checked="checked" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][62]" type="checkbox">
+working days*</label><br>
+<label for="exec[weekdays][127]"><input name="exec[weekdays][]" value="127" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][127]" type="checkbox">
+all days*</label><br>
+<label for="exec[weekdays][65]"><input name="exec[weekdays][]" value="65" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][65]" type="checkbox">
+weekend*</label><br>
+<label for="exec[weekdays][2]"><input name="exec[weekdays][]" value="2" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][2]" type="checkbox">
+Lundi</label><br>
+<label for="exec[weekdays][4]"><input name="exec[weekdays][]" value="4" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][4]" type="checkbox">
+Mardi</label><br>
+<label for="exec[weekdays][8]"><input name="exec[weekdays][]" value="8" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][8]" type="checkbox">
+Mercredi</label><br>
+<label for="exec[weekdays][16]"><input name="exec[weekdays][]" value="16" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][16]" type="checkbox">
+Jeudi</label><br>
+<label for="exec[weekdays][32]"><input name="exec[weekdays][]" value="32" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][32]" type="checkbox">
+Vendredi</label><br>
+<label for="exec[weekdays][64]"><input name="exec[weekdays][]" value="64" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][64]" type="checkbox">
+Samedi</label><br>
+<label for="exec[weekdays][1]"><input name="exec[weekdays][]" value="1" onfocus="self.status='Jour de la semaine à inclure dans la recherche'; return true;" onblur="self.status=''; return true;" id="exec[weekdays][1]" type="checkbox">
+Dimanche</label><br>
+</div>
+</td>
+	</tr>
+</tbody></table>
+
+
+<!-- END hbox -->
+
+</td>
+	</tr>
+	<tr>
+		<td align="left"><input name="exec[search]" value="Nouvelle recherche" id="exec[search]" onmouseover="self.status='Nouvelle recherche avec les paramètres notifiés au-dessus'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Nouvelle recherche avec les paramètres notifiés au-dessus'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">
+
+<!-- BEGIN hbox -->
+
+<table>
+	<tbody><tr>
+		<td><select name="exec[search_window]" id="exec[search_window]" onfocus="self.status='Rechercher jusqu\'à quand (à partir de la date de début)'; return true;" onblur="self.status=''; return true;">
+<option value="604800" selected="selected">Une semaine</option>
+<option value="1209600">deux semaines</option>
+<option value="2678400">Un mois</option>
+<option value="7948800">trois mois</option>
+<option value="31536000">Un an</option>
+</select>
+</td>
+		<td><input name="exec[cancel]" value="Annuler" id="exec[cancel]" onmouseover="self.status='Fermer la fenêtre'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Fermer la fenêtre'; return true;" onblur="self.status=''; return true;" onclick="window.close();" type="submit">
+</td>
+	</tr>
+</tbody></table>
+
+
+<!-- END hbox -->
+
+</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="left">
+
+<!-- BEGIN eTemplate calendar.freetimesearch.rows -->
+
+
+
+
+
+<!-- BEGIN grid  -->
+<table>
+	<tbody><tr class="th">
+		<td align="left">Date </td>
+		<td align="left">Heure </td>
+		<td align="left">Sélectionner </td>
+		<td align="left">Date de fin </td>
+	</tr>
+	<tr class="row_on">
+		<td align="left">Lundi 2010/02/22</td>
+		<td align="left"><select name="exec[freetime][1][start]" id="exec[freetime][1][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1266840000" selected="selected">12:00 - 13:00</option>
+<option value="1266841800">12:30 - 13:30</option>
+<option value="1266843600">13:00 - 14:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][1]" value="Sélectionner" id="exec[freetime][select][1]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/22 14:00</td>
+	</tr>
+	<tr class="row_off">
+		<td align="left">Lundi 2010/02/22</td>
+		<td align="left"><select name="exec[freetime][2][start]" id="exec[freetime][2][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1266854400" selected="selected">16:00 - 17:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][2]" value="Sélectionner" id="exec[freetime][select][2]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/22 17:00</td>
+	</tr>
+	<tr class="row_on">
+		<td align="left">Mardi 2010/02/23</td>
+		<td align="left"><select name="exec[freetime][3][start]" id="exec[freetime][3][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1266922800" selected="selected">11:00 - 12:00</option>
+<option value="1266924600">11:30 - 12:30</option>
+<option value="1266926400">12:00 - 13:00</option>
+<option value="1266928200">12:30 - 13:30</option>
+<option value="1266930000">13:00 - 14:00</option>
+<option value="1266931800">13:30 - 14:30</option>
+<option value="1266933600">14:00 - 15:00</option>
+<option value="1266935400">14:30 - 15:30</option>
+<option value="1266937200">15:00 - 16:00</option>
+<option value="1266939000">15:30 - 16:30</option>
+<option value="1266940800">16:00 - 17:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][3]" value="Sélectionner" id="exec[freetime][select][3]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/23 17:00</td>
+	</tr>
+	<tr class="row_off">
+		<td align="left">Mercredi 2010/02/24</td>
+		<td align="left"><select name="exec[freetime][4][start]" id="exec[freetime][4][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1267009200" selected="selected">11:00 - 12:00</option>
+<option value="1267011000">11:30 - 12:30</option>
+<option value="1267012800">12:00 - 13:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][4]" value="Sélectionner" id="exec[freetime][select][4]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/24 13:00</td>
+	</tr>
+	<tr class="row_on">
+		<td align="left">Mercredi 2010/02/24</td>
+		<td align="left"><select name="exec[freetime][5][start]" id="exec[freetime][5][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1267020000" selected="selected">14:00 - 15:00</option>
+<option value="1267021800">14:30 - 15:30</option>
+<option value="1267023600">15:00 - 16:00</option>
+<option value="1267025400">15:30 - 16:30</option>
+<option value="1267027200">16:00 - 17:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][5]" value="Sélectionner" id="exec[freetime][select][5]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/24 17:00</td>
+	</tr>
+	<tr class="row_off">
+		<td align="left">Jeudi 2010/02/25</td>
+		<td align="left"><select name="exec[freetime][6][start]" id="exec[freetime][6][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1267099200" selected="selected">12:00 - 13:00</option>
+<option value="1267101000">12:30 - 13:30</option>
+<option value="1267102800">13:00 - 14:00</option>
+<option value="1267104600">13:30 - 14:30</option>
+<option value="1267106400">14:00 - 15:00</option>
+<option value="1267108200">14:30 - 15:30</option>
+<option value="1267110000">15:00 - 16:00</option>
+<option value="1267111800">15:30 - 16:30</option>
+<option value="1267113600">16:00 - 17:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][6]" value="Sélectionner" id="exec[freetime][select][6]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/25 17:00</td>
+	</tr>
+	<tr class="row_on">
+		<td align="left">Vendredi 2010/02/26</td>
+		<td align="left"><select name="exec[freetime][7][start]" id="exec[freetime][7][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1267182000" selected="selected">11:00 - 12:00</option>
+<option value="1267183800">11:30 - 12:30</option>
+<option value="1267185600">12:00 - 13:00</option>
+<option value="1267187400">12:30 - 13:30</option>
+<option value="1267189200">13:00 - 14:00</option>
+<option value="1267191000">13:30 - 14:30</option>
+<option value="1267192800">14:00 - 15:00</option>
+<option value="1267194600">14:30 - 15:30</option>
+<option value="1267196400">15:00 - 16:00</option>
+<option value="1267198200">15:30 - 16:30</option>
+<option value="1267200000">16:00 - 17:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][7]" value="Sélectionner" id="exec[freetime][select][7]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/02/26 17:00</td>
+	</tr>
+	<tr class="row_off">
+		<td align="left">Lundi 2010/03/01</td>
+		<td align="left"><select name="exec[freetime][8][start]" id="exec[freetime][8][start]" onfocus="self.status='Sélectionnez une heure'; return true;" onblur="self.status=''; return true;">
+<option value="1267434000" selected="selected">09:00 - 10:00</option>
+<option value="1267435800">09:30 - 10:30</option>
+<option value="1267437600">10:00 - 11:00</option>
+<option value="1267439400">10:30 - 11:30</option>
+<option value="1267441200">11:00 - 12:00</option>
+</select>
+</td>
+		<td align="left"><input name="exec[freetime][select][8]" value="Sélectionner" id="exec[freetime][select][8]" onmouseover="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onmouseout="self.status=''; return true;" onfocus="self.status='Choisir la date et l\'heure sélectionné et fermer la popup'; return true;" onblur="self.status=''; return true;" type="submit">
+</td>
+		<td align="left">2010/03/01 12:00</td>
+	</tr>
+</tbody></table>
+<!-- END grid  -->
+
+<!-- END eTemplate calendar.freetimesearch.rows -->
+
+</td>
+	</tr>
+</tbody></table>
+<!-- END grid  -->
+
+<!-- END eTemplate calendar.freetimesearch -->
+
+</form>
+		 							
+									</div>
+		  <!-- Applicationbox Column -->
+		  
+		  
+  
+
+
+	
+<div id="divPoweredBy"><br><span>Motorisé par <a href="http://www.egroupware.org/">eGroupWare</a> version 1.2.106</span></div>	
+<!-- enable wz_tooltips -->
+<script src="index.php_fichiers/wz_tooltip.js" type="text/javascript"></script>
+</body></html>

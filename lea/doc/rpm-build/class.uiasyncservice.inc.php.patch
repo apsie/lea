@@ -1,0 +1,62 @@
+Index: egroupware/admin/inc/class.uiasyncservice.inc.php
+===================================================================
+--- egroupware/admin/inc/class.uiasyncservice.inc.php	(Revision 53223)
++++ egroupware/admin/inc/class.uiasyncservice.inc.php	(Arbeitskopie)
+@@ -95,16 +95,20 @@
+ 		{
+ 			config::save_value('asyncservice', $GLOBALS['egw_info']['server']['asyncservice']=$_POST['asyncservice'], 'phpgwapi');
+ 		}
++/*
+ 		if (!$async->only_fallback)
+ 		{
+ 			$installed = $async->installed();
+ 			if (is_array($installed) && isset($installed['cronline']))
+ 			{
++*/
+ 				$async_use['cron'] = lang('crontab only (recomended)');
++/*
+ 			}
+ 		}
+ 		$async_use['']    = lang('fallback (after each pageview)');
+ 		$async_use['off'] = lang('disabled (not recomended)');
++*/
+ 		echo '<p><b>'.lang('Run Asynchronous services').'</b>'.
+ 			' <select name="asyncservice" onChange="this.form.submit();">';
+ 		foreach ($async_use as $key => $label)
+@@ -126,8 +130,9 @@
+ 		}
+ 		else
+ 		{
+-			echo '<p>'.lang('Installed crontab').": \n";
++			echo '<p>'.lang('Installed crontab').": /etc/cron.d/egroupware\n";
+
++/*
+ 			if (is_array($installed) && isset($installed['cronline']))
+ 			{
+ 				echo "$installed[cronline]</p>";
+@@ -142,6 +147,7 @@
+ 			}
+ 			echo '<p><input type="submit" name="install" value="'.lang('Install crontab')."\">\n".
+ 				lang("for the times below (empty values count as '*', all empty = every minute)")."</p>\n";
++*/
+ 		}
+
+ 		echo "<hr><table border=0><tr>\n";
+Index: egroupware/phpgwapi/inc/class.egw.inc.php
+===================================================================
+--- egroupware/phpgwapi/inc/class.egw.inc.php	(Revision 53264)
++++ egroupware/phpgwapi/inc/class.egw.inc.php	(Arbeitskopie)
+@@ -618,11 +618,13 @@
+ 					_egw_log_exception($ex);
+ 				}
+ 			}
++/* not needed as rpm uses /etc/cron.d/egroupware
+ 			// call the asyncservice check_run function if it is not explicitly set to cron-only
+ 			if (!$GLOBALS['egw_info']['server']['asyncservice'])	// is default
+ 			{
+ 				ExecMethod('phpgwapi.asyncservice.check_run','fallback');
+ 			}
++ */
+ 			$this->db->disconnect();
+ 		}
+ 	}

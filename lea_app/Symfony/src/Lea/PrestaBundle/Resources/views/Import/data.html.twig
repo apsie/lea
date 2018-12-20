@@ -1,0 +1,19 @@
+L'IMPORT DU FICHIER S'EST FAIT AVEC SUCCES !
+
+<br><br>
+
+<table>
+{% for r in result %}
+    <tr style="border:1px solid black;">
+    {% for value in r %}
+        <td style="border:1px solid black;">{{ value }}</td>
+    {% endfor %}
+    </tr>
+{% endfor %}
+</table>
+
+<br><br>
+
+<a href="{{ app.request.headers.get('Referer') }}">
+    Cliquez ici pour revenir la liste des prestations
+</a>

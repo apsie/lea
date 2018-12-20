@@ -1,0 +1,71 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_projet.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_3; ?>
+<br/>
+<br/>
+	<div>
+<div class="save"></div>
+<table style="border:1px solid #CCC">
+
+<tr class="titre_outils"><td></td><td>Coût en € / an</td>
+<td>Démarrage</td><td>1ere année</td><td>2eme année</td><td>3eme année</td></tr>
+<tr><td>ACHAT</td><td ><input type="hidden" id="id_bp_moyen_immA"  value="<?php echo $this->achat['id_bp_moyen_immeuble_terrain']; ?>" />Immobilisations corporelles</td><td align="right"><input value="<?php echo $this->achat['demarrage']; ?>" id="demarrage_achat" size="5" type="text" /></td><td><input value="<?php echo $this->achat['annee1']; ?>" id="un_achat" size="5" type="text" /></td><td><input value="<?php echo $this->achat['annee2']; ?>" id="deux_achat" size="5" type="text" /></td><td><input value="<?php echo $this->achat['annee3']; ?>" id="trois_achat" size="5" type="text" /></td></tr>
+<tr><td>LOCATION</td><td ><input type="hidden" id="id_bp_moyen_immL" value="<?php echo $this->location['id_bp_moyen_immeuble_terrain']; ?>" />Charges loyer</td><td align="right"><input value="<?php echo $this->location['demarrage']; ?>" id="demarrage_location" size="5" type="text" /></td><td><input value="<?php echo $this->location['annee1']; ?>" id="un_location" size="5" type="text" /></td><td><input value="<?php echo $this->location['annee2']; ?>" id="deux_location" size="5" type="text" /></td><td><input value="<?php echo $this->location['annee3']; ?>" id="trois_location" size="5" type="text" /></td></tr>
+<tr><td>CREDIT-BAIL</td><td ><input type="hidden" id="id_bp_moyen_immC" value="<?php echo $this->credit['id_bp_moyen_immeuble_terrain']; ?>" />Charges  Crédit-bail</td><td align="right"><input value="<?php echo $this->credit['demarrage']; ?>" id="demarrage_credit" size="5" type="text" /></td><td><input value="<?php echo $this->credit['annee1']; ?>" id="un_credit" size="5" type="text" /></td><td><input value="<?php echo $this->credit['annee2']; ?>" id="deux_credit" size="5" type="text" /></td><td><input value="<?php echo $this->credit['annee3']; ?>" id="trois_credit" size="5" type="text" /></td></tr>
+</table>
+
+<br/><div style="float:left;width : 300px;"><input onclick="ajouterMoyenImmTerrain()" type="button" value="Enregistrer" class="button" /></div><div style="float:left"></div>
+	</div>
+
+</div>
+
+<script>
+
+function ajouterMoyenImmTerrain()
+{
+	$.ajax({
+		url : "../../ajax/ajax/?noTemplate=1",
+		dataType : "json",
+		data : {
+
+			id_bp_moyen_immA : 	$('#id_bp_moyen_immA').val(),
+			id_bp_moyen_immL : 	$('#id_bp_moyen_immL').val(),
+			id_bp_moyen_immC : 	$('#id_bp_moyen_immC').val(),
+			
+			demarrageAchat : 	$('#demarrage_achat').val(),
+			demarrageLocation : 	$('#demarrage_location').val(),
+			demarrageCredit : 	$('#demarrage_credit').val(),
+	
+			unAchat : 	$('#un_achat').val(),	
+			unLocation : $('#un_location').val(),
+			unCredit : 	$('#un_credit').val(),
+			
+			deuxAchat : 	$('#deux_achat').val(),	
+			deuxLocation : 	$('#deux_location').val(),
+			deuxCredit : 	$('#deux_credit').val(),
+			
+			troisAchat : 	$('#trois_achat').val(),	
+			troisLocation : $('#trois_location').val(),
+			troisCredit : 	$('#trois_credit').val(),
+			
+			
+			action : "ajouterMoyenImmTerrain",
+			
+		},success: function(data){
+		}
+	});
+	
+
+	$('.save').html('Données sauvegardées');
+	setTimeout("window.location.reload()",2000);		
+}
+</script>

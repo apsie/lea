@@ -1,0 +1,148 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche.phtml'); ?>
+
+
+
+	<div class="contenu_ac">
+	
+	<?php echo $this->title; ?><br/><br/><br/><?php echo $this->title_2; ?><br/><br/><br/>
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_4_4_3; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	
+	<div class="outils_action_commercial">
+	<h2>Plan d'action commercial</h2>
+	<br/>
+	<div id="action_commercial_ajouter"><div class='titre_outils'>Nouvel action</div><br/>
+	<table style="background:#F6F6F6;padding:10px;"><tr><td>Action</td><td><input  id="id_action_commerciale" name="id_action_commerciale" type="hidden" /><input  id="action" name="action" type="text" /> </td></tr>
+	<tr><td>Budget (€)</td><td><input id="budget" name="budget" type="text" /> </td></tr>
+	<tr><td>Période</td><td><input size="7"  id="dateDebut" name="periode" type="text" value="jj/mm/aaaa" /> à <input size="7"  id="dateFin" name="periode" type="text" value="jj/mm/aaaa" /> </td></tr>
+	<tr><td>C.A escompté (€)</td><td><input id="ca_escompte" name="ca_escompte" type="text" /> </td></tr>
+	<tr><td></td><td><input onclick="ajouterActionCommerciale()" class="button_little" id="button_outils_commerciale" type="button" value="Enregistrer" /></td></tr></table>
+	</div>
+	<div id="action_commercial_details">
+	<div class='titre_outils'>Liste des actions</div><br/>
+	<div class="liste_action_commerciale">
+	</div>
+	</div>
+	
+	</div>
+		</div>
+<script type="text/javascript">
+getListActionCommerciale();
+function ajouterActionCommerciale()
+{
+	var action_commerciale = $('#action').val();
+	var budget = $('#budget').val();
+	var dateDebut = $('#dateDebut').val();
+	var dateFin = $('#dateFin').val();
+	var ca_escompte = $('#ca_escompte').val();
+	var id_action_commerciale = $('#id_action_commerciale').val();
+
+	
+	if(id_action_commerciale!='')
+	{
+		action = 'modifierActionCommerciale';
+		$('#button_outils_commerciale').attr('value','Enregistrer');
+	}
+	else
+	{
+		
+		action = 'ajouterActionCommerciale';
+	}
+	$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			 action_commerciale :  action_commerciale,
+			 budget :  budget,
+			 id_action_commerciale :  id_action_commerciale,
+			 dateDebut : dateDebut,
+			 dateFin : dateFin,
+			 ca_escompte :  ca_escompte,
+			action : action
+		},success: function(data){
+		}
+	});
+$('#action').val('');
+$('#budget').val('');
+$('#dateDebut').val('');
+$('#dateFin').val('');
+$('#ca_escompte').val('');
+$('#id_action_commerciale').val('');
+
+setTimeout("getListActionCommerciale();",1000);	
+setTimeout("$('#action_commercial_details').hide('blind')",1000);	
+setTimeout("$('#action_commercial_details').show('blind')",1000);	
+	}
+
+function getListActionCommerciale()
+{
+	
+	var sum_budget = 0;
+	var sum_ca = 0;
+	$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			noTemplate : 1,
+			action : "getListActionCommerciale"
+		},success: function(data){
+			var html='<table><tr class="tr_titre"><td>Actions</td><td>Budget(€)</td><td>Période</td><td>C.A Escompté(€)</td><td><img title="Nb de produits" style="cursor:pointer" src="../images/produit.png" /></td><td></td></tr>';
+				
+			
+			$.each(data,function(i,val){
+	
+		 		sum_budget = parseInt(sum_budget)+parseInt(val.budget);
+		 		sum_ca = parseInt(sum_ca)+parseInt(val.ca_escompte);
+	 			html +='<tr><td>'+val.action+'</td><td align="right">'+val.budget+'</td><td>'+val.date_debut+' - '+val.date_fin+'</td><td align="right">'+val.ca_escompte+'</td><td><a>0</a></td><td><img title="Ajouter un produit à cette action" style="cursor:pointer" src="../images/produit.png" /><img onclick="getValueToUpdate('+val.id_action_commerciale+',\''+val.action+'\','+val.budget+',\''+val.periode+'\','+val.ca_escompte+')" style="cursor:pointer" src="../images/edit.png" /><img onclick="deleteActionCommerciale('+val.id_action_commerciale+');" style="cursor:pointer" src="../images/delete.png" /></td></tr>';
+
+		 			});
+			html +='<tr class="tr_titre"><td>TOTAL</td><td align="right"><strong>'+sum_budget+'</strong></td><td></td><td align="right"><strong>'+sum_ca+'</strong></td><td><a>0</a></td><td></td></tr>';
+ 			
+			html +='</table>';
+			$('.liste_action_commerciale').html(html);
+				}
+	});
+	
+	}
+function deleteActionCommerciale(id_action_commerciale)
+{
+	$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			id_action_commerciale : id_action_commerciale,
+			action : "deleteActionCommerciale"
+		},success: function(data){
+		}
+	});
+
+
+		
+	setTimeout("getListActionCommerciale();",1000);	
+	setTimeout("$('#action_commercial_details').hide('blind')",1000);	
+	setTimeout("$('#action_commercial_details').show('blind')",1000);
+	
+
+	}
+	function getValueToUpdate(id_action_commerciale,action,budget,periode,ca)
+	{
+		$('#action').val(action);
+		$('#budget').val(budget);
+		$('#periode').val(periode);
+		$('#ca_escompte').val(ca);
+		$('#id_action_commerciale').val(id_action_commerciale);
+		$('#button_outils_commerciale').attr('value','Modifier');
+	}
+
+</script>

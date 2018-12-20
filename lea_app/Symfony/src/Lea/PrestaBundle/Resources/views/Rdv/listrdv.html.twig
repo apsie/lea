@@ -1,0 +1,78 @@
+<div class="entete" ><b>{{ rdvs.rdv_dispo }}</b> 
+{% if( params.typeRecherche == 1 ) %}
+Rendez-vous disponibles
+{% elseif( params.typeRecherche == 2 ) %}
+Rendez-vous à lier
+{% endif %}
+</div>
+<div class="div_bouton_poser" >
+<button class="bouton_poser">Poser</button>
+</div>
+<input name="idPrestation" type="hidden" value="{{idPrestation}}" >
+
+{% if( params.typeRecherche == 1 ) %}
+<div>
+	<h4>1. Choisissez la catégorie des rendez-vous</h4>
+	{{ form_widget(formCat.categories) }}
+</div>
+{% endif %}
+
+{% if( params.typeRecherche == 1 ) %}
+<div style="clear:both;margin-top : 45px" >
+<h4>2. Choisissez les rendez-vous à poser</h4>
+{% elseif( params.typeRecherche == 2 ) %}
+<div style="clear:both" >
+<h4>1. Choisissez les rendez-vous à lier</h4>
+{% endif %}
+<ul>
+{% set NUMEROSEMOLD = 0  %}
+	{% for key,rdv in rdvs.rdv %}
+			{%if(rdv.DISABLED == null)%}
+			{%if(rdv.NUMEROSEM != NUMEROSEMOLD)%}
+				<section>
+				<h4>Semaine {{ rdv.NUMEROSEM }}</h4>
+				 {% endif %}
+	        <li class="{{ rdv.CLASSE }}">
+	       
+	         <label style="background-color:{{rdv.COLORWEEK}}"><input  {{ rdv.DISABLED }} name="rdv[]" value="{{ rdv.VALUE }}" type="{{ rdv.TYPEINPUT }}" > <span title="{{ rdv.DESCRIPTION }}">{{ rdv.DATE }}</div></label>
+	         
+	        </li>
+	         {%if(rdv.NUMEROSEM != NUMEROSEMOLD )%}
+		        </section>
+		        {% endif %}
+		        {% set NUMEROSEMOLD = rdv.NUMEROSEM  %}
+	        {% endif %}
+	 {% endfor %}
+</ul>
+</div>
+<div class="div_bouton_poser" >
+<button class="bouton_poser">Poser</button>
+</div>
+<script>
+
+
+$('.bouton_poser').click(function()
+{
+var form = $('form[name="disponibilite"]').serializeArray();
+//console.debug(form);
+
+
+$.ajax({
+		url:'./disponibilite/rdvcheck',
+		dataType: "json",
+		type : "POST",
+		data : form,
+		success: function( data ) {
+		$('.disponibilite').html('');
+		$.pnotify({
+						title: 'Rendez-Vous',
+						text: 'Les rendez-vous ont été posés',
+						type: 'success',
+						styling: 'jqueryui'
+		});
+		
+		}
+		});
+return false;
+});
+</script>

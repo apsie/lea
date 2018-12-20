@@ -1,0 +1,537 @@
+body,html {
+	font-size:100%;	
+	font-family: "Arial";
+	font-size:12px;
+	color: #000;
+	background-color:#FFF;	
+	margin:0;
+	padding:0;
+	
+	/*height:100%;*/
+	/*background:url(../images/bg.jpg) repeat-y; */
+	
+	
+
+}
+.titre_outils
+{
+
+font-style : italic;
+color : #F39A33;
+font-weight:bolder;
+background-color : #FEF1C7;
+padding:2px;
+}
+.titre_outils2
+{
+
+font-style : italic;
+color : #666;
+font-weight:bolder;
+background-color : #F7FAFE;
+padding:2px;
+}
+.conseiller{
+float:right;	
+color:#FFF;
+
+
+}
+
+.page
+{
+	padding:5px;
+	border:1px solid #CCC;
+	width:650px;
+	height:1200px;
+
+	
+	margin-top:30px;
+}
+.header
+{
+	background-color:#006;
+	color:#FFF;
+	font-weight:bolder;
+	padding:2px;
+	padding-left:10px;
+}
+
+.menu_header
+{
+	background-color: #CCC;
+	color:#000;
+	height:22px;
+}
+
+.menu_header ul {
+ padding:0;
+ margin:0;
+ list-style-type:none;
+ }
+.menu_header li {
+ margin-left:2px;
+ float:left; /*pour IE*/
+ }
+.menu_header ul li a {
+ display:block;
+ float:left;
+ 
+
+ background-color: #CCC;
+ color:black;
+ text-decoration:none;
+ text-align:center;
+ padding-left:5px;
+ padding-right:5px;
+ padding-top:2px;
+
+
+ }
+.menu_header ul li a:hover {
+ background-color: #C0C0C0;
+ border:1px solid #D2D2D2;
+ } 
+<!--maj_so-->
+#test { 
+margin-bottom:45px;
+background-color:#33F; 
+height:1000px;
+width: 1000px;   
+}
+.bloc_g{
+
+float:left; 
+
+width:33%;
+
+}
+.titre_presentation
+{
+	padding : 20px;
+}
+
+
+.titre{
+/*border-color:#999;*/
+color:#999;
+font-size:20px;
+font-weight:bold;
+/*height:25px;
+width:100%;*/
+text-align:center;
+/*background-color:#F90; */
+font-family:"Trebuchet MS";
+}
+.intitule_dossier
+{
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-bottomleft: 10px; 
+	background-color:#006;
+	font-size:12px;
+	float:right;
+	margin-left:30%;
+	color:#FFF;
+	margin-top:20px;
+	padding-left:10px;
+	padding:10px;
+	border:2px solid #000
+	
+	
+	}
+.titre, a:link{
+	text-decoration:none;
+	color:#006;
+}
+.titre a:hover{
+	text-decoration:none;
+	color:#F5DD94;
+	
+}
+.titre a:visited{
+	text-decoration:none;
+	color:#006;
+}
+.contenu_redac{
+margin-top:0px;
+/*background-color:#E6E6E6;*/
+padding-left:5px;
+padding-right:5px;
+float:left;
+font-size:12px;
+font-weight:bold;
+color: #333;
+width:295px;
+bottom:0px;
+height:500px;
+border-right : 2px dotted #666 ;
+}
+
+.menu_g{
+color:#000;
+margin-top:10px;
+cursor:pointer;
+
+}
+.menu_g hover{
+color:#E6B632;
+margin-top:10px;
+cursor:pointer;
+
+}
+
+
+
+.menu_g a{
+color:#000;
+
+}
+
+.menu_g a:visited{
+color:#000;
+
+}
+
+.menu_g a:hover{
+color:#F90;
+}
+.s_menu_g{
+
+padding-left:20px;
+
+color: #A7A7A7;
+
+}
+
+
+
+.s_menu_g a{
+text-decoration:none;
+color: #A7A7A7;
+padding-left:5px;
+
+
+}
+.s_menu_g a:hover{
+text-decoration:none;
+color: #F90;
+font-weight:400;
+}
+
+/**/
+.s_s_menu_g{
+
+padding-left:20px;
+
+}
+
+
+
+.s_s_menu_g a{
+text-decoration:none;
+color: #333;
+font-weight:400;
+
+}
+.s_s_menu_g a:hover{
+text-decoration:none;
+color: #F90;
+font-weight:400;
+}
+
+/**/
+.menu_d{
+	
+float:right;
+margin:0px;
+padding: 0px;
+background-color: #F0F0F0;
+width: 150px;
+}
+
+.menu_d ul {
+list-style: none;
+margin: 0;
+padding: 0;
+
+}
+
+.menu_d li a {
+height: 32px;
+voice-family: "\"}\""; 
+voice-family: inherit;
+
+text-decoration: none;
+
+} 
+
+.menu_d li a:link, #menu19 li a:visited {
+color: #333;
+display: block;
+background-color:#F0F0F0;
+padding: 8px 0 0 10px;
+
+
+}
+
+.menu_d li a:hover {
+color: #000;
+background-color:#CF6;
+padding: 8px 0 0 10px;
+
+}
+
+.contenu_ac
+{
+  position:absolute;
+ margin-top:40px;
+   top:10px;
+   bottom:10px;
+   left:320px;
+   
+}
+.contenu_index
+{
+
+ margin-top:100px;
+ }
+.titre_redac 
+{
+	margin-left:10px;
+	font-size:17px;
+	font-weight:bold;
+	color:#A7A7A7;
+	font-family:"Trebuchet MS";
+
+}
+.titre_long 
+{
+	margin-left:10px;
+	font-size:17px;
+	font-weight:bold;
+	color:  #FBA54F;
+	font-family:"Trebuchet MS";
+
+}
+.titre_court 
+{
+	margin-left:10px;
+	font-size:26px;
+	font-weight:bold;
+	color: #FBA54F;
+	font-family:"Trebuchet MS";
+
+}
+
+.gd_titre{
+	font-size:18px;
+	font-weight:bold;
+	color:#000;
+	padding:8px;
+
+}
+.gd_titre_apercu{
+	font-size:28px;
+	font-weight:bold;
+	color: #003;
+	padding:8px;
+
+}
+.error_pagination
+{
+	color: #F60;
+	font-weight:bolder;
+	font-size:14px;}
+.sous_titre{
+	font-size:16px;
+	font-weight:bold;
+	font-style:italic;
+	padding: 5px 0 1px 65px;
+	color:#A7A7A7;
+}
+.sous_s_titre{
+	font-size:12px;
+	padding:3px 0 0 95px;
+}
+textarea,input,select{
+border:1px solid #CCC;
+color:#036;
+padding:2px;
+
+	
+}
+input:hover,input:focus{
+background-color:#FEF1C7;	
+	
+}
+.titre_maj input{
+width:180px;
+font-size:10px;
+border:none;
+border-bottom:1px dashed;
+	
+}
+.button{
+background-color:#006;
+color:#F90;
+font-weight:bold;
+-moz-border-radius: 10px;
+padding:5px;
+border:1px solid #CCC;
+cursor : pointer;
+}
+.button_little{
+background-color:#006;
+color:#F90;
+font-weight:bold;
+-moz-border-radius: 10px;
+padding:5px;
+border:1px solid #CCC;
+font-size : 10px;
+cursor : pointer;
+}
+.autre{
+margin-left:0;
+
+
+}
+
+
+.autre a{
+text-decoration:none;
+
+}
+#produits_concurrents
+{
+position : relative;
+
+
+}
+#produits_concurrents_ajouter,#action_commercial_ajouter
+{
+float : left ;
+
+padding-right : 10px;
+width : 35%;
+height : auto;
+
+}
+#action_commercial_details
+{
+float : left ;
+width : 62%;
+border-right : 1px solid #CCC;
+border-left : 1px solid #CCC;
+padding-left : 10px;
+height : auto;
+font-size:10px;
+}
+#produits_concurrents_details
+{
+float : left ;
+width : 15%;
+border-right : 1px solid #CCC;
+border-left : 1px solid #CCC;
+padding-left : 10px;
+height : auto;
+
+}
+#produits_concurrents_details_plus
+{
+float : left ;
+width : auto;
+
+
+padding-left : 10px;
+height : auto;
+
+
+}
+.outils_produits_concurrents a,.titre_gestion_produits a,.titre_outils_general a,.ligne a,.ligne2 a
+{
+color : #006CAB;
+cursor : pointer;
+}
+.outils_produits_concurrents a:hover,.titre_gestion_produits a:hover,.titre_outils_general a:hover,.ligne a:hover,.ligne2 a:hover
+{
+color : #000;
+}
+.titre_outils_general a
+{
+color : #FFF;
+cursor : pointer;
+}
+.titre_outils_general a:hover
+{
+color : #006CAB;
+}
+.form_produits_details 
+{
+	padding-top:10px;
+	border-top : 1px solid #CCC;
+	
+}
+.form_produits_details input
+{
+	font-size : 10px;
+}
+.outils_action_commercial table
+{
+border : 1px solid #CCC;
+}
+.outils_action_commercial tr
+{
+
+padding : 5px;
+
+}
+.outils_action_commercial td
+{
+
+padding : 5px;
+
+}
+.tr_titre
+{
+font-weight : bolder;
+background-color : #F0F0F0;
+padding : 5px;
+color : #006;
+
+}
+.titre_gestion_produits,.titre_outils_general
+{
+background-color : #006;
+color:#FFF;
+padding:2px;
+text-align:center;
+}
+.outils_sous_titre
+{
+padding:5px;
+font-weight:bolder;
+color : #054083;}
+.ligne
+{
+background-color:#FFF;
+}
+.ligne2
+{
+background-color:#F6E8C2;
+}
+.navigation_rapide a
+{
+	color : #1E61B9;
+}
+.navigation_rapide a:hover
+{
+	color :  #E6B632;
+}
+.tableau_ressource_charge input
+{
+	text-align : right;
+}
+.save
+{
+color:#83C62B;
+}

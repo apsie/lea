@@ -1,0 +1,199 @@
+<?php 
+	if($this->contact['civilite']=='Monsieur')
+	$chekMonsieur =  'selected="selected"';
+	elseif($this->contact['civilite']=='Madame')
+	$chekMadame =  'selected="selected"';
+	elseif($this->contact['civilite']=='Mademoiselle')
+	$chekMademoiselle = 'selected="selected"';
+
+?>
+<h4><img alt="Fiche contact" src="./images/ico/contact_box.png">
+Coordonnées du contact</h4>
+<table>
+	<tr>
+		<td>Catégorie</td>
+		<td><select id="select_categorie_box">
+			<option value=""></option>
+			<?php for($i=0;$i<count($this->listCategorie);$i++)
+			{
+				if($this->contact['cat_id']==$this->listCategorie[$i]['cat_id'])
+				$chekCatId='selected="selected"';
+				else
+				$chekCatId='';
+				echo'<option '.$chekCatId.' value="'.$this->listCategorie[$i]['cat_id'].'">'.utf8_encode($this->listCategorie[$i]['cat_name']).'</option>';
+			}?>
+		</select></td>
+	</tr>
+	<tr>
+		<td>Civilité</td>
+		<td><select id="civilite_box">
+			<option></option>
+			<option <?php echo $chekMadame?> >Madame</option>
+			<option<?php echo $chekMademoiselle?> >Mademoiselle</option>
+			<option <?php echo $chekMonsieur?> >Monsieur</option>
+		</select></td>
+		<td><input id="idContact_box" type="hidden" value="<?php echo $this->contact['id_ben']?>" /></td>
+	</tr>
+	<tr>
+		<td>Nom</td>
+		<td><input id="nom_box" type="text" value="<?php echo $this->contact['nom']?>" /></td>
+		<td>Prénom</td>
+		<td><input id="prenom_box" type="text" value="<?php echo $this->contact['prenom']?>" /></td>
+	</tr>
+	<tr>
+		<td>Nom de jeune fille</td>
+		<td><input id="nom_jeune_fille_box" type="text" value="<?php echo $this->contact['nom_jeune_fille']?>" /></td>
+		<td>Deuxième prénom</td>
+		<td><input id="deuxieme_prenom_box" type="text" value="<?php echo $this->contact['deuxieme_prenom']?>" /></td>
+	</tr>
+	<tr>
+		<td>Adresse</td>
+		<td><input id="adresse_box" type="text" value="<?php echo utf8_encode($this->contact['adresse_ligne_1'])?>"/></td>
+		<td>Complément d'adresse</td>
+		<td><input id="complement_adresse_box" type="text" value="<?php echo utf8_encode($this->contact['adresse_ligne_2'])?>" /></td>
+	</tr>
+	<tr>
+		<td>Cp</td>
+		<td><input id="cp_box" type="text" value="<?php echo $this->contact['cp']?>" /></td>
+		<td>Ville</td>
+		<td><input  id="ville_box" type="text" value="<?php echo $this->contact['ville']?>" />
+		</td>
+	</tr>
+	<tr>
+		<td>Région</td>
+		<td><input id="region_box" type="text" value="<?php echo $this->contact['region']?>" /></td>
+		<td>Pays</td>
+		<td><input id="pays_box" type="text" value="<?php echo $this->contact['pays']?>" /></td>
+	</tr>
+	<tr>
+		<td>Tel Pro 1</td>
+		<td><input id="tel_pro_1_box" type="text" value="<?php echo $this->contact['tel_pro_1']?>" /></td>
+		<td>Tel Pro 2</td>
+		<td><input id="tel_pro_2_box" type="text" value="<?php echo $this->contact['tel_pro_2']?>" /></td>
+	</tr>
+	<tr>
+		<td>Tel Dom. 1</td>
+		<td><input id="tel_dom_1_box" type="text" value="<?php echo $this->contact['tel_domicile_1']?>" /></td>
+		<td>Tel Dom. 2</td>
+		<td><input id="tel_dom_2_box" type="text" value="<?php echo $this->contact['tel_domicile_2']?>" /></td>
+	</tr>
+	<tr>
+		<td>Fax pro</td>
+		<td><input id="fax_pro_box" type="text" value="<?php echo $this->contact['fax_pro']?>" /></td>
+		<td>Fax perso</td>
+		<td><input id="fax_perso_box" type="text" value="<?php echo $this->contact['fax_perso']?>" /></td>
+	</tr>
+	<tr>
+		<td>Port. Pro</td>
+		<td><input id="portable_pro_box" type="text" value="<?php echo $this->contact['portable_pro']?>" /></td>
+		<td>Port. Perso</td>
+		<td><input id="portable_perso_box" type="text" value="<?php echo $this->contact['portable_perso']?>" /></td>
+	</tr>
+	<tr>
+		<td>Email pro</td>
+		<td><input id="email_pro_box" type="text" value="<?php echo $this->contact['email_pro']?>" /></td>
+		<td>Email perso</td>
+		<td><input id="email_perso_box" type="text" value="<?php echo $this->contact['email_perso']?>" /></td>
+	</tr>
+	<tr>
+		<td>Fonction</td>
+		<td><input id="fonction_box" type="text" value="<?php echo utf8_encode($this->contact['fonction'])?>" /></td>
+		<td>Site web</td>
+		<td><input id="site_web_box" type="text" value="<?php echo $this->contact['site_perso']?>" /></td>
+	</tr>
+</table>
+<br />
+<br />
+<center>
+<button onclick="Contact.saveContact(<?php echo $this->noReload;?>)">Enregistrer</button>
+</center>
+<script>$j( "button").button();
+
+
+// Autocomplete
+
+
+	  
+		$j('#cp_box').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxContact&action=getVille&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.cp +', '+ item.ville1,
+								value: item.cp,
+								ville: item.ville1,
+								region: item.region,
+								pays : item.pays,
+								
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				
+				$j('#ville_box').val( ui.item.ville);
+				$j('#region_box').val( ui.item.region);
+				$j('#pays_box').val( ui.item.pays);
+			
+			},
+			
+			
+		});
+
+		$j('#ville_box').autocomplete({
+			source: function( request, response ) {
+				$j.ajax({
+					url: "index.php?page=ajaxContact&action=getVille&noTemplate=1",
+					dataType: "json",
+					type : "POST",
+					data: {
+						
+						maxRows: 12,
+						queryString : request.term
+					},
+					success: function( data ) {
+						
+						//console.debug(data);
+					
+						response( $j.map(data, function( item ) {
+							
+							return {
+								label: item.cp +', '+ item.ville1,
+								value: item.ville1,
+								ville: item.ville1,
+								region: item.region,
+								pays : item.pays,
+								cp : item.cp,
+								
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				$j('#cp_box').val( ui.item.cp);
+				$j('#ville_box').val( ui.item.ville);
+				$j('#region_box').val( ui.item.region);
+				$j('#pays_box').val( ui.item.pays);
+			
+			},
+			
+			
+		});
+		</script>

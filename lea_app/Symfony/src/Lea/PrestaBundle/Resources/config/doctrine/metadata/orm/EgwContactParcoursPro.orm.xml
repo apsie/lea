@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwContactParcoursPro" table="egw_contact_parcours_pro">
+    <id name="idParcours" type="integer" column="id_parcours">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idBen" type="bigint" column="id_ben" nullable="false"/>
+    <field name="idOwner" type="bigint" column="id_owner" nullable="false"/>
+    <field name="dateCreation" type="bigint" column="date_creation" nullable="false"/>
+    <field name="idModifier" type="bigint" column="id_modifier" nullable="false"/>
+    <field name="dateLastModified" type="bigint" column="date_last_modified" nullable="false"/>
+    <field name="identifiant" type="string" column="identifiant" length="64" nullable="false"/>
+    <field name="personneConcernee" type="string" column="personne_concernee" length="64" nullable="false"/>
+    <field name="statut" type="string" column="statut" length="64" nullable="false"/>
+    <field name="poste" type="string" column="poste" length="128" nullable="false"/>
+    <field name="intitulePoste" type="string" column="intitule_poste" length="128" nullable="false"/>
+    <field name="codeRome" type="string" column="code_rome" length="64" nullable="false"/>
+    <field name="categorieRome" type="string" column="categorie_rome" length="128" nullable="false"/>
+    <field name="service" type="string" column="service" length="128" nullable="false"/>
+    <field name="typeRemuneration" type="string" column="type_remuneration" length="64" nullable="false"/>
+    <field name="montantRemuneration" type="string" column="montant_remuneration" length="64" nullable="false"/>
+    <field name="dateDebut" type="bigint" column="date_debut" nullable="false"/>
+    <field name="dateFin" type="bigint" column="date_fin" nullable="false"/>
+    <field name="typeContrat" type="string" column="type_contrat" length="64" nullable="false"/>
+    <field name="typeContratAide" type="string" column="type_contrat_aide" length="64" nullable="false"/>
+    <field name="qualification" type="string" column="qualification" length="64" nullable="false"/>
+    <field name="tempsTravail" type="string" column="temps_travail" length="64" nullable="false"/>
+    <field name="mobilite" type="string" column="mobilite" length="128" nullable="false"/>
+    <field name="secteurActivite" type="string" column="secteur_activite" length="64" nullable="false"/>
+    <field name="organisme" type="string" column="organisme" length="128" nullable="false"/>
+  </entity>
+</doctrine-mapping>

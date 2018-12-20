@@ -1,0 +1,20 @@
+[general]
+db.adapter = PDO_MYSQL
+db.params.host = localhost
+db.params.username = egw_apsie
+db.params.password = APS12/APSIE12
+db.params.dbname = egw_apsie143
+
+[bac_a_sable]
+db.adapter = PDO_MYSQL
+db.params.host = localhost
+db.params.username = egw_apsie
+db.params.password = APS12/APSIE12
+db.params.dbname = egw_apsie143
+
+[prod]
+db.adapter = PDO_MYSQL
+db.params.host = localhost
+db.params.username = egw_apsie
+db.params.password = APS12/APSIE12
+db.params.dbname = egw_apsie143

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spid.edit.update" template="" lang="" group="0" version="1.003">
+		<grid width="100%">
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="row" disabled="@hideline">
+					<description value="Category" class="bold"/>
+					<menulist class="bold">
+						<menupopup type="select-cat" id="cat_id" needed="1" no_lang="1" options="Select one,spid" onchange="categories(this.value);ajouterAssigneA(this);//this.form.submit();"/>
+					</menulist>
+					<description value="Assigned To" class="bold"/>
+					<menulist>
+						<menupopup id="ticket_assigned_to" options="Select one" needed="1" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description value="Priority" class="bold"/>
+					<menulist>
+						<menupopup id="ticket_priority" options="Select One" no_lang="1"/>
+					</menulist>
+					<description value="Time Spend" class="bold"/>
+					<textbox id="ticket_spend_time"/>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description class="bold" value="Due date"/>
+					<date id="due_date"/>
+					<description class="bold" value="Open / Close"/>
+					<menulist>
+						<menupopup id="ticket_closed" no_lang="1"/>
+					</menulist>
+				</row>
+				<row class="row" disabled="@hideline">
+					<description value="Standard Replies" class="bold"/>
+					<menulist class="gauchea">
+						<menupopup id="reponse_standard" onchange="message(this.value);" options="Select One" no_lang="1"/>
+					</menulist>
+					<description value="Update Ticket State" class="bold"/>
+					<menulist>
+						<menupopup options="Select one" id="transition" no_lang="1" onchange="etats(this.value);"/>
+					</menulist>
+				</row>
+				<row class="row">
+					<description value="Reply" class="bold"/>
+					<textbox multiline="true" rows="15" cols="110" span="all" id="reply_content"/>
+				</row>
+			</rows>
+		</grid>
+		<styles>
+			.bold
+{
+font-weight:bold;
+}
+.color
+{
+background-color:grey;
+}
+		</styles>
+	</template>
+</overlay>

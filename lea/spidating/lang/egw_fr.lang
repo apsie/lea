@@ -1,0 +1,147 @@
+#%s	spidating	fr	#%s
+%1 events created successfully	spidating	fr	%1 évènements créés avec succès
+%1 tickets and %2 events created successfully	spidating	fr	%1 tickets et %2 événements créés avec succès
+actions	spidating	fr	Actions
+active headers	spidating	fr	Entete active
+active status	spidating	fr	Statut actif
+activity	spidating	fr	Activité
+add events	spidating	fr	Ajouter des rendez-vous
+add file type	spidating	fr	Ajouter un type de fichier
+add results	spidating	fr	Ajouter résultats
+address one	spidating	fr	Adresse un
+address two	spidating	fr	Adresse deux
+addressbook contact	spidating	fr	Contact carnet d'adresses
+after current date	spidating	fr	Après la date courante
+all events	spidating	fr	Tout les évènements
+all interventions	spidating	fr	Toutes les interventions
+area	spidating	fr	Zone
+assigned to	spidating	fr	Assigné à
+assistant with tickets	spidating	fr	Assistant avec ticket
+assistant with tickets help	spidating	fr	Aide "Assistant avec ticket"
+axis	spidating	fr	Axes
+before current date	spidating	fr	Avant la date courante
+budget is calculated depending on the selected dates	spidating	fr	Le budget est calculé en fonction des rendez-vous
+calendar custom fields	spidating	fr	Champs personnalisés du calendrier
+calendar events	spidating	fr	Rendez-vous
+calendar list	spidating	fr	Liste calendrier
+cancel events	spidating	fr	Annuler des évènements
+cancel events help	spidating	fr	Aide "Annuler un évènement"
+canceled events	spidating	fr	Evénements annulés
+categorie for confirmed intervention	spidating	fr	Catégorie pour les interventions planifiées
+categorie for option intervention	spidating	fr	Catégorie pour les interventions en option
+categorie for realised intervention	spidating	fr	Catégorie pour les interventions réalisées
+category for canceled events	spidating	fr	Catégorie pour les interventions annulées
+change date	spidating	fr	Date de modification
+changed by	spidating	fr	Modification par
+check all	spidating	fr	Sélectionner tous
+client	spidating	fr	Client
+client's order	spidating	fr	N° de commande client
+configuration updated	spidating	fr	Configuration mise à jour
+confirm events	spidating	fr	Confirmer des évènements
+confirm events help	spidating	fr	Aide "Confirmer des évènements"
+contact name	spidating	fr	Nom du contact
+contacts	spidating	fr	Contacts
+contract	spidating	fr	Contrat
+country	spidating	fr	Pays
+coupling with spid	spidating	fr	Coupler avec Spid
+creation date	spidating	fr	Date de création
+date modified	spidating	fr	Date de modification
+default duration	spidating	fr	Durée par défaut
+default event category	spidating	fr	Catégorie de l'événement par défaut
+default header	spidating	fr	Entête par défaut
+default pause end	spidating	fr	Fin de pause par défaut
+default pause start	spidating	fr	Début de pause par défaut
+default status	spidating	fr	Statut par défaut
+default value	spidating	fr	Valeur par défaut
+default weekdays	spidating	fr	Jours de la semaine par défaut
+delete selected events	spidating	fr	Supprimer les événements sélectionnés
+delete this event	spidating	fr	Supprimer cet événement
+due date	spidating	fr	Date d'échéance
+duration must not be empty	spidating	fr	La durée ne doit pas être vide
+edit this event	spidating	fr	Modifier cet événement
+emails	spidating	fr	Emails
+end	spidating	fr	Fin
+event type	spidating	fr	Type de rendez-vous
+events without participants	spidating	fr	Evénements sans participants
+events without tickets	spidating	fr	Evénements sans tickets
+existing links	spidating	fr	Liens existants
+fields for participants limit	spidating	fr	Champ pour la limite de participant
+fri	spidating	fr	Ven
+general	spidating	fr	Général
+general help	spidating	fr	Aide général
+generate calendar	spidating	fr	Générer le calendrier
+header	spidating	fr	Entête
+history	spidating	fr	Historique
+id	spidating	fr	ID
+in charge	spidating	fr	en charge
+information about the ticket	spidating	fr	Informations sur l'intervention
+initial state	spidating	fr	Statut initial
+link selected ticket	spidating	fr	Lier au ticket
+locality	spidating	fr	Ville
+location	spidating	fr	Lieu
+manager	spidating	fr	Manager
+manager email	spidating	fr	Email manager
+meetings category	spidating	fr	Catégorie de rendez-vous
+mon	spidating	fr	Lun
+nb meetings	spidating	fr	Nb rendez-vous
+not enough time in the timeframe to add event of the chosen duration	spidating	fr	La plage de temps est trop courte pour ajouter un événement de la durée choisit
+number of events to place	spidating	fr	Nombre de rendez-vous à placer
+object	spidating	fr	Objet
+obsolete status	spidating	fr	Statut obsolète
+open by	spidating	fr	Ouvert par
+option events	spidating	fr	Evénements en option
+order	spidating	fr	Ordre
+orphan events	spidating	fr	Evènements orphelins
+orphan events help	spidating	fr	Aide "Evènements orphelins"
+participant	spidating	fr	Participant
+participants	spidating	fr	Participants
+pause frame	spidating	fr	Heures de pause
+pause start time must be inferior to pause end time	spidating	fr	Le début de pause doit être infèrieur a la fin de pause
+place a participant on collective meeting	spidating	fr	Placer sur un RV collectif
+place a participant on collective meeting help	spidating	fr	Aide "Placer sur un RV collectif"
+place a participant on individual meeting	spidating	fr	Placersur un RV individuel
+place a participant on individual meeting help	spidating	fr	Aide "Placer sur un RV individuel"
+planned events	spidating	fr	Evénements plannifiés
+projects	spidating	fr	Projets
+realised events	spidating	fr	Evénements réalisés
+resource	spidating	fr	Ressource
+role	spidating	fr	Rôle
+sat	spidating	fr	Sam
+search for '%1'	spidating	fr	Chercher '%1'
+select a category	spidating	fr	Sélectionner une catégorie
+select a category before	spidating	fr	Veuillez sélectionner une catégorie
+select a group before	spidating	fr	Veuillez sélectionner un client
+select a ticket	spidating	fr	Choississez une intervention
+select nb month	spidating	fr	Nombre de mois
+select start month	spidating	fr	Mois de début
+select users	spidating	fr	Utilisateurs
+selected range	spidating	fr	Etendue sélectionnée
+site	spidating	fr	Site
+spid	spidating	fr	Spid
+spid events	spidating	fr	Evènement spid
+spidating	common	fr	SpiDating
+start	spidating	fr	Début
+start / end date	spidating	fr	Date de début / fin
+start time must be inferior to end time	spidating	fr	L'heure de début doit être avant l'heure de fin
+statistics	spidating	fr	Statistiques
+sum accounts	spidating	fr	Somme compte
+sum addressbook	spidating	fr	Somme contact
+sum resources	spidating	fr	Somme ressource
+sun	spidating	fr	Dim
+thu	spidating	fr	Jeu
+tickets	spidating	fr	Interventions
+til	spidating	fr	jusqu'à
+time by linked elements	spidating	fr	Temps par éléments liés
+time spend	spidating	fr	Temps passé
+time spent	spidating	fr	Temps passé
+timeframe	spidating	fr	Plage horaire
+total cost	spidating	fr	Cout total
+tue	spidating	fr	Mar
+unit time	spidating	fr	Unité de temps
+updated by	spidating	fr	Mis à jour par
+use ticket name as title (select = override current value / unselect = blank)	spidating	fr	Utiliser le titre du ticket comme titre (selection = remplace titre courant / déselection = vide)
+user manual	spidating	fr	Manuel utilisateur
+view this event	spidating	fr	Voir cet événement
+wed	spidating	fr	Mer
+weekdays	spidating	fr	Jours de la semaine
+weekdays must not be empty	spidating	fr	Au moins un type de jour doit être sélectionné

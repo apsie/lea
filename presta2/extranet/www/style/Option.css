@@ -1,0 +1,46 @@
+.option
+{
+position :absolute;
+top : 170px;
+left:0;
+width :32px;
+/*height:220px;*/
+background : -moz-linear-gradient(#2C5C80,#CCC);
+    border-radius: 0px 5px 5px 0px;
+    color: #FFFFFF;
+    font-size: 12px;
+   /* font-weight: bolder;*/
+    padding: 2px;
+    text-align: left;
+    
+
+	font-size:10px;
+	z-index:1000;
+	padding:5px;
+}
+.option input
+{
+	font-size: 10px;
+}
+.option button
+{
+	font-size:10px;
+}
+.option div
+{
+	margin-bottom:10px;
+}
+
+.entete
+{
+background-image: url("../images/ico/option_ouvert.png");
+background-position: center;
+height:32px;
+width:32px;
+margin-top : -30px;
+
+}
+.contenu_option
+{
+display:none;
+}

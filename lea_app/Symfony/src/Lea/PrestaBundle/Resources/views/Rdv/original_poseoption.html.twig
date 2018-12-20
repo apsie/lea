@@ -1,0 +1,90 @@
+
+<form name="option" >
+<div class="critere">
+<div class="entete" >Critères de poses d'options</div>
+
+<div style="padding:10px;" >
+
+	<table>
+		<tr>
+			<td>Catégorie :</td><td> {{ form_widget(formCat.categories) }}</td>
+		</tr>
+		<tr>
+			<td>Dispositif : </td><td>{{ form_widget(formPresta.dispositif) }}</td>
+		</tr>
+		<tr>
+			<td>Site :</td><td> {{ form_widget(formCat.site) }}</td>
+		</tr>
+		<tr>
+			<td>Référent: </td><td> {{ form_widget(formAcc.account_id) }}</td>
+		</tr>
+		<tr>
+			<td>Date de début :</td><td> {{ form_widget(formDispo.dateDebut) }}</td>
+		</tr>
+		<tr>
+			<td>Plage Horaire de :</td><td> {{ form_widget(formDispo.plageDebut) }} h à {{ form_widget(formDispo.plageFin) }} h</td>
+		</tr>
+		<tr>
+			<td>Durée :</td><td> {{ form_widget(formDispo.duree) }}</td>
+		</tr>
+		<tr>
+			<td>Intervalle :</td><td> {{ form_widget(formDispo.nbIntervalle) }} {{ form_widget(formDispo.typeIntervalle) }}</td>
+		</tr>
+		<tr>
+			<td>Jours :</td><td> {{ form_widget(formDispo.jours) }}</td>
+		</tr>
+		<tr>
+			<td>Recherche sur :</td><td> {{ form_widget(formDispo.nbJour) }} semaine(s)</td>
+		</tr>
+		<tr>
+			<td></td><td><button id="boutton_dispo">Rechercher</button></td>
+		</tr>
+		<tr>
+			<td></td><td><a  id="cocher" href="javascript:void(0)">Tout cocher / Tout décocher</a></td>
+		</tr>
+	</table>
+	
+</div>
+</div>
+<div class="disponibilite">
+
+</div>
+</form>
+
+<script>
+$( "#disponibilite_dateDebut" ).datepicker({ dateFormat: "dd/mm/yy" });
+$('a#cocher').click(function()
+{
+
+ var cases = $(".disponibilite .rdv_dispo").find(':checkbox'); // on cherche les checkbox qui dépendent de la liste 'cases'
+
+        if($(this).hasClass('check')){ // si 'cocheTout' est coché
+        cases.attr('checked', false);// on coche les cases
+           
+           $(this).removeClass('check'); 
+        }else{ // si on décoche 'cocheTout'
+          
+              cases.attr('checked', true); // on coche les cases
+             $(this).addClass('check');
+        }  
+        
+                 
+});
+$('form[name="option"]').submit(function()
+{
+var form = $('form[name="option"]').serializeArray();
+//console.debug(form);
+
+$('.disponibilite').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /> Recherche en cours, patientez svp...</div>');
+$.ajax({
+		url:'./listposeoption',
+		dataType: "html",
+		type : "POST",
+		data : form,
+		success: function( html ) {
+		$('.disponibilite').html(html);
+		}
+		});
+return false;
+});
+</script>

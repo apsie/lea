@@ -1,0 +1,2188 @@
+<div id="presta" class="entete" >Prestation {{ presta.dispositif.nomDispositif }} de <b>{{ presta.contact.nomComplet }}</b> ({{ presta.idPresta }})</div>
+<div class="contenu_presta">
+    <form name="presta">
+        <input type="hidden" name="data[suivi]" value="0"/>
+        <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Dossier bénéficiaire</a></li>
+                    <li><a href="#tabs-2">Questionnaire Freins professionnels</a></li>
+                    <li><a href="#tabs-3">Questionnaire Freins personnels</a></li>
+                    <li><a href="#tabs-4">Questionnaire Freins sociaux</a></li>
+                    <li><a href="#tabs-5">Questionnaire Freins opérationnels</a></li>
+                    <li><a href="#tabs-6">Domaine professionnel</a></li>
+                    <li><a href="#tabs-7">Domaine personnel</a></li>
+                    <li><a href="#tabs-8">Domaine social</a></li>
+                    <li><a href="#tabs-9">Domaine opérationnel</a></li>
+                    <li><a href="#tabs-10">Bilan</a></li>
+                    <li><a href="#tabs-11">Questionnaire FSE</a></li>
+                    <li><a href="#tabs-12">Questionnaire de sortie</a></li>
+                    <li><a href="#tabs-13">Fiche EP</a></li>
+                    <li><a href="#tabs-14">Fiche EP_ABSENCE</a></li>
+                    <li><a href="#tabs-15">Edition</a></li>
+                    <li><a id="rdv" href="#tabs-16">Rdv</a></li>
+                </ul>
+
+            <div id="tabs-1">
+
+                  	<input type="hidden" name="id_presta" value="{{ presta.idPresta }}"/>
+                   	<input type="hidden" name="id_projet" value="{{ presta.idProjet }}"/>
+
+                        <div id="accordion">
+                            <h3><a href="#">Information sur {{ presta.contact.nomComplet }}</a></h3>
+                                <div>{% render "LeaPrestaBundle:Contact:create" with { idContact : presta.contact.idBen } %}</div>
+
+                            <h3><a href="#">Parcours professionnel et formation</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:parcourspro" with { idContact : presta.contact.idBen } %}
+                                    {% render "LeaPrestaBundle:Contact:formation" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+                            <h3><a href="#">Parcours d'accompagnement</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}">Relance</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/index.php?menuaction=details.details_ui.index">Orientation</a><br><br>
+                                    
+                                </div>
+
+
+                            <h3><a href="#">Etat-civil</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:etatcivil" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+
+                            <h3><a href="#">Coordonnées complémentaires</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:complement" with { idContact : presta.contact.idBen } %}
+                                </div>
+                        </div>
+                </div>
+
+                <div id="tabs-2">
+                    <div id="accordion">
+                        Freins professionnels :
+                        <h3><a href="#">Questions relatives au projet professionnel</a></h3>
+
+                        <div>
+                            <div class="sous_titre">Question 1 : Avez-vous défini un projet professionnel ?</div>
+                            <div><label><input {% if prestaData['ef_q1'] is defined %} {{prestaData['ef_q1']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q1]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q1'] is defined %} {{prestaData['ef_q1']|setcheckbox(1)}} {% endif %} name="data[ef_q1]" type="radio" value="1"/><span>a. Je ne sais pas du tout ce que je veux faire</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q1'] is defined %} {{prestaData['ef_q1']|setcheckbox(2)}} {% endif %} name="data[ef_q1]" type="radio" value="2"/><span>b. J’ai une vague idée de ce que je veux faire</span></label></div>
+                   
+                            <div><label><input {% if prestaData['ef_q1'] is defined %} {{prestaData['ef_q1']|setcheckbox(3)}} {% endif %} name="data[ef_q1]" type="radio" value="3"/><span>c. J’hésite entre plusieurs projets</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1'] is defined %} {{prestaData['ef_q1']|setcheckbox(4)}} {% endif %} name="data[ef_q1]" type="radio" value="4"/><span>d. J’ai un projet professionnel précis</span></label></div>
+
+
+                            <div class="sous_titre">Question 1.1 : Si oui, dans quel secteur d’activité souhaitez-vous travailler ?</div>
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q1a]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(1)}} {% endif %} name="data[ef_q1a]" type="radio" value="1"/><span>a. Agriculture (jardinier, éleveur, maraîcher, vétérinaire…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(2)}} {% endif %} name="data[ef_q1a]" type="radio" value="2"/><span>b. Industrie (ingénieur, conducteur de ligne, soudeur…)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(3)}} {% endif %} name="data[ef_q1a]" type="radio" value="3"/><span>c. Hôtellerie, Restauration, Loisirs (cuisinier, animateur, voyagiste, serveur…)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(4)}} {% endif %} name="data[ef_q1a]" type="radio" value="4"/><span>d. Installation, Maintenance (mécanicien, chauffagiste, maintenance industrielle…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(5)}} {% endif %} name="data[ef_q1a]" type="radio" value="5"/><span>e. Services aux personnes et aux collectivités (nettoyage, gardiennage, aide à domicile…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(6)}} {% endif %} name="data[ef_q1a]" type="radio" value="6"/><span>f. Support à l’entreprise (secrétaire, comptable, informatique, marketing…)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(7)}} {% endif %} name="data[ef_q1a]" type="radio" value="7"/><span>g. Banque Assurance, Immobilier (agent d’accueil, conseiller, expert…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(8)}} {% endif %} name="data[ef_q1a]" type="radio" value="8"/><span>h. Commerce, Métiers de bouche (boucher, caissier, coiffeur, vendeur…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(9)}} {% endif %} name="data[ef_q1a]" type="radio" value="9"/><span>i. Bâtiment et Travaux Publics (architecte, grutier, peintre, maçon…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(10)}} {% endif %} name="data[ef_q1a]" type="radio" value="10"/><span>k. Communication, Multimédia (photographe, imprimeur, webmaster…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(11)}} {% endif %} name="data[ef_q1a]" type="radio" value="11"/><span>i. Santé (pharmacien, infirmier, aide soignant…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(12)}} {% endif %} name="data[ef_q1a]" type="radio" value="12"/><span>j. Transport, Logistique (conducteur de véhicule, magasinier…)</span></label></div>
+                        
+                            <div><label><input {% if prestaData['ef_q1a'] is defined %} {{prestaData['ef_q1a']|setcheckbox(13)}} {% endif %} name="data[ef_q1a]" type="radio" value="13"/><span>l. Autre, précisez :<input type="text" size="45" name="data[ef_q1s]" {% if prestaData['ef_q1s'] is defined %} value="{{ prestaData['ef_q1s'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">1.2. Précisez le métier ou le poste envisagé : <label><span><input type="text" size="45" name="data[ef_q1m]" {% if prestaData['ef_q1m'] is defined %} value="{{ prestaData['ef_q1m'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 2 : Quels sont vos atouts pour réaliser ce projet professionnel ?</div>
+                            <div><label><input {% if prestaData['ef_q2_1'] is defined %} {{prestaData['ef_q2_1']|setcheckbox(1)}} {% endif %} name="data[ef_q2_1]" type="checkbox" value="1"/><span>a. J’ai une formation en rapport avec mon projet</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q2_2'] is defined %} {{prestaData['ef_q2_2']|setcheckbox(1)}} {% endif %} name="data[ef_q2_2]" type="checkbox" value="1"/><span>b. J’ai une expérience professionnelle en rapport avec mon projet</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q2_3'] is defined %} {{prestaData['ef_q2_3']|setcheckbox(1)}} {% endif %} name="data[ef_q2_3]" type="checkbox" value="1"/><span>c. J’ai une expérience extra-professionnelle en rapport avec mon projet</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q2_4'] is defined %} {{prestaData['ef_q2_4']|setcheckbox(1)}} {% endif %} name="data[ef_q2_4]" type="checkbox" value="1"/><span>d. C’est le métier que j’ai toujours voulu exercer</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q2_5'] is defined %} {{prestaData['ef_q2_5']|setcheckbox(1)}} {% endif %} name="data[ef_q2_5]" type="checkbox" value="1"/><span>e. Je connais des entreprises qui embauchent dans ma branche</span></label></div>
+
+
+                            <div class="sous_titre">Question 3 : Quels sont vos besoins en formation au regard de votre projet professionnel ?</div>
+                            <div><label><input {% if prestaData['ef_q3_1'] is defined %} {{prestaData['ef_q3_1']|setcheckbox(1)}} {% endif %} name="data[ef_q3_1]" type="checkbox" value="1"/><span>a. Aucun besoin particulier en formation</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q3_2'] is defined %} {{prestaData['ef_q3_2']|setcheckbox(1)}} {% endif %} name="data[ef_q3_2]" type="checkbox" value="1"/><span>b. Maîtrise des Savoirs de Base, précisez : <input type="text" size="30" name="data[ef_q3a_2]" {% if prestaData['ef_q3a_2'] is defined %} value="{{ prestaData['ef_q3a_2'] }}" {% endif %}></span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q3_3'] is defined %} {{prestaData['ef_q3_3']|setcheckbox(1)}} {% endif %} name="data[ef_q3_3]" type="checkbox" value="1"/><span>c. Module professionnel (permis, habilitation, CACES…), précisez : <input type="text" size="30" name="data[ef_q3a_3]" {% if prestaData['ef_q3a_3'] is defined %} value="{{ prestaData['ef_q3a_3'] }}" {% endif %}></span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q3_4'] is defined %} {{prestaData['ef_q3_4']|setcheckbox(1)}} {% endif %} name="data[ef_q3_4]" type="checkbox" value="1"/><span>d. Formation qualifiante (titre professionnel, diplôme…), précisez :<input type="text" size="30" name="data[ef_q3a_4]" {% if prestaData['ef_q3a_4'] is defined %} value="{{ prestaData['ef_q3a_4'] }}" {% endif %}></span></label></div>
+                        </div>
+
+
+                        <h3><a href="#">Questions relatives à la proximité à l’emploi</a></h3>
+
+                        <div>
+                            <div class="sous_titre">Question 4 : Depuis combien de temps êtes-vous sans emploi ?</div>
+                            <div><label><input {% if prestaData['ef_q4'] is defined %} {{prestaData['ef_q4']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q4]" type="radio" value="0"/></label></div>
+                            
+                            <div><label><input {% if prestaData['ef_q4'] is defined %} {{prestaData['ef_q4']|setcheckbox(1)}} {% endif %} name="data[ef_q4]" type="radio" value="1"/><span>a. Moins d’1 an</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q4'] is defined %} {{prestaData['ef_q4']|setcheckbox(2)}} {% endif %} name="data[ef_q4]" type="radio" value="2"/><span>b. De 1 à 2 ans</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q4'] is defined %} {{prestaData['ef_q4']|setcheckbox(3)}} {% endif %} name="data[ef_q4]" type="radio" value="3"/><span>c. Plus de 2 ans</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q4'] is defined %} {{prestaData['ef_q4']|setcheckbox(4)}} {% endif %} name="data[ef_q4]" type="radio" value="4"/><span>d. Recherche du 1er emploi</span></label></div>
+
+
+                            <div class="sous_titre">Question 5 : D’après vous, pourquoi ne trouvez-vous pas de travail ?</div>
+                            <div><label><input {% if prestaData['ef_q5_1'] is defined %} {{prestaData['ef_q5_1']|setcheckbox(1)}} {% endif %} name="data[ef_q5_1]" type="checkbox" value="1"/><span>a. Je n’ai jamais travaillé</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_2'] is defined %} {{prestaData['ef_q5_2']|setcheckbox(1)}} {% endif %} name="data[ef_q5_2]" type="checkbox" value="1"/><span>b. Je n’ai jamais travaillé en France</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_3'] is defined %} {{prestaData['ef_q5_3']|setcheckbox(1)}} {% endif %} name="data[ef_q5_3]" type="checkbox" value="1"/><span>c. Je n’ai pas travaillé depuis très longtemps</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_4'] is defined %} {{prestaData['ef_q5_4']|setcheckbox(1)}} {% endif %} name="data[ef_q5_4]" type="checkbox" value="1"/><span>d. J’ai du mal à travailler en équipe (Expériences professionnelles douloureuses)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_5'] is defined %} {{prestaData['ef_q5_5']|setcheckbox(1)}} {% endif %} name="data[ef_q5_5]" type="checkbox" value="1"/><span>e. Compte tenu de mon âge l’apprentissage d’un métier est difficile</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_6'] is defined %} {{prestaData['ef_q5_6']|setcheckbox(1)}} {% endif %} name="data[ef_q5_6]" type="checkbox" value="1"/><span>f. Je suis trop qualifié(e) pour les postes que je vise</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_7'] is defined %} {{prestaData['ef_q5_7']|setcheckbox(1)}} {% endif %} name="data[ef_q5_7]" type="checkbox" value="1"/><span>g. Je ne suis pas assez qualifié(e) pour les postes que je vise</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_8'] is defined %} {{prestaData['ef_q5_8']|setcheckbox(1)}} {% endif %} name="data[ef_q5_8]" type="checkbox" value="1"/><span>h. Les salaires proposés sont trop faibles</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5_9'] is defined %} {{prestaData['ef_q5_9']|setcheckbox(1)}} {% endif %} name="data[ef_q5_9]" type="checkbox" value="1"/><span>i. Je suis travailleur non salarié</span></label></div>                            
+
+
+                            <div class="sous_titre">Question 5.1 : Motif de l’arrêt du dernier emploi occupé :</div>
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q5a]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(1)}} {% endif %} name="data[ef_q5a]" type="radio" value="1"/><span>a. Démission</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(2)}} {% endif %} name="data[ef_q5a]" type="radio" value="2"/><span>b. Licenciement</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(3)}} {% endif %} name="data[ef_q5a]" type="radio" value="3"/><span>c. Rupture conventionnelle</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(4)}} {% endif %} name="data[ef_q5a]" type="radio" value="4"/><span>d. Fin de contrat à durée déterminée</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(5)}} {% endif %} name="data[ef_q5a]" type="radio" value="5"/><span>e. Fin de mission (intérim)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q5a'] is defined %} {{prestaData['ef_q5a']|setcheckbox(6)}} {% endif %} name="data[ef_q5a]" type="radio" value="6"/><span>f. Arrêt d’une activité non salariée</span></label></div>
+
+
+                            <div class="sous_titre">Question 6 : Etes-vous inscrit au Pôle Emploi ?</div>
+                            <div><label><input {% if prestaData['ef_q6'] is defined %} {{prestaData['ef_q6']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q6]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q6'] is defined %} {{prestaData['ef_q6']|setcheckbox(1)}} {% endif %} name="data[ef_q6]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q6'] is defined %} {{prestaData['ef_q6']|setcheckbox(2)}} {% endif %} name="data[qef_q6]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 6.1 : Si non, pourquoi ?</div>
+                            <div><label><input {% if prestaData['ef_q6a'] is defined %} {{prestaData['ef_q6a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q6a]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q6a'] is defined %} {{prestaData['ef_q6a']|setcheckbox(1)}} {% endif %} name="data[ef_q6a]" type="radio" value="1"/><span>a. Radiation</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q6a'] is defined %} {{prestaData['ef_q6a']|setcheckbox(2)}} {% endif %} name="data[ef_q6a]" type="radio" value="2"/><span>b. Inscription en cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q6a'] is defined %} {{prestaData['ef_q6a']|setcheckbox(3)}} {% endif %} name="data[ef_q6a]" type="radio" value="3"/><span>c. Je ne sais pas comment faire</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q6a'] is defined %} {{prestaData['ef_q6a']|setcheckbox(4)}} {% endif %} name="data[ef_q6a]" type="radio" value="4"/><span>d. Je ne souhaite pas m'inscrire</span></label></div>
+
+
+                            <div class="sous_titre">Question 7 : Exercez-vous ou avez-vous exercé une activité extra-professionnelle, associative ?</div>
+                            <div><label><input {% if prestaData['ef_q7'] is defined %} {{prestaData['ef_q7']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q7]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q7'] is defined %} {{prestaData['ef_q7']|setcheckbox(1)}} {% endif %} name="data[ef_q7]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q7'] is defined %} {{prestaData['ef_q7']|setcheckbox(2)}} {% endif %} name="data[ef_q7]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 7.1 : Si oui, précisez : <label><span><input type="text" size="30" name="data[ef_q7a_1]" {% if prestaData['ef_q7a_1'] is defined %} value="{{ prestaData['ef_q7a_1'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 8 : Disposez-vous d’un CV à jour ?</div>
+                            <div><label><input {% if prestaData['ef_q8'] is defined %} {{prestaData['ef_q8']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q8]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q8'] is defined %} {{prestaData['ef_q8']|setcheckbox(1)}} {% endif %} name="data[ef_q8]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q8'] is defined %} {{prestaData['ef_q8']|setcheckbox(2)}} {% endif %} name="data[ef_q8]" type="radio" value="2"/><span>NON</span></label></div>
+
+                    
+                            <div class="sous_titre">Question 8.1 : Si non, précisez pourquoi :</div>
+                            <div><label><input {% if prestaData['ef_q8a_1'] is defined %} {{prestaData['ef_q8a_1']|setcheckbox(1)}} {% endif %} name="data[ef_q8a_1]" type="checkbox" value="1"/><span>a. Dans mon métier / secteur d’activité on embauche sans CV</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q8a_2'] is defined %} {{prestaData['ef_q8a_2']|setcheckbox(1)}} {% endif %} name="data[ef_q8a_2]" type="checkbox" value="1"/><span>b. Je n’ai jamais eu besoin de CV pour travailler</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q8a_3'] is defined %} {{prestaData['ef_q8a_3']|setcheckbox(1)}} {% endif %} name="data[ef_q8a_3]" type="checkbox" value="1"/><span>c. Je ne sais pas comment rédiger un CV</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q8a_4'] is defined %} {{prestaData['ef_q8a_4']|setcheckbox(1)}} {% endif %} name="data[ef_q8a_4]" type="checkbox" value="1"/><span>d. Je ne sais pas qui peut m’aider à rédiger un CV</span></label></div>
+                       
+                            <div><label><input {% if prestaData['ef_q8a_5'] is defined %} {{prestaData['ef_q8a_5']|setcheckbox(1)}} {% endif %} name="data[ef_q8a_5]" type="checkbox" value="1"/><span>e. Je ne souhaite pas travailler</span></label></div>
+
+
+                            <div class="sous_titre">Question 9 : Quelles personnes, autour de vous, pouvez-vous solliciter pour trouver un emploi ?</div>
+                            <div><label><input {% if prestaData['ef_q9_1'] is defined %} {{prestaData['ef_q9_1']|setcheckbox(1)}} {% endif %} name="data[ef_q9_1]" type="checkbox" value="1"/><span>a. Anciens collègues</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q9_2'] is defined %} {{prestaData['ef_q9_2']|setcheckbox(1)}} {% endif %} name="data[ef_q9_2]" type="checkbox" value="1"/><span>b. Anciens employeurs</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q9_3'] is defined %} {{prestaData['ef_q9_3']|setcheckbox(1)}} {% endif %} name="data[ef_q9_3]" type="checkbox" value="1"/><span>c. Famille</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q9_4'] is defined %} {{prestaData['ef_q9_4']|setcheckbox(1)}} {% endif %} name="data[ef_q9_4]" type="checkbox" value="1"/><span>d. Amis</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q9_5'] is defined %} {{prestaData['ef_q9_5']|setcheckbox(1)}} {% endif %} name="data[ef_q9_5]" type="checkbox" value="1"/><span>e. Personne</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q9_6'] is defined %} {{prestaData['ef_q9_6']|setcheckbox(1)}} {% endif %} name="data[ef_q9_6]" type="checkbox" value="1"/><span>f. Autre, précisez :<input type="text" size="30" name="data[ef_q9a_6]" {% if prestaData['ef_q9a_6'] is defined %} value="{{ prestaData['ef_q9a_6'] }}" {% endif %}></span></label></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-3">
+                    <div id="accordion">
+                        Freins personnels :
+                        <h3><a href="#">Questions relatives à la santé</a></h3>
+                        <div>
+                            <div class="sous_titre">Question 10 : Quel est votre état de santé actuel ?</div>
+                            <div><label><input {% if prestaData['ef_q10'] is defined %} {{prestaData['ef_q10']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q10]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q10'] is defined %} {{prestaData['ef_q10']|setcheckbox(1)}} {% endif %} name="data[ef_q10]" type="radio" value="1"/><span>a. Aucun problème de santé</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q10'] is defined %} {{prestaData['ef_q10']|setcheckbox(2)}} {% endif %} name="data[ef_q10]" type="radio" value="2"/><span>b. Problèmes de santé physique passagers</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q10'] is defined %} {{prestaData['ef_q10']|setcheckbox(3)}} {% endif %} name="data[ef_q10]" type="radio" value="3"/><span>c. Problèmes de santé physique permanents / chroniques</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q10'] is defined %} {{prestaData['ef_q10']|setcheckbox(4)}} {% endif %} name="data[ef_q10]" type="radio" value="4"/><span>d. Problèmes d’ordre psychologique</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q10'] is defined %} {{prestaData['ef_q10']|setcheckbox(5)}} {% endif %} name="data[ef_q10]" type="radio" value="5"/><span>e. Je suis en situation de handicap</span></label></div>
+
+
+                            <div class="sous_titre">Question 11 : Si vous êtes en situation de handicap, êtes-vous reconnu travailleur handicapé ?</div>
+                            <div><label><input {% if prestaData['ef_q11'] is defined %} {{prestaData['ef_q11']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q11]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q11'] is defined %} {{prestaData['ef_q11']|setcheckbox(1)}} {% endif %} name="data[ef_q11]" type="radio" value="1"/><span>a. Oui</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q11'] is defined %} {{prestaData['ef_q11']|setcheckbox(2)}} {% endif %} name="data[ef_q11]" type="radio" value="2"/><span>c. Non, car le dossier est trop compliqué à monter</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q11'] is defined %} {{prestaData['ef_q11']|setcheckbox(3)}} {% endif %} name="data[ef_q11]" type="radio" value="3"/><span>d. Non, ma demande a été refusée ou ajournée</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q11'] is defined %} {{prestaData['ef_q11']|setcheckbox(4)}} {% endif %} name="data[ef_q11]" type="radio" value="4"/><span>e. Ma demande est en cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q11'] is defined %} {{prestaData['ef_q11']|setcheckbox(5)}} {% endif %} name="data[ef_q11]" type="radio" value="5"/><span>f. Non, je ne sais pas ce que c’est</span></label></div>
+
+
+                            <div class="sous_titre">Question 12 : Etes-vous suivi par un médecin ?</div>
+                            <div><label><input {% if prestaData['ef_q12'] is defined %} {{prestaData['ef_q12']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q12]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12'] is defined %} {{prestaData['ef_q12']|setcheckbox(1)}} {% endif %} name="data[ef_q12]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12'] is defined %} {{prestaData['ef_q12']|setcheckbox(2)}} {% endif %} name="data[ef_q12]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 12.1 : Si non, pourquoi ?</div>
+                            <div><label><input {% if prestaData['ef_q12a_1'] is defined %} {{prestaData['ef_q12a_1']|setcheckbox(1)}} {% endif %} name="data[ef_q12a_1]" type="checkbox" value="1"/><span>a. Médecin trop loin</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12a_2'] is defined %} {{prestaData['ef_q12a_2']|setcheckbox(1)}} {% endif %} name="data[ef_q12a_2]" type="checkbox" value="1"/><span>b. Coût de la visite élevé</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12a_3'] is defined %} {{prestaData['ef_q12a_3']|setcheckbox(1)}} {% endif %} name="data[ef_q12a_3]" type="checkbox" value="1"/><span>c. Absence de couverture sociale</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12a_4'] is defined %} {{prestaData['ef_q12a_4']|setcheckbox(1)}} {% endif %} name="data[ef_q12a_4]" type="checkbox" value="1"/><span>d. Pas l’habitude de consulter</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12a_5'] is defined %} {{prestaData['ef_q12a_5']|setcheckbox(1)}} {% endif %} name="data[ef_q12a_5]" type="checkbox" value="1"/><span>e. Pas besoin de consulter</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q12a_6'] is defined %} {{prestaData['ef_q12a_6']|setcheckbox(1)}} {% endif %} name="data[ef_q12a_6]" type="checkbox" value="1"/><span>f. Autre, précisez :<input type="text" size="30" name="data[ef_q12a6_a]" {% if prestaData['ef_q12a6_a'] is defined %} value="{{ prestaData['ef_q12a6_a'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 13 : Considérez-vous que votre état de santé vous empêche de reprendre une activité professionnelle ?</div>
+                            <div><label><input {% if prestaData['ef_q13'] is defined %} {{prestaData['ef_q13']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q13]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q13'] is defined %} {{prestaData['ef_q13']|setcheckbox(1)}} {% endif %} name="data[ef_q13]" type="radio" value="1"/><span>a. Oui tout à fait</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q13'] is defined %} {{prestaData['ef_q13']|setcheckbox(2)}} {% endif %} name="data[ef_q13]" type="radio" value="2"/><span>b. Plutôt oui</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q13'] is defined %} {{prestaData['ef_q13']|setcheckbox(3)}} {% endif %} name="data[ef_q13]" type="radio" value="3"/><span>c. Plutôt non</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q13'] is defined %} {{prestaData['ef_q13']|setcheckbox(4)}} {% endif %} name="data[ef_q13]" type="radio" value="4"/><span>d. Non pas du tout</span></label></div>
+
+
+                            <div class="sous_titre">Question 14 : Quelle est votre couverture sociale ?</div>
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q14]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(1)}} {% endif %} name="data[ef_q14]" type="radio" value="1"/><span>a. Aucune</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(2)}} {% endif %} name="data[ef_q14]" type="radio" value="2"/><span>b. C.M.U base</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(3)}} {% endif %} name="data[ef_q14]" type="radio" value="3"/><span>c. C.M.U.C</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(4)}} {% endif %} name="data[ef_q14]" type="radio" value="4"/><span>d. Mutuelle</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(5)}} {% endif %} name="data[ef_q14]" type="radio" value="5"/><span>e. Démarche en cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q14'] is defined %} {{prestaData['ef_q14']|setcheckbox(6)}} {% endif %} name="data[ef_q14]" type="radio" value="6"/><span>f. Autre situation, précisez :<input type="text" size="30" name="data[ef_q14a_6a]" {% if prestaData['ef_q14a_6a'] is defined %} value="{{ prestaData['ef_q14a_6a'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 15 : A quelle fréquence consultez-vous le médecin ?</div>
+                            <div><label><input {% if prestaData['ef_q15'] is defined %} {{prestaData['ef_q15']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q15]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q15'] is defined %} {{prestaData['ef_q15']|setcheckbox(1)}} {% endif %} name="data[ef_q15]" type="radio" value="1"/><span>a. Moins d’une fois par an</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q15'] is defined %} {{prestaData['ef_q15']|setcheckbox(2)}} {% endif %} name="data[ef_q15]" type="radio" value="2"/><span>b. 3 fois à 6 fois par an</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q15'] is defined %} {{prestaData['ef_q15']|setcheckbox(3)}} {% endif %} name="data[ef_q15]" type="radio" value="3"/><span>c. 6 à 12 fois par an</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q15'] is defined %} {{prestaData['ef_q15']|setcheckbox(4)}} {% endif %} name="data[ef_q15]" type="radio" value="4"/><span>d. Plus d’une fois par mois</span></label></div>
+
+
+                            <div class="sous_titre">Question 16 : Avez-vous déclaré un médecin traitant à la sécurité sociale ?</div>
+                            <div><label><input {% if prestaData['ef_q16'] is defined %} {{prestaData['ef_q16']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q16]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16'] is defined %} {{prestaData['ef_q16']|setcheckbox(1)}} {% endif %} name="data[ef_q16]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16'] is defined %} {{prestaData['ef_q16']|setcheckbox(2)}} {% endif %} name="data[ef_q16]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 16.1 : Si non, pourquoi ?</div>
+                            <div><label><input {% if prestaData['ef_q16a'] is defined %} {{prestaData['ef_q16a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q16a]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16a'] is defined %} {{prestaData['ef_q16a']|setcheckbox(1)}} {% endif %} name="data[ef_q16a]" type="radio" value="1"/><span>a. Médecin à la retraite</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16a'] is defined %} {{prestaData['ef_q16a']|setcheckbox(2)}} {% endif %} name="data[ef_q16a]" type="radio" value="2"/><span>b. Je n’ai pas encore fait de choix</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16a'] is defined %} {{prestaData['ef_q16a']|setcheckbox(3)}} {% endif %} name="data[ef_q16a]" type="radio" value="3"/><span>c. Je ne sais pas comment le déclarer</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16a'] is defined %} {{prestaData['ef_q16a']|setcheckbox(4)}} {% endif %} name="data[ef_q16a]" type="radio" value="4"/><span>d. Démarche en cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q16a'] is defined %} {{prestaData['ef_q16a']|setcheckbox(5)}} {% endif %} name="data[ef_q16a]" type="radio" value="5"/><span>e. Autre, précisez :<input type="text" size="30" name="data[ef_q16a5_a]" {% if prestaData['ef_q16a5_a'] is defined %} value="{{ prestaData['ef_q16a5_a'] }}" {% endif %}></span></label></div>
+                        </div>
+
+
+                        <h3><a href="#">Questions relatives à l'adhésion à l’accompagnement</a></h3>
+                        <div>
+                            <div class="sous_titre">Question 17 : Etes-vous disponible pour suivre cette prestation ?</div>
+                            <div><label><input {% if prestaData['ef_q17'] is defined %} {{prestaData['ef_q17']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q17]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q17'] is defined %} {{prestaData['ef_q17']|setcheckbox(1)}} {% endif %} name="data[ef_q17]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q17'] is defined %} {{prestaData['ef_q17']|setcheckbox(2)}} {% endif %} name="data[ef_q17]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 17.1 : Si non, pourquoi ?</div>
+                            <div><label><input {% if prestaData['ef_q17a_1'] is defined %} {{prestaData['ef_q17a_1']|setcheckbox(1)}} {% endif %} name="data[ef_q17a_1]" type="checkbox" value="1"/><span>a. Suivi médical lourd</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q17a_2'] is defined %} {{prestaData['ef_q17a_2']|setcheckbox(1)}} {% endif %} name="data[ef_q17a_2]" type="checkbox" value="1"/><span>b. Problème garde d’enfant</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q17a_3'] is defined %} {{prestaData['ef_q17a_3']|setcheckbox(1)}} {% endif %} name="data[ef_q17a_3]" type="checkbox" value="1"/><span>c. Garde d’un proche dépendant</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q17a_4'] is defined %} {{prestaData['ef_q17a_4']|setcheckbox(1)}} {% endif %} name="data[ef_q17a_4]" type="checkbox" value="1"/><span>d. Je ne pense pas que cette prestation va m’aider à me réinsérer</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q17a_5'] is defined %} {{prestaData['ef_q17a_5']|setcheckbox(1)}} {% endif %} name="data[ef_q17a_5]" type="checkbox" value="1"/><span>f. Autre, précisez :<input type="text" size="30" name="data[ef_q17a5_a]" {% if prestaData['ef_q17a5_a'] is defined %} value="{{ prestaData['ef_q17a5_a'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 18 : Etes-vous déjà accompagné dans votre démarche de recherche d’emploi ?</div>
+                            <div><label><input {% if prestaData['ef_q18'] is defined %} {{prestaData['ef_q18']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q18]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q18'] is defined %} {{prestaData['ef_q18']|setcheckbox(1)}} {% endif %} name="data[ef_q18]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q18'] is defined %} {{prestaData['ef_q18']|setcheckbox(2)}} {% endif %} name="data[ef_q18]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 18.1 : Si oui, précisez :</div>
+                            <div><label><span>Structure________________________:<input type="text" size="30" name="data[ef_q18a_1]" {% if prestaData['ef_q18a_1'] is defined %} value="{{ prestaData['ef_q18a_1'] }}" {% endif %}></span></label></div>
+
+                            <div><label><span>Lieu de la prestation_______________:<input type="text" size="30" name="data[ef_q18a_2]" {% if prestaData['ef_q18a_2'] is defined %} value="{{ prestaData['ef_q18a_2'] }}" {% endif %}></span></label></div>
+
+                            <div><label><span>Date de début de la prestation_______:<input type="text" size="30" name="data[ef_q18a_3]" {% if prestaData['ef_q18a_3'] is defined %} value="{{ prestaData['ef_q18a_3'] }}" {% endif %}></span></label></div>
+
+                            <div><label><span>Date prévisionnelle de fin___________:<input type="text" size="30" name="data[ef_q18a_4]" {% if prestaData['ef_q18a_4'] is defined %} value="{{ prestaData['ef_q18a_4'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 19 : Qu’attendez-vous de cette prestation ?</div>
+                            <div><label><input {% if prestaData['ef_q19_1'] is defined %} {{prestaData['ef_q19_1']|setcheckbox(1)}} {% endif %} name="data[ef_q19_1]" type="checkbox" value="1"/><span>a. Aide administrative, précisez :<input type="text" size="30" name="data[ef_q19a_1]" {% if prestaData['ef_q19a_1'] is defined %} value="{{ prestaData['ef_q19a_1'] }}" {% endif %}></span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q19_2'] is defined %} {{prestaData['ef_q19_2']|setcheckbox(1)}} {% endif %} name="data[ef_q19_2]" type="checkbox" value="1"/><span>b. Aide sociale, précisez :<input type="text" size="30" name="data[ef_q19a_2]" {% if prestaData['ef_q19a_2'] is defined %} value="{{ prestaData['ef_q19a_2'] }}" {% endif %}></span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q19_3'] is defined %} {{prestaData['ef_q19_3']|setcheckbox(1)}} {% endif %} name="data[ef_q19_3]" type="checkbox" value="1"/><span>c. Je ne sais pas</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q19_4'] is defined %} {{prestaData['ef_q19_4']|setcheckbox(1)}} {% endif %} name="data[ef_q19_4]" type="checkbox" value="1"/><span>d. Je n’attends rien, je n’ai pas besoin de cette prestation</span></label></div>
+
+
+                            <div class="sous_titre">Question 20 : Pour vous réinsérer, vous pensez :</div>
+                            <div><label><input {% if prestaData['ef_q20_1'] is defined %} {{prestaData['ef_q20_1']|setcheckbox(1)}} {% endif %} name="data[ef_q20_1]" type="checkbox" value="1"/><span>a. N’avoir besoin d’aucune aide</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q20_2'] is defined %} {{prestaData['ef_q20_2']|setcheckbox(1)}} {% endif %} name="data[ef_q20_2]" type="checkbox" value="1"/><span>b. Avoir besoin d’une aide extérieure globale</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q20_3'] is defined %} {{prestaData['ef_q20_3']|setcheckbox(1)}} {% endif %} name="data[ef_q20_3]" type="checkbox" value="1"/><span>c. Avoir besoin d’une aide ponctuelle</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q20_4'] is defined %} {{prestaData['ef_q20_4']|setcheckbox(1)}} {% endif %} name="data[ef_q20_4]" type="checkbox" value="1"/><span>d. Avoir besoin d’une aide sur la durée</span></label></div>
+                        </div>
+
+
+                        <h3><a href="#">Questions relatives à l'autonomie</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre">Question 21 : Comment réalisez les démarches administratives ?</div>
+                                    <table class="diag" width="100%">
+                                        <tr>
+                                            <th width="20%">Type de démarches</th>
+                                            <th width="10%">Je m’en occupe seul</th>
+                                            <th width="10%">Mon conjoint m'aide</th>
+                                            <th width="10%">Un proche m'aide (ami / famille)</th>
+                                            <th width="10%">La Curatelle s'en charge</th>
+                                            <th width="10%">Les services sociaux m'aident</th>
+                                        </tr>
+                                            {% for key, texte in listes[key.KEY_EVAL_AUTONOMIE] %}
+                                            {% set radio_name = 'autonomie_' ~ key %}
+                                        <tr>
+                                        <td>{{ texte }}</td>
+                                        <td>
+                                        	<center>
+                                            	<input type="radio" name="data[autonomie_{{ key }}]" value="0" checked="" hidden>
+                                            	<input type="radio" name="data[autonomie_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+                                        	</center>
+                                        </td>
+                                        <td>
+                                        	<center>
+                                            	<input type="radio" name="data[autonomie_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+                                        	</center>
+                                        </td>
+                                        <td>
+                                        	<center>
+                                            	<input type="radio" name="data[autonomie_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+                                        	</center>
+                                        </td>
+                                        <td>
+                                        	<center>
+                                            	<input type="radio" name="data[autonomie_{{ key }}]" value="4" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 4 %}checked{% endif %}{% endif %}>
+                                        	</center>
+                                        </td>
+                                        <td>
+                                        	<center>
+                                            <input type="radio" name="data[autonomie_{{ key }}]" value="5" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 5 %}checked{% endif %}{% endif %}>
+                                        </center>
+                                        </td>
+                                        </tr>
+                                            {% endfor %}
+                                    </table>
+                            </div>
+                            <div class="bloc" >
+                                <div class="sous_titre">Question 22 : De quels équipements suivants disposez-vous dans votre foyer ?</div>
+                                <div><label><input {% if prestaData['ef_q22_1'] is defined %} {{prestaData['ef_q22_1']|setcheckbox(1)}} {% endif %} name="data[ef_q22_1]" type="checkbox" value="1"/><span>a. Ordinateur de bureau</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q22_2'] is defined %} {{prestaData['ef_q22_2']|setcheckbox(1)}} {% endif %} name="data[ef_q22_2]" type="checkbox" value="1"/><span>b. Ordinateur portable</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q22_3'] is defined %} {{prestaData['ef_q22_3']|setcheckbox(1)}} {% endif %} name="data[ef_q22_3]" type="checkbox" value="1"/><span>c. Tablette</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q22_4'] is defined %} {{prestaData['ef_q22_4']|setcheckbox(1)}} {% endif %} name="data[ef_q22_4]" type="checkbox" value="1"/><span>d. Smartphone</span></label></div>
+
+
+                                <div class="sous_titre">Question 23 : Avez-vous un accès internet à votre domicile (box) ?</div>
+                                <div><label><input {% if prestaData['ef_q23'] is defined %} {{prestaData['ef_q23']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q23]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q23'] is defined %} {{prestaData['ef_q23']|setcheckbox(1)}} {% endif %} name="data[ef_q23]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q23'] is defined %} {{prestaData['ef_q23']|setcheckbox(2)}} {% endif %} name="data[ef_q23]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                                <div class="sous_titre">Question 24 : Effectuez-vous des démarches administratives en ligne ?</div>
+                                <div><label><input {% if prestaData['ef_q24'] is defined %} {{prestaData['ef_q24']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q24]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q24'] is defined %} {{prestaData['ef_q24']|setcheckbox(1)}} {% endif %} name="data[ef_q24]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q24'] is defined %} {{prestaData['ef_q24']|setcheckbox(2)}} {% endif %} name="data[ef_q24]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                                <div class="sous_titre">Question 24.1 : Si non, pourquoi ?</div>
+                                <div><label><input {% if prestaData['ef_q24a_1'] is defined %} {{prestaData['ef_q24a_1']|setcheckbox(1)}} {% endif %} name="data[ef_q24a_1]" type="checkbox" value="1"/><span>a. Je n’ai pas d’ordinateur</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q24a_2'] is defined %} {{prestaData['ef_q24a_2']|setcheckbox(1)}} {% endif %} name="data[ef_q24a_2]" type="checkbox" value="1"/><span>b. Je ne sais pas me servir d’un ordinateur</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q24a_3'] is defined %} {{prestaData['ef_q24a_3']|setcheckbox(1)}} {% endif %} name="data[ef_q24a_3]" type="checkbox" value="1"/><span>c. Je n’ai pas accès à un ordinateur</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q24a_4'] is defined %} {{prestaData['ef_q24a_4']|setcheckbox(1)}} {% endif %} name="data[ef_q24a_4]" type="checkbox" value="1"/><span>d. Je n’en ai pas envie</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q24a_5'] is defined %} {{prestaData['ef_q24a_5']|setcheckbox(1)}} {% endif %} name="data[ef_q24a_5]" type="checkbox" value="1"/><span>e. Autre, précisez :<input type="text" size="30" name="data[ef_q24a5_a]" {% if prestaData['ef_q24a5_a'] is defined %} value="{{ prestaData['ef_q24a5_a'] }}" {% endif %}></span></label></div>
+                            </div>
+                        </div>
+
+
+
+
+                        <h3><a href="#">Questions relatives à la disponibilité</a></h3>
+                        <div>
+                            <div class="sous_titre">Question 25 : Sous quel délai êtes–vous en mesure de vous engager dans un emploi ?</div>
+                            <div><label><input {% if prestaData['ef_q25'] is defined %} {{prestaData['ef_q25']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q25]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25'] is defined %} {{prestaData['ef_q25']|setcheckbox(1)}} {% endif %} name="data[ef_q25]" type="radio" value="1"/><span>a. Immédiatement</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25'] is defined %} {{prestaData['ef_q25']|setcheckbox(2)}} {% endif %} name="data[ef_q25]" type="radio" value="2"/><span>b. Dans un délai de 0 à 3 mois</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25'] is defined %} {{prestaData['ef_q25']|setcheckbox(3)}} {% endif %} name="data[ef_q25]" type="radio" value="3"/><span>c. Dans un délai de 3 à 6 mois</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25'] is defined %} {{prestaData['ef_q25']|setcheckbox(4)}} {% endif %} name="data[ef_q25]" type="radio" value="4"/><span>d. Dans un délai de 6 à 12 mois</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25'] is defined %} {{prestaData['ef_q25']|setcheckbox(5)}} {% endif %} name="data[ef_q25]" type="radio" value="5"/><span>e. Dans un délai de 1 an ou plus</span></label></div>
+
+
+                            <div class="sous_titre">Question 25.1 : Si vous n’êtes pas disponible de suite, pourquoi ?</div>
+                            <div><label><input {% if prestaData['ef_q25a_1'] is defined %} {{prestaData['ef_q25a_1']|setcheckbox(1)}} {% endif %} name="data[ef_q25a_1]" type="checkbox" value="1"/><span>a. Difficulté à gérer le planning quotidien (manque de temps, d’organisation)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25a_2'] is defined %} {{prestaData['ef_q25a_2']|setcheckbox(1)}} {% endif %} name="data[ef_q25a_2]" type="checkbox" value="1"/><span>b. Obligation de s’occuper d’un proche dépendant</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25a_3'] is defined %} {{prestaData['ef_q25a_3']|setcheckbox(1)}} {% endif %} name="data[ef_q25a_3]" type="checkbox" value="1"/><span>c. Difficulté à faire garder ses enfants</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q25a_4'] is defined %} {{prestaData['ef_q25a_4']|setcheckbox(1)}} {% endif %} name="data[ef_q25a_4]" type="checkbox" value="1"/><span>d. Autre, précisez :<input type="text" size="30" name="data[ef_q25a4_a]" {% if prestaData['ef_q25a4_a'] is defined %} value="{{ prestaData['ef_q25a4_a'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 26 : Si vous avez des enfants, disposez-vous d’un mode de garde adapté ?</div>
+                            <div><label><input {% if prestaData['ef_q26_1'] is defined %} {{prestaData['ef_q26_1']|setcheckbox(1)}} {% endif %} name="data[ef_q26_1]" type="checkbox" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26_2'] is defined %} {{prestaData['ef_q26_2']|setcheckbox(1)}} {% endif %} name="data[ef_q26_2]" type="checkbox" value="1"/><span>NON</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26_3'] is defined %} {{prestaData['ef_q26_3']|setcheckbox(1)}} {% endif %} name="data[ef_q26_3]" type="checkbox" value="1"/><span>Je ne suis pas concerné</span></label></div>
+
+
+                            <div class="sous_titre">Question 26.1 : Si oui, quelle solution de garde utilisez-vous ou avez-vous utilisé pour vos enfants ?</div>
+                            <div><label><input {% if prestaData['ef_q26a_1'] is defined %} {{prestaData['ef_q26a_1']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_1]" type="checkbox" value="1"/><span>a. Assistante maternelle</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_2'] is defined %} {{prestaData['ef_q26a_2']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_2]" type="checkbox" value="1"/><span>b. Proches (amis, famille)</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_3'] is defined %} {{prestaData['ef_q26a_3']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_3]" type="checkbox" value="1"/><span>c. Crèche</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_4'] is defined %} {{prestaData['ef_q26a_4']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_4]" type="checkbox" value="1"/><span>d. Halte-garderie</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_5'] is defined %} {{prestaData['ef_q26a_5']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_5]" type="checkbox" value="1"/><span>e. Baby-sitter</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_6'] is defined %} {{prestaData['ef_q26a_6']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_6]" type="checkbox" value="1"/><span>f. Garderie de l’école</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_7'] is defined %} {{prestaData['ef_q26a_7']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_7]" type="checkbox" value="1"/><span>g. Garde d’enfant à domicile</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26a_8'] is defined %} {{prestaData['ef_q26a_8']|setcheckbox(1)}} {% endif %} name="data[ef_q26a_8]" type="checkbox" value="1"/><span>h. Autre, précisez :<input type="text" size="30" name="data[ef_q26a8_a]" {% if prestaData['ef_q26a8_a'] is defined %} value="{{ prestaData['ef_q26a8_a'] }}" {% endif %}></span></label></div>
+
+
+                            <div class="sous_titre">Question 26.2 : Si non, pourquoi ?</div>
+                            <div><label><input {% if prestaData['ef_q26b_1'] is defined %} {{prestaData['ef_q26b_1']|setcheckbox(1)}} {% endif %} name="data[ef_q26b_1]" type="checkbox" value="1"/><span>a. Absence de place en crèche</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26b_2'] is defined %} {{prestaData['ef_q26b_2']|setcheckbox(1)}} {% endif %} name="data[ef_q26b_2]" type="checkbox" value="1"/><span>b. Absence de place en garderie/école</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26b_3'] is defined %} {{prestaData['ef_q26b_3']|setcheckbox(1)}} {% endif %} name="data[ef_q26b_3]" type="checkbox" value="1"/><span>c. Mode de garde éloigné</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26b_4'] is defined %} {{prestaData['ef_q26b_4']|setcheckbox(1)}} {% endif %} name="data[ef_q26b_4]" type="checkbox" value="1"/><span>d. Mode de garde inaccessible financière</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q26b_5'] is defined %} {{prestaData['ef_q26b_5']|setcheckbox(1)}} {% endif %} name="data[ef_q26b_5]" type="checkbox" value="1"/><span>e. Je ne souhaite pas faire garder mon (mes) enfant(s)</span></label></div>
+
+                            <div class="sous_titre">Question 26.3 : Combien d'enfants à charge avez-vous ?</div>
+                            <table class="diag" width="100%">
+                                <!-- Ligne(s) d'entete -->
+                                <tr>
+                                    <th width="60%">Tranche d'âge</th>
+                                    <th width="40%">Nombre d’enfants à charge</th>
+                                </tr>
+
+                                    <!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+                                <tr>
+                                    <td>
+                                        Enfants âgés de 0 à 2 ans
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[eac_0a2]" rows="1" cols="10">{% if prestaData['eac_0a2'] is defined %}{{prestaData['eac_0a2']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Enfants âgés de 3 à 5 ans
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[eac_3a5]" rows="1" cols="10">{% if prestaData['eac_3a5'] is defined %}{{prestaData['eac_3a5']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Enfants âgés de 6 à 10 ans
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[eac_6a10]" rows="1" cols="10">{% if prestaData['eac_6a10'] is defined %}{{prestaData['eac_6a10']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Enfants âgés de 11 à 17 ans
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[eac_11a17]" rows="1" cols="10">{% if prestaData['eac_11a17'] is defined %}{{prestaData['eac_11a17']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Enfants âgés de 18 ans et +
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[eac_18+]" rows="1" cols="10">{% if prestaData['eac_18+'] is defined %}{{prestaData['eac_18+']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Nombre total d'enfants à charge
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[eac_total]" rows="1" cols="10">{% if prestaData['eac_total'] is defined %}{{prestaData['eac_total']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-4">
+                    <div id="accordion">
+                        Freins sociaux :
+                        <h3><a href="#">Questions relatives à la gestion du budget</a></h3>
+                        <div>
+                            <div class="sous_titre">Question 27 : Vos revenus actuels (RSA, CAF, APAJ, APL…) couvrent-ils vos charges (loyer, Edf, habillement, nourriture, loisirs) ?</div>
+                            <div><label><input {% if prestaData['ef_q27'] is defined %} {{prestaData['ef_q27']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q27]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q27'] is defined %} {{prestaData['ef_q27']|setcheckbox(1)}} {% endif %} name="data[ef_q27]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q27'] is defined %} {{prestaData['ef_q27']|setcheckbox(2)}} {% endif %} name="data[ef_q27]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 28 : Avez-vous des dettes ou des retards de paiement sur les dépenses ci-dessous ?</div>
+							<table class="diag" width="100%">
+								<!-- Ligne(s) d'entete -->
+								<tr>
+                                    <th width="60%">Objet</th>
+                                    <th width="10%">Nombre d’échéances</th>
+                                    <th width="10%">Montant</th>
+                                    <th width="10%">Mise en place d’un échéancier</th>
+                                    <th width="10%">Service (contrat) suspendu/résilié</th>
+								</tr>
+
+									<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+								<tr>
+									<td>
+										Loyer
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[ech_loyer]" rows="1" cols="10">{% if prestaData['ech_loyer'] is defined %}{{prestaData['ech_loyer']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[dette_loyer]" rows="1" cols="10">{% if prestaData['dette_loyer'] is defined %}{{prestaData['dette_loyer']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[prglt_loyer]" rows="1" cols="10">{% if prestaData['prglt_loyer'] is defined %}{{prestaData['prglt_loyer']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[resil_loyer]" rows="1" cols="10">{% if prestaData['resil_loyer'] is defined %}{{prestaData['resil_loyer']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Electricité, Gaz, Eau
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[ech_egdfe]" rows="1" cols="10">{% if prestaData['ech_egdfe'] is defined %}{{prestaData['ech_egdfe']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[dette_egdfe]" rows="1" cols="10">{% if prestaData['dette_egdfe'] is defined %}{{prestaData['dette_egdfe']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[prglt_egdfe]" rows="1" cols="10">{% if prestaData['prglt_egdfe'] is defined %}{{prestaData['prglt_egdfe']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[resil_egdfe]" rows="1" cols="10">{% if prestaData['resil_egdfe'] is defined %}{{prestaData['resil_egdfe']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Téléphone
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[ech_telef]" rows="1" cols="10">{% if prestaData['ech_telef'] is defined %}{{prestaData['ech_telef']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[dette_telef]" rows="1" cols="10">{% if prestaData['dette_telef'] is defined %}{{prestaData['dette_telef']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[prglt_telef]" rows="1" cols="10">{% if prestaData['prglt_telef'] is defined %}{{prestaData['prglt_telef']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[resil_telef]" rows="1" cols="10">{% if prestaData['resil_telef'] is defined %}{{prestaData['resil_telef']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Assurance
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[ech_assur]" rows="1" cols="10">{% if prestaData['ech_assur'] is defined %}{{prestaData['ech_assur']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[dette_assur]" rows="1" cols="10">{% if prestaData['dette_assur'] is defined %}{{prestaData['dette_assur']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[prglt_assur]" rows="1" cols="10">{% if prestaData['prglt_assur'] is defined %}{{prestaData['prglt_assur']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[resil_assur]" rows="1" cols="10">{% if prestaData['resil_assur'] is defined %}{{prestaData['resil_assur']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Crédit à la consommation
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[ech_conso]" rows="1" cols="10">{% if prestaData['ech_conso'] is defined %}{{prestaData['ech_conso']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[dette_conso]" rows="1" cols="10">{% if prestaData['dette_conso'] is defined %}{{prestaData['dette_conso']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[prglt_conso]" rows="1" cols="10">{% if prestaData['prglt_conso'] is defined %}{{prestaData['prglt_conso']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[resil_conso]" rows="1" cols="10">{% if prestaData['resil_conso'] is defined %}{{prestaData['resil_conso']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Crédit immobilier
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[ech_cimmo]" rows="1" cols="10">{% if prestaData['ech_cimmo'] is defined %}{{prestaData['ech_cimmo']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[dette_cimmo]" rows="1" cols="10">{% if prestaData['dette_cimmo'] is defined %}{{prestaData['dette_cimmo']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[prglt_cimmo]" rows="1" cols="10">{% if prestaData['prglt_cimmo'] is defined %}{{prestaData['prglt_cimmo']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[resil_cimmo]" rows="1" cols="10">{% if prestaData['resil_cimmo'] is defined %}{{prestaData['resil_cimmo']}}{% endif %}</textarea>
+									</td>
+								</tr>
+                                <tr>
+                                    <td>
+                                        Autre crédit
+                                    </td>
+                                    <td>
+                                        <!-- Entrée de type zone de texte -->
+                                        <textarea name="data[ech_autre]" rows="1" cols="10">{% if prestaData['ech_autre'] is defined %}{{prestaData['ech_autre']}}{% endif %}</textarea>
+                                    </td>
+                                    <td>
+                                        <textarea name="data[dette_autre]" rows="1" cols="10">{% if prestaData['dette_autre'] is defined %}{{prestaData['dette_autre']}}{% endif %}</textarea>
+                                    </td>
+                                    <td>
+                                        <textarea name="data[prglt_autre]" rows="1" cols="10">{% if prestaData['prglt_autre'] is defined %}{{prestaData['prglt_autre']}}{% endif %}</textarea>
+                                    </td>
+                                    <td>
+                                        <textarea name="data[resil_autre]" rows="1" cols="10">{% if prestaData['resil_autre'] is defined %}{{prestaData['resil_autre']}}{% endif %}</textarea>
+                                    </td>
+                                </tr>
+							</table>
+
+                            <div class="sous_titre">Question 29 : Si vous avez des dettes avez-vous mobilisé les aides disponibles ?<br/>
+                            <!--<div class="sous_titre">-->Question 29.1 : Liées au logement, (APL, ALS, ALF) ?</div>
+                            <div><label><input {% if prestaData['ef_q29a'] is defined %} {{prestaData['ef_q29a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q29a]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29a'] is defined %} {{prestaData['ef_q29a']|setcheckbox(1)}} {% endif %} name="data[ef_q29a]" type="radio" value="1"/><span>a. Oui</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29a'] is defined %} {{prestaData['ef_q29a']|setcheckbox(2)}} {% endif %} name="data[ef_q29a]" type="radio" value="2"/><span>b. Non</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29a'] is defined %} {{prestaData['ef_q29a']|setcheckbox(3)}} {% endif %} name="data[ef_q29a]" type="radio" value="3"/><span>c. En cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29a'] is defined %} {{prestaData['ef_q29a']|setcheckbox(4)}} {% endif %} name="data[ef_q29a]" type="radio" value="4"/><span>d. Ne Sait Pas</span></label></div>
+
+
+                            <div class="sous_titre">Question 29.2 : Liées aux dépenses courantes ?</div>
+                            <div><label><input {% if prestaData['ef_q29b'] is defined %} {{prestaData['ef_q29b']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q29b]" type="radio" value="0"/></label></div>
+                            <div><label><input {% if prestaData['ef_q29b'] is defined %} {{prestaData['ef_q29b']|setcheckbox(1)}} {% endif %} name="data[ef_q29b]" type="radio" value="1"/><span>a. Oui</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29b'] is defined %} {{prestaData['ef_q29b']|setcheckbox(2)}} {% endif %} name="data[ef_q29b]" type="radio" value="2"/><span>b. Non</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29b'] is defined %} {{prestaData['ef_q29b']|setcheckbox(3)}} {% endif %} name="data[ef_q29b]" type="radio" value="3"/><span>c. En cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q29b'] is defined %} {{prestaData['ef_q29b']|setcheckbox(4)}} {% endif %} name="data[ef_q29b]" type="radio" value="4"/><span>d. Ne Sait Pas</span></label></div>
+
+
+                            <div class="sous_titre">Question 30 : Etes-vous en situation de découvert bancaire ?</div>
+                            <div><label><input {% if prestaData['ef_q30'] is defined %} {{prestaData['ef_q30']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q30]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q30'] is defined %} {{prestaData['ef_q30']|setcheckbox(1)}} {% endif %} name="data[ef_q30]" type="radio" value="1"/><span>Tous les mois</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q30'] is defined %} {{prestaData['ef_q30']|setcheckbox(2)}} {% endif %} name="data[ef_q30]" type="radio" value="2"/><span>Occasionnellement</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q30'] is defined %} {{prestaData['ef_q30']|setcheckbox(3)}} {% endif %} name="data[ef_q30]" type="radio" value="3"/><span>Rarement</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q30'] is defined %} {{prestaData['ef_q30']|setcheckbox(4)}} {% endif %} name="data[ef_q30]" type="radio" value="4"/><span>Jamais</span></label></div>
+
+
+                            <div class="sous_titre">Question 31 : Etes–vous en situation de surendettement ?</div>
+                            <div><label><input {% if prestaData['ef_q31'] is defined %} {{prestaData['ef_q31']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q31]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q31'] is defined %} {{prestaData['ef_q31']|setcheckbox(1)}} {% endif %} name="data[ef_q31]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q31'] is defined %} {{prestaData['ef_q31']|setcheckbox(2)}} {% endif %} name="data[ef_q31]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                            <div class="sous_titre">Question 31.1 : Si oui, avez-vous procédé au montage du dossier ?</div>
+                            <div><label><input {% if prestaData['ef_q31a'] is defined %} {{prestaData['ef_q31a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q31a]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q31a'] is defined %} {{prestaData['ef_q31a']|setcheckbox(1)}} {% endif %} name="data[ef_q31a]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q31a'] is defined %} {{prestaData['ef_q31a']|setcheckbox(2)}} {% endif %} name="data[ef_q31a]" type="radio" value="2"/><span>NON</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q31a'] is defined %} {{prestaData['ef_q31a']|setcheckbox(3)}} {% endif %} name="data[ef_q31a]" type="radio" value="3"/><span>Dossier en cours</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q31a'] is defined %} {{prestaData['ef_q31a']|setcheckbox(4)}} {% endif %} name="data[ef_q31a]" type="radio" value="4"/><span>Je ne sais pas comment faire</span></label></div>
+                        </div>
+
+                        <h3><a href="#">Questions relatives au logement</a></h3>
+                        <div>
+                        	<div class="bloc">
+                                <div class="sous_titre">Question 32 : Dans quel type de logement habitez-vous ?</div>
+                                    <div>
+                                        <select id="type_logement" name="data[type_logement]">
+                                            <option>
+                                                {% if prestaData['type_logement'] is defined %}{{prestaData['type_logement']}}
+                                                {% endif %}
+                                            </option>
+                                                {% if (options[key.KEY_TYPE_LOGEMENT] is defined) %}
+                                                    {{options[key.KEY_TYPE_LOGEMENT]|raw}}
+                                                {% endif %}
+                                        </select>
+                                    </div>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Question 32.1 : Le logement que vous occupez est un logement : </div>
+                                    <div>
+                                        <div><label><input {% if prestaData['ef_q32a'] is defined %} {{prestaData['ef_q32a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q32a]" type="radio" value="0"/></label></div>
+
+                                        <div><label><input {% if prestaData['ef_q32a'] is defined %} {{prestaData['ef_q32a']|setcheckbox("d'urgence")}} {% endif %} name="data[ef_q32a]" type="radio" value="d'urgence"/><span>Urgence</span></label></div>
+
+                                        <div><label><input {% if prestaData['ef_q32a'] is defined %} {{prestaData['ef_q32a']|setcheckbox("temporaire")}} {% endif %} name="data[ef_q32a]" type="radio" value="temporaire"/><span>Temporaire</span></label></div>
+
+                                        <div><label><input {% if prestaData['ef_q32a'] is defined %} {{prestaData['ef_q32a']|setcheckbox("permanent")}} {% endif %} name="data[ef_q32a]" type="radio" value="permanent"/><span>Permanent</span></label></div>
+                                    </div>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Question 33 : A quel titre occupez-vous ce logement ?</div>
+                                <div><label><input {% if prestaData['ef_q33'] is defined %} {{prestaData['ef_q33']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q33]" type="radio" value="0"/></label></div>
+                                <div><label><input {% if prestaData['ef_q33'] is defined %} {{prestaData['ef_q33']|setcheckbox(1)}} {% endif %} name="data[ef_q33]" type="radio" value="1"/><span>Propriétaire</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q33'] is defined %} {{prestaData['ef_q33']|setcheckbox(2)}} {% endif %} name="data[ef_q33]" type="radio" value="2"/><span>Locataire</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q33'] is defined %} {{prestaData['ef_q33']|setcheckbox(3)}} {% endif %} name="data[ef_q33]" type="radio" value="3"/><span>Hébergé</span></label></div>
+
+
+                                <div class="sous_titre">Question 34 : Si vous êtes hébergé, avez-vous une échéance pour quitter ce logement ?</div>
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q34]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(1)}} {% endif %} name="data[ef_q34]" type="radio" value="1"/><span>a. Dans un délai d'un mois</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(2)}} {% endif %} name="data[ef_q34]" type="radio" value="2"/><span>a. Dans un délai de 3 mois</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(3)}} {% endif %} name="data[ef_q34]" type="radio" value="3"/><span>b. Dans un délai de 6 mois</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(4)}} {% endif %} name="data[ef_q34]" type="radio" value="4"/><span>c. Dans un délai de 12 mois</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(5)}} {% endif %} name="data[ef_q34]" type="radio" value="5"/><span>d. Non, je peux rester aussi longtemps que nécessaire</span></label></div>
+
+
+                                <div class="sous_titre">Question 35 : Etes-vous menacé d’expulsion ?</div>
+                                <div><label><input {% if prestaData['ef_q34'] is defined %} {{prestaData['ef_q34']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q34]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q35'] is defined %} {{prestaData['ef_q35']|setcheckbox(1)}} {% endif %} name="data[ef_q35]" type="radio" value="1"/><span>a. Non</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q35'] is defined %} {{prestaData['ef_q35']|setcheckbox(2)}} {% endif %} name="data[ef_q35]" type="radio" value="2"/><span>b. Non, mais le risque existe</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q35'] is defined %} {{prestaData['ef_q35']|setcheckbox(3)}} {% endif %} name="data[ef_q35]" type="radio" value="3"/><span>c. Oui, la procédure est enclenchée</span></label></div>
+                            </div>
+
+                            <div class="bloc">
+                            	<div class="sous_titre">Question 36 : Que pensez-vous de votre logement ?</div>
+									<table class="diag" width="100%">
+										<tr>
+											<th width="40%">Objet</th>
+											<th width="10%">Très satisfait</th>
+											<th width="10%">Satisfait</th>
+											<th width="10%">Insatisfait</th>
+											<th width="10%">Très insatisfait</th>
+											<th width="10%">Observation</th>
+										</tr>
+											{% for key, texte in listes[key.KEY_ETAT_LOGEMENT] %}
+											{% set radio_name = 'etat_logement_' ~ key %}
+											{% set obs_name = 'etat_logement_obs_' ~ key %}
+										<tr>
+											<td>
+												{{ texte }}
+											</td>
+											<td>
+												<center>
+												<input type="radio" name="data[etat_logement_{{ key }}]" value="0" checked="" hidden>
+												<input type="radio" name="data[etat_logement_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+											</center>
+											</td>
+											<td>
+												<center>
+												<input type="radio" name="data[etat_logement_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+											</center>
+											</td>
+											<td>
+												<center>
+												<input type="radio" name="data[etat_logement_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+											</center>
+											</td>
+											<td>
+												<center>
+												<input type="radio" name="data[etat_logement_{{ key }}]" value="4" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 4 %}checked{% endif %}{% endif %}>
+											</center>
+											</td>
+											<td>
+												<center>
+												<div class="normal"><input type="text" name="data[etat_logement_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value="{{ prestaData[obs_name] }}"{% endif %}></div>
+											</center>
+											</td>
+										</tr>
+											{% endfor %}
+									</table>
+                            </div>
+
+                                <div class="sous_titre">Question 37 : Disposez-vous d’un accès à votre courrier ?</div>
+                                <div><label><input {% if prestaData['ef_q37'] is defined %} {{prestaData['ef_q37']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q37]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37'] is defined %} {{prestaData['ef_q37']|setcheckbox(1)}} {% endif %} name="data[ef_q37]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37'] is defined %} {{prestaData['ef_q37']|setcheckbox(2)}} {% endif %} name="data[ef_q37]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                                <div class="sous_titre">Question 37.1 : Si oui, à quelle fréquence ?</div>
+                                <div><label><input {% if prestaData['ef_q37a'] is defined %} {{prestaData['ef_q37a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q37a]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37a'] is defined %} {{prestaData['ef_q37a']|setcheckbox(1)}} {% endif %} name="data[ef_q37a]" type="radio" value="1"/><span>Tous les jours</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37a'] is defined %} {{prestaData['ef_q37a']|setcheckbox(2)}} {% endif %} name="data[ef_q37a]" type="radio" value="2"/><span>1 fois par semaine</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37a'] is defined %} {{prestaData['ef_q37a']|setcheckbox(3)}} {% endif %} name="data[ef_q37a]" type="radio" value="3"/><span>1 fois par mois</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37a'] is defined %} {{prestaData['ef_q37a']|setcheckbox(4)}} {% endif %} name="data[ef_q37a]" type="radio" value="4"/><span>Tous les 3 mois</span></label></div>
+
+
+                                <div class="sous_titre">Question 37.2 : Si, non, pourquoi ?</div>
+                                <div><label><input {% if prestaData['ef_q37b'] is defined %} {{prestaData['ef_q37b']|setcheckbox(1)}} {% endif %} name="data[ef_q37b]" type="radio" value="1"/><span>Absence de logement</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37b'] is defined %} {{prestaData['ef_q37b']|setcheckbox(2)}} {% endif %} name="data[ef_q37b]" type="radio" value="2"/><span>Domiciliation</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q37b'] is defined %} {{prestaData['ef_q37b']|setcheckbox(3)}} {% endif %} name="data[ef_q37b]" type="radio" value="3"/><span>Accès au courrier difficile (perte, boite aux lettres endommagée etc…)</span></label></div>
+
+
+                                <div class="sous_titre">Question 37.3 : Si domiciliation, à quelle adresse ?</div>
+
+                                <div><label><span>Structure______________________:<input type="text" size="40" name="data[ef_q37c_1]" {% if prestaData['ef_q37c_1'] is defined %} value="{{ prestaData['ef_q37c_1'] }}" {% endif %}></span></label></div>
+
+                                <div><label><span>Identité de l’hébergeur___________:<input type="text" size="40" name="data[ef_q37c_2]" {% if prestaData['ef_q37c_2'] is defined %} value="{{ prestaData['ef_q37c_2'] }}" {% endif %}></span></label></div>
+
+                                <div><label><span>Adresse_______:<input type="text" size="60" name="data[ef_q37c_3]" {% if prestaData['ef_q37c_3'] is defined %} value="{{ prestaData['ef_q37c_3'] }}" {% endif %}></span></label></div>
+
+                                <div><label><span>CP - Ville______:<input type="text" size="60" name="data[ef_q37c_4]" {% if prestaData['ef_q37c_4'] is defined %} value="{{ prestaData['ef_q37c_4'] }}" {% endif %}></span></label></div>
+                            </div>
+                    </div>
+                </div>
+	
+
+                <div id="tabs-5">
+                    <div id="accordion">
+                        Freins opérationnels :
+                        <h3><a href="#">Questions relatives à la formation</a></h3>
+                        <div>
+                            <div class="sous_titre">Question 38 : Quel est votre niveau de formation ?</div>
+
+							<table class="diag" width="100%">
+								<!-- Ligne(s) d'entete -->
+								<tr>
+                                    <th width="40%">Objet</th>
+                                    <th width="40%">Diplôme obtenu</th>
+                                    <th width="20%">Année d'obtention</th>
+								</tr>
+
+									<!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+								<tr>
+									<td>
+										Niveau I BAC + 3 et >
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[diplome_niv_1]" rows="1" cols="50">{% if prestaData['diplome_niv_1'] is defined %}{{prestaData['diplome_niv_1']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[annee_niv_1]" rows="1" cols="10">{% if prestaData['annee_niv_1'] is defined %}{{prestaData['annee_niv_1']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Niveau II - BAC + 2
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[diplome_niv_2]" rows="1" cols="50">{% if prestaData['diplome_niv_2'] is defined %}{{prestaData['diplome_niv_2']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[annee_niv_2]" rows="1" cols="10">{% if prestaData['annee_niv_2'] is defined %}{{prestaData['annee_niv_2']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Niveau III - BAC / BT
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[diplome_niv_3]" rows="1" cols="50">{% if prestaData['diplome_niv_3'] is defined %}{{prestaData['diplome_niv_3']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[annee_niv_3]" rows="1" cols="10">{% if prestaData['annee_niv_3'] is defined %}{{prestaData['annee_niv_3']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Niveau IV - CAP / BEP
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[diplome_niv_4]" rows="1" cols="50">{% if prestaData['diplome_niv_4'] is defined %}{{prestaData['diplome_niv_4']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[annee_niv_4]" rows="1" cols="10">{% if prestaData['annee_niv_4'] is defined %}{{prestaData['annee_niv_4']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Niveau V - Sortie troisieme
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[diplome_niv_5]" rows="1" cols="50">{% if prestaData['diplome_niv_5'] is defined %}{{prestaData['diplome_niv_5']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[annee_niv_5]" rows="1" cols="10">{% if prestaData['annee_niv_5'] is defined %}{{prestaData['annee_niv_5']}}{% endif %}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Niveau VI - Etudes primaires
+									</td>
+									<td>
+										<!-- Entrée de type zone de texte -->
+										<textarea name="data[diplome_niv_6]" rows="1" cols="50">{% if prestaData['diplome_niv_6'] is defined %}{{prestaData['diplome_niv_6']}}{% endif %}</textarea>
+									</td>
+									<td>
+										<textarea name="data[annee_niv_6]" rows="1" cols="10">{% if prestaData['annee_niv_6'] is defined %}{{prestaData['annee_niv_6']}}{% endif %}</textarea>
+									</td>
+								</tr>
+							</table>
+
+<!--                            <table class="diag" width="100%">
+                                <tr>
+                                    <th width="30%">Objet</th>
+                                    <th width="45%">Diplôme obtenu</th>
+                                    <th width="25%">Année d'obtention</th>
+                                </tr>
+                                    {% for key, texte in listes[key.KEY_NIVEAU_DIPLOME] %}
+                                    {% set radio_name = 'diplome_' ~ key %}
+                                    {% set obs_name = 'diplome_obs_' ~ key %}
+                                <tr>
+                                    <td>
+                                        {{ texte }}
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <div class="normal"><textarea name="data[diplome_{{ key }}]" rows="1" cols="50" {% if prestaData[radio_name] is defined %}value="{{ prestaData[radio_name] }}"{% endif %}></textarea></div>
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <div class="normal"><textarea name="data[diplome_obs_{{ key }}]" rows="1" cols="20" {% if prestaData[obs_name] is defined %}value="{{ prestaData[obs_name] }}"{% endif %}></textarea></div>
+                                        </center>
+                                    </td>
+                                </tr>
+                                    {% endfor %}
+                            </table>-->
+
+
+                            <div>
+                                <div class="sous_titre">Question 39 : Quel était votre niveau de qualification durant le dernier emploi que vous avez occupé ?</div>
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q39]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(1)}} {% endif %} name="data[ef_q39]" type="radio" value="1"/><span>a. Ouvrier non qualifié</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(2)}} {% endif %} name="data[ef_q39]" type="radio" value="2"/><span>b. Ouvrier qualifié</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(3)}} {% endif %} name="data[ef_q39]" type="radio" value="3"/><span>c. Employé non qualifié</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(4)}} {% endif %} name="data[ef_q39]" type="radio" value="4"/><span>d. Employé qualifié</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(5)}} {% endif %} name="data[ef_q39]" type="radio" value="5"/><span>e. Profession intermédiaire</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(6)}} {% endif %} name="data[ef_q39]" type="radio" value="6"/><span>f. Cadre</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q39'] is defined %} {{prestaData['ef_q39']|setcheckbox(7)}} {% endif %} name="data[ef_q39]" type="radio" value="7"/><span>g. Agriculteur, Commerçant, artisan</span></label></div>
+                            </div>
+
+                            <div class="sous_titre">Question 40 : Quel est votre niveau de formation ?</div>
+                            <table class="diag" width="100%">
+                                <tr>
+                                    <th width="40%">Savoirs de base</th>
+                                    <th width="10%">Acquis</th>
+                                    <th width="10%">En cours d'acquisition</th>
+                                    <th width="10%">Non acquis</th>
+                                    <th width="20%">Observation</th>
+                                </tr>
+                                    {% for key, texte in listes[key.KEY_SAVOIR_BASE] %}
+                                    {% set radio_name = 'savoir_' ~ key %}
+                                    {% set obs_name = 'savoir_obs_' ~ key %}
+                                <tr>
+                                <td>
+                                        {{ texte }}
+                                </td>
+                                <td>
+                                    <center>
+                                        <input type="radio" name="data[savoir_{{ key }}]" value="0" checked="" hidden>
+                                        <input type="radio" name="data[savoir_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <input type="radio" name="data[savoir_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <input type="radio" name="data[savoir_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+                                    </center>
+                                </td>
+                                <td>
+                                    <div class="normal"><input type="text" size="30" name="data[savoir_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value="{{ prestaData[obs_name] }}"{% endif %}></div>
+                                </td>
+                                </tr>
+                                    {% endfor %}
+                            </table>
+                        </div>
+
+
+                        <h3><a href="#">Questions relatives à la mobilité</a></h3>
+                        <div>
+                            <div class="sous_titre">Question 41 : Avez-vous un permis de conduire en cours de validité ?</div>
+                            <div><label><input {% if prestaData['ef_q41'] is defined %} {{prestaData['ef_q41']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q41]" type="radio" value="0"/></label></div>
+
+                            <div><label><input {% if prestaData['ef_q41'] is defined %} {{prestaData['ef_q41']|setcheckbox(1)}} {% endif %} name="data[ef_q41]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                            <div><label><input {% if prestaData['ef_q41'] is defined %} {{prestaData['ef_q41']|setcheckbox(2)}} {% endif %} name="data[ef_q41]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                               <div class="sous_titre">Question 41.1 : Si oui, lequel ?</div>
+                                <table class="diag" width="100%">
+                                    <!-- Ligne(s) d'entete -->
+                                    <tr>
+                                        <th width="40%"></th>
+                                        <th width="15%">Permis A (Moto)</th>
+                                        <th width="15%">Permis B(Voiture)</th>
+                                        <th width="15%">Permis C (Camion)</th>
+                                        <th width="15%">Permis D(Autocar)</th>
+                                    </tr>
+
+                                        <!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+                                    <tr>
+                                        <td>Date d'obtention
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q41a_1]" rows="1" cols="10">{% if prestaData['ef_q41a_1'] is defined %}{{prestaData['ef_q41a_1']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <textarea name="data[ef_q41a_2]" rows="1" cols="10">{% if prestaData['ef_q41a_2'] is defined %}{{prestaData['ef_q41a_2']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q41a_3]" rows="1" cols="10">{% if prestaData['ef_q41a_3'] is defined %}{{prestaData['ef_q41a_3']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q41a_4]" rows="1" cols="10">{% if prestaData['ef_q41a_4'] is defined %}{{prestaData['ef_q41a_4']}}{% endif %}</textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <div class="sous_titre">Question 41.2 : Si votre permis est suspendu, précisez</div>
+                                <div><label><span>Permis suspendu________:<input type="text" size="30" name="data[ef_q41b_1]" {% if prestaData['ef_q41b_1'] is defined %} value="{{ prestaData['ef_q41b_1'] }}" {% endif %}></span></label></div>
+
+                                <div><label><span>Date de suspension______:<input type="text" size="30" name="data[ef_q41b_2]" {% if prestaData['ef_q41b_2'] is defined %} value="{{ prestaData['ef_q41b_2'] }}" {% endif %}></span></label></div>
+
+                                <div><label><span>Durée de la suspension___:<input type="text" size="30" name="data[ef_q41b_3]" {% if prestaData['ef_q41b_3'] is defined %} value="{{ prestaData['ef_q41b_3'] }}" {% endif %}></span></label></div>
+
+
+                                <div class="sous_titre">Question 42 : Si vous n’avez pas passé le permis de conduire, pourquoi ?</div>
+                                <div><label><input {% if prestaData['ef_q42'] is defined %} {{prestaData['ef_q42']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q42]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42'] is defined %} {{prestaData['ef_q42']|setcheckbox(1)}} {% endif %} name="data[ef_q42]" type="radio" value="1"/><span>a. Coût élevé</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42'] is defined %} {{prestaData['ef_q42']|setcheckbox(2)}} {% endif %} name="data[ef_q42]" type="radio" value="2"/><span>b. Démarche en cours</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42'] is defined %} {{prestaData['ef_q42']|setcheckbox(3)}} {% endif %} name="data[ef_q42]" type="radio" value="3"/><span>c. Echecs multiples</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42'] is defined %} {{prestaData['ef_q42']|setcheckbox(4)}} {% endif %} name="data[ef_q42]" type="radio" value="4"/><span>d. Je n’en ressens pas le besoin</span></label></div>
+
+
+                                <div class="sous_titre">Question 42.1 : Si échecs multiples, précisez le nombre de tentatives :</div>
+                                <div><label><input {% if prestaData['ef_q42b'] is defined %} {{prestaData['ef_q42b']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q42b]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42b'] is defined %} {{prestaData['ef_q42b']|setcheckbox(1)}} {% endif %} name="data[ef_q42b]" type="radio" value="1"/><span>a. Une tentative</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42b'] is defined %} {{prestaData['ef_q42b']|setcheckbox(2)}} {% endif %} name="data[ef_q42b]" type="radio" value="2"/><span>b. Deux tentatives</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42b'] is defined %} {{prestaData['ef_q42b']|setcheckbox(3)}} {% endif %} name="data[ef_q42b]" type="radio" value="3"/><span>c. Trois tentatives</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q42b'] is defined %} {{prestaData['ef_q42b']|setcheckbox(4)}} {% endif %} name="data[ef_q42b]" type="radio" value="4"/><span>d. Plus de trois tentatives</span></label></div>
+
+
+                                <div class="sous_titre">Question 43 : Comment vous déplacez-vous ?</div>
+                                <div><label><input {% if prestaData['ef_q43'] is defined %} {{prestaData['ef_q43']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q43]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q43'] is defined %} {{prestaData['ef_q43']|setcheckbox(1)}} {% endif %} name="data[ef_q43]" type="radio" value="1"/><span>a. Moto/Scooter</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q43'] is defined %} {{prestaData['ef_q43']|setcheckbox(2)}} {% endif %} name="data[ef_q43]" type="radio" value="2"/><span>b. Voiture</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q43'] is defined %} {{prestaData['ef_q43']|setcheckbox(3)}} {% endif %} name="data[ef_q43]" type="radio" value="3"/><span>c. Véhicule utilitaire</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q43'] is defined %} {{prestaData['ef_q43']|setcheckbox(4)}} {% endif %} name="data[ef_q43]" type="radio" value="4"/><span>d. Transports en commun</span></label></div>
+
+
+                                <div class="sous_titre">Question 44 : Si vous vous déplacez en véhicule, est-ce ?</div>
+                                <div><label><input {% if prestaData['ef_q44'] is defined %} {{prestaData['ef_q44']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q44]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q44'] is defined %} {{prestaData['ef_q44']|setcheckbox(1)}} {% endif %} name="data[ef_q44]" type="radio" value="1"/><span>a. Le vôtre</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q44'] is defined %} {{prestaData['ef_q44']|setcheckbox(2)}} {% endif %} name="data[ef_q44]" type="radio" value="2"/><span>b. celui d’un membre de la famille</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q44'] is defined %} {{prestaData['ef_q44']|setcheckbox(3)}} {% endif %} name="data[ef_q44]" type="radio" value="3"/><span>c. Celui d’un ami</span></label></div>
+
+
+                                <div class="sous_titre">Question 45 : Si vous avez le permis mais pas de véhicule personnel, pourquoi ?</div>
+                                <div><label><input {% if prestaData['ef_q45'] is defined %} {{prestaData['ef_q45']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q45]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q45'] is defined %} {{prestaData['ef_q45']|setcheckbox(1)}} {% endif %} name="data[ef_q45]" type="radio" value="1"/><span>a. Coût d’acquisition élevé</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q45'] is defined %} {{prestaData['ef_q45']|setcheckbox(2)}} {% endif %} name="data[ef_q45]" type="radio" value="2"/><span>b. Coût Entretien & réparation élevé</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q45'] is defined %} {{prestaData['ef_q45']|setcheckbox(3)}} {% endif %} name="data[ef_q45]" type="radio" value="3"/><span>c. Je n'en ai pas besoin</span></label></div>
+
+
+                                <div class="sous_titre">Question 46 : Si vous utilisez les transports en commun, précisez lesquels :</div>
+                                <table class="diag" width="100%">
+                                    <!-- Ligne(s) d'entete -->
+                                    <tr>
+                                        <th width="40%"></th>
+                                        <th width="15%">Bus / Car</th>
+                                        <th width="15%">Train</th>
+                                        <th width="15%">Tramway</th>
+                                        <th width="15%">RER</th>
+                                        <th width="15%">Metro</th>
+                                    </tr>
+
+                                        <!-- Ligne du tableau (Il doit y avoir autant de td que de th dans la ligne d'entete) -->
+                                    <tr>
+                                        <td>Lignes empruntée régulièrement
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q46_1]" rows="1" cols="10">{% if prestaData['ef_q46_1'] is defined %}{{prestaData['ef_q46_1']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <textarea name="data[ef_q46_2]" rows="1" cols="10">{% if prestaData['ef_q46_2'] is defined %}{{prestaData['ef_q46_2']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q46_3]" rows="1" cols="10">{% if prestaData['ef_q46_3'] is defined %}{{prestaData['ef_q46_3']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q46_4]" rows="1" cols="10">{% if prestaData['ef_q46_4'] is defined %}{{prestaData['ef_q46_4']}}{% endif %}</textarea>
+                                        </td>
+                                        <td>
+                                            <!-- Entrée de type zone de texte -->
+                                            <textarea name="data[ef_q46_5]" rows="1" cols="10">{% if prestaData['ef_q46_5'] is defined %}{{prestaData['ef_q46_5']}}{% endif %}</textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                                <div class="sous_titre">Question 47 : Disposez-vous de la carte solidarité transports ?</div>
+                                <div><label><input {% if prestaData['ef_q47'] is defined %} {{prestaData['ef_q47']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q47]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q47'] is defined %} {{prestaData['ef_q47']|setcheckbox(1)}} {% endif %} name="data[ef_q47]" type="radio" value="1"/><span>OUI</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q47'] is defined %} {{prestaData['ef_q47']|setcheckbox(2)}} {% endif %} name="data[ef_q47]" type="radio" value="2"/><span>NON</span></label></div>
+
+
+                                <div class="sous_titre">Question 47.1 : Si non pourquoi ?</div>
+                                <div><label><input {% if prestaData['ef_q47a'] is defined %} {{prestaData['ef_q47a']|setcheckbox(0)}} {% endif %} style="display:none" name="data[ef_q47a]" type="radio" value="0"/></label></div>
+
+                                <div><label><input {% if prestaData['ef_q47a'] is defined %} {{prestaData['ef_q47a']|setcheckbox(1)}} {% endif %} name="data[ef_q47a]" type="radio" value="1"/><span>a. Je ne sais pas ce que c’est</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q47a'] is defined %} {{prestaData['ef_q47a']|setcheckbox(2)}} {% endif %} name="data[ef_q47a]" type="radio" value="2"/><span>b. Demande en cours</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q47a'] is defined %} {{prestaData['ef_q47a']|setcheckbox(3)}} {% endif %} name="data[ef_q47a]" type="radio" value="3"/><span>c. Je ne sais pas comment la demander</span></label></div>
+
+                                <div><label><input {% if prestaData['ef_q47a'] is defined %} {{prestaData['ef_q47a']|setcheckbox(4)}} {% endif %} name="data[ef_q47a]" type="radio" value="4"/><span>c. Je n'en ai pas besoin</span></label></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="tabs-6">
+                    <div id="accordion">
+                        <h3><a href="#">Freins liés au projet professionnel</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard du projet professionnel</div>
+                                <textarea name="data[frein_choix_pro]" rows="1" cols="100">{% if prestaData['frein_choix_pro'] is defined %}{{prestaData['frein_choix_pro']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés au projet professionnel</div>
+                                <textarea name="data[action_frein_choix_pro]" rows="1" cols="100">{% if prestaData['action_frein_choix_pro'] is defined %}{{prestaData['action_frein_choix_pro']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Commentaires sur les freins liés au projet professionnel</div>
+                                <textarea name="data[commentaire_frein_choix_pro]" rows="1" cols="100">{% if prestaData['commentaire_frein_choix_pro'] is defined %}{{prestaData['commentaire_frein_choix_pro']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+
+                        <h3><a href="#">Freins liés à la proximité à l'emploi</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de la proximité à l'emploi</div>
+                                <textarea name="data[frein_prox_emploi]" rows="1" cols="100">{% if prestaData['frein_prox_emploi'] is defined %}{{prestaData['frein_prox_emploi']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à la proximité à l'emploi</div>
+                                <textarea name="data[action_frein_prox_emploi]" rows="1" cols="100">{% if prestaData['action_frein_prox_emploi'] is defined %}{{prestaData['action_frein_prox_emploi']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires sur les freins liés à la proximité à l'emploi</div>
+                                <textarea name="data[commentaire_frein_prox_emploi]" rows="1" cols="100">{% if prestaData['commentaire_frein_prox_emploi'] is defined %}{{prestaData['commentaire_frein_prox_emploi']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+                    </div>
+                </div>
+
+                <div id="tabs-7">
+                    <div id="accordion">
+                    <h3><a href="#">Freins liés à la santé</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de la santé</div>
+                                <textarea name="data[frein_sante]" rows="1" cols="100">{% if prestaData['frein_sante'] is defined %}{{prestaData['frein_sante']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à la santé</div>
+                                <textarea name="data[action_frein_sante]" rows="1" cols="100">{% if prestaData['action_frein_sante'] is defined %}{{prestaData['action_frein_sante']}}{% endif %}</textarea>
+                            </div>
+
+		                    <div class="bloc">
+        		                <div class="sous_titre">Commentaires sur les freins liés à la santé</div>
+                			    <textarea name="data[commentaire_frein_sante]" rows="1" cols="100">{% if prestaData['commentaire_frein_sante'] is defined %}{{prestaData['commentaire_frein_sante']}}{% endif %}</textarea>
+                    	    </div>
+		                </div>
+
+                        <h3><a href="#">Freins liés à l'adhésion à l'accompagnement</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de l'adhésion à l'accompagnement</div>
+                                <textarea name="data[frein_adhesion]" rows="1" cols="100">{% if prestaData['frein_adhesion'] is defined %}{{prestaData['frein_adhesion']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à l'adhésion à l'accompagnement</div>
+                                <textarea name="data[action_frein_adhesion]" rows="1" cols="100">{% if prestaData['action_frein_adhesion'] is defined %}{{prestaData['action_frein_adhesion']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires sur les freins liés à l'adhésion à l'accompagnement</div>
+                                <textarea name="data[commentaire_frein_adhesion]" rows="1" cols="100">{% if prestaData['commentaire_frein_adhesion'] is defined %}{{prestaData['commentaire_frein_adhesion']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+
+                        <h3><a href="#">Freins liés à l'autonomie</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de l'autonomie</div>
+                                <textarea name="data[frein_autonomie]" rows="1" cols="100">{% if prestaData['frein_autonomie'] is defined %}{{prestaData['frein_autonomie']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à l'autonomie</div>
+                                <textarea name="data[action_frein_autonomie]" rows="1" cols="100">{% if prestaData['action_frein_autonomie'] is defined %}{{prestaData['action_frein_autonomie']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires sur les freins liés à l'autonomie</div>
+                                <textarea name="data[commentaire_frein_autonomie]" rows="1" cols="100">{% if prestaData['commentaire_frein_autonomie'] is defined %}{{prestaData['commentaire_frein_autonomie']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+
+                        <h3><a href="#">Freins liés à la proximité à l'emploi</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de la disponibilité</div>
+                                <textarea name="data[frein_disponibilite]" rows="1" cols="100">{% if prestaData['frein_disponibilite'] is defined %}{{prestaData['frein_disponibilite']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à la disponibilité</div>
+                                <textarea name="data[action_frein_disponibilite]" rows="1" cols="100">{% if prestaData['action_frein_disponibilite'] is defined %}{{prestaData['action_frein_disponibilite']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires sur les freins liés à la disponibilité</div>
+                                <textarea name="data[commentaire_frein_disponibilite]" rows="1" cols="100">{% if prestaData['commentaire_frein_disponibilite'] is defined %}{{prestaData['commentaire_frein_disponibilite']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+
+                    </div>
+                </div>
+
+
+                <div id="tabs-8">
+                    <div id="accordion">
+                        <h3><a href="#">Freins liés à la gestion du budget</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de la gestion du budget</div>
+                                <textarea name="data[frein_gestion_budget]" rows="1" cols="100">{% if prestaData['frein_gestion_budget'] is defined %}{{prestaData['frein_gestion_budget']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à la gestion du budget</div>
+                                <textarea name="data[action_frein_gestion_budget]" rows="1" cols="100">{% if prestaData['action_frein_gestion_budget'] is defined %}{{prestaData['action_frein_gestion_budget']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Commentaires sur les freins liés à la gestion du budget</div>
+                                <textarea name="data[commentaire_frein_gestion_budget]" rows="1" cols="100">{% if prestaData['commentaire_frein_gestion_budget'] is defined %}{{prestaData['commentaire_frein_gestion_budget']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+
+                        <h3><a href="#">Freins liés au logement</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard du logement</div>
+                                <textarea name="data[frein_logement]" rows="1" cols="100">{% if prestaData['frein_logement'] is defined %}{{prestaData['frein_logement']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés au logement</div>
+                                <textarea name="data[action_frein_logement]" rows="1" cols="100">{% if prestaData['action_frein_logement'] is defined %}{{prestaData['action_frein_logement']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires sur les freins liés au logement</div>
+                                <textarea name="data[commentaire_frein_logement]" rows="1" cols="100">{% if prestaData['commentaire_frein_logement'] is defined %}{{prestaData['commentaire_frein_logement']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+                    </div>
+                </div>
+
+
+                <div id="tabs-9">
+                    <div id="accordion">
+                        <h3><a href="#">Freins liés à la formation</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de la formation</div>
+                                <textarea name="data[frein_formation]" rows="1" cols="100">{% if prestaData['frein_formation'] is defined %}{{prestaData['frein_formation']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à la formation</div>
+                                <textarea name="data[action_frein_formation]" rows="1" cols="100">{% if prestaData['action_frein_formation'] is defined %}{{prestaData['action_frein_formation']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Commentaires sur les freins liés à la formation</div>
+                                <textarea name="data[commentaire_frein_formation]" rows="1" cols="100">{% if prestaData['commentaire_frein_formation'] is defined %}{{prestaData['commentaire_frein_formation']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+
+                        <h3><a href="#">Freins liés à la mobilité</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre" >Situation au regard de la mobilité</div>
+                                <textarea name="data[frein_mobilite]" rows="1" cols="100">{% if prestaData['frein_mobilite'] is defined %}{{prestaData['frein_mobilite']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre" >Actions à mener pour lever les freins liés à la mobilité</div>
+                                <textarea name="data[action_frein_mobilite]" rows="1" cols="100">{% if prestaData['action_frein_mobilite'] is defined %}{{prestaData['action_frein_mobilite']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires sur les freins liés à la mobilité</div>
+                                <textarea name="data[commentaire_frein_mobilite]" rows="1" cols="100">{% if prestaData['commentaire_frein_mobilite'] is defined %}{{prestaData['commentaire_frein_mobilite']}}{% endif %}</textarea>
+                            </div>
+        			    </div>
+                    </div>
+                </div>
+
+
+                <div id="tabs-10">
+                    <div id="accordion">
+					<h3><a href="#">Synthèse de l'évaluation des freins à l'insertion</a></h3>
+						<div >
+							<table class="classic"  cellspacing="0" width="99%">
+						<thead>
+							<tr>
+								<th>Famille de freins</th>
+								<th>Niveau de difficulté</th>
+								<th>Bloquant pour une insertion professionnelle</th>
+							</tr>
+							{% for i in 1..10 %}
+							<tr>
+								<td class="famille_freins_{{i}}">
+								<select name="data[famille_freins_{{i}}]" >
+									<option class="normal" >{% if prestaData['famille_freins_'~i~''] is defined %}{{prestaData['famille_freins_'~i~'']}}{% endif %}</option>
+									
+								{% if( options[key.KEY_FAMILLE_FREINS] is defined ) %}
+								{{options[key.KEY_FAMILLE_FREINS]|raw}}
+								{% endif %}
+								</select> 
+								<input style="display:none" value="" type="text" />
+								<img rel="famille_freins_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+								
+								</td>
+								<td class="objectif_{{i}}">
+								<select name="data[niveau_difficulte_{{i}}]" >
+									<option class="text_option_blanc">{% if prestaData['niveau_difficulte_'~i~''] is defined %}{{prestaData['niveau_difficulte_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_NIVEAU_DIFFICULTE] is defined ) %}
+								{{options[key.KEY_NIVEAU_DIFFICULTE]|raw}}
+								{% endif %}
+									
+								</select> 
+								<input style="display:none" value="" type="text" />
+								<img rel="niveau_blocage_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+								</td>
+								<td class="resultat_{{i}}">
+								<select name="data[niveau_blocage_{{i}}]" >
+								<option class="text_option_blanc">{% if prestaData['niveau_blocage_'~i~''] is defined %}{{prestaData['niveau_blocage_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_NIVEAU_BLOQUANT] is defined ) %}
+								{{options[key.KEY_NIVEAU_BLOQUANT]|raw}}
+								{% endif %}
+								
+								
+								</select> 
+								<input style="display:none" value="" type="text" />
+								<img rel="resultat_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+								</td>
+							</tr>
+							{% endfor %}
+						
+						</thead>
+							</table>
+						</div>
+
+                    <h3><a href="#">Orientation du bénéficiaire</a></h3>
+                        <div>
+                            <div class="bloc">
+                                <div class="sous_titre">Orientation préconisée</div>
+
+                                <div>
+                                    <label><input {% if prestaData['orientation'] is defined %} {{prestaData['orientation']|setcheckbox(0)}} {% endif %} style="display:none" name="data[orientation]" type="radio" value="0"/></label>
+                                </div>
+                                <div>
+                                    <label><input {% if prestaData['orientation'] is defined %} {{prestaData['orientation']|setcheckbox(1)}} {% endif %} name="data[orientation]" type="radio" value="1"/>
+                                    <span>MDS : Accompagnement social</span></label>
+                                </div>
+                                <div>
+                                    <label><input {% if prestaData['orientation'] is defined %} {{prestaData['orientation']|setcheckbox(2)}} {% endif %} name="data[orientation]" type="radio" value="2"/>
+                                    <span>Pole Emploi : Recherche active d'emploi</span></label>
+                                </div>
+                                <div>
+                                    <label><input {% if prestaData['orientation'] is defined %} {{prestaData['orientation']|setcheckbox(3)}} {% endif %} name="data[orientation]" type="radio" value="3"/>
+                                    <span>APSIE : Accommpagnement projet professionnel</span></label>
+                                </div>
+                                <div>
+                                    <label><input {% if prestaData['orientation'] is defined %} {{prestaData['orientation']|setcheckbox(4)}} {% endif %} name="data[orientation]" type="radio" value="4"/>
+                                    <span>Département : Changement de territoire</span></label>
+                                </div>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Observations du référent</div>
+                                <textarea name="data[bilan_com_referent]" rows="1" cols="100">{% if prestaData['bilan_com_referent'] is defined %}{{prestaData['bilan_com_referent']}}{% endif %}</textarea>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Commentaires du bénéficiaire</div>
+                                <textarea name="data[bilan_com_beneficiaire]" rows="1" cols="100">{% if prestaData['bilan_com_beneficiaire'] is defined %}{{prestaData['bilan_com_beneficiaire']}}{% endif %}</textarea>
+                            </div>
+                        </div>
+
+                    <h3><a href="#">En cas d'abandon de la prestation</a></h3>
+                        <div>    
+                                <div class="bloc">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Le bénéficiaire a t'il abandonné la prestation ?
+                                            </td>
+                                            <td>
+                                                <input {% if prestaData['date_abandon'] is defined and prestaData['date_abandon'] !=null  %} checked="checked" {% endif %} name="data[date_abandon]" type="radio" value="1"/>Oui
+                                            </td>
+                                            <td>
+                                                <input {% if prestaData['date_abandon'] is defined %} {{prestaData['date_abandon']|setcheckbox("")}} {% endif %} name="data[date_abandon]" type="radio" value=""/>Non
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                Si oui, quel est le motif de l'abandon ?
+                                            </td>
+                                            <td>
+                                                <input style="" name="data[motif_abandon]" value="{% if prestaData['motif_abandon'] is defined %}{{prestaData['motif_abandon']}}{% endif %}" type="text"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-11">
+                    <div id="accordion">
+                        Statut sur le marché du travail à l’entrée dans l’opération
+                        <h3><a href="#">Question 1: Occupez-vous actuellement un emploi ?  [Une seule réponse possible] </a></h3>
+                        <div>
+                            <div class="bloc" > 
+                                <div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(1)}}{% endif %} name="data[fse_q1]" type="radio"  value="1"  /> <span>1a. Oui, un emploi durable (CDI ou CDD de 6 mois ou +)</span></label></div>
+                                <div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(2)}}{% endif %} name="data[fse_q1]" type="radio"  value="2" /> <span>1b. Oui, un emploi temporaire (intérim, CDD de moins de 6 mois)</span></label></div>
+                                <div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(3)}}{% endif %} name="data[fse_q1]" type="radio"  value="3" /> <span>1c. Oui, un emploi aidé (y compris IAE)</span></label></div>
+                                <div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(4)}}{% endif %} name="data[fse_q1]" type="radio"  value="4" /> <span>1d. Oui, un emploi de travailleur indépendant, chef d’entreprise</span></label></div>
+                        
+
+                                <div class="sous_titre" >Si vous avez répondu oui au 1a ou au 1b, précisez si vous êtes en activité réduite (c’est-à-dire à temps partiel) et êtes à la recherche d’un autre emploi (si vous êtes en temps partiel subi, par exemple) :</div>
+                                <div><label><input {% if prestaData['fse_q1activite'] is defined %}{{prestaData['fse_q1activite']|setcheckbox(1)}}{% endif %} name="data[fse_q1activite]" type="checkbox" value="1" /> <span>Activité réduite</span></label></div>
+                                Si oui, depuis combien de temps cherchez-vous ? : <input type="text" maxlength="2" size= "2" name="data[fse_q1mois]" {% if prestaData['fse_q1mois'] is defined %}value="{{ prestaData['fse_q1mois'] }}"{% endif %}> mois.
+
+
+                                <div class="sous_titre" >1e. Si vous n’occupez pas d’emploi, êtes-vous en formation, en stage ou en école ? </div>
+                        
+                                <div><label><input {% if prestaData['fse_q1e'] is defined %}{{prestaData['fse_q1e']|setcheckbox(1)}}{% endif %} name="data[fse_q1e]" type="radio"  value="1" /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['fse_q1e'] is defined %}{{prestaData['fse_q1e']|setcheckbox(2)}}{% endif %} name="data[fse_q1e]" type="radio"  value="2" /> <span>NON</span></label></div>
+                         
+                             
+                                <div class="sous_titre" >1f. Si vous n’occupez pas d’emploi, recherchez-vous actuellement activement un emploi ?</div>
+                                <div><label><input {% if prestaData['fse_q1f'] is defined %}{{prestaData['fse_q1f']|setcheckbox(1)}}{% endif %} name="data[fse_q1f]" type="radio"  value="1" /> <span>OUI</span></label></div>
+
+                                1g. Si oui, depuis combien de temps cherchez-vous ? : <input type="text" maxlength="2" size= "2" name="data[fse_q1g_mois]" {% if prestaData['fse_q1g_mois'] is defined %}value="{{ prestaData['fse_q1g_mois'] }}"{% endif %}> mois.
+                        
+                                <div><label><input {% if prestaData['fse_q1f'] is defined %}{{prestaData['fse_q1f']|setcheckbox(2)}}{% endif %} name="data[fse_q1f]" type="radio"  value="1" /> <span>NON</span></label></div>                      
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 2: Quel est le plus haut niveau de diplôme atteint ou l’année d’études la plus élevée à l’entrée dans l’opération? [Une seule réponse possible ]</a></h3>
+                 
+                        <div>
+                            <div class="bloc" >
+                                <div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(1)}}{% endif %} name="data[fse_q2]" type="radio"  value="1"  /> <span>2a. Inférieur à l’école primaire, vous n’êtes jamais allé à l’école</span></label></div>
+                                <div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(2)}}{% endif %} name="data[fse_q2]" type="radio"  value="2" /> <span>2b. Primaire, 6e, 5e, 4e, 3e (secondaire 1er cycle), Diplômé Brevet des collèges, CAP, BEP, seconde professionnelle (technique cycle court)</span></label></div>
+                                <div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(3)}}{% endif %} name="data[fse_q2]" type="radio"  value="3" /> <span>2c. Baccalauréat général (L, ES, S, A à E), technologique (F, G, H, STG, STI …), bac Pro, brevet professionnel (BP) </span></label></div>
+                                <div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(4)}}{% endif %} name="data[fse_q2]" type="radio"  value="4" /> <span>2d. DEUG, BTS, DUT, écoles d’infirmières, licence (L3), maîtrise, Grande école, école d’ingénieur, de commerce, master (recherche ou professionnel) (M2), DEA, DESS, doctorat</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 3: Situation du ménage à l’entrée dans l’opération </a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre" >3a. Vivez-vous dans un ménage où personne n’est en emploi ? </div>
+                                <div><label><input {% if prestaData['fse_q3a'] is defined %}{{prestaData['fse_q3a']|setcheckbox(1)}}{% endif %} name="data[fse_q3a]" type="radio"  value="1" /><span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['fse_q3a'] is defined %}{{prestaData['fse_q3a']|setcheckbox(2)}}{% endif %} name="data[fse_q3a]" type="radio"  value="2" /> <span>NON</span></label></div>
+                            </div>
+
+                            <div class="bloc" >
+                                <div class="sous_titre" >3b. Si oui, y-a-t-il des enfants à charge dans ce ménage ? : </div>
+                                <div><label><input {% if prestaData['fse_q3b'] is defined %}{{prestaData['fse_q3b']|setcheckbox(1)}}{% endif %} name="data[fse_q3b]" type="radio"  value="1" /><span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['fse_q3b'] is defined %}{{prestaData['fse_q3b']|setcheckbox(2)}}{% endif %} name="data[fse_q3b]" type="radio"  value="2" /> <span>NON</span></label></div>
+                            </div>
+
+                            <div class="bloc" >
+                                <div class="sous_titre" >3c. Vivez-vous dans une famille monoparentale avec des enfants à charge ? </div>
+                                <div><label><input {% if prestaData['fse_q3c'] is defined %}{{prestaData['fse_q3c']|setcheckbox(1)}}{% endif %} name="data[fse_q3c]" type="radio"  value="1" /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['fse_q3c'] is defined %}{{prestaData['fse_q3c']|setcheckbox(2)}}{% endif %} name="data[fse_q3c]" type="radio"  value="2" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 4: Avez-vous une reconnaissance officielle d’un handicap (allocation, pension ou carte d’invalidité…) ? </a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div><label><input {% if prestaData['fse_q4'] is defined %}{{prestaData['fse_q4']|setcheckbox(1)}}{% endif %} name="data[fse_q4]" type="radio"  value="1" /> <span>OUI</span></label></div> 
+                                <div><label><input {% if prestaData['fse_q4'] is defined %}{{prestaData['fse_q4']|setcheckbox(2)}}{% endif %} name="data[fse_q4]" type="radio"  value="2" /> <span>NON</span></label></div>     
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 5: Etes-vous allocataire de minima sociaux (RSA, allocation spécifique de solidarité, allocation aux adultes handicapés…)? </a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div><label><input {% if prestaData['fse_q5'] is defined %}{{prestaData['fse_q5']|setcheckbox(1)}}{% endif %} name="data[fse_q5]" type="radio"  value="1" /> <span>OUI</span></label></div>                     
+                                <div><label><input {% if prestaData['fse_q5'] is defined %}{{prestaData['fse_q5']|setcheckbox(2)}}{% endif %} name="data[fse_q5]" type="radio"  value="2" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+
+                        <h3><a href="#">Question 6: Etes-vous sans domicile fixe ou confronté à l’exclusion de votre logement ?</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(1)}}{% endif %} name="data[fse_q6]" type="radio"  value="1" /> <span>OUI</span></label></div>                 
+                                <div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(2)}}{% endif %} name="data[fse_q6]" type="radio"  value="2" /> <span>NON</span></label></div>     
+                                <div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(3)}}{% endif %} name="data[fse_q6]" type="radio"  value="3" /> <span>Ne souhaite pas répondre / ne sait pas</span></label></div>  
+                            </div>
+                        </div>
+                        <h3><a href="#">Question 7: Un de vos deux parents est-il né à l’étranger ? </a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(1)}}{% endif %} name="data[fse_q7]" type="radio"  value="1" /> <span>OUI</span></label></div>                 
+                                <div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(2)}}{% endif %} name="data[fse_q7]" type="radio"  value="2" /> <span>NON</span></label></div>     
+                                <div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(3)}}{% endif %} name="data[fse_q7]" type="radio"  value="3" /> <span>Ne souhaite pas répondre / ne sait pas</span></label></div>              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-12">
+                    <div id="accordion">
+                        <h3><a href="#">Question 1 : Niveau d'achèvement de l'opération</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre" >Question S1: Le bénéficiaire a-t-il achevé l'opération ? </div>
+                                <div><label><input {% if prestaData['qs_qs1'] is defined %}{{prestaData['qs_qs1']|setcheckbox(1)}}{% endif %} name="data[qs_qs1]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs1'] is defined %}{{prestaData['qs_qs1']|setcheckbox(2)}}{% endif %} name="data[qs_qs1]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 2 : Motif de sortie de l'opération</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre" >Question S2a : Le bénéficiaire a-t-il trouvé un emploi, une formation, un stage ?</div>
+                                <div><label><input {% if prestaData['qs_qs2a'] is defined %}{{prestaData['qs_qs2a']|setcheckbox(1)}}{% endif %} name="data[qs_qs2a]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2a'] is defined %}{{prestaData['qs_qs2a']|setcheckbox(2)}}{% endif %} name="data[qs_qs2a]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S2b : Le bénéficiaire a-t-il des problèmes de sante, maladie ?</div>
+                                <div><label><input {% if prestaData['qs_qs2b'] is defined %}{{prestaData['qs_qs2b']|setcheckbox(1)}}{% endif %} name="data[qs_qs2b]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2b'] is defined %}{{prestaData['qs_qs2b']|setcheckbox(2)}}{% endif %} name="data[qs_qs2b]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S2c : Le bénéficiaire rencontre-t-il des problèmes de garde d'enfant ?</div>
+                                <div><label><input {% if prestaData['qs_qs2c'] is defined %}{{prestaData['qs_qs2c']|setcheckbox(1)}}{% endif %} name="data[qs_qs2c]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2c'] is defined %}{{prestaData['qs_qs2c']|setcheckbox(2)}}{% endif %} name="data[qs_qs2c]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S2d : Le bénéficiaire a-t-il arrêté l'opération pour d'autres raisons (demenagement, deces, etc) ?</div>
+                                <div><label><input {% if prestaData['qs_qs2d'] is defined %}{{prestaData['qs_qs2d']|setcheckbox(1)}}{% endif %} name="data[qs_qs2d]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs2d'] is defined %}{{prestaData['qs_qs2d']|setcheckbox(2)}}{% endif %} name="data[qs_qs2d]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 3 : Situation du participant à la sortie de l'opération</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre">Question S3a : Le participant accède à une activité d'indépendant, a créé une entreprise</div>
+                                <div><label><input {% if prestaData['qs_qs3a'] is defined %}{{prestaData['qs_qs3a']|setcheckbox(1)}}{% endif %} name="data[qs_qs3a]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3a'] is defined %}{{prestaData['qs_qs3a']|setcheckbox(2)}}{% endif %} name="data[qs_qs3a]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S3b : Le participant accède à un emploi durable (CDI ou CCD de + 6 mois)</div>
+                                <div><label><input {% if prestaData['qs_qs3b'] is defined %}{{prestaData['qs_qs3b']|setcheckbox(1)}}{% endif %} name="data[qs_qs3b]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3b'] is defined %}{{prestaData['qs_qs3b']|setcheckbox(2)}}{% endif %} name="data[qs_qs3b]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3c : Le participant accède à un emploi temporaire (interim, CDD de - de 6 mois)</div>
+                                <div><label><input {% if prestaData['qs_qs3c'] is defined %}{{prestaData['qs_qs3c']|setcheckbox(1)}}{% endif %} name="data[qs_qs3c]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3c'] is defined %}{{prestaData['qs_qs3c']|setcheckbox(2)}}{% endif %} name="data[qs_qs3c]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3d : Le participant accède à un emploi aidé, y compris IAE</div>
+                                <div><label><input {% if prestaData['qs_qs3d'] is defined %}{{prestaData['qs_qs3d']|setcheckbox(1)}}{% endif %} name="data[qs_qs3d]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3d'] is defined %}{{prestaData['qs_qs3d']|setcheckbox(2)}}{% endif %} name="data[qs_qs3d]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3e : Le participant suit des études ou une formation (Accès à la formation)</div>
+                                <div><label><input {% if prestaData['qs_qs3e'] is defined %}{{prestaData['qs_qs3e']|setcheckbox(1)}}{% endif %} name="data[qs_qs3e]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3e'] is defined %}{{prestaData['qs_qs3e']|setcheckbox(2)}}{% endif %} name="data[qs_qs3e]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3f : Le participant est en recherche d'emploi sans suivre de formation</div>
+                                <div><label><input {% if prestaData['qs_qs3f'] is defined %}{{prestaData['qs_qs3f']|setcheckbox(1)}}{% endif %} name="data[qs_qs3f]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3f'] is defined %}{{prestaData['qs_qs3f']|setcheckbox(2)}}{% endif %} name="data[qs_qs3f]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S3g : Le participant est inactif, ni en emploi, ni en formation, ni en recherche d'emploi (dont maladie, deces, demenagement, etc)</div>
+                                <div><label><input {% if prestaData['qs_qs3g'] is defined %}{{prestaData['qs_qs3g']|setcheckbox(1)}}{% endif %} name="data[qs_qs3g]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs3g'] is defined %}{{prestaData['qs_qs3g']|setcheckbox(2)}}{% endif %} name="data[qs_qs3g]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                
+                        <h3><a href="#">Question 4 : Résultat de l'opération pour le participant</a></h3>
+                        <div>
+                            <div class="bloc" >
+                                <div class="sous_titre">Question S4a : Le participant a obtenu une qualification au terme de sa participation</div>
+                                <div><label><input {% if prestaData['qs_qs4a'] is defined %}{{prestaData['qs_qs4a']|setcheckbox(1)}}{% endif %} name="data[qs_qs4a]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4a'] is defined %}{{prestaData['qs_qs4a']|setcheckbox(2)}}{% endif %} name="data[qs_qs4a]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre" >Question S4b : Le participant a achevé une formation de développement des compétences</div>
+                                <div><label><input {% if prestaData['qs_qs4b'] is defined %}{{prestaData['qs_qs4b']|setcheckbox(1)}}{% endif %} name="data[qs_qs4b]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4b'] is defined %}{{prestaData['qs_qs4b']|setcheckbox(2)}}{% endif %} name="data[qs_qs4b]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S4c : Le participant a achevé une formation pré-qualifiante</div>
+                                <div><label><input {% if prestaData['qs_qs4c'] is defined %}{{prestaData['qs_qs4c']|setcheckbox(1)}}{% endif %} name="data[qs_qs4c]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4c'] is defined %}{{prestaData['qs_qs4c']|setcheckbox(2)}}{% endif %} name="data[qs_qs4c]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S4d : Le participant a achevé une formation aux savoirs de base</div>
+                                <div><label><input {% if prestaData['qs_qs4d'] is defined %}{{prestaData['qs_qs4d']|setcheckbox(1)}}{% endif %} name="data[qs_qs4d]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4d'] is defined %}{{prestaData['qs_qs4d']|setcheckbox(2)}}{% endif %} name="data[qs_qs4d]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+
+                                <div class="sous_titre">Question S4e : Le participant entame une nouvelle etape du parcours</div>
+                                <div><label><input {% if prestaData['qs_qs4e'] is defined %}{{prestaData['qs_qs4e']|setcheckbox(1)}}{% endif %} name="data[qs_qs4e]" type="checkbox"  value="Oui"  /> <span>OUI</span></label></div>
+                                <div><label><input {% if prestaData['qs_qs4e'] is defined %}{{prestaData['qs_qs4e']|setcheckbox(2)}}{% endif %} name="data[qs_qs4e]" type="checkbox"  value="Non" /> <span>NON</span></label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-13">
+                    <div id="accordion">
+                        <h3><a href="#">Motif de passage en équipe pluridisciplinaire territoriale</a></h3>
+                       <div>
+                            <div class="bloc">
+                                <div class="sous_titre">Réorientation</div>
+
+                                <div>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(0)}} {% endif %} style="display:none" name="data[reorientation_ept]" type="radio" value="0"/></label><span>      </span>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(1)}} {% endif %} name="data[reorientation_ept]" type="radio" value="1"/>
+                                    <span>Pole Emploi</span></label><span>      </span>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(2)}} {% endif %} name="data[reorientation_ept]" type="radio" value="2"/>
+                                    <span>MDS</span></label><span>      </span>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(3)}} {% endif %} name="data[reorientation_ept]" type="radio" value="3"/>
+                                    <span>MASP 2</span></label><span>      </span>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(4)}} {% endif %} name="data[reorientation_ept]" type="radio" value="4"/>
+                                    <span>AAVE</span></label><span>      </span>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(5)}} {% endif %} name="data[reorientation_ept]" type="radio" value="5"/>
+                                    <span>APSIE ASP</span></label><span>      </span>
+                                    <label><input {% if prestaData['reorientation_ept'] is defined %} {{prestaData['reorientation_ept']|setcheckbox(6)}} {% endif %} name="data[reorientation_ept]" type="radio" value="6"/>
+                                    <span>APSIE TNS</span></label><span>      </span>
+
+                                </div>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre">Suspension</div>
+
+                                <div>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(0)}} {% endif %} style="display:none" name="data[motif_suspension_ept]" type="radio" value="0"/></label><span>      </span>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(1)}} {% endif %} name="data[motif_suspension_ept]" type="radio" value="1"/>
+                                    <span>Non signature    </span></label><span>      </span>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(2)}} {% endif %} name="data[motif_suspension_ept]" type="radio" value="2"/>
+                                    <span>Non respect    </span></label><span>      </span>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(3)}} {% endif %} name="data[motif_suspension_ept]" type="radio" value="3"/>
+                                    <span>Non renouvellement    </span></label><span>      </span>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(4)}} {% endif %} name="data[motif_suspension_ept]" type="radio" value="4"/>
+                                    <span>Radiation Pole Emploi    </span></label><span>      </span>
+                                </div>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre"></div>
+
+                                <div>
+                                    <label><input {% if prestaData['retablissement'] is defined %} {{prestaData['retablissement']|setcheckbox(0)}} {% endif %} style="display:none" name="data[retablissement]" type="radio" value="0"/></label>
+                                </div>
+                                <div>
+                                    <label><input {% if prestaData['retablissement'] is defined %} {{prestaData['retablissement']|setcheckbox(1)}} {% endif %} name="data[retablissement]" type="radio" value="1"/>
+                                    <span class="sous_titre">Rétablissement</span></label>
+                                </div>
+                            </div>
+                            <div class="bloc">
+                                <div class="sous_titre"></div>
+                            </div>
+                            <div class="bloc">
+                                <div class="sous_titre">Motifs</div>
+                                <div class="normal">(y compris les éléments pouvant motiver le rétablissement)</div>
+                                <textarea name="data[commentaire_ept]" rows="2" cols="120">{% if prestaData['commentaire_ept'] is defined %}{{prestaData['commentaire_ept']}}{% endif %}</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-14">
+                    <div id="accordion">
+                        <h3><a href="#">Motif de passage en équipe pluridisciplinaire territoriale</a></h3>
+                       <div>
+                            <div class="bloc">
+                                <div class="sous_titre">Suspension</div>
+
+                                <div>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(0)}} {% endif %} style="display:none" name="data[motif_suspension_ept]" type="radio" value="0"/></label><span>      </span>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(1)}} {% endif %} name="data[motif_suspension_ept]" type="radio" value="1"/>
+                                    <span>Non signature    </span></label><span>      </span>
+                                    <label><input {% if prestaData['motif_suspension_ept'] is defined %} {{prestaData['motif_suspension_ept']|setcheckbox(2)}} {% endif %} name="data[motif_suspension_ept]" type="radio" value="2"/>
+                                    <span>Non respect    </span></label><span>      </span>
+                                </div>
+                            </div>
+
+                            <div class="bloc">
+                                <div class="sous_titre"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="tabs-15">
+                    <form name="Editer">
+                        <div class="sous_titre">Liste des livrables</div>
+                            <div>
+                                <div><label><input id="imp_1" name="Editer['asp1']['Contrat d'accompagnement]" value="Contrat d'accompagnement" type="checkbox"/>
+                                <span>Contrat d'accompagnement</span></label></div>
+
+                                <div><label><input id="imp_2" name="Editer['asp1']['emargement_lot1']" value="Feuille d'émargement" type="checkbox"/>
+                                <span>Feuille d'émargement</span></label></div>
+
+                                <div><label><input id="imp_3" name="Editer['asp1']['QuestFreins']" value="Questionnaire_Freins" type="checkbox"/>
+                                <span>Questionnaire Freins</span></label></div>
+
+                                <div><label><input id="imp_4" name="Editer['asp1']['Bilan']" value="Bilan d'évaluation" type="checkbox"/>
+                                <span>Bilan d'évaluation</span></label></div>
+
+                                <div><label><input id="imp_5" name="Editer['asp1']['CEP']" value="Contrat d'engagement" type="checkbox"/>
+                                <span>Contrat d'engagement professionnel</span></label></div>
+
+                                <div><label><input id="imp_6" name="Editer['asp1']['Annexe_CEP']" value="Annexe Contrat d'engagement" type="checkbox"/>
+                                <span>Annexe Contrat d'engagement</span></label></div>
+
+                                <div><label><input id="imp_7" name="Editer['asp1']['Avenant CEP']" value="Avenant Contrat d'engagement" type="checkbox"/>
+                                <span>Avenant Contrat d'engagement</span></label></div>
+
+                                <div><label><input id="imp_8" name="Editer['asp1']['Eval_ASP77']" value="Evaluation ASP77" type="checkbox"/>
+                                <span>Evaluation ASP77</span></label></div>
+
+                                <div><label><input id="imp_9" name="Editer['asp1']['QuestFSE']" value="Questionnaire FSE" type="checkbox"/>
+                                <span>Questionnaire FSE</span></label></div>
+
+                                <div><label><input id="imp_10" name="Editer['asp1']['QuestSat']" value="Questionnaire de satisfaction" type="checkbox"/>
+                                <span>Questionnaire de satisfaction</span></label></div>
+
+                                <div><label><input id="imp_11" name="Editer['asp1']['FicheEPT']" value="Formulaire EPT" type="checkbox"/>
+                                <span>Formulaire EPT</span></label></div>
+
+                                <div><label><input id="imp_12" name="Editer['asp1']['FicheEPT_ABSENCE']" value="Formulaire EPT_ABSENCE" type="checkbox"/>
+                                <span>Formulaire EPT ABSENCE</span></label></div>
+
+                                <div><label><input id="imp_13" name="Editer['asp1']['Couv']" value="Courvertures" type="checkbox"/><span>Courvertures</span></label></div>
+                            </div>
+                    </form>
+                </div>
+
+                <div id="tabs-16">
+                    <div id="accordion">
+                        <h3><a href="#">Pose des Rendez vous</a></h3>
+
+                        <section class="form_dispo"></section>
+                        <h3 id="rdv_presta">
+                        <a href="#">Rendez-vous lié(s) à cette prestation</a>
+                        </h3>
+                        <div class="tableau_liste_presta"></div>
+
+                        <h3 id="rdv_presta_orphelin">
+                        <a href="#">Rendez-vous non lié(s) à cette prestation</a>
+                        </h3>
+                        <div class="tableau_liste_presta_orphelin"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div style="padding-top:10px">
+            <center>
+                <button id="savePresta">Enregistrer</button>
+                <button id="EditerPresta">Editer</button>
+                <button id="RelancerPresta" onClick="window.open('{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}','Informations bénéficiaire','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');">Relancer</button>
+            </center>
+        </div>
+        <div class="copyright">© APSIE ASP77 2018</div>
+    </div>
+</div>
+<script>
+$(".change").click(function () {
+$('.' + $(this).attr('rel')).changeSelectInput();
+});
+$('#code_solution').myAutoCompleteCodeRome('#com_solution');
+
+$('.form_dispo').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$('#tabs #rdv').click(function () {
+$.ajax({
+    url: './disponibilite',
+    dataType: "html",
+    type: "POST",
+    data: {
+        idPrestation: {{presta.idPresta}}
+    },
+    success: function (html) {
+        $('.form_dispo').html(html);
+    }
+});
+});
+
+$('#tabs #rdv_presta').click(function () {
+$('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$.ajax({
+    url: './disponibilite/listrdvpresta',
+    dataType: "html",
+    type: "POST",
+    data: {
+        idPrestation: {{presta.idPresta}}
+    },
+    success: function (html) {
+        $('.tableau_liste_presta').html(html);
+    }
+});
+});
+
+$('#tabs #rdv_presta_orphelin').click(function () {
+$('.tableau_liste_presta_orphelin').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$.ajax({
+    url: './disponibilite/listrdvpresta',
+    dataType: "html",
+    type: "POST",
+    data: {
+        idBen: {{ presta.contact.idBen }}
+    },
+    success: function (html) {
+        $('.tableau_liste_presta_orphelin').html(html);
+    }
+});
+});
+
+$(".contenu_presta #tabs").tabs();
+var icons = {
+header: "ui-icon-circle-arrow-e",
+headerSelected: "ui-icon-circle-arrow-s"
+};
+$(".contenu_presta #accordion").accordion({icons: icons, autoHeight: false});
+
+// SAUVEGARDE
+$(".contenu_presta #savePresta").click(function () {
+var form = $("form[name='presta']").serializeArray();
+
+/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+form = form.concat($("form[name='presta'] input[type=checkbox]:not(:checked)").map(function () {
+    return {"name": this.name, "value": 0}
+}).get());
+
+$.pnotify({title: 'Sauvegarde', text: '<span class="load" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></span> Sauvegarde en cours', type: 'info', styling: 'jqueryui'});
+
+$.ajax({
+    url: "./data",
+    type: "POST",
+    dataType: "json",
+    data: form,
+    success: function (data) {
+        $.pnotify({title: 'Sauvegarde', text: data, type: 'success', styling: 'jqueryui'});
+
+        $('.load').hide('fade');
+    }
+});
+
+return false;
+
+});
+
+// EDITION
+$(".contenu_presta #EditerPresta").click(function () {
+
+$.pnotify({title: 'Edition', text: 'Edition des livrables', type: 'info', styling: 'jqueryui'});
+
+$('.load').hide('fade');
+
+if ($('#imp_1').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/1", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_2').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/2", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_3').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/3", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_4').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/4", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_5').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/5", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_6').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/6", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_7').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/7", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_8').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/8", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_9').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/9", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_10').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/10", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_11').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/11", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_12').attr('checked') == 'checked') {
+    window.open("./download/asp1/" + {{presta.idPresta}} + "/12", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+}
+
+if ($('#imp_13').attr('checked') == 'checked') {
+    setTimeout(function () {
+        window.open("./download/asp1/" + {{presta.idPresta}} + "/13", '', "menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+    }, 1000);
+}
+return false;
+
+});
+</script>

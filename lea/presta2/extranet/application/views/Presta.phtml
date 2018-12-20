@@ -1,0 +1,84 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu">Sous Menu</div>
+<div class="div_menu_gauche">
+<div style="padding-left:5px;text-align:center;font-size:14px;margin-bottom:5px;"><img src="./images/ico/legende.png" /> <span style="text-decoration: underline;font-style:italic ">Légende</span></div>
+<div><div id="div_legende"></div></div>
+<br/><br/><br/><hr/>
+<div style="padding:5px;">
+<table><tr><td>Prestataire</td><td>: APSIE</td></tr><tr><td width="100px">Conseiller</td><td>: <select id="id_conseiller"><option value="">Tous</option>
+<?php for($i=0;$i<count($this->utilisateurs);$i++)
+{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';}
+?></select></td></tr>
+<tr><td>Rechercher</td><td>: <input id="mot" type="text" /></td></tr>
+<tr><td></td><td>: <button  onclick="newSearch();">Ok</button></td></tr></table><br/>
+<button onclick='window.open("./presta/epce/presentation/nouveau_beneficiaire.php?annee=<?php echo date('y');?>&option_ben=nouveau","NOUVELLE PRESTATION","toolbar=0, location=0, directories=0, status=0, scrollbars=1, resizable=0, copyhistory=0, menuBar=0, width=1100, height=800");' style="font-size:10px" >Nouvelle prestation</button></div>
+</div></div>
+<div class="contenu">
+<div class="univers">Presta</div>
+<div class="div_menu_droit">
+<div  style="display:none" id="presta_tableau" ></div>
+<div id="presta_graph" ></div>
+
+</div></div>
+</div>
+<!-- div mise a jour - crayon-->
+<div style="display:none" id="dialogPresta"  title="Mise à jour de la prestation">
+<table>
+<tr><td>Prestataire</td><input type="hidden" id="id_presta" /> <td id="prestataire"></td></tr>
+<tr><td>Prestation</td><td id="prestation" ></td></tr>
+<tr><td>Bénéficiaire</td><td id="beneficiaire"></td></tr>
+<tr><td>LC</td><td ><input type="text" id="lc" /></td></tr>
+<tr><td>Conseiller</td><td ><select id="conseiller" ><option></option><?php  for($i=0;$i<count($this->utilisateurs);$i++)
+{ echo '<option value="'.$this->utilisateurs[$i]['account_id'].'">'.$this->utilisateurs[$i]['account_lid'].'</option>';} ?></select></td></tr>
+<tr><td>Date de début</td><td><input type="text" id="date_debut" /></td></tr>
+<tr><td>Date de fin prévisionnelle</td><td><input type="text" id="date_fin_pre" /></td></tr>
+<tr><td>Date de fin réelle</td><td><input type="text" id="date_fin_reelle" /></td></tr>
+<tr><td>Date d'envoi du bilan</td><td><input type="text" id="date_envoi" /></td></tr>
+<tr><td>Statut</td><td><select id="statut"><option>Nouvelle</option><option>En cours</option><option>Complete</option><option>A cloturer</option><option>Abandon</option><option>Annulee</option></select></td></tr>
+<tr><td></td><td><button 	onclick="Presta_.updatePresta();" id="buttonPresta" >Enregistrer</button></td></tr>
+</table>
+</div>
+
+<div id="form_abandon" style="display:none" title="Abandonner la prestation" >
+	<form name="abandon">
+		<table>
+		
+			
+			<tr><td>Date de l'abandon</td><td><input type="hidden" value="abandonPresta" name="action" /><input id="date_abandon" name="date_abandon" type="text" value="<?php echo date('d/m/Y')?>" /></td></tr>
+			<tr><td>Motif de l'abandon </td><td><input name="motif_abandon" type="text" value="" /></td></tr>
+			
+		</table>	
+	</form> 
+	<center><button id="okAbandon" >ok</button></center>
+</div>
+
+<!-- Fenetre de presta 
+
+<div class="fenetre">
+	<div class="head" ></div>
+	<div class="corp" ></div>
+	<div class="foot" ></div>
+</div>
+
+ Fenetre de presta -->
+<script>
+ $j( "#date_abandon" ).datepicker($j.datepicker.regional[ "fr" ]);
+var ajaxManager = $j.manageAjax.create('cacheQueue', { queue: true, cacheResponse: false });
+//setTimeout('Graph_.drawPie()',1000);
+
+var accountId=<?php echo $_SESSION['UTILISATEUR']['account_id'];?>;
+$j('#id_conseiller').val(accountId);
+Template_.setTemplateDispositif(accountId,'');
+Template_.afficherLegendePresta('div_legende');
+function newSearch()
+{
+	Template_.setTemplateDispositif($j('#id_conseiller').val(),''+$j('#mot').val()+'');
+	}
+
+//Abandon
+$j("#okAbandon").click(function() {
+	Presta_.setAbandon();
+	});
+
+</script>

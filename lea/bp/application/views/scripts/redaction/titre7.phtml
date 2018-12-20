@@ -1,0 +1,112 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche.phtml'); ?>
+
+
+
+	<div class="contenu_ac">
+	
+	<?php echo $this->title; ?><br/><br/><br/><?php echo $this->title_2; ?><br/><br/><br/>
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_7; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	
+	<h2> Tableau SWOT</h2>
+	
+	<table id="tableau_swot">
+	<tr align="center"><td class="titre_outils">Forces<td class="titre_outils">Faiblesses </td></tr>
+	<tr height="100px"><td><input  id="id_tableau_swot" name="id_tableau_swot" type="hidden" /><textarea name="text_forces" cols="30" rows="5" id="forces" ></textarea><td><textarea name="text_faiblesses" cols="30" rows="5" id="faiblesses" ></textarea></td></tr>
+	<tr align="center"><td class="titre_outils">Oppourtunités</td><td class="titre_outils">Menaces</td></tr>
+	<tr height="100px"><td><textarea name="text_opportunites" cols="30" rows="5" id="opportunites" ></textarea></td><td><textarea name="text_menaces" cols="30" rows="5" id="menaces" ></textarea></td></tr>
+	</table>
+	<br/>
+	<input onclick="ajouterTableauSwot();" class="button_little" id="button_tableau_swot" type="button" value="Enregistrer" />
+	</div>
+	
+<script type="text/javascript">
+getListTableauSwot();
+function ajouterTableauSwot()
+{
+
+	var forces = $('#forces').val();
+	var faiblesses = $('#faiblesses').val();
+	var opportunites = $('#opportunites').val();
+	var menaces = $('#menaces').val();
+	var id_tableau_swot = $('#id_tableau_swot').val();
+	
+	if(id_tableau_swot!='')
+	{
+		action = 'modifierTableauSwot';
+		$('#button_tableau_swot').attr('value','Enregistrer');
+	}
+	else
+	{
+		
+		action = 'ajouterTableauSwot';
+	}
+	
+	$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			id_tableau_swot : id_tableau_swot,
+			text_forces : forces,
+			text_faiblesses : faiblesses,
+			text_opportunites : opportunites,
+			text_menaces : menaces,
+			action : action
+		},success: function(data){
+		}
+		
+	});
+	setTimeout("$('#tableau_swot').hide('blind')",1000);	
+	setTimeout("$('#tableau_swot').show('blind')",1000);	
+}
+function getListTableauSwot()
+{
+	
+	
+		$.ajax({
+		url : "../ajax/ajax/",
+		dataType : "json",
+		data : {
+			noTemplate : 1,
+			
+			action : "getListTableauSwot"
+			
+		},success: function(data){
+			//console.debug("data => %o",data);
+			//alert(data.id_owner);
+			$('#forces').val(data.text_forces);
+			$('#faiblesses').val(data.text_faiblesses);
+			$('#opportunites').val(data.text_opportunites);
+			$('#menaces').val(data.text_menaces);
+			$('#id_tableau_swot').val(data.id_tableau_swot);
+			
+		}
+	});
+	
+	}
+
+
+
+
+function getValueToUpdate(id_tableau_swot,forces,faiblesses,opportunites,menaces)
+	{
+		$('#text_forces').val(forces);
+		$('#text_faiblesses').val(faiblesses);
+		$('#text_opportunites').val(opportunites);
+		$('#text_menaces').val(menaces);
+		$('#id_tableau_swot').val(id_tableau_swot);
+		$('#button_tableau_swot').attr('value','Modifier');
+	}
+
+</script>

@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="spiclient.admin.buttons" template="" lang="" group="0" version="1.000">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<hbox span="all" align="center">
+						<button label="Apply" id="button[apply]"/>
+						<button label="Cancel" id="button[cancel]"/>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="spiref.admin.general" template="" lang="" group="0" version="1.000">
+		<grid width="100%">
+			<columns>
+				<column width="35%"/>
+				<column width="25%"/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="field"/>
+					<description value="Default Value"/>
+					<description value="Comment"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row class="th">
+					<description span="all" class="bold" value="Status"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Default status"/>
+					<menulist>
+						<menupopup id="general[StatutDefaut]" options="Select One,groups,0"/>
+					</menulist>
+					<description value="Default status for references"/>
+				</row>
+				<row class="row">
+					<description value="Pending status"/>
+					<listbox id="general[StatutAttente]" rows="3"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Active status"/>
+					<listbox id="general[StatutActifs]" rows="3"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Validated status"/>
+					<menulist>
+						<menupopup options="Select One,groups,0" id="general[StatutValide]" onchange="ajax_request.assignedToGeneral('cat_assignedto','[general][ticket_assigned_to]','personne',this.value);"/>
+					</menulist>
+					<description value="Validated status for references"/>
+				</row>
+				<row class="row">
+					<description value="Obsolete status"/>
+					<menulist>
+						<menupopup id="general[StatutObsolete]" options="Select One"/>
+					</menulist>
+					<description value="Status for obsolete references"/>
+				</row>
+				<row class="th">
+					<description options="all" span="all" class="bold" value="Organisations" readonly="true"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description value="Provider type"/>
+					<menulist>
+						<menupopup id="general[ProviderType]" options="Select One"/>
+					</menulist>
+					<description value="Type for providers"/>
+				</row>
+				<row class="row">
+					<description value="Client type"/>
+					<menulist>
+						<menupopup id="general[ClientType]" options="Select One"/>
+					</menulist>
+					<description value="Type for clients"/>
+				</row>
+				<row class="row">
+					<description value="Seller type"/>
+					<menulist>
+						<menupopup id="general[SellerType]" options="Select One"/>
+					</menulist>
+					<description value="Type for sellers"/>
+				</row>
+				<row class="row">
+					<description value="Prospect type"/>
+					<menulist>
+						<menupopup id="general[ProspectType]" options="Select One"/>
+					</menulist>
+					<description value="Type for prospects"/>
+				</row>
+				<row class="row">
+					<description value="Partner type"/>
+					<menulist>
+						<menupopup id="general[PartnerType]" options="Select One"/>
+					</menulist>
+					<description value="Type for partner"/>
+				</row>
+				<row class="th">
+					<description options="all" span="all" class="bold" value="Emails" readonly="true"/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<description value="Text"/>
+					<htmlarea no_lang="1" id="general[TexteMail]" height="50" toolbar="false"/>
+					<description/>
+				</row>
+				<row class="row">
+					<description/>
+					<description/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<template id="spiclient.admin.buttons"/>
+	</template>
+</overlay>

@@ -1,0 +1,427 @@
+% spend time	spid	fr	% temps passé
+% turnover	spid	fr	% CA
+(d)	spid	fr	(j)
+(h)	spid	fr	(h)
+(min)	spid	fr	(min)
+-	spid	fr	-
+a problem happens during the generation of the bill in pdf format	spid	fr	Un problème est survenue lors de la génération de la facture au format PDF
+a propos de spid	spid	fr	A propos de SpiD
+access to ticket	spid	fr	Accéder au ticket
+action that caused the notify: added, canceled, accepted, rejected, ...	spid	fr	Action qui ont causé la notification : Ajouté, Annulé, Accepté, Rejeté, ...
+actions	spid	fr	Actions
+activity ratio	spid	fr	Ratio d'activité
+add client	spid	fr	Ajouter un client
+add contract	spid	fr	Ajouter un contrat
+add contract type	spid	fr	Ajouter un type de contrat
+add location	spid	fr	Ajouter un lieu
+add prices	spid	fr	Ajouter des prix
+add sector	spid	fr	Ajouter un secteur
+address	spid	fr	Adresse
+address one	spid	fr	Adresse 1
+address two	spid	fr	Adresse 2
+advanced search	spid	fr	Recherche avancée
+after	spid	fr	après
+ajouter à la facture	spid	fr	Ajouter à la facture
+all invoices	spid	fr	Toutes les factures
+all of the words	spid	fr	Mot Complet
+all open tickets	spid	fr	Tickets ouverts
+all tickets	spid	fr	Tous les tickets
+alone invoice	spid	fr	Facture isolée
+amount	spid	fr	Montant
+an error has occured	spid	fr	Un erreur est survenue
+and	spid	fr	et le
+assigned to	spid	fr	Assigné à
+at least one of the words	spid	fr	Au moins un des mots
+attachment	spid	fr	Pièce jointe
+autoassign to	spid	fr	Assigné automatiquement à
+average hourly turnover	spid	fr	CA horaire moyen
+bank	spid	fr	Banque
+between	spid	fr	entre le
+billable	spid	fr	Facturable
+billable by	spid	fr	Facturable par
+billable/not billable	spid	fr	Facturable / Non Facturable
+budget	spid	fr	Budget
+by	spid	fr	par
+ca par client	spid	fr	CA par client
+cancel tickets	spid	fr	Tickets annulés
+capital	spid	fr	Capital
+categorie for confirmed intervention	spid	fr	Catégorie pour les interventions planifiées
+categorie for option intervention	spid	fr	Catégorie pour les interventions en options
+categorie for realised intervention	spid	fr	Catégorie pour les interventions réalisées
+cats configuration	spid	fr	Configurations des catégories
+check all	spid	fr	Cocher tout
+client	spid	fr	Client
+client ca	spid	fr	CA Client
+client id	spid	fr	ID Client
+client management	spid	fr	Gestion des clients
+client name	spid	fr	Nom du client
+client statistics	spid	fr	Statistiques client
+clients	spid	fr	Clients
+clients menu	spid	fr	Gestion des clients
+closable	spid	fr	Fermable
+closable/not closable	spid	fr	Fermable/Non Fermable
+close	spid	fr	FERMETURE
+close date	spid	fr	Date de fermeture
+close ticket	spid	fr	Fermeture du ticket
+closed	spid	fr	Fermé
+closed ticket	spid	fr	Tickets fermés
+closed tickets	spid	fr	Tickets fermés
+closed tickets during period	spid	fr	Tickets fermés pendant la période
+closed tickets during the period and counted with this invoice	spid	fr	Tickets fermés pendant la période et rattachés à cette facture
+closed tickets during the period but not counted with this invoice	spid	fr	Tickets fermés pendant la période mais non comptés avec cette facture
+closed tickets not invoicing	spid	fr	Tickets fermés non facturé
+color	spid	fr	Couleur
+company	spid	fr	Société
+conditions	spid	fr	Conditions
+configuration updated	spid	fr	Configuration mise à jour
+configuring responses	spid	fr	Configurations réponses types
+confirmed intervention	spid	fr	Intervention confirmé
+contains	spid	fr	contient
+contract	spid	fr	Contrat
+contract management	spid	fr	Gestion des contrats
+contract type	spid	fr	Type de contrat
+contract type configuration	spid	fr	Configuration des types de contrat
+contract type management	spid	fr	Gestion des types de contrats
+couleur de surbrillance pour les clients ayant un problème de configuration	spid	fr	Couleur de surbrillance pour les clients ayant un problème de configuration
+couleur de surbrillance pour les clients en sommeil	spid	fr	Couleur de surbrillance pour les clients en sommeil
+couleur de surbrillance pour les tickets non vu	spid	fr	Couleur de surbrillance pour les tickets non vus
+couleur de surbrillance pour les tickets urgent	spid	fr	Couleur de surbrillance pour les tickets urgents
+create	spid	fr	CREATION
+create new links	spid	fr	Créer de nouveaux liens
+creation date	spid	fr	Date de création
+custom 1	spid	fr	Fermer un ticket
+custom 2	spid	fr	Générer les factures
+custom 3	spid	fr	Voir les factures
+date de création	spid	fr	Date de création
+date opened	spid	fr	Date d'ouverture
+day	spid	fr	Jour
+day budget	spid	fr	Budget jour
+de quels couleur souhaitez-vous voir les clients ayant un problème de configuration?	spid	fr	Dans quelles couleurs souhaitez-vous voir les clients ayant un problème de configuration ?
+de quels couleur souhaitez-vous voir les clients en sommeil?	spid	fr	Dans quelles couleurs souhaitez-vous voir les clients en sommeil ?
+de quels couleur souhaitez-vous voir les tickets non vu?	spid	fr	Dans quelles couleurs souhaitez-vous voir les tickets non vus ?
+de quels couleur souhaitez-vous voir les tickets urgent?	spid	fr	De quelles couleurs souhaitez-vous voir les tickets urgents ?
+default categorie for meetings	spid	fr	Catégorie par défaut pour les rendez-vous
+default text for the index	spid	fr	Texte par défaut pour la page index
+default value	spid	fr	Valeur par défaut
+define escalation	spid	fr	Définir les escalades
+delete criteria	spid	fr	Effacer les critères
+delete the category	spid	fr	Supprimer la catégorie
+delete the standard reply	spid	fr	Supprimer la réponse standard
+delete the state	spid	fr	Supprimer l'état
+delete the transition	spid	fr	Supprimer la transition
+delete this escalation	spid	fr	Supprimer cette escalade
+difference	spid	fr	Différence
+displays your default calendar view on the startpage (page you get when you enter egroupware or click on the homepage icon)?	spid	fr	Montrer votre calendrier par défaut sur la page d'acceuil (page obtenu lorsque vous arrivez sur eGroupware ou cliquez sur le bouton Acceuil) ?
+download invoice	spid	fr	Télécharger la facture
+due date	spid	fr	Date d'échéance
+duplicated tickets	spid	fr	Tickets dupliqués
+edit client	spid	fr	Éditer un client
+edit contract	spid	fr	Éditer un contrat
+edit contract type	spid	fr	Éditer un type de contrat
+edit invoice	spid	fr	Éditer une facture
+edit location	spid	fr	Editer un lieu
+edit prices	spid	fr	Editer les prix
+edit sector	spid	fr	Editer un secteur
+edit ticket	spid	fr	Éditer un ticket
+end date/time	spid	fr	Date de fin
+end period date	spid	fr	Date de fin de période
+error : file not found !	spid	fr	Erreur: fichier non trouvé !
+error on this customer	spid	fr	Erreur sur ce client
+estimated outstanding	spid	fr	Encours estimé
+etat	spid	fr	État
+existing links	spid	fr	Liens existants
+factured turnover	spid	fr	CA facturé
+fax	spid	fr	Fax
+firstname of person to notify	spid	fr	Prénom de la personne à prevenir
+footer field 1	spid	fr	Champ pied de page 1
+footer field 2	spid	fr	Champ pied de page 2
+for the attention of	spid	fr	A l'attention de
+freetime search	spid	fr	Recherche de disponibilité
+from	spid	fr	De
+fullname of person to notify	spid	fr	Nom complet de la personne à prévenir
+general	spid	fr	Général
+general configuration	spid	fr	Configuration générale
+general id	spid	fr	ID Général
+generate pdf invoice	spid	fr	Générer la facture au format PDF
+heure(s)	spid	fr	Heure(s)
+high level	spid	fr	Niveau Urgent
+history	spid	fr	Historique
+icon	spid	fr	Icône
+id	spid	fr	ID
+initial	spid	fr	Initial
+initial price	spid	fr	Prix initial
+initial state	spid	fr	État Initial
+initial time	spid	fr	Temps initial
+initial/not initial	spid	fr	Initial/Non initial
+intervenant	spid	fr	Intervenant
+intervenant ca	spid	fr	CA Intervenant
+intervenant configuration	spid	fr	Configuration intervenant
+intervenant statistics	spid	fr	Statistiques intervenant
+intervenants	spid	fr	Intervenants
+invalide ticket	spid	fr	Tickets invalide
+invoice folder	spid	fr	Répertoire de facture
+invoice label	spid	fr	Libellé de Facturation
+invoice management	spid	fr	Gestion des factures
+invoice number	spid	fr	Numéro de facture
+invoice tickets	spid	fr	Tickets de la facture
+invoice updated	spid	fr	Facture mise à jour
+invoices	spid	fr	Factures
+invoicing menu	spid	fr	Gestion des factures
+jour(s)	spid	fr	Jour(s)
+juridical form	spid	fr	Forme juridique
+last date	spid	fr	Dernière date
+last invoice	spid	fr	Dernière facture
+last note added	spid	fr	Dernière note ajoutée
+last update	spid	fr	Dernière mise à jour
+lastname of person to notify	spid	fr	Nom de la personne à prévenir
+libelle	spid	fr	Libellé
+link to view the event	spid	fr	Lien pour voir l'évènement
+linked entries	common	fr	Lien d'entrée
+links	spid	fr	Liens
+locality	spid	fr	Ville
+location	spid	fr	Lieu
+location configuration	common	fr	Configuration des sites et bâtiments
+location created	spid	fr	Site crée
+location deleted	spid	fr	Site supprimé
+location management	spid	fr	Gestion des sites et bâtiments
+location parent	spid	fr	Site père
+location updated	spid	fr	Site mis à jour
+locations	spid	fr	Sites
+mai	spid	fr	Mai
+mail	spid	fr	Email
+mail configuration	spid	fr	Configuration Mail
+mail sending failed	spid	fr	L' ENVOI DU MAIL A ECHOUE
+mail sent successfully	spid	fr	MAIL ENVOYE AVEC SUCCES
+maj	spid	fr	MAJ
+manage clients	spid	fr	Gérer les clients
+manage contracts	spid	fr	Gérer les contrats
+management group	spid	fr	Groupe de gestion
+manager email	spid	fr	Email Gestionnaire
+message with invoice when you send them by email	spid	fr	Message avec la facture lorsque vous envoyez par mail
+messages	spid	fr	Messages
+montant h.t.	spid	fr	Montant H.T.
+montant t.t.c.	spid	fr	Montant T.T.C.
+more	spid	fr	Plus
+more notes	spid	fr	Notes additionnelles
+my assigned tickets	spid	fr	Mes tickets assignés
+my open tickets	spid	fr	Mes tickets ouverts
+naf, ex ape	spid	fr	NAF, ex APE
+new client	spid	fr	Nouveau client
+new group	spid	fr	Nouveau groupe
+new invoice	spid	fr	Nouvelle facture
+new ticket	spid	fr	Nouveau ticket
+new user	spid	fr	Nouvel utilisateur
+next date	spid	fr	Prochaine date
+no chosen payment	spid	fr	Aucun paiement sélectionné
+no validated invoices	spid	fr	Factures non validées
+nobody ticket imported	spid	fr	Aucun ticket importé
+non validated invoices	spid	fr	Factures non validées
+none of the words	spid	fr	Aucun des mots
+normal level	spid	fr	Niveau normal
+not billable	spid	fr	Non Facturable
+not closable	spid	fr	Non Fermable
+not initial	spid	fr	Non Initial
+object	spid	fr	Objet
+objective ratio	spid	fr	Objectif ratio
+objective turnover	spid	fr	Objectif CA
+old startdate	spid	fr	Ancienne date de départ
+open	spid	fr	Ouvert
+open / close	spid	fr	Ouvert / Fermé
+open by	spid	fr	Demandeur
+opened tickets	spid	fr	Tickets ouverts
+opened tickets at end period	spid	fr	Tickets ouverts en fin de période
+opened tickets during period	spid	fr	Tickets ouverts pendant la période
+opened tickets in start period	spid	fr	Tickets ouverts en début de période
+operation code	spid	fr	Code d'opération
+optional intervention	spid	fr	Intervention option
+original details	spid	fr	Détails du ticket original
+parc	spid	fr	Parc
+parent categorie	spid	fr	Catégorie parente
+participant	spid	fr	Participant
+participants	spid	fr	Participants
+participants disinvited from an event	spid	fr	Participants désinvités de l'évènement
+pass time on not factured closed tickets	spid	fr	Temps passé sur les tickets fermés non facturé
+pass time on the closed tickets	spid	fr	Temps passé sur les tickets fermés
+pass time on the opened tickets	spid	fr	Temps passé sur les tickets ouverts
+payment in 30 days	spid	fr	Paiement à 30 jours
+payment in 60 days	spid	fr	Paiement à 60 jours
+payment in 90 days	spid	fr	Paiement à 90 jours
+payment model	spid	fr	Modèle de paiement
+payment with reception	spid	fr	Paiement à réception
+percent	spid	fr	Pourcentage
+percent on the closed tickets	spid	fr	Pourcentage sur les tickets fermés
+percent on the opened tickets	spid	fr	Pourcentage sur les tickets ouverts
+period	spid	fr	Période
+permission denied !!!	spid	fr	Accès refusé !!!
+permission denied!!!	spid	fr	Accès refusé !!!
+permission denied, please contact your administrator!!!	spid	fr	Accès refusé, Veuillez contacter votre administrateur !!!
+please contact support	spid	fr	Veuillez contacter le support
+poor level	spid	fr	Niveau faible
+possible to select	spid	fr	Sélection possible
+postal code	spid	fr	Code postal
+price	spid	fr	Prix
+price configuration	common	fr	Configuration des prix
+price ht	spid	fr	Prix HT
+prices	spid	fr	Prix
+prices configuration	admin	fr	Configuration des prix
+prices management	spid	fr	Gestions des prix
+print entry	spid	fr	Imprimer la facture
+proposal tickets	spid	fr	Tickets proposition
+provider	spid	fr	Fournisseur
+providers	spid	fr	Prestataires
+rate: %s eur / answered call, the edge of half an hour	spid	fr	Tarif : %s EUR / appel répondu, la tranche d'une demi heure
+ratio	spid	fr	Ratio
+rcs/rm	spid	fr	RCS/RM
+real	spid	fr	Réel
+realised intervention	spid	fr	Intervention réalisé
+receive notifications about assigned tickets	preferences	fr	Recevoir une notification si un ticket vous est assigné ?
+receive notifications about created tickets	preferences	fr	Recevoir une notification lorsque vous créez un ticket ?
+relation	spid	fr	Relation
+renewal date	spid	fr	Date de renouvellement
+reply	spid	fr	Réponse
+resolute tickets	spid	fr	Tickets résolus
+responses	spid	fr	Réponses
+search client '%1'	spid	fr	Recherche du client '%1'
+search company '%1'	spid	fr	Recherche de l'entreprise '%1'
+search contract '%1'	spid	fr	Recherche du contrat '%1'
+search for '%1'	spid	fr	Recherche de '%1'
+search location	spid	fr	Recherche du site
+search location '%1'	spid	fr	Recherche du lieu '%1'
+search sector '%1'	spid	fr	Recherche du secteur '%1'
+search state '%1'	spid	fr	Recherche de l'état '%1'
+sector	spid	fr	Secteur
+sector management	spid	fr	Gestion des secteurs
+sector name	spid	fr	Nom secteur
+sectors	spid	fr	Secteurs
+select a category before	spid	fr	Sélectionnez une catégorie au préalable
+select a group before	spid	fr	Sélectionnez un groupe au préalable
+send date	spid	fr	Date d'envoi
+send invoice by email	spid	fr	Envoyer la facture par email
+sender	spid	fr	Emetteur
+sendere	spid	fr	Émetteur
+sent	spid	fr	Envoyé
+septembre	spid	fr	Septembre
+setting transitions	spid	fr	Configuration transitions
+show default view on main screen	spid	fr	montrer la vue par defaut sur l'écran principale
+signature date	spid	fr	Date de signature
+siren	spid	fr	SIREN
+siret	spid	fr	SIRET
+site	spid	fr	Site
+sites	spid	fr	Sites
+sleep	spid	fr	En sommeil
+source state	spid	fr	Etat Source
+spend time	spid	fr	Temps passé
+spid	common	fr	Spid
+spid configuration	spid	fr	Configuration SPID
+spid menu	spid	fr	Menu Spid
+spid ticket	spid	fr	Tickets SPID
+spid tickets	spid	fr	Tickets SPID
+standard replies	spid	fr	Réponses Standards
+start date/time	spid	fr	Date/Heure de début
+start period date	spid	fr	Date de début de période
+state	spid	fr	État
+state close	spid	fr	État de fermeture
+state for close	spid	fr	État fermable
+state name	spid	fr	Nom de l'état
+states	spid	fr	États
+states configuration	spid	fr	Configuration Etats
+statistic	spid	fr	Statistiques
+statistic intervenant	spid	fr	Statistiques par intervenant
+statistic menu	spid	fr	Menu  des statistiques
+statistic turnover menu	spid	fr	Menu des Statistiques de CA
+statistics	spid	fr	Statistiques
+t.v.a.	spid	fr	T.V.A.
+target	spid	fr	Objectif
+target state	spid	fr	État Cible
+taxe num	spid	fr	Numéro de TVA
+tel	spid	fr	Téléphone
+the bill been successfully generated	spid	fr	La facture a été généré avec succès
+the exact phrase	spid	fr	La phrase exacte
+this message is join by mail when you send your bills by email.	spid	fr	???
+this one can see by all groups and administrator	spid	fr	le ticket peut être vu par tout le groupe demandeur et par les gestionnaires
+this one can see only by creator, applicant and administrator	spid	fr	le ticket ne peut être vu que par le créateur, le demandeur ou par les gestionnaires
+ticket	spid	fr	Ticket
+ticket created	spid	fr	Ticket créé
+ticket deleted from invoice	spid	fr	Ticket supprimé de la facture
+ticket imported	spid	fr	Ticket importé
+ticket number closed during period	spid	fr	Nombre de tickets fermés pendant la période
+ticket number open at end period	spid	fr	Nombre de tickets ouverts en fin de la période
+ticket number open at start period	spid	fr	Nombre de tickets ouverts en début de période
+ticket number open during period	spid	fr	Nombre de tickets ouverts pendant la période
+ticket title making left the ongoing bill	spid	fr	Tickets faisant partie de la facture en cours
+ticket updated	spid	fr	Ticket mis à jour
+ticket_forfait	spid	fr	Ticket forfait
+tickets end period date	spid	fr	Date de fin de période des tickets
+tickets number	spid	fr	Nombre de tickets
+tickets per intervenant	spid	fr	Tickets par intervenant
+tickets solved by assistance on site	spid	fr	Tickets résolus par assistance sur site
+tickets solved by intervention of monitoring	spid	fr	Tickets résolus par intervention de suivi
+tickets solved by planned intervention	spid	fr	Tickets résolus par intervention planifiée
+tickets solved by remote assistance	spid	fr	Tickets résolus par assistance à distance
+tickets solved by urgent intervention	spid	fr	Tickets résolus par intervention urgente
+tickets start period date	spid	fr	Date de début de période des tickets
+tickets with resolve	spid	fr	Tickets avec résolution
+tiers code	spid	fr	Code tiers
+time intervention	spid	fr	Temps intervention
+time meeting	spid	fr	Temps rendez-vous
+time spend	spid	fr	Temps passé
+times	spid	fr	Temps
+title of the event	spid	fr	Titre de l'évènement
+titre	spid	fr	Titre
+to add a meeting, please fill up the calendar date, time and the title, then "add"	spid	fr	Pour ajouter un rendez-vous, merci de remplir la date, la durée et le titre. "Ajouter" ensuite
+total heures	spid	fr	Total heures
+total ht	spid	fr	Total HT
+total intervention	spid	fr	Total intervention
+total jours	spid	fr	Total jours
+total rendez-vous	spid	fr	Nombre total de rendez-vous
+total spend time	spid	fr	Temps passé total
+total time	spid	fr	Temps total
+total(h)	spid	fr	Total (h)
+transitions	spid	fr	Transitions
+translation label	spid	fr	Libellé de traduction
+under tva	spid	fr	Soumis à TVA
+unit time for tickets	spid	fr	Unité de temps pour les tickets
+update date	spid	fr	Date de mise à jour
+update ticket state	spid	fr	Mettre à jour l'état du ticket
+url link	spid	fr	Liens URL
+use time budget	spid	fr	Utiliser le budget jours
+validate	spid	fr	Valider
+validated invoices	spid	fr	Factures validées
+validation date	spid	fr	Date de validation
+view all clients	spid	fr	Voir tous les clients
+view all invoices	spid	fr	Voir toutes les factures
+view all open tickets	spid	fr	Voir les tickets ouverts
+view all tickets	spid	fr	Voir tous les tickets
+view client	spid	fr	Voir client
+view closed tickets	spid	fr	Voir les tickets fermés
+view closed tickets not invoicing	spid	fr	Voir les tickets fermés non facturés
+view contract	spid	fr	Voir les contrats
+view invoice	spid	fr	Voir facture
+view invoices	spid	fr	Voir les factures
+view location	spid	fr	Voir lieu
+view locations	spid	fr	Voir les sites
+view my assigned tickets	spid	fr	Voir mes tickets assignés
+view my open tickets	spid	fr	Voir mes tickets ouverts
+view non validated invoices	spid	fr	Voir les factures non validées
+view open tickets	spid	fr	Voir les tickets ouverts
+view pdf invoice	spid	fr	Voir la facture en PDF
+view prices	spid	fr	Voir prix
+view sector	spid	fr	Voir le secteur
+view statistic	spid	fr	Voir les statistiques
+view statistic ca client	spid	fr	Statistiques de CA
+view statistic ca intervenant	spid	fr	Statistiques CA par intervenant
+view statistic intervenant	spid	fr	Statistiques par intervenant
+view statistic ticket intervenant	spid	fr	Statistiques par intervenant
+week	spid	fr	Semaine
+words	spid	fr	Mots
+would you receive notification mails, if tickets you created get updated?	preferences	fr	Voulez-vous recevoir une notification par mail si vous créez un ticket ou s'il est mis à jour.
+would you receive you notification mails, if tickets assigned to you get updated?	preferences	fr	Voulez-vous recevoir une notification par mail si un ticket qui vous est assigné est crée ou mis à jour.
+you must enter a time to close ticket	spid	fr	Vous devez entrer une date pour fermer le ticket
+you want to delete the category. are you sure?	spid	fr	Vous souhaitez supprimer cette catégorie. Êtes vous sûr ?
+you want to delete the client. are you sure?	spid	fr	Vous souhaitez supprimer ce client. Êtes vous sûr ?
+you want to delete the standard reply. are you sure?	spid	fr	Vous souhaitez supprimer cette réponse standard. Êtes vous sûr?
+you want to delete the state. are you sure?	spid	fr	Vous souhaitez supprimer cet état. Êtes vous sûr ?
+you want to delete the transition. are you sure?	spid	fr	Vous souhaitez supprimer cette transition. Êtes vous sûr ?
+you want to delete this invoce. are you sure?	spid	fr	Vous souhaitez supprimer cette facture. Êtes vous sûr ?
+you want to remove the ticket from this invoice. are you sure?	spid	fr	Êtes-vous sur de vouloir ce ticket de cette facture ?
+your ask	spid	fr	Votre demande

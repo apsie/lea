@@ -1,0 +1,988 @@
+<div id="presta" class="entete" >- Prestation {{ presta.dispositif.nomDispositif }} de <b>{{ presta.contact.nomComplet }}</b> ({{ presta.idPresta }})</div>
+	<div class="contenu_presta" >
+	
+	<form name="presta">
+	<input type="hidden" name="data[suivi]" value="0" />
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Contrat/ Bénéficiaire </a></li>
+			<li><a href="#tabs-2">Bilan Lot2</a></li>
+			<li><a href="#tabs-3">Questionnaire FSE</a></li>
+			<li><a href="#tabs-4">Questionnaire de satisfaction</a></li>
+			<li><a href="#tabs-5">SUIVI</a></li>
+			<li><a href="#tabs-6">Edition</a></li>
+			<li><a id="rdv" href="#tabs-7">Rdv</a></li>
+		</ul>
+		
+		
+            <div id="tabs-1">
+
+                  	<input type="hidden" name="id_presta" value="{{ presta.idPresta }}"/>
+                   	<input type="hidden" name="id_projet" value="{{ presta.idProjet }}"/>
+
+                        <div id="accordion">
+                            <h3><a href="#">Information sur {{ presta.contact.nomComplet }}</a></h3>
+                                <div>{% render "LeaPrestaBundle:Contact:create" with { idContact : presta.contact.idBen } %}</div>
+
+                            <h3><a href="#">Parcours professionnel et formation</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:parcourspro" with { idContact : presta.contact.idBen } %}
+                                    {% render "LeaPrestaBundle:Contact:formation" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+                            <h3><a href="#">Parcours d'accompagnement</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/index.php?menuaction=spid.spid_ui.index">Prestations</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/index.php?menuaction=details.details_ui.index">Orientation</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}">Relance</a><br><br>
+                                </div>
+
+                            <h3><a href="#">Prescripteur</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/spiclient/index.php">Structure Prescriptrice</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/index.php?menuaction=addressbook.addressbook_ui.index">Contact prescripteur</a>
+                                </div>
+
+                            <h3><a href="#">Fiche projet</a></h3>
+                                <div>
+                                    <a href="{{DIR_PRESTA}}/Projet1_1/details.php?id_projet={{ presta.idProjet }}&domain=default">Projet</a><br><br>
+                                    <a href="{{DIR_PRESTA}}/bp/public/?id_projet={{ presta.idProjet }}&id_employe=10&domain=default">Business Plan</a><br><br>
+                                </div>
+
+
+                            <h3><a href="#">Etat-civil</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:etatcivil" with { idContact : presta.contact.idBen } %}
+                                </div>
+
+
+                            <h3><a href="#">Coordonnées complémentaires</a></h3>
+                                <div>
+                                    {% render "LeaPrestaBundle:Contact:complement" with { idContact : presta.contact.idBen } %}
+                                </div>
+                        </div>
+                </div>
+			
+	    <div id="tabs-2">
+		
+		<div id="accordion" > 				
+			<!-- Le projet du bénéficiaire -->	
+				<h3><a href="#">L’entreprise</a></h3>
+				<div>
+				<div class="sous_titre" >Description de l’activité </div>
+				<div>
+				<textarea name="projet[description_projet]" rows="1" cols="100">{{presta.projet.descriptionProjet}}</textarea>
+				</div>
+
+				<div class="sous_titre">Situation globale de l’entreprise </div>
+				<div class="etat_avancement_projet">
+					<select id="etat_avancement_projet" name="data[etat_avancement_projet]" >
+					<option>{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}</option>
+							{% if( options[key.KEY_PROJET_ETAT_AVANCEMENT] is defined ) %}
+							{{options[key.KEY_PROJET_ETAT_AVANCEMENT]|raw}}
+							{% endif %}
+					</select>
+					<input style="display:none" value="{% if prestaData['etat_avancement_projet'] is defined %}{{prestaData['etat_avancement_projet']}}{% endif %}" type="text" />
+					<img rel="etat_avancement_projet" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</div>
+
+					<div class="sous_titre">Points à évaluer en priorité</div>
+					<div>
+						{% for i in 1..3 %}
+					<div style="clear:both" class="point_evaluer_priorite_{{i}}">
+					<select  id="point_evaluer_priorite_{{i}}"  name="data[point_evaluer_priorite_{{i}}]" >
+					<option>{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}</option>
+								{% if( options[key.KEY_PROJET_POINT_EVALUER_PRIORITE] is defined ) %}
+								{{options[key.KEY_PROJET_POINT_EVALUER_PRIORITE]|raw}}
+								{% endif %}
+					</select>
+					<input style="display:none" value="{% if prestaData['point_evaluer_priorite_'~i~''] is defined %}{{prestaData['point_evaluer_priorite_'~i~'']}}{% endif %}" type="text" />
+					<img rel="point_evaluer_priorite_{{i}}" class="change" src="{{ asset('bundles/lea/images/divers/retour.png') }}" />
+					</div>
+						{% endfor %}
+					</div>
+				<div class="sous_titre" >Commentaires de l’intervenant </div>
+				<div>
+				<textarea name="data[commentaire_1]" rows="1" cols="100">{% if prestaData['commentaire_1'] is defined %}{{prestaData['commentaire_1']}}{% endif %}</textarea>
+				</div>
+				</div>
+			
+						
+				<h3><a href="#">Synthèse</a></h3>
+				<div>
+				<table class="diag" width="100%">
+						<tr>
+							<th width="40%">Objet</th>
+							<th width="10%">+</th>
+							<th width="10%">+/-</th>
+							<th width="10%">-</th>
+							<th width="10%">Observation</th>
+						</tr>
+						{% for key, texte in listes[key.KEY_EVALUATION] %}
+							{% set radio_name = 'synthese_' ~ key %}
+							{% set obs_name = 'synthese_obs_' ~ key %}
+							<tr>
+								<td>{{ texte }}</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="99" checked="" hidden>
+									<input type="radio" name="data[synthese_{{ key }}]" value="1" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 1 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="2" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 2 %}checked{% endif %}{% endif %}>
+								</td>
+								<td>
+									<input type="radio" name="data[synthese_{{ key }}]" value="3" {% if prestaData[radio_name] is defined %}{% if prestaData[radio_name] == 3 %}checked{% endif %}{% endif %}>
+								</td>
+								 
+								<td>
+									<div class="normal"><input type="text" name="data[synthese_obs_{{ key }}]" {% if prestaData[obs_name] is defined %}value="{{ prestaData[obs_name] }}"{% endif %}></div>
+								</td>
+							</tr>
+						{% endfor %}
+				</table>
+				</div>
+				<h3><a href="#">Résultat de l’évaluation</a></h3>
+				
+				<div class="bloc" >
+				
+				<div class="sous_titre" > Résultat de l’évaluation </div>
+						
+				<div><label><input  {% if prestaData['estimation'] is defined %}{{prestaData['estimation']|setcheckbox(0)}}{% endif %}  style="display:none" name="data[estimation]" type="radio"  value="0"  /> </label></div>
+							
+				<div><label><input  {% if prestaData['estimation'] is defined %}{{prestaData['estimation']|setcheckbox(1)}}{% endif %}  name="data[estimation]" type="radio"  value="1"  /> <span> Activité viable </span></label></div>
+							
+				<div class="bloc" >
+				<div class="sous_titre" >Recommandations de l’intervenant</div>
+				<textarea name="data[comm_m2]" rows="2" cols="100">{% if prestaData['comm_m2'] is defined %}{{prestaData['comm_m2']}}{% endif %}</textarea>
+				</div>
+							
+				<div><label><input  {% if prestaData['estimation'] is defined %}{{prestaData['estimation']|setcheckbox(2)}}{% endif %}  name="data[estimation]" type="radio"  value="2" /> <span> Activité non viable</span></label></div>
+							 
+				<div class="bloc" >
+				<div class="sous_titre" >Recommandations de l’intervenant</div>
+				<div>
+				<textarea name="data[comm_m1]" rows="2" cols="100">{% if prestaData['comm_m1'] is defined %}{{prestaData['comm_m1']}}{% endif %}</textarea>
+				</div> 
+				</div>
+			 	</div>		 
+		</div>
+		</div>
+
+		<div id="tabs-3">
+			<div id="accordion">
+			    Statut sur le marché du travail à l’entrée dans l’opération
+				<h3><a href="#">Question 1: Occupez-vous actuellement un emploi ?  [Une seule réponse possible] </a></h3>
+				<div>
+					<div class="bloc" >	
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(0)}}{% endif %}  style="display:none" name="data[fse_q1]" type="radio"  value="0"  /> </label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(1)}}{% endif %} name="data[fse_q1]" type="radio"  value="1"  /> <span>1a. Oui, un emploi de travailleur indépendant, chef d’entreprise</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(2)}}{% endif %} name="data[fse_q1]" type="radio"  value="2" /> <span>1b. Oui, un emploi durable (CDI ou CDD de 6 mois ou +)</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(3)}}{% endif %} name="data[fse_q1]" type="radio"  value="3" /> <span>1c. Oui, un emploi temporaire (intérim, CDD de moins de 6 mois)</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(4)}}{% endif %} name="data[fse_q1]" type="radio"  value="4" /> <span>1d. Oui, un emploi aidé (y compris IAE)</span></label></div>
+						<div><label><input {% if prestaData['fse_q1'] is defined %}{{prestaData['fse_q1']|setcheckbox(5)}}{% endif %} name="data[fse_q1]" type="radio"  value="5" /> <span>Non</span></label></div>
+						
+						<div class="sous_titre" >1e. Si vous n’occupez pas d’emploi, êtes-vous en formation, en stage ou en école ? </div>
+						
+						<div><label><input {% if prestaData['fse_q1e'] is defined %}{{prestaData['fse_q1e']|setcheckbox(0)}}{% endif %} name="data[fse_q1e]" type="radio"  value="0" /> <span>OUI</span></label></div>
+						
+						<div><label><input {% if prestaData['fse_q1e'] is defined %}{{prestaData['fse_q1e']|setcheckbox(1)}}{% endif %} name="data[fse_q1e]" type="radio"  value="1" /> <span>NON</span></label></div>
+						 
+						 
+						<div class="sous_titre" >1f. Si vous n’occupez pas d’emploi, recherchez-vous actuellement activement un emploi ?</div> 
+						<div><label><input {% if prestaData['fse_q1f'] is defined %}{{prestaData['fse_q1f']|setcheckbox(0)}}{% endif %} name="data[fse_q1f]" type="radio"  value="0" /> <span>OUI</span></label></div>
+						1g. Si oui, depuis combien de temps cherchez-vous ? : ……… (nombre de mois)
+						<textarea name="data[fse_q1e_mois]" rows="1" cols="100">{% if prestaData['fse_q1e_mois'] is defined %}{{prestaData['fse_q1e_mois']}}{% endif %}</textarea>
+						
+						<div><label><input {% if prestaData['fse_q1f'] is defined %}{{prestaData['fse_q1f']|setcheckbox(1)}}{% endif %} name="data[fse_q1f]" type="radio"  value="1" /> <span>NON</span></label></div>						
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 2: Quel est le plus haut niveau de diplôme atteint ou l’année d’études la plus élevée à l’entrée dans l’opération? [Une seule réponse possible ]</a></h3>
+				 
+				<div>
+					<div class="bloc" >
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(0)}}{% endif %}  style="display:none" name="data[fse_q2]" type="radio"  value="0"  /> </label></div>
+							
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(1)}}{% endif %} name="data[fse_q2]" type="radio"  value="1"  /> <span>2a. Inférieur à l’école primaire, vous n’êtes jamais allé à l’école</span></label></div>
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(2)}}{% endif %} name="data[fse_q2]" type="radio"  value="2" /> <span>2b. Primaire, 6e, 5e, 4e, 3e (secondaire 1er cycle), Diplômé Brevet des collèges, CAP, BEP, seconde professionnelle (technique cycle court)</span></label></div>
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(3)}}{% endif %} name="data[fse_q2]" type="radio"  value="3" /> <span>2c. Baccalauréat général (L, ES, S, A à E), technologique (F, G, H, STG, STI …), bac Pro, brevet professionnel (BP) </span></label></div>
+							<div><label><input {% if prestaData['fse_q2'] is defined %}{{prestaData['fse_q2']|setcheckbox(3)}}{% endif %} name="data[fse_q2]" type="radio"  value="4" /> <span>2d. DEUG, BTS, DUT, écoles d’infirmières, licence (L3), maîtrise, Grande école, école d’ingénieur, de commerce, master (recherche ou professionnel) (M2), DEA, DESS, doctorat</span></label></div>
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 3: Situation du ménage à l’entrée dans l’opération </a></h3>
+				<div>
+					<div class="bloc" >
+						<div class="sous_titre" >3a. Vivez-vous dans un ménage où personne n’est en emploi ?  </div>
+						
+						<div><label><input {% if prestaData['fse_q3'] is defined %}{{prestaData['fse_q3']|setcheckbox(0)}}{% endif %} name="data[fse_q3]" type="radio"  value="0" /> <span>OUI</span></label></div>
+						 1g. Si oui, depuis combien de temps cherchez-vous ? : ……… (nombre de mois)
+						<textarea name="data[fse_q3_mois]" rows="1" cols="100">{% if prestaData['fse_q3_mois'] is defined %}{{prestaData['fse_q3_mois']}}{% endif %}</textarea>
+						<div><label><input {% if prestaData['fse_q3'] is defined %}{{prestaData['fse_q3']|setcheckbox(1)}}{% endif %} name="data[fse_q3]" type="radio"  value="1" /> <span>NON</span></label></div>
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 4: Avez-vous une reconnaissance officielle d’un handicap (allocation, pension ou carte d’invalidité…) ? </a></h3>
+				<div>
+					<div class="bloc" >
+					 	<div><label><input {% if prestaData['fse_q4'] is defined %}{{prestaData['fse_q4']|setcheckbox(0)}}{% endif %} name="data[fse_q4]" type="radio"  value="0" /> <span>OUI</span></label></div>	
+						<div><label><input {% if prestaData['fse_q4'] is defined %}{{prestaData['fse_q4']|setcheckbox(1)}}{% endif %} name="data[fse_q4]" type="radio"  value="1" /> <span>NON</span></label></div>		
+					</div>
+				</div>
+				
+				<h3><a href="#">Question 5: Etes-vous allocataire de minima sociaux (RSA, allocation spécifique de solidarité, allocation aux adultes handicapés…)? </a></h3>
+				<div>
+					<div class="bloc" >
+						<div><label><input {% if prestaData['fse_q5'] is defined %}{{prestaData['fse_q5']|setcheckbox(0)}}{% endif %} name="data[fse_q5]" type="radio"  value="0" /> <span>OUI</span></label></div>						
+						<div><label><input {% if prestaData['fse_q5'] is defined %}{{prestaData['fse_q5']|setcheckbox(1)}}{% endif %} name="data[fse_q5]" type="radio"  value="1" /> <span>NON</span></label></div>
+					</div>
+				</div>
+				<h3><a href="#">Question 6: Etes-vous sans domicile fixe ou confronté à l’exclusion de votre logement ?</a></h3>
+				<div>
+					<div class="bloc" >
+						<div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(0)}}{% endif %} name="data[fse_q6]" type="radio"  value="0" /> <span>OUI</span></label></div>					
+						<div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(1)}}{% endif %} name="data[fse_q6]" type="radio"  value="1" /> <span>NON</span></label></div>		
+						<div><label><input {% if prestaData['fse_q6'] is defined %}{{prestaData['fse_q6']|setcheckbox(2)}}{% endif %} name="data[fse_q6]" type="radio"  value="2" /> <span>Ne souhaite pas répondre / ne sait pas</span></label></div>	
+					</div>
+				</div>
+				<h3><a href="#">Question 7: Un de vos deux parents est-il né à l’étranger ? </a></h3>
+				<div>
+					<div class="bloc" >
+						<div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(0)}}{% endif %} name="data[fse_q7]" type="radio"  value="0" /> <span>OUI</span></label></div>					
+						<div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(1)}}{% endif %} name="data[fse_q7]" type="radio"  value="1" /> <span>NON</span></label></div>		
+						<div><label><input {% if prestaData['fse_q7'] is defined %}{{prestaData['fse_q7']|setcheckbox(2)}}{% endif %} name="data[fse_q7]" type="radio"  value="2" /> <span>Ne souhaite pas répondre / ne sait pas</span></label></div>				
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="tabs-4">
+			<div id="accordion">
+				<h3><a href="#">Imprimer le questionnaire de satisfaction /A REMPLIR PAR LE BENEFICIAIRE
+				</a></h3>
+	 	 	</div>
+		</div>
+		<div id="tabs-5">
+		<div id="accordion">
+		<h3><a href="#">Prestation d’accompagnement des travailleurs non salariés en renouvellement de droits RSA</a></h3>
+		<div>
+			<div class="bloc" >
+				<form method="post" action="traitement.php">
+					<p> 
+					<center> <input  {% if prestaData['mois'] is defined %}{{prestaData['mois']|setcheckbox(0)}}{% endif %}  name="data[mois]" type="radio"  value="0"  /><label for="mois">SUIVI à 3 MOIS</label><br /> <center/>   
+					
+					<center> <input  {% if prestaData['mois'] is defined %}{{prestaData['mois']|setcheckbox(1)}}{% endif %}  name="data[mois]" type="radio"  value="1"  /><label for="mois">SUIVI à 6 MOIS</label> <center/> 
+					</p>
+				</form>
+			</div> 
+		</div> 
+		<h3><a href="#">Présentation de l’entreprise</a></h3>
+		<div>
+		<div class="bloc" >
+		<fieldset>
+			<label for="nom">Nom de l’entreprise : </label>   
+			<input name="data[NomEns]" rows="0" cols="20" {% if prestaData['NomEns'] is defined %}value={{ prestaData['NomEns'] }}{% endif %}  /> <br /><br />
+			 
+			<label for="text">Activité :</label> 
+			<input name="data[Activ]" rows="0" cols="20" {% if prestaData['Activ'] is defined %}value={{prestaData['Activ']}}{% endif %} /> <br /><br />  
+   
+			<label for="text">Adresse :</label> 
+			<input name="data[Adr]" rows="0" cols="20" {% if prestaData['Adr'] is defined %}value={{prestaData['Adr']}}{% endif %} /> <br /><br />     
+		</fieldset>	 
+		
+		<fieldset>
+			<legend>Secteur d’activité 
+			</legend> <!-- Titre du fieldset -->
+			<p> 
+				<label for="text"> Type d'activité :</label> 
+
+				<input name="data[Tactiv]" rows="0" cols="20"{% if prestaData['Tactiv'] is defined %}value={{prestaData['Tactiv']}}{% endif %}  /><br /><br />
+				
+				<input {% if prestaData['crea'] is defined %}{{prestaData['crea']|setcheckbox(0)}}{% endif %}  name="data[crea]" type="radio"  value="0"  /> <label for="crea">Création</label>
+
+				<input {% if prestaData['crea'] is defined %}{{prestaData['crea']|setcheckbox(1)}}{% endif %}  name="data[crea]" type="radio"  value="1"  /> <label for="crea">Reprise</label> <br />
+		   
+				<label for="text"><strong>Date</strong> de <strong>création</strong> ou de <strong>reprise</strong> : </label>
+				
+				<input name="data[date_reprise_emploi]" rows="0" cols="20" value="{% if prestaData['date_reprise_emploi'] is defined %}{{prestaData['date_reprise_emploi']}}{% endif %}" id="date_reprise_emploi" /> <br /><br />
+				<input type="text" name="activité" id="activité" />
+      		</p>
+		</fieldset>
+		<fieldset>
+			<div>
+				<div class="select_bloc_3"></br></br></br></br>
+					<tr>
+						<td align="center">
+						<div class="normal"><input type="text" name="" value="Chiffre d'affaires"></div>	 
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name="" value="Résultat net"></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Nombre de salariés" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Nombre de clients" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Dettes fournisseurs" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Créances clients" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Dettes sociales" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Dettes fiscales" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Investissements réalisés" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Capacité D'autofinancement" ></div>
+						</td>
+						<td align="center">
+							<div class="normal"><input type="text" name=" " value="Autres" ></div>
+						</td>										
+					</tr>
+				</div>
+			</div>
+						<div class="select_bloc_3">
+							<p>Année N :</p>
+							<th width="60%">
+								<select name="data[CA_annee]">
+									<option value="parti">2015</option>
+									<option value="profe" selected="selected">2016</option>
+									<option value="insti">2017</option>
+								</select>
+							</th>
+							{% for i in 1..11 %}
+							<div class="element_{{i}}" >
+								<input name="data[pres_n_{{i}}]" rows="0" cols="20" {% if prestaData['pres_n_' ~ i ] is defined %}value={{prestaData['pres_n_' ~ i ]}}{% endif %}  />
+							</div>
+						 	
+
+							{% endfor %}
+						</div>
+							 
+						<div class="select_bloc_3">
+							<p>Année N-1 :</p>
+							<th width="60%">
+								<select name="data[CA_annee2]">
+									<option value="parti">2014</option>
+									<option value="profe" selected="selected">2015</option>
+									<option value="insti">2016</option>
+								</select>
+							</th>
+							 
+							{% for i in 1..11 %}
+							<div class="element2_{{i}}" >
+								<input name="data[pres_n1_{{i}}]" rows="0" cols="20" {% if prestaData['pres_n1_' ~ i ] is defined %}value={{prestaData['pres_n1_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+				</fieldset> 
+		 
+				<div class="sous_titre" ><legend>Autres éléments notables</legend></div>
+				<div class="bloc" >
+						<div class="sous_titre" >Aspects humains (rôle du conjoint, etc.) : </div>
+						<textarea name="data[Ahumains]" rows="1" cols="100">{% if prestaData['Ahumains'] is defined %}{{prestaData['Ahumains']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Aspects économiques de l’entreprise (clients, concurrents, réseau…) : </div>
+						<textarea name="data[Aeconom]" rows="1" cols="100">{% if prestaData['Aeconom'] is defined %}{{prestaData['Aeconom']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Moyens matériels de l’entreprise (véhicule, équipements) : </div>
+						<textarea name="data[Mmater]" rows="1" cols="100">{% if prestaData['Mmater'] is defined %}{{prestaData['Mmater']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Difficultés rencontrées : </div>
+						<textarea name="data[Drencon]" rows="1" cols="100">{% if prestaData['Drencon'] is defined %}{{prestaData['Drencon']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Endettement :</div>
+						<textarea name="data[Endet]" rows="1" cols="100">{% if prestaData['Endet'] is defined %}{{prestaData['Endet']}}{% endif %}
+						</textarea>
+				</div>
+			</div>
+			</div>
+				 
+				<h3><a href="#">Principaux indicateurs et évolution</a></h3>
+				 <div>
+					<div class="bloc" >
+					
+					<div class="sous_titre" >Suivi à 3 mois </div>
+					<fieldset>
+						<select>
+						<option>Suivi à 3 mois</option>
+						<option>Suivi à 6 mois</option>
+						</select>
+						<div class="select_bloc_3">
+							<center><p>Indicateurs</p></center>
+							<tr>
+								<td align="center">
+								<div class="normal"><input type="text" name="" value="Chiffre d'affaires"></div>	 
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name="" value="Résultat net"></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Nombre de salariés" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Investissements réalisés" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Trésorerie" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Capacité D'autofinancement" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Endettement global" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Autres" ></div>
+								</td>
+																 								 
+							</tr>
+						 
+						</div>
+						<div class="select_bloc_3">
+							<center><p>Objectif période</p></center>
+							<th width="60%"> 
+							</th>
+							{% for i in 1..8 %}
+							<div class="Objet_{{i}}" >
+								<input name="data[Objet_{{i}}]" rows="0" cols="20" {% if prestaData['Objet_' ~ i ] is defined %}value={{prestaData['Objet_' ~ i ]}}{% endif %}  />
+							</div>
+						 
+							{% endfor %}
+						</div>
+							 
+						<div class="select_bloc_3">
+							<center><p>Réel période</p></center>
+							<th width="60%"> 
+							</th>
+							 
+							{% for i in 1..8 %}
+							<div class="prdr_{{i}}" >
+								<input name="data[prdr_{{i}}]" rows="0" cols="20" {% if prestaData['prdr_' ~ i ] is defined %}value={{prestaData['prdr_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+						
+						<div class="select_bloc_3">
+							<center><p>Ecart</p></center>
+							<th width="60%"> 
+							</th>
+							 
+							{% for i in 1..8%}
+							<div class="Ecart_{{i}}" >
+								<input name="data[Ecart_{{i}}]" rows="0" cols="20" {% if prestaData['Ecart_' ~ i ] is defined %}value={{prestaData['Ecart_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+					</fieldset> 
+					
+					<div class="sous_titre" >Suivi à 6 mois </div>
+					<fieldset>
+						<div class="select_bloc_3">
+							<center><p>Indicateurs</p></center>
+							<tr>
+								
+								<td align="center">
+								<div class="normal"><input type="text" name="" value="Chiffre d'affaires"></div>	 
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name="" value="Résultat net"></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Nombre de salariés" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Investissements réalisés" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Trésorerie" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Capacité D'autofinancement" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Endettement global" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Autres" ></div>
+								</td>
+																 								 
+							</tr>
+						</div>
+						<div class="select_bloc_3">
+							<center><p>Objectif période</p></center>
+							<th width="60%"> 
+							</th>
+							{% for i in 1..8 %}
+							<div class="Objet2_{{i}}" >
+								<input name="data[Objet2_{{i}}]" rows="0" cols="20" {% if prestaData['Objet2_' ~ i ] is defined %}value={{prestaData['Objet2_' ~ i ]}}{% endif %}  />
+							</div>
+						 
+							{% endfor %}
+						</div>
+							 
+						<div class="select_bloc_3">
+							<center><p>Réel période</p></center>
+							<th width="60%"> 
+							</th>
+							 
+							{% for i in 1..8 %}
+							<div class="reel_{{i}}" >
+								<input name="data[reel_{{i}}]" rows="0" cols="20" {% if prestaData['reel_' ~ i ] is defined %}value={{prestaData['reel_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+						
+						<div class="select_bloc_3">
+							<center><p>Ecart</p></center>
+							<th width="60%"> 
+							</th>
+							 
+							{% for i in 1..8%}
+							<div class="Ecart2_{{i}}" >
+								<input name="data[Ecart2_{{i}}]" rows="0" cols="20" {% if prestaData['Ecart2_' ~ i ] is defined %}value={{prestaData['Ecart2_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+					</fieldset>
+					
+				</div>
+				</div>	
+				
+				 
+				<h3><a href="#">Cessation d’activité le cas échéant</a></h3>
+				<div>
+				<div class="bloc" >
+					
+				<fieldset>
+				<p> 
+				 
+				<input {% if prestaData['cesse'] is defined %}{{prestaData['cesse']|setcheckbox(0)}}{% endif %}  name="data[cesse]" type="radio"  value="0"  /> <label for="cesse">Le dirigeant a déjà cessé son activité</label>
+
+				<input {% if prestaData['cesse'] is defined %}{{prestaData['cesse']|setcheckbox(1)}}{% endif %}  name="data[cesse]" type="radio"  value="1"  /> <label for="cesse">Le dirigeant envisage de cesser son activité</label> <br />
+		   
+				<label for="text"><strong>Date</strong> de <strong>cessation effective</strong> ou <strong>envisagée</strong> : </label>
+				
+				<input name="data[date_cessation_emploi]" rows="0" cols="20" value="{% if prestaData['date_cessation_emploi'] is defined %}{{prestaData['date_cessation_emploi']}}{% endif %}" id="date_cessation_emploi" /> <br /><br />
+
+				<input type="text" name="activité" id="activité" />
+				</p>
+     
+				</fieldset>
+				<div class="bloc" >
+						<div class="sous_titre" >Démarches déjà effectuées :</div>
+						<textarea name="data[effect]" rows="1" cols="100">{% if prestaData['effect'] is defined %}{{prestaData['effect']}}{% endif %} 
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Démarches à effectuer :</div>
+						<textarea name="data[Demar]" rows="1" cols="100"> {% if prestaData['Demar'] is defined %}{{prestaData['Demar']}}{% endif %} 
+						</textarea>
+				</div>
+					
+				</div>
+				</div>
+				
+				 
+				<h3><a href="#">Bilan du suivi</a></h3>
+				 <div>
+				<div class="bloc" >
+					<label for="text"><strong>Date:</strong></label>
+					
+				<input name="data[date_suivi_emploi]" rows="0" cols="20" value="{% if prestaData['date_suivi_emploi'] is defined %}{{prestaData['date_suivi_emploi']}}{% endif %}" id="date_suivi_emploi" /> <br /><br />
+				
+				<label for="text"><strong>Lieu:</strong></label>
+				<input name="data[Lieu]" rows="0" cols="20"{% if prestaData['Lieu'] is defined %}value={{prestaData['Lieu']}}{% endif %}  /><br /><br />
+					
+				 <div class="bloc" >
+						<div class="sous_titre" >Situation actuelle de l’entreprise :</div>
+						<textarea name="data[Situation]" rows="1" cols="100"> {% if prestaData['Situation'] is defined %}{{prestaData['Situation']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Écarts prévisions/réalisations :</div>
+						<textarea name="data[ecart]" rows="1" cols="100"> {% if prestaData['ecart'] is defined %}{{prestaData['ecart']}}{% endif %} 
+						</textarea>
+				</div>
+				
+				<div class="bloc" >
+						<div class="sous_titre" >Points positifs :</div>
+						<textarea name="data[positifs]" rows="1" cols="100"> {% if prestaData['positifs'] is defined %}{{prestaData['positifs']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Points de difficultés rencontrées :</div>
+						<textarea name="data[diff]" rows="1" cols="100"> {% if prestaData['diff'] is defined %}{{prestaData['diff']}}{% endif %}
+						</textarea>
+				</div>
+				
+				<div class="bloc" >
+						<div class="sous_titre" >Prochaines étapes :</div>
+						<textarea name="data[Prochaines]" rows="1" cols="100"> {% if prestaData['Prochaines'] is defined %}{{prestaData['Prochaines']}}{% endif %}
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Atouts :</div>
+						<textarea name="data[Atouts]" rows="1" cols="100"> {% if prestaData['Atouts'] is defined %}{{prestaData['Atouts']}}{% endif %}
+						</textarea>
+				</div>
+				
+				<div class="bloc" >
+						<div class="sous_titre" >Facteurs de risque:</div>
+						<textarea name="data[Facteurs]" rows="1" cols="100"> {% if prestaData['Facteurs'] is defined %}{{prestaData['Facteurs']}}{% endif %} 
+						</textarea>
+				</div>
+				<div class="bloc" >
+						<div class="sous_titre" >Autres aspects:</div>
+						<textarea name="data[Autres]" rows="1" cols="100"> {% if prestaData['Autres'] is defined %}{{prestaData['Autres']}}{% endif %}
+						</textarea>
+				</div>
+				</div>
+				</div>
+				 
+				 
+				<h3><a href="#">Compte-rendu d’entretien</a></h3>
+				 <div>
+					<div class="bloc" >
+				<fieldset>
+
+							 
+				<label for="text"><strong>Date de l’entretien : </strong></label>
+				
+				<input name="data[date_entretien_emploi]" rows="0" cols="20" value="{% if prestaData['date_entretien_emploi'] is defined %}{{prestaData['date_entretien_emploi']}}{% endif %}" id="date_entretien_emploi" /> <br /><br />
+				
+				<label for="text"><strong>Lieu:</strong></label>
+				<input name="data[Lieu2]" rows="0" cols="20"{% if prestaData['Lieu2'] is defined %}value={{prestaData['Lieu2']}}{% endif %}  /><br /><br />
+				</fieldset>	
+					
+				 		 
+					<div class="sous_titre" >L’évolution de l’entreprise dans son environnement </div>
+					<fieldset>
+						<div class="select_bloc_3">
+							<center><p>Aspects</p></center>
+							<tr>
+								
+								<td align="center">
+								<div class="normal"><input type="text" name="" value="Politique commerciale, marché, concurence"></div>	 
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name="" value="Produit, services"></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Gestion, finance, trésorerie" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Juridique, contrats, factures, devis" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Gestion des ressources humaines" ></div>
+								</td>
+								<td align="center">
+									<div class="normal"><input type="text" name=" " value="Autres aspects" ></div>
+								</td>
+								 
+																 								 
+							</tr> 
+						</div>
+						<div class="select_bloc_3">
+							<center><p>Constat, points traités</p></center>
+							<th width="60%"> 
+							</th>
+							 
+							{% for i in 1..6 %}
+							<div class="consta_{{i}}" >
+								<input name="data[consta_{{i}}]" rows="0" cols="20" {% if prestaData['consta_' ~ i ] is defined %}value={{prestaData['consta_' ~ i ]}}{% endif %}  />
+							</div>
+						 
+							{% endfor %}
+						</div>
+							 
+						<div class="select_bloc_3">
+							<center><p>Actions à conduire</p></center>
+							<th width="60%">
+							</th>
+							 
+							{% for i in 1..6 %}
+							<div class="action_{{i}}" >
+								<input name="data[action_{{i}}]" rows="0" cols="20" {% if prestaData['action_' ~ i ] is defined %}value={{prestaData['action_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+											 
+					</fieldset>
+									
+				</div>
+				</div>
+				 
+				 
+				<h3><a href="#">Planification des actions à conduire</a></h3>
+				<div>
+				<div class="bloc" >
+				<fieldset>
+						<div class="select_bloc_3">
+							<center><p>Qui</p></center>
+							<th width="60%"> 
+							</th>
+							
+							{% for i in 1..6 %}
+							<div class="qui_{{i}}" >
+								<input name="data[qui_{{i}}]" rows="0" cols="20" {% if prestaData['qui_' ~ i ] is defined %}value={{prestaData['qui_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+						<div class="select_bloc_3">
+							<center><p>Quoi</p></center>
+							<th width="60%"> 
+							</th>
+							 
+							{% for i in 1..6 %}
+							<div class="quoi_{{i}}" >
+								<input name="data[quoi_{{i}}]" rows="0" cols="20" {% if prestaData['quoi_' ~ i ] is defined %}value={{prestaData['quoi_' ~ i ]}}{% endif %}  />
+							</div>
+						 
+							{% endfor %}
+						</div>
+							 
+						<div class="select_bloc_3">
+							<center><p>Quand</p></center>
+							<th width="60%">
+							</th>
+							 
+							{% for i in 1..6 %}
+							<div class="quand_{{i}}" >
+								<input name="data[quand_{{i}}]" rows="0" cols="20" {% if prestaData['quand_' ~ i ] is defined %}value={{prestaData['quand_' ~ i ]}}{% endif %}  />
+							</div>
+							{% endfor %}
+						</div>
+						
+					<div class="bloc" >
+						<div class="sous_titre" >Commentaires du conseiller :</div>
+						<textarea name="data[Com3]" rows="1" cols="100"> {% if prestaData['Com3'] is defined %}{{prestaData['Com3']}}{% endif %}
+						</textarea>
+					</div>
+					
+					<div class="bloc" >
+						<div class="sous_titre" >Commentaires du bénéficiaire :</div>
+						<textarea name="data[Com4]" rows="1" cols="100"> {% if prestaData['Com4'] is defined %}{{prestaData['Com4']}}{% endif %}
+						</textarea>
+					</div>	
+					</fieldset>	
+				</div>
+				</div>
+				 
+				 
+			 
+		</div>	 
+		</div>
+	
+		<div id="tabs-6">
+			<form name="Editer">
+				<div class="sous_titre" >Liste des livrables</div>
+				<div>
+					<div><label><input id="imp_1" name="Editer['rsa1']['emargement_lot1']" checked="checked" value="Feuille d'émargement" type="checkbox" /><span>Feuille d'émargement</span></label></div>
+
+					<div><label><input id="imp_2" name="Editer['rsa1']['Bilan']" checked="checked" value="Bilan Lot 2"  type="checkbox" /><span>Bilan Lot 2</span></label></div>
+
+					<div><label><input id="imp_3" name="Editer['rsa1']['Contrat']" checked="checked" value="Contrat Lot 2"  type="checkbox" /><span>Contrat Lot 2</span></label></div>
+				
+					<div><label><input id="imp_4" name="Editer['rsa1']['QUESTIONNAIRE']" checked="checked" value="QUESTIONNAIRE FSE"  type="checkbox" /><span>QUESTIONNAIRE FSE </span></label></div>
+					
+					<div><label><input id="imp_5" name="Editer['rsa1']['SATISFACTION']" checked="checked" value="QUESTIONNAIRE DE SATISFACTION"  type="checkbox" /><span>QUESTIONNAIRE DE SATISFACTION</span></label></div>
+					
+					<div><label><input id="imp_6" name="Editer['rsa1']['SUIVI']" checked="checked" value="SUIVI 2"  type="checkbox" /><span>SUIVI</span></label></div>
+					
+					<div><label><input id="imp_7" name="Editer['rsa1']['COUVERTURES']" checked="checked" value="COUVERTURES 2"  type="checkbox" /><span>COUVERTURES</span></label></div>
+				
+				</div>
+			</form>
+		</div>
+		
+		<div id="tabs-7">
+			<div id="accordion">
+				<h3><a href="#">Pose des Rendez vous</a></h3>
+				<section class="form_dispo">
+				</section>
+				<h3 id="rdv_presta" ><a href="#">Liste des Rendez vous</a></h3>
+				<div class="tableau_liste_presta">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+	<div style="padding-top:10px" >
+	<center>
+		<button id="savePresta" >Enregistrer</button>
+		<button id="EditerPresta">Editer</button>
+
+		<button id="RelancerPresta" onClick="window.open('{{DIR_PRESTA}}/presta/epce/relance/suivi.php?id_presta={{ presta.idPresta }}&id_ben={{ presta.contact.idBen }}','Informations bénéficiaire','menubar=no, scrollbars=yes, top=100, left=100, width=1024, height=728');">Relancer</button>
+	</center>
+	</div>
+	<div class="copyright" >2016 © APSIE RSA 772</div>
+	</div>
+</div>
+<script>
+$( "#date_reprise_emploi" ).datepicker();
+$( "#date_cessation_emploi" ).datepicker();
+$( "#date_suivi_emploi" ).datepicker();
+$( "#date_entretien_emploi" ).datepicker();
+
+
+$( "#Quand_1,#Quand_2,#Quand_3,#Quand_4,#Quand_5,#Quand_6" ).datepicker();
+
+$(".change").click(function() {
+	$('.'+$(this).attr('rel')).changeSelectInput();
+});
+$('#code_solution').myAutoCompleteCodeRome('#com_solution');
+
+$('.form_dispo').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+$('#tabs #rdv').click(function()
+{
+	$.ajax({
+		url:'./disponibilite',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}},
+		success: function( html ) {
+			$('.form_dispo').html(html);
+		}
+	});
+});
+
+
+$('#tabs #rdv_presta').click(function()
+{$('.tableau_liste_presta').html('<div style="margin:90px" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></div>');
+	$.ajax({
+		url:'./disponibilite/listrdvpresta',
+		dataType: "html",
+		type : "POST",
+		data : {idPrestation :  {{presta.idPresta}}, idben: {{ presta.contact.idBen }}},
+		success: function( html ) {
+			$('.tableau_liste_presta').html(html);
+		}
+	});
+});
+
+
+$(".contenu_presta #tabs" ).tabs();
+var icons = {
+	header: "ui-icon-circle-arrow-e",
+	headerSelected: "ui-icon-circle-arrow-s"
+};
+$( ".contenu_presta #accordion" ).accordion({
+	icons: icons,
+	autoHeight: false,
+});
+
+// SAUVEGARDE		
+$(".contenu_presta #savePresta").click(function() {
+	var form  = $("form[name='presta']").serializeArray();
+
+	/* Because serializeArray() ignores unset checkboxes and radio buttons: */
+    form = form.concat(
+		$("form[name='presta'] input[type=checkbox]:not(:checked)").map(
+            function() {
+                return {"name": this.name, "value": 0}
+            }).get()
+    );
+
+   
+	
+	$.pnotify({
+		title: 'Sauvegarde',
+		text: '<span class="load" ><img src="{{ asset('bundles/lea/images/divers/load.gif') }}" /></span> Sauvegarde en cours',
+		type: 'info',
+		styling: 'jqueryui'
+	});
+
+	$.ajax({
+		url : "./data",
+		type : "POST",
+		dataType : "json",
+		data : form ,
+		success: function(data){
+			$.pnotify({
+				title: 'Sauvegarde',
+				text: data,
+				type: 'success',
+				styling: 'jqueryui'
+			});
+
+			$('.load').hide('fade');	
+		}
+	});
+
+	return false;
+});
+
+// EDITION
+$(".contenu_presta #EditerPresta").click(function() {
+	
+	$.pnotify({
+		title: 'Edition',
+		text: 'Edition des livrables',
+		type: 'info',
+		styling: 'jqueryui'
+	});
+    				
+	$('.load').hide('fade');	
+	
+	if($('#imp_1').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/1",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_2').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/2",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_3').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/3",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_4').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/4",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_5').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/5",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_6').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/6",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	if($('#imp_7').attr('checked') == 'checked'){
+		window.open("./download/rsa1/"+{{presta.idPresta}}+"/7",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0");
+	}
+	return false;
+});
+
+// Préconisations
+$("input[name$='data[preconisation]']").click(function(){
+	var test = $(this).val();
+	$("div.preco_add").hide();
+	$("#preco_" + test).show();
+
+	$('div.preco_add').find(':checkbox').each(function(){
+		$(this).prop('checked', false);
+	})
+});
+
+$("input[name$='data[preconisation_m2]']").click(function(){
+	var test = $(this).val();
+
+	$("div.preco_add_m2").hide();
+	$("#preco_m2_" + test).show();
+
+	$('div.preco_add_m2').find(':checkbox').each(function(){
+		$(this).prop('checked', false);
+	})
+});
+</script>

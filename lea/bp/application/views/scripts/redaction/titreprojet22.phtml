@@ -1,0 +1,34 @@
+<a name="haut_page"><?php echo $this->render('header.phtml'); ?></a>
+
+
+<div class="intitule_dossier"><img src="<?php echo $this->baseUrl();?>/images/titre_business2.png" /> Business plan de <?php echo $this->nom_complet; ?><br/><img src="<?php echo $this->baseUrl();?>/images/Briefcase-32.png" /> Projet : <?php echo $this->desc_projet; ?>
+</div>
+
+<?php echo $this->render('menu_gauche_projet.phtml'); ?>
+
+
+	<div class="contenu_ac">
+	<div><?php echo $this->title; ?></div><br/><br/>
+<?php echo $this->title_2; ?>
+	<div>
+<br/>
+Comment déterminez-vous vos prix de vente ?<br/>
+Pour fixer le "prix juste", il est nécessaire de bien connaître sa <strong>clientèle</strong>, les prix pratiqués par les <strong>concurrents</strong> <br/>
+et surtout de calculer le <strong>coût complet</strong> de la production (coût d’achat+ frais liés à la production+transport…). <br/>
+Il s’agit d’évaluer les charges directement liées la production et qui peuvent varier suivant le type d’activité.
+<br/>
+<br/>
+
+
+
+
+
+<form method="<?php echo $this->form->getMethod(); ?>" action="<?php echo $this->form->getAction(); ?>" >
+
+	<?php echo $this->form->texte_titre_projet_2_2; ?><br/>
+	
+	
+	<center><?php echo $this->form->submit; ?></center>		</form>
+	</div>
+
+</div>

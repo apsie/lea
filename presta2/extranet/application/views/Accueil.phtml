@@ -1,0 +1,49 @@
+<div class="corp">
+<div class="menu_gauche">
+<div class="sous_menu"><br/></div>
+<div class="div_menu_gauche">
+
+
+</div></div>
+<div style="text-align:left" class="contenu">
+<div class="univers">Accueil</div>
+<div style="padding-left:10px"  class="div_menu_droit">
+<h7>Evènements</h7>
+<div><img src="./images/ico/new.png" /> <a href="index.php?page=Evenement" > <span style="color:red;font-size:28px;font-weight:bolder"><?php echo $this->nbNewEvent;?></span></a> <a onclick="Navigation_.showHide('div_evenement')" href="javascript:void(0);" >nouveaux évènements non vu</a></div>
+<div style="display:none"  id="div_evenement"  ><ul>
+<?php for($i=0;$i<count($this->listEv);$i++)
+{
+	echo"<li><a href='javascript:void(0);' onclick='Template_.getDetailsEvenement(\"detailsEvenement\",1000,600,".$this->listEv[$i]['id_evenement'].")'  >".date('d/m/Y à H:i',$this->listEv[$i]['date_creation'])." : ".utf8_encode($this->listEv[$i]['type_evenement'])." -  ".$this->listEv[$i]['nom_complet']."</a></li>";
+}?></ul>
+</div>
+<br/>
+<h7>Prestations</h7>
+<div><img src="./images/ico/new.png" /> <a  href="index.php?page=Presta" ><span style="color:red;font-size:28px;font-weight:bolder"><?php echo $this->nbPrestation;?></span></a> <a onclick="Navigation_.showHide('div_presta')" href="javascript:void(0);" > nouvelles prestations</a></div>
+<div style="display:none"  id="div_presta"  ><ul>
+<?php for($i=0;$i<count($this->listPrestation);$i++)
+{
+	
+		//echo'<li><a onclick="window.open(\'../../presta/epce/premier_rdv.php?lc='.$this->listPrestation[$i]["lettre_de_commande"].'&presta='.$this->listPrestation[$i]["presta"].'&id_presta='.$this->listPrestation[$i]["id_presta"].'&intitule='.$this->listPrestation[$i]["intitule"].'&id='.$_SESSION['id'].'&id_ben='.$this->listPrestation[$i]["id_ben"].'&continuer=1\',\'PREMIER RENDEZ VOUS\',\'toolbar=0, location=0, directories=0, status=0, scrollbars=1, resizable=0, copyhistory=0, menuBar=0, width=420, height=330\');"  href="javascript:void(0);" >'.date("d/m/Y à H:i",$this->listPrestation[$i]["date_debut"]).'</u> : '.$this->listPrestation[$i]["presta"].' -  '.utf8_encode($this->listPrestation[$i]["intitule"]).'</a></li>';
+		if($this->listPrestation[$i]["presta"]=="OE" || $this->listPrestation[$i]["presta"]=="OPCREA")
+		$click='onclick="Calendrier.controleRdv('.$this->listPrestation[$i]["id_ben"].','.$this->listPrestation[$i]["id_presta"].',\''.$this->listPrestation[$i]["presta"].'\');"';
+		
+		echo'<li><a href="javascript:void(0);"  '.$click.'>'.date("d/m/Y à H:i",$this->listPrestation[$i]["date_debut"]).'</u> : '.$this->listPrestation[$i]["presta"].' -  '.utf8_encode($this->listPrestation[$i]["intitule"]).'</a></li>';
+	
+	
+}?></ul>
+</div>
+<br/>
+<h7>Calendrier</h7>
+<div><img src="./images/ico/new.png" /> <a  href="index.php?page=Calendrier" ><span style="color:red;font-size:28px;font-weight:bolder"><?php echo $this->nbRdv;?></span></a> <a onclick="Navigation_.showHide('div_cal')" href="javascript:void(0);" > nouveaux rendez-vous à consulter</a></div>
+<div style="display:none"  id="div_cal"  ><ul>
+<?php for($i=0;$i<count($this->listRdv);$i++)
+{
+	echo"<li><a onclick='Calendrier.getDialogEditRdv(".$this->listRdv[$i]['Id'].")' href='javascript:void(0);' >".date('d/m/Y à H:i',$this->listRdv[$i]['StartTime'])."</u> : ".utf8_encode($this->listRdv[$i]['Subject'])."</a></li>";
+}?></ul>
+</div>
+</div>
+</div></div>
+
+<script>
+var ajaxManager = $j.manageAjax.create('cacheQueue', { queue: true, cacheResponse: false });
+</script>

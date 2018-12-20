@@ -1,0 +1,22 @@
+
+.contenu_rdvControl
+{
+	text-align: left;
+}
+.contenu_rdvControl div
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+.question
+{
+	font-style:italic;
+	color : #2E5E82;
+	font-weight: bolder;
+}
+label :hover
+{
+text-decoration : underline;
+cursor : pointer;
+}

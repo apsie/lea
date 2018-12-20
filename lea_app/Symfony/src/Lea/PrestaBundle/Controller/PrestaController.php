@@ -1,0 +1,1267 @@
+<?php
+
+namespace Lea\PrestaBundle\Controller;
+
+//key texte
+use Lea\PrestaBundle\Entity\Spiclient;
+
+use Lea\PrestaBundle\Models\Outils;
+
+use Lea\PrestaBundle\Models\Arr;
+
+use Lea\PrestaBundle\Entity\EgwPrestaData;
+
+define('KEY_PLAN_ACTION_ACTION',1);
+define('KEY_PLAN_ACTION_OBJECTIF',2);
+define('KEY_PLAN_ACTION_RESULTAT',3);
+define('KEY_PLAN_ACTION_OBJECTIF_CONTRAT',4);
+define('KEY_PLAN_ACTION_ASPECTS_MAITRISES',5);
+define('KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER',6);
+define('KEY_BILAN_ACTION',7);
+define('KEY_BILAN_OBJECTIF',8);
+define('KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT',9);
+define('CAT_EMPLOYEUR',246);
+
+//OPCRE
+define('KEY_PROJET_ETAT_AVANCEMENT',10);
+define('KEY_PROJET_POINT_EVALUER_PRIORITE',11);
+define('KEY_ATTENTES_BENEFICIAIRE',12);
+define('KEY_ADEQUATION_CAPACITE',13);
+define('KEY_ADEQUATION_COMPETENCE',14);
+define('KEY_ADEQUATION_FORMATION',15);
+define('KEY_ADEQUATION_ELEMENTS_PORTEURS',16);
+define('KEY_ADEQUATION_POINTS_VIGILANCES',17);
+define('KEY_ADEQUATION_COMPETENCES_A_AQUERIR',18);
+define('KEY_ADEQUATION_DELAI',19);
+define('KEY_ADEQUATION_TYPE_FORMATION',20);
+define('KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS',21);
+define('KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES',22);
+define('KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS',23);
+define('KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES',24);
+define('KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS',25);
+define('KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES',26);
+define('KEY_ETUDE_MARCHE_ACTIONS',27);
+define('KEY_ETUDE_MARCHE_DELAI',28);
+define('KEY_ETUDE_MARCHE_RESULTATS',29);
+define('KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS',30);
+define('KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES',31);
+define('KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS',32);
+define('KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES',33);
+define('KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS',34);
+define('KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES',35);
+define('KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS',36);
+define('KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES',37);
+define('KEY_PLAN_FINANCEMENT_ACTION',38);
+define('KEY_PLAN_FINANCEMENT_DELAI',39);
+define('KEY_PLAN_FINANCEMENT_RESULTAT',40);
+define('KEY_STATUT_JURIDIQUE_PT_FORTS',41);
+define('KEY_STATUT_JURIDIQUE_PT_FAIBLES',42);
+define('KEY_STATUT_JURIDIQUE_ACTION',43);
+define('KEY_STATUT_JURIDIQUE_DELAI',44);
+define('KEY_STATUT_JURIDIQUE_RESULTAT',45);
+
+//RSA1
+define('KEY_EVALUATION',54);
+
+
+//ASP1
+define('KEY_FREIN_CHOIX_PRO',55);
+define('KEY_FREIN_PROXIMITE_EMPLOI',56);
+define('KEY_FREIN_SANTE',57);
+define('KEY_FREIN_ADHESION',58);
+define('KEY_FREIN_AUTONOMIE',59);
+define('KEY_FREIN_DISPONIBILITE',60);
+define('KEY_FREIN_BUDGET',61);
+define('KEY_FREIN_LOGEMENT',62);
+define('KEY_FREIN_FORMATION',63);
+define('KEY_FREIN_MOBILITE',64);
+define('KEY_ABSENCE_DIFFICULTE',65);
+define('KEY_DIFFICULTE_CMT',66);
+define('KEY_DIFFICULTE_MLT',67);
+define('KEY_DIFFICULTE_PREGNANTE',68);
+define('KEY_NIVEAU_BLOQUANT',69);
+define('KEY_NIVEAU_CHOIX_PRO',70);
+define('KEY_NIVEAU_PROXIMITE_EMPLOI',71);
+define('KEY_NIVEAU_SANTE',72);
+define('KEY_NIVEAU_ADHESION',73);
+define('KEY_NIVEAU_AUTONOMIE',74);
+define('KEY_NIVEAU_DISPONIBILITE',75);
+define('KEY_NIVEAU_BUDGET',76);
+define('KEY_NIVEAU_LOGEMENT',77);
+define('KEY_NIVEAU_FORMATION',78);
+define('KEY_NIVEAU_MOBILITE',79);
+define('KEY_NIVEAU_DIPLOME',80);
+define('KEY_EVAL_AUTONOMIE',81);
+define('KEY_GESTION_BUDGET',82);
+define('KEY_TYPE_LOGEMENT',83);
+define('KEY_ETAT_LOGEMENT',84);
+define('KEY_SAVOIR_BASE',85);
+define('KEY_ENFANT_CHARGE',86);
+define('KEY_OBJECTIF_CHOIX_PRO',87);
+define('KEY_OBJECTIF_PROXIMITE_EMPLOI',88);
+define('KEY_OBJECTIF_SANTE',89);
+define('KEY_OBJECTIF_ADHESION',90);
+define('KEY_OBJECTIF_AUTONOMIE',91);
+define('KEY_OBJECTIF_DISPONIBILITE',92);
+define('KEY_OBJECTIF_BUDGET',93);
+define('KEY_OBJECTIF_LOGEMENT',94);
+define('KEY_OBJECTIF_FORMATION',95);
+define('KEY_OBJECTIF_MOBILITE',96);
+define('KEY_FAMILLE_FREINS',97);
+define('KEY_DELAI_REALISATION',98);
+define('KEY_DEMARCHE_INSERTION',99);
+define('KEY_DEMARCHE_INSERTION_CHOIX_PRO',100);
+define('KEY_DEMARCHE_INSERTION_PROXIMITE_EMPLOI',101);
+define('KEY_DEMARCHE_INSERTION_SANTE',102);
+define('KEY_DEMARCHE_INSERTION_ADHESION',103);
+define('KEY_DEMARCHE_INSERTION_AUTONOMIE',104);
+define('KEY_DEMARCHE_INSERTION_DISPONIBILITE',105);
+define('KEY_DEMARCHE_INSERTION_GESTION_BUDGET',106);
+define('KEY_DEMARCHE_INSERTION_LOGEMENT',107);
+define('KEY_DEMARCHE_INSERTION_FORMATION',108);
+define('KEY_DEMARCHE_INSERTION_MOBILITE',109);
+define('KEY_NIVEAU_DIFFICULTE',110);
+
+
+use Lea\PrestaBundle\Form\Type\EgwOrganisationType;
+
+use Lea\PrestaBundle\Form\Type\EgwPrestataireType;
+
+use Lea\PrestaBundle\Form\Type\EgwTypePrestationType;
+
+use Lea\PrestaBundle\Form\Type\EgwContactType;
+use Lea\PrestaBundle\Form\Type\EgwContactEtatCivilType;
+
+use Lea\PrestaBundle\Form\Type\EgwContactPrType;
+use Lea\PrestaBundle\Form\Type\EgwProjetType;
+
+use Lea\PrestaBundle\Form\Type\EgwPrestaType;
+use Lea\PrestaBundle\Form\Type\EgwCategoriesType;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Lea\PrestaBundle\Form\Type\EgwAccountsType;
+use Lea\PrestaBundle\Models\Texte;
+
+class PrestaController extends Controller
+{
+	/**
+	 *
+	 * @Template()
+	 */
+	public function createAction()
+	{
+		
+		
+		
+	$account = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwAccounts')->getAccounts();
+	$formAccount = $this->createForm(new EgwAccountsType(),array('accounts'=>$account));
+	$formPresta = $this->createForm(new EgwPrestaType());
+	$formProjet = $this->createForm(new EgwProjetType());
+    	$formContact = $this->createForm(new EgwContactType());
+    	$formContactPr = $this->createForm(new EgwContactPrType());
+    	$formPrestataire = $this->createForm(new EgwPrestataireType());
+    	$formOrganisation = $this->createForm(new EgwOrganisationType());
+    	
+    	// SPIREA
+    	$formCategories = $this->createForm(new EgwCategoriesType());
+    	
+    	// $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwAccounts')->test();
+		return array(  
+			'formAccount' => $formAccount->createView(),
+			'formPresta' => $formPresta->createView(),
+			'formProjet' => $formProjet->createView(),
+			'formContact' => $formContact->createView(),
+			'formContactPr' => $formContactPr->createView(),
+
+			'formPrestataire' => $formPrestataire->createView(),
+			'formOrganisation' => $formOrganisation->createView(),
+
+			// SPIREA
+			'formCategories' => $formCategories->createView(),
+	   	);
+	}
+	/**
+	 *
+	 * @Template()
+	 */
+	public function showAction()
+	{
+		$request = $this->getRequest();
+		$EgwPresta = $request->request->get('EgwPresta');
+		$EgwAccounts = $request->request->get('EgwAccounts');
+		
+		
+		$p = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->get($EgwPresta['statut'],$EgwAccounts['account_id'],$EgwPresta['dispositif'],$EgwPresta['intitule'],$EgwPresta['champDate'],$EgwPresta['dateDebut'],$EgwPresta['dateFin']);
+		
+		return array('listPresta'	=>	$p,  'nbPresta' => count($p));
+	}
+	/**
+	 *
+	 * @Template()
+	 */
+	public function editAction($id)
+	{
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($id);
+		$formPresta = $this->createForm(new EgwPrestaType($this->getDoctrine()->getManager()),$presta);
+		
+		$request = $this->getRequest();
+		if ($request->getMethod() == 'POST') 
+		{
+		$EgwPresta = $request->request->get('EgwPresta');
+		
+		if($EgwPresta['dateDebut']!=null)
+		$presta->setDateDebut(Outils::getTmps($EgwPresta['dateDebut']. ' 00:00'));
+		
+		if($EgwPresta['dateFin']!=null)
+		$presta->setDateFin(Outils::getTmps($EgwPresta['dateFin'] . ' 00:00'));
+		
+		if($EgwPresta['dateFinReelle']!=null)
+		$presta->setDateFinReelle(Outils::getTmps($EgwPresta['dateFinReelle'] . ' 00:00'));
+		
+		if($EgwPresta['dateEnvoiBilan']!=null)
+		$presta->setDateEnvoiBilan(Outils::getTmps($EgwPresta['dateEnvoiBilan'] . ' 00:00'));
+		
+		$presta->setIdRef($EgwPresta['idRef']);
+	
+		$presta->setStatut($EgwPresta['statut']);
+		$presta->setLettreDeCommande($EgwPresta['lettreDeCommande']);
+		$em = $this->getDoctrine()->getManager();
+		$em->persist($presta);
+	    $em->flush();
+		die('La prestation <b>'.$presta->getIntitule().'</b> a été modifiée');
+		}
+		else {
+		return array(	'formPresta' => $formPresta->createView(),
+						'presta'	=>	$presta);
+		}
+	}
+	/**
+	 *
+	 * @Template()
+	 */
+	public function typePrestaAction()
+	{
+		$request = $this->getRequest();
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+		
+// echo $presta->getDispositif()->getIdTypePrestation()->getId();exit;
+
+		if($presta->getDispositif()->getIdTypePrestation()->getId() == 1 )
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:oe', array(
+	        'request' => $request ));
+		}
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 6)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:opcre', array(
+	        'request' => $request ));
+		}
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 7)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:epce', array(
+	        'request' => $request ));
+		}
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 9)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:nacre1', array(
+	        'request' => $request ));
+		}
+		// SADEL - 30/06/16 - Test pour RSA771
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 17)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:rsa1', array(
+	        'request' => $request ));
+		}
+		// SADEL - 11/07/16 - Test pour RSA772
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 18)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:rsa2', array(
+	        'request' => $request ));
+		}
+		// SPIREA-YLF - 26/01/15 - Test pour PDI92
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 4)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:pdi', array(
+	        'request' => $request ));
+		}
+		// SPIREA-YLF - 26/01/15 - Test pour AIC
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 19)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:aic', array(
+	        'request' => $request ));
+		}
+		// SPIREA-YLF - 11/09/17 - Test pour CD771
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 23)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:cd1', array(
+	        'request' => $request ));
+		}
+		// SPIREA-YLF - 11/09/17 - Test pour CD772
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 24)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:cd2', array(
+	        'request' => $request ));
+		}
+		// APSIE-AT - 13/07/18 - Test pour ASP771
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 25)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:asp1', array(
+	        'request' => $request ));
+		}
+		// APSIE-AT - 13/07/18 - Test pour ASP772
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 26)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:asp2', array(
+	        'request' => $request ));
+		}
+		// APSIE-AT - 13/07/18 - Test pour APP93
+		elseif($presta->getDispositif()->getIdTypePrestation()->getId() == 29)
+		{
+			$response = $this->forward('LeaPrestaBundle:Presta:app', array(
+	        'request' => $request ));
+		}
+		else 
+		{
+			return(array('tpl'=>"l'application n'est pas encore disponible pour ce type de prestation ( ".$presta->getDispositif()->getNomDispositif()." )."));
+		}
+
+    	// ... further modify the response or return it directly
+    	return $response;
+	}
+
+	// SPIREA-YLF - 16/03/2015 - Fonction pour PDI
+	// ATTENTION : Le commentaire @Template() est requis avant la fonction pour que cela fonctionne
+
+
+
+	
+	/**
+	 *
+	 * @Template()
+	 */
+	public function oeAction($request)
+	{
+		
+	//	$request = $this->getRequest();
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	//	\Doctrine\Common\Util\Debug::dump($presta->getTypePrestation());die();
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		//print_r($prestaDataConvert); die();
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		
+		$options = Texte::getOptionByIdTexte($texte);
+		//print_r($options); die();
+		return array(	'prestaData'	=> $prestaDataConvert,
+						'presta'=>$presta,
+						'options'=>$options,
+						'key'	=> array(
+						'KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT'=>KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT,
+						'KEY_PLAN_ACTION_ACTION'=>KEY_PLAN_ACTION_ACTION,
+						'KEY_PLAN_ACTION_OBJECTIF'=>KEY_PLAN_ACTION_OBJECTIF,
+						'KEY_PLAN_ACTION_RESULTAT'=>KEY_PLAN_ACTION_RESULTAT,
+						'KEY_PLAN_ACTION_OBJECTIF_CONTRAT'=>KEY_PLAN_ACTION_OBJECTIF_CONTRAT,
+						'KEY_PLAN_ACTION_ASPECTS_MAITRISES'=>KEY_PLAN_ACTION_ASPECTS_MAITRISES,
+						'KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER'=>KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER,
+						'KEY_BILAN_ACTION'=>KEY_BILAN_ACTION,
+						'KEY_BILAN_OBJECTIF'=>KEY_BILAN_OBJECTIF,
+		));
+	}
+	
+
+
+	/**
+	 * @Template()
+	 */
+	public function appAction($request)
+		{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		//\Doctrine\Common\Util\Debug::dump($presta,3);die();
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		
+		return array(
+			'prestaData'	=> $prestaDataConvert,
+			'presta'=>$presta,
+			'options'=>$options,
+			'key'	=> array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT'=>KEY_PERIODES_TRAVAILLEES_TYPE_CONTRAT,
+				'KEY_PLAN_ACTION_ACTION'=>KEY_PLAN_ACTION_ACTION,
+				'KEY_PLAN_ACTION_OBJECTIF'=>KEY_PLAN_ACTION_OBJECTIF,
+				'KEY_PLAN_ACTION_RESULTAT'=>KEY_PLAN_ACTION_RESULTAT,
+				'KEY_PLAN_ACTION_OBJECTIF_CONTRAT'=>KEY_PLAN_ACTION_OBJECTIF_CONTRAT,
+				'KEY_PLAN_ACTION_ASPECTS_MAITRISES'=>KEY_PLAN_ACTION_ASPECTS_MAITRISES,
+				'KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER'=>KEY_PLAN_ACTION_ASPECTS_A_RETRAVAILLER,
+				'KEY_BILAN_ACTION'=>KEY_BILAN_ACTION,
+				'KEY_BILAN_OBJECTIF'=>KEY_BILAN_OBJECTIF,
+
+				//Freins
+				'KEY_FREIN_CHOIX_PRO'=>KEY_FREIN_CHOIX_PRO,
+				'KEY_FREIN_PROXIMITE_EMPLOI'=>KEY_FREIN_PROXIMITE_EMPLOI,
+				'KEY_FREIN_SANTE'=>KEY_FREIN_SANTE,
+				'KEY_FREIN_ADHESION'=>KEY_FREIN_ADHESION,
+				'KEY_FREIN_AUTONOMIE'=>KEY_FREIN_AUTONOMIE,
+				'KEY_FREIN_DISPONIBILITE'=>KEY_FREIN_DISPONIBILITE,
+				'KEY_FREIN_BUDGET'=>KEY_FREIN_BUDGET,
+				'KEY_FREIN_LOGEMENT'=>KEY_FREIN_LOGEMENT,
+				'KEY_FREIN_FORMATION'=>KEY_FREIN_FORMATION,
+				'KEY_FREIN_MOBILITE'=>KEY_FREIN_MOBILITE,
+				'KEY_ABSENCE_DIFFICULTE'=>KEY_ABSENCE_DIFFICULTE,
+				'KEY_DIFFICULTE_CMT'=>KEY_DIFFICULTE_CMT,
+				'KEY_DIFFICULTE_MLT'=>KEY_DIFFICULTE_MLT,
+				'KEY_DIFFICULTE_PREGNANTE'=>KEY_DIFFICULTE_PREGNANTE,
+				'KEY_NIVEAU_BLOQUANT'=>KEY_NIVEAU_BLOQUANT,
+				'KEY_NIVEAU_CHOIX_PRO'=>KEY_NIVEAU_CHOIX_PRO,
+				'KEY_NIVEAU_PROXIMITE_EMPLOI'=>KEY_NIVEAU_PROXIMITE_EMPLOI,
+				'KEY_NIVEAU_SANTE'=>KEY_NIVEAU_SANTE,
+				'KEY_NIVEAU_ADHESION'=>KEY_NIVEAU_ADHESION,
+				'KEY_NIVEAU_AUTONOMIE'=>KEY_NIVEAU_AUTONOMIE,
+				'KEY_NIVEAU_DISPONIBILITE'=>KEY_NIVEAU_DISPONIBILITE,
+				'KEY_NIVEAU_BUDGET'=>KEY_NIVEAU_BUDGET,
+				'KEY_NIVEAU_LOGEMENT'=>KEY_NIVEAU_LOGEMENT,
+				'KEY_NIVEAU_FORMATION'=>KEY_NIVEAU_FORMATION,
+				'KEY_NIVEAU_MOBILITE'=>KEY_NIVEAU_MOBILITE,
+				'KEY_NIVEAU_DIPLOME'=>KEY_NIVEAU_DIPLOME,
+				'KEY_SAVOIR_BASE'=>KEY_SAVOIR_BASE,
+				'KEY_ENFANT_CHARGE'=>KEY_ENFANT_CHARGE,
+				'KEY_OBJECTIF_CHOIX_PRO'=>KEY_OBJECTIF_CHOIX_PRO,
+				'KEY_OBJECTIF_PROXIMITE_EMPLOI'=>KEY_OBJECTIF_PROXIMITE_EMPLOI,
+				'KEY_OBJECTIF_SANTE'=>KEY_OBJECTIF_SANTE,
+				'KEY_OBJECTIF_ADHESION'=>KEY_OBJECTIF_ADHESION,
+				'KEY_OBJECTIF_AUTONOMIE'=>KEY_OBJECTIF_AUTONOMIE,
+				'KEY_OBJECTIF_DISPONIBILITE'=>KEY_OBJECTIF_DISPONIBILITE,
+				'KEY_OBJECTIF_BUDGET'=>KEY_OBJECTIF_BUDGET,
+				'KEY_OBJECTIF_LOGEMENT'=>KEY_OBJECTIF_LOGEMENT,
+				'KEY_OBJECTIF_FORMATION'=>KEY_OBJECTIF_FORMATION,
+				'KEY_OBJECTIF_MOBILITE'=>KEY_OBJECTIF_MOBILITE,
+				'KEY_FAMILLE_FREINS'=>KEY_FAMILLE_FREINS,
+				'KEY_DELAI_REALISATION'=>KEY_DELAI_REALISATION,
+				'KEY_DEMARCHE_INSERTION_CHOIX_PRO'=>KEY_DEMARCHE_INSERTION_CHOIX_PRO,
+				'KEY_DEMARCHE_INSERTION_PROXIMITE_EMPLOI'=>KEY_DEMARCHE_INSERTION_PROXIMITE_EMPLOI,
+				'KEY_DEMARCHE_INSERTION_SANTE'=>KEY_DEMARCHE_INSERTION_SANTE,
+				'KEY_DEMARCHE_INSERTION_ADHESION'=>KEY_DEMARCHE_INSERTION_ADHESION,
+				'KEY_DEMARCHE_INSERTION_AUTONOMIE'=>KEY_DEMARCHE_INSERTION_AUTONOMIE,
+				'KEY_DEMARCHE_INSERTION_DISPONIBILITE'=>KEY_DEMARCHE_INSERTION_DISPONIBILITE,
+				'KEY_DEMARCHE_INSERTION_GESTION_BUDGET'=>KEY_DEMARCHE_INSERTION_GESTION_BUDGET,
+				'KEY_DEMARCHE_INSERTION_LOGEMENT'=>KEY_DEMARCHE_INSERTION_LOGEMENT,
+				'KEY_DEMARCHE_INSERTION_FORMATION'=>KEY_DEMARCHE_INSERTION_FORMATION,
+				'KEY_DEMARCHE_INSERTION_MOBILITE'=>KEY_DEMARCHE_INSERTION_MOBILITE,
+				'KEY_NIVEAU_DIFFICULTE'=>KEY_NIVEAU_DIFFICULTE,
+		));
+	}
+
+
+
+
+	/**
+	 * @Template()
+	 */
+	public function pdiAction($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		$listes = Texte::getListeByIdTexte($texte);
+		// echo '<pre>'.print_r($texte, true).'</pre>';exit;
+		return array(
+			'DIR_PRESTA'=>DIR_PRESTA,
+			'prestaData'	=> $prestaDataConvert,
+			'presta' => $presta,
+			'options' => $options,
+			'listes' => $listes,
+			'diagnostic' => array('Etude économique' => 46,'Etude financière' => 47,'Etude juridique' => 48,'Montage' => 49,'Création' => 50,'Suivi' => 51),
+			'key' => array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT,
+
+				// SPIREA 
+				'KEY_SYNTHESE_M1' => 52,
+				'KEY_PRECONISATIONS_M1' => 53,
+		));
+	}
+	
+	
+	/**
+	 *
+	 * @Template()
+	 */
+	public function epceAction($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		//Doctrine\Common\Util\Debug::dump($presta,3);die();
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		
+		return array(
+			'prestaData'	=> $prestaDataConvert,
+			'presta'=>$presta,
+			'options'=>$options,
+			'key'	=> array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT
+		));
+	}
+	
+	/**
+	 *
+	 * @Template()
+	 */
+	public function nacre1Action($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		
+		
+		
+			return array(	'DIR_PRESTA'=>DIR_PRESTA,
+							'presta'=>$presta,
+							);
+							
+		
+	}
+	/**
+	 * @Template()
+	 */
+	public function opcreAction($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		//\Doctrine\Common\Util\Debug::dump($presta,3);die();
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		
+		return array(
+			'prestaData'	=> $prestaDataConvert,
+			'presta'=>$presta,
+			'options'=>$options,
+			'key'	=> array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT
+		));
+	}
+	
+
+
+
+
+
+
+
+	/**
+	 * @Template()
+	 */
+	public function asp1Action($request)
+	{
+		
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		$listes = Texte::getListeByIdTexte($texte);
+		// echo '<pre>'.print_r($texte, true).'</pre>';exit;
+		return array(
+			'DIR_PRESTA'=>DIR_PRESTA,
+			'prestaData'	=> $prestaDataConvert,
+			'presta' => $presta,
+			'options' => $options,
+			'listes' => $listes,
+			'diagnostic' => array('Etude économique' => 46,'Etude financière' => 47,'Etude juridique' => 48,'Montage' => 49,'Création' => 50,'Suivi' => 51),
+
+			'key'	=> array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT,
+
+				//ASP1
+				'KEY_FREIN_CHOIX_PRO'=>KEY_FREIN_CHOIX_PRO,
+				'KEY_FREIN_PROXIMITE_EMPLOI'=>KEY_FREIN_PROXIMITE_EMPLOI,
+				'KEY_FREIN_SANTE'=>KEY_FREIN_SANTE,
+				'KEY_FREIN_ADHESION'=>KEY_FREIN_ADHESION,
+				'KEY_FREIN_AUTONOMIE'=>KEY_FREIN_AUTONOMIE,
+				'KEY_FREIN_DISPONIBILITE'=>KEY_FREIN_DISPONIBILITE,
+				'KEY_FREIN_BUDGET'=>KEY_FREIN_BUDGET,
+				'KEY_FREIN_LOGEMENT'=>KEY_FREIN_LOGEMENT,
+				'KEY_FREIN_FORMATION'=>KEY_FREIN_FORMATION,
+				'KEY_FREIN_MOBILITE'=>KEY_FREIN_MOBILITE,
+				'KEY_ABSENCE_DIFFICULTE'=>KEY_ABSENCE_DIFFICULTE,
+				'KEY_DIFFICULTE_CMT'=>KEY_DIFFICULTE_CMT,
+				'KEY_DIFFICULTE_MLT'=>KEY_DIFFICULTE_MLT,
+				'KEY_DIFFICULTE_PREGNANTE'=>KEY_DIFFICULTE_PREGNANTE,
+				'KEY_NIVEAU_BLOQUANT'=>KEY_NIVEAU_BLOQUANT,
+				'KEY_NIVEAU_CHOIX_PRO'=>KEY_NIVEAU_CHOIX_PRO,
+				'KEY_NIVEAU_PROXIMITE_EMPLOI'=>KEY_NIVEAU_PROXIMITE_EMPLOI,
+				'KEY_NIVEAU_SANTE'=>KEY_NIVEAU_SANTE,
+				'KEY_NIVEAU_ADHESION'=>KEY_NIVEAU_ADHESION,
+				'KEY_NIVEAU_AUTONOMIE'=>KEY_NIVEAU_AUTONOMIE,
+				'KEY_NIVEAU_DISPONIBILITE'=>KEY_NIVEAU_DISPONIBILITE,
+				'KEY_NIVEAU_BUDGET'=>KEY_NIVEAU_BUDGET,
+				'KEY_NIVEAU_LOGEMENT'=>KEY_NIVEAU_LOGEMENT,
+				'KEY_NIVEAU_FORMATION'=>KEY_NIVEAU_FORMATION,
+				'KEY_NIVEAU_MOBILITE'=>KEY_NIVEAU_MOBILITE,
+				'KEY_NIVEAU_DIPLOME'=>KEY_NIVEAU_DIPLOME,
+				'KEY_EVAL_AUTONOMIE'=>KEY_EVAL_AUTONOMIE,
+				'KEY_GESTION_BUDGET'=>KEY_GESTION_BUDGET,
+				'KEY_TYPE_LOGEMENT'=>KEY_TYPE_LOGEMENT,
+				'KEY_ETAT_LOGEMENT'=>KEY_ETAT_LOGEMENT,
+				'KEY_SAVOIR_BASE'=>KEY_SAVOIR_BASE,
+				'KEY_ENFANT_CHARGE'=>KEY_ENFANT_CHARGE,
+				'KEY_OBJECTIF_CHOIX_PRO'=>KEY_OBJECTIF_CHOIX_PRO,
+				'KEY_OBJECTIF_PROXIMITE_EMPLOI'=>KEY_OBJECTIF_PROXIMITE_EMPLOI,
+				'KEY_OBJECTIF_SANTE'=>KEY_OBJECTIF_SANTE,
+				'KEY_OBJECTIF_ADHESION'=>KEY_OBJECTIF_ADHESION,
+				'KEY_OBJECTIF_AUTONOMIE'=>KEY_OBJECTIF_AUTONOMIE,
+				'KEY_OBJECTIF_DISPONIBILITE'=>KEY_OBJECTIF_DISPONIBILITE,
+				'KEY_OBJECTIF_BUDGET'=>KEY_OBJECTIF_BUDGET,
+				'KEY_OBJECTIF_LOGEMENT'=>KEY_OBJECTIF_LOGEMENT,
+				'KEY_OBJECTIF_FORMATION'=>KEY_OBJECTIF_FORMATION,
+				'KEY_OBJECTIF_MOBILITE'=>KEY_OBJECTIF_MOBILITE,
+				'KEY_FAMILLE_FREINS'=>KEY_FAMILLE_FREINS,
+				'KEY_DELAI_REALISATION'=>KEY_DELAI_REALISATION,
+				'KEY_DEMARCHE_INSERTION_CHOIX_PRO'=>KEY_DEMARCHE_INSERTION_CHOIX_PRO,
+				'KEY_DEMARCHE_INSERTION_PROXIMITE_EMPLOI'=>KEY_DEMARCHE_INSERTION_PROXIMITE_EMPLOI,
+				'KEY_DEMARCHE_INSERTION_SANTE'=>KEY_DEMARCHE_INSERTION_SANTE,
+				'KEY_DEMARCHE_INSERTION_ADHESION'=>KEY_DEMARCHE_INSERTION_ADHESION,
+				'KEY_DEMARCHE_INSERTION_AUTONOMIE'=>KEY_DEMARCHE_INSERTION_AUTONOMIE,
+				'KEY_DEMARCHE_INSERTION_DISPONIBILITE'=>KEY_DEMARCHE_INSERTION_DISPONIBILITE,
+				'KEY_DEMARCHE_INSERTION_GESTION_BUDGET'=>KEY_DEMARCHE_INSERTION_GESTION_BUDGET,
+				'KEY_DEMARCHE_INSERTION_LOGEMENT'=>KEY_DEMARCHE_INSERTION_LOGEMENT,
+				'KEY_DEMARCHE_INSERTION_FORMATION'=>KEY_DEMARCHE_INSERTION_FORMATION,
+				'KEY_DEMARCHE_INSERTION_MOBILITE'=>KEY_DEMARCHE_INSERTION_MOBILITE,
+				'KEY_NIVEAU_DIFFICULTE'=>KEY_NIVEAU_DIFFICULTE,
+
+
+				// SPIREA 
+				'KEY_SYNTHESE_M1' => 52,
+				'KEY_PRECONISATIONS_M1' => 53,
+				'KEY_EVALUATION' => 54,
+
+		));
+	}
+
+
+
+
+	/**
+	 *
+	 * @Template()
+	 */
+	public function rsa1Action($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		$listes = Texte::getListeByIdTexte($texte);
+		// echo '<pre>'.print_r($texte, true).'</pre>';exit;
+		return array(
+			'DIR_PRESTA'=>DIR_PRESTA,
+			'prestaData'	=> $prestaDataConvert,
+			'presta' => $presta,
+			'options' => $options,
+			'listes' => $listes,
+			'diagnostic' => array('Etude économique' => 46,'Etude financière' => 47,'Etude juridique' => 48,'Montage' => 49,'Création' => 50,'Suivi' => 51),
+			'key' => array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT,
+
+				// SPIREA 
+				'KEY_SYNTHESE_M1' => 52,
+				'KEY_EVALUATION' => 54,
+				'KEY_PRECONISATIONS_M1' => 53,
+		));
+	}
+	/**
+	 *
+	 * @Template()
+	 */
+	public function rsa2Action($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		$listes = Texte::getListeByIdTexte($texte);
+		// echo '<pre>'.print_r($texte, true).'</pre>';exit;
+		return array(
+			'DIR_PRESTA'=>DIR_PRESTA,
+			'prestaData'	=> $prestaDataConvert,
+			'presta' => $presta,
+			'options' => $options,
+			'listes' => $listes,
+			'diagnostic' => array('Etude économique' => 46,'Etude financière' => 47,'Etude juridique' => 48,'Montage' => 49,'Création' => 50,'Suivi' => 51),
+			'key' => array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT,
+
+				// SPIREA 
+				'KEY_SYNTHESE_M1' => 52,
+				'KEY_EVALUATION' => 54,
+				'KEY_PRECONISATIONS_M1' => 53,
+		));
+	}
+
+	/**
+	 * @Template()
+	 */
+	public function aicAction($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		//\Doctrine\Common\Util\Debug::dump($presta,3);die();
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		
+		return array(
+			'prestaData'	=> $prestaDataConvert,
+			'presta'=>$presta,
+			'options'=>$options,
+			'key'	=> array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT
+		));
+	}
+
+	/**
+	 *
+	 * @Template()
+	 */
+	public function cd1Action($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		$listes = Texte::getListeByIdTexte($texte);
+		// echo '<pre>'.print_r($texte, true).'</pre>';exit;
+		return array(
+			'DIR_PRESTA'=>DIR_PRESTA,
+			'prestaData'	=> $prestaDataConvert,
+			'presta' => $presta,
+			'options' => $options,
+			'listes' => $listes,
+			'diagnostic' => array('Etude économique' => 46,'Etude financière' => 47,'Etude juridique' => 48,'Montage' => 49,'Création' => 50,'Suivi' => 51),
+			'key' => array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT,
+
+				// SPIREA 
+				'KEY_SYNTHESE_M1' => 52,
+				'KEY_EVALUATION' => 54,
+				'KEY_PRECONISATIONS_M1' => 53,
+		));
+	}
+	/**
+	 *
+	 * @Template()
+	 */
+	public function cd2Action($request)
+	{
+		$idPresta = $request->request->get('idPresta');
+		$presta = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta));
+		$prestaDataConvert = Arr::convertDataPresta($prestaData);
+		$texte = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwTexte')->get();
+		$options = Texte::getOptionByIdTexte($texte);
+		$listes = Texte::getListeByIdTexte($texte);
+		// echo '<pre>'.print_r($texte, true).'</pre>';exit;
+		return array(
+			'DIR_PRESTA'=>DIR_PRESTA,
+			'prestaData'	=> $prestaDataConvert,
+			'presta' => $presta,
+			'options' => $options,
+			'listes' => $listes,
+			'diagnostic' => array('Etude économique' => 46,'Etude financière' => 47,'Etude juridique' => 48,'Montage' => 49,'Création' => 50,'Suivi' => 51),
+			'key' => array(
+				'KEY_PROJET_ETAT_AVANCEMENT'=>KEY_PROJET_ETAT_AVANCEMENT,
+				'KEY_PROJET_POINT_EVALUER_PRIORITE'=>KEY_PROJET_POINT_EVALUER_PRIORITE,
+				'KEY_ATTENTES_BENEFICIAIRE'=>KEY_ATTENTES_BENEFICIAIRE,
+				'KEY_ADEQUATION_CAPACITE'=>KEY_ADEQUATION_CAPACITE,
+				'KEY_ADEQUATION_COMPETENCE'=>KEY_ADEQUATION_COMPETENCE,
+				'KEY_ADEQUATION_FORMATION'=>KEY_ADEQUATION_FORMATION,
+				'KEY_ADEQUATION_ELEMENTS_PORTEURS'=>KEY_ADEQUATION_ELEMENTS_PORTEURS,
+				'KEY_ADEQUATION_POINTS_VIGILANCES'=>KEY_ADEQUATION_POINTS_VIGILANCES,
+				'KEY_ADEQUATION_COMPETENCES_A_AQUERIR'=>KEY_ADEQUATION_COMPETENCES_A_AQUERIR,
+				'KEY_ADEQUATION_DELAI'=>KEY_ADEQUATION_DELAI,
+				'KEY_ADEQUATION_TYPE_FORMATION'=>KEY_ADEQUATION_TYPE_FORMATION,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_ANALYSE_CONCURRENCE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FORTS,
+				'KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES'=>KEY_ETUDE_MARCHE_STRATEGIE_COMMERCIALE_PT_FAIBLES,
+				'KEY_ETUDE_MARCHE_ACTIONS'=>KEY_ETUDE_MARCHE_ACTIONS,
+				'KEY_ETUDE_MARCHE_DELAI'=>KEY_ETUDE_MARCHE_DELAI,
+				'KEY_ETUDE_MARCHE_RESULTATS'=>KEY_ETUDE_MARCHE_RESULTATS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_APPORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_CALCUL_PT_MORT_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_INITIAL_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FORTS,
+				'KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES'=>KEY_PLAN_FINANCEMENT_PLAN_FINANCEMENT_3ANS_PT_FAIBLES,
+				'KEY_PLAN_FINANCEMENT_ACTION'=>KEY_PLAN_FINANCEMENT_ACTION,
+				'KEY_PLAN_FINANCEMENT_DELAI'=>KEY_PLAN_FINANCEMENT_DELAI,
+				'KEY_PLAN_FINANCEMENT_RESULTAT'=>KEY_PLAN_FINANCEMENT_RESULTAT,
+				'KEY_STATUT_JURIDIQUE_PT_FORTS'=>KEY_STATUT_JURIDIQUE_PT_FORTS,
+				'KEY_STATUT_JURIDIQUE_PT_FAIBLES'=>KEY_STATUT_JURIDIQUE_PT_FAIBLES,
+				'KEY_STATUT_JURIDIQUE_ACTION'=>KEY_STATUT_JURIDIQUE_ACTION,
+				'KEY_STATUT_JURIDIQUE_DELAI'=>KEY_STATUT_JURIDIQUE_DELAI,
+				'KEY_STATUT_JURIDIQUE_RESULTAT'=>KEY_STATUT_JURIDIQUE_RESULTAT,
+
+				// SPIREA 
+				'KEY_SYNTHESE_M1' => 52,
+				'KEY_EVALUATION' => 54,
+				'KEY_PRECONISATIONS_M1' => 53,
+		));
+	}
+
+	/**
+	 *
+	 * @Template()
+	 */
+	public function dataAction()
+	{
+		$request = $this->getRequest();
+		$params['EgwContact'] = $request->request->get('EgwContact');
+		$params['EgwContactEtatCivil'] = $request->request->get('EgwContactEtatCivil');
+		$params['EgwContactParcoursPro'] = $request->request->get('EgwContactParcoursPro');
+		$params['EgwFormationContact'] = $request->request->get('EgwFormationContact');
+		$params['EgwProjet'] = $request->request->get('projet');
+
+		$data = $request->request->get('data');
+		$idPresta = $request->request->get('id_presta');
+		$session = $this->container->get('session');
+		$user = $session->get('user');
+		$p = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestation')->find($idPresta);
+	    $contact =  $p->getContact();
+   		
+		#Update contact
+		$this->getDoctrine()->getRepository('LeaPrestaBundle:EgwContact')->update($this->getDoctrine(),$params,$user);
+		
+		foreach ($data as $key => $value) {
+		$prestaData = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwPrestaData')->findBy(array('idPresta'=>$idPresta,'clef'=>$key));
+		
+		$em = $this->getDoctrine()->getManager();
+		#complete  
+		if($key == "suivi" && $value !=null)
+		{
+			// SPIREA-YLF - 06/07/2017 - Commentaire
+			 $p->setStatut('En cours');	
+			 $em->persist($p);
+			 $em->flush();
+		}
+		#abandon  
+		if($key == "date_abandon" && $value !=null)
+		{
+			$value = date('d/m/Y');
+			$p->setStatut('Abandon');	
+			$em->persist($p);
+			$em->flush();
+		}
+		
+		if(isset($prestaData[0]))
+		{
+		$prestaData = $prestaData[0];
+		$prestaData->setValeur($value);
+		}
+		else
+		{
+			$prestaData = new EgwPrestaData();
+			$prestaData->setIdPresta($idPresta);
+			$prestaData->setClef($key);
+			$prestaData->setValeur($value);
+		}
+		
+		
+		$pattern = '/periode_t_entreprise_/';
+		$pattern2 = '/entreprise/';
+		#on verifie si l'organisation existe
+		if(preg_match($pattern, $key, $matches) == true || preg_match($pattern2, $key, $matches) == true)
+		{
+		$org = $this->getDoctrine()->getRepository('LeaPrestaBundle:Spiclient')->findBy(array('nomOrganisme'=>strtoupper($value)));
+		#on crée alors
+		if(!$org)
+		{
+		$session = $this->container->get('session');
+		$user = $session->get('user');
+		$o = new EgwOrganisation();
+		$o->setNomOrganisme(strtoupper($value));
+		$o->setIdModifier($user->getAccountId()->getAccountId());
+		$o->setIdOwner($user->getAccountId()->getAccountId());
+		$o->setAdresseLigne1('');
+		$o->setAdresseLigne2('');
+		$o->setAdresseLigne3('');
+		$o->setCategorieOrg(CAT_EMPLOYEUR);
+		$o->setCodeOrg(str_replace(' ','_',strtoupper($value)));
+		$o->setCp('');
+		$o->setDateCreation(time());
+		$o->setDateLastModified(time());
+		$o->setEmail('');
+		$o->setFax('');
+		$o->setIdDirecteur(0);
+		$o->setRegion('');
+		$o->setReseau('');
+		$o->setSecteurActivite('');
+		$o->setSiteWeb('');
+		$o->setTel('');
+		$o->setTypeAdresse('');
+		$o->setVille('');
+		$o->setPays('');
+		$em->persist($o);
+	    $em->flush();
+	    
+	    $org = $this->getDoctrine()->getRepository('LeaPrestaBundle:EgwOrganisation')->lastId();
+	  
+		}
+		else
+		$org = $org[0];
+		
+		if(!preg_match('/'.$org->getIdOrganisation().'/', $contact->getIdOrganisation(), $matches))
+		{
+			if($contact->getIdOrganisation()!=null)
+		    $ids = $contact->getIdOrganisation().','.$org->getIdOrganisation();
+		    else 
+		    $ids = $org->getIdOrganisation();
+		    
+		    $contact->setIdOrganisation($ids);
+		    $contact->setDateLastModified(time());
+		    $contact->setIdModifier($user->getAccountId()->getAccountId());
+		    $em->persist($contact);
+		    $em->flush();
+		}
+	    
+		 $prestaData->setValeur(strtoupper($value));
+		}
+		
+	 
+	   $em->persist($prestaData);
+	   $em->flush();
+		unset($org);
+		}
+	
+		
+		
+		echo json_encode('Les données ont été sauvegardées');
+		die();
+	}
+	 
+}

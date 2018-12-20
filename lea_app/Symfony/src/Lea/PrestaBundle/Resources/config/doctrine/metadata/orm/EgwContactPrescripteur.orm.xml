@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EgwContactPrescripteur" table="egw_contact_prescripteur">
+    <id name="idContact" type="integer" column="id_contact">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idBen" type="bigint" column="id_ben" nullable="false"/>
+    <field name="idPrescripteur" type="bigint" column="id_prescripteur" nullable="false"/>
+    <field name="idPrescripteur2" type="bigint" column="id_prescripteur2" nullable="false"/>
+    <field name="idPrescripteur3" type="bigint" column="id_prescripteur3" nullable="false"/>
+    <field name="civilite" type="string" column="civilite" length="60" nullable="false"/>
+    <field name="nom" type="string" column="nom" length="60" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="60" nullable="false"/>
+    <field name="telBureau" type="string" column="tel_bureau" length="60" nullable="false"/>
+    <field name="telPortable" type="string" column="tel_portable" length="60" nullable="false"/>
+    <field name="emailBureau" type="string" column="email_bureau" length="60" nullable="false"/>
+    <field name="emailDomicile" type="string" column="email_domicile" length="60" nullable="false"/>
+    <field name="fonction" type="string" column="fonction" length="60" nullable="false"/>
+  </entity>
+</doctrine-mapping>

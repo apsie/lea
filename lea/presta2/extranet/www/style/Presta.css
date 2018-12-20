@@ -1,0 +1,67 @@
+.select_bloc_3
+{
+	float:left;
+	
+}
+.select_bloc_3 select
+{
+	margin-right : 10px;
+	width : 310px;
+	
+}
+.select_bloc_3 .titre_colonne
+{
+	padding-top : 50px;
+	text-decoration: underline;
+	width : 250px;
+}
+.select_bloc_2
+{
+	float:left;
+	
+}
+.select_bloc_2 select 
+{
+	margin-right : 10px;
+	width : 470px;
+	
+}
+.bloc
+{
+	padding-bottom:10px;
+	clear : left;
+	width : 1100px;
+}
+p
+{
+	/*padding : 1px !important;*/
+}
+
+.fenetre
+{
+position:absolute;
+top : 15%;
+width : 15%;
+}
+.fenetre .head
+{
+	background: url('/images/presta/fenetre_head.png') no-repeat;
+	width: 1245px;
+	height: 41px;
+}
+.fenetre .corp
+{
+	background: url('/images/presta/fenetre_corp.png') repeat-y;
+	width: 1245px;
+	/*margin-left : -2px;*/
+	
+}
+.fenetre .foot
+{
+	background: url('/images/presta/fenetre_foot.png') no-repeat;
+	width: 1245px;
+	height: 42px;
+	
+	
+	
+}
